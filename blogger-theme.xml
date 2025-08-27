@@ -5,6 +5,8 @@
   <meta charset='utf-8'/>
   <meta content='width=device-width,initial-scale=1,minimum-scale=1' name='viewport'/>
   
+  <b:include data='blog' name='all-head-content'/>
+  
   <title><data:view.title.escaped/></title>
   <b:if cond='data:view.isPost'>
     <meta expr:content='data:post.snippet' name='description'/>
@@ -12,46 +14,18 @@
     <meta content='A QA thought hub. What did you expect? Insights, strategies, and conversations about software quality from experienced QA professionals.' name='description'/>
   </b:if>
   
-  <!-- Open Graph Meta Tags -->
-  <meta expr:content='data:view.title.escaped' property='og:title'/>
-  <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
-  <meta content='website' property='og:type'/>
-  <b:if cond='data:view.isPost'>
-    <meta expr:content='data:post.snippet' property='og:description'/>
-  <b:else/>
-    <meta content='A QA thought hub. What did you expect?' property='og:description'/>
-  </b:if>
-  
-  <!-- Inter Font - Exact match -->
+  <!-- Inter Font -->
   <link rel='preconnect' href='https://fonts.googleapis.com'/>
   <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin=''/>
-  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet'/>
   
   <b:skin><![CDATA[
-    /* Reset and Base Styles - Exact match */
+    /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
-    /* Lucide Icons - SVG styles */
-    .lucide-icon {
-      width: 1em;
-      height: 1em;
-      display: inline-block;
-      vertical-align: middle;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    
-    .icon-sm { width: 1rem; height: 1rem; }
-    .icon-md { width: 1.25rem; height: 1.25rem; }
-    .icon-lg { width: 1.5rem; height: 1.5rem; }
-    .icon-xl { width: 2rem; height: 2rem; }
     
     body {
       font-family: 'Inter', sans-serif;
@@ -59,44 +33,23 @@
       color: #374151;
       background: #ffffff;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
     
-    /* Utility Classes */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    .container-wide {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    .text-center { text-align: center; }
-    .hidden { display: none; }
-    
-    /* Header Styles - Exact match */
+    /* Header Styles */
     .header {
       background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
     }
     
-    .header-nav {
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1rem;
     }
     
     .logo {
@@ -104,22 +57,6 @@
       align-items: center;
       gap: 0.5rem;
       text-decoration: none;
-    }
-    
-    .logo-icon {
-      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      color: white;
-      font-weight: bold;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .logo-text {
       font-weight: 700;
       font-size: 1.25rem;
       background: linear-gradient(135deg, #1e1b4b, #7c3aed);
@@ -128,13 +65,13 @@
       background-clip: text;
     }
     
-    .nav-menu {
+    .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
     
-    .nav-link {
+    .nav-links a {
       color: #374151;
       text-decoration: none;
       font-weight: 500;
@@ -143,29 +80,25 @@
       transition: all 0.3s ease;
     }
     
-    .nav-link:hover,
-    .nav-link.active {
+    .nav-links a:hover {
       color: #1e1b4b;
       border-bottom-color: #1e1b4b;
     }
     
-    /* Main Content Wrapper */
-    .main-wrapper {
-      flex: 1;
-    }
-    
-    /* Hero Section - Exact match */
-    .hero {
-      min-height: 100vh;
+    /* Hero Section (Homepage only) */
+    .hero-section {
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       position: relative;
       overflow: hidden;
-      background: #ffffff;
     }
     
-    .hero-bg {
+    .hero-section::before {
+      content: '';
       position: absolute;
       inset: 0;
       opacity: 0.1;
@@ -175,64 +108,31 @@
       background-size: 40px 40px;
     }
     
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 20% 20%, rgba(80, 0, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(46, 0, 163, 0.3) 0%, transparent 50%);
-    }
-    
     .hero-content {
       position: relative;
       z-index: 10;
-      text-align: center;
-      max-width: 64rem;
+      max-width: 800px;
       padding: 0 1rem;
     }
     
     .hero-title {
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1.1;
     }
     
     .hero-subtitle {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: #6b7280;
-      font-weight: 300;
       margin-bottom: 2rem;
-      line-height: 1.4;
     }
     
-    .hero-tags {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-    
-    .hero-tag {
-      padding: 0.75rem 1rem;
-      background: #f3f4f6;
-      border-radius: 9999px;
-      font-family: 'Inter', monospace;
-      font-size: 0.875rem;
-      color: #6b7280;
-      font-weight: 500;
-    }
-    
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+    .hero-cta {
+      display: inline-block;
       padding: 1rem 2rem;
       background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       color: white;
@@ -240,96 +140,47 @@
       font-weight: 600;
       border-radius: 0.5rem;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      font-size: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
     
-    .cta-button:hover {
+    .hero-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      background: linear-gradient(135deg, #1e1b4b, #6d28d9);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
     
-    /* Blog Content Styles */
-    .blog-content {
-      padding: 5rem 0;
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
     
-    .section {
-      margin-bottom: 5rem;
-    }
-    
-    .section-title {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    
-    .section-subtitle {
-      font-size: 1.25rem;
-      color: #6b7280;
-      text-align: center;
-      margin-bottom: 4rem;
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    
-    /* Blog Posts Grid - Exact match */
-    .posts-grid {
+    /* Blog Posts Styling */
+    .blog-posts {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 1rem;
+      margin: 2rem 0;
     }
     
-    .post-card {
+    .post {
       background: white;
       border-radius: 0.75rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: all 0.3s ease;
-      border: 1px solid transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
     }
     
-    .post-card:hover {
+    .post:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
     
-    .post-card-content {
-      padding: 2rem;
-    }
-    
-    .post-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    
-    .post-category {
-      padding: 0.25rem 0.75rem;
-      background: #e0e7ff;
-      color: #3730a3;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border-radius: 9999px;
-    }
-    
-    .post-read-time {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      color: #6b7280;
-      font-size: 0.875rem;
+    .post-header {
+      padding: 2rem 2rem 1rem;
     }
     
     .post-title {
@@ -350,154 +201,83 @@
       color: #1e1b4b;
     }
     
-    .post-excerpt {
+    .post-body {
+      padding: 0 2rem;
       color: #6b7280;
-      margin-bottom: 1.5rem;
       line-height: 1.6;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 1rem;
     }
     
     .post-footer {
+      padding: 1rem 2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border: none;
+      background: none;
+      margin: 0;
     }
     
-    .post-date {
+    .post-labels {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .post-labels a {
+      padding: 0.25rem 0.75rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .post-labels a:hover {
+      background: #c7d2fe;
+      color: #312e81;
+    }
+    
+    .post-timestamp {
       color: #6b7280;
       font-size: 0.875rem;
     }
     
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      color: #1e1b4b;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .read-more:hover {
-      color: #7c3aed;
-    }
-    
-    /* Single Post Styles - Exact match */
-    .post-header {
-      max-width: 64rem;
-      margin: 0 auto 3rem;
-      padding: 3rem 1rem 0;
-    }
-    
-    .post-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #1e1b4b;
-      font-weight: 600;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      transition: color 0.3s ease;
-    }
-    
-    .post-back-link:hover {
-      color: #7c3aed;
-    }
-    
-    .post-header-meta {
-      margin-bottom: 1.5rem;
-    }
-    
-    .post-header-title {
-      font-size: 4rem;
-      font-weight: 700;
-      color: #111827;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    
-    .post-header-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      color: #6b7280;
-      align-items: center;
-    }
-    
-    .post-header-info > div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .post-content {
-      max-width: 64rem;
-      margin: 0 auto;
-      padding: 0 1rem;
-      font-size: 1.125rem;
-      line-height: 1.75;
-    }
-    
-    .post-content h2 {
+    /* Individual Post Page */
+    .post-body h2 {
       font-size: 2rem;
       font-weight: 600;
       color: #111827;
       margin: 2rem 0 1rem;
     }
     
-    .post-content h3 {
+    .post-body h3 {
       font-size: 1.5rem;
       font-weight: 600;
       color: #111827;
       margin: 1.5rem 0 0.75rem;
     }
     
-    .post-content p {
+    .post-body p {
       margin-bottom: 1.5rem;
       color: #374151;
       line-height: 1.75;
     }
     
-    .post-content ul,
-    .post-content ol {
+    .post-body ul,
+    .post-body ol {
       margin: 1.5rem 0;
-      padding-left: 0;
-      list-style: none;
+      padding-left: 2rem;
     }
     
-    .post-content ul li {
-      position: relative;
-      padding-left: 1.75rem;
+    .post-body li {
       margin: 0.5rem 0;
       color: #374151;
     }
     
-    .post-content ul li::before {
-      content: '';
-      position: absolute;
-      background-color: #4f46e5;
-      border-radius: 50%;
-      width: 0.375rem;
-      height: 0.375rem;
-      top: 0.6875rem;
-      left: 0.25rem;
-    }
-    
-    .post-content ol {
-      padding-left: 1.25rem;
-      list-style: decimal;
-    }
-    
-    .post-content ol li {
-      margin: 0.5rem 0;
-      color: #374151;
-      padding-left: 0;
-    }
-    
-    .post-content blockquote {
+    .post-body blockquote {
       margin: 2rem 0;
       padding: 1.5rem;
       background: #e0e7ff;
@@ -505,25 +285,24 @@
       border-radius: 0.5rem;
       font-style: normal;
       color: #374151;
-      font-weight: 400;
     }
     
-    .post-content a {
+    .post-body a {
       color: #1e1b4b;
       text-decoration: none;
     }
     
-    .post-content a:hover {
+    .post-body a:hover {
       color: #7c3aed;
       text-decoration: underline;
     }
     
-    .post-content strong {
+    .post-body strong {
       color: #111827;
       font-weight: 600;
     }
     
-    .post-content code {
+    .post-body code {
       background: #f3f4f6;
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
@@ -531,7 +310,7 @@
       font-size: 0.875rem;
     }
     
-    .post-content pre {
+    .post-body pre {
       background: #1f2937;
       color: #f9fafb;
       padding: 1.5rem;
@@ -540,188 +319,60 @@
       margin: 1.5rem 0;
     }
     
-    .post-content pre code {
+    .post-body pre code {
       background: none;
       padding: 0;
       color: inherit;
     }
     
-    /* Categories Section - Exact match */
-    .categories-section {
-      background: #f9fafb;
-      padding: 5rem 0;
-    }
-    
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 1rem;
-    }
-    
-    .category-card {
-      background: white;
-      border-radius: 0.75rem;
-      padding: 2rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
-    
-    .category-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    .category-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      color: white;
-    }
-    
-    .category-icon-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
-    .category-icon-2 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
-    .category-icon-3 { background: linear-gradient(135deg, #3730a3, #2563eb); }
-    .category-icon-4 { background: linear-gradient(135deg, #2563eb, #3730a3); }
-    .category-icon-5 { background: linear-gradient(135deg, #7c3aed, #3730a3); }
-    
-    .category-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 0.75rem;
-    }
-    
-    .category-description {
-      color: #6b7280;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    
-    .category-meta {
-      font-family: 'Inter', monospace;
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-    
-    /* CTA Section - Exact match */
-    .cta-section {
-      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
-      padding: 5rem 0;
-      color: white;
-    }
-    
-    .cta-content {
-      text-align: center;
-      max-width: 64rem;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    .cta-title {
+    /* Page Titles */
+    .page-title {
       font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      color: #111827;
+      text-align: center;
+      margin: 2rem 0;
     }
     
-    .cta-subtitle {
+    .page-subtitle {
       font-size: 1.25rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      line-height: 1.6;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 3rem;
     }
     
-    .cta-button-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      background: white;
-      color: #1e1b4b;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .cta-button-white:hover {
-      background: #f9fafb;
-      transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Footer - Exact match */
+    /* Footer */
     .footer {
       background: #111827;
       color: white;
       padding: 3rem 0;
+      margin-top: 4rem;
     }
     
     .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem;
+      text-align: center;
     }
     
     .footer-brand {
-      grid-column: span 2;
-    }
-    
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-logo-icon {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .footer-title {
       font-weight: 700;
       font-size: 1.25rem;
+      margin-bottom: 1rem;
     }
     
     .footer-description {
       color: #d1d5db;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-    
-    .footer-tagline {
-      color: #9ca3af;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-    
-    .footer-section h3 {
-      font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
     
     .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
     
     .footer-links a {
@@ -736,15 +387,13 @@
     
     .footer-bottom {
       border-top: 1px solid #374151;
-      margin-top: 2rem;
       padding-top: 2rem;
-      text-align: center;
       color: #9ca3af;
     }
     
-    /* Responsive Design - Exact match */
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .nav-menu {
+      .nav-links {
         display: none;
       }
       
@@ -753,73 +402,24 @@
       }
       
       .hero-subtitle {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
       }
       
-      .hero-tags {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .posts-grid {
+      .blog-posts {
         grid-template-columns: 1fr;
       }
       
-      .categories-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .post-header-title {
+      .page-title {
         font-size: 2rem;
       }
       
-      .post-header-info {
+      .footer-links {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      
-      .footer-brand {
-        grid-column: span 1;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .cta-title {
-        font-size: 2rem;
+        gap: 1rem;
       }
     }
     
-    /* Blogger-specific overrides */
-    .blog-posts {
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .post {
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .post-body {
-      font-size: inherit;
-      line-height: inherit;
-    }
-    
-    .post-footer {
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Hide Blogger default elements */
+    /* Hide Blogger default elements we don't want */
     .blog-pager {
       display: none;
     }
@@ -828,461 +428,158 @@
       display: none;
     }
     
-    .post-labels {
-      display: none;
-    }
-    
     .sidebar {
       display: none;
     }
     
-    /* Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out forwards;
+    /* Show hero only on homepage */
+    body:not(.index) .hero-section {
+      display: none;
     }
   ]]></b:skin>
-  
-  <b:template-skin>
-    <b:variable default='#ffffff' name='body.background' type='color' value='#ffffff'/>
-    <b:variable default='#1e1b4b' name='accent.color' type='color' value='#1e1b4b'/>
-  </b:template-skin>
 </head>
 
-<body>
-  <div class='main-wrapper'>
-    <!-- Header -->
-    <header class='header'>
-      <nav class='header-nav'>
-        <a class='logo' expr:href='data:blog.homepageUrl'>
-          <div class='logo-icon'>
-            <svg class='lucide-icon' viewBox='0 0 24 24'>
-              <polyline points='16,18 22,12 16,6'/>
-              <polyline points='8,6 2,12 8,18'/>
-            </svg>
-          </div>
-          <span class='logo-text'>Null:Expected</span>
-        </a>
-        <ul class='nav-menu'>
-          <li><a class='nav-link' expr:href='data:blog.homepageUrl'>Home</a></li>
-          <li><a class='nav-link' href='/p/mission.html'>Mission</a></li>
-          <li><a class='nav-link' href='/p/about.html'>About</a></li>
-          <li><a class='nav-link' expr:href='data:blog.homepageUrl + "search/label/QA%20Processes?max-results=20"'>Blog</a></li>
-        </ul>
+<body expr:class='data:blog.pageType'>
+  <!-- Header -->
+  <header class='header'>
+    <div class='header-content'>
+      <a class='logo' expr:href='data:blog.homepageUrl'>
+        Null:Expected
+      </a>
+      <nav class='nav-links'>
+        <a expr:href='data:blog.homepageUrl'>Home</a>
+        <a href='/p/mission.html'>Mission</a>
+        <a href='/p/about.html'>About</a>
+        <a expr:href='data:blog.homepageUrl'>Blog</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <div class='blog-content'>
-      <b:if cond='data:view.isHomepage'>
-        <!-- Homepage Hero -->
-        <section class='hero'>
-          <div class='hero-bg'></div>
-          <div class='hero-content'>
-            <h1 class='hero-title'>Null:Expected</h1>
-            <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
-            <div class='hero-tags'>
-              <span class='hero-tag'>[ curiosity ]</span>
-              <span class='hero-tag'>[ quality ]</span>
-              <span class='hero-tag'>[ growth ]</span>
+  <!-- Hero Section (Homepage only) -->
+  <b:if cond='data:view.isHomepage'>
+    <section class='hero-section'>
+      <div class='hero-content'>
+        <h1 class='hero-title'>Null:Expected</h1>
+        <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
+        <a class='hero-cta' href='#blog-posts'>Explore the Hub</a>
+      </div>
+    </section>
+  </b:if>
+
+  <!-- Main Content -->
+  <div class='main-content'>
+    <b:if cond='data:view.isHomepage'>
+      <h2 class='page-title' id='blog-posts'>Featured Insights</h2>
+      <p class='page-subtitle'>Latest thoughts from the QA community</p>
+    </b:if>
+    
+    <b:if cond='data:view.isArchive'>
+      <h2 class='page-title'>All Blog Posts</h2>
+      <p class='page-subtitle'>Insights, strategies, and conversations about software quality</p>
+    </b:if>
+    
+    <b:if cond='data:view.isLabelSearch'>
+      <h2 class='page-title'>Posts in "<data:view.search.label/>"</h2>
+      <p class='page-subtitle'>Exploring <data:view.search.label/> insights and strategies</p>
+    </b:if>
+
+    <!-- Blog Posts Section -->
+    <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
+      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+          <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+          <b:widget-setting name='showComments'>true</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <b:if cond='data:view.isMultipleItems'>
+            <div class='blog-posts'>
+              <b:loop values='data:posts' var='post'>
+                <b:include data='post' name='post'/>
+              </b:loop>
             </div>
-            <a class='cta-button' expr:href='data:blog.homepageUrl'>
-              Explore the Hub
-              <svg class='lucide-icon icon-md' viewBox='0 0 24 24'>
-                <path d='M5 12h14'/>
-                <path d='m12 5 7 7-7 7'/>
-              </svg>
-            </a>
-          </div>
-        </section>
+          <b:else/>
+            <b:loop values='data:posts' var='post'>
+              <b:include data='post' name='post'/>
+            </b:loop>
+          </b:if>
+        </b:includable>
         
-        <!-- Categories Section -->
-        <section class='categories-section'>
-          <div class='container'>
-            <h2 class='section-title'>Explore Quality Insights</h2>
-            <p class='section-subtitle'>Dive into curated content across different aspects of quality assurance and professional growth</p>
-            
-            <div class='categories-grid'>
-              <div class='category-card'>
-                <div class='category-icon category-icon-1'>
-                  <svg class='lucide-icon icon-xl' viewBox='0 0 24 24'>
-                    <circle cx='12' cy='12' r='10'/>
-                    <circle cx='12' cy='12' r='6'/>
-                    <circle cx='12' cy='12' r='2'/>
-                  </svg>
-                </div>
-                <h3 class='category-title'>QA Processes</h3>
-                <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
-                <div class='category-meta'>[ 1 of 5 ]</div>
-              </div>
-              <div class='category-card'>
-                <div class='category-icon category-icon-2'>
-                  <svg class='lucide-icon icon-xl' viewBox='0 0 24 24'>
-                    <path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/>
-                    <circle cx='9' cy='7' r='4'/>
-                    <path d='m22 21-3-3m0 0a5 5 0 1 0-7-7 5 5 0 0 0 7 7Z'/>
-                  </svg>
-                </div>
-                <h3 class='category-title'>Quality Mindset</h3>
-                <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
-                <div class='category-meta'>[ 2 of 5 ]</div>
-              </div>
-              <div class='category-card'>
-                <div class='category-icon category-icon-3'>
-                  <svg class='lucide-icon icon-xl' viewBox='0 0 24 24'>
-                    <path d='m22 7-8.5 8.5-5-5L2 17'/>
-                    <path d='M16 7h6v6'/>
-                  </svg>
-                </div>
-                <h3 class='category-title'>Career Advice</h3>
-                <p class='category-description'>Growth strategies and insights for QA professionals</p>
-                <div class='category-meta'>[ 3 of 5 ]</div>
-              </div>
-              <div class='category-card'>
-                <div class='category-icon category-icon-4'>
-                  <svg class='lucide-icon icon-xl' viewBox='0 0 24 24'>
-                    <path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/>
-                    <circle cx='12' cy='12' r='3'/>
-                  </svg>
-                </div>
-                <h3 class='category-title'>Industry Trends</h3>
-                <p class='category-description'>Latest developments and emerging patterns in QA</p>
-                <div class='category-meta'>[ 4 of 5 ]</div>
-              </div>
-              <div class='category-card'>
-                <div class='category-icon category-icon-5'>
-                  <svg class='lucide-icon icon-xl' viewBox='0 0 24 24'>
-                    <path d='M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20'/>
-                  </svg>
-                </div>
-                <h3 class='category-title'>Tools & Tech</h3>
-                <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
-                <div class='category-meta'>[ 5 of 5 ]</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </b:if>
-
-      <!-- Blog Posts Section -->
-      <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
-        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
-          <b:includable id='main'>
-            <b:if cond='data:view.isHomepage'>
-              <section class='section'>
-                <div class='container'>
-                  <h2 class='section-title'>Featured Insights</h2>
-                  <p class='section-subtitle'>Latest thoughts from the QA community</p>
-                  <div class='posts-grid'>
-                    <b:loop values='data:posts' var='post'>
-                      <b:if cond='data:post.isFirstPost or data:post.isDateStart'>
-                        <b:if cond='data:blog.pageType == "index"'>
-                          <b:if cond='data:post.dateHeader'>
-                            <!-- Skip date headers on homepage -->
-                          </b:if>
-                        </b:if>
-                      </b:if>
-                      <article class='post-card'>
-                        <div class='post-card-content'>
-                          <div class='post-meta'>
-                            <span class='post-category'>
-                              <b:if cond='data:post.labels'>
-                                <b:loop values='data:post.labels' var='label' max='1'>
-                                  <data:label.name/>
-                                </b:loop>
-                              <b:else/>
-                                QA Insights
-                              </b:if>
-                            </span>
-                            <div class='post-read-time'>
-                              <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                                <circle cx='12' cy='12' r='10'/>
-                                <polyline points='12,6 12,12 16,14'/>
-                              </svg>
-                              <span>5 min read</span>
-                            </div>
-                          </div>
-                          <h3 class='post-title'>
-                            <a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a>
-                          </h3>
-                          <p class='post-excerpt'>
-                            <data:post.snippet/>
-                          </p>
-                          <div class='post-footer'>
-                            <span class='post-date'>
-                              <data:post.timestamp/>
-                            </span>
-                            <a class='read-more' expr:href='data:post.url'>
-                              Read Article
-                              <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                                <path d='M5 12h14'/>
-                                <path d='m12 5 7 7-7 7'/>
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-                    </b:loop>
-                  </div>
-                </div>
-              </section>
-            </b:if>
-            
-            <b:if cond='data:view.isArchive or data:view.isLabelSearch or data:view.search'>
-              <!-- Blog Archive/Search Page -->
-              <section class='section'>
-                <div class='container'>
-                  <h2 class='section-title'>
-                    <b:if cond='data:view.isLabelSearch'>
-                      Posts in "<data:view.search.query/>"
-                    <b:elseif cond='data:view.search'/>
-                      Search Results
-                    <b:else/>
-                      All Blog Posts
-                    </b:if>
-                  </h2>
-                  <p class='section-subtitle'>
-                    <b:if cond='data:view.isLabelSearch'>
-                      Exploring <data:view.search.query/> insights and strategies
-                    <b:elseif cond='data:view.search'/>
-                      Find the insights you're looking for
-                    <b:else/>
-                      Insights, strategies, and conversations about software quality
-                    </b:if>
-                  </p>
-                  <div class='posts-grid'>
-                    <b:loop values='data:posts' var='post'>
-                      <article class='post-card'>
-                        <div class='post-card-content'>
-                          <div class='post-meta'>
-                            <span class='post-category'>
-                              <b:if cond='data:post.labels'>
-                                <b:loop values='data:post.labels' var='label' max='1'>
-                                  <data:label.name/>
-                                </b:loop>
-                              <b:else/>
-                                QA Insights
-                              </b:if>
-                            </span>
-                            <div class='post-read-time'>
-                              <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                                <circle cx='12' cy='12' r='10'/>
-                                <polyline points='12,6 12,12 16,14'/>
-                              </svg>
-                              <span>5 min read</span>
-                            </div>
-                          </div>
-                          <h3 class='post-title'>
-                            <a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a>
-                          </h3>
-                          <p class='post-excerpt'>
-                            <data:post.snippet/>
-                          </p>
-                          <div class='post-footer'>
-                            <span class='post-date'>
-                              <data:post.timestamp/>
-                            </span>
-                            <a class='read-more' expr:href='data:post.url'>
-                              Read More
-                              <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                                <path d='M5 12h14'/>
-                                <path d='m12 5 7 7-7 7'/>
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-                    </b:loop>
-                  </div>
-                </div>
-              </section>
-            </b:if>
-            
-            <b:if cond='data:view.isPost'>
-              <article class='post-content'>
-                <div class='post-header'>
-                  <a class='post-back-link' expr:href='data:blog.homepageUrl'>
-                    <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                      <path d='m12 19-7-7 7-7'/>
-                      <path d='M19 12H5'/>
-                    </svg>
-                    Back to Blog
+        <b:includable id='post' var='post'>
+          <b:if cond='data:view.isMultipleItems'>
+            <!-- Post Card for Homepage/Archive -->
+            <article class='post'>
+              <div class='post-header'>
+                <h2 class='post-title'>
+                  <a expr:href='data:post.url' expr:title='data:post.title'>
+                    <data:post.title/>
                   </a>
-                  <div class='post-header-meta'>
-                    <span class='post-category'>
-                      <b:if cond='data:post.labels'>
-                        <b:loop values='data:post.labels' var='label' max='1'>
-                          <data:label.name/>
-                        </b:loop>
-                      <b:else/>
-                        QA Insights
-                      </b:if>
-                    </span>
-                  </div>
-                  <h1 class='post-header-title'><data:post.title/></h1>
-                  <div class='post-header-info'>
-                    <div>
-                      <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                        <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/>
-                        <circle cx='12' cy='7' r='4'/>
-                      </svg>
-                      <span>
-                        <b:if cond='data:post.author'>
-                          <data:post.author/>
-                        <b:else/>
-                          QA Professional
-                        </b:if>
-                      </span>
-                    </div>
-                    <div>
-                      <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                        <path d='M8 2v4'/>
-                        <path d='M16 2v4'/>
-                        <rect width='18' height='18' x='3' y='4' rx='2'/>
-                        <path d='M3 10h18'/>
-                      </svg>
-                      <span><data:post.timestamp/></span>
-                    </div>
-                    <div>
-                      <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                        <circle cx='12' cy='12' r='10'/>
-                        <polyline points='12,6 12,12 16,14'/>
-                      </svg>
-                      <span>5 min read</span>
-                    </div>
-                  </div>
+                </h2>
+              </div>
+              <div class='post-body'>
+                <data:post.snippet/>
+              </div>
+              <div class='post-footer'>
+                <div class='post-labels'>
+                  <b:loop values='data:post.labels' var='label'>
+                    <a expr:href='data:label.url' rel='tag'>
+                      <data:label.name/>
+                    </a>
+                  </b:loop>
                 </div>
-                <div class='post-content'>
-                  <data:post.body/>
-                </div>
-              </article>
-            </b:if>
-          </b:includable>
-          
-          <b:includable id='post' var='post'>
-            <!-- Individual post template for archive pages -->
-            <article class='post-card'>
-              <div class='post-card-content'>
-                <div class='post-meta'>
-                  <span class='post-category'>
-                    <b:if cond='data:post.labels'>
-                      <b:loop values='data:post.labels' var='label' max='1'>
-                        <data:label.name/>
-                      </b:loop>
-                    <b:else/>
-                      QA Insights
-                    </b:if>
-                  </span>
-                  <div class='post-read-time'>
-                    <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                      <circle cx='12' cy='12' r='10'/>
-                      <polyline points='12,6 12,12 16,14'/>
-                    </svg>
-                    <span>5 min read</span>
-                  </div>
-                </div>
-                <h3 class='post-title'>
-                  <a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a>
-                </h3>
-                <p class='post-excerpt'>
-                  <data:post.snippet/>
-                </p>
-                <div class='post-footer'>
-                  <span class='post-date'>
-                    <data:post.timestamp/>
-                  </span>
-                  <a class='read-more' expr:href='data:post.url'>
-                    Read More
-                    <svg class='lucide-icon icon-sm' viewBox='0 0 24 24'>
-                      <path d='M5 12h14'/>
-                      <path d='m12 5 7 7-7 7'/>
-                    </svg>
-                  </a>
+                <div class='post-timestamp'>
+                  <data:post.timestamp/>
                 </div>
               </div>
             </article>
-          </b:includable>
-        </b:widget>
-      </b:section>
-
-      <!-- CTA Section (Homepage only) -->
-      <b:if cond='data:view.isHomepage'>
-        <section class='cta-section'>
-          <div class='cta-content'>
-            <h2 class='cta-title'>Join the Quality Conversation</h2>
-            <p class='cta-subtitle'>Stay curious, stay questioning, and let's build better software together.</p>
-            <a class='cta-button-white' expr:href='data:blog.homepageUrl'>
-              Browse All Posts
-              <svg class='lucide-icon icon-md' viewBox='0 0 24 24'>
-                <path d='M5 12h14'/>
-                <path d='m12 5 7 7-7 7'/>
-              </svg>
-            </a>
-          </div>
-        </section>
-      </b:if>
-    </div>
+          <b:else/>
+            <!-- Full Post View -->
+            <article class='post'>
+              <div class='post-header'>
+                <h1 class='post-title'>
+                  <data:post.title/>
+                </h1>
+                <div class='post-footer'>
+                  <div class='post-labels'>
+                    <b:loop values='data:post.labels' var='label'>
+                      <a expr:href='data:label.url' rel='tag'>
+                        <data:label.name/>
+                      </a>
+                    </b:loop>
+                  </div>
+                  <div class='post-timestamp'>
+                    <data:post.timestamp/>
+                  </div>
+                </div>
+              </div>
+              <div class='post-body'>
+                <data:post.body/>
+              </div>
+            </article>
+          </b:if>
+        </b:includable>
+      </b:widget>
+    </b:section>
   </div>
 
   <!-- Footer -->
   <footer class='footer'>
     <div class='footer-content'>
-      <div class='footer-brand'>
-        <div class='footer-logo'>
-          <div class='footer-logo-icon'>
-            <svg class='lucide-icon' viewBox='0 0 24 24'>
-              <polyline points='16,18 22,12 16,6'/>
-              <polyline points='8,6 2,12 8,18'/>
-            </svg>
-          </div>
-          <span class='footer-title'>Null:Expected</span>
-        </div>
-        <p class='footer-description'>A QA thought hub. What did you expect?</p>
-        <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
+      <div class='footer-brand'>Null:Expected</div>
+      <p class='footer-description'>A QA thought hub. What did you expect?</p>
+      <div class='footer-links'>
+        <a expr:href='data:blog.homepageUrl'>Home</a>
+        <a href='/p/mission.html'>Mission</a>
+        <a href='/p/about.html'>About</a>
+        <a expr:href='data:blog.homepageUrl'>Blog</a>
       </div>
-      
-      <div class='footer-section'>
-        <h3>Navigate</h3>
-        <ul class='footer-links'>
-          <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
-          <li><a href='/p/mission.html'>Mission</a></li>
-          <li><a href='/p/about.html'>About</a></li>
-          <li><a expr:href='data:blog.homepageUrl + "search/label/QA%20Processes?max-results=20"'>Blog</a></li>
-        </ul>
+      <div class='footer-bottom'>
+        <p>© 2024 Null:Expected. Always in beta, always improving.</p>
       </div>
-      
-      <div class='footer-section'>
-        <h3>Connect</h3>
-        <ul class='footer-links'>
-          <li><a href='#'>LinkedIn</a></li>
-          <li><a href='#'>Twitter</a></li>
-          <li><a href='#'>GitHub</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class='footer-bottom'>
-      <p>© 2024 Null:Expected. Always in beta, always improving.</p>
     </div>
   </footer>
-  
-  <!-- Sidebar Section (Hidden) -->
-  <b:section class='sidebar' id='sidebar' maxwidgets='1' showaddelement='no'>
-  </b:section>
-  
-  <!-- Footer Section -->
-  <b:section class='footer-section' id='footer-section' maxwidgets='1' showaddelement='no'>
-    <b:widget id='Attribution1' locked='true' title='Attribution' type='Attribution'/>
-  </b:section>
+
+  <!-- Sidebar (Hidden) -->
+  <b:section class='sidebar' id='sidebar' maxwidgets='1' showaddelement='no'/>
 </body>
 </html>
