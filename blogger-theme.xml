@@ -1287,6 +1287,82 @@
     </div>
   </b:if>
   
+  <b:if cond='data:view.isPage and data:page.title == "About Us"'>
+    <div class='main-content'>
+      <!-- About Hero -->
+      <div style='text-align: center; margin-bottom: 5rem; padding: 2rem 0;'>
+        <h1 style='font-size: 3rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem;'>
+          About Us
+        </h1>
+        <p style='font-size: 1.25rem; color: #6b7280; line-height: 1.75; max-width: 800px; margin: 0 auto;'>
+          We're QA professionals with different voices, shared curiosity, and far too many 
+          opinions about software quality. This is our thought hub — part roadmap, part portfolio, 
+          always in beta.
+        </p>
+      </div>
+      
+      <!-- Team Members -->
+      <div class='about-team-grid'>
+        <div class='team-member-card'>
+          <div class='team-avatar team-avatar-1'>JS</div>
+          <h2 class='team-member-name'>Jane Smith</h2>
+          <p class='team-member-title'>Senior QA Engineer</p>
+          <p class='team-member-bio'>
+            With over 8 years in QA, Jane specializes in test automation frameworks and 
+            performance testing. She's passionate about building scalable testing strategies 
+            and mentoring junior QA professionals. When she's not debugging test flakes, 
+            you'll find her exploring new testing tools or speaking at QA conferences.
+          </p>
+          <div class='team-member-tag'>[ automation_enthusiast = true ]</div>
+          <div class='team-member-links'>
+            <a href='#'>
+              <span>🔗</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class='team-member-card'>
+          <div class='team-avatar team-avatar-2'>AD</div>
+          <h2 class='team-member-name'>Alex Davis</h2>
+          <p class='team-member-title'>QA Lead & Strategy Consultant</p>
+          <p class='team-member-bio'>
+            Alex brings 10+ years of experience in quality strategy and team leadership. 
+            He's worked across startups and enterprise organizations, focusing on quality 
+            culture transformation and process optimization. Alex is known for his 
+            pragmatic approach to QA and his ability to translate technical concepts 
+            into business value.
+          </p>
+          <div class='team-member-tag'>[ process_optimizer = true ]</div>
+          <div class='team-member-links'>
+            <a href='#'>
+              <span>🔗</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Name Explanation -->
+      <div class='name-explanation'>
+        <div class='name-explanation-card'>
+          <p>
+            Our individual bios live here, but the Manifesto speaks for what drives us.
+          </p>
+          <p>
+            <strong>Null:Expected</strong> is a play on a software testing term — where "null" means nothing is returned, and that's the expected result.
+          </p>
+          <p>
+            But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
+          </p>
+          <p>
+            The name reminds us that behind every outcome — even silence — there's intent, and quality depends on understanding that.
+          </p>
+        </div>
+      </div>
+    </div>
+  </b:if>
+  
   <b:if cond='data:view.isHomepage'>
     <div class='main-content'>
       <div id='blog-posts'>
