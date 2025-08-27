@@ -7,6 +7,7 @@ import Mission from './pages/Mission';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Manifesto from './pages/Manifesto';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/manifesto" element={<Manifesto />} />
           </Routes>
         </main>
         <Footer />

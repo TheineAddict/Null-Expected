@@ -1068,8 +1068,100 @@
           <p class='emphasis'>
             We write from experience — and we edit each other ruthlessly.
           </p>
+          <p style='margin-top: 2rem;'>
+            <a href='/p/manifesto.html' style='color: #1e1b4b; text-decoration: none; font-weight: 600;'>
+              Read our full manifesto →
+            </a>
+          </p>
           <div class='category-counter'>
             [ practitioners_first = true ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </b:if>
+  
+  <b:if cond='data:view.isPage and data:page.title == "Manifesto"'>
+    <div class='main-content'>
+      <!-- Manifesto Hero -->
+      <div class='mission-hero'>
+        <div class='mission-icon'>⚡</div>
+        <h1 class='mission-title'>The Null:Expected Manifesto</h1>
+        <p class='mission-subtitle' style='font-style: italic;'>
+          Because quality isn't accidental — and silence still speaks.
+        </p>
+      </div>
+      
+      <!-- Who We Are -->
+      <div style='max-width: 800px; margin: 0 auto 5rem; padding: 0 1rem; text-align: center;'>
+        <div style='font-size: 1.125rem; color: #374151; line-height: 1.75;'>
+          <p style='font-weight: 600; font-size: 1.25rem; color: #111827; margin-bottom: 1.5rem;'>
+            We are QA professionals, thinkers, and skeptics.
+          </p>
+          <p style='margin-bottom: 1.5rem;'>
+            We don't just check that software works — we question what "working" really means.
+          </p>
+          <p style='margin-bottom: 1.5rem;'>
+            We believe that testing is not a phase, a script, or a checkbox.
+          </p>
+          <p style='font-size: 1.25rem; font-weight: 600; color: #1e1b4b; font-style: italic;'>
+            It's a way of seeing.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Principles -->
+      <div style='max-width: 1200px; margin: 0 auto 5rem; padding: 0 1rem;'>
+        <div class='write-grid'>
+          <div class='write-card'>
+            <div class='write-icon write-icon-1'>🎯</div>
+            <h3 class='write-title'>Intention over output</h3>
+            <p class='write-description'>Because a passing test without purpose is just noise.</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-2'>👁️</div>
+            <h3 class='write-title'>Understanding over coverage</h3>
+            <p class='write-description'>100% test coverage doesn't mean 100% confidence.</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-3'>👥</div>
+            <h3 class='write-title'>Collaboration over gatekeeping</h3>
+            <p class='write-description'>QA should enable, not block.</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-4'>🔍</div>
+            <h3 class='write-title'>Curiosity over certainty</h3>
+            <p class='write-description'>We ask "why" even when the spec says "done."</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-5'>⚙️</div>
+            <h3 class='write-title'>Patterns over tools</h3>
+            <p class='write-description'>Tools change. Thinking doesn't.</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-1'>⚡</div>
+            <h3 class='write-title'>Silence, when expected</h3>
+            <p class='write-description'>A "null" result isn't nothing — it's trust, verified.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Closing Statement -->
+      <div class='mission-section'>
+        <div class='mission-content' style='text-align: center;'>
+          <p style='font-size: 1.25rem; line-height: 1.75; margin-bottom: 1.5rem;'>
+            This is what drives Null:Expected. A QA thought hub, always in beta.
+          </p>
+          <div style='font-size: 2rem; font-weight: 700; margin-bottom: 2rem;'>
+            What did you expect?
+          </div>
+          <div style='color: #c7d2fe; font-family: "Courier New", monospace; font-size: 0.875rem;'>
+            [ manifesto_version = 1.0 ]
           </div>
         </div>
       </div>
@@ -1197,6 +1289,7 @@
         <a href='/p/our-mission.html'>Our Mission</a>
         <a href='/p/about.html'>About</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
+        <a href='/p/manifesto.html'>Manifesto</a>
       </div>
       <div class='footer-bottom'>
         <p>© 2024 Null:Expected. Always in beta, always improving.</p>

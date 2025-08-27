@@ -1,5 +1,6 @@
 import React from 'react';
-import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight } from 'lucide-react';
 
 const Mission = () => {
   const whatWeWrite = [
@@ -163,6 +164,15 @@ const Mission = () => {
               </p>
               <p className="font-semibold text-gray-900">
                 We write from experience — and we edit each other ruthlessly.
+              </p>
+              <p className="mt-8">
+                <Link 
+                  to="/manifesto" 
+                  className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                >
+                  Read our full manifesto
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
               </p>
               <div className="text-sm text-gray-500 font-mono mt-8">
                 [ practitioners_first = true ]
