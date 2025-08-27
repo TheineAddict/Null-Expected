@@ -472,16 +472,10 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      text-align: left;
+      text-align: center;
     }
     
     .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
       font-weight: 700;
       font-size: 1.25rem;
       margin-bottom: 1rem;
@@ -492,41 +486,28 @@
       margin-bottom: 2rem;
     }
     
-    .footer-section {
-      min-width: 0;
-    }
-    
-    .footer-section h3 {
-      font-weight: 600;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
       margin-bottom: 2rem;
-      color: white;
+      flex-wrap: wrap;
     }
     
-    .footer-section a {
+    .footer-links a {
       color: #d1d5db;
       text-decoration: none;
       transition: color 0.3s ease;
-      display: block;
-      margin-bottom: 0.5rem;
     }
     
-    .footer-section a:hover {
+    .footer-links a:hover {
       color: white;
-    }
-    
-    .footer-section .no-link {
-      color: #9ca3af;
-      display: block;
-      margin-bottom: 0.5rem;
     }
     
     .footer-bottom {
       border-top: 1px solid #374151;
-      margin-top: 3rem;
-      padding-top: 2rem; 
+      padding-top: 2rem;
       color: #9ca3af;
-      text-align: center;
-      grid-column: 1 / -1;
     }
     
     /* Responsive Design */
@@ -1420,38 +1401,14 @@
   <!-- Footer -->
   <footer class='footer'>
     <div class='footer-content'>
-      <!-- Brand -->
-      <div class='footer-section'>
-        <div class='footer-brand'>Null:Expected</div>
-        <p class='footer-description'>A QA thought hub. What did you expect?</p>
-      </div>
-      
-      <!-- Explore -->
-      <div class='footer-section'>
-        <h3>Explore</h3>
-        <a expr:href='data:blog.homepageUrl'>QA Processes</a>
-        <a expr:href='data:blog.homepageUrl'>Quality Mindset</a>
-        <a expr:href='data:blog.homepageUrl'>Career Advice</a>
-        <a expr:href='data:blog.homepageUrl'>Industry Trends</a>
-        <a expr:href='data:blog.homepageUrl'>Tools &amp; Tech</a>
-      </div>
-      
-      <!-- Behind the Blog -->
-      <div class='footer-section'>
-        <h3>Behind the Blog</h3>
+      <div class='footer-brand'>Null:Expected</div>
+      <p class='footer-description'>A QA thought hub. What did you expect?</p>
+      <div class='footer-links'>
+        <a expr:href='data:blog.homepageUrl'>Blog</a>
         <a href='/p/our-mission.html'>Our Mission</a>
         <a href='/p/about.html'>About Us</a>
-        <span class='no-link'>Contact</span>
+        <a href='/p/manifesto.html'>Manifesto</a>
       </div>
-      
-      <!-- Coming Soon -->
-      <div class='footer-section'>
-        <h3>Coming Soon</h3>
-        <span class='no-link'>Newsletter Sign-up</span>
-        <span class='no-link'>Guest Posts – Opening Soon</span>
-        <a href='/p/manifesto.html'>Read the Manifesto</a>
-      </div>
-      
       <div class='footer-bottom'>
         <p>© 2024 Null:Expected. Always in beta, always improving.</p>
       </div>
