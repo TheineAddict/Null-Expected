@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='utf-8'/>
+  <meta content='width=device-width,initial-scale=1,minimum-scale=1' name='viewport'/>
+  
+  <title><data:view.title.escaped/></title>
+  <b:if cond='data:view.isPost'>
+    <meta expr:content='data:post.snippet' name='description'/>
+  <b:else/>
+    <meta content='A QA thought hub. What did you expect? Insights, strategies, and conversations about software quality from experienced QA professionals.' name='description'/>
+  </b:if>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta expr:content='data:view.title.escaped' property='og:title'/>
+  <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+  <meta content='website' property='og:type'/>
+  <b:if cond='data:view.isPost'>
+    <meta expr:content='data:post.snippet' property='og:description'/>
+  <b:else/>
+    <meta content='A QA thought hub. What did you expect?' property='og:description'/>
+  </b:if>
+  
+  <!-- Inter Font -->
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  
+  <b:skin><![CDATA[
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #374151;
+      background: #ffffff;
+    }
+    
+    /* Utility Classes */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .container-wide {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .text-center { text-align: center; }
+    .hidden { display: none; }
+    
+    /* Header Styles */
+    .header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-link {
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      color: #2E00A3;
+      border-bottom-color: #2E00A3;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: 
+        linear-gradient(rgba(46, 0, 163, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 0, 163, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 20% 20%, rgba(80, 0, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(46, 0, 163, 0.3) 0%, transparent 50%);
+      background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 64rem;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #6b7280;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-tags {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-tag {
+      padding: 0.5rem 1rem;
+      background: #f3f4f6;
+      border-radius: 9999px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, #1e0070, #4000cc);
+    }
+    
+    /* Main Content */
+    .main-content {
+      padding: 5rem 0;
+    }
+    
+    .section {
+      margin-bottom: 5rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Blog Posts Grid */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .post-card {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .post-card-content {
+      padding: 2rem;
+    }
+    
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .post-category {
+      padding: 0.25rem 0.75rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 9999px;
+    }
+    
+    .post-read-time {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .post-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .post-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .post-title a:hover {
+      color: #2E00A3;
+    }
+    
+    .post-excerpt {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .post-date {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #2E00A3;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .read-more:hover {
+      color: #5000FF;
+    }
+    
+    /* Single Post Styles */
+    .post-header {
+      max-width: 64rem;
+      margin: 0 auto 3rem;
+      padding: 3rem 1rem 0;
+    }
+    
+    .post-header-meta {
+      margin-bottom: 1.5rem;
+    }
+    
+    .post-header-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .post-header-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      color: #6b7280;
+      align-items: center;
+    }
+    
+    .post-content {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      font-size: 1.125rem;
+      line-height: 1.75;
+    }
+    
+    .post-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 3rem 0 1rem;
+    }
+    
+    .post-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111827;
+      margin: 2rem 0 0.75rem;
+    }
+    
+    .post-content p {
+      margin-bottom: 1.5rem;
+      color: #374151;
+    }
+    
+    .post-content ul,
+    .post-content ol {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .post-content li {
+      margin: 0.5rem 0;
+      color: #374151;
+    }
+    
+    .post-content blockquote {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #e0e7ff;
+      border-left: 4px solid #6366f1;
+      border-radius: 0.5rem;
+      font-style: italic;
+      color: #374151;
+    }
+    
+    .post-content a {
+      color: #2E00A3;
+      text-decoration: none;
+    }
+    
+    .post-content a:hover {
+      color: #5000FF;
+      text-decoration: underline;
+    }
+    
+    .post-content code {
+      background: #f3f4f6;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+    }
+    
+    .post-content pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .post-content pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Categories Section */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .category-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      font-size: 2rem;
+    }
+    
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.75rem;
+    }
+    
+    .category-description {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+    
+    .category-meta {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #111827;
+      color: white;
+      padding: 3rem 0;
+      margin-top: 5rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-brand {
+      grid-column: span 2;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-logo-icon {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .footer-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    
+    .footer-description {
+      color: #d1d5db;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-tagline {
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    
+    .footer-section h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: #9ca3af;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+      
+      .hero-tags {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .post-header-title {
+        font-size: 2rem;
+      }
+      
+      .post-header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .footer-brand {
+        grid-column: span 1;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    /* Blogger-specific overrides */
+    .blog-posts {
+      border: none;
+      background: none;
+    }
+    
+    .post {
+      border: none;
+      background: none;
+      margin-bottom: 0;
+    }
+    
+    .post-body {
+      font-size: inherit;
+      line-height: inherit;
+    }
+    
+    .post-footer {
+      border: none;
+      background: none;
+    }
+    
+    /* Hide Blogger default elements */
+    .blog-pager {
+      display: none;
+    }
+    
+    .feed-links {
+      display: none;
+    }
+    
+    .post-labels {
+      display: none;
+    }
+  ]]></b:skin>
+  
+  <b:template-skin>
+    <b:variable default='#ffffff' name='body.background' type='color' value='#ffffff'/>
+    <b:variable default='#2E00A3' name='accent.color' type='color' value='#2E00A3'/>
+  </b:template-skin>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class='header'>
+    <div class='container'>
+      <nav class='header-nav'>
+        <a class='logo' expr:href='data:blog.homepageUrl'>
+          <div class='logo-icon'>{ }</div>
+          <span class='logo-text'>Null:Expected</span>
+        </a>
+        <ul class='nav-menu'>
+          <li><a class='nav-link' expr:href='data:blog.homepageUrl'>Home</a></li>
+          <li><a class='nav-link' href='/p/mission.html'>Mission</a></li>
+          <li><a class='nav-link' href='/p/about.html'>About</a></li>
+          <li><a class='nav-link' expr:href='data:blog.homepageUrl'>Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <b:if cond='data:view.isHomepage'>
+      <!-- Homepage Hero -->
+      <section class='hero'>
+        <div class='hero-bg'></div>
+        <div class='hero-content container'>
+          <h1 class='hero-title'>Null:Expected</h1>
+          <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
+          <div class='hero-tags'>
+            <span class='hero-tag'>[ curiosity ]</span>
+            <span class='hero-tag'>[ quality ]</span>
+            <span class='hero-tag'>[ growth ]</span>
+          </div>
+          <a class='cta-button' expr:href='data:blog.homepageUrl'>
+            Explore the Hub
+            <span>→</span>
+          </a>
+        </div>
+      </section>
+      
+      <!-- Categories Section -->
+      <section class='section' style='background: #f9fafb; padding: 5rem 0;'>
+        <div class='container'>
+          <h2 class='section-title'>Explore Quality Insights</h2>
+          <p class='section-subtitle'>Dive into curated content across different aspects of quality assurance and professional growth</p>
+          
+          <div class='categories-grid'>
+            <div class='category-card'>
+              <div class='category-icon'>🎯</div>
+              <h3 class='category-title'>QA Processes</h3>
+              <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
+              <div class='category-meta'>[ 1 of 5 ]</div>
+            </div>
+            <div class='category-card'>
+              <div class='category-icon'>👥</div>
+              <h3 class='category-title'>Quality Mindset</h3>
+              <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
+              <div class='category-meta'>[ 2 of 5 ]</div>
+            </div>
+            <div class='category-card'>
+              <div class='category-icon'>📈</div>
+              <h3 class='category-title'>Career Advice</h3>
+              <p class='category-description'>Growth strategies and insights for QA professionals</p>
+              <div class='category-meta'>[ 3 of 5 ]</div>
+            </div>
+            <div class='category-card'>
+              <div class='category-icon'>⚙️</div>
+              <h3 class='category-title'>Industry Trends</h3>
+              <p class='category-description'>Latest developments and emerging patterns in QA</p>
+              <div class='category-meta'>[ 4 of 5 ]</div>
+            </div>
+            <div class='category-card'>
+              <div class='category-icon'>📚</div>
+              <h3 class='category-title'>Tools &amp; Tech</h3>
+              <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
+              <div class='category-meta'>[ 5 of 5 ]</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </b:if>
+
+    <!-- Blog Posts Section -->
+    <section class='main-content'>
+      <div class='container'>
+        <b:if cond='data:view.isHomepage'>
+          <h2 class='section-title'>Featured Insights</h2>
+          <p class='section-subtitle'>Latest thoughts from the QA community</p>
+        </b:if>
+        
+        <b:if cond='!data:view.isPost'>
+          <div class='posts-grid'>
+            <b:loop values='data:posts' var='post'>
+              <article class='post-card'>
+                <div class='post-card-content'>
+                  <div class='post-meta'>
+                    <b:if cond='data:post.labels'>
+                      <span class='post-category'><data:post.labels.first.name/></span>
+                    <b:else/>
+                      <span class='post-category'>QA Insights</span>
+                    </b:if>
+                    <div class='post-read-time'>
+                      <span>⏱</span>
+                      <span>5 min read</span>
+                    </div>
+                  </div>
+                  
+                  <h2 class='post-title'>
+                    <a expr:href='data:post.url'><data:post.title/></a>
+                  </h2>
+                  
+                  <p class='post-excerpt'>
+                    <data:post.snippet/>
+                  </p>
+                  
+                  <div class='post-footer'>
+                    <span class='post-date'>
+                      <data:post.date/>
+                    </span>
+                    <a class='read-more' expr:href='data:post.url'>
+                      Read More
+                      <span>→</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </b:loop>
+          </div>
+        </b:if>
+        
+        <!-- Single Post View -->
+        <b:if cond='data:view.isPost'>
+          <b:loop values='data:posts' var='post'>
+            <article class='post'>
+              <header class='post-header'>
+                <div class='post-header-meta'>
+                  <b:if cond='data:post.labels'>
+                    <span class='post-category'><data:post.labels.first.name/></span>
+                  <b:else/>
+                    <span class='post-category'>QA Insights</span>
+                  </b:if>
+                </div>
+                
+                <h1 class='post-header-title'><data:post.title/></h1>
+                
+                <div class='post-header-info'>
+                  <div>👤 <data:post.author.name/></div>
+                  <div>📅 <data:post.date/></div>
+                  <div>⏱ 5 min read</div>
+                </div>
+              </header>
+              
+              <div class='post-content'>
+                <data:post.body/>
+              </div>
+            </article>
+          </b:loop>
+        </b:if>
+      </div>
+    </section>
+
+    <!-- CTA Section (Homepage only) -->
+    <b:if cond='data:view.isHomepage'>
+      <section style='background: linear-gradient(135deg, #2E00A3, #5000FF); padding: 5rem 0; color: white;'>
+        <div class='container text-center'>
+          <h2 style='font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem;'>Join the Quality Conversation</h2>
+          <p style='font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;'>Stay curious, stay questioning, and let's build better software together.</p>
+          <a class='cta-button' expr:href='data:blog.homepageUrl' style='background: white; color: #2E00A3;'>
+            Browse All Posts
+            <span>→</span>
+          </a>
+        </div>
+      </section>
+    </b:if>
+  </main>
+
+  <!-- Footer -->
+  <footer class='footer'>
+    <div class='container'>
+      <div class='footer-content'>
+        <div class='footer-brand'>
+          <div class='footer-logo'>
+            <div class='footer-logo-icon'>{ }</div>
+            <span class='footer-title'>Null:Expected</span>
+          </div>
+          <p class='footer-description'>A QA thought hub. What did you expect?</p>
+          <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
+        </div>
+        
+        <div class='footer-section'>
+          <h3>Navigate</h3>
+          <ul class='footer-links'>
+            <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+            <li><a href='/p/mission.html'>Mission</a></li>
+            <li><a href='/p/about.html'>About</a></li>
+            <li><a expr:href='data:blog.homepageUrl'>Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class='footer-section'>
+          <h3>Connect</h3>
+          <ul class='footer-links'>
+            <li><a href='#'>LinkedIn</a></li>
+            <li><a href='#'>Twitter</a></li>
+            <li><a href='#'>GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class='footer-bottom'>
+        <p>&copy; 2024 Null:Expected. Always in beta, always improving.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
