@@ -131,6 +131,23 @@
       margin-bottom: 2rem;
     }
     
+    .hero-tags {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-tag {
+      padding: 0.5rem 1rem;
+      background: #f3f4f6;
+      border-radius: 9999px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
     .hero-cta {
       display: inline-block;
       padding: 1rem 2rem;
@@ -146,6 +163,106 @@
     .hero-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Categories Section */
+    .categories-section {
+      padding: 5rem 0;
+      background: #f9fafb;
+    }
+    
+    .categories-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .categories-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .categories-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .categories-subtitle {
+      font-size: 1.25rem;
+      color: #6b7280;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .category-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    
+    .category-icon-1 {
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+    }
+    
+    .category-icon-2 {
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+    }
+    
+    .category-icon-3 {
+      background: linear-gradient(135deg, #3730a3, #2563eb);
+    }
+    
+    .category-icon-4 {
+      background: linear-gradient(135deg, #2563eb, #6366f1);
+    }
+    
+    .category-icon-5 {
+      background: linear-gradient(135deg, #7c3aed, #6366f1);
+    }
+    
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.75rem;
+    }
+    
+    .category-description {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .category-counter {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
     }
     
     /* Main Content */
@@ -405,6 +522,18 @@
         font-size: 1.125rem;
       }
       
+      .hero-tags {
+        gap: 0.5rem;
+      }
+      
+      .categories-title {
+        font-size: 2rem;
+      }
+      
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .blog-posts {
         grid-template-columns: 1fr;
       }
@@ -461,7 +590,69 @@
       <div class='hero-content'>
         <h1 class='hero-title'>Null:Expected</h1>
         <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
+        <div class='hero-tags'>
+          <span class='hero-tag'>[ curiosity ]</span>
+          <span class='hero-tag'>[ quality ]</span>
+          <span class='hero-tag'>[ growth ]</span>
+        </div>
         <a class='hero-cta' href='#blog-posts'>Explore the Hub</a>
+      </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class='categories-section'>
+      <div class='categories-content'>
+        <div class='categories-header'>
+          <h2 class='categories-title'>Explore Quality Insights</h2>
+          <p class='categories-subtitle'>Dive into curated content across different aspects of quality assurance and professional growth</p>
+        </div>
+        
+        <div class='categories-grid'>
+          <div class='category-card'>
+            <div class='category-icon category-icon-1'>
+              <span class='icon-target'>🎯</span>
+            </div>
+            <h3 class='category-title'>QA Processes</h3>
+            <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
+            <div class='category-counter'>[ 1 of 5 ]</div>
+          </div>
+          
+          <div class='category-card'>
+            <div class='category-icon category-icon-2'>
+              <span class='icon-users'>👥</span>
+            </div>
+            <h3 class='category-title'>Quality Mindset</h3>
+            <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
+            <div class='category-counter'>[ 2 of 5 ]</div>
+          </div>
+          
+          <div class='category-card'>
+            <div class='category-icon category-icon-3'>
+              <span class='icon-trending'>📈</span>
+            </div>
+            <h3 class='category-title'>Career Advice</h3>
+            <p class='category-description'>Growth strategies and insights for QA professionals</p>
+            <div class='category-counter'>[ 3 of 5 ]</div>
+          </div>
+          
+          <div class='category-card'>
+            <div class='category-icon category-icon-4'>
+              <span class='icon-settings'>⚙️</span>
+            </div>
+            <h3 class='category-title'>Industry Trends</h3>
+            <p class='category-description'>Latest developments and emerging patterns in QA</p>
+            <div class='category-counter'>[ 4 of 5 ]</div>
+          </div>
+          
+          <div class='category-card'>
+            <div class='category-icon category-icon-5'>
+              <span class='icon-book'>📚</span>
+            </div>
+            <h3 class='category-title'>Tools &amp; Tech</h3>
+            <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
+            <div class='category-counter'>[ 5 of 5 ]</div>
+          </div>
+        </div>
       </div>
     </section>
   </b:if>
@@ -469,7 +660,7 @@
   <!-- Main Content -->
   <div class='main-content'>
     <b:if cond='data:view.isHomepage'>
-      <h2 class='page-title' id='blog-posts'>Featured Insights</h2>
+      <h2 class='page-title' id='blog-posts'>Latest Insights</h2>
       <p class='page-subtitle'>Latest thoughts from the QA community</p>
     </b:if>
     
