@@ -31,7 +31,7 @@ const Footer = () => {
                 Home
               </Link>
               <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors">
-                Mission
+                Our Mission
               </Link>
               <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
                 About

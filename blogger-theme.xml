@@ -880,7 +880,7 @@
       </a>
       <nav class='nav-links'>
         <a expr:href='data:blog.homepageUrl'>Home</a>
-        <a href='/p/our-mission.html'>Mission</a>
+        <a href='/p/our-mission.html'>Our Mission</a>
         <a href='/p/about.html'>About</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
       </nav>
@@ -1194,7 +1194,7 @@
       <p class='footer-description'>A QA thought hub. What did you expect?</p>
       <div class='footer-links'>
         <a expr:href='data:blog.homepageUrl'>Home</a>
-        <a href='/p/our-mission.html'>Mission</a>
+        <a href='/p/our-mission.html'>Our Mission</a>
         <a href='/p/about.html'>About</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
       </div>
