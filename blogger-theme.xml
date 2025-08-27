@@ -1287,7 +1287,7 @@
       <div class='footer-links'>
         <a expr:href='data:blog.homepageUrl'>Home</a>
         <a href='/p/our-mission.html'>Our Mission</a>
-        <a href='/p/about.html'>About</a>
+        <a href='/p/about.html'>About Us</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
         <a href='/p/manifesto.html'>Manifesto</a>
       </div>

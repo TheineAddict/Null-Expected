@@ -37,7 +37,7 @@ To match the original design, create these static pages:
 
 #### About Page
 1. Go to **Pages** → **New Page**
-2. Title: "Meet the Team"
+2. Title: "About Us"
 3. Add your about content
 4. Publish and note the URL
 
@@ -105,7 +105,7 @@ The theme uses CSS variables that can be modified in the theme editor:
 Update the navigation links in the theme to point to your actual pages:
 ```html
 <li><a class='nav-link' href='/p/your-mission-page.html'>Mission</a></li>
-<li><a class='nav-link' href='/p/your-about-page.html'>About</a></li>
+<li><a class='nav-link' href='/p/your-about-page.html'>About Us</a></li>
 ```
 
 ## 📱 Mobile Optimization
