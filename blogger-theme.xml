@@ -879,7 +879,6 @@
               Explore the Hub
               <span>&#8594;</span>
             </a>
-          </div>
         </section>
         
         <!-- Categories Section -->
@@ -962,7 +961,6 @@
                             </span>
                             <a class='read-more' expr:href='data:post.link'>
                               Read More
-                            <span>&#9201;</span>
                             <span>&#8594;</span>
                           </div>
                         </div>
@@ -1033,11 +1031,6 @@
   <!-- Footer -->
   <footer class='footer'>
     <div class='footer-content'>
-          <a class='cta-button' expr:href='data:blog.homepageUrl'>
-            Explore the Hub
-            <span>&#8594;</span>
-          </a>
-        </div>
         <p class='footer-description'>A QA thought hub. What did you expect?</p>
         <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
       </div>
