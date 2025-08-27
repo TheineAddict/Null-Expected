@@ -2016,11 +2016,11 @@
     </b:widget>
     
     <!-- Archive Widget -->
-    <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' version='2' visible='true'>
+    <b:widget id='BlogArchive1' locked='false' title='Blog Archive' type='BlogArchive' version='2' visible='true'>
       <b:widget-settings>
-        <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-        <b:widget-setting name='yearlyItems'>true</b:widget-setting>
-        <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+        <b:widget-setting name='monthlyItems'>12</b:widget-setting>
+        <b:widget-setting name='showPostCount'>true</b:widget-setting>
+        <b:widget-setting name='style'>MENU</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
         <div class='archive-section'>
