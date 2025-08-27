@@ -15,46 +15,56 @@ const Footer = () => {
               </div>
               <span className="font-bold text-xl">Null:Expected</span>
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-300">
               A QA thought hub. What did you expect?
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Explore */}
           <div>
-            <h3 className="font-semibold mb-4">Navigate</h3>
+            <h3 className="font-semibold mb-4">Explore</h3>
             <div className="space-y-2">
-              <Link to="/" className="text-gray-300 hover:text-white block transition-colors">
-                Home
+              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+                QA Processes
               </Link>
+              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+                Quality Mindset
+              </Link>
+              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+                Career Advice
+              </Link>
+              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+                Industry Trends
+              </Link>
+              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+                Tools & Tech
+              </Link>
+            </div>
+          </div>
+
+          {/* Behind the Blog */}
+          <div>
+            <h3 className="font-semibold mb-4">Behind the Blog</h3>
+            <div className="space-y-2">
               <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors">
                 Our Mission
               </Link>
               <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
                 About Us
               </Link>
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
-                Blog
-              </Link>
-              <Link to="/manifesto" className="text-gray-300 hover:text-white block transition-colors">
-                Manifesto
-              </Link>
+              <span className="text-gray-300 block">Contact</span>
             </div>
           </div>
 
-          {/* Social */}
+          {/* Coming Soon */}
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Github className="h-6 w-6" />
-              </a>
+            <h3 className="font-semibold mb-4">Coming Soon</h3>
+            <div className="space-y-2">
+              <span className="text-gray-300 block">Newsletter Sign-up</span>
+              <span className="text-gray-300 block">Guest Posts – Opening Soon</span>
+              <Link to="/manifesto" className="text-gray-300 hover:text-white block transition-colors">
+                Read the Manifesto
+              </Link>
             </div>
           </div>
         </div>
