@@ -1115,7 +1115,16 @@
             </div>
             <h3 class='category-title'>Tools & Tech</h3>
             <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
-            <div class='category-counter'>[ 5 of 5 ]</div>
+            <div class='category-counter'>[ 5 of 6 ]</div>
+          </div>
+          
+          <div class='category-card'>
+            <div class='category-icon category-icon-1'>
+              <span class='icon-case-studies'>📋</span>
+            </div>
+            <h3 class='category-title'>Case Studies</h3>
+            <p class='category-description'>Practical examples, lessons learned, and QA stories from the field</p>
+            <div class='category-counter'>[ 6 of 6 ]</div>
           </div>
         </div>
       </div>

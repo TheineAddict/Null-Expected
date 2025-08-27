@@ -34,6 +34,12 @@ const Landing = () => {
       description: 'Reviews, tutorials, and insights on QA tools and technologies',
       icon: BookOpen,
       color: 'from-purple-600 to-indigo-600'
+    },
+    {
+      title: 'Case Studies',
+      description: 'Practical examples, lessons learned, and QA stories from the field',
+      icon: BookOpen,
+      color: 'from-indigo-800 to-purple-900'
     }
   ];
 
@@ -112,7 +118,7 @@ const Landing = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{category.title}</h3>
                 <p className="text-gray-600 mb-6">{category.description}</p>
                 <div className="text-sm text-gray-500 font-mono">
-                  [ {index + 1} of {categories.length} ]
+                  [ {index + 1} of 6 ]
                 </div>
               </div>
             ))}
