@@ -673,6 +673,10 @@
 </head>
 
 <body>
+  <b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='no'>
+    <b:widget id='Navbar1' locked='true' title='Navbar' type='Navbar'/>
+  </b:section>
+
   <!-- Header -->
   <header class='header'>
     <div class='container'>
@@ -757,6 +761,10 @@
     <!-- Blog Posts Section -->
     <section class='main-content'>
       <div class='container'>
+        <b:section class='main' id='main' showaddelement='no'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+        </b:section>
+        
         <b:if cond='data:view.isHomepage'>
           <h2 class='section-title'>Featured Insights</h2>
           <p class='section-subtitle'>Latest thoughts from the QA community</p>
@@ -832,6 +840,11 @@
         </b:if>
       </div>
     </section>
+    
+    <!-- Sidebar Section -->
+    <b:section class='sidebar' id='sidebar' preferred='yes' showaddelement='yes'>
+      <b:widget id='HTML1' locked='false' title='About' type='HTML'/>
+    </b:section>
 
     <!-- CTA Section (Homepage only) -->
     <b:if cond='data:view.isHomepage'>
@@ -886,5 +899,10 @@
       </div>
     </div>
   </footer>
+  
+  <!-- Footer Section -->
+  <b:section class='footer-section' id='footer-section' maxwidgets='1' showaddelement='no'>
+    <b:widget id='Attribution1' locked='true' title='Attribution' type='Attribution'/>
+  </b:section>
 </body>
 </html>
