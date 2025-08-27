@@ -22,11 +22,13 @@
     <meta content='A QA thought hub. What did you expect?' property='og:description'/>
   </b:if>
   
-  <!-- Inter Font -->
+  <!-- Inter Font - Exact match -->
+  <link rel='preconnect' href='https://fonts.googleapis.com'/>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin=''/>
   <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap' rel='stylesheet'/>
   
   <b:skin><![CDATA[
-    /* Reset and Base Styles */
+    /* Reset and Base Styles - Exact match */
     * {
       margin: 0;
       padding: 0;
@@ -38,6 +40,9 @@
       line-height: 1.6;
       color: #374151;
       background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     
     /* Utility Classes */
@@ -56,11 +61,11 @@
     .text-center { text-align: center; }
     .hidden { display: none; }
     
-    /* Header Styles */
+    /* Header Styles - Exact match */
     .header {
       background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -71,6 +76,9 @@
       justify-content: space-between;
       align-items: center;
       height: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
     
     .logo {
@@ -81,18 +89,23 @@
     }
     
     .logo-icon {
-      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       padding: 0.5rem;
       border-radius: 0.5rem;
       color: white;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .logo-text {
       font-weight: 700;
       font-size: 1.25rem;
-      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -108,18 +121,23 @@
       color: #374151;
       text-decoration: none;
       font-weight: 500;
-      padding: 0.5rem 0;
+      padding: 0.5rem 0.75rem;
       border-bottom: 2px solid transparent;
       transition: all 0.3s ease;
     }
     
     .nav-link:hover,
     .nav-link.active {
-      color: #2E00A3;
-      border-bottom-color: #2E00A3;
+      color: #1e1b4b;
+      border-bottom-color: #1e1b4b;
     }
     
-    /* Hero Section */
+    /* Main Content Wrapper */
+    .main-wrapper {
+      flex: 1;
+    }
+    
+    /* Hero Section - Exact match */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -136,10 +154,17 @@
       opacity: 0.1;
       background-image: 
         linear-gradient(rgba(46, 0, 163, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46, 0, 163, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 0, 163, 0.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
         radial-gradient(circle at 20% 20%, rgba(80, 0, 255, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(46, 0, 163, 0.3) 0%, transparent 50%);
-      background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
     }
     
     .hero-content {
@@ -147,23 +172,26 @@
       z-index: 10;
       text-align: center;
       max-width: 64rem;
+      padding: 0 1rem;
     }
     
     .hero-title {
-      font-size: 4rem;
+      font-size: 5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      line-height: 1.1;
     }
     
     .hero-subtitle {
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: #6b7280;
       font-weight: 300;
       margin-bottom: 2rem;
+      line-height: 1.4;
     }
     
     .hero-tags {
@@ -175,12 +203,13 @@
     }
     
     .hero-tag {
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1rem;
       background: #f3f4f6;
       border-radius: 9999px;
-      font-family: 'Courier New', monospace;
+      font-family: 'Inter', monospace;
       font-size: 0.875rem;
       color: #6b7280;
+      font-weight: 500;
     }
     
     .cta-button {
@@ -188,23 +217,24 @@
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 2rem;
-      background: linear-gradient(135deg, #2E00A3, #5000FF);
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
       color: white;
       text-decoration: none;
       font-weight: 600;
       border-radius: 0.5rem;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      font-size: 1rem;
     }
     
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-      background: linear-gradient(135deg, #1e0070, #4000cc);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      background: linear-gradient(135deg, #1e1b4b, #6d28d9);
     }
     
-    /* Main Content */
-    .main-content {
+    /* Blog Content Styles */
+    .blog-content {
       padding: 5rem 0;
     }
     
@@ -213,10 +243,10 @@
     }
     
     .section-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #111827;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       text-align: center;
     }
     
@@ -224,32 +254,37 @@
       font-size: 1.25rem;
       color: #6b7280;
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
       max-width: 48rem;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6;
     }
     
-    /* Blog Posts Grid */
+    /* Blog Posts Grid - Exact match */
     .posts-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
     }
     
     .post-card {
       background: white;
       border-radius: 0.75rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       overflow: hidden;
       transition: all 0.3s ease;
-      border: 1px solid #e5e7eb;
+      border: 1px solid transparent;
     }
     
     .post-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     
     .post-card-content {
@@ -295,7 +330,7 @@
     }
     
     .post-title a:hover {
-      color: #2E00A3;
+      color: #1e1b4b;
     }
     
     .post-excerpt {
@@ -323,21 +358,36 @@
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
-      color: #2E00A3;
+      color: #1e1b4b;
       font-weight: 600;
       text-decoration: none;
       transition: color 0.3s ease;
     }
     
     .read-more:hover {
-      color: #5000FF;
+      color: #7c3aed;
     }
     
-    /* Single Post Styles */
+    /* Single Post Styles - Exact match */
     .post-header {
       max-width: 64rem;
       margin: 0 auto 3rem;
       padding: 3rem 1rem 0;
+    }
+    
+    .post-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1e1b4b;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .post-back-link:hover {
+      color: #7c3aed;
     }
     
     .post-header-meta {
@@ -345,7 +395,7 @@
     }
     
     .post-header-title {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: 700;
       color: #111827;
       line-height: 1.2;
@@ -360,6 +410,12 @@
       align-items: center;
     }
     
+    .post-header-info > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
     .post-content {
       max-width: 64rem;
       margin: 0 auto;
@@ -370,32 +426,58 @@
     
     .post-content h2 {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 600;
       color: #111827;
-      margin: 3rem 0 1rem;
+      margin: 2rem 0 1rem;
     }
     
     .post-content h3 {
       font-size: 1.5rem;
       font-weight: 600;
       color: #111827;
-      margin: 2rem 0 0.75rem;
+      margin: 1.5rem 0 0.75rem;
     }
     
     .post-content p {
       margin-bottom: 1.5rem;
       color: #374151;
+      line-height: 1.75;
     }
     
     .post-content ul,
     .post-content ol {
       margin: 1.5rem 0;
-      padding-left: 1.5rem;
+      padding-left: 0;
+      list-style: none;
     }
     
-    .post-content li {
+    .post-content ul li {
+      position: relative;
+      padding-left: 1.75rem;
       margin: 0.5rem 0;
       color: #374151;
+    }
+    
+    .post-content ul li::before {
+      content: '';
+      position: absolute;
+      background-color: #4f46e5;
+      border-radius: 50%;
+      width: 0.375rem;
+      height: 0.375rem;
+      top: 0.6875rem;
+      left: 0.25rem;
+    }
+    
+    .post-content ol {
+      padding-left: 1.25rem;
+      list-style: decimal;
+    }
+    
+    .post-content ol li {
+      margin: 0.5rem 0;
+      color: #374151;
+      padding-left: 0;
     }
     
     .post-content blockquote {
@@ -404,18 +486,24 @@
       background: #e0e7ff;
       border-left: 4px solid #6366f1;
       border-radius: 0.5rem;
-      font-style: italic;
+      font-style: normal;
       color: #374151;
+      font-weight: 400;
     }
     
     .post-content a {
-      color: #2E00A3;
+      color: #1e1b4b;
       text-decoration: none;
     }
     
     .post-content a:hover {
-      color: #5000FF;
+      color: #7c3aed;
       text-decoration: underline;
+    }
+    
+    .post-content strong {
+      color: #111827;
+      font-weight: 600;
     }
     
     .post-content code {
@@ -441,32 +529,40 @@
       color: inherit;
     }
     
-    /* Categories Section */
+    /* Categories Section - Exact match */
+    .categories-section {
+      background: #f9fafb;
+      padding: 5rem 0;
+    }
+    
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
+      margin-top: 4rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
     }
     
     .category-card {
       background: white;
       border-radius: 0.75rem;
       padding: 2rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
     
     .category-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     
     .category-icon {
       width: 4rem;
       height: 4rem;
       border-radius: 0.5rem;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -474,6 +570,12 @@
       color: white;
       font-size: 2rem;
     }
+    
+    .category-icon-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+    .category-icon-2 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+    .category-icon-3 { background: linear-gradient(135deg, #3730a3, #2563eb); }
+    .category-icon-4 { background: linear-gradient(135deg, #2563eb, #3730a3); }
+    .category-icon-5 { background: linear-gradient(135deg, #7c3aed, #3730a3); }
     
     .category-title {
       font-size: 1.25rem;
@@ -485,26 +587,76 @@
     .category-description {
       color: #6b7280;
       margin-bottom: 1.5rem;
+      line-height: 1.6;
     }
     
     .category-meta {
-      font-family: 'Courier New', monospace;
+      font-family: 'Inter', monospace;
       font-size: 0.875rem;
       color: #6b7280;
     }
     
-    /* Footer */
+    /* CTA Section - Exact match */
+    .cta-section {
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+      padding: 5rem 0;
+      color: white;
+    }
+    
+    .cta-content {
+      text-align: center;
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .cta-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    
+    .cta-button-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: white;
+      color: #1e1b4b;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cta-button-white:hover {
+      background: #f9fafb;
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Footer - Exact match */
     .footer {
       background: #111827;
       color: white;
       padding: 3rem 0;
-      margin-top: 5rem;
     }
     
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
     
     .footer-brand {
@@ -534,11 +686,13 @@
     .footer-description {
       color: #d1d5db;
       margin-bottom: 1rem;
+      line-height: 1.6;
     }
     
     .footer-tagline {
       color: #9ca3af;
       font-size: 0.875rem;
+      line-height: 1.5;
     }
     
     .footer-section h3 {
@@ -572,7 +726,7 @@
       color: #9ca3af;
     }
     
-    /* Responsive Design */
+    /* Responsive Design - Exact match */
     @media (max-width: 768px) {
       .nav-menu {
         display: none;
@@ -612,6 +766,58 @@
       .footer-brand {
         grid-column: span 1;
       }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .cta-title {
+        font-size: 2rem;
+      }
+    }
+    
+    /* Blogger-specific overrides */
+    .blog-posts {
+      border: none;
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .post {
+      border: none;
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .post-body {
+      font-size: inherit;
+      line-height: inherit;
+    }
+    
+    .post-footer {
+      border: none;
+      background: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Hide Blogger default elements */
+    .blog-pager {
+      display: none;
+    }
+    
+    .feed-links {
+      display: none;
+    }
+    
+    .post-labels {
+      display: none;
+    }
+    
+    .sidebar {
+      display: none;
     }
     
     /* Animation */
@@ -629,53 +835,18 @@
     .animate-fade-in-up {
       animation: fadeInUp 0.6s ease-out forwards;
     }
-    
-    /* Blogger-specific overrides */
-    .blog-posts {
-      border: none;
-      background: none;
-    }
-    
-    .post {
-      border: none;
-      background: none;
-      margin-bottom: 0;
-    }
-    
-    .post-body {
-      font-size: inherit;
-      line-height: inherit;
-    }
-    
-    .post-footer {
-      border: none;
-      background: none;
-    }
-    
-    /* Hide Blogger default elements */
-    .blog-pager {
-      display: none;
-    }
-    
-    .feed-links {
-      display: none;
-    }
-    
-    .post-labels {
-      display: none;
-    }
   ]]></b:skin>
   
   <b:template-skin>
     <b:variable default='#ffffff' name='body.background' type='color' value='#ffffff'/>
-    <b:variable default='#2E00A3' name='accent.color' type='color' value='#2E00A3'/>
+    <b:variable default='#1e1b4b' name='accent.color' type='color' value='#1e1b4b'/>
   </b:template-skin>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class='header'>
-    <div class='container'>
+  <div class='main-wrapper'>
+    <!-- Header -->
+    <header class='header'>
       <nav class='header-nav'>
         <a class='logo' expr:href='data:blog.homepageUrl'>
           <div class='logo-icon'>{ }</div>
@@ -688,127 +859,217 @@
           <li><a class='nav-link' expr:href='data:blog.homepageUrl'>Blog</a></li>
         </ul>
       </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class='blog-content'>
+      <b:if cond='data:view.isHomepage'>
+        <!-- Homepage Hero -->
+        <section class='hero'>
+          <div class='hero-bg'></div>
+          <div class='hero-content'>
+            <h1 class='hero-title'>Null:Expected</h1>
+            <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
+            <div class='hero-tags'>
+              <span class='hero-tag'>[ curiosity ]</span>
+              <span class='hero-tag'>[ quality ]</span>
+              <span class='hero-tag'>[ growth ]</span>
+            </div>
+            <a class='cta-button' expr:href='data:blog.homepageUrl'>
+              Explore the Hub
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+        
+        <!-- Categories Section -->
+        <section class='categories-section'>
+          <div class='container'>
+            <h2 class='section-title'>Explore Quality Insights</h2>
+            <p class='section-subtitle'>Dive into curated content across different aspects of quality assurance and professional growth</p>
+            
+            <div class='categories-grid'>
+              <div class='category-card'>
+                <div class='category-icon category-icon-1'>🎯</div>
+                <h3 class='category-title'>QA Processes</h3>
+                <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
+                <div class='category-meta'>[ 1 of 5 ]</div>
+              </div>
+              <div class='category-card'>
+                <div class='category-icon category-icon-2'>👥</div>
+                <h3 class='category-title'>Quality Mindset</h3>
+                <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
+                <div class='category-meta'>[ 2 of 5 ]</div>
+              </div>
+              <div class='category-card'>
+                <div class='category-icon category-icon-3'>📈</div>
+                <h3 class='category-title'>Career Advice</h3>
+                <p class='category-description'>Growth strategies and insights for QA professionals</p>
+                <div class='category-meta'>[ 3 of 5 ]</div>
+              </div>
+              <div class='category-card'>
+                <div class='category-icon category-icon-4'>⚙️</div>
+                <h3 class='category-title'>Industry Trends</h3>
+                <p class='category-description'>Latest developments and emerging patterns in QA</p>
+                <div class='category-meta'>[ 4 of 5 ]</div>
+              </div>
+              <div class='category-card'>
+                <div class='category-icon category-icon-5'>📚</div>
+                <h3 class='category-title'>Tools & Tech</h3>
+                <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
+                <div class='category-meta'>[ 5 of 5 ]</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </b:if>
+
+      <!-- Blog Posts Section -->
+      <b:section class='main' id='main' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
+          <b:includable id='main'>
+            <b:if cond='data:view.isHomepage'>
+              <section class='section'>
+                <div class='container'>
+                  <h2 class='section-title'>Featured Insights</h2>
+                  <p class='section-subtitle'>Latest thoughts from the QA community</p>
+                  <div class='posts-grid'>
+                    <b:loop values='data:posts' var='post'>
+                      <article class='post-card'>
+                        <div class='post-card-content'>
+                          <div class='post-meta'>
+                            <span class='post-category'>
+                              <b:if cond='data:post.labels'>
+                                <data:post.labels.first.name/>
+                              <b:else/>
+                                QA Insights
+                              </b:if>
+                            </span>
+                            <div class='post-read-time'>
+                              <span>⏱</span>
+                              <span>5 min read</span>
+                            </div>
+                          </div>
+                          <h3 class='post-title'>
+                            <a expr:href='data:post.link'><data:post.title/></a>
+                          </h3>
+                          <p class='post-excerpt'>
+                            <data:post.snippet/>
+                          </p>
+                          <div class='post-footer'>
+                            <span class='post-date'>
+                              <data:post.date/>
+                            </span>
+                            <a class='read-more' expr:href='data:post.link'>
+                              Read More
+                              <span>→</span>
+                            </a>
+                          </div>
+                        </div>
+                      </article>
+                    </b:loop>
+                  </div>
+                </div>
+              </section>
+            </b:if>
+            
+            <b:if cond='data:view.isPost'>
+              <article class='post-content'>
+                <div class='post-header'>
+                  <a class='post-back-link' expr:href='data:blog.homepageUrl'>
+                    <span>←</span>
+                    Back to Blog
+                  </a>
+                  <div class='post-header-meta'>
+                    <span class='post-category'>
+                      <b:if cond='data:post.labels'>
+                        <data:post.labels.first.name/>
+                      <b:else/>
+                        QA Insights
+                      </b:if>
+                    </span>
+                  </div>
+                  <h1 class='post-header-title'><data:post.title/></h1>
+                  <div class='post-header-info'>
+                    <div>
+                      <span>👤</span>
+                      <span><data:post.author.name/></span>
+                    </div>
+                    <div>
+                      <span>📅</span>
+                      <span><data:post.date/></span>
+                    </div>
+                    <div>
+                      <span>⏱</span>
+                      <span>5 min read</span>
+                    </div>
+                  </div>
+                </div>
+                <div class='post-content'>
+                  <data:post.body/>
+                </div>
+              </article>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+
+      <!-- CTA Section (Homepage only) -->
+      <b:if cond='data:view.isHomepage'>
+        <section class='cta-section'>
+          <div class='cta-content'>
+            <h2 class='cta-title'>Join the Quality Conversation</h2>
+            <p class='cta-subtitle'>Stay curious, stay questioning, and let's build better software together.</p>
+            <a class='cta-button-white' expr:href='data:blog.homepageUrl'>
+              Browse All Posts
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+      </b:if>
     </div>
-  </header>
-
-  <!-- Main Content -->
-  <main>
-    <b:if cond='data:view.isHomepage'>
-      <!-- Homepage Hero -->
-      <section class='hero'>
-        <div class='hero-bg'></div>
-        <div class='hero-content container'>
-          <h1 class='hero-title'>Null:Expected</h1>
-          <p class='hero-subtitle'>A QA thought hub. What did you expect?</p>
-          <div class='hero-tags'>
-            <span class='hero-tag'>[ curiosity ]</span>
-            <span class='hero-tag'>[ quality ]</span>
-            <span class='hero-tag'>[ growth ]</span>
-          </div>
-          <a class='cta-button' expr:href='data:blog.homepageUrl'>
-            Explore the Hub
-            <span>→</span>
-          </a>
-        </div>
-      </section>
-      
-      <!-- Categories Section -->
-      <section class='section' style='background: #f9fafb; padding: 5rem 0;'>
-        <div class='container'>
-          <h2 class='section-title'>Explore Quality Insights</h2>
-          <p class='section-subtitle'>Dive into curated content across different aspects of quality assurance and professional growth</p>
-          
-          <div class='categories-grid'>
-            <div class='category-card'>
-              <div class='category-icon'>🎯</div>
-              <h3 class='category-title'>QA Processes</h3>
-              <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
-              <div class='category-meta'>[ 1 of 5 ]</div>
-            </div>
-            <div class='category-card'>
-              <div class='category-icon'>👥</div>
-              <h3 class='category-title'>Quality Mindset</h3>
-              <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
-              <div class='category-meta'>[ 2 of 5 ]</div>
-            </div>
-            <div class='category-card'>
-              <div class='category-icon'>📈</div>
-              <h3 class='category-title'>Career Advice</h3>
-              <p class='category-description'>Growth strategies and insights for QA professionals</p>
-              <div class='category-meta'>[ 3 of 5 ]</div>
-            </div>
-            <div class='category-card'>
-              <div class='category-icon'>⚙️</div>
-              <h3 class='category-title'>Industry Trends</h3>
-              <p class='category-description'>Latest developments and emerging patterns in QA</p>
-              <div class='category-meta'>[ 4 of 5 ]</div>
-            </div>
-            <div class='category-card'>
-              <div class='category-icon'>📚</div>
-              <h3 class='category-title'>Tools &amp; Tech</h3>
-              <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
-              <div class='category-meta'>[ 5 of 5 ]</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </b:if>
-
-    <!-- Blog Posts Section -->
-
-    <!-- CTA Section (Homepage only) -->
-    <b:if cond='data:view.isHomepage'>
-      <section style='background: linear-gradient(135deg, #2E00A3, #5000FF); padding: 5rem 0; color: white;'>
-        <div class='container text-center'>
-          <h2 style='font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem;'>Join the Quality Conversation</h2>
-          <p style='font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;'>Stay curious, stay questioning, and let's build better software together.</p>
-          <a class='cta-button' expr:href='data:blog.homepageUrl' style='background: white; color: #2E00A3;'>
-            Browse All Posts
-            <span>→</span>
-          </a>
-        </div>
-      </section>
-    </b:if>
-  </main>
+  </div>
 
   <!-- Footer -->
   <footer class='footer'>
-    <div class='container'>
-      <div class='footer-content'>
-        <div class='footer-brand'>
-          <div class='footer-logo'>
-            <div class='footer-logo-icon'>{ }</div>
-            <span class='footer-title'>Null:Expected</span>
-          </div>
-          <p class='footer-description'>A QA thought hub. What did you expected?</p>
-          <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
+    <div class='footer-content'>
+      <div class='footer-brand'>
+        <div class='footer-logo'>
+          <div class='footer-logo-icon'>{ }</div>
+          <span class='footer-title'>Null:Expected</span>
         </div>
-        
-        <div class='footer-section'>
-          <h3>Navigate</h3>
-          <ul class='footer-links'>
-            <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
-            <li><a href='/p/mission.html'>Mission</a></li>
-            <li><a href='/p/about.html'>About</a></li>
-            <li><a expr:href='data:blog.homepageUrl'>Blog</a></li>
-          </ul>
-        </div>
-        
-        <div class='footer-section'>
-          <h3>Connect</h3>
-          <ul class='footer-links'>
-            <li><a href='#'>LinkedIn</a></li>
-            <li><a href='#'>Twitter</a></li>
-            <li><a href='#'>GitHub</a></li>
-          </ul>
-        </div>
+        <p class='footer-description'>A QA thought hub. What did you expect?</p>
+        <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
       </div>
       
-      <div class='footer-bottom'>
-        <p>&#169; 2024 Null:Expected. Always in beta, always improving.</p>
+      <div class='footer-section'>
+        <h3>Navigate</h3>
+        <ul class='footer-links'>
+          <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+          <li><a href='/p/mission.html'>Mission</a></li>
+          <li><a href='/p/about.html'>About</a></li>
+          <li><a expr:href='data:blog.homepageUrl'>Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class='footer-section'>
+        <h3>Connect</h3>
+        <ul class='footer-links'>
+          <li><a href='#'>LinkedIn</a></li>
+          <li><a href='#'>Twitter</a></li>
+          <li><a href='#'>GitHub</a></li>
+        </ul>
       </div>
     </div>
+    
+    <div class='footer-bottom'>
+      <p>© 2024 Null:Expected. Always in beta, always improving.</p>
+    </div>
   </footer>
+  
+  <!-- Sidebar Section (Hidden) -->
+  <b:section class='sidebar' id='sidebar' maxwidgets='1' showaddelement='no'>
+  </b:section>
   
   <!-- Footer Section -->
   <b:section class='footer-section' id='footer-section' maxwidgets='1' showaddelement='no'>
