@@ -43,6 +43,7 @@ const BlogPost = () => {
         <Link
           to="/blog"
           className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+          onClick={() => window.scrollTo(0, 0)}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Blog
@@ -132,6 +133,7 @@ const BlogPost = () => {
         <Link
           to="/blog"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300"
+          onClick={() => window.scrollTo(0, 0)}
         >
           View All Posts
           <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />

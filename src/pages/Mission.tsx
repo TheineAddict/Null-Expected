@@ -169,6 +169,7 @@ const Mission = () => {
                 <Link 
                   to="/manifesto" 
                   className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   Read our full manifesto
                   <ArrowRight className="ml-1 h-4 w-4" />

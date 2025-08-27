@@ -80,6 +80,7 @@ const Landing = () => {
           <Link
             to="/blog"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            onClick={() => window.scrollTo(0, 0)}
           >
             Explore the Hub
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -151,6 +152,7 @@ const Landing = () => {
                   <Link
                     to="/blog"
                     className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Read Article
                     <ArrowRight className="ml-1 h-4 w-4" />
@@ -174,6 +176,7 @@ const Landing = () => {
           <Link
             to="/blog"
             className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+            onClick={() => window.scrollTo(0, 0)}
           >
             Browse All Posts
             <ArrowRight className="ml-2 h-5 w-5" />
