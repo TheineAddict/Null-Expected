@@ -673,10 +673,6 @@
 </head>
 
 <body>
-  <b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='no'>
-    <b:widget id='Navbar1' locked='true' title='Navbar' type='Navbar'/>
-  </b:section>
-
   <!-- Header -->
   <header class='header'>
     <div class='container'>
@@ -761,90 +757,87 @@
     <!-- Blog Posts Section -->
     <section class='main-content'>
       <div class='container'>
-        <b:section class='main' id='main' showaddelement='no'>
-          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
-        </b:section>
-        
         <b:if cond='data:view.isHomepage'>
           <h2 class='section-title'>Featured Insights</h2>
           <p class='section-subtitle'>Latest thoughts from the QA community</p>
         </b:if>
         
-        <b:if cond='!data:view.isPost'>
-          <div class='posts-grid'>
-            <b:loop values='data:posts' var='post'>
-              <article class='post-card'>
-                <div class='post-card-content'>
-                  <div class='post-meta'>
-                    <b:if cond='data:post.labels'>
-                      <span class='post-category'><data:post.labels.first.name/></span>
-                    <b:else/>
-                      <span class='post-category'>QA Insights</span>
-                    </b:if>
-                    <div class='post-read-time'>
-                      <span>⏱</span>
-                      <span>5 min read</span>
-                    </div>
-                  </div>
-                  
-                  <h2 class='post-title'>
-                    <a expr:href='data:post.url'><data:post.title/></a>
-                  </h2>
-                  
-                  <p class='post-excerpt'>
-                    <data:post.snippet/>
-                  </p>
-                  
-                  <div class='post-footer'>
-                    <span class='post-date'>
-                      <data:post.date/>
-                    </span>
-                    <a class='read-more' expr:href='data:post.url'>
-                      Read More
-                      <span>→</span>
-                    </a>
-                  </div>
+        <b:section class='main' id='main' showaddelement='no'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+            <b:includable id='main'>
+              <b:if cond='!data:view.isPost'>
+                <div class='posts-grid'>
+                  <b:loop values='data:posts' var='post'>
+                    <article class='post-card'>
+                      <div class='post-card-content'>
+                        <div class='post-meta'>
+                          <b:if cond='data:post.labels'>
+                            <span class='post-category'><data:post.labels.first.name/></span>
+                          <b:else/>
+                            <span class='post-category'>QA Insights</span>
+                          </b:if>
+                          <div class='post-read-time'>
+                            <span>⏱</span>
+                            <span>5 min read</span>
+                          </div>
+                        </div>
+                        
+                        <h2 class='post-title'>
+                          <a expr:href='data:post.url'><data:post.title/></a>
+                        </h2>
+                        
+                        <p class='post-excerpt'>
+                          <data:post.snippet/>
+                        </p>
+                        
+                        <div class='post-footer'>
+                          <span class='post-date'>
+                            <data:post.date/>
+                          </span>
+                          <a class='read-more' expr:href='data:post.url'>
+                            Read More
+                            <span>→</span>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </b:loop>
                 </div>
-              </article>
-            </b:loop>
-          </div>
-        </b:if>
-        
-        <!-- Single Post View -->
-        <b:if cond='data:view.isPost'>
-          <b:loop values='data:posts' var='post'>
-            <article class='post'>
-              <header class='post-header'>
-                <div class='post-header-meta'>
-                  <b:if cond='data:post.labels'>
-                    <span class='post-category'><data:post.labels.first.name/></span>
-                  <b:else/>
-                    <span class='post-category'>QA Insights</span>
-                  </b:if>
-                </div>
-                
-                <h1 class='post-header-title'><data:post.title/></h1>
-                
-                <div class='post-header-info'>
-                  <div>👤 <data:post.author.name/></div>
-                  <div>📅 <data:post.date/></div>
-                  <div>⏱ 5 min read</div>
-                </div>
-              </header>
+              </b:if>
               
-              <div class='post-content'>
-                <data:post.body/>
-              </div>
-            </article>
-          </b:loop>
-        </b:if>
+              <!-- Single Post View -->
+              <b:if cond='data:view.isPost'>
+                <b:loop values='data:posts' var='post'>
+                  <article class='post'>
+                    <header class='post-header'>
+                      <div class='post-header-meta'>
+                        <b:if cond='data:post.labels'>
+                          <span class='post-category'><data:post.labels.first.name/></span>
+                        <b:else/>
+                          <span class='post-category'>QA Insights</span>
+                        </b:if>
+                      </div>
+                      
+                      <h1 class='post-header-title'><data:post.title/></h1>
+                      
+                      <div class='post-header-info'>
+                        <div>👤 <data:post.author.name/></div>
+                        <div>📅 <data:post.date/></div>
+                        <div>⏱ 5 min read</div>
+                      </div>
+                    </header>
+                    
+                    <div class='post-content'>
+                      <data:post.body/>
+                    </div>
+                  </article>
+                </b:loop>
+              </b:if>
+            </b:includable>
+          </b:widget>
+        </b:section>
       </div>
     </section>
-    
-    <!-- Sidebar Section -->
-    <b:section class='sidebar' id='sidebar' preferred='yes' showaddelement='yes'>
-      <b:widget id='HTML1' locked='false' title='About' type='HTML'/>
-    </b:section>
 
     <!-- CTA Section (Homepage only) -->
     <b:if cond='data:view.isHomepage'>
@@ -861,6 +854,11 @@
     </b:if>
   </main>
 
+  <!-- Sidebar Section -->
+  <b:section class='sidebar' id='sidebar' preferred='yes' showaddelement='yes'>
+    <b:widget id='HTML1' locked='false' title='About' type='HTML'/>
+  </b:section>
+
   <!-- Footer -->
   <footer class='footer'>
     <div class='container'>
@@ -870,7 +868,7 @@
             <div class='footer-logo-icon'>{ }</div>
             <span class='footer-title'>Null:Expected</span>
           </div>
-          <p class='footer-description'>A QA thought hub. What did you expect?</p>
+          <p class='footer-description'>A QA thought hub. What did you expected?</p>
           <p class='footer-tagline'>Curious QA professionals sharing insights on quality, processes, and the ever-evolving world of software testing.</p>
         </div>
         
