@@ -1,9 +1,29 @@
 import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
 import { getLatestPosts } from '../data/blogPosts';
+import { BlogPost } from '../types/blog';
 
 const Landing = () => {
+  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadFeaturedPosts = async () => {
+      try {
+        const posts = await getLatestPosts(3);
+        setFeaturedPosts(posts);
+      } catch (error) {
+        console.error('Error loading featured posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadFeaturedPosts();
+  }, []);
+
   const categories = [
     {
       title: 'QA Processes',
@@ -42,8 +62,6 @@ const Landing = () => {
       color: 'from-indigo-800 to-purple-900'
     }
   ];
-
-  const featuredPosts = getLatestPosts(3);
 
   return (
     <div>
@@ -137,6 +155,13 @@ const Landing = () => {
               Latest thoughts from the QA community
             </p>
           </div>
+
+          {loading && (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-900"></div>
+              <p className="mt-4 text-gray-600">Loading featured posts...</p>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPosts.map((post, index) => (

@@ -1,4 +1,5 @@
 import { BlogPost } from '../types/blog';
+import { fetchBloggerPosts, fetchBloggerPost, convertBloggerPost } from './bloggerApi';
 
 // Import all markdown files from the posts directory
 const postModules = import.meta.glob('../data/posts/*.md', { 
@@ -94,7 +95,18 @@ function generateId(filename: string): number {
 }
 
 // Load and parse all blog posts
-export function loadBlogPosts(): BlogPost[] {
+export async function loadBlogPosts(): Promise<BlogPost[]> {
+  // First, try to fetch from Blogger API
+  try {
+    const bloggerPosts = await fetchBloggerPosts();
+    if (bloggerPosts.length > 0) {
+      return bloggerPosts.map(convertBloggerPost);
+    }
+  } catch (error) {
+    console.warn('Failed to fetch from Blogger API, falling back to local posts:', error);
+  }
+
+  // Fallback to local markdown files
   const posts: BlogPost[] = [];
   
   Object.entries(postModules).forEach(([path, content]) => {
@@ -125,20 +137,20 @@ export function loadBlogPosts(): BlogPost[] {
 }
 
 // Get posts by category
-export function getPostsByCategory(category: string): BlogPost[] {
-  const posts = loadBlogPosts();
+export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+  const posts = await loadBlogPosts();
   if (category === 'All') return posts;
   return posts.filter(post => post.category === category);
 }
 
 // Get post by slug
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  const posts = loadBlogPosts();
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const posts = await loadBlogPosts();
   return posts.find(post => post.slug === slug);
 }
 
 // Get latest posts
-export function getLatestPosts(count: number = 3): BlogPost[] {
-  const posts = loadBlogPosts();
+export async function getLatestPosts(count: number = 3): Promise<BlogPost[]> {
+  const posts = await loadBlogPosts();
   return posts.slice(0, count);
 }
