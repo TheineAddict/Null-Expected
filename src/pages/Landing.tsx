@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
+import { getLatestPosts } from '../data/blogPosts';
 
 const Landing = () => {
   const categories = [
@@ -36,26 +37,7 @@ const Landing = () => {
     }
   ];
 
-  const featuredPosts = [
-    {
-      title: 'The Art of Questioning: Why Curiosity Drives Quality',
-      excerpt: 'Exploring how the right questions can uncover hidden assumptions and drive better testing outcomes.',
-      readTime: '8 min read',
-      category: 'Quality Mindset'
-    },
-    {
-      title: 'Beyond Test Cases: Embracing Context-Driven Testing',
-      excerpt: 'Moving from rigid documentation to adaptive testing strategies that respond to real-world conditions.',
-      readTime: '12 min read',
-      category: 'QA Processes'
-    },
-    {
-      title: 'Career Transitions: From Manual to Automation QA',
-      excerpt: 'A practical guide for QA professionals looking to expand their technical skills and career opportunities.',
-      readTime: '15 min read',
-      category: 'Career Advice'
-    }
-  ];
+  const featuredPosts = getLatestPosts(3);
 
   return (
     <div>

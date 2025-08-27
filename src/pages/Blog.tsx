@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { blogPosts, getPostsByCategory } from '../data/blogPosts';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -14,66 +15,7 @@ const Blog = () => {
     'Tools & Tech'
   ];
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'The Art of Questioning: Why Curiosity Drives Quality',
-      excerpt: 'Exploring how the right questions can uncover hidden assumptions and drive better testing outcomes. Learn practical techniques for developing a questioning mindset.',
-      category: 'Quality Mindset',
-      readTime: '8 min read',
-      date: '2024-01-15',
-      slug: 'art-of-questioning-curiosity-drives-quality'
-    },
-    {
-      id: 2,
-      title: 'Beyond Test Cases: Embracing Context-Driven Testing',
-      excerpt: 'Moving from rigid documentation to adaptive testing strategies that respond to real-world conditions and business needs.',
-      category: 'QA Processes',
-      readTime: '12 min read',
-      date: '2024-01-10',
-      slug: 'beyond-test-cases-context-driven-testing'
-    },
-    {
-      id: 3,
-      title: 'Career Transitions: From Manual to Automation QA',
-      excerpt: 'A practical guide for QA professionals looking to expand their technical skills and career opportunities in test automation.',
-      category: 'Career Advice',
-      readTime: '15 min read',
-      date: '2024-01-05',
-      slug: 'career-transitions-manual-to-automation'
-    },
-    {
-      id: 4,
-      title: 'AI in Testing: Hype vs. Reality',
-      excerpt: 'Separating fact from fiction in the AI testing landscape. What actually works and what\'s just marketing noise.',
-      category: 'Industry Trends',
-      readTime: '10 min read',
-      date: '2024-01-02',
-      slug: 'ai-in-testing-hype-vs-reality'
-    },
-    {
-      id: 5,
-      title: 'Playwright vs. Cypress: A Deep Dive Comparison',
-      excerpt: 'An honest comparison of two popular testing frameworks, including performance, features, and real-world implementation challenges.',
-      category: 'Tools & Tech',
-      readTime: '20 min read',
-      date: '2023-12-28',
-      slug: 'playwright-vs-cypress-deep-dive'
-    },
-    {
-      id: 6,
-      title: 'Building a Quality Culture: Lessons from the Trenches',
-      excerpt: 'How to transform quality from a checkpoint to a mindset across your entire organization. Real strategies that actually work.',
-      category: 'Quality Mindset',
-      readTime: '14 min read',
-      date: '2023-12-20',
-      slug: 'building-quality-culture-lessons-trenches'
-    }
-  ];
-
-  const filteredPosts = activeCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeCategory);
+  const filteredPosts = getPostsByCategory(activeCategory);
 
   return (
     <div className="py-20">

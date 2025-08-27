@@ -1,58 +1,27 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
+import { getPostBySlug } from '../data/blogPosts';
 
 const BlogPost = () => {
   const { slug } = useParams();
+  const post = slug ? getPostBySlug(slug) : undefined;
 
-  // Sample blog post data - in a real app, this would come from an API or CMS
-  const post = {
-    title: 'The Art of Questioning: Why Curiosity Drives Quality',
-    author: 'Jane Smith',
-    date: '2024-01-15',
-    readTime: '8 min read',
-    category: 'Quality Mindset',
-    content: `
-      <p>In the world of software quality assurance, we often focus on the technical aspects—test cases, automation frameworks, bug tracking tools. But there's a fundamental skill that separates good QA professionals from great ones: the art of asking the right questions.</p>
-
-      <h2>The Power of Curiosity</h2>
-      
-      <p>Curiosity isn't just a nice-to-have trait for QA professionals—it's the driving force behind effective quality assurance. When we approach software with genuine curiosity, we naturally uncover edge cases, challenge assumptions, and discover issues that systematic testing might miss.</p>
-
-      <blockquote>
-        "The important thing is not to stop questioning. Curiosity has its own reason for existing." - Albert Einstein
-      </blockquote>
-
-      <h2>Questions That Matter</h2>
-      
-      <p>Here are some powerful questions that can transform how you approach testing:</p>
-
-      <ul>
-        <li><strong>What assumptions are we making?</strong> - Every feature is built on assumptions. Question them.</li>
-        <li><strong>What would happen if...?</strong> - The foundation of exploratory testing.</li>
-        <li><strong>Who else might use this differently?</strong> - Consider diverse user perspectives.</li>
-        <li><strong>What's the business impact if this fails?</strong> - Context drives testing strategy.</li>
-      </ul>
-
-      <h2>Developing Your Questioning Muscle</h2>
-      
-      <p>Like any skill, effective questioning requires practice. Start by:</p>
-
-      <ol>
-        <li>Questioning one assumption per feature</li>
-        <li>Asking "why" at least three times for any issue</li>
-        <li>Considering alternative user flows</li>
-        <li>Challenging your own test cases</li>
-      </ol>
-
-      <p>Remember, the goal isn't to question everything—it's to question the right things at the right time. With practice, you'll develop an intuition for when to dig deeper and when to move on.</p>
-
-      <h2>The Mindset Shift</h2>
-      
-      <p>When you embrace curiosity as a core QA skill, you shift from being a checkbox tester to becoming a quality detective. You start seeing patterns, making connections, and uncovering insights that purely systematic approaches might miss.</p>
-
-      <p>This mindset doesn't just make you a better tester—it makes you a more valuable team member who contributes to better products and happier users.</p>
-    `
+  // Get author info based on post author
+  const getAuthorInfo = (authorName: string) => {
+    const authors = {
+      'Jane Smith': {
+        initials: 'JS',
+        bio: 'Senior QA Engineer with over 8 years of experience in test automation frameworks and performance testing. Passionate about building scalable testing strategies and mentoring junior QA professionals.',
+        tag: '[ automation_enthusiast = true ]'
+      },
+      'Alex Davis': {
+        initials: 'AD',
+        bio: 'QA Lead & Strategy Consultant with 10+ years of experience in quality strategy and team leadership. Known for pragmatic approach to QA and ability to translate technical concepts into business value.',
+        tag: '[ process_optimizer = true ]'
+      }
+    };
+    return authors[authorName as keyof typeof authors] || authors['Jane Smith'];
   };
 
   if (!post) {
@@ -140,16 +109,15 @@ const BlogPost = () => {
         <div className="bg-gray-50 rounded-xl p-8">
           <div className="flex items-start space-x-6">
             <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-xl font-bold text-white">JS</span>
+              <span className="text-xl font-bold text-white">{getAuthorInfo(post.author).initials}</span>
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{post.author}</h3>
               <p className="text-gray-600 mb-4">
-                Senior QA Engineer with over 8 years of experience in test automation frameworks and performance testing. 
-                Passionate about building scalable testing strategies and mentoring junior QA professionals.
+                {getAuthorInfo(post.author).bio}
               </p>
               <div className="text-sm text-gray-500 font-mono">
-                [ automation_enthusiast = true ]
+                {getAuthorInfo(post.author).tag}
               </div>
             </div>
           </div>
