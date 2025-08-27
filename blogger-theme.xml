@@ -565,6 +565,43 @@
     body:not(.index) .hero-section {
       display: none;
     }
+    
+    /* Single post styles */
+    .single-post .post-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .single-post .post-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .post-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .back-to-blog {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    
+    .back-to-blog a {
+      color: #1e1b4b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .back-to-blog a:hover {
+      color: #7c3aed;
+    }
   ]]></b:skin>
 </head>
 
@@ -579,7 +616,7 @@
         <a expr:href='data:blog.homepageUrl'>Home</a>
         <a href='/p/mission.html'>Mission</a>
         <a href='/p/about.html'>About</a>
-        <a expr:href='data:blog.homepageUrl'>Blog</a>
+        <a expr:href='data:blog.homepageUrl + &quot;search?max-results=20&quot;'>Blog</a>
       </nav>
     </div>
   </header>
@@ -659,9 +696,12 @@
 
   <!-- Main Content -->
   <div class='main-content'>
+    <!-- Blog Posts Section -->
     <b:if cond='data:view.isHomepage'>
-      <h2 class='page-title' id='blog-posts'>Latest Insights</h2>
-      <p class='page-subtitle'>Latest thoughts from the QA community</p>
+      <div id='blog-posts'>
+        <h2 class='page-title'>Latest Insights</h2>
+        <p class='page-subtitle'>Latest thoughts from the QA community</p>
+      </div>
     </b:if>
     
     <b:if cond='data:view.isArchive'>
@@ -673,73 +713,85 @@
       <h2 class='page-title'>Posts in "<data:view.search.label/>"</h2>
       <p class='page-subtitle'>Exploring <data:view.search.label/> insights and strategies</p>
     </b:if>
-
-    <!-- Blog Posts Section -->
-    <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
-      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
-        <b:widget-settings>
-          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-          <b:widget-setting name='showShareButtons'>true</b:widget-setting>
-          <b:widget-setting name='showComments'>true</b:widget-setting>
-        </b:widget-settings>
-        <b:includable id='main'>
-          <b:if cond='data:view.isMultipleItems'>
-            <div class='blog-posts'>
-              <b:loop values='data:posts' var='post'>
-                <b:include data='post' name='post'/>
-              </b:loop>
-            </div>
-          <b:else/>
+    
+    <b:if cond='data:view.isPost'>
+      <div class='back-to-blog'>
+        <a expr:href='data:blog.homepageUrl'>← Back to Blog</a>
+      </div>
+    </b:if>
+  </div>
+  
+  <!-- Main Blog Section -->
+  <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+        <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+        <b:widget-setting name='showComments'>true</b:widget-setting>
+        <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+        <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <b:if cond='data:view.isMultipleItems'>
+          <!-- Multiple Posts View (Homepage/Archive) -->
+          <div class='blog-posts'>
             <b:loop values='data:posts' var='post'>
-              <b:include data='post' name='post'/>
-            </b:loop>
-          </b:if>
-        </b:includable>
-        
-        <b:includable id='post' var='post'>
-          <b:if cond='data:view.isMultipleItems'>
-            <!-- Post Card for Homepage/Archive -->
-            <article class='post'>
-              <div class='post-header'>
-                <h2 class='post-title'>
-                  <a expr:href='data:post.url' expr:title='data:post.title'>
-                    <data:post.title/>
-                  </a>
-                </h2>
-              </div>
-              <div class='post-body'>
-                <data:post.snippet/>
-              </div>
-              <div class='post-footer'>
-                <div class='post-labels'>
-                  <b:loop values='data:post.labels' var='label'>
-                    <a expr:href='data:label.url' rel='tag'>
-                      <data:label.name/>
+              <article class='post'>
+                <div class='post-header'>
+                  <h2 class='post-title'>
+                    <a expr:href='data:post.url' expr:title='data:post.title'>
+                      <data:post.title/>
                     </a>
-                  </b:loop>
+                  </h2>
                 </div>
-                <div class='post-timestamp'>
-                  <data:post.timestamp/>
+                <div class='post-body'>
+                  <b:if cond='data:post.snippet'>
+                    <data:post.snippet/>
+                  <b:else/>
+                    <data:post.body/>
+                  </b:if>
                 </div>
-              </div>
-            </article>
-          <b:else/>
-            <!-- Full Post View -->
-            <article class='post'>
+                <div class='post-footer'>
+                  <div class='post-labels'>
+                    <b:if cond='data:post.labels'>
+                      <b:loop values='data:post.labels' var='label'>
+                        <a expr:href='data:label.url' rel='tag'>
+                          <data:label.name/>
+                        </a>
+                      </b:loop>
+                    </b:if>
+                  </div>
+                  <div class='post-timestamp'>
+                    <time expr:datetime='data:post.timestampISO8601'>
+                      <data:post.timestamp/>
+                    </time>
+                  </div>
+                </div>
+              </article>
+            </b:loop>
+          </div>
+        <b:else/>
+          <!-- Single Post View -->
+          <b:loop values='data:posts' var='post'>
+            <article class='post single-post'>
               <div class='post-header'>
                 <h1 class='post-title'>
                   <data:post.title/>
                 </h1>
-                <div class='post-footer'>
+                <div class='post-meta'>
                   <div class='post-labels'>
-                    <b:loop values='data:post.labels' var='label'>
-                      <a expr:href='data:label.url' rel='tag'>
-                        <data:label.name/>
-                      </a>
-                    </b:loop>
+                    <b:if cond='data:post.labels'>
+                      <b:loop values='data:post.labels' var='label'>
+                        <a expr:href='data:label.url' rel='tag'>
+                          <data:label.name/>
+                        </a>
+                      </b:loop>
+                    </b:if>
                   </div>
                   <div class='post-timestamp'>
-                    <data:post.timestamp/>
+                    <time expr:datetime='data:post.timestampISO8601'>
+                      <data:post.timestamp/>
+                    </time>
                   </div>
                 </div>
               </div>
@@ -747,11 +799,11 @@
                 <data:post.body/>
               </div>
             </article>
-          </b:if>
-        </b:includable>
-      </b:widget>
-    </b:section>
-  </div>
+          </b:loop>
+        </b:if>
+      </b:includable>
+    </b:widget>
+  </b:section>
 
   <!-- Footer -->
   <footer class='footer'>
