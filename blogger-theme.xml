@@ -701,6 +701,49 @@
       margin-top: 1rem;
     }
     
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-text {
+      font-size: 1.25rem;
+      color: #c7d2fe;
+      margin-bottom: 2rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: #1e1b4b;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cta-button:hover {
+      background: #f3f4f6;
+      color: #1e1b4b;
+    }
+    
     .what-we-write {
       padding: 5rem 0;
     }
@@ -1362,6 +1405,17 @@
                 </article>
               </b:loop>
             </div>
+            
+            <!-- CTA Section for Homepage -->
+            <b:if cond='data:view.isHomepage'>
+              <section class='cta-section'>
+                <div class='cta-content'>
+                  <h2 class='cta-title'>Follow the breadcrumbs</h2>
+                  <p class='cta-text'>Explore articles, rants, and real-world QA strategy in practice.</p>
+                  <a class='cta-button' expr:href='data:blog.homepageUrl'>Browse All Posts</a>
+                </div>
+              </section>
+            </b:if>
           <b:else/>
             <!-- Single Post View -->
             <b:loop values='data:posts' var='post'>
