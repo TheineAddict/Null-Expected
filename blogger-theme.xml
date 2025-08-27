@@ -562,11 +562,27 @@
     }
     
     /* Show hero only on homepage */
-    body:not(.index) .hero-section {
+    .item .hero-section,
+    .archive .hero-section,
+    .search .hero-section {
       display: none;
     }
     
-    body:not(.index) .categories-section {
+    .item .categories-section,
+    .archive .categories-section,
+    .search .categories-section {
+      display: none;
+    }
+    
+    /* Homepage posts limit */
+    .homepage-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .homepage-posts .post:nth-child(n+4) {
       display: none;
     }
     
@@ -620,7 +636,7 @@
         <a expr:href='data:blog.homepageUrl'>Home</a>
         <a href='/p/mission.html'>Mission</a>
         <a href='/p/about.html'>About</a>
-        <a expr:href='data:blog.homepageUrl + "search?max-results=20"'>Blog</a>
+        <a expr:href='data:blog.homepageUrl + "search/label/QA%20Processes?max-results=50"'>Blog</a>
       </nav>
     </div>
   </header>
@@ -699,34 +715,35 @@
   </b:if>
 
   <!-- Main Content -->
-  <div class='main-content'>
-    <!-- Blog Posts Section -->
-    <b:if cond='data:view.isHomepage'>
+  <b:if cond='data:view.isHomepage'>
+    <div class='main-content'>
       <div id='blog-posts'>
-        <h2 class='page-title'>Latest Insights</h2>
+        <h2 class='page-title'>Featured Insights</h2>
         <p class='page-subtitle'>Latest thoughts from the QA community</p>
       </div>
-    </b:if>
-    
-    <b:if cond='data:view.isArchive'>
+    </div>
+  </b:if>
+  
+  <b:if cond='!data:view.isHomepage and !data:view.isPost'>
+    <div class='main-content'>
       <h2 class='page-title'>All Blog Posts</h2>
       <p class='page-subtitle'>Insights, strategies, and conversations about software quality</p>
-    </b:if>
-    
-    <b:if cond='data:view.isLabelSearch'>
-      <h2 class='page-title'>Posts in "<data:view.search.label/>"</h2>
-      <p class='page-subtitle'>Exploring <data:view.search.label/> insights and strategies</p>
-    </b:if>
-    
-    <b:if cond='data:view.isPost'>
+    </div>
+  </b:if>
+  
+  <b:if cond='data:view.isPost'>
+    <div class='main-content'>
       <div class='back-to-blog'>
         <a expr:href='data:blog.homepageUrl'>← Back to Blog</a>
       </div>
-    </b:if>
-  </div>
+    </div>
+  </b:if>
+
+  <div class='main-content'>
+    <!-- Blog Posts Section -->
   
   <!-- Blog Widget -->
-  <b:section class='main' id='main' maxwidgets='1' showaddelement='no'>
+  <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='showDateHeader'>false</b:widget-setting>
@@ -734,11 +751,13 @@
         <b:widget-setting name='showComments'>true</b:widget-setting>
         <b:widget-setting name='showBacklinks'>false</b:widget-setting>
         <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+        <b:widget-setting name='showLocationOnMap'>false</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
+        <div class='main-content'>
         <b:if cond='data:view.isMultipleItems'>
           <!-- Multiple Posts View -->
-          <div class='blog-posts'>
+          <div class='blog-posts' expr:class='data:view.isHomepage ? "homepage-posts" : "archive-posts"'>
             <b:loop values='data:posts' var='post'>
               <article class='post'>
                 <div class='post-header'>
@@ -752,7 +771,7 @@
                   <b:if cond='data:post.snippet'>
                     <data:post.snippet/>
                   <b:else/>
-                    <data:post.body/>
+                    <b:eval expr='data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }'/>
                   </b:if>
                 </div>
                 <div class='post-footer'>
@@ -805,6 +824,7 @@
             </article>
           </b:loop>
         </b:if>
+        </div>
       </b:includable>
     </b:widget>
   </b:section>
