@@ -16,10 +16,22 @@
     <meta content='A QA thought hub. What did you expect? Insights, strategies, and conversations about software quality from experienced QA professionals.' name='description'/>
   </b:if>
   
+  <!-- Open Graph Tags -->
+  <meta expr:content='data:blog.title' property='og:site_name'/>
+  <meta expr:content='data:view.title' property='og:title'/>
+  <meta expr:content='data:view.description' property='og:description'/>
+  <meta content='website' property='og:type'/>
+  <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+  
+  <!-- Twitter Card -->
+  <meta content='summary_large_image' name='twitter:card'/>
+  <meta expr:content='data:view.title' name='twitter:title'/>
+  <meta expr:content='data:view.description' name='twitter:description'/>
+  
   <!-- Inter Font -->
   <link rel='preconnect' href='https://fonts.googleapis.com'/>
   <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin=''/>
-  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet'/>
   
   <b:skin><![CDATA[
     /* Reset and Base Styles */
@@ -43,6 +55,9 @@
       border-bottom: 1px solid #e5e7eb;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
       padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
     
     .header-content {
@@ -67,6 +82,18 @@
       background-clip: text;
     }
     
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+    }
+    
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -82,9 +109,45 @@
       transition: all 0.3s ease;
     }
     
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #1e1b4b;
       border-bottom-color: #1e1b4b;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: #374151;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .mobile-nav {
+      display: none;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem;
+    }
+    
+    .mobile-nav.active {
+      display: block;
+    }
+    
+    .mobile-nav a {
+      display: block;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .mobile-nav a:hover {
+      color: #1e1b4b;
+      background: #f9fafb;
     }
     
     /* Hero Section (Homepage only) */
@@ -165,6 +228,7 @@
     .hero-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      color: white;
     }
     
     /* Categories Section */
@@ -335,6 +399,8 @@
       border: none;
       background: none;
       margin: 0;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     
     .post-labels {
@@ -364,12 +430,65 @@
       font-size: 0.875rem;
     }
     
+    .post-author {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .post-readtime {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
     /* Individual Post Page */
+    .single-post {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .single-post .post-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 2rem 0;
+    }
+    
+    .single-post .post-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .single-post .post-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .single-post .post-body {
+      padding: 0;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: #374151;
+    }
+    
+    .post-body h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 2rem 0 1rem;
+      line-height: 1.2;
+    }
+    
     .post-body h2 {
       font-size: 2rem;
       font-weight: 600;
       color: #111827;
       margin: 2rem 0 1rem;
+      line-height: 1.3;
     }
     
     .post-body h3 {
@@ -377,6 +496,7 @@
       font-weight: 600;
       color: #111827;
       margin: 1.5rem 0 0.75rem;
+      line-height: 1.4;
     }
     
     .post-body p {
@@ -394,6 +514,7 @@
     .post-body li {
       margin: 0.5rem 0;
       color: #374151;
+      line-height: 1.6;
     }
     
     .post-body blockquote {
@@ -409,11 +530,13 @@
     .post-body a {
       color: #1e1b4b;
       text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
     }
     
     .post-body a:hover {
       color: #7c3aed;
-      text-decoration: underline;
+      border-bottom-color: #7c3aed;
     }
     
     .post-body strong {
@@ -427,6 +550,7 @@
       border-radius: 0.25rem;
       font-family: 'Courier New', monospace;
       font-size: 0.875rem;
+      color: #1f2937;
     }
     
     .post-body pre {
@@ -458,6 +582,127 @@
       color: #6b7280;
       text-align: center;
       margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Pagination */
+    .blog-pager {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+    
+    .blog-pager a {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .blog-pager a:hover {
+      background: #f9fafb;
+      color: #1e1b4b;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Comments */
+    .comments {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      padding: 2rem;
+      background: #f9fafb;
+      border-radius: 0.75rem;
+    }
+    
+    .comments h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Share Buttons */
+    .sharing-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .sharing-buttons a {
+      padding: 0.75rem 1.5rem;
+      background: #f3f4f6;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sharing-buttons a:hover {
+      background: #e5e7eb;
+      color: #1e1b4b;
+    }
+    
+    /* Archive */
+    .archive-section {
+      background: #f9fafb;
+      padding: 3rem 0;
+      margin: 3rem 0;
+    }
+    
+    .archive-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .archive-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .archive-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .archive-list li {
+      padding: 1rem;
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .archive-list a {
+      color: #1e1b4b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .archive-list a:hover {
+      color: #7c3aed;
+    }
+    
+    .archive-date {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-left: 1rem;
     }
     
     /* Footer */
@@ -472,13 +717,34 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem;
-      text-align: center;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
     
     .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-weight: 700;
       font-size: 1.25rem;
       margin-bottom: 1rem;
+    }
+    
+    .footer-brand-icon {
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
     }
     
     .footer-description {
@@ -486,12 +752,19 @@
       margin-bottom: 2rem;
     }
     
+    .footer-section h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
     .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
     }
     
     .footer-links a {
@@ -507,6 +780,7 @@
     .footer-bottom {
       border-top: 1px solid #374151;
       padding-top: 2rem;
+      text-align: center;
       color: #9ca3af;
     }
     
@@ -514,6 +788,10 @@
     @media (max-width: 768px) {
       .nav-links {
         display: none;
+      }
+      
+      .mobile-menu-button {
+        display: block;
       }
       
       .hero-title {
@@ -544,17 +822,31 @@
         font-size: 2rem;
       }
       
-      .footer-links {
+      .single-post .post-title {
+        font-size: 2rem;
+      }
+      
+      .single-post .post-meta {
         flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .post-footer {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .sharing-buttons {
+        flex-direction: column;
       }
     }
     
     /* Hide Blogger default elements we don't want */
-    .blog-pager {
-      display: none;
-    }
-    
     .feed-links {
       display: none;
     }
@@ -586,17 +878,6 @@
     
     .homepage-posts .post:nth-child(n+4) {
       display: none;
-    }
-    
-    /* Single post styles */
-    .single-post .post-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .single-post .post-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
     }
     
     /* Mission Page Specific Styles */
@@ -1005,16 +1286,6 @@
       opacity: 0.2;
     }
     
-    .post-meta {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    
     .back-to-blog {
       max-width: 1200px;
       margin: 0 auto;
@@ -1025,10 +1296,90 @@
       color: #1e1b4b;
       text-decoration: none;
       font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
     .back-to-blog a:hover {
       color: #7c3aed;
+    }
+    
+    /* Search Results */
+    .search-results {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .search-query {
+      background: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: 'Courier New', monospace;
+    }
+    
+    /* Label/Category Pages */
+    .label-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+      background: #f9fafb;
+    }
+    
+    .label-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .label-description {
+      font-size: 1.125rem;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Popular Posts Widget */
+    .popular-posts {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .popular-posts h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .popular-posts ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .popular-posts li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .popular-posts li:last-child {
+      border-bottom: none;
+    }
+    
+    .popular-posts a {
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .popular-posts a:hover {
+      color: #1e1b4b;
     }
   ]]></b:skin>
 </head>
@@ -1038,14 +1389,22 @@
   <header class='header'>
     <div class='header-content'>
       <a class='logo' expr:href='data:blog.homepageUrl'>
+        <div class='logo-icon'>⚡</div>
         Null:Expected
       </a>
       <nav class='nav-links'>
-        <a expr:href='data:blog.homepageUrl'>Home</a>
+        <a expr:href='data:blog.homepageUrl' expr:class='data:view.isHomepage ? "active" : ""'>Home</a>
         <a href='/p/our-mission.html'>Our Mission</a>
         <a href='/p/about.html'>About</a>
-        <a expr:href='data:blog.homepageUrl'>Blog</a>
+        <a expr:href='data:blog.homepageUrl + "search/label/Blog"'>Blog</a>
       </nav>
+      <button class='mobile-menu-button' onclick='toggleMobileMenu()'>☰</button>
+    </div>
+    <div class='mobile-nav' id='mobileNav'>
+      <a expr:href='data:blog.homepageUrl'>Home</a>
+      <a href='/p/our-mission.html'>Our Mission</a>
+      <a href='/p/about.html'>About</a>
+      <a expr:href='data:blog.homepageUrl + "search/label/Blog"'>Blog</a>
     </div>
   </header>
 
@@ -1079,7 +1438,7 @@
             </div>
             <h3 class='category-title'>QA Processes</h3>
             <p class='category-description'>Methodologies, frameworks, and systematic approaches to quality</p>
-            <div class='category-counter'>[ 1 of 5 ]</div>
+            <div class='category-counter'>[ 1 of 3 ]</div>
           </div>
           
           <div class='category-card'>
@@ -1088,7 +1447,7 @@
             </div>
             <h3 class='category-title'>Quality Mindset</h3>
             <p class='category-description'>Philosophy and thinking patterns that drive quality excellence</p>
-            <div class='category-counter'>[ 2 of 5 ]</div>
+            <div class='category-counter'>[ 2 of 3 ]</div>
           </div>
           
           <div class='category-card'>
@@ -1097,34 +1456,7 @@
             </div>
             <h3 class='category-title'>Career Advice</h3>
             <p class='category-description'>Growth strategies and insights for QA professionals</p>
-            <div class='category-counter'>[ 3 of 5 ]</div>
-          </div>
-          
-          <div class='category-card'>
-            <div class='category-icon category-icon-4'>
-              <span class='icon-settings'>⚙️</span>
-            </div>
-            <h3 class='category-title'>Industry Trends</h3>
-            <p class='category-description'>Latest developments and emerging patterns in QA</p>
-            <div class='category-counter'>[ 4 of 5 ]</div>
-          </div>
-          
-          <div class='category-card'>
-            <div class='category-icon category-icon-5'>
-              <span class='icon-book'>📚</span>
-            </div>
-            <h3 class='category-title'>Tools & Tech</h3>
-            <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
-            <div class='category-counter'>[ 5 of 6 ]</div>
-          </div>
-          
-          <div class='category-card'>
-            <div class='category-icon category-icon-1'>
-              <span class='icon-case-studies'>📋</span>
-            </div>
-            <h3 class='category-title'>Case Studies</h3>
-            <p class='category-description'>Practical examples, lessons learned, and QA stories from the field</p>
-            <div class='category-counter'>[ 6 of 6 ]</div>
+            <div class='category-counter'>[ 3 of 3 ]</div>
           </div>
         </div>
       </div>
@@ -1191,18 +1523,6 @@
             <div class='write-icon write-icon-3'>📈</div>
             <h3 class='write-title'>Career reflections</h3>
             <p class='write-description'>from the trenches and leadership</p>
-          </div>
-          
-          <div class='write-card'>
-            <div class='write-icon write-icon-4'>👁️</div>
-            <h3 class='write-title'>Trends and industry insights</h3>
-            <p class='write-description'>filtered through a quality lens</p>
-          </div>
-          
-          <div class='write-card'>
-            <div class='write-icon write-icon-5'>📚</div>
-            <h3 class='write-title'>Occasional tool reviews</h3>
-            <p class='write-description'>always process-first</p>
           </div>
         </div>
       </div>
@@ -1339,6 +1659,114 @@
     </div>
   </b:if>
   
+  <b:if cond='data:view.isPage and data:page.title == "About"'>
+    <div class='main-content'>
+      <!-- About Hero -->
+      <div class='mission-hero'>
+        <h1 class='mission-title'>About Us</h1>
+        <p class='mission-subtitle'>
+          We're QA professionals with different voices, shared curiosity, and far too many 
+          opinions about software quality. This is our thought hub — part roadmap, part portfolio, 
+          always in beta.
+        </p>
+      </div>
+      
+      <!-- Team Members -->
+      <div class='about-team-grid'>
+        <div class='team-member-card'>
+          <div class='team-avatar team-avatar-1'>JS</div>
+          <h2 class='team-member-name'>Jane Smith</h2>
+          <p class='team-member-title'>Senior QA Engineer</p>
+          <p class='team-member-bio'>
+            With over 8 years in QA, Jane specializes in test automation frameworks and 
+            performance testing. She's passionate about building scalable testing strategies 
+            and mentoring junior QA professionals. When she's not debugging test flakes, 
+            you'll find her exploring new testing tools or speaking at QA conferences.
+          </p>
+          <div class='team-member-tag'>[ automation_enthusiast = true ]</div>
+          <div class='team-member-links'>
+            <a href='#'>LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class='team-member-card'>
+          <div class='team-avatar team-avatar-2'>AD</div>
+          <h2 class='team-member-name'>Alex Davis</h2>
+          <p class='team-member-title'>QA Lead &amp; Strategy Consultant</p>
+          <p class='team-member-bio'>
+            Alex brings 10+ years of experience in quality strategy and team leadership. 
+            He's worked across startups and enterprise organizations, focusing on quality 
+            culture transformation and process optimization. Alex is known for his 
+            pragmatic approach to QA and his ability to translate technical concepts 
+            into business value.
+          </p>
+          <div class='team-member-tag'>[ process_optimizer = true ]</div>
+          <div class='team-member-links'>
+            <a href='#'>LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Name Explanation -->
+      <div class='name-explanation'>
+        <div class='name-explanation-card'>
+          <p>
+            Our individual bios live here, but the <a href='/p/manifesto.html' style='color: #1e1b4b; text-decoration: none; font-weight: 600;'>Manifesto</a> speaks for what drives us.
+          </p>
+          <p>
+            <strong>Null:Expected</strong> is a play on a software testing term — where "null" means nothing is returned, and that's the expected result.
+          </p>
+          <p>
+            But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
+          </p>
+          <p>
+            The name reminds us that behind every outcome — even silence — there's intent, and quality depends on understanding that.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Philosophy Section -->
+      <div class='why-section'>
+        <div class='why-content'>
+          <h2>Our Approach</h2>
+          <p>
+            We believe that the best QA insights come from real-world experience, 
+            honest reflection, and the willingness to challenge conventional wisdom. 
+            Our posts aren't just theoretical—they're battle-tested strategies and 
+            hard-earned lessons from the trenches.
+          </p>
+          <p>
+            Whether we're exploring the psychology of bug hunting, dissecting the 
+            latest testing frameworks, or debating the future of quality assurance, 
+            we bring both expertise and curiosity to every conversation.
+          </p>
+          <div style='display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;'>
+            <span style='padding: 0.5rem 1rem; background: white; border-radius: 9999px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-family: "Courier New", monospace; font-size: 0.875rem; color: #6b7280;'>[ experience ]</span>
+            <span style='padding: 0.5rem 1rem; background: white; border-radius: 9999px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-family: "Courier New", monospace; font-size: 0.875rem; color: #6b7280;'>[ curiosity ]</span>
+            <span style='padding: 0.5rem 1rem; background: white; border-radius: 9999px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-family: "Courier New", monospace; font-size: 0.875rem; color: #6b7280;'>[ growth ]</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact CTA -->
+      <div class='voices-section'>
+        <div class='voices-content'>
+          <h2>Let's Connect</h2>
+          <p>
+            Have questions, ideas, or want to collaborate? We'd love to hear from you.
+          </p>
+          <p>
+            Find us on LinkedIn or drop us a line about potential guest posts, 
+            speaking opportunities, or just to chat about all things QA.
+          </p>
+          <div class='category-counter'>
+            [ status: open_to_collaboration ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </b:if>
+  
   <b:if cond='data:view.isHomepage'>
     <div class='main-content'>
       <div id='blog-posts'>
@@ -1348,10 +1776,49 @@
     </div>
   </b:if>
   
-  <b:if cond='!data:view.isHomepage and !data:view.isPost'>
+  <b:if cond='data:view.isLabelSearch'>
+    <div class='label-header'>
+      <h1 class='label-title'>
+        <b:if cond='data:label'>
+          <data:label/>
+        <b:else/>
+          All Posts
+        </b:if>
+      </h1>
+      <p class='label-description'>
+        <b:if cond='data:label == "QA Processes"'>
+          Methodologies, frameworks, and systematic approaches to quality
+        <b:elseif cond='data:label == "Quality Mindset"'/>
+          Philosophy and thinking patterns that drive quality excellence
+        <b:elseif cond='data:label == "Career Advice"'/>
+          Growth strategies and insights for QA professionals
+        <b:else/>
+          Insights, strategies, and conversations about software quality
+        </b:if>
+      </p>
+    </div>
+  </b:if>
+  
+  <b:if cond='data:view.isArchive and !data:view.isLabelSearch'>
     <div class='main-content'>
-      <h2 class='page-title'>All Blog Posts</h2>
-      <p class='page-subtitle'>Insights, strategies, and conversations about software quality</p>
+      <h2 class='page-title'>
+        <b:if cond='data:view.isSearch'>
+          Search Results
+        <b:else/>
+          Blog Archive
+        </b:if>
+      </h2>
+      <p class='page-subtitle'>
+        <b:if cond='data:view.isSearch'>
+          <b:if cond='data:posts'>
+            Results for your search
+          <b:else/>
+            No posts found for your search
+          </b:if>
+        <b:else/>
+          All posts from our QA thought hub
+        </b:if>
+      </p>
     </div>
   </b:if>
   
@@ -1405,15 +1872,36 @@
                         </b:loop>
                       </b:if>
                     </div>
-                    <div class='post-timestamp'>
-                      <time expr:datetime='data:post.timestampISO8601'>
-                        <data:post.timestamp/>
-                      </time>
+                    <div style='display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;'>
+                      <div class='post-timestamp'>
+                        <time expr:datetime='data:post.timestampISO8601'>
+                          <data:post.timestamp/>
+                        </time>
+                      </div>
+                      <div class='post-author'>
+                        <b:if cond='data:post.author'>
+                          by <data:post.author.name/>
+                        </b:if>
+                      </div>
+                      <div class='post-readtime'>
+                        <b:if cond='data:post.body'>
+                          <b:eval expr='data:post.body snippet { length: 1000, links: false, linebreaks: false }' var='wordCount'/>
+                          <script>
+                            // Estimate reading time based on word count
+                            var wordCount = '<data:wordCount/>'.split(' ').length;
+                            var readTime = Math.max(1, Math.round(wordCount / 200));
+                            document.write(readTime + ' min read');
+                          </script>
+                        </b:if>
+                      </div>
                     </div>
                   </div>
                 </article>
               </b:loop>
             </div>
+            
+            <!-- Pagination -->
+            <b:include name='nextprev'/>
             
             <!-- CTA Section for Homepage -->
             <b:if cond='data:view.isHomepage'>
@@ -1421,7 +1909,7 @@
                 <div class='cta-content'>
                   <h2 class='cta-title'>Follow the breadcrumbs</h2>
                   <p class='cta-text'>Explore articles, rants, and real-world QA strategy in practice.</p>
-                  <a class='cta-button' expr:href='data:blog.homepageUrl'>Browse All Posts</a>
+                  <a class='cta-button' expr:href='data:blog.homepageUrl + "search/label/Blog"'>Browse All Posts</a>
                 </div>
               </section>
             </b:if>
@@ -1448,14 +1936,140 @@
                         <data:post.timestamp/>
                       </time>
                     </div>
+                    <div class='post-author'>
+                      <b:if cond='data:post.author'>
+                        by <data:post.author.name/>
+                      </b:if>
+                    </div>
                   </div>
                 </div>
                 <div class='post-body'>
                   <data:post.body/>
                 </div>
+                
+                <!-- Share Buttons -->
+                <div class='sharing-buttons'>
+                  <a expr:href='"https://twitter.com/intent/tweet?url=" + data:post.url + "&text=" + data:post.title' target='_blank'>
+                    Share on Twitter
+                  </a>
+                  <a expr:href='"https://www.linkedin.com/sharing/share-offsite/?url=" + data:post.url' target='_blank'>
+                    Share on LinkedIn
+                  </a>
+                  <a expr:href='"mailto:?subject=" + data:post.title + "&body=" + data:post.url'>
+                    Share via Email
+                  </a>
+                </div>
               </article>
             </b:loop>
+            
+            <!-- Comments -->
+            <b:include name='comments'/>
           </b:if>
+        </div>
+      </b:includable>
+      
+      <b:includable id='nextprev'>
+        <b:if cond='data:newerPageUrl or data:olderPageUrl'>
+          <div class='blog-pager'>
+            <b:if cond='data:newerPageUrl'>
+              <a expr:href='data:newerPageUrl'>← Newer Posts</a>
+            </b:if>
+            <b:if cond='data:olderPageUrl'>
+              <a expr:href='data:olderPageUrl'>Older Posts →</a>
+            </b:if>
+          </div>
+        </b:if>
+      </b:includable>
+      
+      <b:includable id='comments'>
+        <b:if cond='data:post.allowComments'>
+          <div class='comments'>
+            <h3>Comments</h3>
+            <b:include data='post' name='threaded_comments'/>
+          </div>
+        </b:if>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
+  <!-- Sidebar Widgets (Optional) -->
+  <b:section class='sidebar' id='sidebar' maxwidgets='10' showaddelement='yes'>
+    <!-- Popular Posts Widget -->
+    <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+        <b:widget-setting name='showThumbnails'>false</b:widget-setting>
+        <b:widget-setting name='showSnippets'>false</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='popular-posts'>
+          <h3><data:title/></h3>
+          <ul>
+            <b:loop values='data:posts' var='post'>
+              <li>
+                <a expr:href='data:post.href'><data:post.title/></a>
+              </li>
+            </b:loop>
+          </ul>
+        </div>
+      </b:includable>
+    </b:widget>
+    
+    <!-- Archive Widget -->
+    <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+        <b:widget-setting name='yearlyItems'>true</b:widget-setting>
+        <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='archive-section'>
+          <div class='archive-content'>
+            <h3 class='archive-title'><data:title/></h3>
+            <div class='archive-list'>
+              <b:include name='interval'/>
+            </div>
+          </div>
+        </div>
+      </b:includable>
+      
+      <b:includable id='interval'>
+        <b:loop values='data:intervalData' var='interval'>
+          <ul class='archive-list'>
+            <li>
+              <a expr:href='data:interval.url'>
+                <data:interval.name/> (<data:interval.post-count/>)
+              </a>
+            </li>
+          </ul>
+        </b:loop>
+      </b:includable>
+    </b:widget>
+    
+    <!-- Labels Widget -->
+    <b:widget id='Label1' locked='false' title='Categories' type='Label' version='2' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+        <b:widget-setting name='display'>LIST</b:widget-setting>
+        <b:widget-setting name='selectedLabelsList'/>
+        <b:widget-setting name='showType'>ALL</b:widget-setting>
+        <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='popular-posts'>
+          <h3><data:title/></h3>
+          <ul>
+            <b:loop values='data:labels' var='label'>
+              <li>
+                <a expr:href='data:label.url'>
+                  <data:label.name/>
+                  <b:if cond='data:showFreqNumbers'>
+                    (<data:label.count/>)
+                  </b:if>
+                </a>
+              </li>
+            </b:loop>
+          </ul>
         </div>
       </b:includable>
     </b:widget>
@@ -1464,21 +2078,87 @@
   <!-- Footer -->
   <footer class='footer'>
     <div class='footer-content'>
-      <div class='footer-brand'>Null:Expected</div>
-      <p class='footer-description'>A QA thought hub. What did you expect?</p>
-      <div class='footer-links'>
-        <a expr:href='data:blog.homepageUrl'>Blog</a>
-        <a href='/p/our-mission.html'>Our Mission</a>
-        <a href='/p/about.html'>About Us</a>
-        <a href='/p/manifesto.html'>Manifesto</a>
+      <div class='footer-grid'>
+        <!-- Brand -->
+        <div>
+          <div class='footer-brand'>
+            <div class='footer-brand-icon'>⚡</div>
+            Null:Expected
+          </div>
+          <p class='footer-description'>
+            A QA thought hub. What did you expected?
+          </p>
+        </div>
+
+        <!-- Explore -->
+        <div class='footer-section'>
+          <h3>Explore</h3>
+          <ul class='footer-links'>
+            <li><a expr:href='data:blog.homepageUrl + "search/label/QA%20Processes"'>QA Processes</a></li>
+            <li><a expr:href='data:blog.homepageUrl + "search/label/Quality%20Mindset"'>Quality Mindset</a></li>
+            <li><a expr:href='data:blog.homepageUrl + "search/label/Career%20Advice"'>Career Advice</a></li>
+          </ul>
+        </div>
+
+        <!-- Behind the Blog -->
+        <div class='footer-section'>
+          <h3>Behind the Blog</h3>
+          <ul class='footer-links'>
+            <li><a href='/p/our-mission.html'>Our Mission</a></li>
+            <li><a href='/p/about.html'>About Us</a></li>
+            <li><a href='#'>Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class='footer-section'>
+          <h3>Coming Soon</h3>
+          <ul class='footer-links'>
+            <li><span style='color: #d1d5db;'>Newsletter Sign-up</span></li>
+            <li><span style='color: #d1d5db;'>Guest Posts – Opening Soon</span></li>
+            <li><a href='/p/manifesto.html'>Read the Manifesto</a></li>
+          </ul>
+        </div>
       </div>
+
       <div class='footer-bottom'>
-        <p>© 2025 Null:Expected. Always in beta, always improving.</p>
+        <p>&copy; 2025 Null:Expected. Always in beta, always improving.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Sidebar (Hidden) -->
-  <b:section class='sidebar' id='sidebar' maxwidgets='1' showaddelement='no'/>
+  <!-- JavaScript for mobile menu -->
+  <script>
+    function toggleMobileMenu() {
+      var mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      var mobileNav = document.getElementById('mobileNav');
+      var menuButton = document.querySelector('.mobile-menu-button');
+      
+      if (!mobileNav.contains(event.target) && !menuButton.contains(event.target)) {
+        mobileNav.classList.remove('active');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+      var links = document.querySelectorAll('a[href^="#"]');
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
