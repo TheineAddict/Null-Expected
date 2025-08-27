@@ -7,8 +7,6 @@ import { BlogPost } from '../types/blog';
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const categories = [
     'All',
@@ -19,23 +17,10 @@ const Blog = () => {
     'Tools & Tech'
   ];
 
-  // Load posts on component mount and when category changes
+  // Load posts when category changes
   useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const fetchedPosts = await getPostsByCategory(activeCategory);
-        setPosts(fetchedPosts);
-      } catch (err) {
-        setError('Failed to load blog posts. Please try again later.');
-        console.error('Error loading posts:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadPosts();
+    const fetchedPosts = getPostsByCategory(activeCategory);
+    setPosts(fetchedPosts);
   }, [activeCategory]);
 
   return (
@@ -48,11 +33,9 @@ const Blog = () => {
         <p className="text-xl text-gray-600 mb-8">
           Insights, strategies, and honest conversations about software quality
         </p>
-        {!loading && (
-          <div className="text-sm text-gray-500 font-mono">
-            [ total_posts: {posts.length} ]
-          </div>
-        )}
+        <div className="text-sm text-gray-500 font-mono">
+          [ total_posts: {posts.length} ]
+        </div>
       </section>
 
       {/* Category Filter */}
@@ -81,25 +64,6 @@ const Blog = () => {
 
       {/* Blog Posts Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {loading && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-900"></div>
-            <p className="mt-4 text-gray-600">Loading posts...</p>
-          </div>
-        )}
-
-        {error && (
-          <div className="text-center py-12">
-            <p className="text-red-600 mb-4">{error}</p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="px-4 py-2 bg-indigo-900 text-white rounded-lg hover:bg-indigo-800 transition-colors"
-            >
-              Retry
-            </button>
-          </div>
-        )}
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <article
@@ -148,7 +112,7 @@ const Blog = () => {
         </div>
 
         {/* No posts message */}
-        {!loading && !error && posts.length === 0 && (
+        {posts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">
               No posts found in this category yet. Stay tuned!

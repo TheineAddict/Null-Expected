@@ -7,34 +7,12 @@ import { BlogPost as BlogPostType } from '../types/blog';
 const BlogPost = () => {
   const { slug } = useParams();
   const [post, setPost] = useState<BlogPostType | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadPost = async () => {
-      if (!slug) {
-        setError('No post slug provided');
-        setLoading(false);
-        return;
-      }
-
-      try {
-        setLoading(true);
-        setError(null);
-        const fetchedPost = await getPostBySlug(slug);
-        setPost(fetchedPost);
-        if (!fetchedPost) {
-          setError('Post not found');
-        }
-      } catch (err) {
-        setError('Failed to load blog post. Please try again later.');
-        console.error('Error loading post:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadPost();
+    if (slug) {
+      const fetchedPost = getPostBySlug(slug);
+      setPost(fetchedPost);
+    }
   }, [slug]);
 
   // Get author info based on post author
@@ -54,23 +32,14 @@ const BlogPost = () => {
     return authors[authorName as keyof typeof authors] || authors['Jane Smith'];
   };
 
-  if (loading) {
-    return (
-      <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-900"></div>
-        <p className="mt-4 text-gray-600">Loading post...</p>
-      </div>
-    );
-  }
-
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          {error || 'Post Not Found'}
+          Post Not Found
         </h1>
         <p className="text-gray-600 mb-8">
-          {error || "The blog post you're looking for doesn't exist."}
+          The blog post you're looking for doesn't exist.
         </p>
         <Link to="/blog" className="text-indigo-900 hover:text-purple-800 font-semibold">
           ← Back to Blog
