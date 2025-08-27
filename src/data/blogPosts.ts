@@ -637,6 +637,289 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 6,
+    title: 'The Great Migration: Moving 50,000 Tests from Selenium to Playwright',
+    excerpt: 'A detailed case study of migrating a massive test suite at a Fortune 500 company. What worked, what failed, and lessons learned from 18 months in the trenches.',
+    category: 'Case Studies',
+    readTime: '16 min read',
+    date: '2024-01-18',
+    slug: 'great-migration-selenium-to-playwright',
+    author: 'Alex Davis',
+    content: `
+      <p>When our CTO announced we needed to migrate 50,000 automated tests from Selenium to Playwright within 18 months, the room went silent. This is the story of how we did it—the victories, the failures, and the hard-earned lessons that might save you months of pain.</p>
+
+      <h2>The Challenge</h2>
+      
+      <p>Our test suite had grown organically over 8 years:</p>
+      
+      <ul>
+        <li><strong>50,000+ test cases</strong> across 15 different applications</li>
+        <li><strong>12 QA teams</strong> with varying skill levels and practices</li>
+        <li><strong>4-hour test runs</strong> that failed 30% of the time due to flakiness</li>
+        <li><strong>Legacy infrastructure</strong> running on outdated Selenium Grid</li>
+        <li><strong>Mixed languages</strong>: Java, Python, and JavaScript implementations</li>
+      </ul>
+
+      <blockquote>
+        "We're spending more time fixing tests than writing new ones. Something has to change." - Head of QA
+      </blockquote>
+
+      <p>The business case was clear: reduce test execution time by 60%, improve reliability to 95%+, and standardize on a single framework.</p>
+
+      <h2>Phase 1: Assessment and Planning (Months 1-3)</h2>
+      
+      <h3>The Audit</h3>
+      <p>Before touching a single test, we needed to understand what we had:</p>
+      
+      <ul>
+        <li><strong>Test categorization:</strong> 60% UI tests, 25% API tests, 15% integration tests</li>
+        <li><strong>Flakiness analysis:</strong> 2,000 tests failed intermittently (our "flaky 2K")</li>
+        <li><strong>Execution patterns:</strong> Most teams ran full suites nightly, some on every PR</li>
+        <li><strong>Maintenance burden:</strong> 40% of QA time spent on test maintenance</li>
+      </ul>
+
+      <h3>The Strategy</h3>
+      <p>We decided on a phased approach:</p>
+      
+      <ul>
+        <li><strong>Pilot team:</strong> Start with our most experienced team (500 tests)</li>
+        <li><strong>Framework standardization:</strong> TypeScript + Playwright for all new tests</li>
+        <li><strong>Gradual migration:</strong> 20% of tests per quarter</li>
+        <li><strong>Parallel running:</strong> Run both frameworks during transition</li>
+      </ul>
+
+      <h2>Phase 2: The Pilot (Months 4-6)</h2>
+      
+      <h3>Choosing the Right Team</h3>
+      <p>We selected the payments team because:</p>
+      <ul>
+        <li>High-stakes domain (financial transactions)</li>
+        <li>Experienced QA engineers</li>
+        <li>Well-structured existing tests</li>
+        <li>Supportive product manager</li>
+      </ul>
+
+      <h3>Early Wins and Challenges</h3>
+      
+      <p><strong>What worked immediately:</strong></p>
+      <ul>
+        <li><strong>Speed:</strong> Tests ran 3x faster out of the box</li>
+        <li><strong>Reliability:</strong> Auto-waiting eliminated most timing issues</li>
+        <li><strong>Developer experience:</strong> Better error messages and debugging</li>
+        <li><strong>Cross-browser testing:</strong> Finally worked reliably</li>
+      </ul>
+
+      <p><strong>What was harder than expected:</strong></p>
+      <ul>
+        <li><strong>Page Object Model migration:</strong> Required complete restructuring</li>
+        <li><strong>Custom assertions:</strong> Had to rebuild domain-specific validations</li>
+        <li><strong>Test data management:</strong> Different approach to database seeding</li>
+        <li><strong>CI/CD integration:</strong> New pipeline configurations needed</li>
+      </ul>
+
+      <h2>Phase 3: Scaling Up (Months 7-12)</h2>
+      
+      <h3>The Framework</h3>
+      <p>Based on pilot learnings, we created:</p>
+      <ul>
+        <li><strong>Shared component library:</strong> Reusable page objects and utilities</li>
+        <li><strong>Migration toolkit:</strong> Scripts to convert common Selenium patterns</li>
+        <li><strong>Training program:</strong> 2-week bootcamp for each team</li>
+        <li><strong>Quality gates:</strong> No new Selenium tests after month 6</li>
+      </ul>
+
+      <h3>Team-by-Team Migration</h3>
+      <p>Each team followed a 6-week process:</p>
+      <ol>
+        <li><strong>Week 1-2:</strong> Training and environment setup</li>
+        <li><strong>Week 3-4:</strong> Migrate 20% of critical tests</li>
+        <li><strong>Week 5:</strong> Parallel execution and validation</li>
+        <li><strong>Week 6:</strong> Switch over and retire Selenium tests</li>
+      </ol>
+
+      <h2>The Roadblocks</h2>
+      
+      <h3>Technical Challenges</h3>
+      <ul>
+        <li><strong>Shadow DOM handling:</strong> Some components required complete rewriting</li>
+        <li><strong>File uploads:</strong> Different approach needed for complex file operations</li>
+        <li><strong>Mobile testing:</strong> Device emulation worked differently</li>
+        <li><strong>Third-party integrations:</strong> Payment gateways needed new mocking strategies</li>
+      </ul>
+
+      <h3>Organizational Resistance</h3>
+      <p>Not everyone was on board:</p>
+      <ul>
+        <li><strong>"If it ain't broke...":</strong> Some teams resisted changing working tests</li>
+        <li><strong>Skill gaps:</strong> JavaScript/TypeScript knowledge varied widely</li>
+        <li><strong>Timeline pressure:</strong> Feature deadlines competed with migration work</li>
+        <li><strong>Tool fatigue:</strong> "Another framework to learn" sentiment</li>
+      </ul>
+
+      <h2>Phase 4: The Final Push (Months 13-18)</h2>
+      
+      <h3>Dealing with the Long Tail</h3>
+      <p>The last 20% of tests were the hardest:</p>
+      <ul>
+        <li><strong>Legacy applications:</strong> Some systems were too old to test reliably</li>
+        <li><strong>Complex workflows:</strong> Multi-system integration tests</li>
+        <li><strong>Edge cases:</strong> Tests that worked "by accident" in Selenium</li>
+        <li><strong>Abandoned tests:</strong> Tests that nobody understood anymore</li>
+      </ul>
+
+      <h3>The Nuclear Option</h3>
+      <p>For the final 5,000 tests, we made a controversial decision:</p>
+      <blockquote>
+        "If a test can't be migrated in 4 hours, we delete it and write a new one from scratch."
+      </blockquote>
+      
+      <p>This was painful but necessary. Many tests were:</p>
+      <ul>
+        <li>Testing implementation details, not user behavior</li>
+        <li>Duplicating coverage from other tests</li>
+        <li>So brittle they provided negative value</li>
+      </ul>
+
+      <h2>The Results</h2>
+      
+      <h3>Quantitative Improvements</h3>
+      <ul>
+        <li><strong>Execution time:</strong> 4 hours → 1.5 hours (62% reduction)</li>
+        <li><strong>Reliability:</strong> 70% → 96% pass rate</li>
+        <li><strong>Maintenance time:</strong> 40% → 15% of QA effort</li>
+        <li><strong>Cross-browser coverage:</strong> Chrome only → Chrome, Firefox, Safari</li>
+        <li><strong>Final test count:</strong> 45,000 tests (10% reduction through deduplication)</li>
+      </ul>
+
+      <h3>Qualitative Benefits</h3>
+      <ul>
+        <li><strong>Team confidence:</strong> QA teams trusted their tests again</li>
+        <li><strong>Developer adoption:</strong> Devs started writing their own Playwright tests</li>
+        <li><strong>Faster feedback:</strong> PR checks completed in 20 minutes vs. 2 hours</li>
+        <li><strong>Better debugging:</strong> Trace viewer saved hours of investigation time</li>
+      </ul>
+
+      <h2>Lessons Learned</h2>
+      
+      <h3>What We'd Do Differently</h3>
+      <ul>
+        <li><strong>Start with training:</strong> Invest in comprehensive TypeScript training first</li>
+        <li><strong>Automate migration:</strong> Build better conversion tools earlier</li>
+        <li><strong>Parallel infrastructure:</strong> Run both frameworks longer for confidence</li>
+        <li><strong>Delete more aggressively:</strong> Question every test's value upfront</li>
+      </ul>
+
+      <h3>Success Factors</h3>
+      <ul>
+        <li><strong>Executive support:</strong> CTO championed the initiative</li>
+        <li><strong>Dedicated time:</strong> 20% of sprint capacity allocated to migration</li>
+        <li><strong>Shared ownership:</strong> Each team owned their migration timeline</li>
+        <li><strong>Celebration:</strong> We celebrated each team's completion publicly</li>
+      </ul>
+
+      <h2>The Unexpected Outcomes</h2>
+      
+      <p>Beyond the metrics, we saw changes we didn't anticipate:</p>
+      <ul>
+        <li><strong>QA-Dev collaboration improved:</strong> Shared language around testing</li>
+        <li><strong>Test quality increased:</strong> Teams wrote better tests from scratch</li>
+        <li><strong>Documentation culture emerged:</strong> Teams started documenting test strategies</li>
+        <li><strong>Innovation accelerated:</strong> Faster feedback enabled more experimentation</li>
+      </ul>
+
+      <h2>Cost Analysis</h2>
+      
+      <h3>Investment</h3>
+      <ul>
+        <li><strong>Engineering time:</strong> ~2,000 hours across all teams</li>
+        <li><strong>Training costs:</strong> $50,000 in external training and materials</li>
+        <li><strong>Infrastructure:</strong> $30,000 in additional CI/CD capacity</li>
+        <li><strong>Opportunity cost:</strong> Delayed some feature work by 2-3 weeks per team</li>
+      </ul>
+
+      <h3>Savings (Annual)</h3>
+      <ul>
+        <li><strong>Reduced maintenance:</strong> $200,000 in QA time savings</li>
+        <li><strong>Faster releases:</strong> $150,000 in opportunity cost recovery</li>
+        <li><strong>Infrastructure efficiency:</strong> $40,000 in CI/CD cost reduction</li>
+        <li><strong>Reduced production issues:</strong> $100,000 in incident response</li>
+      </ul>
+
+      <p><strong>ROI:</strong> 6-month payback period, 400% return in year one.</p>
+
+      <h2>Advice for Your Migration</h2>
+      
+      <h3>Before You Start</h3>
+      <ul>
+        <li><strong>Audit ruthlessly:</strong> Understand what you actually have</li>
+        <li><strong>Question everything:</strong> Does this test provide value?</li>
+        <li><strong>Get buy-in:</strong> Ensure leadership understands the investment</li>
+        <li><strong>Plan for parallel running:</strong> You'll need both frameworks for months</li>
+      </ul>
+
+      <h3>During Migration</h3>
+      <ul>
+        <li><strong>Start small:</strong> Prove value with a pilot team</li>
+        <li><strong>Invest in tooling:</strong> Build migration helpers and shared libraries</li>
+        <li><strong>Communicate progress:</strong> Regular updates keep momentum</li>
+        <li><strong>Be flexible:</strong> Adjust timeline based on learnings</li>
+      </ul>
+
+      <h3>Red Flags</h3>
+      <ul>
+        <li><strong>No executive support:</strong> Don't start without it</li>
+        <li><strong>Unrealistic timelines:</strong> This takes longer than you think</li>
+        <li><strong>Skill gaps:</strong> Invest in training before migration</li>
+        <li><strong>All-or-nothing approach:</strong> Gradual migration reduces risk</li>
+      </ul>
+
+      <h2>Final Thoughts</h2>
+      
+      <p>Migrating 50,000 tests was one of the most challenging projects I've led, but also one of the most rewarding. The technical improvements were significant, but the cultural shift was even more valuable.</p>
+
+      <p>Teams that had been defensive about their "working" Selenium tests became advocates for quality and maintainability. The migration forced conversations about test value that we should have been having all along.</p>
+
+      <blockquote>
+        "We didn't just migrate our tests—we migrated our mindset about what good testing looks like."
+      </blockquote>
+      
+      <p>If you're considering a similar migration, my advice is simple: start smaller than you think, plan for longer than you expect, and focus on the people as much as the technology.</p>
+
+      <p>The tests will migrate eventually. The team's confidence and skills are what make the difference between success and failure.</p>
+
+      <h2>Appendix: Migration Checklist</h2>
+      
+      <h3>Pre-Migration</h3>
+      <ul>
+        <li>[ ] Audit existing test suite</li>
+        <li>[ ] Identify pilot team and tests</li>
+        <li>[ ] Set up Playwright infrastructure</li>
+        <li>[ ] Create shared component library</li>
+        <li>[ ] Plan training program</li>
+      </ul>
+
+      <h3>During Migration</h3>
+      <ul>
+        <li>[ ] Run tests in parallel</li>
+        <li>[ ] Monitor reliability metrics</li>
+        <li>[ ] Gather team feedback</li>
+        <li>[ ] Adjust timeline as needed</li>
+        <li>[ ] Celebrate milestones</li>
+      </ul>
+
+      <h3>Post-Migration</h3>
+      <ul>
+        <li>[ ] Retire old infrastructure</li>
+        <li>[ ] Document lessons learned</li>
+        <li>[ ] Measure ROI</li>
+        <li>[ ] Plan next improvements</li>
+        <li>[ ] Share success story</li>
+      </ul>
+      
+      <p><em>Want to discuss your migration strategy? The lessons learned here apply to any large-scale test framework transition, not just Selenium to Playwright.</em></p>
+    `
+  },
+  {
+    id: 7,
     title: 'Building a Quality Culture: Lessons from the Trenches',
     excerpt: 'How to transform quality from a checkpoint to a mindset across your entire organization. Real strategies that actually work.',
     category: 'Quality Mindset',
