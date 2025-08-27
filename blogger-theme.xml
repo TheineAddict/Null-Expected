@@ -854,6 +854,22 @@
     </b:if>
   </main>
 
+  <!-- Required Blogger Section -->
+  <b:section class='main' id='main' maxwidgets='1' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
+      <b:includable id='main'>
+        <b:if cond='data:posts'>
+          <b:loop values='data:posts' var='post'>
+            <div class='post'>
+              <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+              <div class='post-body'><data:post.body/></div>
+            </div>
+          </b:loop>
+        </b:if>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
   <!-- Sidebar Section -->
   <b:section class='sidebar' id='sidebar' preferred='yes' showaddelement='yes'>
     <b:widget id='HTML1' locked='false' title='About' type='HTML'/>
