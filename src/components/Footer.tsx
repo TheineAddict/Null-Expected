@@ -33,12 +33,6 @@ const Footer = () => {
               <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
                 Career Advice
               </Link>
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
-                Industry Trends
-              </Link>
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
-                Tools & Tech
-              </Link>
             </div>
           </div>
 
