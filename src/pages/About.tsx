@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Linkedin } from 'lucide-react';
 
 const About = () => {
@@ -94,7 +95,7 @@ const About = () => {
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="text-center">
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Our individual bios live here, but the Manifesto speaks for what drives us.
+                Our individual bios live here, but the <Link to="/manifesto" className="text-indigo-900 hover:text-purple-800 font-semibold transition-colors" onClick={() => window.scrollTo(0, 0)}>Manifesto</Link> speaks for what drives us.
               </p>
               
               <div className="space-y-4 text-gray-600 leading-relaxed">
