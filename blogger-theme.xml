@@ -620,7 +620,7 @@
         <a expr:href='data:blog.homepageUrl'>Home</a>
         <a href='/p/mission.html'>Mission</a>
         <a href='/p/about.html'>About</a>
-        <a expr:href='data:blog.homepageUrl + "search/label/Blog?max-results=20"'>Blog</a>
+        <a expr:href='data:blog.homepageUrl + "search?max-results=20"'>Blog</a>
       </nav>
     </div>
   </header>
@@ -689,7 +689,7 @@
             <div class='category-icon category-icon-5'>
               <span class='icon-book'>📚</span>
             </div>
-            <h3 class='category-title'>Tools & Tech</h3>
+            <h3 class='category-title'>Tools &amp; Tech</h3>
             <p class='category-description'>Reviews, tutorials, and insights on QA tools and technologies</p>
             <div class='category-counter'>[ 5 of 5 ]</div>
           </div>
@@ -727,7 +727,7 @@
   
   <!-- Blog Widget -->
   <b:section class='main' id='main' maxwidgets='1' showaddelement='no'>
-    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='showDateHeader'>false</b:widget-setting>
         <b:widget-setting name='showShareButtons'>true</b:widget-setting>
