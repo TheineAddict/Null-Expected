@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
