@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 const About = () => {
   return (
@@ -49,13 +49,6 @@ const About = () => {
                   <Linkedin className="h-5 w-5" />
                   <span>LinkedIn</span>
                 </a>
-                <a 
-                  href="#" 
-                  className="flex items-center space-x-2 text-indigo-900 hover:text-purple-800 transition-colors"
-                >
-                  <ExternalLink className="h-5 w-5" />
-                  <span>Portfolio</span>
-                </a>
               </div>
             </div>
           </div>
@@ -91,13 +84,29 @@ const About = () => {
                   <Linkedin className="h-5 w-5" />
                   <span>LinkedIn</span>
                 </a>
-                <a 
-                  href="#" 
-                  className="flex items-center space-x-2 text-indigo-900 hover:text-purple-800 transition-colors"
-                >
-                  <ExternalLink className="h-5 w-5" />
-                  <span>Speaking</span>
-                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Name Explanation Section */}
+        <div className="mt-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="text-center">
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Our individual bios live here, but the Manifesto speaks for what drives us.
+              </p>
+              
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term — where "null" means nothing is returned, and that's the expected result.
+                </p>
+                <p>
+                  But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
+                </p>
+                <p>
+                  The name reminds us that behind every outcome — even silence — there's intent, and quality depends on understanding that.
+                </p>
               </div>
             </div>
           </div>
