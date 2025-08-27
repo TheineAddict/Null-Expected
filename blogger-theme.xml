@@ -10,6 +10,8 @@
   <title><data:view.title.escaped/></title>
   <b:if cond='data:view.isPost'>
     <meta expr:content='data:post.snippet' name='description'/>
+  <b:elseif cond='data:view.isPage and data:page.title == "Our Mission"'/>
+    <meta content='Null Expected is a QA thought hub where practitioners question the status quo and advocate for software that deserves to pass.' name='description'/>
   <b:else/>
     <meta content='A QA thought hub. What did you expect? Insights, strategies, and conversations about software quality from experienced QA professionals.' name='description'/>
   </b:if>
@@ -597,6 +599,250 @@
       margin-bottom: 1rem;
     }
     
+    /* Mission Page Specific Styles */
+    .mission-hero {
+      text-align: center;
+      margin-bottom: 5rem;
+      padding: 2rem 0;
+    }
+    
+    .mission-icon {
+      width: 5rem;
+      height: 5rem;
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 2.5rem;
+    }
+    
+    .mission-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1.5rem;
+    }
+    
+    .mission-subtitle {
+      font-size: 1.25rem;
+      color: #6b7280;
+      line-height: 1.75;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .mission-section {
+      background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+      color: white;
+      padding: 5rem 0;
+      margin: 5rem 0;
+    }
+    
+    .mission-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .mission-content p {
+      font-size: 1.125rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    
+    .mission-list {
+      text-align: left;
+      max-width: 600px;
+      margin: 2rem auto;
+      list-style: none;
+      padding: 0;
+    }
+    
+    .mission-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .mission-list li::before {
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      background: #c7d2fe;
+      border-radius: 50%;
+      margin-top: 0.75rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .mission-quote {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .mission-attribution {
+      color: #c7d2fe;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
+    .what-we-write {
+      padding: 5rem 0;
+    }
+    
+    .what-we-write h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .what-we-write-intro {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+    
+    .what-we-write-intro p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .write-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .write-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .write-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .write-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: white;
+    }
+    
+    .write-icon-1 { background: linear-gradient(135deg, #6366f1, #7c3aed); }
+    .write-icon-2 { background: linear-gradient(135deg, #7c3aed, #ec4899); }
+    .write-icon-3 { background: linear-gradient(135deg, #3730a3, #2563eb); }
+    .write-icon-4 { background: linear-gradient(135deg, #2563eb, #6366f1); }
+    .write-icon-5 { background: linear-gradient(135deg, #7c3aed, #6366f1); }
+    
+    .write-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.75rem;
+    }
+    
+    .write-description {
+      color: #6b7280;
+      font-style: italic;
+    }
+    
+    .why-section {
+      padding: 5rem 0;
+      background: #f9fafb;
+    }
+    
+    .why-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .why-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    
+    .why-content p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    
+    .voices-section {
+      padding: 5rem 0;
+    }
+    
+    .voices-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .voices-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    
+    .voices-content p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    
+    .voices-content .emphasis {
+      font-weight: 600;
+      color: #111827;
+    }
+    
+    .voices-icon {
+      height: 3rem;
+      width: 3rem;
+      color: #1e1b4b;
+      margin: 0 auto 2rem;
+      opacity: 0.2;
+    }
+    
     .post-meta {
       display: flex;
       justify-content: center;
@@ -634,7 +880,7 @@
       </a>
       <nav class='nav-links'>
         <a expr:href='data:blog.homepageUrl'>Home</a>
-        <a href='/p/mission.html'>Mission</a>
+        <a href='/p/our-mission.html'>Mission</a>
         <a href='/p/about.html'>About</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
       </nav>
@@ -715,6 +961,121 @@
   </b:if>
 
   <!-- Main Content -->
+  <b:if cond='data:view.isPage and data:page.title == "Our Mission"'>
+    <div class='main-content'>
+      <!-- Mission Hero -->
+      <div class='mission-hero'>
+        <div class='mission-icon'>🎯</div>
+        <h1 class='mission-title'>Our Mission</h1>
+        <p class='mission-subtitle'>
+          Null Expected is a QA thought hub. It's where practitioners question the status quo, 
+          unpack the trade-offs of "done," and advocate for software that doesn't just pass, but deserves to.
+        </p>
+      </div>
+      
+      <!-- Why We Exist -->
+      <div class='mission-section'>
+        <div class='mission-content'>
+          <h2>Why We Exist</h2>
+          <p>
+            We built this space because too much QA content either simplifies the role 
+            ("just write test cases") or drowns it in tools and jargon. We wanted somewhere that:
+          </p>
+          <ul class='mission-list'>
+            <li>Highlights the thinking behind quality</li>
+            <li>Balances process with perspective</li>
+            <li>Reflects the real-world messiness of testing in modern teams</li>
+          </ul>
+          <div class='mission-quote'>
+            "Quality is a mindset, not a metric."
+          </div>
+          <div class='mission-attribution'>
+            — Null Expected
+          </div>
+        </div>
+      </div>
+      
+      <!-- What We Write About -->
+      <div class='what-we-write'>
+        <h2>What We Write About</h2>
+        <div class='what-we-write-intro'>
+          <p>This isn't a tutorials site — though you will find actionable advice.</p>
+          <p>This isn't just opinion — though you will find strong ones.</p>
+        </div>
+        
+        <div class='write-grid'>
+          <div class='write-card'>
+            <div class='write-icon write-icon-1'>🎯</div>
+            <h3 class='write-title'>QA methodologies</h3>
+            <p class='write-description'>that evolve with teams</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-2'>👥</div>
+            <h3 class='write-title'>Philosophy and mindset pieces</h3>
+            <p class='write-description'>on the role of QA</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-3'>📈</div>
+            <h3 class='write-title'>Career reflections</h3>
+            <p class='write-description'>from the trenches and leadership</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-4'>👁️</div>
+            <h3 class='write-title'>Trends and industry insights</h3>
+            <p class='write-description'>filtered through a quality lens</p>
+          </div>
+          
+          <div class='write-card'>
+            <div class='write-icon write-icon-5'>📚</div>
+            <h3 class='write-title'>Occasional tool reviews</h3>
+            <p class='write-description'>always process-first</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Why Null Expected -->
+      <div class='why-section'>
+        <div class='why-content'>
+          <h2>Why Null Expected?</h2>
+          <p>
+            Because QA is the only discipline that celebrates a null result — when things 
+            don't crash, don't regress, don't surprise us.
+          </p>
+          <p>
+            But we also know that behind every "null" there's an expectation, a person, and a decision.
+          </p>
+        </div>
+      </div>
+      
+      <!-- About the Voices -->
+      <div class='voices-section'>
+        <div class='voices-content'>
+          <div class='voices-icon'>⚡</div>
+          <h2>A Note on the Voices Behind the Site</h2>
+          <p>
+            While the blog is shaped by QA professionals with different experiences, 
+            this is not a personal blog. Our bios live elsewhere. What matters here 
+            is the thinking, not the résumé.
+          </p>
+          <p>
+            That said — we're practitioners. This site is our way of giving back, 
+            challenging forward, and documenting what it means to build for quality, 
+            not just test it.
+          </p>
+          <p class='emphasis'>
+            We write from experience — and we edit each other ruthlessly.
+          </p>
+          <div class='category-counter'>
+            [ practitioners_first = true ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </b:if>
+  
   <b:if cond='data:view.isHomepage'>
     <div class='main-content'>
       <div id='blog-posts'>
@@ -833,7 +1194,7 @@
       <p class='footer-description'>A QA thought hub. What did you expect?</p>
       <div class='footer-links'>
         <a expr:href='data:blog.homepageUrl'>Home</a>
-        <a href='/p/mission.html'>Mission</a>
+        <a href='/p/our-mission.html'>Mission</a>
         <a href='/p/about.html'>About</a>
         <a expr:href='data:blog.homepageUrl'>Blog</a>
       </div>

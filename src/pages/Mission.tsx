@@ -1,31 +1,37 @@
 import React from 'react';
-import { Search, Users, Lightbulb, TrendingUp, Target, Zap } from 'lucide-react';
+import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye } from 'lucide-react';
 
 const Mission = () => {
-  const values = [
+  const whatWeWrite = [
     {
-      title: 'Curiosity',
-      description: 'We ask the questions others might miss, diving deep into the "why" behind quality practices.',
-      icon: Search,
+      title: 'QA methodologies',
+      description: 'that evolve with teams',
+      icon: Target,
       color: 'from-indigo-500 to-purple-600'
     },
     {
-      title: 'Collaboration',
-      description: 'Quality is a team sport. We believe in sharing knowledge, learning together, and growing as a community.',
+      title: 'Philosophy and mindset pieces',
+      description: 'on the role of QA',
       icon: Users,
       color: 'from-purple-500 to-pink-600'
     },
     {
-      title: 'Clarity',
-      description: 'Complex ideas made simple. We break down intricate QA concepts into actionable insights.',
-      icon: Lightbulb,
+      title: 'Career reflections',
+      description: 'from the trenches and leadership',
+      icon: TrendingUp,
       color: 'from-indigo-600 to-blue-600'
     },
     {
-      title: 'Continuous Improvement',
-      description: 'Just like the software we test, we\'re always iterating, learning, and evolving our approach.',
-      icon: TrendingUp,
+      title: 'Trends and industry insights',
+      description: 'filtered through a quality lens',
+      icon: Eye,
       color: 'from-blue-500 to-indigo-600'
+    },
+    {
+      title: 'Occasional tool reviews',
+      description: 'always process-first',
+      icon: BookOpen,
+      color: 'from-purple-600 to-indigo-600'
     }
   ];
 
@@ -41,8 +47,8 @@ const Mission = () => {
             Our Mission
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            We exist to elevate the conversation around quality assurance, 
-            one thoughtful post at a time.
+            Null Expected is a QA thought hub. It's where practitioners question the status quo, 
+            unpack the trade-offs of "done," and advocate for software that doesn't just pass, but deserves to.
           </p>
         </div>
       </section>
@@ -52,72 +58,115 @@ const Mission = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Why Null:Expected Exists
+              Why We Exist
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
-                In a world where software quality often feels like an afterthought, 
-                we believe it deserves to be front and center. Quality isn't just about 
-                finding bugs—it's about understanding systems, advocating for users, 
-                and driving continuous improvement.
+                We built this space because too much QA content either simplifies the role 
+                ("just write test cases") or drowns it in tools and jargon. We wanted somewhere that:
               </p>
-              <p>
-                We're here to challenge assumptions, share hard-won insights, and 
-                foster a community where QA professionals can grow, learn, and push 
-                the boundaries of what quality means in software development.
-              </p>
-              <div className="inline-flex items-center space-x-4 mt-8 text-indigo-200 font-mono text-sm">
-                <span className="px-3 py-1 bg-white/20 rounded-full">[ curiosity ]</span>
-                <span className="px-3 py-1 bg-white/20 rounded-full">[ quality ]</span>
-                <span className="px-3 py-1 bg-white/20 rounded-full">[ growth ]</span>
+              <ul className="text-left max-w-2xl mx-auto space-y-3">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
+                  <span>Highlights the thinking behind quality</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
+                  <span>Balances process with perspective</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
+                  <span>Reflects the real-world messiness of testing in modern teams</span>
+                </li>
+              </ul>
+              <div className="pt-8">
+                <blockquote className="text-2xl font-light italic">
+                  "Quality is a mindset, not a metric."
+                </blockquote>
+                <div className="text-indigo-300 font-mono text-sm mt-4">
+                  — Null Expected
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* What We Write About */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Core Values
+            What We Write About
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            These principles guide everything we write, discuss, and explore
-          </p>
+          <div className="max-w-3xl mx-auto space-y-4 text-lg text-gray-600">
+            <p>This isn't a tutorials site — though you will find actionable advice.</p>
+            <p>This isn't just opinion — though you will find strong ones.</p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {values.map((value, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {whatWeWrite.map((item, index) => (
             <div
-              key={value.title}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              key={item.title}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              <div className="flex items-start space-x-6">
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${value.color} flex items-center justify-center flex-shrink-0`}>
-                  <value.icon className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                </div>
+              <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center mb-6`}>
+                <item.icon className="h-8 w-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+              <p className="text-gray-600 italic">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="py-20 bg-gray-50 mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="relative">
-            <Zap className="h-12 w-12 text-indigo-900 mx-auto mb-8 opacity-20" />
-            <blockquote className="text-2xl md:text-3xl font-light text-gray-900 leading-relaxed mb-8">
-              "Quality is not an act, it's a habit. We're here to help you build 
-              better habits, one insight at a time."
-            </blockquote>
-            <div className="text-sm text-gray-500 font-mono">
-              [ always_in_beta = true ]
+      {/* Why Null Expected */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              Why Null Expected?
+            </h2>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p>
+                Because QA is the only discipline that celebrates a null result — when things 
+                don't crash, don't regress, don't surprise us.
+              </p>
+              <p>
+                But we also know that behind every "null" there's an expectation, a person, and a decision.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Voices */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="relative mb-8">
+              <Zap className="h-12 w-12 text-indigo-900 mx-auto mb-8 opacity-20" />
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                A Note on the Voices Behind the Site
+              </h2>
+            </div>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p>
+                While the blog is shaped by QA professionals with different experiences, 
+                this is not a personal blog. Our bios live elsewhere. What matters here 
+                is the thinking, not the résumé.
+              </p>
+              <p>
+                That said — we're practitioners. This site is our way of giving back, 
+                challenging forward, and documenting what it means to build for quality, 
+                not just test it.
+              </p>
+              <p className="font-semibold text-gray-900">
+                We write from experience — and we edit each other ruthlessly.
+              </p>
+              <div className="text-sm text-gray-500 font-mono mt-8">
+                [ practitioners_first = true ]
+              </div>
             </div>
           </div>
         </div>
