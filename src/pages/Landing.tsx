@@ -38,7 +38,7 @@ const Landing = () => {
     {
       title: 'Case Studies',
       description: 'Practical examples, lessons learned, and QA stories from the field',
-      icon: BookOpen,
+      icon: Settings,
       color: 'from-indigo-800 to-purple-900'
     }
   ];
