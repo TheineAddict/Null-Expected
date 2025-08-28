@@ -54,7 +54,7 @@ const Landing = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
         {/* Circuit Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -74,15 +74,15 @@ const Landing = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
               <span className="bg-gradient-to-r from-indigo-900 to-purple-800 bg-clip-text text-transparent">
                 Null:Expected
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 md:mb-8 font-light">
               A QA thought hub. What did you expect?
             </p>
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 mb-12">
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ quality ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ growth ]</span>
@@ -91,7 +91,7 @@ const Landing = () => {
 
           <Link
             to="/blog"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
             onClick={() => window.scrollTo(0, 0)}
           >
             Explore the Hub
@@ -101,18 +101,51 @@ const Landing = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Explore Quality Insights
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Dive into curated content across different aspects of quality assurance and professional growth
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Mobile: Show only 3 categories initially with "View More" */}
+          <div className="md:hidden">
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {categories.slice(0, 3).map((category, index) => (
+                <div
+                  key={category.title}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
+                      <category.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">{category.title}</h3>
+                      <p className="text-gray-600 text-sm">{category.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link
+                to="/blog"
+                className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                View All Categories
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Desktop: Show all categories in grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <div
                 key={category.title}
@@ -133,42 +166,44 @@ const Landing = () => {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Featured Insights
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600">
               Latest thoughts from the QA community
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {featuredPosts.map((post, index) => (
               <article
                 key={post.title}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
               >
-                <div className="p-8">
+                <div className="p-6 md:p-8 h-full flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
                       {post.category}
                     </span>
-                    <span className="text-sm text-gray-500">{post.readTime}</span>
+                    <span className="text-xs sm:text-sm text-gray-500">{post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 mb-6">{post.excerpt}</p>
-                  <Link
-                    to="/blog"
-                    className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    Read Article
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
+                  <div className="mt-auto">
+                    <Link
+                      to="/blog"
+                      className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors text-sm sm:text-base"
+                      onClick={() => window.scrollTo(0, 0)}
+                    >
+                      Read Article
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -177,17 +212,17 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
+      <section className="py-12 md:py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
             Follow the breadcrumbs
           </h2>
-          <p className="text-xl text-indigo-200 mb-8">
+          <p className="text-lg sm:text-xl text-indigo-200 mb-6 md:mb-8">
             Explore articles, rants, and real-world QA strategy in practice.
           </p>
           <Link
             to="/blog"
-            className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg text-sm sm:text-base"
             onClick={() => window.scrollTo(0, 0)}
           >
             Browse All Posts
