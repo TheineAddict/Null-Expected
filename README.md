@@ -32,6 +32,12 @@ To prevent accidental publishing of unfinished posts:
 - Push the renamed file to GitHub
 - The post becomes live automatically
 
+### **Featured Posts**
+To make a post appear in the "Featured Insights" section on the homepage:
+- Add `"featured"` to the tags array in frontmatter
+- Example: `tags: ["featured", "automation", "strategy"]`
+- Only posts tagged with "featured" will appear in this section
+
 ### 2. Add Frontmatter and Content
 
 Structure your markdown file with frontmatter at the top:
@@ -100,6 +106,7 @@ function example() {
 - **title**: The post title (displayed as H1)
 - **excerpt**: Brief summary for blog listing and SEO
 - **category**: Choose from: 'QA Processes', 'Quality Mindset', 'Career Advice', 'Industry Trends', 'Tools & Tech', 'Case Studies'
+- **tags**: Array of tags for filtering and featuring (e.g., `["featured", "automation", "strategy"]`)
 - **author**: Choose from: 'Jane Smith' or 'Alex Davis'
 - **date**: Publication date in YYYY-MM-DD format
 - **readTime**: Estimated reading time (e.g., "10 min read")

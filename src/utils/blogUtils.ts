@@ -23,7 +23,13 @@ function parseFrontmatter(content: string) {
     const colonIndex = line.indexOf(':');
     if (colonIndex > 0) {
       const key = line.substring(0, colonIndex).trim();
-      const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, '');
+      let value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, '');
+      
+      // Handle arrays (tags)
+      if (value.startsWith('[') && value.endsWith(']')) {
+        value = value.slice(1, -1); // Remove brackets
+      }
+      
       frontmatter[key] = value;
     }
   });
@@ -167,4 +173,17 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getLatestPosts(count: number = 3): BlogPost[] {
   const posts = loadBlogPosts();
   return posts.slice(0, count);
+}
+
+// Get posts by tag
+export function getPostsByTag(tag: string): BlogPost[] {
+  const posts = loadBlogPosts();
+  return posts.filter(post => post.tags && post.tags.includes(tag));
+}
+
+// Get featured posts
+export function getFeaturedPosts(count: number = 3): BlogPost[] {
+  const posts = loadBlogPosts();
+  const featuredPosts = posts.filter(post => post.tags && post.tags.includes('featured'));
+  return featuredPosts.slice(0, count);
 }

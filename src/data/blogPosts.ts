@@ -5,5 +5,7 @@ export {
   loadBlogPosts as getBlogPosts,
   getPostsByCategory,
   getPostBySlug,
-  getLatestPosts
+  getLatestPosts,
+  getPostsByTag,
+  getFeaturedPosts
 } from '../utils/blogUtils';

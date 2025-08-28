@@ -150,7 +150,7 @@ const Landing = () => {
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <Link
-                to={`/blog?category=${encodeURIComponent(category.title)}`}
+                to="/blog"
                 key={category.title}
                 className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
                 onClick={() => window.scrollTo(0, 0)}

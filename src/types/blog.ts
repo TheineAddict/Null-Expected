@@ -3,6 +3,7 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   category: 'QA Processes' | 'Quality Mindset' | 'Career Advice' | 'Industry Trends' | 'Tools & Tech' | 'Case Studies';
+  tags?: string[];
   readTime: string;
   date: string;
   slug: string;

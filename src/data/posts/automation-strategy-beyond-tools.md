@@ -2,6 +2,7 @@
 title: "Automation Strategy: Beyond the Tools"
 excerpt: "Everyone talks about which automation framework to use. Almost no one talks about whether you should automate that test at all."
 category: "QA Processes"
+tags: ["automation", "strategy", "tools", "process-improvement"]
 author: "Alex Davis"
 date: "2024-01-15"
 readTime: "12 min read"
