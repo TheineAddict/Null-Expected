@@ -131,6 +131,44 @@ function example() {
 - **Mobile First**: Responsive design for all devices
 - **Accessibility**: WCAG compliant with proper contrast and navigation
 
+## 🔧 Required Setup Steps:**
+
+### **1. Connect GitHub to Netlify:**
+1. Go to [Netlify Dashboard](https://app.netlify.com/)
+2. Find your project (`nullexpected.com`)
+3. Go to **Project Settings** → **Build & Deploy**
+4. Under **Continuous Deployment**, click **Link to Git repository**
+5. Connect to your GitHub repository
+
+### **2. Configure Build Settings:**
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
+- **Branch**: `main` (or `master`)
+
+### **3. Environment Variables (if needed):**
+If you have any environment variables, add them in:
+- **Project Settings** → **Environment Variables**
+
+## **🚀 Alternative: Direct Netlify Integration**
+
+If the GitHub Actions approach is causing issues, you can use Netlify's built-in GitHub integration:
+
+1. **Disable GitHub Actions** (comment out the workflow)
+2. **Enable Netlify's auto-deploy** from GitHub
+3. **Every push to main** will automatically trigger a build and deploy
+
+## **🔍 Troubleshooting Steps:**
+
+### **Check Current Status:**
+1. Go to your Netlify dashboard
+2. Check the **Deploys** tab
+3. Look for recent deploy attempts and any error messages
+
+### **Verify Repository Connection:**
+1. In Netlify, go to **Project Settings** → **Build & Deploy**
+2. Confirm it shows your GitHub repository
+3. Check that the branch is correct (`main` or `master`)
+
 ### Frontmatter Fields
 
 - **title**: The post title (displayed as H1)
