@@ -20,6 +20,12 @@ function parseFrontmatter(content: string) {
   
   // Parse YAML-like frontmatter
   frontmatterStr.split('\n').forEach(line => {
+    // Remove comments (everything after #)
+    const commentIndex = line.indexOf('#');
+    if (commentIndex > 0) {
+      line = line.substring(0, commentIndex).trim();
+    }
+    
     const colonIndex = line.indexOf(':');
     if (colonIndex > 0) {
       const key = line.substring(0, colonIndex).trim();
@@ -29,7 +35,7 @@ function parseFrontmatter(content: string) {
       if (value.startsWith('[') && value.endsWith(']')) {
         // Parse array values
         const arrayContent = value.slice(1, -1);
-        const arrayValues = arrayContent.split(',').map(item => item.trim().replace(/^["']|["']$/g, ''));
+        const arrayValues = arrayContent.split(',').map(item => item.trim().replace(/^["']|["']$/g, '')).filter(item => item.length > 0);
         frontmatter[key] = arrayValues;
         return;
       }
@@ -132,13 +138,14 @@ export function loadBlogPosts(): BlogPost[] {
   Object.entries(postModules).forEach(([path, content]) => {
     try {
       const filename = path.split('/').pop()?.replace('.md', '') || '';
-      
+      console.log(`Processing file: ${filename}`);
       // Skip template files and invalid filenames
       if (filename.includes('your-post-title') || 
           filename.includes('template') || 
           filename.includes('example') ||
           filename.startsWith('_') ||
-          filename.startsWith('draft-')) {
+          filename.startsWith('draft-') ||
+          filename === 'a-test') {
         console.log(`Skipping template/example file: ${filename}`);
         return;
       }
@@ -150,12 +157,13 @@ export function loadBlogPosts(): BlogPost[] {
       }
       
       const { frontmatter, content: markdownContent } = parseFrontmatter(content as string);
-      
+      console.log(`Parsed frontmatter for ${filename}:`, frontmatter);
       // Additional validation - skip if slug contains template indicators
       if (frontmatter.slug && (
           frontmatter.slug.includes('your-blog-post') || 
           frontmatter.slug.includes('template') ||
-          frontmatter.slug.includes('example'))) {
+          frontmatter.slug.includes('example') ||
+          frontmatter.slug === 'a-test')) {
         console.log(`Skipping template post with slug: ${frontmatter.slug}`);
         return;
       }
