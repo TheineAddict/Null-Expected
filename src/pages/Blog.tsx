@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { getPostsByCategory } from '../data/blogPosts';
+import { loadBlogPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   const categories = [
@@ -31,8 +32,38 @@ const Blog = () => {
 
   // Load posts when category changes
   useEffect(() => {
-    const fetchedPosts = getPostsByCategory(activeCategory);
-    setPosts(fetchedPosts);
+    const loadPosts = async () => {
+      setLoading(true);
+      try {
+        const allPosts = await loadBlogPosts();
+        
+        let filteredPosts = allPosts;
+        if (activeCategory !== 'All') {
+          // Map display category back to tag
+          const categoryToTagMap: Record<string, string> = {
+            'QA Processes': 'qa-processes',
+            'Quality Mindset': 'quality-mindset',
+            'Career Advice': 'career-advice',
+            'Industry Trends': 'industry-trends',
+            'Tools & Tech': 'tools-tech',
+            'Case Studies': 'case-studies'
+          };
+          
+          const tagToFind = categoryToTagMap[activeCategory];
+          if (tagToFind) {
+            filteredPosts = allPosts.filter(post => post.tags.includes(tagToFind));
+          }
+        }
+        
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.error('Failed to load posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPosts();
   }, [activeCategory]);
 
   return (
@@ -76,6 +107,11 @@ const Blog = () => {
 
       {/* Blog Posts Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">Loading posts...</p>
+          </div>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <article
@@ -122,9 +158,10 @@ const Blog = () => {
             </article>
           ))}
         </div>
+        )}
 
         {/* No posts message */}
-        {posts.length === 0 && (
+        {!loading && posts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">
               No posts found in this category yet. Stay tuned!

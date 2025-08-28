@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
-import { getLatestPosts } from '../data/blogPosts';
+import { loadBlogPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    const posts = getLatestPosts(3);
-    setFeaturedPosts(posts);
+    const loadPosts = async () => {
+      try {
+        const allPosts = await loadBlogPosts();
+        const featuredPosts = allPosts.filter(post => post.tags && post.tags.includes('featured'));
+        setFeaturedPosts(featuredPosts.slice(0, 3));
+      } catch (error) {
+        console.error('Failed to load featured posts:', error);
+      }
+    };
+
+    loadPosts();
   }, []);
 
   const categories = [

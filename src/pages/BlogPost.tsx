@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
-import { getPostBySlug } from '../data/blogPosts';
+import { loadBlogPosts } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
 
 const BlogPost = () => {
   const { slug } = useParams();
   const [post, setPost] = useState<BlogPostType | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (slug) {
-      const fetchedPost = getPostBySlug(slug);
-      setPost(fetchedPost);
-    }
+    const loadPost = async () => {
+      if (slug) {
+        setLoading(true);
+        try {
+          const allPosts = await loadBlogPosts();
+          const foundPost = allPosts.find(post => post.slug === slug);
+          setPost(foundPost);
+        } catch (error) {
+          console.error('Failed to load blog post:', error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadPost();
   }, [slug]);
 
   // Get author info based on post author
@@ -31,6 +44,14 @@ const BlogPost = () => {
     };
     return authors[authorName as keyof typeof authors] || authors['Jane Smith'];
   };
+
+  if (loading) {
+    return (
+      <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-gray-600">Loading post...</p>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
