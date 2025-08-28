@@ -101,6 +101,15 @@ export function loadBlogPosts(): BlogPost[] {
     try {
       const filename = path.split('/').pop()?.replace('.md', '') || '';
       
+      // Skip template files and invalid filenames
+      if (filename.includes('your-post-title') || 
+          filename.includes('template') || 
+          filename.includes('example') ||
+          filename.startsWith('_')) {
+        console.log(`Skipping template/example file: ${filename}`);
+        return;
+      }
+      
       // Skip empty or invalid files
       if (!content || typeof content !== 'string' || content.trim().length === 0) {
         console.warn(`Skipping empty or invalid file: ${path}`);
@@ -108,6 +117,15 @@ export function loadBlogPosts(): BlogPost[] {
       }
       
       const { frontmatter, content: markdownContent } = parseFrontmatter(content as string);
+      
+      // Additional validation - skip if slug contains template indicators
+      if (frontmatter.slug && (
+          frontmatter.slug.includes('your-blog-post') || 
+          frontmatter.slug.includes('template') ||
+          frontmatter.slug.includes('example'))) {
+        console.log(`Skipping template post with slug: ${frontmatter.slug}`);
+        return;
+      }
       
       const post: BlogPost = {
         id: generateId(filename),
