@@ -12,17 +12,21 @@ npm run dev
 
 ### 1. Create a New Markdown File
 
-Create a new `.md` file in the `src/data/posts/` directory:
+**Copy the template file** to get started:
 
+1. Copy `src/data/posts/_template-your-post-title.md`
+2. Rename it to your desired filename in the same directory:
 ```
-src/data/posts/your-post-title.md
+src/data/posts/draft-your-post-title.md
 ```
+
+**Important:** Start with `draft-` to keep it private while you work on it.
 
 ### 🚨 Draft Posts Safety Feature
 
 To prevent accidental publishing of unfinished posts:
 
-**Draft Posts:** Name your file starting with `draft-` (e.g., `draft-my-new-post.md`)
+**Draft Posts:** Always start with `draft-` when creating new posts (e.g., `draft-my-new-post.md`)
 - ✅ **Safe**: Draft posts are completely invisible on the website
 - ✅ **Local Testing**: You can still test drafts locally with `npm run dev`
 - ✅ **No Accidents**: Even if you push to GitHub, drafts won't appear live
@@ -32,6 +36,11 @@ To prevent accidental publishing of unfinished posts:
 - Push the renamed file to GitHub
 - The post becomes live automatically
 
+### **Template File**
+- Use `_template-your-post-title.md` as your starting point
+- This file is invisible on the website (starts with `_`)
+- Copy it and rename to `draft-your-new-post.md` to begin writing
+
 ### **Featured Posts**
 To make a post appear in the "Featured Insights" section on the homepage:
 - Add `"featured"` to the tags array in frontmatter
@@ -40,13 +49,14 @@ To make a post appear in the "Featured Insights" section on the homepage:
 
 ### 2. Add Frontmatter and Content
 
-Structure your markdown file with frontmatter at the top:
+The template file already has the correct structure, but here's what each field means:
 
 ```typescript
 ---
 title: "Your Blog Post Title"
 excerpt: "A brief summary of your post that appears on the blog listing page."
 category: "QA Processes"
+tags: ["featured", "automation", "strategy"]
 author: "Jane Smith"
 date: "2024-01-25"
 readTime: "10 min read"
@@ -74,6 +84,15 @@ function example() {
 }
 ```
 ```
+
+## 📝 Quick Start Process
+
+1. **Copy template**: `_template-your-post-title.md` → `draft-your-new-post.md`
+2. **Edit content**: Update frontmatter and write your post
+3. **Test locally**: `npm run dev` to preview
+4. **Publish**: Rename to remove `draft-` prefix
+5. **Push to GitHub**: `git add . && git commit -m "Add new post" && git push`
+6. **Goes live**: Automatically deployed in 2-3 minutes
 
 ## 📋 Content Guidelines
 
