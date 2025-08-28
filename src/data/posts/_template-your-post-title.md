@@ -2,7 +2,7 @@
 title: "Your Blog Post Title Here"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
 category: "QA Processes"
-tags: ["featured", "your-tags-here"]
+tags: ["featured", "qa-processes"]  # Recommended: qa-processes, quality-mindset, career-advice, industry-trends, tools-tech, case-studies
 author: "Jane Smith"
 date: "2024-01-28"
 readTime: "8 min read"
