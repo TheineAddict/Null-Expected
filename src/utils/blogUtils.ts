@@ -20,10 +20,14 @@ function parseFrontmatter(content: string) {
   
   // Parse YAML-like frontmatter
   frontmatterStr.split('\n').forEach(line => {
-    // Remove comments (everything after #)
+    // Remove comments (everything after # but be more careful with complex comments)
     const commentIndex = line.indexOf('#');
-    if (commentIndex > 0) {
+    if (commentIndex > 0 && line.substring(0, commentIndex).includes(':')) {
+      // Only remove comment if there's actual YAML content before it
       line = line.substring(0, commentIndex).trim();
+    } else if (commentIndex === 0) {
+      // Skip lines that are entirely comments
+      return;
     }
     
     const colonIndex = line.indexOf(':');
