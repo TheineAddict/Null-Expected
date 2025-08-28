@@ -105,7 +105,8 @@ export function loadBlogPosts(): BlogPost[] {
       if (filename.includes('your-post-title') || 
           filename.includes('template') || 
           filename.includes('example') ||
-          filename.startsWith('_')) {
+          filename.startsWith('_') ||
+          filename.startsWith('draft-')) {
         console.log(`Skipping template/example file: ${filename}`);
         return;
       }

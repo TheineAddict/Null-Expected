@@ -18,6 +18,20 @@ Create a new `.md` file in the `src/data/posts/` directory:
 src/data/posts/your-post-title.md
 ```
 
+### 🚨 Draft Posts Safety Feature
+
+To prevent accidental publishing of unfinished posts:
+
+**Draft Posts:** Name your file starting with `draft-` (e.g., `draft-my-new-post.md`)
+- ✅ **Safe**: Draft posts are completely invisible on the website
+- ✅ **Local Testing**: You can still test drafts locally with `npm run dev`
+- ✅ **No Accidents**: Even if you push to GitHub, drafts won't appear live
+
+**Publishing:** When ready to publish, rename the file to remove `draft-`
+- `draft-my-new-post.md` → `my-new-post.md`
+- Push the renamed file to GitHub
+- The post becomes live automatically
+
 ### 2. Add Frontmatter and Content
 
 Structure your markdown file with frontmatter at the top:
