@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
-import { loadBlogPosts } from '../utils/blogUtils';
+import { loadBlogPosts, getPostBySlug } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
 
 const BlogPost = () => {
@@ -14,8 +14,11 @@ const BlogPost = () => {
       if (slug) {
         setLoading(true);
         try {
+          console.log('Loading post with slug:', slug);
           const allPosts = await loadBlogPosts();
-          const foundPost = allPosts.find(post => post.slug === slug);
+          console.log('All posts loaded for single post:', allPosts.length);
+          const foundPost = getPostBySlug(allPosts, slug);
+          console.log('Found post:', foundPost ? foundPost.title : 'Not found');
           setPost(foundPost);
         } catch (error) {
           console.error('Failed to load blog post:', error);

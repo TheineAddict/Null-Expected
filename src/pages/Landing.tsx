@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
-import { loadBlogPosts } from '../utils/blogUtils';
+import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadPosts = async () => {
+      setLoading(true);
       try {
+        console.log('Loading posts for homepage...');
         const allPosts = await loadBlogPosts();
-        const featuredPosts = allPosts.filter(post => post.tags && post.tags.includes('featured'));
-        setFeaturedPosts(featuredPosts.slice(0, 3));
+        console.log('All posts loaded:', allPosts.length);
+        const featured = getFeaturedPosts(allPosts, 3);
+        console.log('Featured posts:', featured.length);
+        setFeaturedPosts(featured);
       } catch (error) {
         console.error('Failed to load featured posts:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -191,7 +198,15 @@ const Landing = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {featuredPosts.map((post, index) => (
+            {loading ? (
+              <div className="col-span-full text-center py-8">
+                <p className="text-gray-500">Loading featured posts...</p>
+                <div className="text-sm text-gray-400 font-mono mt-2">
+                  [ loading_featured = true ]
+                </div>
+              </div>
+            ) : featuredPosts.length > 0 ? (
+              featuredPosts.map((post, index) => (
               <article
                 key={post.title}
                 className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
@@ -219,7 +234,15 @@ const Landing = () => {
                   </div>
                 </div>
               </article>
-            ))}
+              ))
+            ) : (
+              <div className="col-span-full text-center py-8">
+                <p className="text-gray-500">No featured posts available yet.</p>
+                <div className="text-sm text-gray-400 font-mono mt-2">
+                  [ featured_posts = 0 ]
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

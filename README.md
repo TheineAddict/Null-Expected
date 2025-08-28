@@ -105,6 +105,27 @@ function example() {
 5. **Push to GitHub**: `git add . && git commit -m "Add new post" && git push`
 6. **Goes live**: Automatically deployed in 2-3 minutes
 
+## 🔧 System Architecture
+
+### **Dynamic File Loading**
+- Posts are loaded dynamically at runtime using `import.meta.glob()`
+- New `.md` files are automatically discovered without rebuilds
+- Robust frontmatter parsing handles various comment styles
+- Comprehensive error handling prevents parsing failures
+
+### **File Filtering Rules**
+Files are automatically skipped if they:
+- Start with `_` (template files)
+- Start with `draft-` (draft posts)
+- Contain `template`, `example`, or `your-post-title` in filename or slug
+- Have invalid or missing frontmatter
+
+### **Category System**
+- Categories are determined by the first tag in the `tags` array
+- Supported categories: `qa-processes`, `quality-mindset`, `career-advice`, `industry-trends`, `tools-tech`, `case-studies`
+- Posts without category tags default to "QA Processes"
+- Featured posts require the `"featured"` tag
+
 ## 📋 Content Guidelines
 
 - **Markdown Format**: Write in standard Markdown (automatically converted to HTML)

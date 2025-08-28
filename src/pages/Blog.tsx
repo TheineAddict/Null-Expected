@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { loadBlogPosts } from '../utils/blogUtils';
+import { loadBlogPosts, getPostsByCategory } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
@@ -30,32 +31,15 @@ const Blog = () => {
     }
   }, [location.search]);
 
-  // Load posts when category changes
+  // Load all posts once
   useEffect(() => {
-    const loadPosts = async () => {
+    const loadAllPosts = async () => {
       setLoading(true);
       try {
-        const allPosts = await loadBlogPosts();
-        
-        let filteredPosts = allPosts;
-        if (activeCategory !== 'All') {
-          // Map display category back to tag
-          const categoryToTagMap: Record<string, string> = {
-            'QA Processes': 'qa-processes',
-            'Quality Mindset': 'quality-mindset',
-            'Career Advice': 'career-advice',
-            'Industry Trends': 'industry-trends',
-            'Tools & Tech': 'tools-tech',
-            'Case Studies': 'case-studies'
-          };
-          
-          const tagToFind = categoryToTagMap[activeCategory];
-          if (tagToFind) {
-            filteredPosts = allPosts.filter(post => post.tags.includes(tagToFind));
-          }
-        }
-        
-        setPosts(filteredPosts);
+        console.log('Loading all blog posts...');
+        const loadedPosts = await loadBlogPosts();
+        console.log('Loaded posts:', loadedPosts.length);
+        setAllPosts(loadedPosts);
       } catch (error) {
         console.error('Failed to load posts:', error);
       } finally {
@@ -63,8 +47,17 @@ const Blog = () => {
       }
     };
 
-    loadPosts();
-  }, [activeCategory]);
+    loadAllPosts();
+  }, []);
+
+  // Filter posts when category changes
+  useEffect(() => {
+    if (allPosts.length > 0) {
+      const filteredPosts = getPostsByCategory(allPosts, activeCategory);
+      console.log(`Filtered posts for ${activeCategory}:`, filteredPosts.length);
+      setPosts(filteredPosts);
+    }
+  }, [activeCategory, allPosts]);
 
   return (
     <div className="py-20">
@@ -77,7 +70,7 @@ const Blog = () => {
           Insights, strategies, and honest conversations about software quality
         </p>
         <div className="text-sm text-gray-500 font-mono">
-          [ total_posts: {posts.length} ]
+          [ total_posts: {allPosts.length} | filtered: {posts.length} ]
         </div>
       </section>
 
@@ -110,6 +103,9 @@ const Blog = () => {
         {loading ? (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">Loading posts...</p>
+            <div className="text-sm text-gray-400 font-mono mt-2">
+              [ scanning_markdown_files = true ]
+            </div>
           </div>
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -167,7 +163,7 @@ const Blog = () => {
               No posts found in this category yet. Stay tuned!
             </p>
             <div className="text-sm text-gray-400 font-mono mt-2">
-              [ coming_soon = true ]
+              [ posts_in_category = 0 ]
             </div>
           </div>
         )}
