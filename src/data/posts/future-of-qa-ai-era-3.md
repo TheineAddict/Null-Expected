@@ -1,14 +1,14 @@
 ---
-title: "2 The Future of QA in the AI Era: Adaptation, Not Replacement"
+title: "3 The Future of QA in the AI Era: Adaptation, Not Replacement"
 excerpt: "AI will change how we do QA, but it won't replace the need for human insight, creativity, and judgment in quality assurance."
 tags: ["industry-trends", "featured", "AI", "automation", "career-growth"]
 author: "Jane Smith"
 date: "2024-01-10"
 readTime: "2 min read"
-slug: "future-of-qa-ai-era-2"
+slug: "future-of-qa-ai-era-3"
 ---
 
-# 2 The Future of QA in the AI Era: Adaptation, Not Replacement
+# 3 The Future of QA in the AI Era: Adaptation, Not Replacement
 
 Every few years, a new technology emerges that supposedly will "replace QA professionals." First it was automated testing tools. Then it was shift-left practices. Now it's AI and machine learning. Each time, the prediction is the same: human testers will become obsolete.
 
