@@ -8,7 +8,7 @@ readTime: "8 min read"
 slug: "first-post"
 ---
 
-# A test, a test! without typos now
+# A test, a test! without typos now and with the correct comments
 
 Start writing your blog post content here using Markdown formatting.
 
