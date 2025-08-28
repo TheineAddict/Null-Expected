@@ -100,6 +100,13 @@ export function loadBlogPosts(): BlogPost[] {
   Object.entries(postModules).forEach(([path, content]) => {
     try {
       const filename = path.split('/').pop()?.replace('.md', '') || '';
+      
+      // Skip empty or invalid files
+      if (!content || typeof content !== 'string' || content.trim().length === 0) {
+        console.warn(`Skipping empty or invalid file: ${path}`);
+        return;
+      }
+      
       const { frontmatter, content: markdownContent } = parseFrontmatter(content as string);
       
       const post: BlogPost = {
