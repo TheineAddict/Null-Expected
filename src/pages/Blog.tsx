@@ -16,7 +16,8 @@ const Blog = () => {
     'Quality Mindset',
     'Career Advice',
     'Industry Trends',
-    'Tools & Tech'
+    'Tools & Tech',
+    'Case Studies'
   ];
 
   // Check for category parameter in URL
