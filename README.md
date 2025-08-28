@@ -154,41 +154,23 @@ Files are automatically skipped if they:
 
 ## 🔧 Required Setup Steps:**
 
-### **1. Connect GitHub to Netlify:**
-1. Go to [Netlify Dashboard](https://app.netlify.com/)
-2. Find your project (`nullexpected.com`)
-3. Go to **Project Settings** → **Build & Deploy**
-4. Under **Continuous Deployment**, click **Link to Git repository**
-5. Connect to your GitHub repository
+### **GitHub Actions + Netlify Deployment:**
+This project uses GitHub Actions to automatically deploy to Netlify whenever you push to the main branch. See [DEPLOYMENT.md](DEPLOYMENT.md) for complete setup instructions.
 
-### **2. Configure Build Settings:**
-- **Build command**: `npm run build`
-- **Publish directory**: `dist`
-- **Branch**: `main` (or `master`)
+**Quick Setup:**
+1. Create a Netlify site (don't connect to GitHub in Netlify UI)
+2. Get your Netlify Site ID and Personal Access Token
+2. Add `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as GitHub repository secrets
+3. Point your DNS to Netlify (CNAME for www, A record for apex domain)
+4. Configure custom domain in Netlify
+5. Push changes to main branch - automatic deployment happens in 2-3 minutes!
 
-### **3. Environment Variables (if needed):**
-If you have any environment variables, add them in:
-- **Project Settings** → **Environment Variables**
-
-## **🚀 Alternative: Direct Netlify Integration**
-
-If the GitHub Actions approach is causing issues, you can use Netlify's built-in GitHub integration:
-
-1. **Disable GitHub Actions** (comment out the workflow)
-2. **Enable Netlify's auto-deploy** from GitHub
-3. **Every push to main** will automatically trigger a build and deploy
-
-## **🔍 Troubleshooting Steps:**
-
-### **Check Current Status:**
-1. Go to your Netlify dashboard
-2. Check the **Deploys** tab
-3. Look for recent deploy attempts and any error messages
-
-### **Verify Repository Connection:**
-1. In Netlify, go to **Project Settings** → **Build & Deploy**
-2. Confirm it shows your GitHub repository
-3. Check that the branch is correct (`main` or `master`)
+**Benefits:**
+- ✅ **Independent from Bolt**: Run completely on your own infrastructure
+- ✅ **Automatic deployments**: Push to GitHub → Auto-deploy to Netlify
+- ✅ **Custom domain**: Use nullexpected.com with SSL
+- ✅ **Free hosting**: Netlify free tier + GitHub Actions
+- ✅ **Full control**: Manage your own deployment pipeline
 
 ### Frontmatter Fields
 
