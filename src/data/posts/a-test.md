@@ -1,14 +1,14 @@
 ---
-title: "This is a new blog post ade"
+title: "A test, a test!e"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
-tags: ["qa-processes", "featured", "qa-mindset"]
+tags: ["qa-processes", "featured"]  # Required: qa-processes, quality-mindset, career-advice, industry-trends, tools-tech, case-studies. Add "featured" for homepage.
 author: "Jane Smith"
-date: "2026-01-28"
-readTime: "1" min read"
-slug: "test-1"
+date: "2024-01-28"
+readTime: "8 min read"
+slug: "a-test"
 ---
 
-#  This is a new blog post ade
+# A test, a test!
 
 Start writing your blog post content here using Markdown formatting.
 
