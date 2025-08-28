@@ -49,14 +49,14 @@ To make a post appear in the "Featured Insights" section on the homepage:
 
 ### **Category Filtering**
 For posts to appear when users click category cards on the homepage:
-- Include the corresponding category tag in your tags array:
+- Include the corresponding category tag as the **first tag** in your tags array:
   - **QA Processes** → `"qa-processes"`
   - **Quality Mindset** → `"quality-mindset"`
   - **Career Advice** → `"career-advice"`
   - **Industry Trends** → `"industry-trends"`
   - **Tools & Tech** → `"tools-tech"`
   - **Case Studies** → `"case-studies"`
-- Example: `tags: ["featured", "qa-processes", "automation"]`
+- Example: `tags: ["qa-processes", "featured", "automation"]`
 - Posts without category tags will only appear in "All Posts" view
 
 ### 2. Add Frontmatter and Content
@@ -67,8 +67,7 @@ The template file already has the correct structure, but here's what each field 
 ---
 title: "Your Blog Post Title"
 excerpt: "A brief summary of your post that appears on the blog listing page."
-category: "QA Processes"
-tags: ["featured", "automation", "strategy"]
+tags: ["qa-processes", "featured", "automation", "strategy"]
 author: "Jane Smith"
 date: "2024-01-25"
 readTime: "10 min read"
@@ -136,8 +135,7 @@ function example() {
 
 - **title**: The post title (displayed as H1)
 - **excerpt**: Brief summary for blog listing and SEO
-- **category**: Choose from: 'QA Processes', 'Quality Mindset', 'Career Advice', 'Industry Trends', 'Tools & Tech', 'Case Studies'
-- **tags**: Array of tags for filtering and featuring. **Important**: Include at least one category tag for proper filtering:
+- **tags**: Array of tags for categorization, filtering and featuring. **Required**: Include at least one category tag as the first tag:
   - `"qa-processes"` - for QA Processes category
   - `"quality-mindset"` - for Quality Mindset category  
   - `"career-advice"` - for Career Advice category
@@ -145,7 +143,7 @@ function example() {
   - `"tools-tech"` - for Tools & Tech category
   - `"case-studies"` - for Case Studies category
   - `"featured"` - to appear in Featured Insights section
-  - Example: `["featured", "qa-processes", "automation", "strategy"]`
+  - Example: `["qa-processes", "featured", "automation", "strategy"]`
 - **author**: Choose from: 'Jane Smith' or 'Alex Davis'
 - **date**: Publication date in YYYY-MM-DD format
 - **readTime**: Estimated reading time (e.g., "10 min read")

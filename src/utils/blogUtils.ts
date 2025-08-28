@@ -27,7 +27,11 @@ function parseFrontmatter(content: string) {
       
       // Handle arrays (tags)
       if (value.startsWith('[') && value.endsWith(']')) {
-        value = value.slice(1, -1); // Remove brackets
+        // Parse array values
+        const arrayContent = value.slice(1, -1);
+        const arrayValues = arrayContent.split(',').map(item => item.trim().replace(/^["']|["']$/g, ''));
+        frontmatter[key] = arrayValues;
+        return;
       }
       
       frontmatter[key] = value;
@@ -79,6 +83,28 @@ function markdownToHtml(markdown: string): string {
       return `<p>${paragraph.replace(/\n/g, ' ')}</p>`;
     })
     .join('\n');
+}
+
+// Convert tag to display category
+function getDisplayCategory(tags: string[]): string {
+  const tagToCategoryMap: Record<string, string> = {
+    'qa-processes': 'QA Processes',
+    'quality-mindset': 'Quality Mindset',
+    'career-advice': 'Career Advice',
+    'industry-trends': 'Industry Trends',
+    'tools-tech': 'Tools & Tech',
+    'case-studies': 'Case Studies'
+  };
+
+  // Find the first category tag
+  for (const tag of tags) {
+    if (tagToCategoryMap[tag]) {
+      return tagToCategoryMap[tag];
+    }
+  }
+
+  // Default category if no category tag found
+  return 'QA Processes';
 }
 
 // Generate auto-incrementing ID based on filename
@@ -138,12 +164,13 @@ export function loadBlogPosts(): BlogPost[] {
         id: generateId(filename),
         title: frontmatter.title || 'Untitled',
         excerpt: frontmatter.excerpt || '',
-        category: frontmatter.category as BlogPost['category'] || 'QA Processes',
+        tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
         readTime: frontmatter.readTime || '5 min read',
         date: frontmatter.date || new Date().toISOString().split('T')[0],
         slug: frontmatter.slug || filename,
         author: frontmatter.author as BlogPost['author'] || 'Jane Smith',
-        content: markdownToHtml(markdownContent)
+        content: markdownToHtml(markdownContent),
+        category: getDisplayCategory(Array.isArray(frontmatter.tags) ? frontmatter.tags : [])
       };
       
       posts.push(post);
@@ -160,7 +187,21 @@ export function loadBlogPosts(): BlogPost[] {
 export function getPostsByCategory(category: string): BlogPost[] {
   const posts = loadBlogPosts();
   if (category === 'All') return posts;
-  return posts.filter(post => post.category === category);
+  
+  // Map display category back to tag
+  const categoryToTagMap: Record<string, string> = {
+    'QA Processes': 'qa-processes',
+    'Quality Mindset': 'quality-mindset',
+    'Career Advice': 'career-advice',
+    'Industry Trends': 'industry-trends',
+    'Tools & Tech': 'tools-tech',
+    'Case Studies': 'case-studies'
+  };
+  
+  const tagToFind = categoryToTagMap[category];
+  if (!tagToFind) return posts;
+  
+  return posts.filter(post => post.tags.includes(tagToFind));
 }
 
 // Get post by slug

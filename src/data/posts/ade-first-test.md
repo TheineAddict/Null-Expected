@@ -1,8 +1,7 @@
 ---
 title: "This is a new blog post ade"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
-category: "QA Processes"
-tags: ["featured", "qa mindset"]
+tags: ["qa-processes", "featured", "qa-mindset"]
 author: "Jane Smith"
 date: "2026-01-28"
 readTime: "1" min read"
