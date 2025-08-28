@@ -5,7 +5,7 @@ tags: ["qa-processes", "featured"]  # Required: qa-processes, quality-mindset, c
 author: "Jane Smith"
 date: "2024-01-28"
 readTime: "8 min read"
-slug: "a-test"
+slug: "first-post"
 ---
 
 # A test, a test! without typos now
