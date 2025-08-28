@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getPostsByCategory } from '../data/blogPosts';
@@ -7,6 +8,7 @@ import { BlogPost } from '../types/blog';
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const location = useLocation();
 
   const categories = [
     'All',
@@ -16,6 +18,15 @@ const Blog = () => {
     'Industry Trends',
     'Tools & Tech'
   ];
+
+  // Check for category parameter in URL
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam && categories.includes(categoryParam)) {
+      setActiveCategory(categoryParam);
+    }
+  }, [location.search]);
 
   // Load posts when category changes
   useEffect(() => {

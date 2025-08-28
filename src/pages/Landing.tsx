@@ -116,20 +116,22 @@ const Landing = () => {
           <div className="md:hidden">
             <div className="grid grid-cols-1 gap-4 mb-6">
               {categories.slice(0, 3).map((category, index) => (
-                <div
+                <Link
+                  to={`/blog?category=${encodeURIComponent(category.title)}`}
                   key={category.title}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 block group"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   <div className="flex items-center space-x-4">
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
                       <category.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{category.title}</h3>
+                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
                       <p className="text-gray-600 text-sm">{category.description}</p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="text-center">
@@ -147,19 +149,21 @@ const Landing = () => {
           {/* Desktop: Show all categories in grid */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
-              <div
+              <Link
+                to={`/blog?category=${encodeURIComponent(category.title)}`}
                 key={category.title}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                onClick={() => window.scrollTo(0, 0)}
               >
                 <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-6`}>
                   <category.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{category.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
                 <p className="text-gray-600 mb-6">{category.description}</p>
                 <div className="text-sm text-gray-500 font-mono">
                   [ {index + 1} of 6 ]
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
