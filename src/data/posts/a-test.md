@@ -1,5 +1,5 @@
 ---
-title: "A test, a test!e"
+title: "A test, a test"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
 tags: ["qa-processes", "featured"]  # Required: qa-processes, quality-mindset, career-advice, industry-trends, tools-tech, case-studies. Add "featured" for homepage.
 author: "Jane Smith"
@@ -8,7 +8,7 @@ readTime: "8 min read"
 slug: "a-test"
 ---
 
-# A test, a test!
+# A test, a test! without typos now
 
 Start writing your blog post content here using Markdown formatting.
 
