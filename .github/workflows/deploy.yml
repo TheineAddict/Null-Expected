@@ -45,7 +45,7 @@ jobs:
       
     - name: Build project
       run: |
-        echo "🔨 Building project..."
+        echo "🔨 Building project... "
         set -x
         npm run build
         echo "✅ Build completed successfully"
