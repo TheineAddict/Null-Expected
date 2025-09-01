@@ -1,4 +1,6 @@
 import { BlogPost } from '../types/blog';
+import { getAuthorByName, getAuthorById, AUTHORS } from '../config/authors';
+import { getAuthorByName, AUTHORS } from '../config/authors';
 
 // Simple, robust frontmatter parser
 function parseFrontmatter(content: string) {
@@ -237,7 +239,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
           readTime: frontmatter.readTime || '5 min read',
           date: frontmatter.date || new Date().toISOString().split('T')[0],
           slug: frontmatter.slug || filename,
-          author: (frontmatter.author === 'Alex Davis' ? 'Alex Davis' : 'Jane Smith') as BlogPost['author'],
+          author: resolveAuthorName(frontmatter.author),
           content: markdownToHtml(markdownContent),
           category: getDisplayCategory(Array.isArray(frontmatter.tags) ? frontmatter.tags : [])
         };
@@ -258,6 +260,28 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
   
   // Sort by date (newest first)
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+// Helper function to resolve author names from IDs or names
+function resolveAuthorName(authorInput: string): string {
+  if (!authorInput) {
+    return AUTHORS.author1.name;
+  }
+  
+  // Check if it's an author ID first
+  const authorById = getAuthorById(authorInput);
+  if (authorById) {
+    return authorById.name;
+  }
+  
+  // Check if it's already a valid author name
+  const authorByName = getAuthorByName(authorInput);
+  if (authorByName) {
+    return authorInput;
+  }
+  
+  // Fallback to first author
+  return AUTHORS.author1.name;
 }
 
 // Get posts by category

@@ -2,7 +2,7 @@
 title: "Building a Quality Culture: Lessons from the Trenches"
 excerpt: "Quality isn't just about testing—it's about creating a culture where everyone takes ownership of the user experience."
 tags: ["quality-mindset", "featured", "culture", "leadership", "team-building"]
-author: "Alex Davis"
+author: "author2"
 date: "2024-01-08"
 readTime: "11 min read"
 slug: "building-quality-culture"

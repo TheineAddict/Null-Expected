@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
 import { loadBlogPosts, getPostBySlug } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
+import { getAuthorByName } from '../config/authors';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -30,23 +31,6 @@ const BlogPost = () => {
 
     loadPost();
   }, [slug]);
-
-  // Get author info based on post author
-  const getAuthorInfo = (authorName: string) => {
-    const authors = {
-      'Jane Smith': {
-        initials: 'JS',
-        bio: 'Senior QA Engineer with over 8 years of experience in test automation frameworks and performance testing. Passionate about building scalable testing strategies and mentoring junior QA professionals.',
-        tag: '[ automation_enthusiast = true ]'
-      },
-      'Alex Davis': {
-        initials: 'AD',
-        bio: 'QA Lead & Strategy Consultant with 10+ years of experience in quality strategy and team leadership. Known for pragmatic approach to QA and ability to translate technical concepts into business value.',
-        tag: '[ process_optimizer = true ]'
-      }
-    };
-    return authors[authorName as keyof typeof authors] || authors['Jane Smith'];
-  };
 
   if (loading) {
     return (
@@ -144,20 +128,27 @@ const BlogPost = () => {
       {/* Author Bio */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-12 border-t border-gray-200">
         <div className="bg-gray-50 rounded-xl p-8">
-          <div className="flex items-start space-x-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-xl font-bold text-white">{getAuthorInfo(post.author).initials}</span>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{post.author}</h3>
-              <p className="text-gray-600 mb-4">
-                {getAuthorInfo(post.author).bio}
-              </p>
-              <div className="text-sm text-gray-500 font-mono">
-                {getAuthorInfo(post.author).tag}
+          {(() => {
+            const author = getAuthorByName(post.author);
+            if (!author) return null;
+            
+            return (
+              <div className="flex items-start space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-white">{author.initials}</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{author.name}</h3>
+                  <p className="text-gray-600 mb-4">
+                    {author.bio}
+                  </p>
+                  <div className="text-sm text-gray-500 font-mono">
+                    {author.tag}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </div>
 

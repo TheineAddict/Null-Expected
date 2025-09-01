@@ -2,7 +2,7 @@
 title: "The Art of Questioning: Why Curiosity Drives Quality"
 excerpt: "In QA, the right question at the right time can prevent disasters. But how do we cultivate that questioning mindset?"
 tags: ["quality-mindset", "featured", "mindset", "curiosity", "testing-strategy"]
-author: "Jane Smith"
+author: "author1"
 date: "2024-01-20"
 readTime: "8 min read"
 slug: "art-of-questioning-curiosity-drives-quality"

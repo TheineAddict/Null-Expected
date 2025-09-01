@@ -6,7 +6,7 @@ export interface BlogPost {
   readTime: string;
   date: string;
   slug: string;
-  author: 'Jane Smith' | 'Alex Davis';
+  author: string; // Author name that maps to AUTHORS config
   content: string;
   category?: string; // Derived from first tag for display
 }

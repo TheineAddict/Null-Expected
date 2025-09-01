@@ -2,7 +2,7 @@
 title: "From Manual to Strategic: A QA Career Transition Guide"
 excerpt: "Moving from executing test cases to influencing product strategy isn't just about learning new skills—it's about changing how you think about quality."
 tags: ["career-advice", "career-growth", "strategy", "leadership", "professional-development"]
-author: "Alex Davis"
+author: "author2"
 date: "2024-01-12"
 readTime: "15 min read"
 slug: "qa-career-transition-guide"
