@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getAuthorBySlug, getAuthorByName, getAllAuthors, AUTHORS } from './authors';
+import { getAuthorBySlug, getAuthorByName, getAllAuthors, AUTHORS } from '../../config/authors';
 
 describe('authors config', () => {
   // Test Case 5: getAuthorBySlug Utility Function

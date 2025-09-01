@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { BlogPost } from '../types/blog';
+import { BlogPost } from '../../types/blog';
 
 // Mock the import.meta.glob function
 const mockModules = {
-  '../data/posts/test-post-1.md': () => Promise.resolve(`---
+  '../../data/posts/test-post-1.md': () => Promise.resolve(`---
 title: "Test Post 1"
 excerpt: "Excerpt for test post 1."
 tags: ["qa-processes", "featured"]
@@ -16,7 +16,7 @@ slug: "test-post-1"
 
 This is the content of test post 1.
 `),
-  '../data/posts/test-post-2.md': () => Promise.resolve(`---
+  '../../data/posts/test-post-2.md': () => Promise.resolve(`---
 title: "Test Post 2"
 excerpt: "Excerpt for test post 2."
 tags: ["quality-mindset"]
@@ -29,7 +29,7 @@ slug: "test-post-2"
 
 This is the content of test post 2.
 `),
-  '../data/posts/draft-test-post.md': () => Promise.resolve(`---
+  '../../data/posts/draft-test-post.md': () => Promise.resolve(`---
 title: "Draft Post"
 excerpt: "This is a draft."
 tags: ["qa-processes"]
@@ -40,7 +40,7 @@ slug: "draft-post"
 ---
 # Draft Post Content
 `),
-  '../data/posts/_template-post.md': () => Promise.resolve(`---
+  '../../data/posts/_template-post.md': () => Promise.resolve(`---
 title: "Template Post"
 excerpt: "This is a template."
 tags: ["qa-processes"]
@@ -66,10 +66,10 @@ import {
   getPostBySlug,
   getFeaturedPosts,
   getPostsByCategory
-} from './blogUtils';
+} from '../../utils/blogUtils';
 
 // Import the internal functions for testing
-const { parseFrontmatter, markdownToHtml } = await import('./blogUtils');
+const { parseFrontmatter, markdownToHtml } = await import('../../utils/blogUtils');
 
 describe('blogUtils', () => {
   let allPosts: BlogPost[];

@@ -1,18 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import AuthorBlog from './AuthorBlog';
-import { AUTHORS } from '../config/authors';
-import { BlogPost } from '../types/blog';
+import AuthorBlog from '../../pages/AuthorBlog';
+import { AUTHORS } from '../../config/authors';
+import { BlogPost } from '../../types/blog';
 
 // Mock the blogUtils module
-vi.mock('../utils/blogUtils', () => ({
+vi.mock('../../utils/blogUtils', () => ({
   loadBlogPosts: vi.fn(),
   getPostsByAuthorSlug: vi.fn(),
 }));
 
 // Import the mocked functions
-import { loadBlogPosts, getPostsByAuthorSlug } from '../utils/blogUtils';
+import { loadBlogPosts, getPostsByAuthorSlug } from '../../utils/blogUtils';
 
 describe('AuthorBlog', () => {
   const mockAllPosts: BlogPost[] = [
