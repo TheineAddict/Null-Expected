@@ -26,9 +26,13 @@ const About = () => {
           {authors.map((author, index) => (
           <div key={author.id} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
             <div className="flex flex-col items-center text-center">
-              {/* Avatar placeholder */}
-              <div className={`w-32 h-32 bg-gradient-to-r ${index === 0 ? 'from-indigo-500 to-purple-600' : 'from-purple-500 to-pink-600'} rounded-full flex items-center justify-center mb-6`}>
-                <span className="text-4xl font-bold text-white">{author.initials}</span>
+              {/* Author Image */}
+              <div className="w-32 h-32 mb-6">
+                <img 
+                  src={author.imageUrl} 
+                  alt={`${author.name} - ${author.title}`}
+                  className="w-full h-full object-cover rounded-full shadow-lg"
+                />
               </div>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-2">{author.name}</h2>

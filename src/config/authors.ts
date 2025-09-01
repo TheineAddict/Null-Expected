@@ -5,6 +5,7 @@ export interface Author {
   title: string;
   bio: string;
   tag: string;
+  imageUrl: string;
   linkedinUrl?: string;
   twitterUrl?: string;
   email?: string;
@@ -18,6 +19,7 @@ export const AUTHORS: Record<string, Author> = {
     title: 'Release Manager',
     bio: 'With 12 years of experience in QA and release management, Ade has worked across financial software platforms, leading large-scale migrations and building efficient, streamlined release strategies. Formerly a QA Manager, she brings a strong focus on embedding quality early, fostering team alignment, and balancing agility with risk-based decision making. Ade is passionate about quality culture, pragmatic processes, and helping QA professionals grow their careers. Outside of work, she blends her love of tech, writing, and creativity through projects like Null Expected.',
     tag: '[ quality_mindset = true ]',
+    imageUrl: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'ade@nullexpected.com'
   },
@@ -28,6 +30,7 @@ export const AUTHORS: Record<string, Author> = {
     title: 'QA Lead & Strategy Consultant',
     bio: 'Alex brings 10+ years of experience in quality strategy and team leadership. He\'s worked across startups and enterprise organizations, focusing on quality culture transformation and process optimization. Alex is known for his pragmatic approach to QA and his ability to translate technical concepts into business value.',
     tag: '[ process_optimizer = true ]',
+    imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
     linkedinUrl: '#',
     email: 'alex@nullexpected.com'
   }

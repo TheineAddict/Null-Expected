@@ -134,8 +134,12 @@ const BlogPost = () => {
             
             return (
               <div className="flex items-start space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl font-bold text-white">{author.initials}</span>
+                <div className="w-16 h-16 flex-shrink-0">
+                  <img 
+                    src={author.imageUrl} 
+                    alt={`${author.name} - ${author.title}`}
+                    className="w-full h-full object-cover rounded-full shadow-md"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{author.name}</h3>
