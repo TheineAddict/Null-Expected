@@ -85,7 +85,21 @@ const BlogPost = () => {
         <div className="flex flex-wrap items-center gap-6 text-gray-600">
           <div className="flex items-center">
             <User className="h-4 w-4 mr-2" />
-            {post.author}
+            {(() => {
+              const author = getAuthorByName(post.author);
+              if (author) {
+                return (
+                  <Link 
+                    to={`/blog/author/${author.slug}`}
+                    className="text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    {post.author}
+                  </Link>
+                );
+              }
+              return post.author;
+            })()}
           </div>
           <div className="flex items-center">
             <Calendar className="h-4 w-4 mr-2" />

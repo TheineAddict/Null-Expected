@@ -324,5 +324,17 @@ export function getFeaturedPosts(posts: BlogPost[], count: number = 3): BlogPost
   return featuredPosts.slice(0, count);
 }
 
+// Get posts by author
+export function getPostsByAuthor(posts: BlogPost[], authorName: string): BlogPost[] {
+  return posts.filter(post => post.author === authorName);
+}
+
+// Get posts by author slug
+export function getPostsByAuthorSlug(posts: BlogPost[], authorSlug: string): BlogPost[] {
+  const author = Object.values(AUTHORS).find(a => a.slug === authorSlug);
+  if (!author) return [];
+  return posts.filter(post => post.author === author.name);
+}
+
 // Legacy exports for backward compatibility
 export const getBlogPosts = loadBlogPosts;
