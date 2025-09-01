@@ -1,9 +1,9 @@
 import { BlogPost } from '../types/blog';
 import { getAuthorByName, getAuthorById, AUTHORS } from '../config/authors';
-import { getAuthorByName, AUTHORS } from '../config/authors';
+import { marked } from 'marked';
 
 // Simple, robust frontmatter parser
-function parseFrontmatter(content: string) {
+export function parseFrontmatter(content: string) {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
   
@@ -71,51 +71,12 @@ function parseFrontmatter(content: string) {
 }
 
 // Convert markdown to HTML
-function markdownToHtml(markdown: string): string {
-  return markdown
-    // Headers
-    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-    
-    // Bold and italic
-    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    
-    // Code blocks
-    .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    
-    // Blockquotes
-    .replace(/^> (.*$)/gm, '<blockquote>$1</blockquote>')
-    
-    // Lists
-    .replace(/^\* (.*$)/gm, '<li>$1</li>')
-    .replace(/^- (.*$)/gm, '<li>$1</li>')
-    .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
-    
-    // Wrap consecutive list items in ul tags
-    .replace(/(<li>.*<\/li>)/gs, (match) => {
-      return `<ul>${match}</ul>`;
-    })
-    
-    // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    
-    // Paragraphs
-    .split('\n\n')
-    .map(paragraph => {
-      paragraph = paragraph.trim();
-      if (!paragraph) return '';
-      if (paragraph.startsWith('<')) return paragraph;
-      return `<p>${paragraph.replace(/\n/g, ' ')}</p>`;
-    })
-    .join('\n');
+export function markdownToHtml(markdown: string): string {
+  return marked.parse(markdown);
 }
 
 // Get display category from tags
-function getDisplayCategory(tags: string[]): string {
+export function getDisplayCategory(tags: string[]): string {
   const tagToCategoryMap: Record<string, string> = {
     'qa-processes': 'QA Processes',
     'quality-mindset': 'Quality Mindset',
@@ -135,7 +96,7 @@ function getDisplayCategory(tags: string[]): string {
 }
 
 // Generate ID from filename
-function generateId(filename: string): number {
+export function generateId(filename: string): number {
   let hash = 0;
   for (let i = 0; i < filename.length; i++) {
     const char = filename.charCodeAt(i);
@@ -146,7 +107,7 @@ function generateId(filename: string): number {
 }
 
 // Check if filename should be skipped
-function shouldSkipFile(filename: string): boolean {
+export function shouldSkipFile(filename: string): boolean {
   const skipPatterns = [
     '_template',
     'template',
@@ -165,7 +126,7 @@ function shouldSkipFile(filename: string): boolean {
 }
 
 // Check if slug should be skipped
-function shouldSkipSlug(slug: string): boolean {
+export function shouldSkipSlug(slug: string): boolean {
   const skipPatterns = [
     'template',
     'example', 
