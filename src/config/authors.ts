@@ -49,6 +49,10 @@ export const getAllAuthors = (): Author[] => {
   return Object.values(AUTHORS);
 };
 
+export const getAuthorBySlug = (slug: string): Author | undefined => {
+  return Object.values(AUTHORS).find(author => author.slug === slug);
+};
+
 // For backward compatibility with existing blog posts
 export const getAuthorInfo = (authorName: string): Author => {
   const author = getAuthorByName(authorName);
