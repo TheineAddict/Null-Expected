@@ -121,7 +121,11 @@ export function shouldSkipFile(filename: string): boolean {
     return true;
   }
   
-  // Skip if contains any skip patterns
+  // Skip if contains any skip patterns (but not if it starts with "testing")
+  if (filename.startsWith('testing')) {
+    return false;
+  }
+  
   return skipPatterns.some(pattern => filename.includes(pattern));
 }
 
@@ -133,6 +137,11 @@ export function shouldSkipSlug(slug: string): boolean {
     'your-post-title',
     'your-blog-post'
   ];
+  
+  // Don't skip if slug starts with "testing"
+  if (slug.startsWith('testing')) {
+    return false;
+  }
   
   return skipPatterns.some(pattern => slug.includes(pattern));
 }
