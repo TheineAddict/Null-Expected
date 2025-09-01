@@ -13,13 +13,13 @@ export interface Author {
 export const AUTHORS: Record<string, Author> = {
   author1: {
     id: 'author1',
-    name: 'Jane Smith',
-    initials: 'JS',
-    title: 'Senior QA Engineer',
-    bio: 'With over 8 years in QA, Jane specializes in test automation frameworks and performance testing. She\'s passionate about building scalable testing strategies and mentoring junior QA professionals. When she\'s not debugging test flakes, you\'ll find her exploring new testing tools or speaking at QA conferences.',
-    tag: '[ automation_enthusiast = true ]',
-    linkedinUrl: '#',
-    email: 'jane@nullexpected.com'
+    name: 'Ade Vitan',
+    initials: 'AV',
+    title: 'Release Manager',
+    bio: 'With 12 years of experience in QA and release management, Ade has worked across financial software platforms, leading large-scale migrations and building efficient, streamlined release strategies. Formerly a QA Manager, she brings a strong focus on embedding quality early, fostering team alignment, and balancing agility with risk-based decision making. Ade is passionate about quality culture, pragmatic processes, and helping QA professionals grow their careers. Outside of work, she blends her love of tech, writing, and creativity through projects like Null Expected.',
+    tag: '[ quality_mindset = true ]',
+    linkedinUrl: 'https://www.linkedin.com/in/adevitan',
+    email: 'ade@nullexpected.com'
   },
   author2: {
     id: 'author2',
