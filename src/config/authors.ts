@@ -1,6 +1,7 @@
 export interface Author {
   id: string;
   name: string;
+  slug: string;
   initials: string;
   title: string;
   bio: string;
@@ -15,6 +16,7 @@ export const AUTHORS: Record<string, Author> = {
   author1: {
     id: 'author1',
     name: 'Ade Vitan 2',
+    slug: 'adevitan2',
     initials: 'AV',
     title: 'Release Manager',
     bio: 'With 12 years of experience in QA and release management, Ade has worked across financial software platforms, leading large-scale migrations and building efficient, streamlined release strategies. Formerly a QA Manager, she brings a strong focus on embedding quality early, fostering team alignment, and balancing agility with risk-based decision making. Ade is passionate about quality culture, pragmatic processes, and helping QA professionals grow their careers. Outside of work, she blends her love of tech, writing, and creativity through projects like Null Expected.',
@@ -26,6 +28,7 @@ export const AUTHORS: Record<string, Author> = {
   author2: {
     id: 'author2',
     name: 'Alex Davis',
+    slug: 'alexdavis',
     initials: 'AD',
     title: 'QA Lead & Strategy Consultant',
     bio: 'Alex brings 10+ years of experience in quality strategy and team leadership. He\'s worked across startups and enterprise organizations, focusing on quality culture transformation and process optimization. Alex is known for his pragmatic approach to QA and his ability to translate technical concepts into business value.',
@@ -35,6 +38,15 @@ export const AUTHORS: Record<string, Author> = {
     email: 'alex@nullexpected.com'
   }
 };
+
+// Generate URL-friendly slug from name
+function generateSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '') // Remove spaces
+    .trim();
+}
 
 // Helper functions
 export const getAuthorById = (id: string): Author | undefined => {
