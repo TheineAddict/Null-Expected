@@ -12,14 +12,21 @@ npm run dev
 
 ### 1. Create a New Markdown File
 
-**Copy the template file** to get started:
+**Create the folder structure and copy the template file** to get started:
 
-1. Copy `src/data/posts/_template-your-post-title.md`
-2. Rename it to your desired filename in the same directory:
+1. Create the folder structure for your post:
 ```
-src/data/posts/draft-your-post-title.md
+src/data/posts/[author-slug]/[year]/[month]/
 ```
+   - `[author-slug]`: Use your author slug (e.g., `adevitan`, `alexdavis`)
+   - `[year]`: Four-digit year (e.g., `2025`)
+   - `[month]`: Two-digit month (e.g., `01`, `09`, `12`)
 
+2. Copy the template file `src/data/posts/_template-your-post-title.md`
+3. Place it in your new folder structure and rename it:
+```
+src/data/posts/adevitan/2025/01/draft-your-post-title.md
+```
 **Important:** Start with `draft-` to keep it private while you work on it.
 
 ### 🚨 Draft Posts Safety Feature
@@ -37,9 +44,9 @@ To prevent accidental publishing of unfinished posts:
 - The post becomes live automatically
 
 ### **Template File**
-- Use `_template-your-post-title.md` as your starting point
+- Use `src/data/posts/_template-your-post-title.md` as your starting point
 - This file is invisible on the website (starts with `_`)
-- Copy it and rename to `draft-your-new-post.md` to begin writing
+- Copy it to your author/year/month folder and rename to `draft-your-new-post.md` to begin writing
 
 ### **Featured Posts**
 To make a post appear in the "Featured Insights" section on the homepage:
@@ -98,7 +105,8 @@ function example() {
 
 ## 📝 Quick Start Process
 
-1. **Copy template**: `_template-your-post-title.md` → `draft-your-new-post.md`
+1. **Create folders**: `src/data/posts/[author-slug]/[year]/[month]/`
+2. **Copy template**: `_template-your-post-title.md` → `[author-folder]/[year]/[month]/draft-your-new-post.md`
 2. **Edit content**: Update frontmatter and write your post
 3. **Test locally**: `npm run dev` to preview
 4. **Publish**: Rename to remove `draft-` prefix
@@ -107,8 +115,14 @@ function example() {
 
 ## 🔧 System Architecture
 
+### **Organized File Structure**
+- Posts are organized by author, then by year and month for better scalability
+- Structure: `src/data/posts/[author-slug]/[year]/[month]/post-name.md`
+- Example: `src/data/posts/adevitan/2025/01/testing-vs-quality.md`
+- Template files remain in the root posts directory for easy access
+
 ### **Dynamic File Loading**
-- Posts are loaded dynamically at runtime using `import.meta.glob()`
+- Posts are loaded dynamically at runtime using `import.meta.glob()` with recursive search
 - New `.md` files are automatically discovered without rebuilds
 - Robust frontmatter parsing handles various comment styles
 - Comprehensive error handling prevents parsing failures

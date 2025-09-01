@@ -152,7 +152,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
   
   try {
     // Get all markdown files dynamically
-    const modules = import.meta.glob('../data/posts/*.md', { 
+    const modules = import.meta.glob('../data/posts/**/*.md', { 
       eager: false,
       as: 'raw' 
     });
