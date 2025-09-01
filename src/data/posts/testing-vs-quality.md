@@ -25,9 +25,9 @@ Testing is essential — no debate there. It’s about verifying functionality, 
 
 But testing alone answers a limited set of questions:  
 
-- *Does this feature work as written in the requirements?*  
-- *Does this workflow break under edge cases?*  
-- *Does this code change introduce regressions?*  
+- * Does this feature work as written in the requirements?*  
+- * Does this workflow break under edge cases?*  
+- * Does this code change introduce regressions?*  
 
 These are critical, but they only look at the surface. Testing doesn’t always tell you whether the right thing was built in the first place, whether it fits user needs, or whether the release will actually succeed in production.
 
@@ -39,10 +39,10 @@ Quality, on the other hand, is holistic. It’s not just about software passing 
 
 When I think about quality, I ask different questions:  
 
-- *Was the requirement clear enough to test meaningfully?*  
-- *Do we have a release process that supports fast feedback and low risk?*  
-- *Are we learning from defects, not just fixing them?*  
-- *Does the product help users succeed, not just function as designed?*  
+- * Was the requirement clear enough to test meaningfully?*  
+- * Do we have a release process that supports fast feedback and low risk?*  
+- * Are we learning from defects, not just fixing them?*  
+- * Does the product help users succeed, not just function as designed?*  
 
 That’s where QA stops being a gatekeeper and starts being an advocate. Instead of just saying “this passes” or “this fails,” we help the team think about risk, value, and long-term impact.  
 
