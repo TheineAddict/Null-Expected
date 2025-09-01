@@ -172,9 +172,9 @@ describe('blogUtils', () => {
 
       const html = markdownToHtml(markdown);
       
-      expect(html).toContain('<h1>Heading 1</h1>');
-      expect(html).toContain('<h2>Heading 2</h2>');
-      expect(html).toContain('<h3>Heading 3</h3>');
+      expect(html).toContain('<h1 id="heading-1">Heading 1</h1>');
+      expect(html).toContain('<h2 id="heading-2">Heading 2</h2>');
+      expect(html).toContain('<h3 id="heading-3">Heading 3</h3>');
       expect(html).toContain('<strong>Bold text</strong>');
       expect(html).toContain('<em>italic text</em>');
       expect(html).toContain('<li>List item 1</li>');

@@ -259,7 +259,7 @@ export function getPostsByCategory(posts: BlogPost[], category: string): BlogPos
   };
   
   const tagToFind = categoryToTagMap[category];
-  if (!tagToFind) return posts;
+  if (!tagToFind) return [];
   
   return posts.filter(post => post.tags.includes(tagToFind));
 }
