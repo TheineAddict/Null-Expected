@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { loadBlogPosts, getPostsByCategory } from '../utils/blogUtils';
+import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,12 +23,18 @@ const Blog = () => {
     'Case Studies'
   ];
 
-  // Check for category parameter in URL
+  // Check for category and tag parameters in URL
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const categoryParam = urlParams.get('category');
+    const tagParam = urlParams.get('tag');
+    
     if (categoryParam && categories.includes(categoryParam)) {
       setActiveCategory(categoryParam);
+      setActiveTag(null); // Clear tag filter when category is set
+    } else if (tagParam) {
+      setActiveTag(tagParam);
+      setActiveCategory('All'); // Reset category when tag is set
     }
   }, [location.search]);
 
@@ -50,14 +57,22 @@ const Blog = () => {
     loadAllPosts();
   }, []);
 
-  // Filter posts when category changes
+  // Filter posts when category or tag changes
   useEffect(() => {
     if (allPosts.length > 0) {
-      const filteredPosts = getPostsByCategory(allPosts, activeCategory);
-      console.log(`Filtered posts for ${activeCategory}:`, filteredPosts.length);
+      let filteredPosts;
+      
+      if (activeTag) {
+        filteredPosts = getPostsByTag(allPosts, activeTag);
+        console.log(`Filtered posts for tag ${activeTag}:`, filteredPosts.length);
+      } else {
+        filteredPosts = getPostsByCategory(allPosts, activeCategory);
+        console.log(`Filtered posts for ${activeCategory}:`, filteredPosts.length);
+      }
+      
       setPosts(filteredPosts);
     }
-  }, [activeCategory, allPosts]);
+  }, [activeCategory, activeTag, allPosts]);
 
   return (
     <div className="py-20">
@@ -69,13 +84,32 @@ const Blog = () => {
         <p className="text-xl text-gray-600 mb-8">
           Insights, strategies, and honest conversations about software quality
         </p>
+        {activeTag && (
+          <div className="mb-4">
+            <span className="text-sm text-gray-500">Filtered by tag: </span>
+            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+              #{activeTag}
+            </span>
+            <button
+              onClick={() => {
+                setActiveTag(null);
+                setActiveCategory('All');
+                window.history.pushState({}, '', '/blog');
+              }}
+              className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+            >
+              Clear filter
+            </button>
+          </div>
+        )}
         <div className="text-sm text-gray-500 font-mono">
           [ total_posts: {allPosts.length} | filtered: {posts.length} ]
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      {!activeTag && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="flex items-center justify-center mb-8">
           <Filter className="h-5 w-5 text-gray-400 mr-2" />
           <span className="text-sm text-gray-500 font-medium">Filter by Category</span>
@@ -96,7 +130,8 @@ const Blog = () => {
             </button>
           ))}
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Blog Posts Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,9 +151,13 @@ const Blog = () => {
             >
               <div className="p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+                  <Link
+                    to={`/blog?category=${encodeURIComponent(post.category)}`}
+                    className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full hover:bg-indigo-200 transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     {post.category}
-                  </span>
+                  </Link>
                   <div className="flex items-center text-gray-500 text-sm">
                     <Clock className="h-4 w-4 mr-1" />
                     {post.readTime}
@@ -132,6 +171,25 @@ const Blog = () => {
                 <p className="text-gray-600 mb-6 line-clamp-3">
                   {post.excerpt}
                 </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <Link
+                      key={tag}
+                      to={`/blog?tag=${encodeURIComponent(tag)}`}
+                      className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded hover:bg-gray-200 transition-colors"
+                      onClick={() => window.scrollTo(0, 0)}
+                    >
+                      #{tag}
+                    </Link>
+                  ))}
+                  {post.tags.length > 3 && (
+                    <span className="px-2 py-1 text-gray-400 text-xs">
+                      +{post.tags.length - 3} more
+                    </span>
+                  )}
+                </div>
 
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">
@@ -160,10 +218,10 @@ const Blog = () => {
         {!loading && posts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">
-              No posts found in this category yet. Stay tuned!
+              {activeTag ? `No posts found with tag "${activeTag}" yet.` : 'No posts found in this category yet.'} Stay tuned!
             </p>
             <div className="text-sm text-gray-400 font-mono mt-2">
-              [ posts_in_category = 0 ]
+              [ {activeTag ? 'posts_with_tag' : 'posts_in_category'} = 0 ]
             </div>
           </div>
         )}

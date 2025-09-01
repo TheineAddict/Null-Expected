@@ -222,6 +222,24 @@ const Landing = () => {
                     {post.title}
                   </h3>
                   <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <Link
+                        key={tag}
+                        to={`/blog?tag=${encodeURIComponent(tag)}`}
+                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded hover:bg-gray-200 transition-colors"
+                        onClick={() => window.scrollTo(0, 0)}
+                      >
+                        #{tag}
+                      </Link>
+                    ))}
+                    {post.tags.length > 2 && (
+                      <span className="px-2 py-1 text-gray-400 text-xs">
+                        +{post.tags.length - 2}
+                      </span>
+                    )}
+                  </div>
                   <div className="mt-auto">
                     <Link
                       to="/blog"

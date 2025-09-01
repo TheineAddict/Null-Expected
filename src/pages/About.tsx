@@ -56,6 +56,13 @@ const About = () => {
                     <span>LinkedIn</span>
                   </a>
                 )}
+                <Link
+                  to={`/blog/author/${author.slug}`}
+                  className="flex items-center space-x-2 text-indigo-900 hover:text-purple-800 transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  <span>View Posts</span>
+                </Link>
               </div>
             </div>
           </div>

@@ -73,14 +73,32 @@ const BlogPost = () => {
       {/* Post Header */}
       <header className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="mb-6">
-          <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+          <Link
+            to={`/blog?category=${encodeURIComponent(post.category)}`}
+            className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full hover:bg-indigo-200 transition-colors"
+            onClick={() => window.scrollTo(0, 0)}
+          >
             {post.category}
-          </span>
+          </Link>
         </div>
         
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
           {post.title}
         </h1>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {post.tags.map((tag) => (
+            <Link
+              key={tag}
+              to={`/blog?tag=${encodeURIComponent(tag)}`}
+              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded hover:bg-gray-200 transition-colors"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              #{tag}
+            </Link>
+          ))}
+        </div>
 
         <div className="flex flex-wrap items-center gap-6 text-gray-600">
           <div className="flex items-center">
