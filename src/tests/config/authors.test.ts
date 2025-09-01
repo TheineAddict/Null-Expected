@@ -5,10 +5,10 @@ describe('authors config', () => {
   // Test Case 5: getAuthorBySlug Utility Function
   describe('getAuthorBySlug', () => {
     it('should retrieve an author by their slug', () => {
-      const author = getAuthorBySlug('adevitan2');
+      const author = getAuthorBySlug('adevitan');
       expect(author).toBeDefined();
-      expect(author?.name).toBe('Ade Vitan 2');
-      expect(author?.slug).toBe('adevitan2');
+      expect(author?.name).toBe('Ade Vitan');
+      expect(author?.slug).toBe('adevitan');
       expect(author?.imageUrl).toBeDefined();
       expect(author?.imageUrl).toContain('http'); // Should be a valid URL
     });
@@ -28,9 +28,9 @@ describe('authors config', () => {
 
   describe('getAuthorByName', () => {
     it('should retrieve an author by their name', () => {
-      const author = getAuthorByName('Ade Vitan 2');
+      const author = getAuthorByName('Ade Vitan');
       expect(author).toBeDefined();
-      expect(author?.slug).toBe('adevitan2');
+      expect(author?.slug).toBe('adevitan');
     });
 
     it('should return undefined for non-existent name', () => {
@@ -43,15 +43,15 @@ describe('authors config', () => {
     it('should return all configured authors', () => {
       const authors = getAllAuthors();
       expect(authors).toHaveLength(2);
-      expect(authors.map(a => a.name)).toContain('Ade Vitan 2');
+      expect(authors.map(a => a.name)).toContain('Ade Vitan');
       expect(authors.map(a => a.name)).toContain('Alex Davis');
     });
   });
 
   describe('AUTHORS configuration', () => {
     it('should have valid author configurations', () => {
-      expect(AUTHORS.author1.name).toBe('Ade Vitan 2');
-      expect(AUTHORS.author1.slug).toBe('adevitan2');
+      expect(AUTHORS.author1.name).toBe('Ade Vitan');
+      expect(AUTHORS.author1.slug).toBe('adevitan');
       expect(AUTHORS.author1.imageUrl).toBeDefined();
       
       expect(AUTHORS.author2.name).toBe('Alex Davis');

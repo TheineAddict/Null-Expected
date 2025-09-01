@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Twitter, Github, Code } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-2 rounded-lg">
-                <Code className="h-6 w-6 text-white" />
+                <LucideIcons.Code className="h-6 w-6 text-white" />
               </div>
               <span className="font-bold text-xl">Null:Expected</span>
             </div>

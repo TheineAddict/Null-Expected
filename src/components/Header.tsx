@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +20,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="bg-gradient-to-r from-indigo-900 to-purple-800 p-2 rounded-lg">
-              <Code className="h-6 w-6 text-white" />
+              <LucideIcons.Code className="h-6 w-6 text-white" />
             </div>
             <span className="font-bold text-xl bg-gradient-to-r from-indigo-900 to-purple-800 bg-clip-text text-transparent">
               Null:Expected
@@ -50,7 +50,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-gray-700 hover:text-indigo-900"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <LucideIcons.X className="h-6 w-6" /> : <LucideIcons.Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
