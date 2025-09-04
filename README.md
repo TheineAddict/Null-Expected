@@ -112,7 +112,7 @@ function example() {
 ## 📝 Quick Start Process
 
 1. **Copy template**: `src/data/posts/_template-your-post-title.md`
-2. **Create folders**: `src/data/posts/[author-slug]/[year]/[month]/`
+2. **Navigate to your folder**: `src/data/posts/[author-id]/[year]/[month]/`
 3. **Paste and rename**: `draft-your-new-post.md` in your folder
 4. **Edit content**: Update frontmatter and write your post
 5. **Test locally**: `npm run dev` to preview

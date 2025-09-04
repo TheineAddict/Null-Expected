@@ -12,14 +12,14 @@ slug: "your-blog-post-url-slug"
 INSTRUCTIONS FOR USING THIS TEMPLATE:
 
 1. Copy this entire file
-2. Create your folder structure: src/data/posts/[author-slug]/[year]/[month]/
-   - Use your author slug: adevitan, alexdavis, etc.
+2. Navigate to your folder structure: src/data/posts/[author-id]/[year]/[month]/
+   - Use your author ID: author1, author2, etc.
    - Use the year and month from your "date" field above
-   - Example: src/data/posts/adevitan/2025/01/
+   - Example: src/data/posts/author1/2025/01/
 
 3. Paste this file in your folder and rename it:
    - Start with "draft-" to keep it private: draft-your-post-title.md
-   - Example: src/data/posts/adevitan/2025/01/draft-my-awesome-post.md
+   - Example: src/data/posts/author1/2025/01/draft-my-awesome-post.md
 
 4. Update the frontmatter above:
    - Change the title, excerpt, tags, author, date, readTime, and slug
