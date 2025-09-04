@@ -21,20 +21,20 @@ npm run dev
 
 2. **Create the folder structure for your post:**
 ```
-src/data/posts/[author-slug]/[year]/[month]/
+src/data/posts/[author-id]/[year]/[month]/
 ```
-   - `[author-slug]`: Use your author slug (e.g., `adevitan`, `alexdavis`)
+   - `[author-id]`: Use your author ID (e.g., `author1`, `author2`)
    - `[year]`: Four-digit year (e.g., `2025`)
    - `[month]`: Two-digit month (e.g., `01`, `09`, `12`)
 
 3. **Place the template in your folder and rename it:**
 ```
-src/data/posts/[author-slug]/[year]/[month]/draft-your-post-title.md
+src/data/posts/[author-id]/[year]/[month]/draft-your-post-title.md
 ```
 
-**Example for a January 2025 post by Ade:**
+**Example for a January 2025 post by Ade (author1):**
 ```
-src/data/posts/adevitan/2025/01/draft-my-new-post.md
+src/data/posts/author1/2025/01/draft-my-new-post.md
 ```
 
 **Important:** Always start with `draft-` to keep it private while you work on it.
@@ -128,7 +128,7 @@ Posts are organized by author, then by year and month for maximum scalability:
 ```
 src/data/posts/
 ├── _template-your-post-title.md          # Template file (always available)
-├── adevitan/                             # Author folder
+├── author1/                              # Author folder (Ade Vitan)
 │   ├── 2024/
 │   │   ├── 12/
 │   │   │   └── year-end-reflections.md
@@ -137,7 +137,7 @@ src/data/posts/
 │       │   └── new-year-goals.md
 │       └── 09/
 │           └── testing-vs-quality.md
-└── alexdavis/                            # Another author
+└── author2/                              # Author folder (Alex Davis)
     └── 2025/
         └── 01/
             └── automation-strategy.md
@@ -147,7 +147,6 @@ src/data/posts/
 - **Scalable**: Easy to find posts by author and date
 - **Organized**: Clear separation by contributor and chronology  
 - **Template Access**: Template file stays at root level for all authors
-- **Date-based**: Year/month folders match the `date` field in frontmatter
 
 ### **Dynamic File Loading**
 - Posts are loaded dynamically at runtime using `import.meta.glob()` with recursive search
