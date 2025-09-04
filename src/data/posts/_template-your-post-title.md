@@ -13,8 +13,9 @@ INSTRUCTIONS FOR USING THIS TEMPLATE:
 
 1. Copy this entire file
 2. Navigate to your folder structure: src/data/posts/[author-id]/[year]/[month]/
-   - Use your author ID: author1, author2, etc.
+   - Find your author ID in src/config/authors.ts (author1, author2, etc.)
    - Use the year and month from your "date" field above
+   - All month folders (01-12) are already created for 2025 and 2026
    - Example: src/data/posts/author1/2025/01/
 
 3. Paste this file in your folder and rename it:
@@ -23,7 +24,8 @@ INSTRUCTIONS FOR USING THIS TEMPLATE:
 
 4. Update the frontmatter above:
    - Change the title, excerpt, tags, author, date, readTime, and slug
-   - Make sure the year/month in your folder path matches the date field
+   - Make sure the year/month in your folder path matches your date field
+   - Use your author ID (author1, author2) in the author field
 
 5. Write your content below, then test locally with: npm run dev
 

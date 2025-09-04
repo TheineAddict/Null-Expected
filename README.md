@@ -25,7 +25,7 @@ src/data/posts/[author-id]/[year]/[month]/
 ```
    - `[author-id]`: Use your author ID (e.g., `author1`, `author2`)
    - `[year]`: Four-digit year (e.g., `2025`)
-   - `[month]`: Two-digit month (e.g., `01`, `09`, `12`)
+   - `[month]`: Two-digit month (e.g., `01` for January, `09` for September, `12` for December)
 
 3. **Place the template in your folder and rename it:**
 ```
@@ -113,6 +113,9 @@ function example() {
 
 1. **Copy template**: `src/data/posts/_template-your-post-title.md`
 2. **Navigate to your folder**: `src/data/posts/[author-id]/[year]/[month]/`
+   - Find your author ID in `src/config/authors.ts` (e.g., `author1`, `author2`)
+   - Use the year and month from your post's date field
+   - All month folders (01-12) are already created for 2025 and 2026
 3. **Paste and rename**: `draft-your-new-post.md` in your folder
 4. **Edit content**: Update frontmatter and write your post
 5. **Test locally**: `npm run dev` to preview
@@ -130,23 +133,32 @@ src/data/posts/
 ├── _template-your-post-title.md          # Template file (always available)
 ├── author1/                              # Author folder (Ade Vitan)
 │   ├── 2024/
-│   │   ├── 12/
-│   │   │   └── year-end-reflections.md
+│   │   └── 01/
+│   │       ├── future-of-qa-ai-era.md
+│   │       └── the-art-of-questioning.md
 │   └── 2025/
-│       ├── 01/
-│       │   └── new-year-goals.md
-│       └── 09/
-│           └── testing-vs-quality.md
+│       ├── 01/ 02/ 03/ 04/ 05/ 06/        # All 12 months pre-created
+│       ├── 07/ 08/ 09/ 10/ 11/ 12/        # (09 contains testing-vs-quality.md)
+│       └── 2026/
+│           └── 01/ 02/ 03/ 04/ 05/ 06/    # All months for 2026 too
+│               07/ 08/ 09/ 10/ 11/ 12/
 └── author2/                              # Author folder (Alex Davis)
-    └── 2025/
-        └── 01/
-            └── automation-strategy.md
+    ├── 2024/
+    │   └── 01/                           # Contains 4 posts by Alex
+    ├── 2025/
+    │   └── 01/ 02/ 03/ 04/ 05/ 06/       # All 12 months pre-created
+    │       07/ 08/ 09/ 10/ 11/ 12/
+    └── 2026/
+        └── 01/ 02/ 03/ 04/ 05/ 06/       # All months for 2026 too
+            07/ 08/ 09/ 10/ 11/ 12/
 ```
 
 **Benefits:**
 - **Scalable**: Easy to find posts by author and date
-- **Organized**: Clear separation by contributor and chronology  
+- **Organized**: Clear separation by contributor and chronology
+- **Future-ready**: All month folders pre-created for easy post creation
 - **Template Access**: Template file stays at root level for all authors
+- **ID-based**: Uses author IDs for consistency and safety
 
 ### **Dynamic File Loading**
 - Posts are loaded dynamically at runtime using `import.meta.glob()` with recursive search
