@@ -12,9 +12,14 @@ npm run dev
 
 ### 1. Create a New Markdown File
 
-**Create the folder structure and copy the template file** to get started:
+**Follow these steps to create a new blog post:**
 
-1. Create the folder structure for your post:
+1. **Copy the template file:**
+   ```
+   src/data/posts/_template-your-post-title.md
+   ```
+
+2. **Create the folder structure for your post:**
 ```
 src/data/posts/[author-slug]/[year]/[month]/
 ```
@@ -22,12 +27,17 @@ src/data/posts/[author-slug]/[year]/[month]/
    - `[year]`: Four-digit year (e.g., `2025`)
    - `[month]`: Two-digit month (e.g., `01`, `09`, `12`)
 
-2. Copy the template file `src/data/posts/_template-your-post-title.md`
-3. Place it in your new folder structure and rename it:
+3. **Place the template in your folder and rename it:**
 ```
-src/data/posts/adevitan/2025/01/draft-your-post-title.md
+src/data/posts/[author-slug]/[year]/[month]/draft-your-post-title.md
 ```
-**Important:** Start with `draft-` to keep it private while you work on it.
+
+**Example for a January 2025 post by Ade:**
+```
+src/data/posts/adevitan/2025/01/draft-my-new-post.md
+```
+
+**Important:** Always start with `draft-` to keep it private while you work on it.
 
 ### 🚨 Draft Posts Safety Feature
 
@@ -43,10 +53,6 @@ To prevent accidental publishing of unfinished posts:
 - Push the renamed file to GitHub
 - The post becomes live automatically
 
-### **Template File**
-- Use `src/data/posts/_template-your-post-title.md` as your starting point
-- This file is invisible on the website (starts with `_`)
-- Copy it to your author/year/month folder and rename to `draft-your-new-post.md` to begin writing
 
 ### **Featured Posts**
 To make a post appear in the "Featured Insights" section on the homepage:
@@ -105,23 +111,50 @@ function example() {
 
 ## 📝 Quick Start Process
 
-1. **Create folders**: `src/data/posts/[author-slug]/[year]/[month]/`
-2. **Copy template**: `_template-your-post-title.md` → `[author-folder]/[year]/[month]/draft-your-new-post.md`
-2. **Edit content**: Update frontmatter and write your post
-3. **Test locally**: `npm run dev` to preview
-4. **Publish**: Rename to remove `draft-` prefix
-5. **Push to GitHub**: `git add . && git commit -m "Add new post" && git push`
-6. **Goes live**: Automatically deployed in 2-3 minutes
+1. **Copy template**: `src/data/posts/_template-your-post-title.md`
+2. **Create folders**: `src/data/posts/[author-slug]/[year]/[month]/`
+3. **Paste and rename**: `draft-your-new-post.md` in your folder
+4. **Edit content**: Update frontmatter and write your post
+5. **Test locally**: `npm run dev` to preview
+6. **Publish**: Rename to remove `draft-` prefix
+7. **Push to GitHub**: `git add . && git commit -m "Add new post" && git push`
+8. **Goes live**: Automatically deployed in 2-3 minutes
 
 ## 🔧 System Architecture
 
 ### **Organized File Structure**
-- Posts are organized by author, then by year and month for better scalability
-- Structure: `src/data/posts/[author-slug]/[year]/[month]/post-name.md`
-- Example: `src/data/posts/adevitan/2025/01/testing-vs-quality.md`
-- Template files remain in the root posts directory for easy access
+Posts are organized by author, then by year and month for maximum scalability:
+
+```
+src/data/posts/
+├── _template-your-post-title.md          # Template file (always available)
+├── adevitan/                             # Author folder
+│   ├── 2024/
+│   │   ├── 12/
+│   │   │   └── year-end-reflections.md
+│   └── 2025/
+│       ├── 01/
+│       │   └── new-year-goals.md
+│       └── 09/
+│           └── testing-vs-quality.md
+└── alexdavis/                            # Another author
+    └── 2025/
+        └── 01/
+            └── automation-strategy.md
+```
+
+**Benefits:**
+- **Scalable**: Easy to find posts by author and date
+- **Organized**: Clear separation by contributor and chronology  
+- **Template Access**: Template file stays at root level for all authors
+- **Date-based**: Year/month folders match the `date` field in frontmatter
 
 ### **Dynamic File Loading**
+- Posts are loaded dynamically at runtime using `import.meta.glob()` with recursive search
+- Searches through all author/year/month subdirectories automatically
+- New `.md` files are automatically discovered without rebuilds
+- Robust frontmatter parsing handles various comment styles
+- Comprehensive error handling prevents parsing failures
 - Posts are loaded dynamically at runtime using `import.meta.glob()` with recursive search
 - New `.md` files are automatically discovered without rebuilds
 - Robust frontmatter parsing handles various comment styles

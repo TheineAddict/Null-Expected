@@ -3,10 +3,37 @@ title: "Your Blog Post Title Here"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
 tags: ["qa-processes", "featured"]
 author: "author1"
-date: "2024-01-28"
+date: "2025-01-28"
 readTime: "8 min read"
 slug: "your-blog-post-url-slug"
 ---
+
+<!-- 
+INSTRUCTIONS FOR USING THIS TEMPLATE:
+
+1. Copy this entire file
+2. Create your folder structure: src/data/posts/[author-slug]/[year]/[month]/
+   - Use your author slug: adevitan, alexdavis, etc.
+   - Use the year and month from your "date" field above
+   - Example: src/data/posts/adevitan/2025/01/
+
+3. Paste this file in your folder and rename it:
+   - Start with "draft-" to keep it private: draft-your-post-title.md
+   - Example: src/data/posts/adevitan/2025/01/draft-my-awesome-post.md
+
+4. Update the frontmatter above:
+   - Change the title, excerpt, tags, author, date, readTime, and slug
+   - Make sure the year/month in your folder path matches the date field
+
+5. Write your content below, then test locally with: npm run dev
+
+6. When ready to publish, rename the file to remove "draft-"
+   - draft-my-awesome-post.md → my-awesome-post.md
+
+7. Push to GitHub and your post goes live automatically!
+
+Delete this comment block when you start writing.
+-->
 
 # Your Blog Post Title Here
 
