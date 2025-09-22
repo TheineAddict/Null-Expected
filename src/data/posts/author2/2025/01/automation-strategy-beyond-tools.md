@@ -3,7 +3,7 @@ title: "Automation Strategy: Beyond the Tools"
 excerpt: "Everyone talks about which automation framework to use. Almost no one talks about whether you should automate that test at all."
 tags: ["qa-processes", "automation", "strategy", "tools", "process-improvement"]
 author: "author2"
-date: "2024-01-15"
+date: "2025-01-15"
 readTime: "12 min read"
 slug: "automation-strategy-beyond-tools"
 ---
