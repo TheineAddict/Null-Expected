@@ -159,38 +159,38 @@ await expect(async () => {
 ### Challenge 2: Performance Bottlenecks
 **Problem**: Some test suites were still slower than expected
 **Solution**: Implemented smart test parallelization and resource optimization
-- Grouped tests by resource requirements
-- Implemented test sharding across multiple machines
-- Optimized test data setup and teardown
+Grouped tests by resource requirements
+Implemented test sharding across multiple machines
+Optimized test data setup and teardown
 
 ### Challenge 3: Team Adoption
 **Problem**: QA team resistance to learning new framework
 **Solution**: Comprehensive training program and gradual transition
-- Weekly Playwright workshops
-- Pair programming sessions
-- Internal documentation and best practices guide
-- Gradual responsibility transfer
+Weekly Playwright workshops
+Pair programming sessions
+Internal documentation and best practices guide
+Gradual responsibility transfer
 
 ## Results and Impact
 
 ### Quantitative Results
-- **Execution Time**: Reduced from 8 hours to 3 hours (62% improvement)
-- **Flaky Test Rate**: Reduced from 23% to 0.9% (96% improvement)
-- **Maintenance Time**: Reduced from 40% to 12% of QA team time
-- **Test Coverage**: Increased from 78% to 94%
-- **Bug Detection**: 34% increase in bugs caught before production
+**Execution Time**: Reduced from 8 hours to 3 hours (62% improvement)
+**Flaky Test Rate**: Reduced from 23% to 0.9% (96% improvement)
+**Maintenance Time**: Reduced from 40% to 12% of QA team time
+**Test Coverage**: Increased from 78% to 94%
+**Bug Detection**: 34% increase in bugs caught before production
 
 ### Business Impact
-- **Cost Savings**: $490K annually in reduced QA overhead
-- **Time to Market**: 2.3 days faster average release cycle
-- **Developer Productivity**: 28% increase in feature delivery velocity
-- **Quality Metrics**: 67% reduction in production bugs
+**Cost Savings**: $490K annually in reduced QA overhead
+**Time to Market**: 2.3 days faster average release cycle
+**Developer Productivity**: 28% increase in feature delivery velocity
+**Quality Metrics**: 67% reduction in production bugs
 
 ### ROI Analysis
-- **Investment**: $130K (tools, training, consulting)
-- **Annual Savings**: $490K
-- **Payback Period**: 3.2 months
-- **3-Year ROI**: 1,127%
+**Investment**: $130K (tools, training, consulting)
+**Annual Savings**: $490K
+**Payback Period**: 3.2 months
+**3-Year ROI**: 1,127%
 
 ## Lessons Learned
 
@@ -217,26 +217,26 @@ await expect(async () => {
 For teams considering a similar migration, here's our recommended checklist:
 
 ### Pre-Migration (Months 1-2)
-- [ ] Audit existing test suite and identify patterns
-- [ ] Evaluate target framework options
-- [ ] Create proof of concept with critical tests
-- [ ] Establish success metrics and timeline
-- [ ] Secure stakeholder buy-in and resources
+[ ] Audit existing test suite and identify patterns
+[ ] Evaluate target framework options
+[ ] Create proof of concept with critical tests
+[ ] Establish success metrics and timeline
+[ ] Secure stakeholder buy-in and resources
 
 ### Migration Phase (Months 3-12)
-- [ ] Set up new framework infrastructure
-- [ ] Create migration tools and scripts
-- [ ] Implement parallel running capability
-- [ ] Train team on new framework
-- [ ] Migrate tests in priority order
-- [ ] Monitor and optimize performance continuously
+[ ] Set up new framework infrastructure
+[ ] Create migration tools and scripts
+[ ] Implement parallel running capability
+[ ] Train team on new framework
+[ ] Migrate tests in priority order
+[ ] Monitor and optimize performance continuously
 
 ### Post-Migration (Months 13-15)
-- [ ] Decommission old framework
-- [ ] Optimize test suite performance
-- [ ] Create comprehensive documentation
-- [ ] Establish long-term maintenance practices
-- [ ] Conduct retrospective and capture lessons learned
+[ ] Decommission old framework
+[ ] Optimize test suite performance
+[ ] Create comprehensive documentation
+[ ] Establish long-term maintenance practices
+[ ] Conduct retrospective and capture lessons learned
 
 ## Conclusion
 
