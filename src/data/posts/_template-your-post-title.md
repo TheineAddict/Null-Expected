@@ -82,9 +82,9 @@ function example() {
 You can add [links like this](https://example.com) and they'll work perfectly.
 
 Remember to:
-- Keep your content engaging and valuable
-- Use clear headings to structure your thoughts
-- Include practical examples when possible
-- End with a thought-provoking question or call to action
+Keep your content engaging and valuable
+Use clear headings to structure your thoughts
+Include practical examples when possible
+End with a thought-provoking question or call to action
 
 *What's your experience with this topic?*

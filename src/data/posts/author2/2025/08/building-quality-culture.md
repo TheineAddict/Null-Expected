@@ -21,22 +21,22 @@ But building that culture? That's the hard part.
 Before we talk about how to build it, let's define what we're building toward. In organizations with strong quality cultures, you see:
 
 ### Shared Ownership
-- Developers write tests before they write code
-- Product managers consider edge cases in their requirements
-- Designers think about error states and accessibility
-- Customer support feeds user pain points back to the product team
+Developers write tests before they write code
+Product managers consider edge cases in their requirements
+Designers think about error states and accessibility
+Customer support feeds user pain points back to the product team
 
 ### Proactive Problem-Solving
-- Issues are caught and fixed before they reach users
-- The team asks "how can we prevent this?" not just "how do we fix this?"
-- Quality metrics are discussed in every planning meeting
-- Post-mortems focus on systemic improvements, not blame
+Issues are caught and fixed before they reach users
+The team asks "how can we prevent this?" not just "how do we fix this?"
+Quality metrics are discussed in every planning meeting
+Post-mortems focus on systemic improvements, not blame
 
 ### User-Centric Thinking
-- Decisions are made with the user experience in mind
-- The team regularly talks to actual users
-- Quality is measured by user satisfaction, not just bug counts
-- Features aren't considered "done" until they work well for real users
+Decisions are made with the user experience in mind
+The team regularly talks to actual users
+Quality is measured by user satisfaction, not just bug counts
+Features aren't considered "done" until they work well for real users
 
 ## The Anti-Patterns
 
@@ -62,15 +62,15 @@ Creating a quality culture starts with leadership, but it requires buy-in from e
 You can't improve what you don't measure. But the key is measuring the right things:
 
 **Good Quality Metrics:**
-- User satisfaction scores
-- Time to resolve user-reported issues
-- Percentage of features that work as expected on first use
-- Customer support ticket volume and trends
+User satisfaction scores
+Time to resolve user-reported issues
+Percentage of features that work as expected on first use
+Customer support ticket volume and trends
 
 **Misleading Quality Metrics:**
-- Number of bugs found (encourages bug hunting over prevention)
-- Test coverage percentage (encourages gaming the metric)
-- Number of test cases written (quantity over quality)
+Number of bugs found (encourages bug hunting over prevention)
+Test coverage percentage (encourages gaming the metric)
+Number of test cases written (quantity over quality)
 
 ### 2. Celebrate Quality Wins
 When someone prevents a bug, catches an issue early, or improves the user experience, make it visible. Share these wins in team meetings, company all-hands, and performance reviews.
@@ -79,19 +79,19 @@ When someone prevents a bug, catches an issue early, or improves the user experi
 This doesn't mean everyone needs to become a tester. It means everyone needs to think about quality in their role:
 
 **For Product Managers:**
-- Include quality criteria in user stories
-- Consider edge cases and error scenarios
-- Allocate time for quality improvements in roadmaps
+Include quality criteria in user stories
+Consider edge cases and error scenarios
+Allocate time for quality improvements in roadmaps
 
 **For Developers:**
-- Write tests as part of feature development
-- Consider performance and security implications
-- Think about maintainability and technical debt
+Write tests as part of feature development
+Consider performance and security implications
+Think about maintainability and technical debt
 
 **For Designers:**
-- Design for accessibility and different user contexts
-- Consider error states and edge cases
-- Test designs with real users
+Design for accessibility and different user contexts
+Consider error states and edge cases
+Test designs with real users
 
 ## The Transformation Process
 
@@ -101,37 +101,37 @@ Changing culture takes time. Here's a roadmap I've used successfully:
 **Goal:** Understand the current state and build awareness
 
 **Activities:**
-- Survey the team about quality practices and pain points
-- Analyze quality metrics and user feedback
-- Identify the biggest quality challenges
-- Share findings with the entire team
+Survey the team about quality practices and pain points
+Analyze quality metrics and user feedback
+Identify the biggest quality challenges
+Share findings with the entire team
 
 ### Phase 2: Quick Wins (Months 2-4)
 **Goal:** Build momentum with visible improvements
 
 **Activities:**
-- Fix the most painful quality issues
-- Implement basic quality practices (code reviews, basic testing)
-- Start measuring and sharing quality metrics
-- Celebrate early successes
+Fix the most painful quality issues
+Implement basic quality practices (code reviews, basic testing)
+Start measuring and sharing quality metrics
+Celebrate early successes
 
 ### Phase 3: Process Integration (Months 4-8)
 **Goal:** Embed quality practices into regular workflows
 
 **Activities:**
-- Add quality criteria to definition of done
-- Implement quality gates in the development process
-- Train team members on quality practices
-- Start regular quality retrospectives
+Add quality criteria to definition of done
+Implement quality gates in the development process
+Train team members on quality practices
+Start regular quality retrospectives
 
 ### Phase 4: Cultural Embedding (Months 8-12)
 **Goal:** Make quality thinking automatic
 
 **Activities:**
-- Include quality contributions in performance reviews
-- Make quality metrics part of team goals
-- Establish quality champions across different roles
-- Create systems for continuous quality improvement
+Include quality contributions in performance reviews
+Make quality metrics part of team goals
+Establish quality champions across different roles
+Create systems for continuous quality improvement
 
 ## Common Obstacles and Solutions
 
@@ -160,16 +160,16 @@ Leadership says they care about quality but doesn't allocate time or resources f
 How do you know if your quality culture is improving? Look for these indicators:
 
 ### Leading Indicators (Things that predict future quality)
-- Percentage of features that include quality criteria in requirements
-- Number of quality issues caught before reaching users
-- Time spent on proactive quality work vs. reactive bug fixing
-- Team members proactively suggesting quality improvements
+Percentage of features that include quality criteria in requirements
+Number of quality issues caught before reaching users
+Time spent on proactive quality work vs. reactive bug fixing
+Team members proactively suggesting quality improvements
 
 ### Lagging Indicators (Results of good quality culture)
-- User satisfaction scores
-- Reduction in customer support tickets
-- Faster feature delivery (due to less rework)
-- Lower employee turnover (better work environment)
+User satisfaction scores
+Reduction in customer support tickets
+Faster feature delivery (due to less rework)
+Lower employee turnover (better work environment)
 
 ## The Long Game
 

@@ -60,66 +60,66 @@ Identifying inefficiencies in how the team works and proposing better approaches
 Here's how I've seen successful QA careers evolve:
 
 ### Level 1: Test Executor
-- Follows test cases and scripts
-- Reports bugs clearly and accurately
-- Learns the application domain
-- **Key Growth Area**: Start asking "why" questions about the tests you're running
+Follows test cases and scripts
+Reports bugs clearly and accurately
+Learns the application domain
+**Key Growth Area**: Start asking "why" questions about the tests you're running
 
 ### Level 2: Test Designer
-- Creates test cases and scenarios
-- Understands requirements and translates them into tests
-- Begins to identify gaps in test coverage
-- **Key Growth Area**: Start thinking about risk and prioritization
+Creates test cases and scenarios
+Understands requirements and translates them into tests
+Begins to identify gaps in test coverage
+**Key Growth Area**: Start thinking about risk and prioritization
 
 ### Level 3: Quality Analyst
-- Analyzes quality trends and patterns
-- Provides input on testability and quality requirements
-- Collaborates with developers on quality practices
-- **Key Growth Area**: Start influencing process and design decisions
+Analyzes quality trends and patterns
+Provides input on testability and quality requirements
+Collaborates with developers on quality practices
+**Key Growth Area**: Start influencing process and design decisions
 
 ### Level 4: Quality Engineer
-- Designs and implements quality processes
-- Builds tools and frameworks to support quality
-- Mentors other QA team members
-- **Key Growth Area**: Start thinking strategically about quality across the organization
+Designs and implements quality processes
+Builds tools and frameworks to support quality
+Mentors other QA team members
+**Key Growth Area**: Start thinking strategically about quality across the organization
 
 ### Level 5: Quality Strategist
-- Influences product and technical strategy
-- Defines quality standards and practices across teams
-- Drives cultural change around quality
-- **Key Growth Area**: Start thinking about quality as a business enabler
+Influences product and technical strategy
+Defines quality standards and practices across teams
+Drives cultural change around quality
+**Key Growth Area**: Start thinking about quality as a business enabler
 
 ## Practical Steps to Level Up
 
 ### 1. Expand Your Perspective
-- Attend product planning meetings
-- Understand the business goals behind features
-- Learn about your users and their needs
-- Study your competitors and industry trends
+Attend product planning meetings
+Understand the business goals behind features
+Learn about your users and their needs
+Study your competitors and industry trends
 
 ### 2. Build Relationships
-- Partner with developers on quality practices
-- Collaborate with product managers on requirements
-- Work with customer support to understand user pain points
-- Connect with other QA professionals in your industry
+Partner with developers on quality practices
+Collaborate with product managers on requirements
+Work with customer support to understand user pain points
+Connect with other QA professionals in your industry
 
 ### 3. Develop Technical Depth
-- Learn about your application's architecture
-- Understand the development process and tools
-- Experiment with automation and tooling
-- Study performance, security, and accessibility
+Learn about your application's architecture
+Understand the development process and tools
+Experiment with automation and tooling
+Study performance, security, and accessibility
 
 ### 4. Practice Strategic Thinking
-- Analyze quality metrics and trends
-- Identify systemic issues, not just individual bugs
-- Propose process improvements
-- Think about quality ROI and business impact
+Analyze quality metrics and trends
+Identify systemic issues, not just individual bugs
+Propose process improvements
+Think about quality ROI and business impact
 
 ### 5. Communicate Your Value
-- Document your contributions and impact
-- Share knowledge through presentations or writing
-- Mentor junior team members
-- Advocate for quality practices
+Document your contributions and impact
+Share knowledge through presentations or writing
+Mentor junior team members
+Advocate for quality practices
 
 ## Common Pitfalls to Avoid
 
@@ -139,23 +139,23 @@ Don't just point out problems—propose solutions. Be known as someone who makes
 
 ### Start Where You Are
 You don't need a new job title to start thinking strategically. Begin by:
-- Asking better questions about the features you're testing
-- Looking for patterns in the bugs you find
-- Proposing small process improvements
-- Volunteering for cross-functional projects
+Asking better questions about the features you're testing
+Looking for patterns in the bugs you find
+Proposing small process improvements
+Volunteering for cross-functional projects
 
 ### Build Your Case
 Document your expanded contributions:
-- Process improvements you've suggested or implemented
-- Cross-functional collaboration you've initiated
-- Knowledge sharing you've done
-- Strategic insights you've provided
+Process improvements you've suggested or implemented
+Cross-functional collaboration you've initiated
+Knowledge sharing you've done
+Strategic insights you've provided
 
 ### Seek Opportunities
-- Volunteer for projects that stretch your skills
-- Ask to participate in planning and design discussions
-- Propose new initiatives that align with business goals
-- Seek mentorship from senior QA professionals or managers
+Volunteer for projects that stretch your skills
+Ask to participate in planning and design discussions
+Propose new initiatives that align with business goals
+Seek mentorship from senior QA professionals or managers
 
 ## The Long Game
 
