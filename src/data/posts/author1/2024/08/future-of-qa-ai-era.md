@@ -22,10 +22,10 @@ Let's start with what AI and machine learning are genuinely good at in the conte
 
 ### Pattern Recognition
 AI excels at identifying patterns in large datasets. This makes it valuable for:
-- Analyzing test results to identify flaky tests
-- Detecting anomalies in application performance
-- Finding correlations between code changes and bug reports
-- Identifying areas of the codebase that are prone to defects
+**Analyzing test results** – identify flaky tests  
+**Detecting anomalies** – spot issues in application performance  
+**Finding correlations** – link code changes to bug reports  
+**Highlighting risky areas** – locate code prone to defects
 
 ### Repetitive Task Automation
 AI can handle routine, rule-based tasks more efficiently than humans:
