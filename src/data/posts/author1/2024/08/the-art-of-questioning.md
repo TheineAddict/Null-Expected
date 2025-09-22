@@ -16,10 +16,10 @@ In the world of software quality assurance, there's a skill more valuable than k
 
 Every great bug find starts with curiosity. Not the kind that killed the cat, but the kind that saves releases. When a developer says "it works on my machine," the curious QA professional doesn't just nod and move on. They ask:
 
-- What if the user has a different browser version?
-- What if their internet connection is slower?
-- What if they're using a screen reader?
-- What if they try to do this at 2 AM when the database is running maintenance?
+What if the user has a different browser version?
+What if their internet connection is slower?
+What if they're using a screen reader?
+What if they try to do this at 2 AM when the database is running maintenance?
 
 These "what if" scenarios aren't pessimism—they're empathy in action.
 
@@ -36,19 +36,19 @@ The questioning mindset pushes us to explore:
 Here are some questions that have prevented real disasters in my experience:
 
 ### For Requirements
-- "What does 'user-friendly' actually mean to our users?"
-- "How will we know if this feature is successful?"
-- "What assumptions are we making about user behavior?"
+"What does 'user-friendly' actually mean to our users?"
+"How will we know if this feature is successful?"
+"What assumptions are we making about user behavior?"
 
 ### For Implementation
-- "What happens if this API call fails?"
-- "How does this perform with 10x the expected data?"
-- "What if two users try to do this simultaneously?"
+"What happens if this API call fails?"
+"How does this perform with 10x the expected data?"
+"What if two users try to do this simultaneously?"
 
 ### For Testing
-- "Are we testing what matters to users, or just what's easy to test?"
-- "What would make this feature completely unusable?"
-- "How would someone try to break this intentionally?"
+"Are we testing what matters to users, or just what's easy to test?"
+"What would make this feature completely unusable?"
+"How would someone try to break this intentionally?"
 
 ## Cultivating Curiosity
 
@@ -66,10 +66,10 @@ Questioning isn't just a natural talent—it's a skill you can develop:
 
 The best QA teams don't just have individuals who ask good questions—they create cultures where questioning is encouraged and valued. This means:
 
-- Making it safe to challenge assumptions
-- Rewarding curiosity, even when it doesn't find bugs
-- Sharing interesting questions and scenarios across the team
-- Teaching developers to ask QA-style questions about their own code
+Making it safe to challenge assumptions
+Rewarding curiosity, even when it doesn't find bugs
+Sharing interesting questions and scenarios across the team
+Teaching developers to ask QA-style questions about their own code
 
 ## When Questions Become Insights
 
