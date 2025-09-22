@@ -34,7 +34,7 @@ export const AUTHORS: Record<string, Author> = {
     bio: 'Alex brings 10+ years of experience in quality strategy and team leadership. He\'s worked across startups and enterprise organizations, focusing on quality culture transformation and process optimization. Alex is known for his pragmatic approach to QA and his ability to translate technical concepts into business value.',
     tag: '[ process_optimizer = true ]',
     imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-    linkedinUrl: '#',
+    linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'alex@nullexpected.com'
   }
 };
