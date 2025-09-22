@@ -3,7 +3,7 @@ title: "The Great Migration: Moving 50,000 Tests from Selenium to Playwright"
 excerpt: "A detailed case study of migrating a Fortune 500 company's entire test suite from Selenium to Playwright, including challenges, solutions, and measurable outcomes."
 tags: ["case-studies", "automation", "playwright", "selenium", "migration"]
 author: "author2"
-date: "2024-01-18"
+date: "2025-01-18"
 readTime: "16 min read"
 slug: "great-migration-selenium-playwright"
 ---
