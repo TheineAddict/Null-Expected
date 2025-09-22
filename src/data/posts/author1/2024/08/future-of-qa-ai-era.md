@@ -3,7 +3,7 @@ title: "The Future of QA in the AI Era: Adaptation, Not Replacement"
 excerpt: "AI will change how we do QA, but it won't replace the need for human insight, creativity, and judgment in quality assurance."
 tags: ["industry-trends", "featured", "AI", "automation", "career-growth"]
 author: "author1"
-date: "2024-01-10"
+date: "2024-08-10"
 readTime: "10 min read"
 slug: "future-of-qa-ai-era"
 ---
