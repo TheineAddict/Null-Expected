@@ -19,7 +19,7 @@ export const AUTHORS: Record<string, Author> = {
     slug: 'adevitan',
     initials: 'AV',
     title: 'Release Manager',
-    bio: 'With 12 years in QA and release management, Ade focuses on early quality, team alignment, and pragmatic processes. She shares her passion for quality and tech creativity through Null Expected.',
+    bio: 'With 12 years in QA and release management, Ade focuses on early quality, team alignment, and pragmatic processes. She shares her passion for quality and tech creativity through Null Expected. 1',
     tag: '[ quality_mindset = true ]',
     imageUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOv7QBIbhwjA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723039271624?e=1759363200&v=beta&t=fNqH3lggh-LVs-TpVJSbsYEX_lwOaFvDcQwcqTJT9gI',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
