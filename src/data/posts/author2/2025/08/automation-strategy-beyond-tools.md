@@ -27,39 +27,39 @@ This is what happens when we confuse activity with strategy.
 Before you write a single line of test code, ask yourself:
 
 ### What are you trying to achieve?
-- Faster feedback on critical functionality?
-- Confidence in deployment?
-- Regression prevention?
-- Documentation of expected behavior?
+Faster feedback on critical functionality?
+Confidence in deployment?
+Regression prevention?
+Documentation of expected behavior?
 
 ### What are the constraints?
-- How often does this code change?
-- How complex is the setup required?
-- What's the cost of this test failing vs. the cost of the bug it might catch?
+How often does this code change?
+How complex is the setup required?
+What's the cost of this test failing vs. the cost of the bug it might catch?
 
 ### What are the alternatives?
-- Could this be caught by a unit test instead?
-- Is this something that should be verified in production monitoring?
-- Would a code review checklist be more effective?
+Could this be caught by a unit test instead?
+Is this something that should be verified in production monitoring?
+Would a code review checklist be more effective?
 
 ## The Automation Pyramid (Revisited)
 
 Everyone knows the test pyramid: lots of unit tests, some integration tests, fewer UI tests. But the pyramid isn't just about quantity—it's about purpose and economics.
 
 ### Unit Tests: The Foundation
-- **Purpose**: Verify individual components work as designed
-- **Economics**: Cheap to write, cheap to run, cheap to maintain
-- **Sweet Spot**: Complex business logic, edge cases, error handling
+**Purpose**: Verify individual components work as designed
+**Economics**: Cheap to write, cheap to run, cheap to maintain
+**Sweet Spot**: Complex business logic, edge cases, error handling
 
 ### Integration Tests: The Middle Ground
-- **Purpose**: Verify components work together
-- **Economics**: Moderate cost, moderate maintenance
-- **Sweet Spot**: API contracts, data flow, service interactions
+**Purpose**: Verify components work together
+**Economics**: Moderate cost, moderate maintenance
+**Sweet Spot**: API contracts, data flow, service interactions
 
 ### UI Tests: The Tip
-- **Purpose**: Verify critical user journeys work end-to-end
-- **Economics**: Expensive to write, expensive to run, expensive to maintain
-- **Sweet Spot**: Core business flows, cross-browser compatibility
+**Purpose**: Verify critical user journeys work end-to-end
+**Economics**: Expensive to write, expensive to run, expensive to maintain
+**Sweet Spot**: Core business flows, cross-browser compatibility
 
 ## What Not to Automate
 
@@ -108,18 +108,18 @@ If your automation is consuming all your time, you're doing it wrong.
 ## Practical Guidelines
 
 ### Do Automate:
-- Critical business workflows
-- Regression-prone areas
-- Time-consuming manual tests that you run frequently
-- Tests that verify integrations between systems
-- Smoke tests for deployment confidence
+Critical business workflows
+Regression-prone areas
+Time-consuming manual tests that you run frequently
+Tests that verify integrations between systems
+Smoke tests for deployment confidence
 
 ### Don't Automate:
-- Tests that change frequently
-- One-time verification scenarios
-- Complex setup scenarios that are rarely executed
-- Tests that require human judgment
-- Tests where the maintenance cost exceeds the value
+Tests that change frequently
+One-time verification scenarios
+Complex setup scenarios that are rarely executed
+Tests that require human judgment
+Tests where the maintenance cost exceeds the value
 
 ## The Strategy Behind the Strategy
 
@@ -133,10 +133,10 @@ Your automation should make your team more effective, not more busy. It should i
 
 Before you evaluate another tool or framework, take a step back and evaluate your strategy. Ask yourself:
 
-- What are we trying to achieve with automation?
-- How will we measure success?
-- What are we willing to trade off?
-- How does this fit into our overall quality strategy?
+What are we trying to achieve with automation?
+How will we measure success?
+What are we willing to trade off?
+How does this fit into our overall quality strategy?
 
 The answers to these questions matter more than whether you choose Selenium or Playwright.
 
