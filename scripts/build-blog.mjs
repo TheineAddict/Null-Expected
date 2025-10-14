@@ -4,11 +4,11 @@ import fsp from "node:fs/promises";
 import path from "node:path";
 import { marked } from "marked";
 
-/* ---- tiny helpers (no extra deps) ---- */
+/* ------------ helpers ------------ */
 const esc = (s = "") => String(s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;")
   .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-const slugify = (s = "") => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
 const parseFrontMatter = (src) => {
   if (!src.startsWith("---")) return [{}, src];
   const end = src.indexOf("\n---", 3);
@@ -28,45 +28,95 @@ const parseFrontMatter = (src) => {
   return [data, body];
 };
 
-/* ---- site constants ---- */
+const slugify = (s = "") =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
+/* ------------ site constants ------------ */
 const SITE = "https://www.nullexpected.com";
 const BRAND = "Null Expected";
 const BLOG_BASE = "/blog";
-const SRC_DIR = "content/blog";      // your markdown lives here
-const OUT_DIR = "dist";              // Vite’s output
-const OUT_BLOG_DIR = path.join(OUT_DIR, "blog");
+const OUT_DIR = "dist";
+const POSTS_ROOT = "src/data/posts"; // required structure
 
-/* ---- ensure output dirs ---- */
+/* ------------ validate structure & gather files ------------ */
+const AUTHOR_RE = /^author\d+$/;   // author1, author2, author3, ...
+const YEAR_RE = /^\d{4}$/;         // 2025
+const MONTH_RE = /^(0[1-9]|1[0-2])$/; // 01..12
+
+if (!fs.existsSync(POSTS_ROOT)) {
+  console.warn(`[blog build] No posts: missing ${POSTS_ROOT}`);
+}
+
+const walkMarkdown = () => {
+  const out = [];
+  if (!fs.existsSync(POSTS_ROOT)) return out;
+  for (const authorDir of fs.readdirSync(POSTS_ROOT, { withFileTypes: true })) {
+    if (!authorDir.isDirectory() || !AUTHOR_RE.test(authorDir.name)) continue;
+    const authorPath = path.join(POSTS_ROOT, authorDir.name);
+
+    for (const yearDir of fs.readdirSync(authorPath, { withFileTypes: true })) {
+      if (!yearDir.isDirectory() || !YEAR_RE.test(yearDir.name)) continue;
+      const yearPath = path.join(authorPath, yearDir.name);
+
+      for (const monthDir of fs.readdirSync(yearPath, { withFileTypes: true })) {
+        if (!monthDir.isDirectory() || !MONTH_RE.test(monthDir.name)) continue;
+        const monthPath = path.join(yearPath, monthDir.name);
+
+        for (const f of fs.readdirSync(monthPath, { withFileTypes: true })) {
+          if (f.isFile() && f.name.toLowerCase().endsWith(".md")) {
+            out.push({
+              abs: path.join(monthPath, f.name),
+              author: authorDir.name,
+              year: yearDir.name,
+              month: monthDir.name,
+              file: f.name
+            });
+          }
+        }
+      }
+    }
+  }
+  return out;
+};
+
+const mdFiles = walkMarkdown();
+console.log(`[blog build] Found ${mdFiles.length} markdown file(s) under ${POSTS_ROOT}.`);
+
+/* ------------ ensure output folders ------------ */
 await fsp.mkdir(OUT_DIR, { recursive: true });
-await fsp.mkdir(OUT_BLOG_DIR, { recursive: true });
 
-/* ---- read markdown posts ---- */
-const files = fs.existsSync(SRC_DIR) ? fs.readdirSync(SRC_DIR) : [];
+/* ------------ build posts ------------ */
 const posts = [];
 
-for (const file of files) {
-  if (!file.endsWith(".md")) continue;
-
-  const raw = await fsp.readFile(path.join(SRC_DIR, file), "utf8");
+for (const info of mdFiles) {
+  const raw = await fsp.readFile(info.abs, "utf8");
   const [data, content] = parseFrontMatter(raw);
 
-  let slug = (data.slug?.trim()) || path.basename(file, ".md");
-  slug = slugify(slug);
-  const url = `${SITE}${BLOG_BASE}/${slug}`;
+  const filenameSlug = path.basename(info.file, ".md");
+  const fmSlug = (data.slug && String(data.slug).trim()) || "";
+  const slug = slugify(fmSlug || filenameSlug) || "post";
 
-  const htmlBody = marked.parse(content);
-  const pageTitle = data.title ? `${data.title} | ${BRAND}` : BRAND;
+  const urlPath = `${BLOG_BASE}/${info.author}/${info.year}/${info.month}/${slug}`;
+  const url = `${SITE}${urlPath}`;
+
+  const titleText = data.title ? String(data.title) : slug;
+  const pageTitle = `${titleText} | ${BRAND}`;
   const metaDesc = data.description || "A QA thought hub. What did you expect?";
   const ogImage = data.image || `${SITE}/og-null-expected.jpg`;
-  const datePublished = data.date || "";
+
+  const datePublished =
+    data.date ||
+    `${info.year}-${info.month}-01`;
   const dateModified = data.updated || datePublished;
+
+  const htmlBody = marked.parse(content);
 
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": data.title || BRAND,
+    "headline": titleText,
     "description": metaDesc,
-    "author": data.author ? { "@type": "Person", "name": data.author } : undefined,
+    "author": { "@type": "Person", "name": info.author },
     "datePublished": datePublished || undefined,
     "dateModified": dateModified || undefined,
     "mainEntityOfPage": { "@type": "WebPage", "@id": url },
@@ -79,9 +129,12 @@ for (const file of files) {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE },
       { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE}${BLOG_BASE}` },
-      { "@type": "ListItem", "position": 3, "name": data.title || slug, "item": url }
+      { "@type": "ListItem", "position": 3, "name": titleText, "item": url }
     ]
   };
+
+  const outHtmlPath = path.join(OUT_DIR, urlPath.slice(1) + ".html"); // remove leading '/'
+  await fsp.mkdir(path.dirname(outHtmlPath), { recursive: true });
 
   const page = `<!doctype html>
 <html lang="en">
@@ -93,14 +146,16 @@ for (const file of files) {
 <link rel="canonical" href="${url}" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="${esc(BRAND)}" />
-<meta property="og:title" content="${esc(data.title || BRAND)}" />
+<meta property="og:title" content="${esc(titleText)}" />
 <meta property="og:description" content="${esc(metaDesc)}" />
 <meta property="og:url" content="${url}" />
 <meta property="og:image" content="${esc(ogImage)}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="${esc(data.title || BRAND)}" />
+<meta name="twitter:title" content="${esc(titleText)}" />
 <meta name="twitter:description" content="${esc(metaDesc)}" />
 <meta name="twitter:image" content="${esc(ogImage)}" />
+<script type="application/ld+json">${JSON.stringify(articleLd)}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbsLd)}</script>
 <style>
 body{font-family:ui-sans-serif,system-ui;margin:0;color:#0f172a;line-height:1.6}
 header,main,footer{max-width:860px;margin:0 auto;padding:20px}
@@ -110,8 +165,6 @@ article img{max-width:100%;height:auto}
 .meta{color:#475569;font-size:.9rem;margin-bottom:1rem}
 nav a{color:#334155;margin-right:12px}
 </style>
-<script type="application/ld+json">${JSON.stringify(articleLd)}</script>
-<script type="application/ld+json">${JSON.stringify(breadcrumbsLd)}</script>
 </head>
 <body>
 <header>
@@ -123,9 +176,9 @@ nav a{color:#334155;margin-right:12px}
 </header>
 <main>
   <article>
-    <h1>${esc(data.title || slug)}</h1>
+    <h1>${esc(titleText)}</h1>
     <div class="meta">
-      ${data.author ? esc(data.author) + " · " : ""}${datePublished ? new Date(datePublished).toDateString() : ""}
+      ${esc(info.author)} · ${datePublished ? new Date(datePublished).toDateString() : ""}
     </div>
     ${htmlBody}
   </article>
@@ -134,20 +187,21 @@ nav a{color:#334155;margin-right:12px}
 </body>
 </html>`;
 
-  await fsp.writeFile(path.join(OUT_BLOG_DIR, `${slug}.html`), page, "utf8");
+  await fsp.writeFile(outHtmlPath, page, "utf8");
 
   posts.push({
-    slug, url,
-    title: data.title || slug,
+    urlPath, url,
+    title: titleText,
     description: metaDesc,
+    author: info.author,
     date: datePublished
   });
 }
 
-/* ---- /blog index ---- */
+/* ------------ /blog index ------------ */
 const listItems = posts
   .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
-  .map(p => `<li><a href="${BLOG_BASE}/${p.slug}">${esc(p.title)}</a> — <small>${esc(p.description)}</small></li>`)
+  .map(p => `<li><a href="${p.urlPath}">${esc(p.title)}</a> — <small>${esc(p.description)}</small></li>`)
   .join("\n");
 
 const blogIndex = `<!doctype html><html lang="en"><head>
@@ -159,27 +213,43 @@ const blogIndex = `<!doctype html><html lang="en"><head>
 </head><body>
 <main><h1>Blog</h1><ul>${listItems || "<li>No posts yet.</li>"}</ul></main>
 </body></html>`;
+
 await fsp.mkdir(path.join(OUT_DIR, "blog"), { recursive: true });
 await fsp.writeFile(path.join(OUT_DIR, "blog", "index.html"), blogIndex, "utf8");
 
-/* ---- sitemap.xml ---- */
-const urls = [
+/* ------------ include other static pages from dist in sitemap ------------ */
+function collectDistPages(root) {
+  const urls = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile() && entry.name.endsWith(".html")) {
+        const rel = path.relative(root, full).replace(/\\/g, "/");
+        if (rel === "index.html") continue; // home already added
+        if (rel.startsWith("blog/") && rel !== "blog/index.html") continue; // blog posts added separately
+        const clean = "/" + rel.replace(/index\.html$/, "").replace(/\.html$/, "");
+        urls.push(clean);
+      }
+    }
+  };
+  if (fs.existsSync(root)) walk(root);
+  return Array.from(new Set(urls));
+}
+
+/* ------------ sitemap.xml ------------ */
+const sitemapUrls = new Set([
   `${SITE}/`,
-  `${SITE}/blog/`,
-  ...posts.map(p => `${SITE}${BLOG_BASE}/${p.slug}`)
-];
+  `${SITE}${BLOG_BASE}/`,
+  ...posts.map(p => `${SITE}${p.urlPath}`)
+]);
+
+for (const p of collectDistPages(OUT_DIR)) sitemapUrls.add(`${SITE}${p}`);
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${u.endsWith("/") ? "0.8" : "0.7"}</priority></url>`).join("\n")}
+${[...sitemapUrls].map(u => `<url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${u.endsWith("/") ? "0.8" : "0.7"}</priority></url>`).join("\n")}
 </urlset>`;
 await fsp.writeFile(path.join(OUT_DIR, "sitemap.xml"), sitemap, "utf8");
 
-/* ---- robots.txt ---- */
-const robots = `User-agent: *
-Allow: /
-
-Sitemap: ${SITE}/sitemap.xml
-`;
-await fsp.writeFile(path.join(OUT_DIR, "robots.txt"), robots, "utf8");
-
-console.log(`Built ${posts.length} post(s).`);
+console.log(`[blog build] Built ${posts.length} post(s). Sitemap URLs: ${sitemapUrls.size}`);
