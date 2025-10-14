@@ -1,6 +1,17 @@
 {
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "cleanUrls": true,
+
+  "redirects": [
+    { "source": "/:path*.html", "destination": "/:path*", "permanent": true },
+
+    { "source": "/About", "destination": "/about", "permanent": true },
+    { "source": "/Mission", "destination": "/mission", "permanent": true },
+    { "source": "/Manifesto", "destination": "/manifesto", "permanent": true }
+  ],
+
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/" }
   ]
 }
