@@ -21,7 +21,7 @@ export const AUTHORS: Record<string, Author> = {
     title: 'Release Manager',
     bio: 'With 12 years in QA and release management, Ade focuses on early quality, team alignment, and pragmatic processes. She shares her passion for quality and tech creativity through Null Expected.',
     tag: '[ quality_mindset = true ]',
-    imageUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOv7QBIbhwjA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723039271624?e=1759363200&v=beta&t=fNqH3lggh-LVs-TpVJSbsYEX_lwOaFvDcQwcqTJT9gI',
+    imageUrl: 'https://media.licdn.com/dms/image/v2/D4D35AQGK4xHxitT8Yg/profile-framedphoto-shrink_400_400/B4DZlwVGqTJIAc-/0/1758526204867?e=1761040800&v=beta&t=wpEk-9bE8jLPul1Q9XC5Neg8uWJIxqz0XFUcQ-aQ2Ss',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'ade@nullexpected.com'
   },
