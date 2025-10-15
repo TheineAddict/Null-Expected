@@ -12,7 +12,7 @@ slug: "controlled-chaos-pesticide-paradox"
 
 Every tester knows the *Pesticide Paradox*: the more often you run the same tests, the less likely they are to find new bugs.  
 
-Recently, a colleague proudly showed me a perfectly controlled automated regression setup - pristine containers, fixed dataset, stable as granite. It reliably caught a few regressions and never flaked.
+Recently, a colleague proudly showed me a perfectly controlled automated regression setup -  pristine containers, fixed dataset, stable as granite. It reliably caught a few regressions and never flaked.
 
 Impressive? Absolutely.  
 Complete? Not even close.
@@ -68,12 +68,12 @@ Pure randomness creates noise; fixed data creates blindness. The balance is *rep
 
 Every system has its own axes of variability — not just users or locales, but:  
 
-- Input structure / volume → small vs. large payloads, empty vs. dense  
-- Data lifecycle → new, active, archived, expired  
-- Configuration states → feature flags, optional modules, alternate algorithms  
-- Concurrency & timing → sequential vs. parallel, delayed or retried events  
-- External conditions → API latency, cache warmness, network reliability  
-- Environment variance → OS, browser, hardware, resource quota  
+-  Input structure / volume → small vs. large payloads, empty vs. dense  
+-  Data lifecycle → new, active, archived, expired  
+-  Configuration states → feature flags, optional modules, alternate algorithms  
+-  Concurrency & timing → sequential vs. parallel, delayed or retried events  
+-  External conditions → API latency, cache warmness, network reliability  
+-  Environment variance → OS, browser, hardware, resource quota  
 
 Instead of hand-picking one example of each or generating random junk, define simple proportions that reflect real-world use.  
 
@@ -91,10 +91,10 @@ This principle transforms *random data* into *purposeful diversity.*
 Realistic ≠ unpredictable.  
 You can have diversity and determinism:
 
-- Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
-- Seed your variability (`RANDOM_SEED` logged per run).  
-- Validate data contracts before E2E execution to filter false positives from upstream drift.  
-- Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
+-  Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
+-  Seed your variability (`RANDOM_SEED` logged per run).  
+-  Validate data contracts before E2E execution to filter false positives from upstream drift.  
+-  Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
 
 ---
 
@@ -143,12 +143,12 @@ Each snippet below illustrates controlled diversity — reproducible chaos.
 Realistic suites can become noisy if left ungoverned.  
 Test Leads should define clear guardrails:  
 
-- Flake budget ≤ 2% — anything above triggers triage  
-- Automatic quarantine of repeatedly flaky tests  
-- Schema-drift sentinels to fail early on broken datasets  
-- Centralised data-builder rules (one fix → many tests)  
-- Ownership map & SLA for test maintenance  
-- Metrics: flake rate, data freshness, regression bug yield  
+-  Flake budget ≤ 2% — anything above triggers triage  
+-  Automatic quarantine of repeatedly flaky tests  
+-  Schema-drift sentinels to fail early on broken datasets  
+-  Centralised data-builder rules (one fix → many tests)  
+-  Ownership map & SLA for test maintenance  
+-  Metrics: flake rate, data freshness, regression bug yield  
 
 These controls turn perceived instability into predictable maintenance.
 
