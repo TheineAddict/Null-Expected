@@ -8,8 +8,6 @@ readTime: "8 min read"
 slug: "controlled-chaos-pesticide-paradox"
 ---
 
-# Controlled Chaos: Rethinking Regression Testing and the Pesticide Paradox
-
 ### The paradox that started it all
 
 Every tester knows the *Pesticide Paradox*: the more often you run the same tests, the less likely they are to find new bugs.  
