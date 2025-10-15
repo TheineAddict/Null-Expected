@@ -68,12 +68,12 @@ Pure randomness creates noise; fixed data creates blindness. The balance is *rep
 
 Every system has its own axes of variability — not just users or locales, but:  
 
-     Input structure / volume → small vs. large payloads, empty vs. dense  
-     Data lifecycle → new, active, archived, expired  
-     Configuration states → feature flags, optional modules, alternate algorithms  
-     Concurrency & timing → sequential vs. parallel, delayed or retried events  
-     External conditions → API latency, cache warmness, network reliability  
-     Environment variance → OS, browser, hardware, resource quota  
+    Input structure / volume → small vs. large payloads, empty vs. dense  
+    Data lifecycle → new, active, archived, expired  
+    Configuration states → feature flags, optional modules, alternate algorithms  
+    Concurrency & timing → sequential vs. parallel, delayed or retried events  
+    External conditions → API latency, cache warmness, network reliability  
+    Environment variance → OS, browser, hardware, resource quota  
 
 Instead of hand-picking one example of each or generating random junk, define simple proportions that reflect real-world use.  
 
@@ -91,10 +91,10 @@ This principle transforms *random data* into *purposeful diversity.*
 Realistic ≠ unpredictable.  
 You can have diversity and determinism:
 
-     Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
-     Seed your variability (`RANDOM_SEED` logged per run).  
-     Validate data contracts before E2E execution to filter false positives from upstream drift.  
-     Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
+    Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
+    Seed your variability (`RANDOM_SEED` logged per run).  
+    Validate data contracts before E2E execution to filter false positives from upstream drift.  
+    Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
 
 ---
 
@@ -104,37 +104,37 @@ Each snippet below illustrates controlled diversity — reproducible chaos.
 
 **Java / Selenium + TestNG**
 
-> @DataProvider(name="orders")  
-> public Object[][] orders() {  
->   String snapshot = System.getProperty("SNAPSHOT_VERSION", "stable");  
->   long seed = Long.parseLong(System.getProperty("RANDOM_SEED", "42"));  
->   return DataRepo.fromSnapshot(snapshot)  
->                  .sampleOrders(o -> o.isHighValue() || o.hasDiscount(), 50, seed);  
-> }  
->  
-> @Test(groups="L1", dataProvider="orders")  
-> public void baseline_checkout(Order o) { ... }  
->  
-> @Test(groups="L2", dataProvider="orders")  
-> public void realistic_checkout(Order o) { ... }
+      > @DataProvider(name="orders")  
+      > public Object[][] orders() {  
+      >   String snapshot = System.getProperty("SNAPSHOT_VERSION", "stable");  
+      >   long seed = Long.parseLong(System.getProperty("RANDOM_SEED", "42"));  
+      >   return DataRepo.fromSnapshot(snapshot)  
+      >                  .sampleOrders(o -> o.isHighValue() || o.hasDiscount(), 50, seed);  
+      > }  
+      >  
+      > @Test(groups="L1", dataProvider="orders")  
+      > public void baseline_checkout(Order o) { ... }  
+      >  
+      > @Test(groups="L2", dataProvider="orders")  
+      > public void realistic_checkout(Order o) { ... }
 
 **Cypress**
 
-> const seed = Cypress.env('RANDOM_SEED') || '42';  
-> cy.task('loadDataset', { snapshot: Cypress.env('SNAPSHOT_VERSION'), seed })  
->   .then(data => {  
->     const sample = data.pick({ variance: ['size','config','latency'] });  
->     cy.testWorkflow(sample);  
->   });
+      > const seed = Cypress.env('RANDOM_SEED') || '42';  
+      > cy.task('loadDataset', { snapshot: Cypress.env('SNAPSHOT_VERSION'), seed })  
+      >   .then(data => {  
+      >     const sample = data.pick({ variance: ['size','config','latency'] });  
+      >     cy.testWorkflow(sample);  
+      >   });
 
 **Playwright**
 
-> test('L2 realistic flow', async ({ page }) => {  
->   const snapshot = process.env.SNAPSHOT_VERSION ?? 'latest-ok';  
->   const seed = process.env.RANDOM_SEED ?? '42';  
->   const record = await pickRecord({ snapshot, seed, variability:['volume','config'] });  
->   await runScenario(page, record);  
-> });
+      > test('L2 realistic flow', async ({ page }) => {  
+      >   const snapshot = process.env.SNAPSHOT_VERSION ?? 'latest-ok';  
+      >   const seed = process.env.RANDOM_SEED ?? '42';  
+      >   const record = await pickRecord({ snapshot, seed, variability:['volume','config'] });  
+      >   await runScenario(page, record);  
+      > });
 
 ---
 
