@@ -91,10 +91,10 @@ This principle transforms *random data* into *purposeful diversity.*
 Realistic ≠ unpredictable.  
 You can have diversity and determinism:
 
-    Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
-    Seed your variability (`RANDOM_SEED` logged per run).  
-    Validate data contracts before E2E execution to filter false positives from upstream drift.  
-    Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
+  Version your snapshots (for example: `snapshot_2025-10-01.sql.gz`) and inject a variable such as SNAPSHOT_VERSION into tests.  
+  Seed your variability (`RANDOM_SEED` logged per run).  
+  Validate data contracts before E2E execution to filter false positives from upstream drift.  
+  Track freshness (for example: “snapshot ≤ 7 days old”) so tests don’t run on stale data.
 
 ---
 
@@ -143,12 +143,12 @@ Each snippet below illustrates controlled diversity — reproducible chaos.
 Realistic suites can become noisy if left ungoverned.  
 Test Leads should define clear guardrails:  
 
-     Flake budget ≤ 2% — anything above triggers triage  
-     Automatic quarantine of repeatedly flaky tests  
-     Schema-drift sentinels to fail early on broken datasets  
-     Centralised data-builder rules (one fix → many tests)  
-     Ownership map & SLA for test maintenance  
-     Metrics: flake rate, data freshness, regression bug yield  
+    Flake budget ≤ 2% — anything above triggers triage  
+    Automatic quarantine of repeatedly flaky tests  
+    Schema-drift sentinels to fail early on broken datasets  
+    Centralised data-builder rules (one fix → many tests)  
+    Ownership map & SLA for test maintenance  
+    Metrics: flake rate, data freshness, regression bug yield  
 
 These controls turn perceived instability into predictable maintenance.
 
