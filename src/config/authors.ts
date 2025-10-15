@@ -34,7 +34,7 @@ export const AUTHORS: Record<string, Author> = {
     bio: 'Alex Davis is a Test Architect with over a decade of experience designing scalable testing frameworks and CI/CD strategies. He focuses on automation, observability, and quality engineering practices that enable faster, data-driven feedback. His work complements Andreea’s delivery focus by building the technical backbone of continuous quality.',
     tag: '[ process_optimizer = true ]',
     //imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-    imageUrl: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?_gl=1*1b8hv1*_ga*MTQyMTg1MjQzNS4xNzYwNTMyNjMw*_ga_8JE65Q40S6*czE3NjA1MzI2MzAkbzEkZzEkdDE3NjA1MzI4MjckajM3JGwwJGgw',
+    imageUrl: 'https://images.pexels.com/photos/10041267/pexels-photo-10041267.jpeg',
 
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'alex@nullexpected.com'
