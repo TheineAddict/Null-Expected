@@ -15,11 +15,11 @@ export interface Author {
 export const AUTHORS: Record<string, Author> = {
   author1: {
     id: 'author1',
-    name: 'Ade Vitan',
-    slug: 'adevitan',
+    name: 'Andreea Vitan',
+    slug: 'andreeavitan',
     initials: 'AV',
     title: 'Release Manager',
-    bio: 'With 12 years in QA and release management, Ade focuses on early quality, team alignment, and pragmatic processes. She shares her passion for quality and tech creativity through Null Expected.',
+    bio: 'With 12 years in QA and release management, Andreea focuses on early quality, team alignment, and pragmatic processes. She shares her passion for quality and tech creativity through Null Expected.',
     tag: '[ quality_mindset = true ]',
     imageUrl: 'https://media.licdn.com/dms/image/v2/D4D35AQGK4xHxitT8Yg/profile-framedphoto-shrink_400_400/B4DZlwVGqTJIAc-/0/1758526204867?e=1761040800&v=beta&t=wpEk-9bE8jLPul1Q9XC5Neg8uWJIxqz0XFUcQ-aQ2Ss',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
