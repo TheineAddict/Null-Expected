@@ -12,7 +12,7 @@ slug: "controlled-chaos-pesticide-paradox"
 
 Every tester knows the *Pesticide Paradox*: the more often you run the same tests, the less likely they are to find new bugs.  
 
-Recently, a colleague proudly showed me a perfectly controlled automated regression setup — pristine containers, fixed dataset, stable as granite. It reliably caught a few regressions and never flaked.
+Recently, a colleague proudly showed me a perfectly controlled automated regression setup - pristine containers, fixed dataset, stable as granite. It reliably caught a few regressions and never flaked.
 
 Impressive? Absolutely.  
 Complete? Not even close.
