@@ -113,9 +113,9 @@ const About = () => {
                 we bring both expertise and curiosity to every conversation.
               </p>
               <div className="inline-flex items-center space-x-4 mt-8 text-gray-500 font-mono text-sm">
-                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ experience ]</span>
-                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ curiosity ]</span>
-                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ growth ]</span>
+                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ plan ]</span>
+                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ test ]</span>
+                <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ release ]</span>
               </div>
             </div>
           </div>
