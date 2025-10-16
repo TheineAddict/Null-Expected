@@ -1,11 +1,25 @@
 {
-  "name": "Null Expected",
+  "name": "Null Expected — A QA Thought Hub",
   "short_name": "NullExpected",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6B21A8",
   "icons": [
     { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
-  "theme_color": "#2E00A3",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "url": "/about"
+    }
+  ]
 }
