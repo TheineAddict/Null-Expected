@@ -3,6 +3,70 @@ import { Link } from 'react-router-dom';
 import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight } from 'lucide-react';
 
 const Mission = () => {
+
+  useEffect(() => {
+    // --- Page-specific values ---
+    const pageTitle = 'Our Mission | Null:Expected';
+    const pageDescription = 'We advocate for a modern QA culture: intention over output, collaboration over gatekeeping, and quality as everyone’s responsibility.';
+    const pagePath = '/mission';
+
+    const base = (typeof window !== 'undefined' && window.location?.origin) || 'https://www.nullexpected.com';
+    const pageUrl = `${base}${pagePath}`;
+
+    document.title = pageTitle;
+
+    let metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', pageDescription);
+
+    const ensureOg = (property: string, content: string) => {
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+    ensureOg('og:title', pageTitle);
+    ensureOg('og:description', pageDescription);
+    ensureOg('og:type', 'website');
+    ensureOg('og:url', pageUrl);
+
+    const ensureName = (name: string, content: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('name', name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+    ensureName('twitter:card', 'summary_large_image');
+    ensureName('twitter:title', pageTitle);
+    ensureName('twitter:description', pageDescription);
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', pageUrl);
+
+    return () => {
+      document.title = 'Null Expected | A QA Thought Hub';
+      if (metaDescription) metaDescription.setAttribute('content', 'A QA thought hub. What did you expect?');
+      ensureOg('og:url', base + '/');
+      if (canonical) canonical.setAttribute('href', base + '/');
+    };
+  }, []);
+
+
   const whatWeWrite = [
     {
       title: 'QA methodologies',
@@ -48,7 +112,7 @@ const Mission = () => {
             Our Mission
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Null Expected is a QA thought hub. It's where practitioners question the status quo, 
+            Null Expected is a QA thought hub. It's where practitioners question the status quo,
             unpack the trade-offs of "done," and advocate for software that doesn't just pass, but deserves to.
           </p>
         </div>
@@ -63,7 +127,7 @@ const Mission = () => {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
-                We built this space because too much QA content either simplifies the role 
+                We built this space because too much QA content either simplifies the role
                 ("just write test cases") or drowns it in tools and jargon. We wanted somewhere that:
               </p>
               <ul className="text-left max-w-2xl mx-auto space-y-3">
@@ -130,7 +194,7 @@ const Mission = () => {
             </h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Because QA is the only discipline that celebrates a null result — when things 
+                Because QA is the only discipline that celebrates a null result — when things
                 don't crash, don't regress, don't surprise us.
               </p>
               <p>
@@ -153,21 +217,21 @@ const Mission = () => {
             </div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                While the blog is shaped by QA professionals with different experiences, 
-                this is not a personal blog. Our bios live elsewhere. What matters here 
+                While the blog is shaped by QA professionals with different experiences,
+                this is not a personal blog. Our bios live elsewhere. What matters here
                 is the thinking, not the résumé.
               </p>
               <p>
-                That said — we're practitioners. This site is our way of giving back, 
-                challenging forward, and documenting what it means to build for quality, 
+                That said — we're practitioners. This site is our way of giving back,
+                challenging forward, and documenting what it means to build for quality,
                 not just test it.
               </p>
               <p className="font-semibold text-gray-900">
                 We write from experience — and we edit each other ruthlessly.
               </p>
               <p className="mt-8">
-                <Link 
-                  to="/manifesto" 
+                <Link
+                  to="/manifesto"
                   className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >

@@ -4,6 +4,69 @@ import { Linkedin } from 'lucide-react';
 import { getAllAuthors } from '../config/authors';
 
 const About = () => {
+useEffect(() => {
+  // --- Page-specific values ---
+  const pageTitle = 'About Null:Expected | Who We Are';
+  const pageDescription = 'Meet the QA professionals behind Null:Expected — exploring testing processes, quality thinking, and career growth with a builder’s mindset.';
+  const pagePath = '/about';
+
+  const base = (typeof window !== 'undefined' && window.location?.origin) || 'https://www.nullexpected.com';
+  const pageUrl = `${base}${pagePath}`;
+
+  document.title = pageTitle;
+
+  let metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    document.head.appendChild(metaDescription);
+  }
+  metaDescription.setAttribute('content', pageDescription);
+
+  const ensureOg = (property: string, content: string) => {
+    let el = document.querySelector(`meta[property="${property}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute('property', property);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  };
+  ensureOg('og:title', pageTitle);
+  ensureOg('og:description', pageDescription);
+  ensureOg('og:type', 'website');
+  ensureOg('og:url', pageUrl);
+
+  const ensureName = (name: string, content: string) => {
+    let el = document.querySelector(`meta[name="${name}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute('name', name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  };
+  ensureName('twitter:card', 'summary_large_image');
+  ensureName('twitter:title', pageTitle);
+  ensureName('twitter:description', pageDescription);
+
+  let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', pageUrl);
+
+  return () => {
+    document.title = 'Null Expected | A QA Thought Hub';
+    if (metaDescription) metaDescription.setAttribute('content', 'A QA thought hub. What did you expect?');
+    ensureOg('og:url', base + '/');
+    if (canonical) canonical.setAttribute('href', base + '/');
+  };
+}, []);
+
+
   const authors = getAllAuthors();
 
   return (
