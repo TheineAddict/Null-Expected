@@ -8,8 +8,10 @@ readTime: "7 min read"
 slug: "the-power-of-no"
 ---
 
-*In software delivery, “yes” is easy.  
-“No” takes courage.*
+<p style="text-align:right; font-style:italic;">
+In software delivery, “yes” is easy — “No” takes courage.
+</p>
+
 
 ---
 
@@ -31,10 +33,10 @@ It means caring enough about the product, the users, and the team’s reputation
 Too often, “No-Go” is seen as QA’s responsibility — the mythical gatekeepers at the end of the pipeline.  
 But quality is not a department. It’s a shared language of responsibility.
 
-- **Developers** can say no when code is brittle or unreviewed.  
-- **Product Owners** can say no when acceptance criteria are vague or untestable.  
-- **Designers** can say no when usability debt piles up.  
-- **Release Managers** can say no when risk logs are ignored and rollback plans are missing.
+**Developers** can say no when code is brittle or unreviewed.  
+**Product Owners** can say no when acceptance criteria are vague or untestable.  
+**Designers** can say no when usability debt piles up.  
+**Release Managers** can say no when risk logs are ignored and rollback plans are missing.
 
 Saying “no” is not blocking delivery. It’s protecting the delivery process itself.  
 It’s how teams build trust — not by avoiding risk, but by confronting it early.
