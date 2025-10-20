@@ -8,8 +8,8 @@ readTime: "7 min read"
 slug: "the-power-of-no"
 ---
 
-> In software delivery, “yes” is easy.  
-> “No” takes courage.
+*In software delivery, “yes” is easy.  
+“No” takes courage.*
 
 ---
 
@@ -21,7 +21,7 @@ But in every release, there’s a quiet moment where someone feels that tug of u
 That moment matters.  
 It’s the moment that separates teams that deliver fast from those that deliver well.
 
-Saying “NO-GO” is not an act of defiance — it’s an act of ownership.  
+Saying “No-Go” is not an act of defiance — it’s an act of ownership.  
 It means caring enough about the product, the users, and the team’s reputation to stop and ask: *Is this good enough to deserve a yes?*
 
 ---
