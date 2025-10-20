@@ -20,7 +20,49 @@ const BlogPost = () => {
           console.log('All posts loaded for single post:', allPosts.length);
           const foundPost = getPostBySlug(allPosts, slug);
           console.log('Found post:', foundPost ? foundPost.title : 'Not found');
-          setPost(foundPost);
+
+          if (foundPost) {
+            setPost(foundPost);
+
+            // --- SEO update ---
+            document.title = `${foundPost.title} | Null Expected`;
+
+            // meta description
+            let metaDescription = document.querySelector('meta[name="description"]');
+            if (!metaDescription) {
+              metaDescription = document.createElement('meta');
+              metaDescription.name = 'description';
+              document.head.appendChild(metaDescription);
+            }
+            metaDescription.setAttribute('content', foundPost.excerpt || foundPost.title);
+
+            // og:title
+            let ogTitle = document.querySelector('meta[property="og:title"]');
+            if (!ogTitle) {
+              ogTitle = document.createElement('meta');
+              ogTitle.setAttribute('property', 'og:title');
+              document.head.appendChild(ogTitle);
+            }
+            ogTitle.setAttribute('content', foundPost.title);
+
+            // og:description
+            let ogDescription = document.querySelector('meta[property="og:description"]');
+            if (!ogDescription) {
+              ogDescription = document.createElement('meta');
+              ogDescription.setAttribute('property', 'og:description');
+              document.head.appendChild(ogDescription);
+            }
+            ogDescription.setAttribute('content', foundPost.excerpt || foundPost.title);
+
+            // og:url
+            let ogUrl = document.querySelector('meta[property="og:url"]');
+            if (!ogUrl) {
+              ogUrl = document.createElement('meta');
+              ogUrl.setAttribute('property', 'og:url');
+              document.head.appendChild(ogUrl);
+            }
+            ogUrl.setAttribute('content', `https://www.nullexpected.com/blog/${foundPost.slug}`);
+          }
         } catch (error) {
           console.error('Failed to load blog post:', error);
         } finally {
@@ -30,6 +72,18 @@ const BlogPost = () => {
     };
 
     loadPost();
+
+    // --- Optional cleanup: restore default metadata ---
+    return () => {
+      document.title = 'Null Expected | A QA Thought Hub';
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          'content',
+          'A QA thought hub. What did you expect?'
+        );
+      }
+    };
   }, [slug]);
 
   if (loading) {
