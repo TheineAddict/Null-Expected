@@ -1,7 +1,7 @@
 ---
 title: "The Power of No: Redefining Courage in Quality"
 excerpt: "Saying No-Go isn’t gatekeeping — it’s ownership. The courage to say 'not yet' protects teams, users, and trust across every role."
-tags: ["qualitymindset", "featured"]
+tags: ["quality-mindset", "featured", "career-advice"]
 author: "author1"
 date: "2025-10-20"
 readTime: "7 min read"

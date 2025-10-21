@@ -1,7 +1,7 @@
 ---
 title: "Controlled Chaos: Rethinking Regression Testing and the Pesticide Paradox"
 excerpt: "A layered approach to regression testing that balances control and realism, helping QA teams detect meaningful defects before they reach production."
-tags: ["qa-processes", "featured"]
+tags: ["quality-mindset", "featured"]
 author: "author1"
 date: "2025-10-15"
 readTime: "8 min read"

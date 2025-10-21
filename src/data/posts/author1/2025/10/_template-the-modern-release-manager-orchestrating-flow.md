@@ -1,7 +1,7 @@
 ---
 title: "The Modern Release Manager: Orchestrating Flow in a Fragmented World"
 excerpt: "How modern release managers bridge agility and governance — designing systems of delivery confidence in a fast, fragmented world."
-tags: ["qa-processes", "featured"]
+tags: ["qa-processes", "industry-trends", "release-management", "governance", "agile-delivery", "devops", "leadership"]
 author: "author1"
 date: "2025-10-21"
 readTime: "12 min read"
