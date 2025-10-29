@@ -21,7 +21,7 @@ export const AUTHORS: Record<string, Author> = {
     title: 'QA & Release Manager',
     bio: 'Andreea Vitan is a Release & Test Manager with over twelve years of experience driving high-quality software delivery across complex platforms. She focuses on defining test strategy, improving processes, and leading releases with clear governance, risk management, and stakeholder alignment. Passionate about agile delivery and quality culture, she brings structure, clarity, and ownership to every project.',
     tag: '[ quality_mindset = true ]',
-    imageUrl: 'https://media.licdn.com/dms/image/v2/D4D35AQGK4xHxitT8Yg/profile-framedphoto-shrink_400_400/B4DZlwVGqTJIAc-/0/1758526204867?e=1761040800&v=beta&t=wpEk-9bE8jLPul1Q9XC5Neg8uWJIxqz0XFUcQ-aQ2Ss',
+    imageUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOv7QBIbhwjA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723039271624?e=1763596800&v=beta&t=Puxa9sxD0dG-q7GEDB8ZMuHkF5gtoctkyD5rqFOJAgg',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'ade@nullexpected.com'
   },
