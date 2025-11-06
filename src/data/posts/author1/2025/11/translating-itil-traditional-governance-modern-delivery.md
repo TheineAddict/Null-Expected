@@ -1,10 +1,10 @@
 ---
 title: "Translating ITIL: Reconciling Traditional Service Governance with Modern Delivery Paradigms"
 excerpt: "How ITIL’s governance principles evolve into the language of automation, telemetry, and continuous delivery in modern DevOps ecosystems."
-tags: ["qa-processes", "industry-trends", "governance", "itil", "devops", "agile-delivery", "release-management"]
+tags: ["qa-processes", "industry-trends", "tools-tech"]
 author: "author1"
-date: "2025-11-02"
-readTime: "10 min read"
+date: "2025-11-06"
+readTime: "15 min read"
 slug: "translating-itil-traditional-governance-modern-delivery"
 ---
 
