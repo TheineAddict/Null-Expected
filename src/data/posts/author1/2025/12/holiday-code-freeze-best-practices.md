@@ -19,13 +19,13 @@ If you are responsible for quality and releases, you tend to experience all of t
 
 This article argues that a code freeze should not be a superstition or a blunt veto. A sane holiday release window is a _governance mechanism_ for managing risk under constrained capacity. When done well, it balances:
 
--   delivery commitments (OKRs, KPIs, contractual milestones),
+- delivery commitments (OKRs, KPIs, contractual milestones),
     
--   client benefit,
+- client benefit,
     
--   delivery speed, and
+- delivery speed, and
     
--   the very practical requirement of safe operations with thinner staffing.
+- the very practical requirement of safe operations with thinner staffing.
     
 
 The answer is not “freeze everything” or “ship everything”. The answer is to make risk, value, and operational readiness explicit and negotiable.
@@ -36,13 +36,13 @@ The answer is not “freeze everything” or “ship everything”. The answer i
 
 December is what systems theorists would call an _adversarial test condition_ for software delivery. Several pressures spike simultaneously:
 
--   **Calendar pressure**: end-of-year holidays, mandatory leave, and reduced staffing.
+**Calendar pressure**: end-of-year holidays, mandatory leave, and reduced staffing.
     
--   **Financial and regulatory pressure**: year-end reporting, fiscal deadlines, contractual commitments.
+**Financial and regulatory pressure**: year-end reporting, fiscal deadlines, contractual commitments.
     
--   **Performance pressure**: annual and Q4 OKRs/KPIs pushing teams to demonstrate visible output.
+**Performance pressure**: annual and Q4 OKRs/KPIs pushing teams to demonstrate visible output.
     
--   **Psychological pressure**: teams wanting closure on “this year’s work”.
+**Psychological pressure**: teams wanting closure on “this year’s work”.
     
 
 Individually, each pressure is rational. Collectively, they generate the familiar anti-pattern: everything is suddenly “critical” and “must go before the freeze”.
@@ -117,11 +117,11 @@ This reframing restores a simple but important point: a freeze should _never_ me
 
 Release decisions under holiday constraints are negotiations between three dimensions:
 
--   **Value** – What business, client, or regulatory outcome does this change support?
+**Value** – What business, client, or regulatory outcome does this change support?
     
--   **Risk** – What is the likelihood and impact of failure, and how controllable is it?
+**Risk** – What is the likelihood and impact of failure, and how controllable is it?
     
--   **Operational readiness** – How ready are we to detect issues and respond if something goes wrong?
+**Operational readiness** – How ready are we to detect issues and respond if something goes wrong?
     
 
 In practice, CAB discussions often over-index on value (“this is important for clients”) and under-specify risk and readiness (“we tested it”, “we have monitoring”). To rebalance, you can introduce a simple triage framework.
@@ -132,33 +132,33 @@ For each change, assign scores in three categories (1 = low, 3 = high). The exac
 
 **1. Business / OKR impact**
 
--   **3 – Critical**: directly tied to a key Q4 or annual OKR, regulatory obligation, or revenue-critical event.
+**3 – Critical**: directly tied to a key Q4 or annual OKR, regulatory obligation, or revenue-critical event.
     
--   **2 – Important**: clear client value, but impact is not calendar-bound to December.
+**2 – Important**: clear client value, but impact is not calendar-bound to December.
     
--   **1 – Peripheral**: internal convenience, minor UX tweaks, or improvements that can safely slip.
+**1 – Peripheral**: internal convenience, minor UX tweaks, or improvements that can safely slip.
     
 
 **2. Risk level**
 
 Consider blast radius, complexity, and testability.
 
--   **3 – High risk**: multiple dependencies, difficult rollback, touches critical paths, limited test coverage or high complexity.
+**3 – High risk**: multiple dependencies, difficult rollback, touches critical paths, limited test coverage or high complexity.
     
--   **2 – Moderate risk**: bounded domain, known dependencies, standard rollback.
+**2 – Moderate risk**: bounded domain, known dependencies, standard rollback.
     
--   **1 – Low risk**: small, well-understood change, ideally behind a feature flag with trivial rollback.
+**1 – Low risk**: small, well-understood change, ideally behind a feature flag with trivial rollback.
     
 
 **3. Operational readiness**
 
 Consider monitoring, on-call capacity, and incident response.
 
--   **3 – Weak readiness**: limited observability, unclear ownership, thin on-call coverage for the relevant system.
+**3 – Weak readiness**: limited observability, unclear ownership, thin on-call coverage for the relevant system.
     
--   **2 – Adequate readiness**: some monitoring in place, defined on-call, but not heavily rehearsed.
+**2 – Adequate readiness**: some monitoring in place, defined on-call, but not heavily rehearsed.
     
--   **1 – Strong readiness**: robust observability, experienced on-call, rehearsed rollback and incident playbooks.
+**1 – Strong readiness**: robust observability, experienced on-call, rehearsed rollback and incident playbooks.
     
 
 You can then define a “holiday green zone”, for example:
