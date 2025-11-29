@@ -10,10 +10,10 @@ slug: "holiday-code-freeze-best-practices"
 
 Every December, software delivery turns into a collision of competing incentives.
 
-Product wants Q4 OKRs green.  
-Engineering wants to finally ship the features they have carried all year.  
-Commercial teams want a visible narrative of progress for clients and stakeholders.  
-Operations and support want one thing only: stability while half the organisation is on holiday.
+**Product** wants Q4 **OKRs** green.  
+**Engineering** wants to finally **ship the features** they have carried all year.  
+**Commercial** teams want a visible narrative of **progress** for clients and stakeholders.  
+**Operations and support** want one thing only: **stability** while half the organisation is on holiday. 🎄
 
 If you are responsible for quality and releases, you tend to experience all of this in one place: the Change Advisory Board (CAB) agenda. Seventy change requests in a single session is not a “busy week”; it is a systems symptom.
 
