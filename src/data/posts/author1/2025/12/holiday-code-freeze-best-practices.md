@@ -278,7 +278,7 @@ If these are tracked and surfaced at the same level as feature delivery, they be
 
 Senior stakeholders tend to understand trade-offs best when expressed in the metrics they already care about:
 
-**  “If we push all 70 changes before the freeze, our exposure to an incident during peak client activity increases significantly. A single major incident will have more negative impact on client satisfaction and business KPIs than deferring part of this scope to January.”
+**_“If we push all 70 changes before the freeze, our exposure to an incident during peak client activity increases significantly. A single major incident will have more negative impact on client satisfaction and business KPIs than deferring part of this scope to January.”_**
     
 
 The goal is not to weaponise risk to block delivery, but to make _opportunity cost_ and _downside risk_ visible, then allow leadership to make an informed decision.
@@ -321,7 +321,7 @@ This reduces the temptation to treat CAB as an administrative stamp and restores
 
 To avoid CAB becoming a live design workshop, discussions can be time-boxed. If, within a defined limit, the risk cannot be adequately articulated or mitigated, the default is:
 
-> “This change is deferred until January unless the sponsor returns with a refined proposal that meets our holiday criteria.”
+> This change is deferred until January unless the sponsor returns with a refined proposal that meets our holiday criteria.
 
 In other words, the burden of proof sits with the change sponsor, not with the CAB to justify a “no”.
 
