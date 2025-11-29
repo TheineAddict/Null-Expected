@@ -449,5 +449,3 @@ A sane holiday release window is not about being conservative for its own sake. 
 ---
 
 *Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*
-
----
