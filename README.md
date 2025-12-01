@@ -8,6 +8,21 @@ npm install
 npm run dev
 ```
 
+## 🎨 Theme Switching (Default / Winter / Pride)
+- Seasonal/holiday themes for buttons, CTA gradients, and icon chips.
+- Themes available: `default` (current look), `winter`, `pride`.
+- Not user-facing; change the active theme in config and redeploy/restart dev.
+
+**How to set the active theme**
+- Edit `src/config/theme.ts` and update `DEFAULT_THEME` to one of `default | winter | pride`.
+- Restart your dev server or rebuild; the theme applies globally via CSS variables.
+
+**Key files**
+- Theme tokens/classes: `src/index.css` (`--btn-*`, `--icon-bg`, `--brand-gradient`, helpers `btn-themed`, `icon-themed`).
+- Config: `src/config/theme.ts` (set `DEFAULT_THEME`).
+- Provider: `src/components/ThemeProvider.tsx`.
+- App wrap: `src/main.tsx` wraps `<App />` with `<ThemeProvider>`.
+
 ## Adding New Blog Posts
 
 ### 1. Create a New Markdown File

@@ -19,16 +19,16 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-indigo-900 to-purple-800 p-2 rounded-lg">
+            <div className="brand-chip p-2 rounded-lg">
               <LucideIcons.Code className="h-6 w-6 text-white" />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-indigo-900 to-purple-800 bg-clip-text text-transparent">
+            <span className="font-bold text-xl brand-gradient">
               Null:Expected
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}

@@ -91,7 +91,7 @@ const Landing = () => {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
-              <span className="bg-gradient-to-r from-indigo-900 to-purple-800 bg-clip-text text-transparent">
+              <span className="brand-gradient">
                 Null:Expected
               </span>
             </h1>
@@ -107,7 +107,7 @@ const Landing = () => {
 
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
             onClick={() => window.scrollTo(0, 0)}
           >
             Explore the Hub
@@ -276,7 +276,7 @@ const Landing = () => {
           </p>
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg text-sm sm:text-base"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
             onClick={() => window.scrollTo(0, 0)}
           >
             Browse All Posts

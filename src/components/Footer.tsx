@@ -10,10 +10,10 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-2 rounded-lg">
+              <div className="brand-chip p-2 rounded-lg">
                 <LucideIcons.Code className="h-6 w-6 text-white" />
               </div>
-              <span className="font-bold text-xl">Null:Expected</span>
+              <span className="font-bold text-xl brand-gradient">Null:Expected</span>
             </div>
             <p className="text-gray-300">
               A QA thought hub. What did you expect?

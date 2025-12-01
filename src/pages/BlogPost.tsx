@@ -249,7 +249,7 @@ const BlogPost = () => {
         </h3>
         <Link
           to="/blog"
-          className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300"
+          className="inline-flex items-center px-6 py-3 btn-themed font-semibold rounded-lg transition-all duration-300"
           onClick={() => window.scrollTo(0, 0)}
         >
           View All Posts

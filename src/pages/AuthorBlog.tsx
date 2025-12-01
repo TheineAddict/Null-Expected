@@ -198,7 +198,7 @@ const AuthorBlog = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-900 to-purple-800 text-white font-semibold rounded-lg hover:from-indigo-800 hover:to-purple-700 transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 btn-themed font-semibold rounded-lg transition-all duration-300"
             onClick={() => window.scrollTo(0, 0)}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />

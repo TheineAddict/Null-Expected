@@ -7,6 +7,65 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Theme tokens */
+:root {
+  --btn-bg: linear-gradient(90deg, #1e1b4b, #6b21a8);
+  --btn-hover: linear-gradient(90deg, #312e81, #7c3aed);
+  --btn-text: #ffffff;
+  --icon-bg: #312e81;
+  --brand-gradient: linear-gradient(90deg, #1e1b4b, #6b21a8);
+}
+
+:root[data-theme="default"] {
+  --btn-bg: linear-gradient(90deg, #1e1b4b, #6b21a8);
+  --btn-hover: linear-gradient(90deg, #312e81, #7c3aed);
+  --btn-text: #ffffff;
+  --icon-bg: #312e81;
+  --brand-gradient: linear-gradient(90deg, #1e1b4b, #6b21a8);
+}
+
+:root[data-theme="winter"] {
+  --btn-bg: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  --btn-hover: linear-gradient(90deg, #0284c7, #0ea5e9);
+  --btn-text: #0f172a;
+  --icon-bg: #38bdf8;
+  --brand-gradient: linear-gradient(90deg, #0ea5e9, #38bdf8);
+}
+
+:root[data-theme="pride"] {
+  --btn-bg: linear-gradient(90deg, #e11d48, #f97316, #facc15, #22c55e, #3b82f6, #a855f7);
+  --btn-hover: linear-gradient(90deg, #be123c, #ea580c, #eab308, #16a34a, #2563eb, #9333ea);
+  --btn-text: #0f172a;
+  --icon-bg: #e11d48;
+  --brand-gradient: linear-gradient(90deg, #e11d48, #f97316, #facc15, #22c55e, #3b82f6, #a855f7);
+}
+
+.btn-themed {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.btn-themed:hover {
+  background: var(--btn-hover);
+}
+
+.icon-themed {
+  background: var(--icon-bg);
+  color: #ffffff;
+}
+
+.brand-chip {
+  background: var(--brand-gradient);
+  color: #ffffff;
+}
+
+.brand-gradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Custom animations */
 @keyframes fadeInUp {
   from {
