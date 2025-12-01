@@ -25,11 +25,11 @@ body {
 }
 
 :root[data-theme="winter"] {
-  --btn-bg: linear-gradient(90deg, #0ea5e9, #38bdf8);
-  --btn-hover: linear-gradient(90deg, #0284c7, #0ea5e9);
+  --btn-bg: linear-gradient(90deg, #4b00ff, #7fa6ff);
+  --btn-hover: linear-gradient(90deg, #3a00cc, #b8d5ff);
   --btn-text: #0f172a;
-  --icon-bg: #38bdf8;
-  --brand-gradient: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  --icon-bg: #4b00ff;
+  --brand-gradient: linear-gradient(90deg, #4b00ff, #7fa6ff);
 }
 
 :root[data-theme="pride"] {
