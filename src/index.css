@@ -40,6 +40,14 @@ body {
   --brand-gradient: linear-gradient(135deg, #4B00FF, #B91C1C, #166534, #FACC6B);
 }
 
+:root[data-theme="candy-cane"] {
+  --btn-bg: linear-gradient(90deg, #4B00FF, #B91C1C, #FFFFFF, #B91C1C, #4B00FF);
+  --btn-hover: linear-gradient(90deg, #4B00FF, #7F1D1D, #F9FAFB, #7F1D1D, #4B00FF);
+  --btn-text: #0f172a;
+  --icon-bg: #B91C1C;
+  --brand-gradient: linear-gradient(90deg, #4B00FF, #B91C1C, #FFFFFF, #B91C1C, #4B00FF);
+}
+
 :root[data-theme="pride"] {
   --btn-bg: linear-gradient(90deg, #e11d48, #f97316, #facc15, #22c55e, #3b82f6, #a855f7);
   --btn-hover: linear-gradient(90deg, #be123c, #ea580c, #eab308, #16a34a, #2563eb, #9333ea);
