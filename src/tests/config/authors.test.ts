@@ -43,15 +43,15 @@ describe('authors config', () => {
     it('should return all configured authors', () => {
       const authors = getAllAuthors();
       expect(authors).toHaveLength(2);
-      expect(authors.map(a => a.name)).toContain('Ade Vitan');
+      expect(authors.map(a => a.name)).toContain('Andreea Vitan');
       expect(authors.map(a => a.name)).toContain('Alex Davis');
     });
   });
 
   describe('AUTHORS configuration', () => {
     it('should have valid author configurations', () => {
-      expect(AUTHORS.author1.name).toBe('Ade Vitan');
-      expect(AUTHORS.author1.slug).toBe('adevitan');
+      expect(AUTHORS.author1.name).toBe('Andreea Vitan');
+      expect(AUTHORS.author1.slug).toBe('andreeavitan');
       expect(AUTHORS.author1.imageUrl).toBeDefined();
       
       expect(AUTHORS.author2.name).toBe('Alex Davis');
