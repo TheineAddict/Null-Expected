@@ -5,10 +5,10 @@ describe('authors config', () => {
   // Test Case 5: getAuthorBySlug Utility Function
   describe('getAuthorBySlug', () => {
     it('should retrieve an author by their slug', () => {
-      const author = getAuthorBySlug('adevitan');
+      const author = getAuthorBySlug('andreeavitan');
       expect(author).toBeDefined();
-      expect(author?.name).toBe('Ade Vitan');
-      expect(author?.slug).toBe('adevitan');
+      expect(author?.name).toBe('Andreea Vitan');
+      expect(author?.slug).toBe('andreeavitan');
       expect(author?.imageUrl).toBeDefined();
       expect(author?.imageUrl).toContain('http'); // Should be a valid URL
     });
@@ -28,9 +28,9 @@ describe('authors config', () => {
 
   describe('getAuthorByName', () => {
     it('should retrieve an author by their name', () => {
-      const author = getAuthorByName('Ade Vitan');
+      const author = getAuthorByName('Andreea Vitan');
       expect(author).toBeDefined();
-      expect(author?.slug).toBe('adevitan');
+      expect(author?.slug).toBe('andreeavitan');
     });
 
     it('should return undefined for non-existent name', () => {

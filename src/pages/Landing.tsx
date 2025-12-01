@@ -242,7 +242,7 @@ const Landing = () => {
                   </div>
                   <div className="mt-auto">
                     <Link
-                      to="/blog"
+                      to={`/blog/${post.slug}`}
                       className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors text-sm sm:text-base"
                       onClick={() => window.scrollTo(0, 0)}
                     >
