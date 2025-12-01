@@ -40,6 +40,14 @@ body {
   --brand-gradient: linear-gradient(90deg, #e11d48, #f97316, #facc15, #22c55e, #3b82f6, #a855f7);
 }
 
+:root[data-theme="classic-christmas"] {
+  --btn-bg: linear-gradient(90deg, #4B00FF, #B91C1C, #FB7185, #B91C1C, #4B00FF);
+  --btn-hover: linear-gradient(90deg, #4B00FF, #7F1D1D, #F97373, #7F1D1D, #4B00FF);
+  --btn-text: #f9fafb;
+  --icon-bg: #B91C1C;
+  --brand-gradient: linear-gradient(90deg, #4B00FF, #B91C1C, #FB7185, #B91C1C, #4B00FF);
+}
+
 .btn-themed {
   background: var(--btn-bg);
   color: var(--btn-text);
