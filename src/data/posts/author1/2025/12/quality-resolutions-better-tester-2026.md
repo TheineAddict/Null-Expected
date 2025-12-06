@@ -12,7 +12,7 @@ slug: "quality-resolutions-better-tester-2026"
 
 ![QA engineer reflecting on year-end quality resolutions](/quality-resolutions-hero.jpg)
 
-“Be a better tester” is not a resolution. It’s a slogan.
+“**Be a better tester**” is not a resolution. It’s a slogan.
 
 The problem with most New Year resolutions is that they are either **too vague** (“learn automation”) or **too heroic** (“read one testing book per month while triaging three incident channels and running six regressions a week”).
 
@@ -28,7 +28,7 @@ Most bug reports stop at _“what happened vs what I expected”_. That’s tabl
 
 A habit for 2026: add one more layer every time:
 
-> **What does this defect suggest about our system, our tests, or our assumptions?**
+> What does this defect suggest about our **system**, our **test**s**, or our **assumptions**?
 
 For each non-trivial bug, add a **two-line micro-analysis**:
 
@@ -62,7 +62,7 @@ Every time you test a story or change request, add a **one-sentence risk note** 
 
 This is not you saying _“I refuse to sign off”_. It is you saying:
 
-> “Given our time, information, and constraints, this is what I’m most worried about.”
+> Given our time, information, and constraints, this is what I’m most worried about.
 
 Benefits:
 
@@ -73,7 +73,7 @@ Benefits:
 ⏵ Incident reviews can look back at risk notes and ask: _“Did we accept this consciously, or just not see it?”_
     
 
-> **Resolution:** Before moving any ticket to “Done”, write one sentence: “Biggest remaining risk: …”
+> **Resolution:** Before moving any ticket to “Done”, write one sentence: Biggest remaining risk: …"
 
 ----------
 
@@ -100,7 +100,7 @@ Pick **one testing session per week** and make it an **explicit experiment**:
     ⏵ _What broke?_
         
     ⏵ _What design assumptions did I uncover?_
-        
+
 
 The point is not to find “more bugs”. It is to **train your testing as a hypothesis-driven activity** rather than “click around until time runs out”.
 
@@ -175,7 +175,7 @@ You are not trying to become a developer. You are **short-circuiting miscommunic
 
 Test cases age badly because they tend to be written as **mechanical scripts**:
 
-> “Click X, enter Y, expect Z.”
+> Click X, enter Y, expect Z.
 
 A small but effective habit: once per week, take one important test case and rewrite it as a **short narrative**:
 
@@ -205,7 +205,7 @@ Ambiguity in requirements is not a moral failing. It is a property of language. 
 
 Whenever you hear a phrase like _“it should be fast”_, _“it should be intuitive”_, or _“it should behave like last time”_, ask:
 
-> “Can you give me one concrete example of what ‘good’ looks like here?”
+> Can you give me one concrete example of what ‘good’ looks like here?
 
 And then, crucially, **write that example down** in the ticket, spec, or your notes.
 
@@ -298,7 +298,7 @@ One of the hardest skills in testing and release management is **tempered opposi
 
 For 2026, practice an intermediate response:
 
-> “Not yet – here is what would need to be true for this to feel safe enough.”
+> Not _yet_ – here is what would need to be true for this to feel safe enough.
 
 For example:
 
@@ -341,4 +341,4 @@ What you need is **small, repeatable interventions** in how you:
 
 These ten habits are all **locally cheap** and **globally compounding**. Adopt even three of them consistently in 2026, and your practice will feel very different by the time next December’s code freeze rolls around.
 
-You will still have chaos. You will still have last-minute “quick changes”. But you will also have sharper language, better artefacts, and a much stronger sense that you are not just _running tests_—you are **curating the organisation’s understanding of its own systems**.
+You will still have chaos. You will still have last-minute “quick changes”. But you will also have sharper language, better artefacts, and a much stronger sense that you are not just _running tests_ — you are **curating the organisation’s understanding of its own systems**.
