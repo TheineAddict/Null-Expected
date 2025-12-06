@@ -10,7 +10,7 @@ slug: "quality-resolutions-better-tester-2026"
 
 # Quality Resolutions: 10 Small Habits That Make You a Better Tester in 2026
 
-![QA engineer reflecting on year-end quality resolutions](./images/quality-resolutions-hero.jpg)
+![QA engineer reflecting on year-end quality resolutions](/quality-resolutions-hero.jpg)
 
 “Be a better tester” is not a resolution. It’s a slogan.
 
@@ -28,7 +28,7 @@ Most bug reports stop at _“what happened vs what I expected”_. That’s tabl
 
 A habit for 2026: add one more layer every time:
 
-> **“What does this defect suggest about our system, our tests, or our assumptions?”**
+> **What does this defect suggest about our system, our tests, or our assumptions?**
 
 For each non-trivial bug, add a **two-line micro-analysis**:
 
@@ -112,7 +112,7 @@ Over time, these micro-experiments sharpen your **model of the system** and your
 
 ## 4. Keep Lightweight Exploratory Notes (for Your Future Self, Not for Auditors)
 
-![Close-up of tester’s notebook and laptop with exploratory testing notes and diagrams](./images/quality-resolutions-notes.jpg)
+![Close-up of tester’s notebook and laptop with exploratory testing notes and diagrams](/quality-resolutions-notes.jpg)
 
 
 The word “documentation” tends to summon memories of 47-page test plans and compliance rituals. Ignore that. Think **field notes**, not ISO audit.
@@ -322,7 +322,7 @@ This makes you a **partner in decision-making**, not a gatekeeping obstacle or a
 
 ## Closing: Resolutions as Micro-Refactors of Your Practice
 
-![Tester looking at a wall of sticky notes and diagrams, planning future quality improvements](./images/quality-resolutions-future.jpg)
+![Tester looking at a wall of sticky notes and diagrams, planning future quality improvements](/quality-resolutions-future.jpg)
 
 New Year’s resolutions for testers do not need to be dramatic. You don’t need a new title, a new tool stack, or a new job to operate at a higher level.
 
