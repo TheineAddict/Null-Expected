@@ -8,8 +8,6 @@ readTime: "9 min read"
 slug: "quality-resolutions-better-tester-2026"
 ---
 
-# Quality Resolutions: 10 Small Habits That Make You a Better Tester in 2026
-
 ![QA engineer reflecting on year-end quality resolutions](/quality-resolutions-hero.jpg)
 
 “**Be a better tester**” is not a resolution. It’s a slogan.
