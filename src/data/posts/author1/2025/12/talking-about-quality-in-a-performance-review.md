@@ -1,7 +1,7 @@
 ---
 title: "How to Talk About Quality in Your Performance Review"
 excerpt: "Quality work rarely presents as a flashy deliverable; it presents as resilience, predictability, and reduced operational risk. Here’s how to articulate QA and release impact in performance reviews using outcome-first narratives, credible evidence, and decision-grade metrics."
-tags: ["qa-processes", "featured"]
+tags: ["career-advice", "featured"]
 author: "author1"
 date: "2025-12-16"
 readTime: "10 min read"
