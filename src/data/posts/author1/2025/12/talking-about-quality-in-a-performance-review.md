@@ -9,8 +9,6 @@ slug: "talking-about-quality-in-a-performance-review"
 
 ---
 
-# How to Talk About Quality in Your Performance Review
-
 Quality and release work tends to be mis-scored in performance cycles for a simple reason: much of its value is **counterfactual**. When quality is effective, failure modes do not materialise; operational noise is suppressed; the organisation experiences continuity rather than drama. The problem is not that the work is invisible — it is that it is often *described* as activity rather than translated into outcomes that matter to leadership: resilience, predictability, controlled risk, and reduced cost of failure.
 
 This post is a framework for articulating quality impact in language that holds up under scrutiny: outcome-first narratives, evidence that is defensible, and metrics that illuminate decision-making rather than decorate a slide.
