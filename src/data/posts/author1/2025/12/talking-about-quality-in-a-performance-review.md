@@ -4,7 +4,7 @@ excerpt: "Quality work rarely presents as a flashy deliverable; it presents as r
 tags: ["qa-processes", "featured"]
 author: "author1"
 date: "2025-12-16"
-readTime: "89 min read"
+readTime: "10 min read"
 slug: "talking-about-quality-in-a-performance-review"
 
 ---
