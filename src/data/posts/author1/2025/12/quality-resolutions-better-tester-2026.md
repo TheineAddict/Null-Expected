@@ -340,3 +340,7 @@ What you need is **small, repeatable interventions** in how you:
 These ten habits are all **locally cheap** and **globally compounding**. Adopt even three of them consistently in 2026, and your practice will feel very different by the time next December’s code freeze rolls around.
 
 You will still have chaos. You will still have last-minute “quick changes”. But you will also have sharper language, better artefacts, and a much stronger sense that you are not just _running tests_ — you are **curating the organisation’s understanding of its own systems**.
+
+---
+
+*Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*

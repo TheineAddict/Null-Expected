@@ -277,3 +277,7 @@ Examples:
 • “I will shorten feedback loops by moving critical checks earlier in the lifecycle and making quality signals visible in delivery rituals and reporting.”
 
 Quality is not a department and not a phase. In performance reviews, your job is to describe how you improved the system’s ability to change safely — and to do so with claims that are clear, rigorous, and evidentially grounded.
+
+---
+
+*Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*
