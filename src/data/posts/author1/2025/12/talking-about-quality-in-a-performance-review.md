@@ -13,6 +13,9 @@ Quality and release work tends to be mis-scored in performance cycles for a simp
 
 This post is a framework for articulating quality impact in language that holds up under scrutiny: outcome-first narratives, evidence that is defensible, and metrics that illuminate decision-making rather than decorate a slide.
 
+![QA engineer reflecting on annual performance review](/quality-performance-review.jpg)
+
+
 ## Anchor your review in outcomes, not activities
 
 Performance reviews reward value creation and risk reduction — not busyness. “I executed testing” is an operational statement; it does not describe movement in outcomes. Senior-level communication begins with the *business effect* and then makes your contribution legible.
