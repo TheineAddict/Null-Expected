@@ -236,11 +236,8 @@ Use this for each major achievement (3–5 is typically sufficient):
 Example:
 
 > **Outcome:** Improved release safety for high-impact changes and reduced operational surprise.
-
 > **Mechanism:** Standardised readiness criteria and introduced a decision-grade risk summary for CAB and stakeholders; enforced dependency visibility across squads.  
-
 > **Evidence:** Reduced last-minute escalations and fewer emergency remediation releases during major delivery windows; CAB returns decreased due to improved evidence completeness.  
-
 > **Sustainability:** Embedded the approach into repeatable templates and release rituals to reduce reliance on individual heroics.
 
 ## High-signal bullet examples (stealable, but calibrated)
