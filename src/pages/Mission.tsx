@@ -37,7 +37,7 @@ const Mission = () => {
     {
       title: 'Unpopular opinions',
       description: 'with context, not cynicism',
-      icon: penLine,
+      icon: Zap,
       color: 'from-purple-600 to-indigo-600'
     }
   ];
