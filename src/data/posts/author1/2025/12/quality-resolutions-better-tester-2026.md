@@ -1,7 +1,7 @@
 ---
 title: "Quality Resolutions: 10 Small Habits That Make You a Better Tester in 2026"
 excerpt: "Ten small, realistic habits that quietly upgrade your testing in 2026—no new tools, just better thinking, better notes, and better conversations."
-tags: ["quality-mindset", "qa-career-advice", "featured"]
+tags: ["quality-mindset", "career-advice", "featured"]
 author: "author1"
 date: "2025-12-08"
 readTime: "9 min read"

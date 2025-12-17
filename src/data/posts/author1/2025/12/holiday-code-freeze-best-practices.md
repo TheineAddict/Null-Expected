@@ -1,7 +1,7 @@
 ---
 title: "Code Freezes & Holiday Chaos: How to Run a Sane Holiday Release Window"
 excerpt: "Turn December code freezes from superstition into a risk-based release policy that balances OKRs, client value, and production stability."
-tags: ["qa-processes", "featured"]
+tags: ["qa-processes"]
 author: "author1"
 date: "2025-12-01"
 readTime: "14 min read"

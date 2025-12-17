@@ -1,7 +1,7 @@
 ---
 title: "Testing vs. Quality: Why QA Should Be More Than Bug Hunting"
 excerpt: "QA isn’t just about finding bugs — it’s about building a shared culture of quality that goes beyond testing."
-tags: ["quality-mindset", "featured"]
+tags: ["quality-mindset","career-advice","featured"]
 author: "author1"
 date: "2025-09-10"
 readTime: "8 min read"

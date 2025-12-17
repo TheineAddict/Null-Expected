@@ -1,7 +1,7 @@
 ---
 title: "Lead’s Playbook: Building a Layered Regression Strategy That Scales"
 excerpt: "A practical companion to 'Controlled Chaos' — turning regression testing philosophy into actionable structure for QA Leads and Release Managers."
-tags: ["qa-processes", "qa-leadership", "career-advice"]
+tags: ["qa-processes", "career-advice"]
 author: "author1"
 date: "2025-10-14"
 readTime: "7 min read"
