@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight } from 'lucide-react';
+import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight, penLine } from 'lucide-react';
 
 const Mission = () => {
   const whatWeWrite = [
@@ -32,6 +32,12 @@ const Mission = () => {
       title: 'Occasional tool reviews',
       description: 'always process-first',
       icon: BookOpen,
+      color: 'from-purple-600 to-indigo-600'
+    },
+    {
+      title: 'Unpopular opinions',
+      description: 'with context, not cynicism',
+      icon: penLine,
       color: 'from-purple-600 to-indigo-600'
     }
   ];
