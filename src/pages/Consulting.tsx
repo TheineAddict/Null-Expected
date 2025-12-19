@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight } from 'lucide-react';
+import { CircleCheck as CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight } from 'lucide-react';
 
 const Consulting = () => {
   const services = [
