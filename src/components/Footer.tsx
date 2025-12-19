@@ -57,7 +57,9 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Coming Soon</h3>
             <div className="space-y-2">
-              <span className="text-gray-300 block">Newsletter Sign-up</span>
+              <Link to="/consulting" className="text-gray-300 hover:text-white block transition-colors">
+                Consulting
+              </Link>
               <span className="text-gray-300 block">Guest Posts – Opening Soon</span>
               <Link to="/manifesto" className="text-gray-300 hover:text-white block transition-colors">
                 Read the Manifesto

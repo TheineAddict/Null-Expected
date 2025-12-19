@@ -258,7 +258,7 @@ const Consulting = () => {
             </a>
             
             <a
-              href="https://www.linkedin.com/in/adevitan"
+              href="https://www.linkedin.com/in/adevitan/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
