@@ -14,6 +14,9 @@ An end-of-year QA / Release retrospective is a different instrument. Its purpose
 
 This format is explicitly designed for teams who prefer precision over performance.
 
+![A photograph a QA retrospective board](/anti-theatre-hero-image.jpg)
+
+
 ## What this retro is for
 
 **Scope (in-bounds):** escaped defects, near-misses, incident patterns, change failure modes, “risk accepted” decisions, test strategy drift, release governance friction, and the reliability of the signals you used to ship.
@@ -32,6 +35,9 @@ You are done only when you have:
     
 
 If your headline action is “communicate more,” the retrospective has failed. That is not a change; it is a wish.
+
+![A photograph of an updated QA Decision Ledger](/decision-ledger.jpg)
+
 
 ----------
 
@@ -148,6 +154,7 @@ If you cannot name a signal, you are not yet dealing with a controllable variabl
     
 • Schedule a 20-minute follow-up for early January to validate progress and re-scope if necessary.
     
+![A photograph a QA retrospective board](/qa-retro-board.jpg)
 
 ----------
 
