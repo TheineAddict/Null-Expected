@@ -64,12 +64,6 @@ const Landing = () => {
       description: 'Practical examples, lessons learned, and QA stories from the field',
       icon: Settings,
       color: 'from-indigo-800 to-purple-900'
-    },
-    {
-      title: 'Unpopular Opinion',
-      description: 'Contrarian takes and challenging perspectives on QA practices',
-      icon: Settings,
-      color: 'from-red-600 to-pink-700'
     }
   ];
 
