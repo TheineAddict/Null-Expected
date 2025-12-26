@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Clock, ArrowRight, Filter } from 'lucide-react';
+import { Search, Clock, ArrowRight, ListFilter as Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
