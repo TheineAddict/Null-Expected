@@ -8,19 +8,13 @@ readTime: "10 min read"
 slug: "qa-to-release-manager-career-lessons-2025"
 ---
 
-## This wasn’t a pivot away from QA. It was a pivot deeper into it.
+2025 didn’t feel like a career change. It felt like a **lens change**.
 
-If you’ve ever been a long-term QA person, you’ve probably met the caricature: the tester as a bug-finder, a human defect scanner, a late-stage gate with a red stamp.
+I didn’t wake up one morning and decide I’m “done with QA.” I’m still made of QA—skepticism, curiosity, the reflex to trace outcomes back to assumptions. What shifted was the *shape* of the work: from **“I help teams build quality into what we ship”** to **“I design how we ship without breaking the organisation.”**
 
-That was never my job description in my head.
+Being in QA trained me to think in systems: intent, risk, feedback loops, and the human incentives that quietly decide outcomes. Release management trained me to turn that thinking into **decisions**—and to feel, in real time, the hidden cost of getting them wrong.
 
-Even when I was writing test cases and running sessions, what I was really doing was advocating for a system: clear intent, observable outcomes, honest trade-offs, and shared responsibility. The best QA work I’ve seen has always been *collaborative* and *strategic*—it just doesn’t always get recognised as such.
-
-2025 didn’t turn me into “not-a-tester.” It sharpened something I already believed: **quality is a team sport**, and quality work is often the work of making decisions safer, not merely finding what’s broken.
-
-What changed is where I operated in the system. I moved from shaping quality mainly through feedback loops (tests, exploration, analysis) to shaping quality through **release governance, risk framing, and production pathways**.
-
-Call it release management, change enablement, release strategy—whatever label you prefer. The underlying work is the same: designing a reliable route from intent to production.
+If my earlier identity was **quality advocate**, my 2025 identity became **path designer**: building routes to production that are fast when they can be, deliberate when they must be, and honest about the trade-offs either way.
 
 ![Modern empty coworking office setting for a release management reflection](/null-expected-modern-empty-coworking-office-release-management.jpg)
 
