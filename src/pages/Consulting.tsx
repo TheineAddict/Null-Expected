@@ -250,8 +250,8 @@ const Consulting = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="mailto:ade@nullexpected.com"
-              className="inline-flex items-center px-8 py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              href="mailto:ade.vitan@gmail.com"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
             >
               <Mail className="mr-2 h-5 w-5" />
               Get In Touch
@@ -261,7 +261,7 @@ const Consulting = () => {
               href="https://www.linkedin.com/in/adevitan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
             >
               <Linkedin className="mr-2 h-5 w-5" />
               Connect on LinkedIn
