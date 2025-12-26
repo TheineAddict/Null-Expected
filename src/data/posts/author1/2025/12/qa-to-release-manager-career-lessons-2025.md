@@ -1,6 +1,6 @@
 ---
 title: "From QA to Release Management: What 2025 Taught Me About Quality"
-excerpt: "A personal year-in-review on moving from QA into release management: risk decisions, governance, visibility, emotional load—and why I started Null Expected."
+excerpt: "A personal year-in-review on moving from QA into release management: shared ownership, risk decisions, governance, visibility, emotional load—and why I started Null Expected."
 tags: ["career-advice","quality-mindset","qa-processes","featured"]
 author: "author1"
 date: "2025-12-29"
@@ -8,174 +8,217 @@ readTime: "10 min read"
 slug: "qa-to-release-manager-career-lessons-2025"
 ---
 
-## A pivot year, but not the kind people think
+## This wasn’t a pivot away from QA. It was a pivot deeper into it.
 
-2025 didn’t feel like a career change. It felt like a **lens change**.
+If you’ve ever been a long-term QA person, you’ve probably met the caricature: the tester as a bug-finder, a human defect scanner, a late-stage gate with a red stamp.
 
-I didn’t wake up one morning and decide I’m “done with QA.” I’m still made of QA—skepticism, curiosity, the reflex to trace outcomes back to assumptions. What shifted was the *shape* of the work: from “I find what breaks” to **“I design how we ship without breaking the organisation.”**
+That was never my job description in my head.
 
-Being a tester trained me to see defects. Being a release manager trained me to see **decisions**—and the hidden cost of getting them wrong.
+Even when I was writing test cases and running sessions, what I was really doing was advocating for a system: clear intent, observable outcomes, honest trade-offs, and shared responsibility. The best QA work I’ve seen has always been *collaborative* and *strategic*—it just doesn’t always get recognised as such.
 
-If my earlier identity was *bug hunter*, my 2025 identity became *path designer*: building routes to production that are fast when they can be, deliberate when they must be, and honest about the trade-offs either way.
+2025 didn’t turn me into “not-a-tester.” It sharpened something I already believed: **quality is a team sport**, and quality work is often the work of making decisions safer, not merely finding what’s broken.
+
+What changed is where I operated in the system. I moved from shaping quality mainly through feedback loops (tests, exploration, analysis) to shaping quality through **release governance, risk framing, and production pathways**.
+
+Call it release management, change enablement, release strategy—whatever label you prefer. The underlying work is the same: designing a reliable route from intent to production.
 
 ![Modern empty coworking office setting for a release management reflection](/null-expected-modern-empty-coworking-office-release-management.jpg)
 
-## Lesson 1: Quality became more about decisions than defects
+## Lesson 1: QA gave me the quality lens. Release management gave me the steering wheel.
 
-In QA, a good day often ends with evidence: a repro, a log, a crisp defect description. The feedback loop is tangible.
+In QA, you can influence outcomes through evidence: you surface risk, you challenge assumptions, you add signal. You make the invisible visible.
 
-In release management, the “defect” is often a future tense sentence:
+In release management, you’re often responsible for turning that visibility into **coherent movement**:
+• aligning timelines across teams,
 
-• *If we ship this now, what might we be normalising?*
-• *If we delay, what risk are we silently accepting instead?*
-• *Who pays for either choice—and do they even know they’re paying?*
+• making dependencies explicit,
 
-My work became less about proving something is broken and more about **making uncertainty legible**.
+• negotiating scope without losing control of risk,
 
-I started to value different artifacts than I did as a tester:
-• risk narratives instead of test scripts,
-• decision logs instead of defect lists,
-• mitigations and guardrails instead of heroic last-minute testing.
+• ensuring operational readiness isn’t an afterthought,
 
-The more I leaned into that, the more I realised something mildly uncomfortable: sometimes the most “quality-positive” thing you can do is *not* block a release, but ship it with explicit constraints, monitoring, rollback readiness, and a clear understanding of blast radius.
+• and keeping the organisation honest about what it’s actually shipping.
 
-That’s not lowering standards. That’s **treating quality as a system property**, not a personal virtue.
+This year taught me a subtle distinction:
 
-## Lesson 2: “Not yet” is a strategy. “No” is just a reflex.
+QA is excellent at generating signal.  
+Release management is about **reducing decision latency**—getting the right people to make the right call at the right time, with the right constraints.
 
-As a tester, “no” can feel righteous. It’s clean. It’s safe. It’s also occasionally lazy—because it stops the conversation at the exact moment it should become more precise.
+That’s not “bigger” work. It’s just work at a different leverage point.
 
-Release work forced me to develop a more disciplined language:
+## Lesson 2: Quality work became more about *decision design* than *decision drama*.
 
-• **“Not yet, because…”** (with the because grounded in risk, not preference)
-• **“Yes, if…”** (with explicit conditions and mitigations)
-• **“Yes, but…”** (with transparency about what we’re trading)
-• **“No, unless you’re willing to own…”** (with ownership clearly named)
+I didn’t stop caring about defects. I stopped treating defects as the primary unit of truth.
 
-This sounds semantic, but it changed my relationships across the org. It moved me from gatekeeper posture to **partnership posture**, while still holding a hard line on reality.
+At scale, “quality” is not a list of bugs. It’s a pattern of decisions:
+• what we accept,
 
-I stopped trying to win arguments and started trying to win clarity.
+• what we postpone,
 
-## Lesson 3: ITIL isn’t the enemy. It just speaks a different dialect.
+• what we mitigate,
 
-I used to see governance as the thing that happens *to* delivery.
+• what we monitor,
 
-In 2025, I saw governance as something you can **design**—either well or badly.
+• and what we refuse to normalise.
 
-ITIL concepts (change enablement, incident/problem thinking, controlled risk acceptance) can be profoundly compatible with Agile delivery. The friction usually comes from one of two failures:
+A release isn’t a single moment. It’s a chain of commitments.
 
-1. **Governance that’s theatre** (forms over outcomes, “approval” as superstition).
-2. **Agility that’s vibes** (speed fetishism, accountability avoidance dressed as “empowerment”).
+So I started obsessing less over whether something was perfect and more over whether we had:
+• a clear risk narrative,
+
+• bounded blast radius,
+
+• rollback readiness,
+
+• a monitoring plan,
+
+• and a realistic story about what could go wrong *and how we’d know*.
+
+That’s not lowering the bar. That’s moving the bar to where it actually lives: in the socio-technical system, not in the spreadsheet.
+
+## Lesson 3: “Not yet” is a governance tool. “No” is a posture.
+
+I’ve always disliked the gatekeeper identity—not because boundaries don’t matter, but because “no” can become a performance: clean, satisfying, and strangely unhelpful.
+
+Release work forced me to develop a more precise vocabulary:
+
+• **“Not yet, because…”** (grounded in risk, not preference)
+
+• **“Yes, if…”** (with explicit mitigations and owners)
+
+• **“Yes, but…”** (with transparent trade-offs)
+
+• **“No, unless…”** (with honest accountability)
+
+This is where “quality is shared responsibility” stops being a slogan and becomes operational reality. Shared responsibility needs shared language. Otherwise, it’s just shared confusion.
+
+## Lesson 4: ITIL isn’t the enemy. Untranslated governance is.
+
+I’ve seen two kinds of dysfunction:
+
+1. Governance-as-theatre: approvals as superstition, templates as shields, compliance as a substitute for thinking.  
+2. Agility-as-vibes: speed worship, unclear ownership, and “we’ll deal with it later” as a delivery strategy.
+
+Neither is sustainable.
+
+ITIL concepts—change enablement, risk acceptance, incident/problem learning—can coexist beautifully with continuous delivery *when they’re treated as outcomes, not rituals*.
 
 My job became translation:
-• translating technical complexity into business risk,
-• translating “process” into purpose,
-• translating “move fast” into “move safely at the speed the system can sustain.”
+• translating delivery reality into business risk,
 
-When governance works, it’s not a brake. It’s a set of **guardrails** that make higher speed sustainable.
+• translating governance intent into team behaviour,
 
-When it doesn’t, it becomes a museum exhibit: a beautiful structure built to preserve the past.
+• translating “we need control” into “we need reliable feedback loops and explicit guardrails.”
 
-## Lesson 4: CAB is where power dynamics show up (and where quality becomes political)
+When ITIL is done well, it doesn’t slow teams down. It **stops teams from paying interest on invisible debt**.
+
+## Lesson 5: CAB is where quality becomes social—sometimes uncomfortably so.
+
+CAB conversations are rarely about “is it good?” They’re about:
+• who owns the risk,
+
+• whose urgency gets prioritised,
+
+• whose uncertainty is tolerated,
+
+• and how power moves through the organisation.
+
+I learned quickly that the hardest part isn’t the mechanics. It’s the human layer:
+• confidence substituting for evidence,
+
+• urgency flattening nuance,
+
+• accountability drifting sideways.
+
+The growth edge for me was learning to operate there without becoming cynical:
+• insist on clarity without humiliating people,
+
+• keep risk language concrete,
+
+• avoid turning governance into theatre,
+
+• and protect teams from chaotic, last-minute whiplash.
+
+CAB is not just a meeting. It’s a mirror.
+
+## Lesson 6: Visibility isn’t vanity. It’s part of resilience.
+
+There’s a romantic impulse in QA to be the quiet professional: do the right work, stay out of the spotlight.
+
+But invisibility has a cost. If nobody can see the work, they assume it’s automatic. If it looks automatic, it becomes endlessly expandable. And that’s how you quietly become a single point of failure.
+
+So I learned to make the work visible in a way that’s useful, not performative:
+• crisp comms,
+
+• explicit decisions,
+
+• documented assumptions,
+
+• predictable cadence,
+
+• clear ownership.
+
+This wasn’t personal branding. It was organisational memory—and self-preservation.
+
+## Lesson 7: The emotional load of owning releases is real, and it deserves respect.
+
+Release work has a strange asymmetry: you often prevent disasters you can’t prove would have happened.
+
+You carry uncertainty so others can keep building. You absorb tension so teams can stay focused. You get measured on outcomes that are partly outside your control, and you’re expected to make it all look effortless.
+
+In 2025, I stopped pretending that’s “just part of the job” in the hand-wavy sense.
+
+I started treating emotional load as an operational factor:
+• boundaries,
+
+• sustainable cadence,
+
+• fewer heroic interventions,
+
+• and more engineered guardrails.
+
+The hero narrative is expensive. It bills your future self.
 
 ![Minimal decision desk scene illustrating quality as decision-making in release management](/null-expected-decision-desk-release-management-quality.jpg)
 
-CAB taught me something QA rarely teaches cleanly: quality doesn’t just live in code. It lives in **permission**.
 
-In a CAB conversation, you can watch:
-• whose risk is treated as real and whose is treated as “noise,”
-• whose “urgent” is taken seriously,
-• who gets away with ambiguity,
-• who gets asked for proof, twice.
+## Why I started Null Expected (and why it mattered more than I expected)
 
-It’s easy to become cynical there. I flirted with cynicism.
+Null Expected began as a thought hub because I wanted a space where quality isn’t reduced to either:
+• defect counts, or
 
-But the better move—harder, more useful—was learning how to operate ethically inside those dynamics:
-• calling out fuzzy risk language without humiliating anyone,
-• refusing to let confidence replace evidence,
-• protecting the team from performative panic,
-• and, when needed, being the person who says: *we’re not gambling with production today.*
+• motivational posters about “quality culture.”
 
-CAB made me understand that quality work includes **social engineering**, not in the manipulative sense—more in the “systems include humans” sense.
+Writing publicly did something useful to my career: it forced precision.
 
-## Lesson 5: Visibility is not vanity. It’s part of the job.
+You can have instincts for years. Writing makes you articulate the underlying model:
+• what you believe,
 
-There’s a romantic story testers sometimes inherit: be invisible, be humble, do the right thing quietly.
+• why you believe it,
 
-The problem is that invisible work is easy to undervalue—and easy to overload.
+• and what you’d do differently next time.
 
-In release management, invisibility is actively dangerous:
-• if nobody sees the decision-making, they assume it’s automatic,
-• if nobody sees the coordination, they assume it’s effortless,
-• if nobody sees the emotional labour, they assume it doesn’t exist.
-
-I learned to make work visible without making it performative:
-• crisp comms,
-• documented decisions,
-• explicit risk framing,
-• predictable cadences.
-
-This wasn’t about ego. It was about **creating organisational memory**, and protecting myself from becoming a single point of silent failure.
-
-## Lesson 6: The emotional load is real—and pretending otherwise makes you brittle
-
-Owning releases changes how you feel time.
-
-A tester can end the day with “I found three critical issues.” A release manager ends the day with “I prevented three futures,” and none of them are tangible. You don’t get the satisfying closure of a bug being fixed. You get the weird quiet of a disaster that didn’t happen.
-
-That’s a recipe for burnout if you don’t name it.
-
-The emotional load isn’t only stress. It’s also:
-• holding competing incentives without becoming cynical,
-• being the person people call when things are on fire,
-• absorbing uncertainty so other people can keep building.
-
-In 2025, I started treating that load like a real operational concern:
-• boundaries,
-• sustainable cadence,
-• and—most importantly—refusing the hero narrative.
-
-No more “it’s fine, I’ll just handle it.”  
-That sentence is how organisations accidentally create their next outage *and* their next resignation.
-
-## Lesson 7: Starting Null Expected changed how I see my career
-
-Null Expected began as a personal itch: I wanted a place where QA could be discussed without the usual caricatures—without pretending quality is either a magical mindset or a checkbox at the end of a sprint.
-
-But once I started writing, I noticed something: writing forces intellectual honesty.
-
-It’s easy to have opinions in your head. It’s harder to defend them in public with structure, nuance, and consequences.
-
-Null Expected became my way of doing three things at once:
-1. **consolidating my own thinking** (turning instinct into explicit heuristics),
-2. **making the invisible work visible** (for others, and for future me),
-3. **reclaiming narrative ownership** of my career.
-
-Not “I used to be a tester and now I’m something better.”
-More like: “I’m building a coherent body of work around how quality actually happens in modern delivery.”
-
-That shift made me braver—in conversations, in decisions, and in how I advocate for the role of QA and release leadership.
+It also made me reclaim a narrative I care about:
+I’m not “ex-QA.” I’m still doing quality work—just through a wider, more organisational lens.
 
 ## What I’m leaning into in 2026
 
-I don’t want 2026 to be a year of vague ambition. I want it to be a year of deliberate direction.
+I don’t want 2026 to be a year of vague ambition. I want it to be deliberate.
 
-Here’s what I’m choosing on purpose:
+• **More thought leadership with teeth**: fewer platitudes, more real constraints and trade-offs.
 
-• **More thought leadership with teeth**: fewer platitudes, more real constraints, more honest trade-offs.
-• **Stronger release governance as a product**: not bureaucracy—designing systems that scale across teams without killing flow.
-• **Conference talks and public writing**: not to “build a brand,” but to sharpen arguments and contribute to the craft.
-• **Less lone-wolf quality**: building shared ownership, clearer guardrails, and fewer heroic interventions.
-• **Better sustainability**: shipping outcomes without sacrificing nervous-system health.
+• **Release governance as a designed system**: scalable, humane, outcome-driven.
 
-If 2025 taught me anything, it’s that quality isn’t a department and it isn’t a personality trait.
+• **Stronger risk language across teams**: fewer “it should be fine,” more explicit assumptions and mitigations.
 
+• **Conference talks + public writing**: not for noise—because it sharpens the craft.
+
+• **Sustainability over heroics**: build guardrails; stop relying on adrenaline.
+
+If 2025 taught me anything, it’s this:
+
+Quality isn’t a department and it isn’t a personality trait.  
 Quality is the discipline of making risk visible, decisions explicit, and outcomes sustainable—over time, with humans in the loop.
 
-And for the first time in a long time, that feels like a career I’m not just doing.
-
-It feels like one I’m **authoring**.
-
----
-
-*Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*
+Release management didn’t change what I value.  
+It changed where I apply it—and how much leverage that gives me.
