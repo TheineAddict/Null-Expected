@@ -27,17 +27,17 @@ export const AUTHORS: Record<string, Author> = {
   },
   author2: {
     id: 'author2',
-    name: 'Alex Davis',
-    slug: 'alexdavis',
-    initials: 'AD',
+    name: 'Martin Adler',
+    slug: 'martinadler',
+    initials: 'MA',
     title: 'Test Architect & QA Engineer',
-    bio: 'Alex Davis is a Test Architect with over a decade of experience designing scalable testing frameworks and CI/CD strategies. He focuses on automation, observability, and quality engineering practices that enable faster, data-driven feedback. His work complements Andreea’s delivery focus by building the technical backbone of continuous quality.',
+    bio: 'Martin Adler writes about software quality, delivery risk, and the organisational rituals that quietly replace evidence. His work focuses on practical decision-making in modern product teams—where constraints are real, certainty is rare, and shipping still happens.',
     tag: '[ process_optimizer = true ]',
     //imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-    imageUrl: '/alex%20davis%20null%20expected.jpg',
+    imageUrl: '/martin%20adler%20null%20expected.jpg',
 
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
-    email: 'alex@nullexpected.com'
+    email: 'martin@nullexpected.com'
   }
 };
 
