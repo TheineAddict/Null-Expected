@@ -1,7 +1,7 @@
 ---
 title: "Your Blog Post Title Here"
 excerpt: "A compelling summary of your post that will appear on the blog listing page and in search results. Keep it under 160 characters for best SEO."
-tags: ["qa-processes", "featured","quality-mindset","career-advice","industry-trends","tools-tech","case-studies"]
+tags: ["qa-processes", "featured","quality-mindset","career-advice","industry-trends","tools-tech","case-studies","unpopular-opinion"]
 author: "author1"
 date: "2026-01-28"
 readTime: "8 min read"

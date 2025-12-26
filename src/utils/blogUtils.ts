@@ -83,7 +83,8 @@ export function getDisplayCategory(tags: string[]): string {
     'career-advice': 'Career Advice',
     'industry-trends': 'Industry Trends',
     'tools-tech': 'Tools & Tech',
-    'case-studies': 'Case Studies'
+    'case-studies': 'Case Studies',
+    'unpopular-opinion': 'Unpopular Opinion'
   };
 
   for (const tag of tags) {
@@ -264,7 +265,8 @@ export function getPostsByCategory(posts: BlogPost[], category: string): BlogPos
     'Career Advice': 'career-advice',
     'Industry Trends': 'industry-trends',
     'Tools & Tech': 'tools-tech',
-    'Case Studies': 'case-studies'
+    'Case Studies': 'case-studies',
+    'Unpopular Opinion': 'unpopular-opinion'
   };
   
   const tagToFind = categoryToTagMap[category];
