@@ -19,7 +19,7 @@ export const AUTHORS: Record<string, Author> = {
     slug: 'andreeavitan',
     initials: 'AV',
     title: 'QA & Release Manager',
-    bio: 'Andreea Vitan writes from the seam where delivery meets assurance. With a background spanning hands-on software testing, QA management, and release management, she focuses on risk-based testing, release readiness signals, and the practical governance that keeps teams shipping without ritual and panic. At Null Expected, she publishes process-first pieces on test strategy, quality mindset, and the uncomfortable trade-offs behind real go/no-go decisions.',
+    bio: 'Andreea Vitan writes from the seam where delivery meets assurance. With a background spanning hands-on software testing, QA management, and release management, she focuses on risk-based testing, release readiness signals, and the practical governance that keeps teams shipping without ritual and panic.',
     tag: '[ quality_mindset = true ]',
     imageUrl: '/andreea%20vitan%20qa%20delivery%20manager.jpg',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
