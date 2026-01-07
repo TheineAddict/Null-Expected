@@ -247,7 +247,8 @@ It’s not a comfort read. It’s a set of arguments your team already lives by,
 
 If you work in QA/testing, engineering leadership, product, DevOps, or release management — and you’re tired of dashboards, sign-off theatre, and “move fast” advice that collapses under governance — this one’s for you.
 
-**Grab it here:** **[Unpopular QA Opinions: This Will Get Downvoted (Null Expected: A QA Trilogy)](https://www.amazon.com/dp/B0GDG9J6J2)**
+Grab it here: **[Unpopular QA Opinions: This Will Get Downvoted (Null Expected: A QA Trilogy)](https://www.amazon.com/dp/B0GDG9J6J2)**
+
 ---
 
 *Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*
