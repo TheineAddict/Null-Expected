@@ -69,6 +69,8 @@ Shift-right done well looks like:
 
 This is where quality becomes real — because it’s anchored in evidence, not vibes.
 
+![Cross-functional team in a meeting room running a post-incident review, with a facilitator at a whiteboard showing system diagrams; laptops open and production dashboards blurred in the background.](null-expected-cross-functional-team.jpg))
+
 ## A simple maturity ladder: from logs → signals → SLOs → decision rules
 
 If shift-right feels fuzzy, it’s usually because teams jump to “SLOs” and “error budgets” without building the basics. Here’s a maturity path that actually maps to day-to-day work:
@@ -216,11 +218,7 @@ That’s not ops work. That’s quality leadership.
 
 ## The unpopular truth
 
-Most teams don’t have a shift-left problem.
-
-They have a **feedback problem**.
-
-They’re building quality strategies that stop at the moment the system becomes real.
+Most teams don’t have a shift-left problem. They have a **feedback problem**. They’re building quality strategies that stop at the moment the system becomes real.
 
 Shift-left is good hygiene. Shift-right is how you stop lying to yourself.
 
