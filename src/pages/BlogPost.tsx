@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, User, Share2, Linkedin, Facebook, Twitter, Mail, Link as LinkIcon, Check } from 'lucide-react';
 import { loadBlogPosts, getPostBySlug } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
 import { getAuthorByName } from '../config/authors';
@@ -9,6 +9,8 @@ const BlogPost = () => {
   const { slug } = useParams();
   const [post, setPost] = useState<BlogPostType | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     const loadPost = async () => {
@@ -86,6 +88,84 @@ const BlogPost = () => {
     };
   }, [slug]);
 
+  const shareUrl = post ? `https://www.nullexpected.com/blog/${post.slug}` : '';
+  const shareTitle = post?.title || '';
+  const shareText = post?.excerpt || '';
+
+  const handleShare = async (platform: string) => {
+    switch (platform) {
+      case 'linkedin':
+        window.open(
+          `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+          '_blank',
+          'width=600,height=400'
+        );
+        break;
+      case 'facebook':
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+          '_blank',
+          'width=600,height=400'
+        );
+        break;
+      case 'twitter':
+        window.open(
+          `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`,
+          '_blank',
+          'width=600,height=400'
+        );
+        break;
+      case 'email':
+        const emailSubject = 'Check out this Null:Expected article!';
+        const emailBody = `I thought you might find this article interesting:\n\n${shareTitle}\n${shareUrl}`;
+        window.location.href = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        break;
+      case 'copy':
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          setCopySuccess(true);
+          setTimeout(() => setCopySuccess(false), 2000);
+        } catch (err) {
+          // Fallback for browsers that don't support clipboard API
+          const textArea = document.createElement('textarea');
+          textArea.value = shareUrl;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          setCopySuccess(true);
+          setTimeout(() => setCopySuccess(false), 2000);
+        }
+        break;
+      case 'native':
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: shareTitle,
+              text: shareText,
+              url: shareUrl,
+            });
+          } catch (err) {
+            console.log('Error sharing:', err);
+          }
+        }
+        break;
+    }
+    setShowShareMenu(false);
+  };
+
+  // Close share menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (showShareMenu && !target.closest('.share-menu-container')) {
+        setShowShareMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showShareMenu]);
   if (loading) {
     return (
       <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -189,10 +269,79 @@ const BlogPost = () => {
 
         {/* Share Button */}
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <button className="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
-            <Share2 className="h-4 w-4 mr-2" />
-            Share Article
-          </button>
+          <div className="relative share-menu-container">
+            <button 
+              onClick={() => setShowShareMenu(!showShareMenu)}
+              className="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+            >
+              <Share2 className="h-4 w-4 mr-2" />
+              Share Article
+            </button>
+
+            {showShareMenu && (
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-10">
+                {/* Native Share (if supported) */}
+                {navigator.share && (
+                  <button
+                    onClick={() => handleShare('native')}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                  >
+                    <Share2 className="h-4 w-4 mr-3 text-gray-600" />
+                    <span className="text-gray-700">Share...</span>
+                  </button>
+                )}
+                
+                <button
+                  onClick={() => handleShare('linkedin')}
+                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                >
+                  <Linkedin className="h-4 w-4 mr-3 text-blue-600" />
+                  <span className="text-gray-700">Share on LinkedIn</span>
+                </button>
+                
+                <button
+                  onClick={() => handleShare('facebook')}
+                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                >
+                  <Facebook className="h-4 w-4 mr-3 text-blue-500" />
+                  <span className="text-gray-700">Share on Facebook</span>
+                </button>
+                
+                <button
+                  onClick={() => handleShare('twitter')}
+                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                >
+                  <Twitter className="h-4 w-4 mr-3 text-blue-400" />
+                  <span className="text-gray-700">Share on X</span>
+                </button>
+                
+                <button
+                  onClick={() => handleShare('email')}
+                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                >
+                  <Mail className="h-4 w-4 mr-3 text-gray-600" />
+                  <span className="text-gray-700">Share via Email</span>
+                </button>
+                
+                <button
+                  onClick={() => handleShare('copy')}
+                  className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center transition-colors"
+                >
+                  {copySuccess ? (
+                    <>
+                      <Check className="h-4 w-4 mr-3 text-green-600" />
+                      <span className="text-green-600">Link Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <LinkIcon className="h-4 w-4 mr-3 text-gray-600" />
+                      <span className="text-gray-700">Copy Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
