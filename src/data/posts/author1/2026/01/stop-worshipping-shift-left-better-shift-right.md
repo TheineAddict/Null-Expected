@@ -69,7 +69,7 @@ Shift-right done well looks like:
 
 This is where quality becomes real — because it’s anchored in evidence, not vibes.
 
-![Cross-functional team in a meeting room running a post-incident review, with a facilitator at a whiteboard showing system diagrams; laptops open and production dashboards blurred in the background.](null-expected-cross-functional-team.jpg))
+![Cross-functional team in a meeting room running a post-incident review, with a facilitator at a whiteboard showing system diagrams; laptops open and production dashboards blurred in the background.](null-expected-cross-functional-team.jpg)
 
 ## A simple maturity ladder: from logs → signals → SLOs → decision rules
 
