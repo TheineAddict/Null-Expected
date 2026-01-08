@@ -95,7 +95,7 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Unpopular QA Opinions
               </h3>
-              <p className="text-sm font-semibold text-blue-600 mb-3">
+              <p className="text-sm font-semibold text-indigo-900 mb-3">
                 This Will Get Downvoted
               </p>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
@@ -105,7 +105,7 @@ const About = () => {
                 href="https://www.amazon.com/dp/B0GDG9J6J2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
               >
                 <span>Get on Amazon</span>
                 <span className="text-lg">→</span>
@@ -124,7 +124,7 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Agile Isn't a Vibe
               </h3>
-              <p className="text-sm font-semibold text-blue-600 mb-3">
+              <p className="text-sm font-semibold text-indigo-900 mb-3">
                 The Hidden Operating System for New Tech Leads
               </p>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
@@ -134,7 +134,7 @@ const About = () => {
                 href="https://www.amazon.com/dp/B0GDY3WSG4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
               >
                 <span>Get on Amazon</span>
                 <span className="text-lg">→</span>
@@ -153,7 +153,7 @@ const About = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 The Go/No-Go Mindset
               </h3>
-              <p className="text-sm font-semibold text-blue-600 mb-3">
+              <p className="text-sm font-semibold text-indigo-900 mb-3">
                 A Practical QA Playbook
               </p>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
@@ -163,7 +163,7 @@ const About = () => {
                 href="https://www.amazon.com/dp/B0GF35SJNB"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
               >
                 <span>Get on Amazon</span>
                 <span className="text-lg">→</span>
