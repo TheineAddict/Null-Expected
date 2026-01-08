@@ -68,7 +68,113 @@ const About = () => {
           </div>
           ))}
         </div>
-        
+      </section>
+
+      {/* Books Section */}
+      <section className="py-20 bg-gray-50 mt-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Published Works
+            </h2>
+            <p className="text-xl text-gray-600">
+              Practical insights from years of QA, testing, and leadership experience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Book 1 */}
+            <div className="group">
+              <div className="mb-6 relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:shadow-xl group-hover:scale-105">
+                <img
+                  src="/book1_cover.jpg"
+                  alt="Unpopular QA Opinions: This Will Get Downvoted"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Unpopular QA Opinions
+              </h3>
+              <p className="text-sm font-semibold text-blue-600 mb-3">
+                This Will Get Downvoted
+              </p>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Contrarian, evidence-first QA essays for people who ship software. Essential reading for QA professionals, SDETs, developers, engineering managers, PMs, and release managers.
+              </p>
+              <a
+                href="https://www.amazon.com/dp/B0GDG9J6J2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+              >
+                <span>Get on Amazon</span>
+                <span className="text-lg">→</span>
+              </a>
+            </div>
+
+            {/* Book 2 */}
+            <div className="group">
+              <div className="mb-6 relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:shadow-xl group-hover:scale-105">
+                <img
+                  src="/book_2_cover.jpg"
+                  alt="Agile Isn't a Vibe: The Hidden Operating System for New Tech Leads"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Agile Isn't a Vibe
+              </h3>
+              <p className="text-sm font-semibold text-blue-600 mb-3">
+                The Hidden Operating System for New Tech Leads
+              </p>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Practical agile delivery and operating model guidance for new tech leads and engineering leaders. Cut through the hype and learn what actually works.
+              </p>
+              <a
+                href="https://www.amazon.com/dp/B0GDY3WSG4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+              >
+                <span>Get on Amazon</span>
+                <span className="text-lg">→</span>
+              </a>
+            </div>
+
+            {/* Book 3 */}
+            <div className="group">
+              <div className="mb-6 relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:shadow-xl group-hover:scale-105">
+                <img
+                  src="/book3_cover.jpg"
+                  alt="The Go/No-Go Mindset: A Practical QA Playbook"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                The Go/No-Go Mindset
+              </h3>
+              <p className="text-sm font-semibold text-blue-600 mb-3">
+                A Practical QA Playbook
+              </p>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Release readiness, decision-making, and pragmatic QA playbook for QA and release leads, plus engineering teams. Make confident go/no-go decisions.
+              </p>
+              <a
+                href="https://www.amazon.com/dp/B0GF35SJNB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+              >
+                <span>Get on Amazon</span>
+                <span className="text-lg">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Name Explanation Section */}
         <div className="mt-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg p-8">
