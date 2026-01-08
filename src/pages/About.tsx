@@ -96,7 +96,7 @@ const About = () => {
                 Agile Isn't a Vibe
               </h3>
               <p className="text-sm font-semibold text-indigo-900 mb-3">
-                The Hidden Operating System for New Tech Leads
+                The Hidden Operating System
               </p>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 Practical agile delivery and operating model guidance for new tech leads and engineering leaders. Cut through the hype and learn what actually works.
