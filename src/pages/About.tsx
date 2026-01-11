@@ -36,7 +36,8 @@ const About = () => {
               </div>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-2">{author.name}</h2>
-              <p className="text-indigo-900 font-semibold mb-6">{author.title}</p>
+              <p className="text-indigo-900 font-semibold mb-1">{author.roleTitle}</p>
+              <p className="text-gray-600 text-sm mb-6">{author.title}</p>
               
               <p className="text-gray-600 leading-relaxed mb-6">
                 {author.bio}
