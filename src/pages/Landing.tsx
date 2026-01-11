@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
 import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
-import { SEO } from '../components/SEO';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
@@ -70,13 +69,8 @@ const Landing = () => {
 
   return (
     <div>
-      <SEO
-        title="Null:Expected (Null Expected) - QA Management & Test Management Blog by Andreea Vitan"
-        description="Null:Expected is a QA thought hub by Andreea Vitan. Practical insights on QA management, test management, and software quality for testers and tech leads."
-        path="/"
-      />
       {/* Hero Section */}
-      <header className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
+      <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
         {/* Circuit Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -96,41 +90,19 @@ const Landing = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 md:mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
               <span className="brand-gradient">
-                Null:Expected - QA Management & Test Management
+                Null:Expected
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed max-w-3xl mx-auto">
-              Null:Expected (Null Expected) is a QA thought hub by Andreea Vitan. I write practical notes on QA management, test management, and shipping software with fewer surprises - for testers, tech leads, and recruiters who want signal over vibes.
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 md:mb-8 font-light">
+              A QA thought hub. What did you expect?
             </p>
-
-            {/* Start Here Navigation */}
-            <nav aria-label="Start here" className="mb-8 md:mb-12">
-              <div className="flex items-center justify-center space-x-4 text-sm">
-                <Link
-                  to="/blog"
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium text-gray-900 transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  Read the blog
-                </Link>
-                <Link
-                  to="/about"
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium text-gray-900 transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  About Andreea Vitan
-                </Link>
-                <Link
-                  to="/mission"
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium text-gray-900 transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  Our mission
-                </Link>
-              </div>
-            </nav>
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
+              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ quality ]</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ growth ]</span>
+            </div>
           </div>
 
           <Link
@@ -142,66 +114,76 @@ const Landing = () => {
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>
-      </header>
+      </section>
 
-      <main>
-        {/* Main Content Pillars */}
-        <div className="py-12 md:py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* QA Processes */}
-              <section className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center mb-6">
-                  <Target className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-3">QA Processes</h2>
-                <p className="text-gray-600 mb-6">Methodologies, frameworks, and systematic approaches to quality</p>
+      {/* Categories Section */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+              Explore Quality Insights
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Dive into curated content across different aspects of quality assurance and professional growth
+            </p>
+          </div>
+
+          {/* Mobile: Show only 3 categories initially with "View More" */}
+          <div className="md:hidden">
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {categories.slice(0, 3).map((category, index) => (
                 <Link
-                  to="/blog?category=QA%20Processes"
-                  className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                  to={`/blog?category=${encodeURIComponent(category.title)}`}
+                  key={category.title}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 block group"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  Explore articles
-                  <ArrowRight className="ml-1 h-4 w-4" />
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
+                      <category.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
+                      <p className="text-gray-600 text-sm">{category.description}</p>
+                    </div>
+                  </div>
                 </Link>
-              </section>
-
-              {/* Quality Mindset */}
-              <section className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center mb-6">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Quality Mindset</h2>
-                <p className="text-gray-600 mb-6">Philosophy and thinking patterns that drive quality excellence</p>
-                <Link
-                  to="/blog?category=Quality%20Mindset"
-                  className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  Explore articles
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </section>
-
-              {/* Career Advice */}
-              <section className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-16 h-16 rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 flex items-center justify-center mb-6">
-                  <TrendingUp className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Career Advice</h2>
-                <p className="text-gray-600 mb-6">Growth strategies and insights for QA professionals</p>
-                <Link
-                  to="/blog?category=Career%20Advice"
-                  className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  Explore articles
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </section>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link
+                to="/blog"
+                className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                View All Categories
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </div>
           </div>
+
+          {/* Desktop: Show all categories in grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {categories.map((category, index) => (
+              <Link
+                to="/blog"
+                key={category.title}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-6`}>
+                  <category.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
+                <p className="text-gray-600 mb-6">{category.description}</p>
+                <div className="text-sm text-gray-500 font-mono">
+                  [ {index + 1} of 6 ]
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
+      </section>
 
       {/* Featured Posts */}
       <section className="py-12 md:py-20">
@@ -283,26 +265,25 @@ const Landing = () => {
         </div>
       </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
-              Follow the breadcrumbs
-            </h2>
-            <p className="text-lg sm:text-xl text-indigo-200 mb-6 md:mb-8">
-              Explore articles, rants, and real-world QA strategy in practice.
-            </p>
-            <Link
-              to="/blog"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              Browse All Posts
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </section>
-      </main>
+      {/* CTA Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
+            Follow the breadcrumbs
+          </h2>
+          <p className="text-lg sm:text-xl text-indigo-200 mb-6 md:mb-8">
+            Explore articles, rants, and real-world QA strategy in practice.
+          </p>
+          <Link
+            to="/blog"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            Browse All Posts
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
