@@ -99,7 +99,7 @@ const Landing = () => {
               A QA thought hub. What did you expect?
             </p>
             <p className="text-base sm:text-lg text-gray-700 mb-4">
-              I write about QA leadership, test management, and how to ship software with fewer surprises.
+            Testing and release management for grown-up software. Practical, evidence-first, slightly rebellious.
             </p>
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
               By <Link to="/about" className="text-indigo-900 hover:text-purple-800 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
