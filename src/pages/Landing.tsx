@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
 import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
+import { SEO } from '../components/SEO';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
@@ -69,6 +70,11 @@ const Landing = () => {
 
   return (
     <main>
+      <SEO
+        title="Null:Expected - A QA Thought Hub by Andreea Vitan"
+        description="Testing and release management for grown-up software. Practical, evidence-first QA insights and strategies from an experienced QA and Release Manager."
+        path="/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
         {/* Circuit Grid Background */}
