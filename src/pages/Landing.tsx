@@ -104,38 +104,30 @@ const Landing = () => {
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
               By <Link to="/about" className="text-indigo-900 hover:text-purple-800 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
             </p>
-            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-6">
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ quality ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ growth ]</span>
             </div>
-            <nav className="flex items-center justify-center space-x-4 mb-8 text-sm">
-              <Link
-                to="/blog"
-                className="text-gray-700 hover:text-indigo-900 transition-colors"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                Read the blog
-              </Link>
-              <span className="text-gray-400">·</span>
-              <Link
-                to="/about"
-                className="text-gray-700 hover:text-indigo-900 transition-colors"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                About
-              </Link>
-            </nav>
           </div>
 
-          <Link
-            to="/blog"
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            Explore the Hub
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/about"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              About
+            </Link>
+            <Link
+              to="/blog"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Explore the Hub
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
