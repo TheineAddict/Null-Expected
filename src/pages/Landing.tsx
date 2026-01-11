@@ -114,7 +114,7 @@ const Landing = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/about"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
               onClick={() => window.scrollTo(0, 0)}
             >
               About
