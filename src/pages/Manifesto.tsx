@@ -43,6 +43,11 @@ const Manifesto = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="QA Manifesto - Null:Expected Quality Principles"
+        description="Our principles for quality assurance: intention over output, understanding over coverage, collaboration over gatekeeping. The Null:Expected manifesto."
+        path="/manifesto"
+      />
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">

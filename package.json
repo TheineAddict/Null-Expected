@@ -4,20 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build && node scripts/build-blog.mjs && tsx scripts/prerender-pages.ts",
-  "test": "vitest",
-  "test:ui": "vitest --ui",
-  "build:ci": "npm ci && npm run build",
-  "lint": "eslint .",
-  "preview": "vite preview"
-},
+    "dev": "vite",
+    "build": "vite build && node scripts/build-blog.mjs && tsx scripts/prerender-pages.ts",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "build:ci": "npm ci && npm run build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "lucide-react": "^0.542.0",
     "marked": "^16.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
@@ -36,10 +37,10 @@
     "jsdom": "^24.1.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.16.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2",
-    "vitest": "^1.6.0",
-    "tsx": "^4.16.0"
+    "vitest": "^1.6.0"
   }
 }

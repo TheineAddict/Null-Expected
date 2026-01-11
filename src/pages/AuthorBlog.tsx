@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, ArrowRight, User } from 'lucide-react';
 import { loadBlogPosts, getPostsByAuthorSlug } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
+import { SEO } from '../components/SEO';
 
 const AuthorBlog = () => {
   const { authorSlug } = useParams();
@@ -66,6 +67,11 @@ const AuthorBlog = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title={`${author.name} - Articles on ${author.title} | Null:Expected`}
+        description={`Read articles by ${author.name} on QA management, test management, and quality practices. ${author.bio}`}
+        path={`/blog/author/${authorSlug}`}
+      />
       {/* Back to Blog */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link

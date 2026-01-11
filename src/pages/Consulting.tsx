@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CircleCheck as CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const Consulting = () => {
   const services = [
@@ -67,6 +68,11 @@ const Consulting = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="QA Consulting Services - Null:Expected Quality Transformation"
+        description="Strategic QA consulting and release management transformation services. Expert guidance for building effective quality practices and sustainable delivery processes."
+        path="/consulting"
+      />
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">
