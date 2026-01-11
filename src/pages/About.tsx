@@ -28,10 +28,10 @@ const About = () => {
             <div className="flex flex-col items-center text-center">
               {/* Author Image */}
               <div className="w-32 h-32 mb-6">
-                <img 
-                  src={author.imageUrl} 
+                <img
+                  src={author.imageUrl}
                   alt={`${author.name} - ${author.title}`}
-                  className="w-full h-full object-cover rounded-full shadow-lg"
+                  className="w-full h-full object-cover rounded-full shadow-lg grayscale"
                 />
               </div>
               
