@@ -10,7 +10,7 @@ slug: "end-of-year-qa-retrospective"
 
 A large proportion of “retrospectives” are not retrospectives at all. They are either **affect-laden debriefs** (catharsis without correction) or **status theatre** (narration without learning). Both produce the same outcome: a comforting story that leaves the system unchanged.
 
-An end-of-year QA / Release retrospective is a different instrument. Its purpose is to interrogate **how the team formed confidence**, **how it priced risk**, and **how governance influenced outcomes**—then to translate those findings into **specific, owned, measurable interventions**.
+An end-of-year QA / Release retrospective is a different instrument. Its purpose is to interrogate **how the team formed confidence**, **how it priced risk**, and **how governance influenced outcomes**-then to translate those findings into **specific, owned, measurable interventions**.
 
 This format is explicitly designed for teams who prefer precision over performance.
 
@@ -29,7 +29,7 @@ You are done only when you have:
 
 1.  **Three to five interventions** with an accountable owner, a deadline, and a measurable success criterion
     
-2.  **An updated Decision Ledger** (the reasoning you used—not merely what happened)
+2.  **An updated Decision Ledger** (the reasoning you used-not merely what happened)
     
 3.  **At least one governance or guardrail adjustment** that reduces recurrence probability or shortens time-to-detection
     
@@ -43,13 +43,13 @@ If your headline action is “communicate more,” the retrospective has failed.
 
 ## Ground rules: anti-theatre by design
 
-• **No blame, no biographies.** Discuss constraints, incentives, interfaces, signals, and decisions—not personalities.
+• **No blame, no biographies.** Discuss constraints, incentives, interfaces, signals, and decisions-not personalities.
     
 • **Evidence precedes interpretation.** We do not debate the world; we examine it.
     
 • **Brevity is a quality attribute.** If a point requires a ten-minute narrative, it belongs in an incident review.
     
-• **No action, no airtime.** A theme that cannot be operationalised becomes a parked observation—not a meeting-shaped argument.
+• **No action, no airtime.** A theme that cannot be operationalised becomes a parked observation-not a meeting-shaped argument.
     
 
 ----------
@@ -75,9 +75,9 @@ Choose what is materially relevant; do not exceed what the group can cognitively
 
 ### 2. Individual reflection prompts (everyone contributes; three bullets max per item)
 
-• One release you felt legitimately confident about—and what validated that confidence
+• One release you felt legitimately confident about-and what validated that confidence
     
-• One explicit risk trade-off you endorsed (or tolerated)—and whether the payoff justified the exposure
+• One explicit risk trade-off you endorsed (or tolerated)-and whether the payoff justified the exposure
     
 • One recurring friction that consumed disproportionate time or degraded signal quality
     
@@ -88,7 +88,7 @@ Choose what is materially relevant; do not exceed what the group can cognitively
 
 ## The 45-minute retro (default runbook)
 
-### 0–5 min — Establish intent and boundaries
+### 0–5 min - Establish intent and boundaries
 
 Use crisp language. This is not a “how does everyone feel” session.
 
@@ -97,7 +97,7 @@ Use crisp language. This is not a “how does everyone feel” session.
 • “We will leave with a small set of owned interventions and an updated Decision Ledger.”
     
 
-### 5–12 min — Review the evidence pack (no editorialising)
+### 5–12 min - Review the evidence pack (no editorialising)
 
 Allow only two questions at this stage:
 
@@ -108,7 +108,7 @@ Allow only two questions at this stage:
 
 Everything else is deferred.
 
-### 12–25 min — Silent capture: events, decisions, and failure modes
+### 12–25 min - Silent capture: events, decisions, and failure modes
 
 Everyone writes, quietly, into a shared doc/board under these headings:
 
@@ -123,7 +123,7 @@ Everyone writes, quietly, into a shared doc/board under these headings:
 
 Silence is not awkward here; it is how you avoid dominance bias.
 
-### 25–35 min — Cluster and classify themes (make the system visible)
+### 25–35 min - Cluster and classify themes (make the system visible)
 
 Facilitator groups duplicates live. Then classify each cluster into one primary category:
 
@@ -138,15 +138,15 @@ Facilitator groups duplicates live. Then classify each cluster into one primary 
 • **Platform constraint** (environment/test data/dependency volatility; systemic rather than local)
     
 
-### 35–43 min — Convert themes into interventions (3–5 max)
+### 35–43 min - Convert themes into interventions (3–5 max)
 
 Each selected theme must yield an intervention in the following form:
 
 > We will **[change X]** to improve **[outcome Y]**, evidenced by **[signal Z]**, owned by **[person/role]**, by **[date]**.
 
-If you cannot name a signal, you are not yet dealing with a controllable variable—you are dealing with a narrative.
+If you cannot name a signal, you are not yet dealing with a controllable variable-you are dealing with a narrative.
 
-### 43–45 min — Commitments
+### 43–45 min - Commitments
 
 • Read the interventions verbatim.
     
@@ -162,7 +162,7 @@ If you cannot name a signal, you are not yet dealing with a controllable variabl
 
 Add two deepening modules.
 
-### Module A — Escaped defect “one-liner” analysis (20 minutes)
+### Module A - Escaped defect “one-liner” analysis (20 minutes)
 
 Select the two highest-impact escapes. For each, complete:
 
@@ -187,7 +187,7 @@ Select the two highest-impact escapes. For each, complete:
 
 Goal: across the two items, produce at least **one prevention**, **one detection**, and **one governance** intervention that is transferable beyond a single defect class.
 
-### Module B — Decision Ledger review (15 minutes)
+### Module B - Decision Ledger review (15 minutes)
 
 Pick three to five decisions marked “risk accepted” (or reconstruct the implicit ones). For each:
 
@@ -221,7 +221,7 @@ Output: one new **decision rule** (see library below).
     
 • Where did we conflate “low probability” with “low consequence”?
     
-• Which decisions relied on “rollback is easy”—and was rollback truly low-friction in practice?
+• Which decisions relied on “rollback is easy”-and was rollback truly low-friction in practice?
     
 • Where did governance impose latency without meaningfully reducing exposure?
     

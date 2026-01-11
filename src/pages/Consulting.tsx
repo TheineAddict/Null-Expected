@@ -167,7 +167,7 @@ const Consulting = () => {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Practitioner Experience</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                We're not just consultants—we're active QA and release management practitioners. 
+                We're not just consultants-we're active QA and release management practitioners. 
                 Our advice comes from current, hands-on experience with modern development teams and delivery challenges.
               </p>
 
@@ -187,7 +187,7 @@ const Consulting = () => {
 
               <h3 className="text-xl font-bold text-gray-900 mb-4">Balanced Perspective</h3>
               <p className="text-gray-600 leading-relaxed">
-                Quality isn't just about testing—it's about the entire delivery system. We help you 
+                Quality isn't just about testing-it's about the entire delivery system. We help you 
                 balance speed, safety, and sustainability in ways that work for your business.
               </p>
             </div>

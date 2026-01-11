@@ -19,7 +19,7 @@ Complete? Not even close.
 
 That conversation reignited a question many of us quietly ask:  
 
-*Is regression testing supposed to be stable — or useful?*
+*Is regression testing supposed to be stable - or useful?*
 
 ---
 
@@ -29,7 +29,7 @@ Controlled regression suites exist for good reasons: predictable, reproducible r
 
 They validate that yesterday’s working code still works today. But over time, these suites start testing their own assumptions, not the product’s behaviour.  
 
-When the data never changes and every environment variable is frozen, the suite eventually becomes a green light generator — signalling confidence that may not actually exist.
+When the data never changes and every environment variable is frozen, the suite eventually becomes a green light generator - signalling confidence that may not actually exist.
 
 ---
 
@@ -39,15 +39,15 @@ Real users, integrations, and data don’t live in neat containers. They’re me
 
 So when our regression runs only against controlled inputs, we lose early visibility into the chaos that production will inevitably unleash.
 
-Realistic regression — with data that moves, ages, and varies — exposes subtle drifts:  
+Realistic regression - with data that moves, ages, and varies - exposes subtle drifts:  
 schema mismatches after a dependency upgrade, time-zone edge cases during daylight-saving changes, or behaviour differences under alternate configuration states.  
 
 Yes, it’s harder to maintain.  
-But those defects are also the ones that escape into UAT, beta, and — eventually — production.
+But those defects are also the ones that escape into UAT, beta, and - eventually - production.
 
 ---
 
-### Layered Regression Approach — balancing control and discovery
+### Layered Regression Approach - balancing control and discovery
 
 A mature strategy isn’t about choosing between control or chaos. It’s about layering them.
 
@@ -62,11 +62,11 @@ Confidence becomes a portfolio, not a checkbox.
 
 ---
 
-### Representative Variability Sampling — realism without randomness
+### Representative Variability Sampling - realism without randomness
 
 Pure randomness creates noise; fixed data creates blindness. The balance is *representative variability*: mirroring production diversity across the few dimensions that genuinely affect behaviour.
 
-Every system has its own axes of variability — not just users or locales, but:  
+Every system has its own axes of variability - not just users or locales, but:  
 
 **Input structure** / volume → small vs. large payloads, empty vs. dense  
 **Data lifecycle** → new, active, archived, expired  
@@ -100,7 +100,7 @@ You can have diversity and determinism:
 
 ### Automation examples
 
-Each snippet below illustrates controlled diversity — reproducible chaos.  
+Each snippet below illustrates controlled diversity - reproducible chaos.  
 
 **Java / Selenium + TestNG**
 
@@ -143,7 +143,7 @@ Each snippet below illustrates controlled diversity — reproducible chaos.
 Realistic suites can become noisy if left ungoverned.  
 Test Leads should define clear guardrails:  
 
-**Flake budget ≤ 2%** — anything above triggers triage  
+**Flake budget ≤ 2%** - anything above triggers triage  
 **Automatic quarantine** of repeatedly flaky tests  
 **Schema-drift sentinels** to fail early on broken datasets  
 **Centralised** data-builder rules (one fix → many tests)  
@@ -164,7 +164,7 @@ Regression testing isn’t a single gate; it’s a *confidence system.*
 | **L2 pass** | Product behaves correctly under realistic conditions |
 | **L3 pass** | System remains resilient under stress and unpredictability |
 
-When stakeholders see failures in L2/L3, that’s not instability — it’s information.  
+When stakeholders see failures in L2/L3, that’s not instability - it’s information.  
 Your regression isn’t breaking; it’s learning.
 
 ---
@@ -173,5 +173,5 @@ Your regression isn’t breaking; it’s learning.
 
 Perfectly stable regression suites are like museum exhibits: beautiful, preserved, and irrelevant to the living world outside.  
 
-Testing in controlled chaos — layered, reproducible, and representative — is harder.  
+Testing in controlled chaos - layered, reproducible, and representative - is harder.  
 But it’s also the only way to ensure your *green* actually means *good.*

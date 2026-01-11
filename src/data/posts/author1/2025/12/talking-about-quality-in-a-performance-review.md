@@ -9,7 +9,7 @@ slug: "talking-about-quality-in-a-performance-review"
 
 ---
 
-Quality and release work tends to be mis-scored in performance cycles for a simple reason: much of its value is **counterfactual**. When quality is effective, failure modes do not materialise; operational noise is suppressed; the organisation experiences continuity rather than drama. The problem is not that the work is invisible — it is that it is often *described* as activity rather than translated into outcomes that matter to leadership: resilience, predictability, controlled risk, and reduced cost of failure.
+Quality and release work tends to be mis-scored in performance cycles for a simple reason: much of its value is **counterfactual**. When quality is effective, failure modes do not materialise; operational noise is suppressed; the organisation experiences continuity rather than drama. The problem is not that the work is invisible - it is that it is often *described* as activity rather than translated into outcomes that matter to leadership: resilience, predictability, controlled risk, and reduced cost of failure.
 
 This post is a framework for articulating quality impact in language that holds up under scrutiny: outcome-first narratives, evidence that is defensible, and metrics that illuminate decision-making rather than decorate a slide.
 
@@ -18,7 +18,7 @@ This post is a framework for articulating quality impact in language that holds 
 
 ## Anchor your review in outcomes, not activities
 
-Performance reviews reward value creation and risk reduction — not busyness. “I executed testing” is an operational statement; it does not describe movement in outcomes. Senior-level communication begins with the *business effect* and then makes your contribution legible.
+Performance reviews reward value creation and risk reduction - not busyness. “I executed testing” is an operational statement; it does not describe movement in outcomes. Senior-level communication begins with the *business effect* and then makes your contribution legible.
 
 Reframe this way:
 
@@ -115,7 +115,7 @@ Shift-left is only meaningful when it materially reduces rework, avoids late sur
 • “Surfaced integration and dependency risks early by driving cross-team planning and evidence-based readiness discussions.”
 
 ### 4. Change governance and CAB signal quality
-Change governance is frequently misunderstood as bureaucracy. In reality, it is an organisational safety mechanism — and a lever for reducing approval latency and operational surprises.
+Change governance is frequently misunderstood as bureaucracy. In reality, it is an organisational safety mechanism - and a lever for reducing approval latency and operational surprises.
 
 **Executive translation:**
 
@@ -282,7 +282,7 @@ Examples:
 
 • “I will shorten feedback loops by moving critical checks earlier in the lifecycle and making quality signals visible in delivery rituals and reporting.”
 
-Quality is not a department and not a phase. In performance reviews, your job is to describe how you improved the system’s ability to change safely — and to do so with claims that are clear, rigorous, and evidentially grounded.
+Quality is not a department and not a phase. In performance reviews, your job is to describe how you improved the system’s ability to change safely - and to do so with claims that are clear, rigorous, and evidentially grounded.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Lead’s Playbook: Building a Layered Regression Strategy That Scales"
-excerpt: "A practical companion to 'Controlled Chaos' — turning regression testing philosophy into actionable structure for QA Leads and Release Managers."
+excerpt: "A practical companion to 'Controlled Chaos' - turning regression testing philosophy into actionable structure for QA Leads and Release Managers."
 tags: ["qa-processes", "career-advice"]
 author: "author1"
 date: "2025-10-14"
@@ -12,7 +12,7 @@ This playbook expands on the ideas introduced in [**Controlled Chaos: Rethinking
 
 If that article made the case for *why* regression testing needs to evolve, this one focuses on *how*. It offers a one-page strategy guide for QA Leads and Release Managers to operationalise layered regression, representative variability, and measurable confidence.  
 
-Use it as a framework to turn philosophy into process — whether you are defining a test strategy for a new project or rebuilding a legacy regression suite to make it relevant again.
+Use it as a framework to turn philosophy into process - whether you are defining a test strategy for a new project or rebuilding a legacy regression suite to make it relevant again.
 
 ---
 
@@ -50,7 +50,7 @@ Automate **quarantine and triage** for repeated flaky failures.
 Track **data freshness** (snapshot age) and **schema drift**.  
 Assign clear **ownership** and fix-time SLAs for quarantined tests.
 
-A regression suite is a living system — budget maintenance time the same way you budget development effort.
+A regression suite is a living system - budget maintenance time the same way you budget development effort.
 
 ---
 
@@ -67,7 +67,7 @@ Snapshot freshness (days since last refresh)
 Mean time to detect (MTTD) vs. mean time to resolve (MTTR)  
 Percentage of test cases covering top 3 risk domains or configurations  
 
-When you track these over time, maturity becomes visible — stability plateaus while coverage expands.
+When you track these over time, maturity becomes visible - stability plateaus while coverage expands.
 
 ---
 
@@ -113,4 +113,4 @@ A **Quarterly Review Cadence** for ongoing improvement
 
 Regression testing maturity is not about having thousands of automated checks. It is about running the *right* tests, under *representative* conditions, with *predictable* insight.  
 
-When your regression layers are defined, your variability structured, and your metrics visible, stability stops being a matter of luck — it becomes a measurable outcome.
+When your regression layers are defined, your variability structured, and your metrics visible, stability stops being a matter of luck - it becomes a measurable outcome.

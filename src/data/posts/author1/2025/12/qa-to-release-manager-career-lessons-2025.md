@@ -1,6 +1,6 @@
 ---
 title: "From QA to Release Management: What 2025 Taught Me About Quality"
-excerpt: "A personal year-in-review on moving from QA into release management: shared ownership, risk decisions, governance, visibility, emotional load—and why I started Null Expected."
+excerpt: "A personal year-in-review on moving from QA into release management: shared ownership, risk decisions, governance, visibility, emotional load-and why I started Null Expected."
 tags: ["career-advice","quality-mindset","qa-processes","featured"]
 author: "author1"
 date: "2025-12-29"
@@ -12,7 +12,7 @@ The past few years didn’t feel like a career change. They felt like a **lens c
 
 I didn’t wake up one morning and decide I’m “done with QA.” I’m still made of QA - skepticism, curiosity, the reflex to trace outcomes back to assumptions. What shifted was the *shape* of the work: from **“I help teams build quality into what we ship”** to **“I design how we ship without breaking the organisation.”**
 
-Being in QA trained me to think in systems: intent, risk, feedback loops, and the human incentives that quietly decide outcomes. Release management trained me to turn that thinking into **decisions**—and to feel, in real time, the hidden cost of getting them wrong.
+Being in QA trained me to think in systems: intent, risk, feedback loops, and the human incentives that quietly decide outcomes. Release management trained me to turn that thinking into **decisions**-and to feel, in real time, the hidden cost of getting them wrong.
 
 If my earlier identity was **quality advocate**, my 2025 identity became **path designer**: building routes to production that are fast when they can be, deliberate when they must be, and honest about the trade-offs either way.
 
@@ -37,7 +37,7 @@ In release management, you’re often responsible for turning that visibility in
 This year taught me a subtle distinction:
 
 QA is excellent at generating signal.  
-Release management is about **reducing decision latency**—getting the right people to make the right call at the right time, with the right constraints.
+Release management is about **reducing decision latency**-getting the right people to make the right call at the right time, with the right constraints.
 
 That’s not “bigger” work. It’s just work at a different leverage point.
 
@@ -75,7 +75,7 @@ That’s not lowering the bar. That’s moving the bar to where it actually live
 
 ## Lesson 3: “Not yet” is a governance tool. “No” is a posture.
 
-I’ve always disliked the gatekeeper identity—not because boundaries don’t matter, but because “no” can become a performance: clean, satisfying, and strangely unhelpful.
+I’ve always disliked the gatekeeper identity-not because boundaries don’t matter, but because “no” can become a performance: clean, satisfying, and strangely unhelpful.
 
 Release work forced me to develop a more precise vocabulary:
 
@@ -98,7 +98,7 @@ I’ve seen two kinds of dysfunction:
 
 Neither is sustainable.
 
-ITIL concepts—change enablement, risk acceptance, incident/problem learning—can coexist beautifully with continuous delivery *when they’re treated as outcomes, not rituals*.
+ITIL concepts-change enablement, risk acceptance, incident/problem learning-can coexist beautifully with continuous delivery *when they’re treated as outcomes, not rituals*.
 
 My job became translation:
 
@@ -110,7 +110,7 @@ My job became translation:
 
 When ITIL is done well, it doesn’t slow teams down. It **stops teams from paying interest on invisible debt**.
 
-## Lesson 5: CAB is where quality becomes social—sometimes uncomfortably so.
+## Lesson 5: CAB is where quality becomes social-sometimes uncomfortably so.
 
 CAB conversations are rarely about “is it good?” They’re about:
 
@@ -160,7 +160,7 @@ So I learned to make the work visible in a way that’s useful, not performative
 
 • clear ownership.
 
-This wasn’t personal branding. It was organisational memory—and self-preservation.
+This wasn’t personal branding. It was organisational memory-and self-preservation.
 
 ## Lesson 7: The emotional load of owning releases is real, and it deserves respect.
 
@@ -203,7 +203,7 @@ You can have instincts for years. Writing makes you articulate the underlying mo
 • and what you’d do differently next time.
 
 It also made me reclaim a narrative I care about:
-I’m not “ex-QA.” I’m still doing quality work—just through a wider, more organisational lens.
+I’m not “ex-QA.” I’m still doing quality work-just through a wider, more organisational lens.
 
 ## What I’m leaning into in 2026
 
@@ -215,17 +215,17 @@ I don’t want 2026 to be a year of vague ambition. I want it to be deliberate.
 
 • **Stronger risk language across teams**: fewer “it should be fine,” more explicit assumptions and mitigations.
 
-• **Conference talks + public writing**: not for noise—because it sharpens the craft.
+• **Conference talks + public writing**: not for noise-because it sharpens the craft.
 
 • **Sustainability over heroics**: build guardrails; stop relying on adrenaline.
 
 If 2025 taught me anything, it’s this:
 
 Quality isn’t a department and it isn’t a personality trait.  
-Quality is the discipline of making risk visible, decisions explicit, and outcomes sustainable—over time, with humans in the loop.
+Quality is the discipline of making risk visible, decisions explicit, and outcomes sustainable-over time, with humans in the loop.
 
 Release management didn’t change what I value.  
-It changed where I apply it—and how much leverage that gives me.
+It changed where I apply it-and how much leverage that gives me.
 
 ---
 

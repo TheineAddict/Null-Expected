@@ -12,7 +12,7 @@ slug: "automation-strategy-beyond-tools"
 
 Walk into any QA conference, browse any testing forum, or sit in on any team retrospective, and you'll hear the same conversations: Selenium vs. Playwright, Cypress vs. WebDriver, which CI/CD pipeline is best. These are important discussions, but they're missing the point.
 
-The tool is never the strategy. The strategy is knowing what to automate, when to automate it, and—perhaps most importantly—what not to automate at all.
+The tool is never the strategy. The strategy is knowing what to automate, when to automate it, and-perhaps most importantly-what not to automate at all.
 
 ## The Automation Trap
 
@@ -44,7 +44,7 @@ Would a code review checklist be more effective?
 
 ## The Automation Pyramid (Revisited)
 
-Everyone knows the test pyramid: lots of unit tests, some integration tests, fewer UI tests. But the pyramid isn't just about quantity—it's about purpose and economics.
+Everyone knows the test pyramid: lots of unit tests, some integration tests, fewer UI tests. But the pyramid isn't just about quantity-it's about purpose and economics.
 
 ### Unit Tests: The Foundation
 **Purpose**: Verify individual components work as designed

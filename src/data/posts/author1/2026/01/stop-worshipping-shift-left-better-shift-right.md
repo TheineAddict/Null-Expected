@@ -14,7 +14,7 @@ You’ve seen it: the slide deck says if we just test earlier, quality will magi
 
 That’s adorable.
 
-Shift-left is useful. Necessary, even. But it’s been oversold as a universal cure — and that oversell creates a very specific kind of failure: teams start chasing _pre-production certainty_ like it’s a real thing. They build heavier and heavier gates, more test layers, more “final sign-offs”… and then production still surprises them. Because production is where all the truth gathers: real traffic patterns, real latency, real data shapes, real integration weirdness, real human behaviour.
+Shift-left is useful. Necessary, even. But it’s been oversold as a universal cure - and that oversell creates a very specific kind of failure: teams start chasing _pre-production certainty_ like it’s a real thing. They build heavier and heavier gates, more test layers, more “final sign-offs”… and then production still surprises them. Because production is where all the truth gathers: real traffic patterns, real latency, real data shapes, real integration weirdness, real human behaviour.
 
 If your quality strategy ends at the staging environment, you haven’t built quality. You’ve built _hope_.
 
@@ -42,7 +42,7 @@ But pre-prod “passing” often means:
 • You verified the app, not the _system_: dependencies, timeouts, backpressure, retries, caching, third-party rate limits, version skew, and that one config flag that’s different in prod “for historical reasons”.
     
 
-Shift-left can’t fix that. Not because it’s bad — because it’s not designed to.
+Shift-left can’t fix that. Not because it’s bad - because it’s not designed to.
 
 Shift-left is about preventing obvious defects early and reducing expensive rework. Great. Do it. But if you keep adding pre-prod “quality layers” to compensate for the fact that you can’t see what happens after release, you’re trying to solve an observability problem with more test cases. That’s like trying to learn to swim by reading more documentation.
 
@@ -52,7 +52,7 @@ Shift-right has a PR problem because people hear it and think: “So… we just 
 
 No.
 
-Real shift-right is not “testing in prod.” It’s **operating with feedback**. It’s treating production as a source of quality signals — and building release practices that can respond to those signals quickly and safely.
+Real shift-right is not “testing in prod.” It’s **operating with feedback**. It’s treating production as a source of quality signals - and building release practices that can respond to those signals quickly and safely.
 
 Shift-right done well looks like:
 
@@ -67,7 +67,7 @@ Shift-right done well looks like:
 • **Risk-aware governance**: not “permission to deploy,” but “conditions to proceed and conditions to stop.”
     
 
-This is where quality becomes real — because it’s anchored in evidence, not vibes.
+This is where quality becomes real - because it’s anchored in evidence, not vibes.
 
 ![Cross-functional team in a meeting room running a post-incident review, with a facilitator at a whiteboard showing system diagrams; laptops open and production dashboards blurred in the background.](null-expected-cross-functional-team.jpg)
 
@@ -146,7 +146,7 @@ Decision rules connect telemetry to action:
 • If error budget is burned too fast → reduce change rate temporarily.
     
 
-This is the point where quality isn’t “caught” — it’s **contained**.
+This is the point where quality isn’t “caught” - it’s **contained**.
 
 **What QA / Release can lead here:**
 
@@ -178,9 +178,9 @@ But here’s the sabotage pattern I see constantly:
 
 Congrats, you just built a quality doom loop with a very expensive staging environment.
 
-The fix isn’t “remove QA.” The fix is: **stop pretending pre-prod can fully simulate prod**. Build the ability to learn safely from production, and you’ll _also_ get better at shift-left — because you’ll finally know what to prioritise.
+The fix isn’t “remove QA.” The fix is: **stop pretending pre-prod can fully simulate prod**. Build the ability to learn safely from production, and you’ll _also_ get better at shift-left - because you’ll finally know what to prioritise.
 
-## “But we’re regulated — we can’t do shift-right”
+## “But we’re regulated - we can’t do shift-right”
 
 Regulated doesn’t mean “blind.” It means your controls need to be explicit, auditable, and privacy-safe.
 
@@ -224,9 +224,9 @@ Shift-left is good hygiene. Shift-right is how you stop lying to yourself.
 
 ----------
 
-If you’re reading this thinking, “Yes. And my org is still acting like pre-prod certainty is a lifestyle,” I wrote the longer version — the one with teeth.
+If you’re reading this thinking, “Yes. And my org is still acting like pre-prod certainty is a lifestyle,” I wrote the longer version - the one with teeth.
 
-**[Unpopular QA Opinions: This Will Get Downvoted (Null Expected: A QA Trilogy)](https://www.amazon.com/dp/B0GDG9J6J2)** is a sharp, evidence-first essay collection for people who ship software in the real world — where “quality” is inspirational until it becomes an incident.
+**[Unpopular QA Opinions: This Will Get Downvoted (Null Expected: A QA Trilogy)](https://www.amazon.com/dp/B0GDG9J6J2)** is a sharp, evidence-first essay collection for people who ship software in the real world - where “quality” is inspirational until it becomes an incident.
 
 It’s not a comfort read. It’s a set of arguments your team already lives by, but rarely says out loud:
 
@@ -240,10 +240,10 @@ It’s not a comfort read. It’s a set of arguments your team already lives by,
     
 • how to **level up without becoming the process police**
     
-• and why the job ends with making reality legible — so teams can make accountable, reversible decisions under uncertainty
+• and why the job ends with making reality legible - so teams can make accountable, reversible decisions under uncertainty
     
 
-If you work in QA/testing, engineering leadership, product, DevOps, or release management — and you’re tired of dashboards, sign-off theatre, and “move fast” advice that collapses under governance — this one’s for you.
+If you work in QA/testing, engineering leadership, product, DevOps, or release management - and you’re tired of dashboards, sign-off theatre, and “move fast” advice that collapses under governance - this one’s for you.
 
 Grab it here: **[Unpopular QA Opinions: This Will Get Downvoted (Null Expected: A QA Trilogy)](https://www.amazon.com/dp/B0GDG9J6J2)**
 

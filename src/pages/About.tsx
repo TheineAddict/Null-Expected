@@ -15,7 +15,7 @@ const About = () => {
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           We're QA professionals with different voices, shared curiosity, and far too many 
-          opinions about software quality. This is our thought hub — part roadmap, part portfolio, 
+          opinions about software quality. This is our thought hub - part roadmap, part portfolio, 
           always in beta.
         </p>
       </section>
@@ -185,13 +185,13 @@ const About = () => {
               
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term — where "null" means nothing is returned, and that's the expected result.
+                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term - where "null" means nothing is returned, and that's the expected result.
                 </p>
                 <p>
                   But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
                 </p>
                 <p>
-                  The name reminds us that behind every outcome — even silence — there's intent, and quality depends on understanding that.
+                  The name reminds us that behind every outcome - even silence - there's intent, and quality depends on understanding that.
                 </p>
               </div>
             </div>
@@ -210,7 +210,7 @@ const About = () => {
               <p>
                 We believe that the best QA insights come from real-world experience, 
                 honest reflection, and the willingness to challenge conventional wisdom. 
-                Our posts aren't just theoretical—they're battle-tested strategies and 
+                Our posts aren't just theoretical-they're battle-tested strategies and 
                 hard-earned lessons from the trenches.
               </p>
               <p>
