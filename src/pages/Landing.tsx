@@ -68,7 +68,7 @@ const Landing = () => {
   ];
 
   return (
-    <div>
+    <main>
       {/* Hero Section */}
       <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
         {/* Circuit Grid Background */}
@@ -95,14 +95,37 @@ const Landing = () => {
                 Null:Expected
               </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 md:mb-8 font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 font-light">
               A QA thought hub. What did you expect?
             </p>
-            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
+            <p className="text-base sm:text-lg text-gray-700 mb-4">
+              I write about QA leadership, test management, and how to ship software with fewer surprises.
+            </p>
+            <p className="text-sm text-gray-500 mb-6 md:mb-8">
+              By <Link to="/about" className="text-indigo-900 hover:text-purple-800 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
+            </p>
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-6">
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ quality ]</span>
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ growth ]</span>
             </div>
+            <nav className="flex items-center justify-center space-x-4 mb-8 text-sm">
+              <Link
+                to="/blog"
+                className="text-gray-700 hover:text-indigo-900 transition-colors"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Read the blog
+              </Link>
+              <span className="text-gray-400">·</span>
+              <Link
+                to="/about"
+                className="text-gray-700 hover:text-indigo-900 transition-colors"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                About
+              </Link>
+            </nav>
           </div>
 
           <Link
@@ -284,7 +307,7 @@ const Landing = () => {
           </Link>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
