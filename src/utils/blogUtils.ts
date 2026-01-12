@@ -72,7 +72,20 @@ export function parseFrontmatter(content: string) {
 
 // Convert markdown to HTML
 export function markdownToHtml(markdown: string): string {
-  return marked.parse(markdown);
+  const renderer = new marked.Renderer();
+
+  const originalImageRenderer = renderer.image.bind(renderer);
+  renderer.image = (args: any) => {
+    const { href, title, text } = args;
+
+    if (href && !href.startsWith('/') && !href.startsWith('http://') && !href.startsWith('https://')) {
+      args.href = `/${href}`;
+    }
+
+    return originalImageRenderer(args);
+  };
+
+  return marked.parse(markdown, { renderer });
 }
 
 // Get display category from tags
