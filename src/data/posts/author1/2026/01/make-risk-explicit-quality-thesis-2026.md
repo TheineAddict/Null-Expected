@@ -8,15 +8,16 @@ readTime: "8 min read"
 slug: "make-risk-explicit-quality-thesis-2026"
 ---
 
-![Team reviewing a meeting board.](null-expected-cross-functional-team.jpg)
-
 January has a strange energy in software delivery.
+
 
 Everything is “new” again - new roadmaps, new priorities, new promises. But the codebase didn’t reset. The dependencies didn’t reset. The organizational memory didn’t reset. And the risks definitely didn’t reset. They just got quieter for a week or two, while everyone pretends a fresh calendar is a fresh system.
 
 So here’s my quality thesis for 2026: **make risk explicit**.
 
 Not to be cautious. Not to slow down. Not to write poetry about worst-case scenarios. To ship with fewer surprises - and to stop paying the “silent risk tax” in late nights, rollback panic, and incident postmortems that start with “we didn’t realize…”
+
+![Team reviewing a meeting board.](null-expected-make-risk-explicit-quality-thesis-2026-hero.jpg)
 
 ## Risk is already there - you’re just choosing the format
 
