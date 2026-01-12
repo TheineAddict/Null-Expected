@@ -172,7 +172,7 @@ Everything else is either:
 ⏵ escalated as an **exception** where leadership **consciously accepts the risk** (with written acknowledgement and a clear contingency plan).
     
 
-This mechanism does not eliminate negotiation, but it structures it. Instead of “is this important?”, the conversation becomes “this is critical, but our readiness is weak and rollback is hard—are we willing to accept that exposure in this window?”.
+This mechanism does not eliminate negotiation, but it structures it. Instead of “is this important?”, the conversation becomes “this is critical, but our readiness is weak and rollback is hard-are we willing to accept that exposure in this window?”.
 
 ----------
 
@@ -328,7 +328,7 @@ In other words, the burden of proof sits with the change sponsor, not with the C
 
 ## 7. If You Must Ship, Make It Safe to Fail
 
-In reality, some changes simply must proceed during the holiday window—regulatory obligations, critical defect fixes, or time-sensitive client features.
+In reality, some changes simply must proceed during the holiday window-regulatory obligations, critical defect fixes, or time-sensitive client features.
 
 In those cases, the principle is not “avoid all risk” but “make risk reversible and observable”.
 

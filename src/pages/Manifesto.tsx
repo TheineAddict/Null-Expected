@@ -35,7 +35,7 @@ const Manifesto = () => {
     },
     {
       title: 'Silence, when expected',
-      description: 'A "null" result isn\'t nothing — it\'s trust, verified.',
+      description: 'A "null" result isn\'t nothing - it\'s trust, verified.',
       icon: Zap,
       color: 'from-indigo-900 to-purple-800'
     }
@@ -58,7 +58,7 @@ const Manifesto = () => {
             The Null:Expected Manifesto
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed italic">
-            Because quality isn't accidental — and silence still speaks.
+            Because quality isn't accidental - and silence still speaks.
           </p>
         </div>
       </section>
@@ -70,7 +70,7 @@ const Manifesto = () => {
             We are QA professionals, thinkers, and skeptics.
           </p>
           <p>
-            We don't just check that software works — we question what "working" really means.
+            We don't just check that software works - we question what "working" really means.
           </p>
           <p>
             We believe that testing is not a phase, a script, or a checkbox.

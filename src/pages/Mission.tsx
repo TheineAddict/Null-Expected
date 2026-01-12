@@ -91,7 +91,7 @@ const Mission = () => {
                   "Quality is a mindset, not a metric."
                 </blockquote>
                 <div className="text-indigo-300 font-mono text-sm mt-4">
-                  — Null Expected
+                  - Null Expected
                 </div>
               </div>
             </div>
@@ -106,8 +106,8 @@ const Mission = () => {
             What We Write About
           </h2>
           <div className="max-w-3xl mx-auto space-y-4 text-lg text-gray-600">
-            <p>This isn't a tutorials site — though you will find actionable advice.</p>
-            <p>This isn't just opinion — though you will find strong ones.</p>
+            <p>This isn't a tutorials site - though you will find actionable advice.</p>
+            <p>This isn't just opinion - though you will find strong ones.</p>
           </div>
         </div>
 
@@ -136,7 +136,7 @@ const Mission = () => {
             </h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Because QA is the only discipline that celebrates a null result — when things 
+                Because QA is the only discipline that celebrates a null result - when things 
                 don't crash, don't regress, don't surprise us.
               </p>
               <p>
@@ -164,12 +164,12 @@ const Mission = () => {
                 is the thinking, not the résumé.
               </p>
               <p>
-                That said — we're practitioners. This site is our way of giving back, 
+                That said - we're practitioners. This site is our way of giving back, 
                 challenging forward, and documenting what it means to build for quality, 
                 not just test it.
               </p>
               <p className="font-semibold text-gray-900">
-                We write from experience — and we edit each other ruthlessly.
+                We write from experience - and we edit each other ruthlessly.
               </p>
               <p className="mt-8">
                 <Link 

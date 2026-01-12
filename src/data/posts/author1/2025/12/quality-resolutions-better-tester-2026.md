@@ -1,6 +1,6 @@
 ---
 title: "Quality Resolutions: 10 Small Habits That Make You a Better Tester in 2026"
-excerpt: "Ten small, realistic habits that quietly upgrade your testing in 2026—no new tools, just better thinking, better notes, and better conversations."
+excerpt: "Ten small, realistic habits that quietly upgrade your testing in 2026-no new tools, just better thinking, better notes, and better conversations."
 tags: ["quality-mindset", "career-advice", "featured"]
 author: "author1"
 date: "2025-12-08"
@@ -339,7 +339,7 @@ What you need is **small, repeatable interventions** in how you:
 
 These ten habits are all **locally cheap** and **globally compounding**. Adopt even three of them consistently in 2026, and your practice will feel very different by the time next December’s code freeze rolls around.
 
-You will still have chaos. You will still have last-minute “quick changes”. But you will also have sharper language, better artefacts, and a much stronger sense that you are not just _running tests_ — you are **curating the organisation’s understanding of its own systems**.
+You will still have chaos. You will still have last-minute “quick changes”. But you will also have sharper language, better artefacts, and a much stronger sense that you are not just _running tests_ - you are **curating the organisation’s understanding of its own systems**.
 
 ---
 

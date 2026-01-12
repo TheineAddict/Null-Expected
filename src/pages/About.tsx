@@ -15,7 +15,7 @@ const About = () => {
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           We're QA professionals with different voices, shared curiosity, and far too many 
-          opinions about software quality. This is our thought hub — part roadmap, part portfolio, 
+          opinions about software quality. This is our thought hub - part roadmap, part portfolio, 
           always in beta.
         </p>
       </section>
@@ -28,15 +28,16 @@ const About = () => {
             <div className="flex flex-col items-center text-center">
               {/* Author Image */}
               <div className="w-32 h-32 mb-6">
-                <img 
-                  src={author.imageUrl} 
+                <img
+                  src={author.imageUrl}
                   alt={`${author.name} - ${author.title}`}
-                  className="w-full h-full object-cover rounded-full shadow-lg"
+                  className="w-full h-full object-cover rounded-full shadow-lg grayscale"
                 />
               </div>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-2">{author.name}</h2>
-              <p className="text-indigo-900 font-semibold mb-6">{author.title}</p>
+              <p className="text-indigo-900 font-semibold mb-1">{author.roleTitle}</p>
+              <p className="text-gray-600 text-sm mb-6">{author.title}</p>
               
               <p className="text-gray-600 leading-relaxed mb-6">
                 {author.bio}
@@ -185,13 +186,13 @@ const About = () => {
               
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term — where "null" means nothing is returned, and that's the expected result.
+                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term - where "null" means nothing is returned, and that's the expected result.
                 </p>
                 <p>
                   But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
                 </p>
                 <p>
-                  The name reminds us that behind every outcome — even silence — there's intent, and quality depends on understanding that.
+                  The name reminds us that behind every outcome - even silence - there's intent, and quality depends on understanding that.
                 </p>
               </div>
             </div>
@@ -210,7 +211,7 @@ const About = () => {
               <p>
                 We believe that the best QA insights come from real-world experience, 
                 honest reflection, and the willingness to challenge conventional wisdom. 
-                Our posts aren't just theoretical—they're battle-tested strategies and 
+                Our posts aren't just theoretical-they're battle-tested strategies and 
                 hard-earned lessons from the trenches.
               </p>
               <p>

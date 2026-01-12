@@ -4,6 +4,7 @@ export interface Author {
   slug: string;
   initials: string;
   title: string;
+  roleTitle: string;
   bio: string;
   tag: string;
   imageUrl: string;
@@ -19,6 +20,7 @@ export const AUTHORS: Record<string, Author> = {
     slug: 'andreeavitan',
     initials: 'AV',
     title: 'QA & Release Manager',
+    roleTitle: 'Founder and Editor-in-Chief',
     bio: 'Andreea Vitan writes from the seam where delivery meets assurance. With a background spanning hands-on software testing, QA management, and release management, she focuses on risk-based testing, release readiness signals, and the practical governance that keeps teams shipping without ritual and panic.',
     tag: '[ quality_mindset = true ]',
     imageUrl: '/andreea%20vitan%20qa%20delivery%20manager.jpg',
@@ -31,7 +33,8 @@ export const AUTHORS: Record<string, Author> = {
     slug: 'martinadler',
     initials: 'MA',
     title: 'Test Architect & QA Engineer',
-    bio: 'Martin Adler writes about software quality, delivery risk, and the organisational rituals that quietly replace evidence. His work focuses on practical decision-making in modern product teams—where constraints are real, certainty is rare, and shipping still happens.',
+    roleTitle: 'Co-Founder and Contributing Editor',
+    bio: 'Martin Adler writes about software quality, delivery risk, and the organisational rituals that quietly replace evidence. His work focuses on practical decision-making in modern product teams-where constraints are real, certainty is rare, and shipping still happens.',
     tag: '[ process_optimizer = true ]',
     //imageUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
     imageUrl: '/martin%20adler%20null%20expected.jpg',
