@@ -8,7 +8,7 @@ readTime: "8 min read"
 slug: "make-risk-explicit-quality-thesis-2026"
 ---
 
-![Team reviewing a one-page release risk brief in a calm planning meeting](public/null-expected-make-risk-explicit-quality-thesis-2026-hero.jpg)
+![Team reviewing a one-page release risk brief in a calm planning meeting](null-expected-make-risk-explicit-quality-thesis-2026-hero.jpg)
 
 
 January has a strange energy in software delivery.
