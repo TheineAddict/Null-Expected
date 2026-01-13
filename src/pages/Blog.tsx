@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Clock, ArrowRight, ListFilter as Filter } from 'lucide-react';
+import { Search, Clock, ArrowRight, ListFilter as Filter, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
@@ -12,6 +12,7 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6);
   const location = useLocation();
 
   const categories = [
@@ -63,7 +64,7 @@ const Blog = () => {
   useEffect(() => {
     if (allPosts.length > 0) {
       let filteredPosts;
-      
+
       if (activeTag) {
         filteredPosts = getPostsByTag(allPosts, activeTag);
         console.log(`Filtered posts for tag ${activeTag}:`, filteredPosts.length);
@@ -71,10 +72,22 @@ const Blog = () => {
         filteredPosts = getPostsByCategory(allPosts, activeCategory);
         console.log(`Filtered posts for ${activeCategory}:`, filteredPosts.length);
       }
-      
+
       setPosts(filteredPosts);
+      setVisibleCount(6);
     }
   }, [activeCategory, activeTag, allPosts]);
+
+  const visiblePosts = posts.slice(0, visibleCount);
+  const hasMore = visibleCount < posts.length;
+
+  const handleShowMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
+
+  const handleJumpToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="py-20">
@@ -151,7 +164,7 @@ const Blog = () => {
           </div>
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
+          {visiblePosts.map((post) => (
             <article
               key={post.id}
               className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
@@ -229,6 +242,32 @@ const Blog = () => {
             </p>
             <div className="text-sm text-gray-400 font-mono mt-2">
               [ {activeTag ? 'posts_with_tag' : 'posts_in_category'} = 0 ]
+            </div>
+          </div>
+        )}
+
+        {/* Show More / Jump to Top */}
+        {!loading && posts.length > 0 && (
+          <div className="text-center mt-12">
+            {hasMore ? (
+              <button
+                onClick={handleShowMore}
+                className="inline-flex items-center px-8 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Show More
+                <ChevronDown className="ml-2 h-5 w-5" />
+              </button>
+            ) : (
+              <button
+                onClick={handleJumpToTop}
+                className="inline-flex items-center px-8 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Jump to Top
+                <ChevronUp className="ml-2 h-5 w-5" />
+              </button>
+            )}
+            <div className="text-sm text-gray-400 font-mono mt-4">
+              [ showing: {visiblePosts.length} / {posts.length} posts ]
             </div>
           </div>
         )}
