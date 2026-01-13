@@ -179,9 +179,9 @@ test.describe('404 Not Found Page', () => {
   test('404 page has quick links', async ({ page }) => {
     await page.goto('/does-not-exist');
 
-    const mainContent = page.locator('#main-content, main, .min-h-screen').first();
-    await expect(mainContent.getByRole('link', { name: /^Blog$/i })).toBeVisible();
-    await expect(mainContent.getByRole('link', { name: /^About$/i })).toBeVisible();
-    await expect(mainContent.getByRole('link', { name: /^Mission$/i })).toBeVisible();
+    const quickLinks = page.locator('#quick-links');
+    await expect(quickLinks.getByRole('link', { name: /^Blog$/i })).toBeVisible();
+    await expect(quickLinks.getByRole('link', { name: /^About$/i })).toBeVisible();
+    await expect(quickLinks.getByRole('link', { name: /^Mission$/i })).toBeVisible();
   });
 });

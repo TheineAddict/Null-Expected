@@ -47,7 +47,7 @@ const NotFound = () => {
           </button>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12" id="quick-links">
           <p className="text-sm text-gray-500 mb-4">
             Or explore these sections:
           </p>
