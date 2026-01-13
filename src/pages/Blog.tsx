@@ -4,6 +4,7 @@ import { Search, Clock, ArrowRight, ListFilter as Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
+import { SEO } from '../components/SEO';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -77,6 +78,11 @@ const Blog = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="QA Blog - Quality Assurance Insights & Strategies | Null:Expected"
+        description="Expert insights on software quality, testing strategies, release management, and QA best practices. Practical advice from experienced QA practitioners."
+        path="/blog"
+      />
       {/* Header */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

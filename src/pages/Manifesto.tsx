@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zap, Target, Users, Search, Settings, Eye } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const Manifesto = () => {
   const principles = [

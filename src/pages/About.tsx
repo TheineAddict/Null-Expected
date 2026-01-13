@@ -2,12 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Linkedin } from 'lucide-react';
 import { getAllAuthors } from '../config/authors';
+import { SEO } from '../components/SEO';
 
 const About = () => {
   const authors = getAllAuthors();
 
   return (
     <div className="py-20">
+      <SEO
+        title="About Us - Null:Expected QA Professionals"
+        description="Meet the QA professionals behind Null:Expected. Experienced practitioners sharing insights on testing, quality assurance, and release management from the trenches."
+        path="/about"
+      />
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

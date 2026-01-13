@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight, penLine } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const Mission = () => {
   const whatWeWrite = [
@@ -44,6 +45,11 @@ const Mission = () => {
 
   return (
     <div className="py-20">
+      <SEO
+        title="Our Mission - Null:Expected QA Thought Hub"
+        description="Null Expected is a QA thought hub where practitioners question the status quo, unpack the trade-offs of 'done,' and advocate for software that doesn't just pass, but deserves to."
+        path="/mission"
+      />
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">
