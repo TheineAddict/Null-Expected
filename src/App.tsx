@@ -10,6 +10,7 @@ import BlogPost from './pages/BlogPost';
 import AuthorBlog from './pages/AuthorBlog';
 import Manifesto from './pages/Manifesto';
 import Consulting from './pages/Consulting';
+import NotFound from './pages/NotFound';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/blog/author/:authorSlug" element={<AuthorBlog />} />
             <Route path="/manifesto" element={<Manifesto />} />
             <Route path="/consulting" element={<Consulting />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
