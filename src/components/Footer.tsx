@@ -24,13 +24,13 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Explore</h3>
             <div className="space-y-2">
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+              <Link to="/blog?category=QA%20Processes" className="text-gray-300 hover:text-white block transition-colors">
                 QA Processes
               </Link>
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+              <Link to="/blog?category=Quality%20Mindset" className="text-gray-300 hover:text-white block transition-colors">
                 Quality Mindset
               </Link>
-              <Link to="/blog" className="text-gray-300 hover:text-white block transition-colors">
+              <Link to="/blog?category=Career%20Advice" className="text-gray-300 hover:text-white block transition-colors">
                 Career Advice
               </Link>
             </div>
@@ -46,7 +46,9 @@ const Footer = () => {
               <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
                 About Us
               </Link>
-              <span className="text-gray-300 block">Contact</span>
+              <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
+                Contact
+              </Link>
             </div>
           </div>
 
