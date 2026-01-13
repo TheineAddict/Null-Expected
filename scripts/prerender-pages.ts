@@ -79,9 +79,28 @@ async function fetchHtml(url: string) {
   return await res.text();
 }
 
+const routeTitles: Record<string, string> = {
+  '/mission': 'Our Mission - Null:Expected QA Thought Hub',
+  '/about': 'About Us - Null:Expected QA Professionals',
+  '/blog': 'Blog - Quality Insights | Null:Expected',
+  '/manifesto': 'QA Manifesto - Null:Expected Quality Principles',
+  '/consulting': 'QA Consulting Services - Null:Expected Quality Transformation',
+  '/landing': 'Null:Expected - A QA Thought Hub by Andreea Vitan',
+  '/notfound': '404 - Page Not Found | Null:Expected'
+};
+
 async function writeHtmlForRoute(html: string, route: string) {
   // route "/about" -> dist/about.html
   // route "/company/write-for-us" -> dist/company/write-for-us.html
+
+  // Inject correct title for this route
+  if (routeTitles[route]) {
+    html = html.replace(
+      /<title>.*?<\/title>/,
+      `<title>${routeTitles[route]}</title>`
+    );
+  }
+
   const outPath = path.join(OUT_DIR, route.slice(1) + ".html");
   await fsp.mkdir(path.dirname(outPath), { recursive: true });
   await fsp.writeFile(outPath, html, "utf8");
