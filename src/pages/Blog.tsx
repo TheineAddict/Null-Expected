@@ -102,7 +102,7 @@ const Blog = () => {
           The QA Blog
         </h1>
         <p className="text-xl text-gray-600 mb-8">
-          Insights, strategies, and honest conversations about software quality
+          Latest posts from the QA community
         </p>
         {activeTag && (
           <div className="mb-4">
@@ -132,7 +132,7 @@ const Blog = () => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="flex items-center justify-center mb-8">
           <Filter className="h-5 w-5 text-gray-400 mr-2" />
-          <span className="text-sm text-gray-500 font-medium">Filter by Category</span>
+          <span className="text-sm text-gray-500 font-medium">Filter by category</span>
         </div>
         
         <div className="flex flex-wrap justify-center gap-2">
