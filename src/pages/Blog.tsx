@@ -247,7 +247,7 @@ const Blog = () => {
         )}
 
         {/* Show More / Jump to Top */}
-        {!loading && posts.length > 0 && (
+        {!loading && posts.length > 6 && (
           <div className="text-center mt-12">
             {hasMore ? (
               <button
