@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/blog',
-    title: 'QA Blog - Quality Assurance Insights & Strategies | Null:Expected',
+    title: 'Blog - Quality Insights | Null:Expected',
     heading: 'Blog',
     uniqueContent: ['Filter by category', 'Latest posts from the QA community'],
   },
