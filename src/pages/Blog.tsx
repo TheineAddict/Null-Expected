@@ -184,9 +184,11 @@ const Blog = () => {
                   </div>
                 </div>
 
-                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-indigo-900 transition-colors">
-                  {post.title}
-                </h2>
+                <Link to={`/blog/${post.slug}`}>
+                  <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-indigo-900 transition-colors cursor-pointer">
+                    {post.title}
+                  </h2>
+                </Link>
 
                 <p className="text-gray-600 mb-6 line-clamp-3">
                   {post.excerpt}
