@@ -82,7 +82,7 @@ async function fetchHtml(url: string) {
 const routeTitles: Record<string, string> = {
   '/mission': 'Our Mission - Null:Expected QA Thought Hub',
   '/about': 'About Us - Null:Expected QA Professionals',
-  '/blog': 'Blog - Quality Insights | Null:Expected',
+  '/blog': 'QA Blog - Quality Assurance Insights & Strategies | Null:Expected',
   '/manifesto': 'QA Manifesto - Null:Expected Quality Principles',
   '/consulting': 'QA Consulting Services - Null:Expected Quality Transformation',
   '/landing': 'Null:Expected - A QA Thought Hub by Andreea Vitan',
