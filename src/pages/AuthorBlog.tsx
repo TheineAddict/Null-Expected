@@ -58,7 +58,7 @@ const AuthorBlog = () => {
         <p className="text-gray-600 mb-8">
           The author you're looking for doesn't exist.
         </p>
-        <Link to="/blog" className="text-indigo-900 hover:text-purple-800 font-semibold">
+        <Link to="/blog" className="text-indigo-900 hover:text-gray-900 font-semibold">
           ← Back to Blog
         </Link>
       </div>
@@ -76,7 +76,7 @@ const AuthorBlog = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link
           to="/blog"
-          className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+          className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
           onClick={() => window.scrollTo(0, 0)}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -153,7 +153,7 @@ const AuthorBlog = () => {
                       <Link
                         key={tag}
                         to={`/blog?tag=${encodeURIComponent(tag)}`}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded hover:bg-gray-200 transition-colors"
+                        className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
                         onClick={() => window.scrollTo(0, 0)}
                       >
                         #{tag}
@@ -177,7 +177,7 @@ const AuthorBlog = () => {
                     
                     <Link
                       to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                      className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                     >
                       Read More
                       <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -55,9 +55,9 @@ const About = () => {
               
               <div className="flex space-x-4">
                 {author.linkedinUrl && (
-                  <a 
-                    href={author.linkedinUrl} 
-                    className="flex items-center space-x-2 text-indigo-900 hover:text-purple-800 transition-colors"
+                  <a
+                    href={author.linkedinUrl}
+                    className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
                   >
                     <Linkedin className="h-5 w-5" />
                     <span>LinkedIn</span>
@@ -65,7 +65,7 @@ const About = () => {
                 )}
                 <Link
                   to={`/blog/author/${author.slug}`}
-                  className="flex items-center space-x-2 text-indigo-900 hover:text-purple-800 transition-colors"
+                  className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   <span>View Posts</span>
@@ -187,7 +187,7 @@ const About = () => {
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="text-center">
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Our individual bios live here, but the <Link to="/manifesto" className="text-indigo-900 hover:text-purple-800 font-semibold transition-colors" onClick={() => window.scrollTo(0, 0)}>Manifesto</Link> speaks for what drives us.
+                Our individual bios live here, but the <Link to="/manifesto" className="text-indigo-900 hover:text-gray-900 font-semibold transition-colors" onClick={() => window.scrollTo(0, 0)}>Manifesto</Link> speaks for what drives us.
               </p>
               
               <div className="space-y-4 text-gray-600 leading-relaxed">

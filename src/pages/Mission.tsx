@@ -178,9 +178,9 @@ const Mission = () => {
                 We write from experience - and we edit each other ruthlessly.
               </p>
               <p className="mt-8">
-                <Link 
-                  to="/manifesto" 
-                  className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                <Link
+                  to="/manifesto"
+                  className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   Read our full manifesto

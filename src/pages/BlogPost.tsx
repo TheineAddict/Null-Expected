@@ -183,7 +183,7 @@ const BlogPost = () => {
         <p className="text-gray-600 mb-8">
           The blog post you're looking for doesn't exist.
         </p>
-        <Link to="/blog" className="text-indigo-900 hover:text-purple-800 font-semibold">
+        <Link to="/blog" className="text-indigo-900 hover:text-gray-900 font-semibold">
           ← Back to Blog
         </Link>
       </div>
@@ -196,7 +196,7 @@ const BlogPost = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link
           to="/blog"
-          className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+          className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
           onClick={() => window.scrollTo(0, 0)}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -226,7 +226,7 @@ const BlogPost = () => {
             <Link
               key={tag}
               to={`/blog?tag=${encodeURIComponent(tag)}`}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded hover:bg-gray-200 transition-colors"
+              className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs font-medium rounded hover:text-gray-900 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
               #{tag}
@@ -241,9 +241,9 @@ const BlogPost = () => {
               const author = getAuthorByName(post.author);
               if (author) {
                 return (
-                  <Link 
+                  <Link
                     to={`/blog/author/${author.slug}`}
-                    className="text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                    className="text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     {post.author}
@@ -351,7 +351,7 @@ const BlogPost = () => {
           className="prose prose-lg prose-indigo max-w-none
                      prose-headings:font-bold prose-headings:text-gray-900
                      prose-p:text-gray-700 prose-p:leading-relaxed
-                     prose-a:text-indigo-900 prose-a:no-underline hover:prose-a:text-purple-800
+                     prose-a:text-indigo-900 prose-a:no-underline hover:prose-a:text-gray-900
                      prose-blockquote:border-indigo-200 prose-blockquote:bg-indigo-50 prose-blockquote:p-6 prose-blockquote:rounded-lg prose-blockquote:not-italic
                      prose-ul:text-gray-700 prose-ol:text-gray-700
                      prose-li:my-2

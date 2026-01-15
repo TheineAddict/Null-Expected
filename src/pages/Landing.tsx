@@ -108,7 +108,7 @@ const Landing = () => {
             Testing and release management for grown-up software. Practical, evidence-first, slightly rebellious.
             </p>
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
-              By <Link to="/about" className="text-indigo-900 hover:text-purple-800 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
+              By <Link to="/about" className="text-indigo-900 hover:text-gray-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
             </p>
             <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
               <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
@@ -174,7 +174,7 @@ const Landing = () => {
             <div className="text-center">
               <Link
                 to="/blog"
-                className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors"
+                className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                 onClick={() => window.scrollTo(0, 0)}
               >
                 View All Categories
@@ -249,7 +249,7 @@ const Landing = () => {
                       <Link
                         key={tag}
                         to={`/blog?tag=${encodeURIComponent(tag)}`}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded hover:bg-gray-200 transition-colors"
+                        className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
                         onClick={() => window.scrollTo(0, 0)}
                       >
                         #{tag}
@@ -264,7 +264,7 @@ const Landing = () => {
                   <div className="mt-auto">
                     <Link
                       to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-indigo-900 hover:text-purple-800 font-semibold transition-colors text-sm sm:text-base"
+                      className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors text-sm sm:text-base"
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       Read Article
