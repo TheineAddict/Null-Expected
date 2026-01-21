@@ -63,13 +63,19 @@ const About = () => {
                     <span>LinkedIn</span>
                   </a>
                 )}
-                <Link
-                  to={`/blog/author/${author.slug}`}
-                  className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  <span>View Posts</span>
-                </Link>
+                {author.id === 'author2' ? (
+                  <span className="flex items-center space-x-2 text-gray-400">
+                    <span>Coming Soon</span>
+                  </span>
+                ) : (
+                  <Link
+                    to={`/blog/author/${author.slug}`}
+                    className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    <span>View Posts</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
