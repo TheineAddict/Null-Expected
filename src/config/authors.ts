@@ -36,7 +36,7 @@ export const AUTHORS: Record<string, Author> = {
     roleTitle: 'Guest Contributors',
     bio: 'Guest authors bring diverse perspectives from across the QA and software delivery landscape. We welcome practitioners, leads, and engineers who have stories worth sharing about testing, quality, and shipping software that matters.',
     tag: '[ guest_contributor = true ]',
-    imageUrl: '/martin-adler-null-expected.jpg',
+    imageUrl: '/null_expected_quest_authors.jpg',
     linkedinUrl: undefined,
     email: 'guest@nullexpected.com'
   }
