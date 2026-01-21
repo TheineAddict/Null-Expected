@@ -29,16 +29,16 @@ export const AUTHORS: Record<string, Author> = {
   },
   author2: {
     id: 'author2',
-    name: 'Martin Adler',
-    slug: 'martinadler',
-    initials: 'MA',
-    title: 'Test Architect & QA Engineer',
-    roleTitle: 'Co-Founder and Contributing Editor',
-    bio: 'Martin Adler writes about software quality, delivery risk, and the organisational rituals that quietly replace evidence. His work focuses on practical decision-making in modern product teams-where constraints are real, certainty is rare, and shipping still happens.',
-    tag: '[ process_optimizer = true ]',
+    name: 'Guest Authors',
+    slug: 'guest',
+    initials: 'GA',
+    title: 'QA Practitioners & Industry Contributors',
+    roleTitle: 'Guest Contributors',
+    bio: 'Guest authors bring diverse perspectives from across the QA and software delivery landscape. We welcome practitioners, leads, and engineers who have stories worth sharing about testing, quality, and shipping software that matters.',
+    tag: '[ guest_contributor = true ]',
     imageUrl: '/martin-adler-null-expected.jpg',
-    linkedinUrl: 'https://www.linkedin.com/in/adevitan',
-    email: 'martin@nullexpected.com'
+    linkedinUrl: undefined,
+    email: 'guest@nullexpected.com'
   }
 };
 
