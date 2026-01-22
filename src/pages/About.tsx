@@ -173,7 +173,7 @@ const About = () => {
                 Contrarian, evidence-first QA essays for people who ship software. Essential reading for QA professionals, SDETs, developers, engineering managers, PMs, and release managers.
               </p>
               <a
-                href="https://www.amazon.com/dp/B0GDG9J6J2"
+                href="https://www.amazon.com/dp/B0GHZY3CTQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
