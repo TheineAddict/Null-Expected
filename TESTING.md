@@ -83,6 +83,8 @@ npm run test:e2e:report
 
 ## Test Scripts
 
+### E2E Tests
+
 | Script | Description |
 |--------|-------------|
 | `npm run test:e2e` | Run all E2E tests in headless mode |
@@ -91,14 +93,65 @@ npm run test:e2e:report
 | `npm run test:e2e:debug` | Debug tests with Playwright Inspector |
 | `npm run test:e2e:report` | View HTML report of last test run |
 
+### Visual Regression Tests
+
+| Script | Description |
+|--------|-------------|
+| `npm run test:visual` | Run visual regression tests |
+| `npm run test:visual:update` | Update baseline screenshots |
+| `npm run test:visual:ui` | Open Playwright UI for visual tests |
+
 ## Test File Structure
 
 ```
 tests/
-└── e2e/
-    ├── routes.spec.ts    # All route and page tests
-    └── README.md         # Detailed test documentation
+├── e2e/
+│   ├── routes.spec.ts    # All route and page tests
+│   └── README.md         # Detailed test documentation
+└── visual/
+    ├── visual.spec.ts    # Visual regression tests
+    ├── README.md         # Visual testing documentation
+    └── __screenshots__/  # Baseline screenshots (created after first run)
 ```
+
+## Visual Regression Testing
+
+Visual regression tests capture screenshots and compare them against baseline images to detect unintended visual changes.
+
+### What Gets Tested
+
+- **Landing page** (`/`) - Full page screenshot
+- **Blog listing** (`/blog`) - Full page screenshot
+
+Each page is tested in two viewports:
+- Mobile (iPhone 12: 390x844)
+- Desktop (Chrome desktop: 1280x720)
+
+### Running Visual Tests
+
+```bash
+# First time: Generate baseline screenshots
+npm run test:visual:update
+
+# Run visual tests against baselines
+npm run test:visual
+
+# Interactive mode
+npm run test:visual:ui
+```
+
+### Handling Visual Changes
+
+**When tests fail:**
+1. Review the diff in the Playwright report
+2. If changes are intentional, update baselines: `npm run test:visual:update`
+3. Commit the updated screenshots to git
+
+**Note:** Visual tests are NOT part of CI/CD pipeline yet. They can be run manually or integrated later.
+
+### Baseline Screenshots
+
+Baseline screenshots are stored in `tests/visual/__screenshots__/` and should be committed to git. This ensures all team members test against the same visual baseline.
 
 ## Configuration
 
