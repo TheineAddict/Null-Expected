@@ -172,7 +172,7 @@ test.describe('404 Not Found Page', () => {
 
     await page.getByRole('link', { name: /go home/i }).click();
 
-    await expect(page).toHaveURL('http://127.0.0.1:4173/');
+    await expect(page).toHaveURL('http://127.0.0.1:5173/');
     await expect(page.locator('h1')).toContainText('Null:Expected');
   });
 
