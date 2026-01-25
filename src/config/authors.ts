@@ -23,7 +23,7 @@ export const AUTHORS: Record<string, Author> = {
     roleTitle: 'Founder and Editor-in-Chief',
     bio: 'Andreea Vitan writes from the seam where delivery meets assurance. With a background spanning hands-on software testing, QA management, and release management, she focuses on risk-based testing, release readiness signals, and the practical governance that keeps teams shipping without ritual and panic.',
     tag: '[ quality_mindset = true ]',
-    imageUrl: '/andreea-vitan-qa-delivery-manager.jpg',
+    imageUrl: '/null-expected-adevitan.jpg',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan',
     email: 'ade@nullexpected.com'
   },
