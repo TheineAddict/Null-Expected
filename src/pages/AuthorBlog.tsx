@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, ArrowRight, User } from 'lucide-react';
+import { ArrowLeft, Clock, ArrowRight, User, ChevronDown, ChevronUp } from 'lucide-react';
 import { loadBlogPosts, getPostsByAuthorSlug } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
@@ -11,6 +11,7 @@ const AuthorBlog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [author, setAuthor] = useState<any>(null);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
     const loadAuthorPosts = async () => {
@@ -18,17 +19,18 @@ const AuthorBlog = () => {
         setLoading(true);
         try {
           console.log('Loading posts for author:', authorSlug);
-          
+
           // Get author info
           const authorInfo = getAuthorBySlug(authorSlug);
           setAuthor(authorInfo);
-          
+
           if (authorInfo) {
             // Load all posts and filter by author
             const allPosts = await loadBlogPosts();
             const authorPosts = getPostsByAuthorSlug(allPosts, authorSlug);
             console.log(`Found ${authorPosts.length} posts by ${authorInfo.name}`);
             setPosts(authorPosts);
+            setVisibleCount(6);
           }
         } catch (error) {
           console.error('Failed to load author posts:', error);
@@ -40,6 +42,17 @@ const AuthorBlog = () => {
 
     loadAuthorPosts();
   }, [authorSlug]);
+
+  const visiblePosts = posts.slice(0, visibleCount);
+  const hasMore = visibleCount < posts.length;
+
+  const handleShowMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
+
+  const handleJumpToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (loading) {
     return (
@@ -123,7 +136,7 @@ const AuthorBlog = () => {
 
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {visiblePosts.map((post) => (
               <article
                 key={post.id}
                 className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
@@ -168,13 +181,13 @@ const AuthorBlog = () => {
 
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">
-                      {new Date(post.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
                       })}
                     </span>
-                    
+
                     <Link
                       to={`/blog/${post.slug}`}
                       className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
@@ -194,6 +207,32 @@ const AuthorBlog = () => {
             </p>
             <div className="text-sm text-gray-400 font-mono mt-2">
               [ author_posts = 0 ]
+            </div>
+          </div>
+        )}
+
+        {/* Show More / Jump to Top */}
+        {!loading && posts.length > 6 && (
+          <div className="text-center mt-12">
+            {hasMore ? (
+              <button
+                onClick={handleShowMore}
+                className="inline-flex items-center px-8 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Show More
+                <ChevronDown className="ml-2 h-5 w-5" />
+              </button>
+            ) : (
+              <button
+                onClick={handleJumpToTop}
+                className="inline-flex items-center px-8 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Jump to Top
+                <ChevronUp className="ml-2 h-5 w-5" />
+              </button>
+            )}
+            <div className="text-sm text-gray-400 font-mono mt-4">
+              [ showing: {visiblePosts.length} / {posts.length} posts ]
             </div>
           </div>
         )}
