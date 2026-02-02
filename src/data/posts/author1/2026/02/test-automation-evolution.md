@@ -129,19 +129,20 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 ### The skills shift: from “framework engineering” to “adaptability engineering”
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables': { 'fontSize':'16px', 'lineColor':'#9aa0a6', 'primaryTextColor':'#111111', 'primaryBorderColor':'#9aa0a6'}}}%%
 flowchart TB
-  A[Control / perimeter] --> B[WebDriver + custom frameworks]
-  B --> C[Modern runners]
-  C --> D[Component + visual layers]
-  D --> E[Low-code + AI-assisted]
-  E --> F[Cloud scale platforms]
-  F --> G[Speed / leverage]
+  A["Control / perimeter"] --> B["WebDriver + custom frameworks"]
+  B --> C["Modern runners"]
+  C --> D["Component + visual layers"]
+  D --> E["Low-code + AI-assisted"]
+  E --> F["Cloud scale platforms"]
+  F --> G["Speed / leverage"]
 
-  classDef end fill:#f6f6f6,stroke:#9aa0a6,stroke-width:2px,rx:12,ry:12;
-  classDef mid fill:#ffffff,stroke:#9aa0a6,stroke-width:1px,rx:12,ry:12;
+  classDef endpoint fill:#f6f6f6,stroke:#9aa0a6,stroke-width:2px,color:#111;
+  classDef stage fill:#ffffff,stroke:#9aa0a6,stroke-width:1px,color:#111;
 
-  class A,G end;
-  class B,C,D,E,F mid;
+  class A,G endpoint;
+  class B,C,D,E,F stage;
 ```
 
 It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate. What changed is the *bottleneck*.
