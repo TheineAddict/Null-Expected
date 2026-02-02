@@ -130,18 +130,20 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 
 ```mermaid
 flowchart TB
-  A["Control / perimeter"] --> B["WebDriver + custom frameworks"]
+  A["Control / perimeter"] --> B["WebDriver + custom frameworks        "]
   B --> C["Modern runners"]
   C --> D["Component + visual layers"]
   D --> E["Low-code + AI-assisted"]
   E --> F["Cloud scale platforms"]
   F --> G["Speed / leverage"]
 
-  classDef endpoint fill:#f6f6f6,stroke:#9aa0a6,stroke-width:2px,color:#111;
-  classDef stage fill:#ffffff,stroke:#9aa0a6,stroke-width:1px,color:#111;
+  classDef endpoint fill:#EEF2FF,stroke:#4B00FF,stroke-width:2px,color:#111;
+  classDef stage fill:#FFFFFF,stroke:#C7CDD6,stroke-width:1px,color:#111;
 
   class A,G endpoint;
   class B,C,D,E,F stage;
+
+  linkStyle default stroke:#C7CDD6,stroke-width:2px;
 ```
 
 It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate. What changed is the *bottleneck*.
