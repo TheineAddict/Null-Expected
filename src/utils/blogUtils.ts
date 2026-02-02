@@ -85,6 +85,17 @@ export function markdownToHtml(markdown: string): string {
     return originalImageRenderer(args);
   };
 
+  const originalCodeRenderer = renderer.code.bind(renderer);
+  renderer.code = (args: any) => {
+    const { text, lang } = args;
+
+    if (lang === 'mermaid') {
+      return `<div class="mermaid">${text}</div>`;
+    }
+
+    return originalCodeRenderer(args);
+  };
+
   return marked.parse(markdown, { renderer });
 }
 

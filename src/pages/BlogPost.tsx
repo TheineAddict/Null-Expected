@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, Calendar, User, Share2, Linkedin, Facebook, Twitter, 
 import { loadBlogPosts, getPostBySlug } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
 import { getAuthorByName } from '../config/authors';
+import mermaid from 'mermaid';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -87,6 +88,28 @@ const BlogPost = () => {
       }
     };
   }, [slug]);
+
+  useEffect(() => {
+    if (post && !loading) {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        securityLevel: 'loose'
+      });
+
+      const renderMermaid = async () => {
+        try {
+          await mermaid.run({
+            querySelector: '.mermaid'
+          });
+        } catch (error) {
+          console.error('Error rendering mermaid diagrams:', error);
+        }
+      };
+
+      renderMermaid();
+    }
+  }, [post, loading]);
 
   const shareUrl = post ? `https://www.nullexpected.com/blog/${post.slug}` : '';
   const shareTitle = post?.title || '';
@@ -347,7 +370,7 @@ const BlogPost = () => {
 
       {/* Post Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
+        <div
           className="prose prose-lg prose-indigo max-w-none
                      prose-headings:font-bold prose-headings:text-gray-900
                      prose-p:text-gray-700 prose-p:leading-relaxed
@@ -355,7 +378,8 @@ const BlogPost = () => {
                      prose-blockquote:border-indigo-200 prose-blockquote:bg-indigo-50 prose-blockquote:p-6 prose-blockquote:rounded-lg prose-blockquote:not-italic
                      prose-ul:text-gray-700 prose-ol:text-gray-700
                      prose-li:my-2
-                     prose-strong:text-gray-900"
+                     prose-strong:text-gray-900
+                     [&_.mermaid]:my-8 [&_.mermaid]:flex [&_.mermaid]:justify-center [&_.mermaid]:bg-gray-50 [&_.mermaid]:p-6 [&_.mermaid]:rounded-lg [&_.mermaid]:overflow-auto"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>
