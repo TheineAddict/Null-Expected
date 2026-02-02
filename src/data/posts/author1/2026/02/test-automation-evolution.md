@@ -38,9 +38,7 @@ Even the protocols are evolving. There’s now a W3C WebDriver BiDi specificatio
 
 Selenium’s docs capture what made it so foundational:
 
-> “WebDriver drives a browser natively, as a user would, either locally or on a remote machine using the Selenium server.”
->
-> * [Selenium WebDriver documentation](https://www.selenium.dev/documentation/webdriver/)
+> “WebDriver drives a browser natively, as a user would, either locally or on a remote machine using the Selenium server.” [Selenium WebDriver documentation](https://www.selenium.dev/documentation/webdriver/)
 
 That sentence contains the old world in miniature: native browser control, local vs remote grids, and the implied engineering burden of making it reliable at scale.
 
@@ -64,33 +62,23 @@ Modern frameworks didn’t just add features. They baked in opinions that change
 
 Playwright treats test authoring and debugging as first-class workflows. It ships with test generation:
 
-> “Playwright comes with the ability to generate tests…”
->
-> * [Playwright codegen](https://playwright.dev/docs/codegen)
+> “Playwright comes with the ability to generate tests…” [Playwright codegen](https://playwright.dev/docs/codegen)
 
 And it treats trace-based debugging as a normal part of failure analysis:
 
-> “The trace viewer is a tool to explore recorded Playwright traces…”
->
-> * [Playwright Trace Viewer](https://playwright.dev/docs/trace-viewer)
+> “The trace viewer is a tool to explore recorded Playwright traces…” [Playwright Trace Viewer](https://playwright.dev/docs/trace-viewer)
 
 Cypress leans hard into interactive debugging and a tight feedback loop:
 
-> “The Cypress App takes snapshots of your application and enables you to time travel…”
->
-> * [Why Cypress](https://docs.cypress.io/app/get-started/why-cypress)
+> “The Cypress App takes snapshots of your application and enables you to time travel…” [Why Cypress](https://docs.cypress.io/app/get-started/why-cypress)
 
 DevTools-first tools like Puppeteer position themselves as APIs over browser debugging protocols:
 
-> “Puppeteer is a JavaScript library… to control Chrome or Firefox over the DevTools Protocol or WebDriver BiDi.”
->
-> * [Puppeteer docs](https://pptr.dev/)
+> “Puppeteer is a JavaScript library… to control Chrome or Firefox over the DevTools Protocol or WebDriver BiDi.” [Puppeteer docs](https://pptr.dev/)
 
 Some tools explicitly market themselves as removing setup overhead:
 
-> “No WebDriver required…”
->
-> * [TestCafe](https://testcafe.io/)
+> “No WebDriver required…” [TestCafe](https://testcafe.io/)
 
 The net effect isn’t just “less code”. It’s less framework invention. Which is why the tester identity shifted away from “framework engineer” toward “toolchain pragmatist”.
 
@@ -142,27 +130,19 @@ This is where component-first and visual workflows become more than hype.
 
 Storybook positions itself very clearly:
 
-> “Storybook is a frontend workshop for building UI components and pages in isolation.”
->
-> * [Storybook](https://storybook.js.org/)
+> “Storybook is a frontend workshop for building UI components and pages in isolation.” [Storybook](https://storybook.js.org/)
 
 Chromatic frames UI testing as something that happens continuously across real browsers:
 
-> “Chromatic renders every possible state of your UI in a fleet of cloud browsers…”
->
-> * [Chromatic UI tests](https://www.chromatic.com/features/test)
+> “Chromatic renders every possible state of your UI in a fleet of cloud browsers…” [Chromatic UI tests](https://www.chromatic.com/features/test)
 
 Applitools pushes cross-browser visual coverage into “seconds, not days” territory:
 
-> “Ultrafast Grid allows you perform visual testing across multiple browsers and devices in seconds…”
->
-> * [Applitools Ultrafast Grid](https://applitools.com/docs/eyes/concepts/test-execution/ultrafast-grid)
+> “Ultrafast Grid allows you perform visual testing across multiple browsers and devices in seconds…” [Applitools Ultrafast Grid](https://applitools.com/docs/eyes/concepts/test-execution/ultrafast-grid)
 
 Low-code platforms explicitly pitch that automation shouldn’t be gated behind deep programming skills:
 
-> “Model-based test automation is a codeless approach that literally anyone can learn and use.”
->
-> * [Tricentis Tosca model-based test automation](https://www.tricentis.com/products/automate-continuous-testing-tosca/model-based-test-automation)
+> “Model-based test automation is a codeless approach that literally anyone can learn and use.” [Tricentis Tosca model-based test automation](https://www.tricentis.com/products/automate-continuous-testing-tosca/model-based-test-automation)
 
 Sam’s trade-off is different: tool sprawl and vendor gravity. Six services later, the test stack becomes a procurement problem, a security review problem, and a “who owns this contract” problem. Also, when a tool claims to delete complexity, it usually relocates it. Sometimes that’s fine. Sometimes it’s a trap.
 
@@ -178,27 +158,19 @@ That’s why so many tools now sell themselves on maintenance reduction rather t
 
 Testim, for example, explicitly markets stability through “smart locators” and self-healing:
 
-> “Smart locators… automatically self-heal to keep tests working even as applications change.”
->
-> * [Testim](https://www.testim.io/)
+> “Smart locators… automatically self-heal to keep tests working even as applications change.” [Testim](https://www.testim.io/)
 
 Functionize makes the same promise in plain language:
 
-> “Renaming or restyling a button, even moving it on the page won’t break your tests.”
->
-> * [Functionize test maintenance](https://www.functionize.com/test-maintenance)
+> “Renaming or restyling a button, even moving it on the page won’t break your tests.” [Functionize test maintenance](https://www.functionize.com/test-maintenance)
 
 mabl leans into “agentic testing” language, which is a sign of where vendors want this market to go:
 
-> “Our agentic tester… complements your team’s human expertise with a digital teammate…”
->
-> * [mabl Agentic Testing](https://www.mabl.com/agentic-testing-for-software-development-mabl)
+> “Our agentic tester… complements your team’s human expertise with a digital teammate…” [mabl Agentic Testing](https://www.mabl.com/agentic-testing-for-software-development-mabl)
 
 Katalon’s docs still treat record and playback as a first-class entry point:
 
-> “This tutorial demonstrates how to create a Web UI test case… using Record and Playback.”
->
-> * [Katalon Record and Playback tutorial](https://docs.katalon.com/katalon-studio/get-started/sample-projects/webui/webui-create-and-run-web-ui-test-case-using-record-and-playback-in-katalon-studio)
+> “This tutorial demonstrates how to create a Web UI test case… using Record and Playback.” [Katalon Record and Playback tutorial](https://docs.katalon.com/katalon-studio/get-started/sample-projects/webui/webui-create-and-run-web-ui-test-case-using-record-and-playback-in-katalon-studio)
 
 This is the modern story in one sentence: automation moved from “write a lot of plumbing to drive the browser” to “get stable signals with minimal bespoke machinery”.
 
@@ -254,9 +226,7 @@ And there are scenarios where the modern toolchain approach is simply higher lev
 
 Cloud browser/device access becomes a strategic accelerator. BrowserStack markets:
 
-> “Instant access to 3000+ browsers and real iOS and Android devices…”
->
-> * [BrowserStack](https://www.browserstack.com/)
+> “Instant access to 3000+ browsers and real iOS and Android devices…” [BrowserStack](https://www.browserstack.com/)
 
 ![Automation spectrum: WebDriver frameworks to modern runners to component and visual layers to low-code and AI tools](/assets/posts/test-automation-evolution/automation-spectrum.png)
 
@@ -293,7 +263,6 @@ The strong profile in 2026 is bilingual:
 • Enough product sense to decide what should be automated at all (and what should not)
 
 The evolution of test automation isn’t “code to no-code”. It’s “framework-centric identity to signal-centric identity”. Selenium made many of us framework engineers. Modern toolchains are turning us into quality systems designers.
-
 
 ---
 
