@@ -142,7 +142,6 @@ flowchart TB
 
   class A,G end;
   class B,C,D,E,F mid;
-  F --- E
 ```
 
 It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate. What changed is the *bottleneck*.
