@@ -129,16 +129,19 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 ### The skills shift: from “framework engineering” to “adaptability engineering”
 
 ```mermaid
-flowchart LR
-  A[Control / perimeter] --> B[WebDriver + custom frameworks\nSelenium, WebdriverIO]
-  B --> C[Modern runners\nPlaywright, Cypress]
-  C --> D[Component + visual layers\nStorybook, Chromatic, Applitools, Percy]
-  D --> E[Low-code + AI-assisted automation\nTosca, Katalon, mabl, Testim, Functionize]
-  E --> G[Speed / leverage]
+flowchart TB
+  A[Control / perimeter] --> B[WebDriver + custom frameworks]
+  B --> C[Modern runners]
+  C --> D[Component + visual layers]
+  D --> E[Low-code + AI-assisted]
+  E --> F[Cloud scale platforms]
+  F --> G[Speed / leverage]
 
-  F[Cloud scale platforms\nBrowserStack, Sauce Labs]
-  F --- C
-  F --- D
+  classDef end fill:#f6f6f6,stroke:#9aa0a6,stroke-width:2px,rx:12,ry:12;
+  classDef mid fill:#ffffff,stroke:#9aa0a6,stroke-width:1px,rx:12,ry:12;
+
+  class A,G end;
+  class B,C,D,E,F mid;
   F --- E
 ```
 
@@ -150,7 +153,7 @@ That’s why so many tools now sell themselves on maintenance reduction rather t
 
 **Testim**, for example, explicitly markets stability through “smart locators” and self-healing: *Smart locators… automatically self-heal to keep tests working even as applications change. [Testim](https://www.testim.io/)*
 
-F**unctionize** makes the same promise in plain language: *Renaming or restyling a button, even moving it on the page won’t break your tests. [Functionize test maintenance](https://www.functionize.com/test-maintenance)*
+**Functionize** makes the same promise in plain language: *Renaming or restyling a button, even moving it on the page won’t break your tests. [Functionize test maintenance](https://www.functionize.com/test-maintenance)*
 
 **mabl** leans into “agentic testing” language, which is a sign of where vendors want this market to go: *Our agentic tester… complements your team’s human expertise with a digital teammate… [mabl Agentic Testing](https://www.mabl.com/agentic-testing-for-software-development-mabl)*
 
