@@ -128,6 +128,20 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 
 ### The skills shift: from “framework engineering” to “adaptability engineering”
 
+```mermaid
+flowchart LR
+  A[Control / perimeter] --> B[WebDriver + custom frameworks\nSelenium, WebdriverIO]
+  B --> C[Modern runners\nPlaywright, Cypress]
+  C --> D[Component + visual layers\nStorybook, Chromatic, Applitools, Percy]
+  D --> E[Low-code + AI-assisted automation\nTosca, Katalon, mabl, Testim, Functionize]
+  E --> G[Speed / leverage]
+
+  F[Cloud scale platforms\nBrowserStack, Sauce Labs]
+  F --- C
+  F --- D
+  F --- E
+```
+
 It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate. What changed is the *bottleneck*.
 
 In the Selenium era, the bottleneck was often “can we build and maintain the framework and infrastructure”. In the toolchain era, the bottleneck is more often “can we design the right signals, at the right layer, with the right cost”.
