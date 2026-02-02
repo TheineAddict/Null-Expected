@@ -128,21 +128,19 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 
 ### The skills shift: from “framework engineering” to “adaptability engineering”
 
-It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate.
-
-What changed is the *bottleneck*.
+It’s tempting to frame this as “code-heavy to no-code”. That’s not quite accurate. What changed is the *bottleneck*.
 
 In the Selenium era, the bottleneck was often “can we build and maintain the framework and infrastructure”. In the toolchain era, the bottleneck is more often “can we design the right signals, at the right layer, with the right cost”.
 
 That’s why so many tools now sell themselves on maintenance reduction rather than authoring.
 
-Testim, for example, explicitly markets stability through “smart locators” and self-healing: *Smart locators… automatically self-heal to keep tests working even as applications change. [Testim](https://www.testim.io/)*
+**Testim**, for example, explicitly markets stability through “smart locators” and self-healing: *Smart locators… automatically self-heal to keep tests working even as applications change. [Testim](https://www.testim.io/)*
 
-Functionize makes the same promise in plain language: *Renaming or restyling a button, even moving it on the page won’t break your tests. [Functionize test maintenance](https://www.functionize.com/test-maintenance)*
+F**unctionize** makes the same promise in plain language: *Renaming or restyling a button, even moving it on the page won’t break your tests. [Functionize test maintenance](https://www.functionize.com/test-maintenance)*
 
-mabl leans into “agentic testing” language, which is a sign of where vendors want this market to go: *Our agentic tester… complements your team’s human expertise with a digital teammate… [mabl Agentic Testing](https://www.mabl.com/agentic-testing-for-software-development-mabl)*
+**mabl** leans into “agentic testing” language, which is a sign of where vendors want this market to go: *Our agentic tester… complements your team’s human expertise with a digital teammate… [mabl Agentic Testing](https://www.mabl.com/agentic-testing-for-software-development-mabl)*
 
-Katalon’s docs still treat record and playback as a first-class entry point: *This tutorial demonstrates how to create a Web UI test case… using Record and Playback. [Katalon Record and Playback tutorial](https://docs.katalon.com/katalon-studio/get-started/sample-projects/webui/webui-create-and-run-web-ui-test-case-using-record-and-playback-in-katalon-studio)*
+**Katalon**’s docs still treat record and playback as a first-class entry point: *This tutorial demonstrates how to create a Web UI test case… using Record and Playback. [Katalon Record and Playback tutorial](https://docs.katalon.com/katalon-studio/get-started/sample-projects/webui/webui-create-and-run-web-ui-test-case-using-record-and-playback-in-katalon-studio)*
 
 This is the modern story in one sentence: automation moved from “write a lot of plumbing to drive the browser” to “get stable signals with minimal bespoke machinery”.
 
