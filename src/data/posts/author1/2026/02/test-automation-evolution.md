@@ -129,7 +129,6 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 ### The skills shift: from “framework engineering” to “adaptability engineering”
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables': { 'fontSize':'16px', 'lineColor':'#9aa0a6', 'primaryTextColor':'#111111', 'primaryBorderColor':'#9aa0a6'}}}%%
 flowchart TB
   A["Control / perimeter"] --> B["WebDriver + custom frameworks"]
   B --> C["Modern runners"]
