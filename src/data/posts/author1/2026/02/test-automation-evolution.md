@@ -14,18 +14,23 @@ Today, web automation is no longer a single choice. It’s a spectrum of approac
 
 Not because “Selenium is dead” (it isn’t). But because the industry stopped treating browser automation as a monolith and started treating it as a toolchain problem.
 
-![Timeline illustrating the shift from Selenium-heavy frameworks to modern toolchains (E2E + component + visual + cloud + low-code)](/assets/posts/test-automation-evolution/automation-timeline.png)
 
 ### The toolchain era (what changed, not just what’s trendy)
 
 The last five years gave us multiple parallel “lanes” that can all be valid in the same organisation:
 
 • Modern E2E frameworks that bias for fast feedback and strong debugging ergonomics: Playwright ([https://playwright.dev/](https://playwright.dev/)) and Cypress ([https://www.cypress.io/](https://www.cypress.io/))
+
 • DevTools-first automation that’s basically “the browser platform talking back”: Puppeteer ([https://pptr.dev/](https://pptr.dev/))
+
 • A modernised WebDriver ecosystem (still “classic”, but with better DX): WebdriverIO ([https://webdriver.io/](https://webdriver.io/)) and Nightwatch ([https://nightwatchjs.org/](https://nightwatchjs.org/))
+
 • “No WebDriver” frameworks that aim to remove whole classes of flakiness and setup pain: TestCafe ([https://testcafe.io/](https://testcafe.io/))
+
 • Component-first testing workflows that move UI validation earlier: Storybook ([https://storybook.js.org/](https://storybook.js.org/)) and Chromatic ([https://www.chromatic.com/](https://www.chromatic.com/))
+
 • Visual testing moving from “nice idea” to “automation primitive”: Applitools Ultrafast Grid ([https://applitools.com/](https://applitools.com/))
+
 • Low-code/no-code and AI-assisted platforms that explicitly target maintenance pain: Tosca ([https://www.tricentis.com/products/automate-continuous-testing-tosca/model-based-test-automation](https://www.tricentis.com/products/automate-continuous-testing-tosca/model-based-test-automation)), Katalon ([https://docs.katalon.com/](https://docs.katalon.com/)), mabl ([https://www.mabl.com/low-code-test-automation](https://www.mabl.com/low-code-test-automation)), Testim ([https://www.testim.io/](https://www.testim.io/)), Functionize ([https://www.functionize.com/test-maintenance](https://www.functionize.com/test-maintenance))
 
 Under the hood, even the protocols are evolving. There’s now a W3C “WebDriver BiDi” specification ([https://www.w3.org/TR/webdriver-bidi/](https://www.w3.org/TR/webdriver-bidi/)), and Selenium documents BiDi support inside WebDriver ([https://www.selenium.dev/documentation/webdriver/bidi/](https://www.selenium.dev/documentation/webdriver/bidi/)). That matters because it’s part of how “classic” automation is modernising rather than fossilising. ([Tricentis][1])
@@ -41,9 +46,13 @@ That sentence contains the old world in miniature: native browser control, local
 In the Selenium era, the “automation tester” often looked like a software engineer building a framework:
 
 • Heavy Page Object layers, wrappers, helpers, and custom waits
+
 • Grid orchestration and browser/driver version management
+
 • Parallelisation that’s possible, but usually not “one flag and done”
+
 • Failure triage driven by logs and screenshots, not rich execution traces
+
 • A mindset that the automation codebase must be engineered like a long-lived system, because it is
 
 None of that is inherently bad. It’s just optimising for a specific kind of reality: complex estates, long-lived products, compliance constraints, and environments where you cannot “just use a SaaS runner”.
@@ -87,9 +96,13 @@ Alex’s default mode is: control the environment, control the data, control the
 Alex’s strengths aren’t just “coding”. They’re systems skills:
 
 • Building maintainable abstractions (Page Objects and beyond)
+
 • Designing stable selectors and interaction layers that survive UI churn
+
 • Engineering CI execution to be predictable under load
+
 • Making failures diagnosable and auditable
+
 • Handling enterprise constraints (proxy/SAML/SSO, locked down networks, bespoke certs, air-gapped setups)
 
 This is the mindset that fits regulated environments and sensitive product work where cloud services are either forbidden or politically expensive. If you can’t run tests outside the perimeter, you can’t “rent scale”. You build it.
@@ -105,9 +118,13 @@ Sam’s default mode is: reduce time-to-signal, reduce maintenance, increase vis
 Sam’s toolkit is usually multi-layered:
 
 • E2E checks in Playwright or Cypress
+
 • Component isolation for UI behaviour in Storybook
+
 • Visual diffs for the “it still works but looks wrong” category
+
 • Cloud execution for cross-browser/device scale when it’s allowed
+
 • Low-code and AI-assisted tools where they remove toil rather than hide risk
 
 This is where the “less code” story gets real, because the whole point is to avoid writing plumbing.
@@ -185,9 +202,13 @@ The point isn’t that Playwright never needs thought. It’s that modern framew
 There are scenarios where the old-school approach is still the better engineering decision.
 
 • Regulated industries with strict data perimeter requirements: finance, healthcare, defence
+
 • Products with unreleased features that cannot leak into third-party logs or screenshots
+
 • Environments with restricted internet access, corporate proxies, or air-gapped test labs
+
 • Legacy browser support requirements
+
 • Organisations that need full auditability of test execution and tooling changes
 
 This is where Selenium’s “local or remote machine using the Selenium server” model remains powerful. [[https://www.selenium.dev/documentation/webdriver/](https://www.selenium.dev/documentation/webdriver/)] ([Selenium][2])
@@ -198,9 +219,13 @@ It’s not about stubbornness. It’s about risk surfaces.
 And there are scenarios where the modern toolchain approach is simply higher leverage.
 
 • High-change web products where UI churn is constant and releases are frequent
+
 • Teams that want quality signals inside PRs, not after merge
+
 • Frontend-heavy orgs where component isolation is a genuine asset
+
 • Products where “it renders wrong” is as damaging as “it throws an error”
+
 • Teams that can use cloud infrastructure to get scale without building a grid
 
 This is also where cloud device/browser platforms become a strategic accelerator. BrowserStack markets:
@@ -216,10 +241,15 @@ And Chromatic operationalises “test the UI states in real browsers” as a def
 The new world didn’t remove complexity. It redistributed it:
 
 • Less time writing waits and framework glue
+
 • More time deciding where tests belong (component vs E2E vs visual vs API)
+
 • Less effort building grids
+
 • More effort managing vendors, security reviews, and integration seams
+
 • Less “one framework to rule them all”
+
 • More “portfolio management” of quality signals
 
 That’s why “adaptability” is the real meta-skill now. Not in the fluffy sense. In the engineering sense: being able to reason about trade-offs, choose tools deliberately, and keep the signal-to-noise ratio sane.
@@ -231,8 +261,11 @@ If a team still hires exclusively for “deep Selenium framework experience”, 
 The strong profile in 2026 is bilingual:
 
 • Alex-level respect for maintainability, observability, and risk
+
 • Sam-level pragmatism about speed, debugability, and tool leverage
+
 • Enough engineering depth to know when a low-code tool is a gift vs a liability
+
 • Enough product sense to decide what should be automated at all (and what should not)
 
 The evolution of test automation isn’t “code to no-code”. It’s “framework-centric identity to signal-centric identity”. Selenium made us framework engineers. Modern toolchains are turning us into quality systems designers.
