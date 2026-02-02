@@ -130,7 +130,7 @@ Sam’s trade-off is different: tool sprawl and vendor gravity. Six services lat
 
 ```mermaid
 flowchart TB
-  A["Control / perimeter"] --> B["WebDriver + custom frameworks        "]
+  A["Control / perimeter"] --> B["WebDriver + frameworks        "]
   B --> C["Modern runners"]
   C --> D["Component + visual layers"]
   D --> E["Low-code + AI-assisted"]
