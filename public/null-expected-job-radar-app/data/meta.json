@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "lastRunAt": "2026-02-04T13:25:01.684Z",
+  "lastRunAt": "2026-02-04T15:03:51.044Z",
   "lastRunStats": {
-    "new": 0,
-    "updated": 221,
-    "total": 221,
-    "sourcesOk": 3,
+    "new": 148,
+    "updated": 171,
+    "total": 319,
+    "sourcesOk": 8,
     "sourcesFailed": 0
   }
 }

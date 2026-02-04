@@ -24,7 +24,7 @@ const RELEASE_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
 const SUPPORT_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\bhappiness engineer\b/i, -35, 'Customer support role'],
   [/\bcustomer support\b|\btechnical support\b|\bit support\b|\bhelpdesk\b|\bservice desk\b/i, -30, 'Support role'],
-  [/\bcall center\b|\bticket queue\b|\bl1\b|\bl2\b|\bl3\b/i, -18, 'Support queue role'],
+  [/\bcall center\b|\bticket queue\b|\b(tier|level)\s*(1|2|3)\b|\bl1\b|\bl2\b|\bl3\b/i, -18, 'Support queue role'],
 ];
 
 const SALES_NEGATIVES: Array<[RegExp, number, string]> = [
@@ -35,19 +35,29 @@ const AUTOMATION_ONLY_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\b100%\s*automation\b|\bautomation[- ]only\b|\bno manual\b|\bmanual testing not required\b/i, -22, 'Automation-only'],
 ];
 
-// Softer penalty: SDET itself is not “bad”, but tends to skew automation-heavy.
 const SDET_SOFT: Array<[RegExp, number, string]> = [
   [/\bsdet\b/i, -6, 'SDET-heavy'],
 ];
 
+// Title-only de-prioritization for pure software engineering roles.
+// Important: evaluate only on title to avoid punishing descriptions that mention "software engineers".
+const SOFTWARE_ENGINEER_TITLE_NEGATIVES: Array<[RegExp, number, string]> = [
+  [/\bsoftware engineer\b/i, -35, 'Software engineer role'],
+  [/\bbackend engineer\b|\bfront[- ]end engineer\b|\bfull[- ]stack engineer\b/i, -25, 'Engineering IC role'],
+  [/\bplatform engineer\b|\binfrastructure engineer\b|\bsite reliability engineer\b|\bsre\b/i, -18, 'Platform/SRE role'],
+];
+
+// Exceptions: do NOT penalize when the title is clearly QA/testing/quality even if it contains "engineer".
+const ENGINEER_TITLE_EXCEPTIONS: RegExp = /\b(qa|quality|test|testing)\b/i;
+
 function applyRules(
-  combined: string,
+  text: string,
   rules: Array<[RegExp, number, string]>,
   score: number,
   reasons: Array<{ reason: string; delta: number }>
 ) {
   for (const [re, delta, label] of rules) {
-    if (re.test(combined)) {
+    if (re.test(text)) {
       score += delta;
       reasons.push({ reason: label, delta });
     }
@@ -56,15 +66,28 @@ function applyRules(
 }
 
 export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): ScoringResult {
-  let score = 45; // slightly lower base so boosts matter more
+  let score = 45;
   const reasons: Array<{ reason: string; delta: number }> = [];
 
+  const title = (job.title || '').toLowerCase();
   const combined = [job.title, job.locationRaw, job.descriptionText]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
 
-  // Remote scope weighting (eligibility-first)
+  // 0) Title-only penalty for engineering roles (unless it's QA/testing/quality).
+  if (!ENGINEER_TITLE_EXCEPTIONS.test(title)) {
+    score = applyRules(title, SOFTWARE_ENGINEER_TITLE_NEGATIVES, score, reasons);
+
+    // If the title is explicitly "Software Engineer" variants, cap early so it can't float to the top
+    // just because description mentions QA/release words.
+    if (/\bsoftware engineer\b/i.test(title)) {
+      score = Math.min(score, 25);
+      reasons.push({ reason: 'Capped due to Software Engineer title', delta: -999 });
+    }
+  }
+
+  // 1) Remote scope weighting (eligibility-first)
   if (job.remoteScope === 'WORLDWIDE') {
     score += 12; reasons.push({ reason: 'Worldwide remote', delta: 12 });
   } else if (job.remoteScope === 'EU_EEA' || job.remoteScope === 'EUROPE') {
@@ -77,7 +100,7 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
     score -= 6; reasons.push({ reason: 'Remote scope unclear', delta: -6 });
   }
 
-  // Strong exclude-like penalties for ineligible remote
+  // 2) Strong exclude-like penalties for ineligible remote
   if (job.remoteScope === 'COUNTRY_ONLY' && !job.eligibleCountries.includes('RO')) {
     score -= 40; reasons.push({ reason: 'Country-only (non-RO)', delta: -40 });
   }
@@ -85,26 +108,26 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
     score -= 18; reasons.push({ reason: 'Multi-country (no RO)', delta: -18 });
   }
 
-  // Workplace penalties (you generally want remote-only)
+  // 3) Workplace penalties (you generally want remote-only)
   if (job.workplaceType === 'HYBRID') {
     score -= 12; reasons.push({ reason: 'Hybrid work', delta: -12 });
   } else if (job.workplaceType === 'ONSITE') {
     score -= 40; reasons.push({ reason: 'Onsite work', delta: -40 });
   }
 
-  // Role-fit rules (title-first)
+  // 4) Role-fit rules (content-based)
   score = applyRules(combined, POSITIVE_TITLE_REGEX, score, reasons);
   score = applyRules(combined, RELEASE_GOVERNANCE_REGEX, score, reasons);
 
-  // Noise reducers (these sites will flood you with them)
+  // 5) Noise reducers
   score = applyRules(combined, SUPPORT_NEGATIVES, score, reasons);
   score = applyRules(combined, SALES_NEGATIVES, score, reasons);
 
-  // Automation-only vs mixed QA
+  // 6) Automation-only vs mixed QA
   score = applyRules(combined, AUTOMATION_ONLY_NEGATIVES, score, reasons);
   score = applyRules(combined, SDET_SOFT, score, reasons);
 
-  // Seniority: avoid junior/intern noise, don’t penalize senior requirements
+  // 7) Seniority: avoid junior/intern noise
   if (/\b(intern|junior|entry[- ]level|graduate)\b/i.test(combined)) {
     score -= 18; reasons.push({ reason: 'Junior/intern level', delta: -18 });
   }
@@ -112,7 +135,7 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
     score += 6; reasons.push({ reason: 'Senior/Lead level', delta: 6 });
   }
 
-  // If the posting explicitly says "CET/EET" that’s a strong signal for you
+  // 8) EU timezone signal
   if (/\b(cet|eet|gmt\+0|gmt\+1|gmt\+2|gmt\+3|european time zones?)\b/i.test(combined)) {
     score += 10; reasons.push({ reason: 'EU timezone friendly', delta: 10 });
   }
@@ -120,7 +143,10 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   score = Math.max(0, Math.min(100, score));
 
   reasons.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
-  const topReasons = reasons.slice(0, 3).map(r => r.reason);
+  const topReasons = reasons
+    .filter(r => r.delta !== -999) // hide the internal "cap" marker from UI
+    .slice(0, 3)
+    .map(r => r.reason);
 
   return { score, reasons: topReasons };
 }
