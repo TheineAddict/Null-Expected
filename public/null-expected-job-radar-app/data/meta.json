@@ -1,11 +1,117 @@
 {
   "schemaVersion": 1,
-  "lastRunAt": "2026-02-04T15:03:51.044Z",
+  "lastRunAt": "2026-02-04T15:35:19.575Z",
   "lastRunStats": {
-    "new": 148,
-    "updated": 171,
+    "new": 0,
+    "updated": 319,
     "total": 319,
     "sourcesOk": 8,
     "sourcesFailed": 0
-  }
+  },
+  "sourceResults": [
+    {
+      "sourceId": "wwr_programming",
+      "name": "We Work Remotely - Programming (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/remote-programming-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 25,
+      "durationMs": 332,
+      "fetchedAt": "2026-02-04T15:35:15.333Z"
+    },
+    {
+      "sourceId": "wwr_devops",
+      "name": "We Work Remotely - DevOps & Sysadmin (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 25,
+      "durationMs": 296,
+      "fetchedAt": "2026-02-04T15:35:15.665Z"
+    },
+    {
+      "sourceId": "wwr_management_finance",
+      "name": "We Work Remotely - Management & Finance (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/remote-management-and-finance-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 38,
+      "durationMs": 415,
+      "fetchedAt": "2026-02-04T15:35:15.961Z"
+    },
+    {
+      "sourceId": "wwr_product",
+      "name": "We Work Remotely - Product (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/remote-product-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 23,
+      "durationMs": 302,
+      "fetchedAt": "2026-02-04T15:35:16.376Z"
+    },
+    {
+      "sourceId": "wwr_customer_support",
+      "name": "We Work Remotely - Customer Support (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/remote-customer-support-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 35,
+      "durationMs": 284,
+      "fetchedAt": "2026-02-04T15:35:16.678Z"
+    },
+    {
+      "sourceId": "wwr_all_other",
+      "name": "We Work Remotely - All Other (RSS)",
+      "type": "WWR_RSS",
+      "url": "https://weworkremotely.com/categories/all-other-remote-jobs.rss",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 53,
+      "durationMs": 389,
+      "fetchedAt": "2026-02-04T15:35:16.962Z"
+    },
+    {
+      "sourceId": "remotive",
+      "name": "Remotive",
+      "type": "REMOTIVE_API",
+      "url": "https://remotive.com/api/remote-jobs",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 25,
+      "durationMs": 69,
+      "fetchedAt": "2026-02-04T15:35:17.351Z"
+    },
+    {
+      "sourceId": "himalayas",
+      "name": "Himalayas",
+      "type": "HIMALAYAS_API",
+      "url": "https://himalayas.app/jobs/api",
+      "ok": true,
+      "httpStatus": 200,
+      "errorType": null,
+      "message": null,
+      "itemCount": 100,
+      "durationMs": 1924,
+      "fetchedAt": "2026-02-04T15:35:17.420Z"
+    }
+  ]
 }

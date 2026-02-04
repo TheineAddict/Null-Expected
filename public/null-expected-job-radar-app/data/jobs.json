@@ -1,7 +1,29 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-02-04T15:03:51.044Z",
+  "updatedAt": "2026-02-04T15:35:19.575Z",
   "jobs": [
+    {
+      "id": "93c4c218-cdc8-45ff-8207-7e0c0ca3cfc3",
+      "sourceId": "wwr-codesignal-software-engineer-business-experience-1",
+      "canonicalUrl": "https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1",
+      "title": "CodeSignal",
+      "company": "Software Engineer, Business Experience",
+      "locationRaw": "Full-Stack Programming",
+      "workplaceType": "REMOTE",
+      "remoteScope": "UNKNOWN",
+      "eligibleCountries": [],
+      "scopeText": "Full-Stack Programming",
+      "descriptionText": "<img src=\"https://we-work-remotely.imgix.net/logos/0171/2586/logo.gif?ixlib=rails-4.0.0&w=50&h=50&dpr=2&fit=fill&auto=compress\" />\n\n<p>\n  <strong>Headquarters:</strong> San Francisco\n    <br /><strong>URL:</strong> <a href=\"https://codesignal.com/\">https://codesignal.com/</a>\n</p>\n\n<div>We are looking for a Software Engineer who wants to be an impactful part of a small team looking to change the way technical hiring is done. In this role, you will be an integral part of our Product Engineering team and will drive features with immediate business impact to our core products:<a href=\"https://codesignal.com/products/pre-screen/\">Assessments</a>,<a href=\"https://codesignal.com/products/interview/\">Interviews</a>, and<a href=\"https://codesignal.com/learn/course-paths\">Learn</a>. You’ll be a key member of the team that builds and maintains our identity and authentication systems, tying all of our products together.</div>\n<div>To learn more about the kinds of projects we work on, check out our<a href=\"https://codesignal.com/blog/engineering/\"></a><a href=\"https://codesignal.com/blog/engineering/\">Engineering blog</a>! Some noteworthy projects include:</div>\n<ul>\n<li><a href=\"https://codesignal.com/blog/engineering/why-we-moved-from-mongodb-meteor-observers-to-redis/\">Why we moved from MongoDB  Meteor observers to Redis</a></li>\n<li><a href=\"https://codesignal.com/blog/engineering/what-we-learned-when-10000-users-hit-our-platform-at-once/\">What we learned when 10,000 users hit our platform at once</a></li>\n<li><a href=\"https://codesignal.com/blog/engineering/how-to-avoid-issues-with-your-html-email-formatting/\">How to avoid issues with your HTML email formatting</a></li>\n</ul>\n<div><strong>Day-to-Day</strong></div>\n<ul>\n<li>Contribute to building product features across the full stack (from the front-end to the back-end to separate microservices)</li>\n<li>Develop clean and maintainable code, with an emphasis on quality and craftsmanship</li>\n<li>Conduct code reviews and collaborate with your peers</li>\n<li>Lead technical design discussions on features where you're able to lend your expertise</li>\n</ul>\n<div><strong>Basic Qualifications</strong></div>\n<ul>\n<li>At least 4 years of professional, full-time software engineering experience</li>\n<li>Clear and effective communication skills</li>\n<li>Drive and initiative for getting things done</li>\n<li>Experience with TypeScript/JavaScript (browser, Node, or both)</li>\n<li>Available to work full-time. Candidates must be based within GMT-GMT+6 timezones.</li>\n</ul>\n<div><strong>Bonus Points for the Following</strong></div>\n<ul>\n<li>Experience with any part of our stack:</li>\n<li>React</li>\n<li>Node</li>\n<li>MongoDB</li>\n<li>GraphQL</li>\n<li>Experience with SSO, SCIM or RBAC.</li>\n<li>Any experience in a related industry, including assessments, HR tech, or education.</li>\n</ul>\n\n<p><strong>To apply:</strong> <a href=\"https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1\">https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1</a></p>",
+      "postedAt": "2025-11-12T08:56:02.000Z",
+      "collectedAt": "2026-02-04T15:33:28.043Z",
+      "hashDedup": "71a3ce4f21abf00e2c9dd024823842ed67b5d4caf38b9f8f72fbff1a65e00f84",
+      "source": "WWR",
+      "score": 45,
+      "reasons": [
+        "Remote scope unclear",
+        "Senior/Lead level"
+      ]
+    },
     {
       "id": "defd7ba3-5f14-4032-9cc9-ac6d7e1f4ded",
       "sourceId": "wwr-dexcom-sr-web-applications-developer-ecommerce",
@@ -115,8 +137,8 @@
       "score": 0,
       "reasons": [
         "Support role",
-        "Junior/intern level",
-        "Remote scope unclear"
+        "Support queue role",
+        "Junior/intern level"
       ]
     },
     {
@@ -532,28 +554,6 @@
       "postedAt": "2025-08-08T22:55:31.000Z",
       "collectedAt": "2026-02-04T15:03:50.902Z",
       "hashDedup": "7d9f360525304873fa2e2307100c406a0254745cd3d2e101c96b60e34c548f5d",
-      "source": "WWR",
-      "score": 45,
-      "reasons": [
-        "Remote scope unclear",
-        "Senior/Lead level"
-      ]
-    },
-    {
-      "id": "d4744e59-8088-49c5-968a-65aa538bb059",
-      "sourceId": "wwr-speechify-inc-software-engineer-ios-core-product",
-      "canonicalUrl": "https://weworkremotely.com/remote-jobs/speechify-inc-software-engineer-ios-core-product",
-      "title": "Speechify Inc",
-      "company": "Software Engineer, iOS Core Product",
-      "locationRaw": "Front-End Programming",
-      "workplaceType": "REMOTE",
-      "remoteScope": "UNKNOWN",
-      "eligibleCountries": [],
-      "scopeText": "Front-End Programming",
-      "descriptionText": "<p>\n  <strong>Headquarters:</strong> Florida\n    <br /><strong>URL:</strong> <a href=\"http://www.speechify.com\">http://www.speechify.com</a>\n</p>\n\n<p><strong>Overview</strong></p>\n<p>With the growth of our iOS app, being the #18 productivity app in the App Store category and also our recent recognition as Apple's 2025 Design Award for inclusivity, we find the need for a Senior iOS Engineer to help us support the new user base as well as work on new and exciting projects to push our missing forward. </p>\n<p>This is a key role and ideal for someone who thinks strategically, enjoys fast-paced environments, passionate about making product decisions, and has experience building great user experiences that delight users.</p>\n<p>We are a flat organization that allows anyone to become a leader by showing excellent technical skills and delivering results consistently and fast. Work ethic, solid communication skills, and obsession with winning are paramount.</p>\n<p>Our interview process involves several technical interviews and we aim to complete them within 1 week.</p>\n<p><strong>What Yo</strong><strong>u’</strong><strong>ll Do</strong></p>\n<ul>\n<li>Opportunity to lead key engineering and product decisions</li>\n<li>Actively shipping production code for the Speechify iOS app</li>\n<li>Work within a dedicated product team</li>\n<li>Participate in product discussions to shape the product roadmap</li>\n<li>Maintain and enhance the existing complex app architecture</li>\n</ul>\n<p><strong>An Ideal Candidate Should Have</strong></p>\n<ul>\n<li>Experience. You've worked on products that scaled to a large user base</li>\n<li>Track record. You have worked on various products from inception to decent traction. You have been responsible for engineering the product</li>\n<li>Customer obsession. We expect every team member whose responsibilities directly impact customers to be constantly obsessed about providing the best possible experience</li>\n<li>Product thinking. You make thoughtful decisions about the evolution of your product and support internal teams and designers into taking the right direction</li>\n<li>Speed. You work quickly to generate ideas and know how to decide which things can ship now and what things need time</li>\n<li>Focus. We’re a high-growth startup with a busy, remote team. You know how and when to engage or be heads down</li>\n<li>Technical skills. Swift, SwiftUI</li>\n</ul>\n<p><strong>Technical Requirements:</strong></p>\n<ul>\n<li>Swift Programming Language</li>\n<li>SwiftUI experience</li>\n<li>Experience in Multithreading Programming</li>\n<li>Working with CI/CD infrastructure</li>\n<li>Experience with Fastlane</li>\n<li>SOLID principles, the ability to write every single class according to SOLID</li>\n<li>Experience with Git and understanding of different Git strategies</li>\n</ul>\n<p><strong>What We offer:</strong></p>\n<ul>\n<li>A fast-growing environment where you can help shape the company and product</li>\n<li>An entrepreneurial crew that supports risk, intuition, and hustle</li>\n<li>The opportunity to make a big impact in a transformative industry</li>\n<li>A competitive salary, a collegiate atmosphere, and a commitment to building a great asynchronous culture</li>\n<li>Work on a product that millions of people use and where daily feedback includes users sharing that they cried when they first found the product because it was so impactful on their lives</li>\n<li>Support people with learning differences like Dyslexia, ADD, Low Vision, Concussions, Autism, and Second Language Learners, and give reading superpowers to professionals all over the world</li>\n<li>Work in one of the fastest growing sectors of tech: Intersection of Artificial Intelligence and Audio</li>\n</ul>\n<p><strong>Think you’re a good fit for this job?</strong></p>\n<p>Tell us more about yourself and why you're interested in the role when you apply.<br>And don’t forget to include links to your portfolio and LinkedIn.</p>\n<p><strong>Not looking but know someone who would make a great fit?</strong></p>\n<p>Refer them!</p>\n<p><strong>Speechify is committed to a diverse and inclusive workplace.</strong></p>\n<p>Speechify does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status.</p>\n\n<p><strong>To apply:</strong> <a href=\"https://weworkremotely.com/remote-jobs/speechify-inc-software-engineer-ios-core-product\">https://weworkremotely.com/remote-jobs/speechify-inc-software-engineer-ios-core-product</a></p>",
-      "postedAt": "2025-07-09T15:35:11.000Z",
-      "collectedAt": "2026-02-04T15:03:50.903Z",
-      "hashDedup": "4d081aa0ccc8459889edeff15995b33a8d4471f4d744f3d7d20fb82469566495",
       "source": "WWR",
       "score": 45,
       "reasons": [
@@ -2096,9 +2096,10 @@
       "collectedAt": "2026-02-04T13:22:52.934Z",
       "hashDedup": "5f04968d535011ed4309b3c6567af0093025927a6c65e2eb5850f128d72811ba",
       "source": "WWR",
-      "score": 27,
+      "score": 9,
       "reasons": [
         "Support role",
+        "Support queue role",
         "Worldwide remote"
       ]
     },
@@ -3081,7 +3082,7 @@
       "remoteScope": "UNKNOWN",
       "eligibleCountries": [],
       "scopeText": "Customer Support",
-      "descriptionText": "<img src=\"https://we-work-remotely.imgix.net/logos/0171/3430/logo.gif?ixlib=rails-4.0.0&w=50&h=50&dpr=2&fit=fill&auto=compress\" />\n\n<p>\n  <strong>Headquarters:</strong> Remote\n    <br /><strong>URL:</strong> <a href=\"http://medieragency.com\">http://medieragency.com</a>\n</p>\n\n<div class=\"job__description body\"><div><p>Medier isn’t just a marketing agency—we’re creative partners to our clients. From digital and social media strategies to PR, influencer collaborations, SEO, programmatic advertising, and CRM, we offer a comprehensive suite of expert services. By combining creativity with data-driven insights, we don’t just deliver campaigns—we deliver results.<br>Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work. Is it a match? You’re in.</p></div><div><p>As our <strong>CRM Localization Specialist</strong> <strong>for German</strong>, you’ll be the creative force behind our content in the language, crafting and translating compelling copy that resonates with our audience. Your work will play a pivotal role in shaping engaging narratives and communicating incentives efficiently.</p>\n<p></p>\n<p><strong>Responsibilities:</strong></p>\n<ul>\n<li><strong>Craft and manage</strong> high-quality <strong>German</strong><strong>CRM content</strong></li>\n<li><strong>Translate</strong> and <strong>localize English content </strong>into the <strong>German</strong><strong>language,</strong> ensuring cultural relevance and accuracy</li>\n<li>Collaborate with a dynamic team to produce and localize content that engages and informs our customers</li>\n<li><strong>Maintain the integrity</strong> and <strong>quality of our content</strong> despite tight deadlines, reflecting our brands’ standards and voice</li>\n<li>Continuously update content to reflect the latest trends and updates the <strong>iGaming industries</strong></li>\n</ul>\n<p></p>\n<p><strong>Requirements:</strong></p>\n<ul>\n<li><strong>Native in German</strong>and <strong>fluent/native in English</strong>, with exceptional writing skills in both languages. Additional languages of advantage</li>\n<li>Curiosity for understanding how cultural and linguistic nuances influence audience engagement and motivation</li>\n<li>A passion for iGaming and the ability to generate engaging content</li>\n<li><strong>A sharp eye for detail</strong> and the capacity to produce error-free content</li>\n<li>Experience with <strong>Google suite, JIRA, Slack</strong>, and <strong>PowerBI</strong></li>\n<li>Self-driven and strong organizational and time-management abilities</li>\n<li>A collaborative spirit, eager to work within a team to meet business goals<br><br></li>\n</ul>\n<p><strong>🎁 What We Offer:</strong></p>\n<ul>\n<li>📝 Remote schedule in your time zone</li>\n<li>🏢 A dynamic and collaborative work environment</li>\n<li>🎉 Fun and engaging company culture</li>\n<li>🌴 Annual Leave: 24 working days of paid vacation per calendar year, in addition to applicable public holidays</li>\n<li>🗣 Partial compensation for language courses</li>\n<li>✈️ Business Travel  Development: Company-sponsored travel for business purposes, including regular visits to other company offices</li>\n<li>🧑‍🎓 Development: Participation in international conferences and professional training programs</li>\n</ul></div><div><p>Reshape marketing with us. Let’s work!</p>\n<p><strong>By submitting your application, you agree to our <a href=\"https://www.medieragency.com/privacy-policy\">Privacy Policy.</a></strong></p></div></div>\n\n<p><strong>To apply:</strong> <a href=\"https://weworkremotely.com/remote-jobs/medier-crm-localization-specialist-german-language\">https://weworkremotely.com/remote-jobs/medier-crm-localization-specialist-german-language</a></p>",
+      "descriptionText": "<img src=\"https://we-work-remotely.imgix.net/logos/0171/3430/logo.gif?ixlib=rails-4.0.0&w=50&h=50&dpr=2&fit=fill&auto=compress\" />\n\n<p>\n  <strong>Headquarters:</strong> Remote\n    <br /><strong>URL:</strong> <a href=\"http://medieragency.com\">http://medieragency.com</a>\n</p>\n\n<div class=\"job__description body\"><div><p>Medier isn’t just a marketing agency—we’re creative partners to our clients. From digital and social media strategies to PR, influencer collaborations, SEO, programmatic advertising, and CRM, we offer a comprehensive suite of expert services. By combining creativity with data-driven insights, we don’t just deliver campaigns—we deliver results.<br>Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to do your best work. Is it a match? You’re in.</p></div><div><p>As our <strong>CRM Localization Specialist</strong> <strong>for German</strong>, you’ll be the creative force behind our content in the language, crafting and translating compelling copy that resonates with our audience. Your work will play a pivotal role in shaping engaging narratives and communicating incentives efficiently.</p>\n<p></p>\n<p><strong>Responsibilities:</strong></p>\n<ul>\n<li><strong>Craft and manage</strong> high-quality <strong>German</strong><strong>CRM content</strong></li>\n<li><strong>Translate</strong> and <strong>localize English content </strong>into the <strong>German</strong><strong>language,</strong> ensuring cultural relevance and accuracy</li>\n<li>Collaborate with a dynamic team to produce and localize content that engages and informs our customers</li>\n<li><strong>Maintain the integrity</strong> and <strong>quality of our content</strong> despite tight deadlines, reflecting our brands’ standards and voice</li>\n<li>Continuously update content to reflect the latest trends and updates the <strong>iGaming industries</strong></li>\n</ul>\n<p></p>\n<p><strong>Requirements:</strong></p>\n<ul>\n<li><strong>Native in German</strong>and <strong>fluent/native in English</strong>, with exceptional writing skills in both languages. Additional languages of advantage</li>\n<li>Curiosity for understanding how cultural and linguistic nuances influence audience engagement and motivation</li>\n<li>A passion for iGaming and the ability to generate engaging content</li>\n<li><strong>A sharp eye for detail</strong> and the capacity to produce error-free content</li>\n<li>Experience with <strong>Google suite, JIRA, Slack</strong>, and <strong>PowerBI</strong></li>\n<li>Self-driven and strong organizational and time-management abilities</li>\n<li>A collaborative spirit, eager to work within a team to meet business goals<br><br></li>\n</ul>\n<p><strong>🎁 What We Offer:</strong></p>\n<ul>\n<li>📝 Remote schedule in your time zone</li>\n<li>🏢 A dynamic and collaborative work environment</li>\n<li>🎉 Fun and engaging company culture</li>\n<li>🌴 Annual Leave: 24 working days of paid vacation per calendar year, in addition to applicable public holidays</li>\n<li>🗣 Partial compensation for language courses</li>\n<li>✈️ Business Travel  Development: Company-sponsored travel for business purposes, including regular visits to other company offices</li>\n<li>🧑‍🎓 Development: Participation in international conferences and professional training programs</li>\n</ul></div><div><p>Reshape marketingwith us. Let’s work!</p>\n<p><strong>By submitting your application, you agree to our <a href=\"https://www.medieragency.com/privacy-policy\">Privacy Policy.</a></strong></p></div></div>\n\n<p><strong>To apply:</strong> <a href=\"https://weworkremotely.com/remote-jobs/medier-crm-localization-specialist-german-language\">https://weworkremotely.com/remote-jobs/medier-crm-localization-specialist-german-language</a></p>",
       "postedAt": "2026-01-14T17:39:58.000Z",
       "collectedAt": "2026-02-04T15:03:50.971Z",
       "hashDedup": "2db0407c680d4675a9eb83037e4ec80f97261ebfbcc9589772b56eb20fbacc24",
@@ -4509,6 +4510,7 @@
       "score": 0,
       "reasons": [
         "Onsite work",
+        "Support queue role",
         "Remote scope unclear"
       ]
     },
@@ -4772,8 +4774,9 @@
       "collectedAt": "2026-02-04T13:22:52.963Z",
       "hashDedup": "38494631c0b92cf2f5c707135d38bbeade1b96fa672c10bb83154306639ef5f2",
       "source": "REMOTIVE",
-      "score": 63,
+      "score": 28,
       "reasons": [
+        "Software engineer role",
         "Worldwide remote",
         "Senior/Lead level"
       ]
@@ -4796,11 +4799,11 @@
       "collectedAt": "2026-02-04T13:22:52.964Z",
       "hashDedup": "0ce50a21531c3a54c169e329dcdc2be71321275c5166de15f417901d3e6b27a7",
       "source": "REMOTIVE",
-      "score": 45,
+      "score": 10,
       "reasons": [
+        "Software engineer role",
         "Junior/intern level",
-        "Worldwide remote",
-        "Senior/Lead level"
+        "Worldwide remote"
       ]
     },
     {
@@ -5011,8 +5014,9 @@
       "collectedAt": "2026-02-04T13:22:52.969Z",
       "hashDedup": "5879ab3ff060f3e89969ef9d23b6a4d764fb40080db827cfa315237077aeee24",
       "source": "REMOTIVE",
-      "score": 63,
+      "score": 28,
       "reasons": [
+        "Software engineer role",
         "Worldwide remote",
         "Senior/Lead level"
       ]
@@ -5057,8 +5061,9 @@
       "collectedAt": "2026-02-04T13:22:52.971Z",
       "hashDedup": "154890408db7d86a6ce944dceadaf967c3ff362fb67949309e7e8a2d724ad775",
       "source": "REMOTIVE",
-      "score": 45,
+      "score": 27,
       "reasons": [
+        "Platform/SRE role",
         "Remote scope unclear",
         "Senior/Lead level"
       ]
@@ -5081,8 +5086,9 @@
       "collectedAt": "2026-02-04T13:22:52.971Z",
       "hashDedup": "205b5e2983fe8142d91a5d07fe030ce42587509a1d86d48fcb23c6259dfdd31b",
       "source": "REMOTIVE",
-      "score": 63,
+      "score": 28,
       "reasons": [
+        "Software engineer role",
         "Worldwide remote",
         "Senior/Lead level"
       ]
@@ -5273,7 +5279,7 @@
     },
     {
       "id": "967923d8-4764-43fb-89ed-dcd9b70fbb57",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Customer Success Manager (Europe)",
       "company": null,
@@ -5298,7 +5304,7 @@
     },
     {
       "id": "3a4d0eff-037e-4fbb-8f26-3813f5b5aa3e",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Onboarding Specialist",
       "company": null,
@@ -5322,7 +5328,7 @@
     },
     {
       "id": "f95bdd21-38e1-417d-81ab-7e594b9c418e",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Safety Officer",
       "company": null,
@@ -5346,7 +5352,7 @@
     },
     {
       "id": "21ed00e3-731e-4382-85f8-d00f7a67eae4",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Growth Consultant",
       "company": null,
@@ -5369,7 +5375,7 @@
     },
     {
       "id": "8919e7c4-060d-4c91-b577-55bd23f4480c",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "HR manager",
       "company": null,
@@ -5390,7 +5396,7 @@
     },
     {
       "id": "b70190bf-2769-4867-937f-5370d0e07bfc",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Lead Project Manager - Data Center (Travel Required)",
       "company": null,
@@ -5413,7 +5419,7 @@
     },
     {
       "id": "8029247b-6429-484f-8da7-ad33e8677f7f",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Sr Enterprise Account Executive - State and Local",
       "company": null,
@@ -5436,7 +5442,7 @@
     },
     {
       "id": "1079cccd-6346-4210-8166-b93ff58b0ddf",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Healthcare Customer Service Representative - Work from Home (10)",
       "company": null,
@@ -5457,7 +5463,7 @@
     },
     {
       "id": "d656601f-1e51-4525-95ae-20e94f04cbea",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Staff Software Engineer - Event Sourcing/Stream Processing - Kafka",
       "company": null,
@@ -5471,16 +5477,16 @@
       "collectedAt": "2026-02-04T13:22:52.978Z",
       "hashDedup": "e263aa48619397d7c77402aae0816c4b9e44980d0656510aef1b83e55c79d6ff",
       "source": "HIMALAYAS",
-      "score": 45,
+      "score": 10,
       "reasons": [
+        "Software engineer role",
         "Sales role",
-        "Worldwide remote",
-        "Senior/Lead level"
+        "Worldwide remote"
       ]
     },
     {
       "id": "8f50b4cb-d11a-4e3e-b691-7c14c55b657f",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Full Stack Engineer - House Kubernetes (Portugal)",
       "company": null,
@@ -5500,15 +5506,16 @@
       "collectedAt": "2026-02-04T13:22:52.979Z",
       "hashDedup": "42620e8dd2346b7c07281b2f5d63862944c34da2a26e62c85df4bc73abef4df5",
       "source": "HIMALAYAS",
-      "score": 27,
+      "score": 2,
       "reasons": [
+        "Engineering IC role",
         "Hybrid work",
         "Remote scope unclear"
       ]
     },
     {
       "id": "67970d77-ba60-402a-9317-1f83648d1ecd",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "JR-151132 Full stack Developer Senior",
       "company": null,
@@ -5533,7 +5540,7 @@
     },
     {
       "id": "601feb99-8427-48c2-be2d-ac6ced0fe693",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Influencer Talent Manager - UK Remote",
       "company": null,
@@ -5558,7 +5565,7 @@
     },
     {
       "id": "199fdeb2-61e1-4c75-a773-d31dfa28b728",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Doradca Biznesowy/Doradczyni Biznesowa - Manager/ka ds. Rozwoju Rynku - Kielce",
       "company": null,
@@ -5581,7 +5588,7 @@
     },
     {
       "id": "6eff5e10-90af-4c79-af57-18df9911cde9",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Mid AI Engineer (LLM)",
       "company": null,
@@ -5604,7 +5611,7 @@
     },
     {
       "id": "675d8fa7-6a40-4383-95ae-6858a647c2b5",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Automotive Wheel Repair Technician",
       "company": null,
@@ -5626,7 +5633,7 @@
     },
     {
       "id": "73440e2f-daa8-4169-88c8-aa823ce9df55",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Data Discovery and Enrichment Expert II",
       "company": null,
@@ -5651,7 +5658,7 @@
     },
     {
       "id": "b1fb899e-1c50-47f0-9ddd-e9fac4bb1c27",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Director, Edibles Implementation",
       "company": null,
@@ -5673,7 +5680,7 @@
     },
     {
       "id": "d2ecc8bf-b1c4-40ee-8b78-46fe0e7c1523",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Part-time LATAM Instructor for AI-Assisted Programming Workshops",
       "company": null,
@@ -5697,7 +5704,7 @@
     },
     {
       "id": "b357da9c-c7de-4ec6-bce0-68fdb924f00d",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Director, Affirm Bank Information Security",
       "company": null,
@@ -5722,7 +5729,7 @@
     },
     {
       "id": "47b54243-c1c6-4cc5-b4a4-2d9fab3f292a",
-      "sourceId": "himalayas-1770217429568",
+      "sourceId": "himalayas-1770219318272",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Talent Coach",
       "company": null,
@@ -5745,7 +5752,7 @@
     },
     {
       "id": "93de56e1-5f86-4473-93f0-c89990dd714f",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Sr Anlyst, Procurement",
       "company": null,
@@ -5770,7 +5777,7 @@
     },
     {
       "id": "080a3769-08a9-4afc-9523-c7fea7d3a04d",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "2025-7799 Information Security Compliance Analyst-Senior",
       "company": null,
@@ -5792,7 +5799,7 @@
     },
     {
       "id": "1a9e30bf-4a6c-4870-8c40-d5fcca4c6271",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Operations Team Lead - Freelance, Remote",
       "company": null,
@@ -5815,7 +5822,7 @@
     },
     {
       "id": "7ef472cd-96ae-4258-b1c5-bec6de266885",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Remote Patient Representative Medical Assistant",
       "company": null,
@@ -5837,7 +5844,7 @@
     },
     {
       "id": "ec83a3da-42bc-4a29-97cb-a8365b141fa3",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior AI Engineer - APM Integrations",
       "company": null,
@@ -5860,7 +5867,7 @@
     },
     {
       "id": "c16cccbb-df2b-4ff8-a054-83af5cbdb9e9",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Finance Expert - Quantitative Trading",
       "company": null,
@@ -5883,7 +5890,7 @@
     },
     {
       "id": "864b6408-921d-4d71-8ee9-bf22eacec759",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Software Engineer MES",
       "company": null,
@@ -5897,16 +5904,16 @@
       "collectedAt": "2026-02-04T13:22:52.987Z",
       "hashDedup": "5546835fe6678a5ff83650a795fad4b9b176d8178adec6e340e484e2280d5b39",
       "source": "HIMALAYAS",
-      "score": 43,
+      "score": 8,
       "reasons": [
+        "Software engineer role",
         "Support role",
-        "Worldwide remote",
-        "Change/CAB/ITIL"
+        "Worldwide remote"
       ]
     },
     {
       "id": "cd1a1848-1488-4667-94b0-865d8add5cb0",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Software Engineer-Backend",
       "company": null,
@@ -5920,15 +5927,16 @@
       "collectedAt": "2026-02-04T13:22:52.987Z",
       "hashDedup": "fa55670ed65e6c1504f47abe8b83f163f3e757b4e44215d9831bc5a8daec9593",
       "source": "HIMALAYAS",
-      "score": 63,
+      "score": 28,
       "reasons": [
+        "Software engineer role",
         "Worldwide remote",
         "Senior/Lead level"
       ]
     },
     {
       "id": "5e532ede-1c7b-4c4b-a8e5-4da1f3b338de",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Application Security Architect",
       "company": null,
@@ -5953,7 +5961,7 @@
     },
     {
       "id": "ac6715ed-e9da-4d79-bd20-f6ad915dd0c3",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Infrastructure Consultant",
       "company": null,
@@ -5978,7 +5986,7 @@
     },
     {
       "id": "c44822f3-3724-4a89-9c53-ebd9766939ce",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Director - RCM - Coding Operations - REMOTE",
       "company": null,
@@ -6001,7 +6009,7 @@
     },
     {
       "id": "c73c8195-984c-4fbd-9f7b-23bea1271fcd",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Leidinggevend Monteur E",
       "company": null,
@@ -6022,7 +6030,7 @@
     },
     {
       "id": "2a163402-7599-45d1-9ada-e75c25266644",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Litigation Associate",
       "company": null,
@@ -6043,7 +6051,7 @@
     },
     {
       "id": "c3f31098-e7be-4b6e-8c96-fbc7e0ca59ca",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Registered Behavior Technician",
       "company": null,
@@ -6064,7 +6072,7 @@
     },
     {
       "id": "f63e863f-8164-4e7e-8d79-fd3a9fba00cc",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Financial Analyst",
       "company": null,
@@ -6086,7 +6094,7 @@
     },
     {
       "id": "326ccecd-3b8f-4537-bec1-dd36d134b843",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Consultant - Lifecycle Assessment (LCA)",
       "company": null,
@@ -6109,7 +6117,7 @@
     },
     {
       "id": "21f11109-2c13-4da1-843a-aa57285100ef",
-      "sourceId": "himalayas-1770217429953",
+      "sourceId": "himalayas-1770219318643",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Business Analyst / Product Owner fluent in German (m/w/d) BAPOG/02/2026",
       "company": null,
@@ -6136,7 +6144,7 @@
     },
     {
       "id": "189a8f64-0d9b-4b05-9c80-099e622ba13a",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318931",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Director - IT Compliance",
       "company": null,
@@ -6160,7 +6168,7 @@
     },
     {
       "id": "10c46616-b145-478b-b7c2-3f1ee1f7275a",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Shift Lead Night Shift  (gn) - Elsdorf",
       "company": null,
@@ -6172,7 +6180,7 @@
         "US"
       ],
       "scopeText": null,
-      "descriptionText": "Als Shift Lead (gn) bist du gemeinsam mit deinem Counterpart für alle logistischen Abläufe in einem Hauptbereich unseres Lagers während deiner Schicht verantwortlich. Dabei übernimmst du sowohl prozessuale als auch disziplinarische Führungsverantwortung und arbeitest eng mit anderen Teams und dem Operations Manager zusammen.\n\nDeine Mission bei uns Du führst fachlich und disziplinarisch die Mitarbeitenden deines Bereichs\nDu steuerst und koordinierst die relevanten Prozessbereiche während deiner Schicht\nDu trägst die Verantwortung für Produktivität und operative Ergebnisse\nDu leitest kleinere Verbesserungs- und Innovationsprojekte\nDu unterstützt die Operations Manager in fachlichen Themen\nDu überwachst relevante KPIs und leitest Maßnahmen ab\nDu optimierst Prozesse auf Basis von Lean-Prinzipien\nDeine Erfahrung & Skills Du hast ein Studium im Bereich Logistik, eine Ausbildung zum Lagermeister oder eine vergleichbare Qualifikation\nDu bringst mehrjährige Berufserfahrung in einer vergleichbaren Position mit\nDu verfügst über erste Führungserfahrung\nDu sprichst Deutsch und Englisch sicher in Wort und Schrift\nDu gehst routiniert mit MS Office 365 um und hast eine hohe technische Affinität\nDu kennst idealerweise Lean-Methoden und wendest sie an\nWarum wir? Teil unseres Teams zu sein, bedeutet, Teil eines leistungsstarken Unternehmens mit einer vielfältigen Kultur zu sein. In unserem schnell wachsenden Team von über 1.200 Mitarbeitenden vereinen wir unsere Leidenschaft für Sports Nutrition, Supplements und gesunden Nahrungsmitteln mit modernster Technologie, Produktions- und Logistikprozessen. All das dient einem Ziel: Unseren Kunden erstklassige Produkte für ihren gesunden und sportlichen Lifestyle zu bieten. \nDich erwartet ein starker Teamzusammenhalt, stetige Möglichkeiten, dich professionell weiterzuentwickeln und Verantwortung zu übernehmen, sowie ein spannender Berufsalltag zwischen Lifestyle und Job. Mit Standorten in Hamburg, Elmshorn, Kaltenkirchen/Nützen und Elsdorf bietet TQG vielfältige Karrieremöglichkeiten in Bereichen wie Technologie, Produktentwicklung, Vertrieb, Marketing und Logistik.  Außerdem erwarten dich unter anderem:  \n\nattraktive Mitarbeiterrabatte \nZuschuss zum EGYM Wellpass  \nCorporate Benefits  \nZuschuss zum Deutschlandticket  \nBetriebliche Altersvorsorge \nÜber uns The Quality Group (TQG) ist ein innovativer Anbieter von Sporternährungsprodukten und vereint seit 2021 die erfolgreichen Marken ESN und More Nutrition. \n\nESN ist seit 2004 deutscher Marktführer für Sporternährung und bietet Produkte wie Proteinpulver, Riegel und Supplements, die auf ambitionierte Fitnessziele ausgerichtet sind. More Nutrition, gegründet 2017, steht für gesunde, zuckerreduzierte Ernährungsprodukte und bietet Lösungen für bewusste Ernährung und Gewichtsmanagement – ohne Verzicht. \n\nDie Vision von TQG ist es, Menschen dabei zu unterstützen, die beste Version ihrer selbst zu werden. Mit Leidenschaft und Innovationskraft entwickelt das Unternehmen hochwertige Produkte, die Gesundheit, Leistung und Lebensfreude fördern. Mit einer agilen Unternehmenskultur und spannenden Karrieremöglichkeiten ist TQG nicht nur für Kunden, sondern auch für Mitarbeitende ein starker Partner.  \n\nDas sind wir – The Quality Group – nice to meet you! Now it’s your turn! Wir freuen uns auf deine Bewerbung! Unabhängig von Geschlecht, Alter, Herkunft oder Identität – bei uns zählt, wer du bist und was du einbringst. Werde Teil unseres Teams und wachse mit uns. \n\nOriginally posted on Himalayas",
+      "descriptionText": "Als Shift Lead (gn) bist du gemeinsam mit deinem Counterpart für alle logistischen Abläufe in einem Hauptbereich unseres Lagers während deiner Schicht verantwortlich. Dabei übernimmst du sowohl prozessuale als auch disziplinarische Führungsverantwortung und arbeitest eng mit anderen Teams und dem Operations Manager zusammen.\n\nDeine Mission bei uns Du führst fachlich und disziplinarisch die Mitarbeitenden deines Bereichs\nDu steuerst und koordinierst die relevanten Prozessbereiche während deiner Schicht\nDu trägst die Verantwortung für Produktivität und operative Ergebnisse\nDu leitest kleinere Verbesserungs- und Innovationsprojekte\nDu unterstützt die Operations Manager in fachlichen Themen\nDu überwachst relevante KPIs und leitest Maßnahmen ab\nDu optimierst Prozesse auf Basis von Lean-Prinzipien\nDeine Erfahrung & Skills Du hast ein Studium im Bereich Logistik, eine Ausbildung zum Lagermeister oder eine vergleichbare Qualifikation\nDu bringst mehrjährige Berufserfahrung in einer vergleichbaren Position mit\nDu verfügst über erste Führungserfahrung\nDu sprichst Deutsch und Englisch sicher in Wort und Schrift\nDu gehst routiniert mit MS Office 365 um und hast eine hohe technische Affinität\nDu kennst idealerweise Lean-Methoden und wendest sie an\nWarum wir? Teil unseres Teams zu sein, bedeutet, Teil eines leistungsstarken Unternehmens mit einer vielfältigen Kultur zu sein. In unserem schnell wachsenden Team von über 1.200 Mitarbeitenden vereinen wir unsere Leidenschaft für Sports Nutrition, Supplements und gesunden Nahrungsmitteln mit modernster Technologie, Produktions- und Logistikprozessen. All das dient einem Ziel: Unseren Kunden erstklassige Produkte für ihren gesunden und sportlichen Lifestyle zu bieten. \nDich erwartet ein starker Teamzusammenhalt, stetige Möglichkeiten, dich professionell weiterzuentwickeln und Verantwortung zu übernehmen, sowie ein spannender Berufsalltag zwischen Lifestyle und Job. Mit Standorten in Hamburg, Elmshorn, Kaltenkirchen/Nützen und Elsdorf bietet TQG vielfältige Karrieremöglichkeiten in Bereichen wie Technologie, Produktentwicklung, Vertrieb, Marketing und Logistik.  Außerdem erwarten dich unter anderem:  \n\nattraktive Mitarbeiterrabatte \nZuschuss zum EGYM Wellpass \nCorporate Benefits \nZuschuss zum Deutschlandticket \nBetriebliche Altersvorsorge \nÜber uns The Quality Group (TQG) ist ein innovativer Anbieter von Sporternährungsprodukten und vereint seit 2021 die erfolgreichen Marken ESN und More Nutrition. \n\nESN ist seit 2004 deutscher Marktführer für Sporternährung und bietet Produkte wie Proteinpulver, Riegel und Supplements, die auf ambitionierte Fitnessziele ausgerichtet sind. More Nutrition, gegründet 2017, steht für gesunde, zuckerreduzierte Ernährungsprodukte und bietet Lösungen für bewusste Ernährung und Gewichtsmanagement – ohne Verzicht. \n\nDie Vision von TQG ist es, Menschen dabei zu unterstützen, die beste Version ihrer selbst zu werden. Mit Leidenschaft und Innovationskraft entwickelt das Unternehmen hochwertige Produkte, die Gesundheit, Leistung und Lebensfreude fördern. Mit einer agilen Unternehmenskultur und spannenden Karrieremöglichkeiten ist TQG nicht nur für Kunden, sondern auch für Mitarbeitende ein starker Partner.  \n\nDas sind wir – The Quality Group – nice to meet you! Now it’s your turn! Wir freuen uns auf deine Bewerbung! Unabhängig von Geschlecht, Alter, Herkunft oder Identität – bei uns zählt, wer du bist und was du einbringst. Werde Teil unseres Teams und wachse mit uns. \n\nOriginally posted on Himalayas",
       "postedAt": "1970-01-21T11:43:11.017Z",
       "collectedAt": "2026-02-04T13:22:52.991Z",
       "hashDedup": "5a0eee06321c269a4cfa18d5ed2e9aae9d54c09e19b5da8c9ef0cb9d475d6dc2",
@@ -6185,7 +6193,7 @@
     },
     {
       "id": "a10d7faa-0691-4282-9e2f-410d4db3797b",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "CSV Senior Compliance Advisor",
       "company": null,
@@ -6207,7 +6215,7 @@
     },
     {
       "id": "fa293a1c-b8c0-4984-a612-9ebbe473060b",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Director, Delivery Acceleration Systems & Solutions",
       "company": null,
@@ -6232,7 +6240,7 @@
     },
     {
       "id": "7078ed05-a8a6-49c9-a7f1-28f31beb1228",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Sales Representative (Washington DC Territory)",
       "company": null,
@@ -6254,7 +6262,7 @@
     },
     {
       "id": "33541866-3159-431d-a42e-28e57cb685a4",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Compliance Lease Up Specialist- LIHTC",
       "company": null,
@@ -6277,7 +6285,7 @@
     },
     {
       "id": "4bc88fd7-2fdc-4efe-b056-192c00b986c7",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Linguist for Life Sciences - Chinese",
       "company": null,
@@ -6299,7 +6307,7 @@
     },
     {
       "id": "00a7d97d-762f-40d5-87bf-e590aa51d840",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Software Engineer, Platform",
       "company": null,
@@ -6313,16 +6321,16 @@
       "collectedAt": "2026-02-04T13:22:52.994Z",
       "hashDedup": "e22f6aa599e3f226c14a5010b696c0f01bcdd608d24d556b0192c6fd6255ecd5",
       "source": "HIMALAYAS",
-      "score": 27,
+      "score": 0,
       "reasons": [
+        "Software engineer role",
         "Junior/intern level",
-        "Remote scope unclear",
-        "Senior/Lead level"
+        "Remote scope unclear"
       ]
     },
     {
       "id": "7c3de62d-6869-43c9-b94b-f5cdf194bdb5",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Freelance Mechanical Engineering & Python Expert - AI Trainer",
       "company": null,
@@ -6344,7 +6352,7 @@
     },
     {
       "id": "beee4bda-17dc-4f61-b709-a82203431227",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Business Development Manager, Nordics",
       "company": null,
@@ -6366,7 +6374,7 @@
     },
     {
       "id": "a4367ec1-5a83-4f3b-b057-cd7c695aef46",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Remote Operation Engineer (Chennai, TN, IN)",
       "company": null,
@@ -6388,7 +6396,7 @@
     },
     {
       "id": "246f2cb5-df34-461d-b912-6f5820ba6a73",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Commercial Underwriting Assistant Manager",
       "company": null,
@@ -6409,7 +6417,7 @@
     },
     {
       "id": "42701c90-6966-43fd-85c6-2e9d6998a2b2",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Social Media Analyst, Platform",
       "company": null,
@@ -6431,7 +6439,7 @@
     },
     {
       "id": "640cbc9f-3459-445b-842d-eed7dbec1020",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Remote: Travel Specialist (1)",
       "company": null,
@@ -6455,7 +6463,7 @@
     },
     {
       "id": "f1f93718-f8d9-49ea-8ce8-f11f174606dd",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (28)",
       "company": null,
@@ -6478,7 +6486,7 @@
     },
     {
       "id": "6fc0b68c-aca7-4ac2-941e-5b366557c67b",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Air Pollution Specialist (43)",
       "company": null,
@@ -6501,7 +6509,7 @@
     },
     {
       "id": "ba9c8f78-db31-43fe-9598-ec88317f46a7",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Family Partner - Intensive Home-Based Therapeutic Care (49)",
       "company": null,
@@ -6523,7 +6531,7 @@
     },
     {
       "id": "5c80b3ce-a407-4c30-9a9b-2b6c9ddf11ab",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (39)",
       "company": null,
@@ -6546,7 +6554,7 @@
     },
     {
       "id": "cdf8e6da-025f-40cd-87f2-fbf928211699",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (44)",
       "company": null,
@@ -6569,7 +6577,7 @@
     },
     {
       "id": "770893d7-93dc-435e-9baa-b436a53d9106",
-      "sourceId": "himalayas-1770217430233",
+      "sourceId": "himalayas-1770219318932",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist III #Full Time #Remote (38)",
       "company": null,
@@ -6592,7 +6600,7 @@
     },
     {
       "id": "0bdedb9e-662f-4efb-9953-30f52dea382a",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Controls Technician - Albuquerque, NM",
       "company": null,
@@ -6614,7 +6622,7 @@
     },
     {
       "id": "52ffeb56-ba52-4450-9c77-0bb832e90087",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (11)",
       "company": null,
@@ -6637,7 +6645,7 @@
     },
     {
       "id": "1f92af3e-27eb-4484-b844-8157e807eebb",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Artemis Test Conductor",
       "company": null,
@@ -6661,7 +6669,7 @@
     },
     {
       "id": "4c26a682-aab0-4167-b491-544f0bf812cd",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Now Hiring (78617)",
       "company": null,
@@ -6682,7 +6690,7 @@
     },
     {
       "id": "a979c455-70ee-475e-a352-e292f2692337",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Gig Work - Taskers Wanted! (78653)",
       "company": null,
@@ -6703,7 +6711,7 @@
     },
     {
       "id": "b6bbc798-e884-4a9b-bda0-0bbb59508e14",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (30)",
       "company": null,
@@ -6726,7 +6734,7 @@
     },
     {
       "id": "1ffd5c70-6c94-4ffb-8d5e-c453b98f29e3",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Foodservice National Accounts Manager (REMOTE, NC, US)",
       "company": null,
@@ -6750,7 +6758,7 @@
     },
     {
       "id": "80686f0f-df55-4323-b7e0-a786b59ede76",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (23)",
       "company": null,
@@ -6773,7 +6781,7 @@
     },
     {
       "id": "7d8b8d84-3918-4547-8b00-57b9fbf35bf2",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (6)",
       "company": null,
@@ -6796,7 +6804,7 @@
     },
     {
       "id": "5827b775-7142-4623-9cb0-66717acc32b2",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (19)",
       "company": null,
@@ -6819,7 +6827,7 @@
     },
     {
       "id": "488c1063-0fc8-41a9-8396-68f67d0dae18",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "General Tasker (78664)",
       "company": null,
@@ -6840,7 +6848,7 @@
     },
     {
       "id": "329c8969-d8e7-4c13-b2cd-334ebcfa0c65",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (38)",
       "company": null,
@@ -6863,7 +6871,7 @@
     },
     {
       "id": "eb8d385f-64c5-4045-9c39-c2d01bd9ad35",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "FT Accounts Receivable Specialist - Work From Home",
       "company": null,
@@ -6884,7 +6892,7 @@
     },
     {
       "id": "22de2ffc-e1f7-402c-a35a-714e4effa74c",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Part-Time Tasker (78634)",
       "company": null,
@@ -6905,7 +6913,7 @@
     },
     {
       "id": "a9c843bf-bac0-4ec8-a652-d49a46d6c5b2",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Straws Winder/Wrapper Operator",
       "company": null,
@@ -6927,7 +6935,7 @@
     },
     {
       "id": "e014b900-4654-4b45-a209-fa7b1d63b4c1",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "LPNP (Virtual)",
       "company": null,
@@ -6950,7 +6958,7 @@
     },
     {
       "id": "42cccaff-c81d-489d-aa3a-61e96d5bc5dd",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (37)",
       "company": null,
@@ -6973,7 +6981,7 @@
     },
     {
       "id": "ac5f8945-4bf0-46c1-8289-87ecd50130b7",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (10)",
       "company": null,
@@ -6996,7 +7004,7 @@
     },
     {
       "id": "391e401e-49f4-47a3-803c-8c4bdfd57097",
-      "sourceId": "himalayas-1770217430553",
+      "sourceId": "himalayas-1770219319125",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (49)",
       "company": null,
@@ -7019,7 +7027,7 @@
     },
     {
       "id": "1f870d15-9c07-49a8-b822-c58c34f21aee",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "FT Accounts Receivable Representative - Work From Home",
       "company": null,
@@ -7040,7 +7048,7 @@
     },
     {
       "id": "9c7bca65-d608-4596-8925-cc21da8f2ede",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Now Hiring (78652)",
       "company": null,
@@ -7061,7 +7069,7 @@
     },
     {
       "id": "db26ae64-75ec-4550-9fb1-da1b1d44c90e",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Turn Technician",
       "company": null,
@@ -7082,7 +7090,7 @@
     },
     {
       "id": "c669b3cf-7a62-45fa-8d7f-590d82b8cabd",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Specialist",
       "company": null,
@@ -7108,7 +7116,7 @@
     },
     {
       "id": "a3ad4a1c-37bd-4166-a7cf-748e4091b645",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Part-Time Tasker (78745)",
       "company": null,
@@ -7129,7 +7137,7 @@
     },
     {
       "id": "0c47fc31-eb04-41ee-b2fb-2717d8b0ef85",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Gig Work - Taskers Wanted! (78664)",
       "company": null,
@@ -7150,7 +7158,7 @@
     },
     {
       "id": "b33d31fd-bff5-4b2b-87ac-d3d438f6a439",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Nurse Practitioner / Not Specified / Oklahoma / Locum Tenens / Oklahoma Statewid",
       "company": null,
@@ -7171,7 +7179,7 @@
     },
     {
       "id": "872ac688-3dca-4685-91c6-c851580671b7",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (50)",
       "company": null,
@@ -7194,7 +7202,7 @@
     },
     {
       "id": "3d8d6134-ffe0-4225-80d4-c4f081c56a8a",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "To-Go Specialist",
       "company": null,
@@ -7215,7 +7223,7 @@
     },
     {
       "id": "6a5af9db-7143-4978-8b33-a03261757e1b",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Markets Product Control Specialist Operator",
       "company": null,
@@ -7237,7 +7245,7 @@
     },
     {
       "id": "457f2f9d-6a80-47d0-b48c-64d3eaebe38d",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Accounts Receivable Specialist I #Full time #Remote (18)",
       "company": null,
@@ -7260,7 +7268,7 @@
     },
     {
       "id": "2fb65336-4b95-4e40-a105-105fed473088",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Health Insurance Agents: Future-Proof Your Income",
       "company": null,
@@ -7283,7 +7291,7 @@
     },
     {
       "id": "8875580e-5206-4e0d-826c-fdefffbf4dda",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Neurology Multiple Sclerosis MSL - Mideast",
       "company": null,
@@ -7307,7 +7315,7 @@
     },
     {
       "id": "7d336fa2-cad5-46b2-9e34-af300405598b",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Grants and Contracts Manager",
       "company": null,
@@ -7329,7 +7337,7 @@
     },
     {
       "id": "90596b92-3af3-47d1-b4e3-dbbff8938c61",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Freelance Computational Data Science Expert (Python & SQL)",
       "company": null,
@@ -7351,7 +7359,7 @@
     },
     {
       "id": "d92018f9-a83e-42f0-8538-63905710f8e9",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Product Marketing Intern - Mekari Qontak (Next Level Internship)",
       "company": null,
@@ -7374,7 +7382,7 @@
     },
     {
       "id": "f0f0104d-aa9c-4829-a016-b1c2f84c13d8",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "​Data Transport Manager ​",
       "company": null,
@@ -7399,7 +7407,7 @@
     },
     {
       "id": "5773b5ba-094f-4613-9ced-dd7b06b90144",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Service Analyst, Workforce Management, 9 Months Fixed Term Contract",
       "company": null,
@@ -7423,7 +7431,7 @@
     },
     {
       "id": "f9c7558b-4b5d-4b4c-9c45-788d045b780b",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Administrative & Marketing Assistant (Part-Time, Remote)",
       "company": null,
@@ -7445,7 +7453,7 @@
     },
     {
       "id": "99dc2f30-0718-4f6c-a452-4915f521cb6a",
-      "sourceId": "himalayas-1770217430867",
+      "sourceId": "himalayas-1770219319344",
       "canonicalUrl": "https://himalayas.app/jobs/undefined",
       "title": "Senior Software Engineer",
       "company": null,
@@ -7463,11 +7471,11 @@
       "collectedAt": "2026-02-04T13:22:53.006Z",
       "hashDedup": "5389ed2bd6286af859fc6a3a49e4253bb41de649ee59bdfdfbcc27442c8291d6",
       "source": "HIMALAYAS",
-      "score": 45,
+      "score": 10,
       "reasons": [
+        "Software engineer role",
         "Junior/intern level",
-        "Worldwide remote",
-        "Senior/Lead level"
+        "Worldwide remote"
       ]
     }
   ]
