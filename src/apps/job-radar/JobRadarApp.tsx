@@ -282,11 +282,11 @@ const JobRadarApp: React.FC = () => {
                         {formatDate(job.collectedAt)}
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {job.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
-                      {job.company && <span>{job.company}</span>}
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+                      {job.company && <span className="text-gray-400">{job.company}</span>}
                       {job.locationRaw && (
                         <>
                           <span className="text-gray-400">•</span>
@@ -341,11 +341,11 @@ const JobRadarApp: React.FC = () => {
           <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[80vh] flex flex-col">
             <div className="flex items-start justify-between p-6 border-b border-gray-200">
               <div className="flex-1 min-w-0 pr-4">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">
                   {selectedJob.title}
                 </h2>
-                <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
-                  {selectedJob.company && <span className="font-medium">{selectedJob.company}</span>}
+                <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+                  {selectedJob.company && <span className="text-gray-400">{selectedJob.company}</span>}
                   {selectedJob.locationRaw && (
                     <>
                       <span className="text-gray-400">•</span>
