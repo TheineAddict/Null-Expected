@@ -1,0 +1,64 @@
+{
+  "runs": [
+    {
+      "id": "run-1770222128380-h0j83u4my",
+      "startedAt": "2026-02-04T16:22:08.380Z",
+      "completedAt": null,
+      "status": "running",
+      "totalJobs": 0,
+      "sourcesOk": 0,
+      "sourcesFailed": 0,
+      "durationMs": 0
+    },
+    {
+      "id": "run-1770222144968-jhqli3fq2",
+      "startedAt": "2026-02-04T16:22:24.968Z",
+      "completedAt": null,
+      "status": "running",
+      "totalJobs": 0,
+      "sourcesOk": 0,
+      "sourcesFailed": 0,
+      "durationMs": 0
+    },
+    {
+      "id": "run-1770230211292-ks4k5x5sf",
+      "startedAt": "2026-02-04T18:36:51.292Z",
+      "completedAt": null,
+      "status": "running",
+      "totalJobs": 0,
+      "sourcesOk": 0,
+      "sourcesFailed": 0,
+      "durationMs": 0
+    },
+    {
+      "id": "run-1770230432841-m5g5ww5qz",
+      "startedAt": "2026-02-04T18:40:32.841Z",
+      "completedAt": "2026-02-04T18:41:48.307Z",
+      "status": "completed",
+      "totalJobs": 757,
+      "sourcesOk": 28,
+      "sourcesFailed": 6,
+      "durationMs": 75466
+    },
+    {
+      "id": "run-1770231930035-bz4y2hn9m",
+      "startedAt": "2026-02-04T19:05:30.035Z",
+      "completedAt": "2026-02-04T19:06:49.146Z",
+      "status": "completed",
+      "totalJobs": 757,
+      "sourcesOk": 28,
+      "sourcesFailed": 6,
+      "durationMs": 79111
+    },
+    {
+      "id": "run-1770233273013-zo9jlehz2",
+      "startedAt": "2026-02-04T19:27:53.013Z",
+      "completedAt": "2026-02-04T19:30:00.394Z",
+      "status": "completed",
+      "totalJobs": 859,
+      "sourcesOk": 23,
+      "sourcesFailed": 11,
+      "durationMs": 127381
+    }
+  ]
+}
