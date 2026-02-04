@@ -276,6 +276,9 @@ const JobRadarApp: React.FC = () => {
                         Score: {job.score}
                       </span>
                       <span className="text-xs text-gray-500">
+                        (0 = poor match, 100 = ideal match)
+                      </span>
+                      <span className="text-xs text-gray-500">
                         {formatDate(job.collectedAt)}
                       </span>
                     </div>
