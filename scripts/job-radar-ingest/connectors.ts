@@ -24,13 +24,13 @@ export async function fetchFromSource(source: SourceConfig): Promise<FetchResult
         jobs = await fetchHimalayas(source);
         break;
       default:
-        console.warn(`[${source.id}] Unknown source type: ${source.type}`);
+        console.warn(`[${source.id}] Unsupported source type: ${source.type}`);
         return {
           jobs: [],
-          ok: true,
+          ok: false,
           httpStatus: null,
-          errorType: null,
-          message: null,
+          errorType: 'UNSUPPORTED_SOURCE',
+          message: `Source type "${source.type}" does not have a connector implementation`,
         };
     }
 

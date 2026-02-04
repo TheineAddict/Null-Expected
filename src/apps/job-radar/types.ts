@@ -36,6 +36,8 @@ export type ErrorType =
   | 'INVALID_DATA'
   | 'RATE_LIMITED'
   | 'BLOCKED'
+  | 'UNSUPPORTED_SOURCE'
+  | 'DISABLED'
   | 'UNKNOWN_ERROR';
 
 export interface SourceResult {
@@ -43,6 +45,7 @@ export interface SourceResult {
   name: string;
   type: string;
   url: string;
+  enabled: boolean;
   ok: boolean;
   httpStatus: number | null;
   errorType: ErrorType | null;

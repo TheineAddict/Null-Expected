@@ -18,6 +18,7 @@ const JobRadarApp: React.FC = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showSourceHealth, setShowSourceHealth] = useState(false);
   const [showOnlyFailedSources, setShowOnlyFailedSources] = useState(false);
+  const [showOnlyEnabledSources, setShowOnlyEnabledSources] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -191,28 +192,61 @@ const JobRadarApp: React.FC = () => {
 
               {showSourceHealth && (
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-semibold text-gray-900">Source Health</h2>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={showOnlyFailedSources}
-                        onChange={(e) => setShowOnlyFailedSources(e.target.checked)}
-                        className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                      />
-                      <span className="text-sm text-gray-700">Show only failed sources</span>
-                    </label>
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h2 className="text-lg font-semibold text-gray-900 mb-2">Source Health</h2>
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        <span className="px-2 py-1 rounded bg-blue-100 text-blue-800 font-medium">
+                          Enabled: {meta.sourceResults.filter(s => s.enabled).length}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-green-100 text-green-800 font-medium">
+                          OK: {meta.sourceResults.filter(s => s.ok).length}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-red-100 text-red-800 font-medium">
+                          Failed: {meta.sourceResults.filter(s => !s.ok && s.enabled).length}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-orange-100 text-orange-800 font-medium">
+                          Unsupported: {meta.sourceResults.filter(s => s.errorType === 'UNSUPPORTED_SOURCE').length}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={showOnlyEnabledSources}
+                          onChange={(e) => setShowOnlyEnabledSources(e.target.checked)}
+                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-700">Show enabled only</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={showOnlyFailedSources}
+                          onChange={(e) => setShowOnlyFailedSources(e.target.checked)}
+                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-700">Show failed only</span>
+                      </label>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     {meta.sourceResults
-                      .filter(source => !showOnlyFailedSources || !source.ok)
+                      .filter(source => {
+                        if (showOnlyEnabledSources && !source.enabled) return false;
+                        if (showOnlyFailedSources && source.ok) return false;
+                        return true;
+                      })
                       .map((source) => (
                         <div
                           key={source.sourceId}
                           className={`p-3 rounded-lg border ${
                             source.ok
                               ? 'bg-green-50 border-green-200'
+                              : source.errorType === 'DISABLED'
+                              ? 'bg-gray-50 border-gray-200'
                               : 'bg-red-50 border-red-200'
                           }`}
                         >
@@ -222,16 +256,25 @@ const JobRadarApp: React.FC = () => {
                                 {source.ok ? (
                                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                                 ) : (
-                                  <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                                  <AlertCircle className={`w-4 h-4 flex-shrink-0 ${
+                                    source.errorType === 'DISABLED' ? 'text-gray-500' : 'text-red-600'
+                                  }`} />
                                 )}
                                 <h3 className="font-medium text-gray-900">{source.name}</h3>
                                 <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
                                   source.ok
                                     ? 'bg-green-100 text-green-800'
+                                    : source.errorType === 'DISABLED'
+                                    ? 'bg-gray-100 text-gray-800'
                                     : 'bg-red-100 text-red-800'
                                 }`}>
-                                  {source.ok ? 'OK' : 'Failed'}
+                                  {source.ok ? 'OK' : source.errorType === 'DISABLED' ? 'Disabled' : 'Failed'}
                                 </span>
+                                {!source.enabled && (
+                                  <span className="px-2 py-0.5 rounded text-xs font-semibold bg-gray-200 text-gray-600">
+                                    Not Enabled
+                                  </span>
+                                )}
                               </div>
 
                               <div className="text-sm text-gray-600 mb-1">
@@ -271,9 +314,15 @@ const JobRadarApp: React.FC = () => {
                         </div>
                       ))}
 
-                    {showOnlyFailedSources && meta.sourceResults.filter(s => !s.ok).length === 0 && (
+                    {meta.sourceResults.filter(source => {
+                      if (showOnlyEnabledSources && !source.enabled) return false;
+                      if (showOnlyFailedSources && source.ok) return false;
+                      return true;
+                    }).length === 0 && (
                       <div className="text-center py-4 text-gray-600">
-                        All sources are healthy!
+                        {showOnlyFailedSources
+                          ? 'All sources are healthy!'
+                          : 'No sources match the current filters.'}
                       </div>
                     )}
                   </div>

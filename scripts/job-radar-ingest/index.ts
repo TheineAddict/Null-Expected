@@ -22,8 +22,9 @@ async function main() {
 
   const sourcesConfig: SourcesConfig = JSON.parse(readFileSync(sourcesPath, 'utf-8'));
   const enabledSources = sourcesConfig.sources.filter(s => s.enabled);
+  const disabledSources = sourcesConfig.sources.filter(s => !s.enabled);
 
-  console.log(`Found ${enabledSources.length} enabled source(s)\n`);
+  console.log(`Found ${enabledSources.length} enabled source(s), ${disabledSources.length} disabled\n`);
 
   let existingJobs: NormalizedJob[] = [];
   try {
@@ -48,32 +49,77 @@ async function main() {
     const startTime = Date.now();
     const fetchedAt = new Date().toISOString();
 
-    const result = await fetchFromSource(source);
-    const durationMs = Date.now() - startTime;
+    try {
+      const result = await fetchFromSource(source);
+      const durationMs = Date.now() - startTime;
 
-    rawJobs.push(...result.jobs);
+      rawJobs.push(...result.jobs);
 
+      const url = source.config?.url || source.config?.boardToken || 'unknown';
+
+      sourceResults.push({
+        sourceId: source.id,
+        name: source.name,
+        type: source.type,
+        url,
+        enabled: true,
+        ok: result.ok,
+        httpStatus: result.httpStatus,
+        errorType: result.errorType,
+        message: result.message,
+        itemCount: result.jobs.length,
+        durationMs,
+        fetchedAt,
+      });
+
+      if (result.ok) {
+        sourcesOk++;
+        console.log(`[${source.id}] ✓ Fetched ${result.jobs.length} job(s) in ${durationMs}ms`);
+      } else {
+        sourcesFailed++;
+        console.error(`[${source.id}] ✗ Failed: ${result.errorType} - ${result.message}`);
+      }
+    } catch (error) {
+      const durationMs = Date.now() - startTime;
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      const url = source.config?.url || source.config?.boardToken || 'unknown';
+
+      sourceResults.push({
+        sourceId: source.id,
+        name: source.name,
+        type: source.type,
+        url,
+        enabled: true,
+        ok: false,
+        httpStatus: null,
+        errorType: 'UNKNOWN_ERROR',
+        message: `Uncaught error: ${errorMsg}`,
+        itemCount: 0,
+        durationMs,
+        fetchedAt,
+      });
+
+      sourcesFailed++;
+      console.error(`[${source.id}] ✗ Uncaught error: ${errorMsg}`);
+    }
+  }
+
+  for (const source of disabledSources) {
+    const url = source.config?.url || source.config?.boardToken || 'unknown';
     sourceResults.push({
       sourceId: source.id,
       name: source.name,
       type: source.type,
-      url: source.config.url,
-      ok: result.ok,
-      httpStatus: result.httpStatus,
-      errorType: result.errorType,
-      message: result.message,
-      itemCount: result.jobs.length,
-      durationMs,
-      fetchedAt,
+      url,
+      enabled: false,
+      ok: false,
+      httpStatus: null,
+      errorType: 'DISABLED',
+      message: 'Source is disabled in configuration',
+      itemCount: 0,
+      durationMs: 0,
+      fetchedAt: new Date().toISOString(),
     });
-
-    if (result.ok) {
-      sourcesOk++;
-      console.log(`[${source.id}] ✓ Fetched ${result.jobs.length} job(s) in ${durationMs}ms`);
-    } else {
-      sourcesFailed++;
-      console.error(`[${source.id}] ✗ Failed: ${result.errorType} - ${result.message}`);
-    }
   }
 
   console.log(`\nFetched ${rawJobs.length} raw job(s) from ${sourcesOk} source(s)\n`);
