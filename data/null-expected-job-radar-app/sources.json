@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "wwr",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/remote-jobs.rss"
+      }
+    },
+    {
+      "id": "remotive",
+      "type": "REMOTIVE_API",
+      "name": "Remotive",
+      "enabled": true,
+      "config": {
+        "url": "https://remotive.com/api/remote-jobs",
+        "params": {}
+      }
+    },
+    {
+      "id": "himalayas",
+      "type": "HIMALAYAS_API",
+      "name": "Himalayas",
+      "enabled": true,
+      "config": {
+        "url": "https://himalayas.app/jobs/api",
+        "params": {
+          "limit": 20
+        }
+      }
+    }
+  ]
+}
