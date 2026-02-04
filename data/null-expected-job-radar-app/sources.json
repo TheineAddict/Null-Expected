@@ -2,14 +2,60 @@
   "schemaVersion": 1,
   "sources": [
     {
-      "id": "wwr",
+      "id": "wwr_programming",
       "type": "WWR_RSS",
-      "name": "We Work Remotely",
+      "name": "We Work Remotely - Programming (RSS)",
       "enabled": true,
       "config": {
-        "url": "https://weworkremotely.com/remote-jobs.rss"
+        "url": "https://weworkremotely.com/categories/remote-programming-jobs.rss"
       }
     },
+    {
+      "id": "wwr_devops",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely - DevOps & Sysadmin (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss"
+      }
+    },
+    {
+      "id": "wwr_management_finance",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely - Management & Finance (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/categories/remote-management-and-finance-jobs.rss"
+      }
+    },
+    {
+      "id": "wwr_product",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely - Product (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/categories/remote-product-jobs.rss"
+      }
+    },
+    {
+      "id": "wwr_customer_support",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely - Customer Support (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/categories/remote-customer-support-jobs.rss"
+      }
+    },
+    {
+      "id": "wwr_all_other",
+      "type": "WWR_RSS",
+      "name": "We Work Remotely - All Other (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://weworkremotely.com/categories/all-other-remote-jobs.rss"
+      }
+    },
+
     {
       "id": "remotive",
       "type": "REMOTIVE_API",
@@ -30,6 +76,271 @@
         "params": {
           "limit": 20
         }
+      }
+    },
+
+    {
+      "id": "remotive_rss",
+      "type": "RSS_GENERIC",
+      "name": "Remotive (RSS fallback)",
+      "enabled": false,
+      "config": {
+        "url": "https://remotive.com/remote-jobs/rss-feed"
+      }
+    },
+    {
+      "id": "himalayas_rss",
+      "type": "RSS_GENERIC",
+      "name": "Himalayas (RSS - most recent jobs)",
+      "enabled": false,
+      "config": {
+        "url": "https://himalayas.app/jobs/rss"
+      }
+    },
+    {
+      "id": "jobicy_api",
+      "type": "JOBICY_API",
+      "name": "Jobicy (API)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobicy.com/api/v2/remote-jobs",
+        "params": {}
+      }
+    },
+    {
+      "id": "remoteok_api",
+      "type": "REMOTEOK_API",
+      "name": "Remote OK (API)",
+      "enabled": false,
+      "config": {
+        "url": "https://remoteok.io/api",
+        "requiresAttribution": true,
+        "attributionName": "Remote OK",
+        "attributionUrl": "https://remoteok.com/"
+      }
+    },
+    {
+      "id": "jobscollider_rss",
+      "type": "RSS_GENERIC",
+      "name": "JobsCollider (RSS)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobscollider.com/remote-jobs.rss",
+        "requiresAttribution": true,
+        "attributionName": "JobsCollider",
+        "attributionUrl": "https://jobscollider.com/"
+      }
+    },
+    {
+      "id": "realworkfromanywhere_rss",
+      "type": "RSS_GENERIC",
+      "name": "Real Work From Anywhere (RSS)",
+      "enabled": false,
+      "config": {
+        "url": "https://www.realworkfromanywhere.com/rss.xml"
+      }
+    },
+
+    {
+      "id": "euremotejobs_europe",
+      "type": "HTML_SCRAPE",
+      "name": "EU Remote Jobs - Europe",
+      "enabled": false,
+      "config": {
+        "url": "https://euremotejobs.com/job-region/remote-jobs-europe/"
+      }
+    },
+    {
+      "id": "euremotejobs_worldwide",
+      "type": "HTML_SCRAPE",
+      "name": "EU Remote Jobs - Worldwide",
+      "enabled": false,
+      "config": {
+        "url": "https://euremotejobs.com/job-region/remote-jobs-worldwide/"
+      }
+    },
+    {
+      "id": "remocate",
+      "type": "HTML_SCRAPE",
+      "name": "Remocate",
+      "enabled": false,
+      "config": {
+        "url": "https://www.remocate.app/"
+      }
+    },
+    {
+      "id": "jobgether_anywhere",
+      "type": "HTML_SCRAPE",
+      "name": "Jobgether - Anywhere",
+      "enabled": false,
+      "config": {
+        "url": "https://jobgether.com/remote-jobs/anywhere"
+      }
+    },
+    {
+      "id": "jobgether_romania_tech",
+      "type": "HTML_SCRAPE",
+      "name": "Jobgether - Romania (Tech)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobgether.com/remote-jobs/romania/tech"
+      }
+    },
+    {
+      "id": "jobgether_tech_custom_url",
+      "type": "HTML_SCRAPE",
+      "name": "Jobgether - Tech (your saved URL)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobgether.com/remote-jobs/tech?locations=622a659af0bac38678ed1398&sort=date"
+      }
+    },
+
+    {
+      "id": "remoterocketship_sitemap_worldwide",
+      "type": "SITEMAP_XML",
+      "name": "Remote Rocketship - Job Openings (Worldwide sitemap)",
+      "enabled": false,
+      "config": {
+        "url": "https://www.remoterocketship.com/sitemap_job_openings_worldwide.xml"
+      }
+    },
+    {
+      "id": "remoterocketship_sitemap_rest_of_world",
+      "type": "SITEMAP_XML",
+      "name": "Remote Rocketship - Job Openings (Rest of World sitemap)",
+      "enabled": false,
+      "config": {
+        "url": "https://www.remoterocketship.com/sitemap_job_openings_rest_of_world.xml"
+      }
+    },
+
+    {
+      "id": "gh_automattic",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Automattic (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/automatticcareers"
+      }
+    },
+    {
+      "id": "gh_gitlab",
+      "type": "GREENHOUSE_BOARD",
+      "name": "GitLab (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/gitlab"
+      }
+    },
+    {
+      "id": "gh_canonical",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Canonical (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/canonical"
+      }
+    },
+    {
+      "id": "gh_remotecom",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Remote (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/remotecom"
+      }
+    },
+    {
+      "id": "gh_testlio",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Testlio (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/testlio"
+      }
+    },
+    {
+      "id": "gh_grafana",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Grafana Labs (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/grafanalabs"
+      }
+    },
+    {
+      "id": "gh_fueled",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Fueled (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/fueledcareers"
+      }
+    },
+    {
+      "id": "gh_appfire",
+      "type": "GREENHOUSE_BOARD",
+      "name": "Appfire (Greenhouse)",
+      "enabled": false,
+      "config": {
+        "url": "https://job-boards.greenhouse.io/appfiretechnologiesllc"
+      }
+    },
+
+    {
+      "id": "ashby_deel",
+      "type": "ASHBY_BOARD",
+      "name": "Deel (Ashby)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobs.ashbyhq.com/deel"
+      }
+    },
+    {
+      "id": "ashby_zapier",
+      "type": "ASHBY_BOARD",
+      "name": "Zapier (Ashby)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobs.ashbyhq.com/zapier"
+      }
+    },
+    {
+      "id": "ashby_duckduckgo",
+      "type": "ASHBY_BOARD",
+      "name": "DuckDuckGo (Ashby)",
+      "enabled": false,
+      "config": {
+        "url": "https://jobs.ashbyhq.com/duck-duck-go"
+      }
+    },
+
+    {
+      "id": "company_buffer",
+      "type": "HTML_SCRAPE",
+      "name": "Buffer (Careers page)",
+      "enabled": false,
+      "config": {
+        "url": "https://buffer.com/journey"
+      }
+    },
+    {
+      "id": "company_toptal",
+      "type": "HTML_SCRAPE",
+      "name": "Toptal (Careers page)",
+      "enabled": false,
+      "config": {
+        "url": "https://www.toptal.com/careers"
+      }
+    },
+    {
+      "id": "company_10up",
+      "type": "HTML_SCRAPE",
+      "name": "10up (Careers page)",
+      "enabled": false,
+      "config": {
+        "url": "https://10up.com/careers/"
       }
     }
   ]
