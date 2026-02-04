@@ -285,12 +285,12 @@ const JobRadarApp: React.FC = () => {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
                       {job.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
-                      {job.company && <span className="text-gray-400">{job.company}</span>}
+                    <div className="flex flex-wrap items-center gap-2 text-sm">
+                      {job.company && <span className="text-gray-700 font-medium">{job.company}</span>}
                       {job.locationRaw && (
                         <>
-                          <span className="text-gray-400">•</span>
-                          <span className="text-gray-500">{job.locationRaw}</span>
+                          <span className="text-gray-600">•</span>
+                          <span className="text-gray-700">{job.locationRaw}</span>
                         </>
                       )}
                     </div>
