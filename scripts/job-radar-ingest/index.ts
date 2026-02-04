@@ -12,9 +12,24 @@ import { fetchFromSource } from './connectors';
 import { cleanHtmlToText, computeHashDedup, generateStableUUID } from './normalize';
 import { classifyJob } from './classify';
 import { scoreJob } from './score';
+import { canRunToday, startRun, completeRun, failRun } from './runs-tracker';
+import { delayWithJitter, getDelayForSourceType } from './rate-limiter';
 
 async function main() {
   console.log('=== Job Radar Ingestion Started ===\n');
+
+  const runCheck = canRunToday();
+  console.log(runCheck.message);
+
+  if (!runCheck.allowed) {
+    console.error('\nIngestion blocked: Daily run limit reached.');
+    console.error('This limit prevents rate limiting and IP bans from job boards.');
+    console.error('The limit will reset at midnight.\n');
+    process.exit(1);
+  }
+
+  const runId = startRun();
+  console.log();
 
   const sourcesPath = join(process.cwd(), 'data/null-expected-job-radar-app/sources.json');
   const jobsOutputPath = join(process.cwd(), 'public/null-expected-job-radar-app/data/jobs.json');
@@ -45,9 +60,19 @@ async function main() {
   let sourcesFailed = 0;
   const sourceResults: SourceResult[] = [];
 
-  for (const source of enabledSources) {
+  for (let i = 0; i < enabledSources.length; i++) {
+    const source = enabledSources[i];
     const startTime = Date.now();
     const fetchedAt = new Date().toISOString();
+
+    if (i > 0) {
+      const delayMs = getDelayForSourceType(source.type);
+      if (delayMs > 0) {
+        await delayWithJitter(delayMs);
+      }
+    }
+
+    console.log(`\n[${i + 1}/${enabledSources.length}] Processing ${source.name}...`);
 
     try {
       const result = await fetchFromSource(source);
@@ -203,8 +228,15 @@ async function main() {
   writeFileSync(jobsOutputPath, JSON.stringify(jobsSnapshot, null, 2));
   writeFileSync(metaOutputPath, JSON.stringify(metaSnapshot, null, 2));
 
-  console.log(`✓ Written ${normalizedJobs.length} job(s) to ${jobsOutputPath}`);
+  console.log(`\n✓ Written ${normalizedJobs.length} job(s) to ${jobsOutputPath}`);
   console.log(`✓ Written metadata to ${metaOutputPath}`);
+
+  completeRun(runId, {
+    totalJobs: normalizedJobs.length,
+    sourcesOk,
+    sourcesFailed,
+  });
+
   console.log('\n=== Job Radar Ingestion Complete ===');
 }
 

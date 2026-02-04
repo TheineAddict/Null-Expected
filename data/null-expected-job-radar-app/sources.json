@@ -221,7 +221,8 @@
       "name": "Automattic (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/automatticcareers"
+        "url": "https://job-boards.greenhouse.io/automatticcareers",
+        "company": "Automattic"
       }
     },
     {
@@ -230,7 +231,8 @@
       "name": "GitLab (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/gitlab"
+        "url": "https://job-boards.greenhouse.io/gitlab",
+        "company": "GitLab"
       }
     },
     {
@@ -239,7 +241,8 @@
       "name": "Canonical (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/canonical"
+        "url": "https://job-boards.greenhouse.io/canonical",
+        "company": "Canonical"
       }
     },
     {
@@ -248,7 +251,8 @@
       "name": "Remote (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/remotecom"
+        "url": "https://job-boards.greenhouse.io/remotecom",
+        "company": "Remote.com"
       }
     },
     {
@@ -257,7 +261,8 @@
       "name": "Testlio (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/testlio"
+        "url": "https://job-boards.greenhouse.io/testlio",
+        "company": "Testlio"
       }
     },
     {
@@ -266,7 +271,8 @@
       "name": "Grafana Labs (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/grafanalabs"
+        "url": "https://job-boards.greenhouse.io/grafanalabs",
+        "company": "Grafana Labs"
       }
     },
     {
@@ -275,7 +281,8 @@
       "name": "Fueled (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/fueledcareers"
+        "url": "https://job-boards.greenhouse.io/fueledcareers",
+        "company": "Fueled"
       }
     },
     {
@@ -284,7 +291,8 @@
       "name": "Appfire (Greenhouse)",
       "enabled": false,
       "config": {
-        "url": "https://job-boards.greenhouse.io/appfiretechnologiesllc"
+        "url": "https://job-boards.greenhouse.io/appfiretechnologiesllc",
+        "company": "Appfire"
       }
     },
 
@@ -294,7 +302,8 @@
       "name": "Deel (Ashby)",
       "enabled": false,
       "config": {
-        "url": "https://jobs.ashbyhq.com/deel"
+        "url": "https://jobs.ashbyhq.com/deel",
+        "company": "Deel"
       }
     },
     {
@@ -303,7 +312,8 @@
       "name": "Zapier (Ashby)",
       "enabled": false,
       "config": {
-        "url": "https://jobs.ashbyhq.com/zapier"
+        "url": "https://jobs.ashbyhq.com/zapier",
+        "company": "Zapier"
       }
     },
     {
@@ -312,7 +322,8 @@
       "name": "DuckDuckGo (Ashby)",
       "enabled": false,
       "config": {
-        "url": "https://jobs.ashbyhq.com/duck-duck-go"
+        "url": "https://jobs.ashbyhq.com/duck-duck-go",
+        "company": "DuckDuckGo"
       }
     },
 
