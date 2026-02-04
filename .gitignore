@@ -30,6 +30,6 @@ playwright-report/
 playwright/.cache/
 
 #Job Radar App Job Parsing Artifacts
-runs-history.json
-jobs.json
-meta.json
+data/null-expected-job-radar-app/runs-history.json
+public/null-expected-job-radar-app/data/jobs.json
+public/null-expected-job-radar-app/data/meta.json
