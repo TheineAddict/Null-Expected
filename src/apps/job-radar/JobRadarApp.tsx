@@ -17,8 +17,7 @@ const JobRadarApp: React.FC = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showSourceHealth, setShowSourceHealth] = useState(false);
-  const [showOnlyFailedSources, setShowOnlyFailedSources] = useState(false);
-  const [showOnlyEnabledSources, setShowOnlyEnabledSources] = useState(true);
+  const [sourceFilter, setSourceFilter] = useState<'all' | 'enabled' | 'failed'>('enabled');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -210,33 +209,45 @@ const JobRadarApp: React.FC = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={showOnlyEnabledSources}
-                          onChange={(e) => setShowOnlyEnabledSources(e.target.checked)}
-                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                        />
-                        <span className="text-sm text-gray-700">Show enabled only</span>
-                      </label>
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={showOnlyFailedSources}
-                          onChange={(e) => setShowOnlyFailedSources(e.target.checked)}
-                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                        />
-                        <span className="text-sm text-gray-700">Show failed only</span>
-                      </label>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setSourceFilter('all')}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                          sourceFilter === 'all'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        All
+                      </button>
+                      <button
+                        onClick={() => setSourceFilter('enabled')}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                          sourceFilter === 'enabled'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        Enabled
+                      </button>
+                      <button
+                        onClick={() => setSourceFilter('failed')}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                          sourceFilter === 'failed'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        Failed
+                      </button>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     {meta.sourceResults
                       .filter(source => {
-                        if (showOnlyEnabledSources && !source.enabled) return false;
-                        if (showOnlyFailedSources && source.ok) return false;
+                        if (sourceFilter === 'enabled') return source.enabled;
+                        if (sourceFilter === 'failed') return !source.ok && source.enabled;
                         return true;
                       })
                       .map((source) => (
@@ -315,14 +326,14 @@ const JobRadarApp: React.FC = () => {
                       ))}
 
                     {meta.sourceResults.filter(source => {
-                      if (showOnlyEnabledSources && !source.enabled) return false;
-                      if (showOnlyFailedSources && source.ok) return false;
+                      if (sourceFilter === 'enabled') return source.enabled;
+                      if (sourceFilter === 'failed') return !source.ok && source.enabled;
                       return true;
                     }).length === 0 && (
                       <div className="text-center py-4 text-gray-600">
-                        {showOnlyFailedSources
-                          ? 'All sources are healthy!'
-                          : 'No sources match the current filters.'}
+                        {sourceFilter === 'failed'
+                          ? 'All enabled sources are healthy!'
+                          : 'No sources match the current filter.'}
                       </div>
                     )}
                   </div>
