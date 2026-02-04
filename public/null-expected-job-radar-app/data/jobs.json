@@ -1,21 +1,5 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-02-04T12:00:00.000Z",
-  "jobs": [
-    {
-      "title": "Senior QA Engineer",
-      "company": "Example Corp",
-      "canonicalUrl": "https://example.com/jobs/senior-qa"
-    },
-    {
-      "title": "Test Automation Engineer",
-      "company": "Tech Innovations",
-      "canonicalUrl": "https://example.com/jobs/automation"
-    },
-    {
-      "title": "Quality Assurance Lead",
-      "company": "Digital Solutions",
-      "canonicalUrl": "https://example.com/jobs/qa-lead"
-    }
-  ]
+  "jobs": []
 }

@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search } from 'lucide-react';
-import type { JobSnapshot } from './types';
+import { Search, X, SlidersHorizontal, Info } from 'lucide-react';
+import type { JobSnapshot, Job, RemoteScope } from './types';
+
+const REMOTE_SCOPE_OPTIONS: RemoteScope[] = ['WORLDWIDE', 'EU_EEA', 'EUROPE', 'ROMANIA'];
 
 const JobRadarApp: React.FC = () => {
   const [snapshot, setSnapshot] = useState<JobSnapshot | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedScopes, setSelectedScopes] = useState<Set<RemoteScope>>(new Set(REMOTE_SCOPE_OPTIONS));
+  const [includeCountryOnly, setIncludeCountryOnly] = useState(false);
+  const [includeUnknown, setIncludeUnknown] = useState(false);
+  const [minScore, setMinScore] = useState(40);
+  const [showFilters, setShowFilters] = useState(true);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -27,17 +35,50 @@ const JobRadarApp: React.FC = () => {
     fetchJobs();
   }, []);
 
-  const filteredJobs = useMemo(() => {
-    if (!snapshot?.jobs) return [];
-    if (!searchQuery.trim()) return snapshot.jobs;
+  const toggleScope = (scope: RemoteScope) => {
+    const newScopes = new Set(selectedScopes);
+    if (newScopes.has(scope)) {
+      newScopes.delete(scope);
+    } else {
+      newScopes.add(scope);
+    }
+    setSelectedScopes(newScopes);
+  };
 
-    const query = searchQuery.toLowerCase();
-    return snapshot.jobs.filter(
-      (job) =>
-        job.title.toLowerCase().includes(query) ||
-        job.company.toLowerCase().includes(query)
-    );
-  }, [snapshot, searchQuery]);
+  const filteredAndSortedJobs = useMemo(() => {
+    if (!snapshot?.jobs) return [];
+
+    let filtered = snapshot.jobs.filter((job) => {
+      if (job.score < minScore) return false;
+
+      if (job.remoteScope === 'COUNTRY_ONLY' && !includeCountryOnly) return false;
+      if (job.remoteScope === 'UNKNOWN' && !includeUnknown) return false;
+
+      if (job.remoteScope !== 'COUNTRY_ONLY' &&
+          job.remoteScope !== 'UNKNOWN' &&
+          !selectedScopes.has(job.remoteScope)) {
+        return false;
+      }
+
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        const titleMatch = job.title.toLowerCase().includes(query);
+        const companyMatch = job.company?.toLowerCase().includes(query) ?? false;
+        if (!titleMatch && !companyMatch) return false;
+      }
+
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      const dateA = new Date(a.collectedAt).getTime();
+      const dateB = new Date(b.collectedAt).getTime();
+      if (dateB !== dateA) return dateB - dateA;
+      return b.score - a.score;
+    });
+
+    return filtered;
+  }, [snapshot, searchQuery, selectedScopes, includeCountryOnly, includeUnknown, minScore]);
 
   if (loading) {
     return (
@@ -63,13 +104,41 @@ const JobRadarApp: React.FC = () => {
   const updatedDate = new Date(snapshot.updatedAt);
   const isValidDate = !isNaN(updatedDate.getTime()) && snapshot.updatedAt !== '1970-01-01T00:00:00.000Z';
 
+  const getScopeBadgeColor = (scope: RemoteScope): string => {
+    const colors: Record<RemoteScope, string> = {
+      WORLDWIDE: 'bg-green-100 text-green-800',
+      EUROPE: 'bg-blue-100 text-blue-800',
+      EU_EEA: 'bg-blue-100 text-blue-800',
+      EMEA: 'bg-cyan-100 text-cyan-800',
+      ROMANIA: 'bg-amber-100 text-amber-800',
+      COUNTRY_ONLY: 'bg-orange-100 text-orange-800',
+      MULTI_COUNTRY: 'bg-teal-100 text-teal-800',
+      UNKNOWN: 'bg-gray-100 text-gray-800',
+    };
+    return colors[scope];
+  };
+
+  const formatDate = (dateStr: string): string => {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return 'Unknown';
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffHours < 1) return 'Just now';
+    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffDays < 7) return `${diffDays}d ago`;
+    return date.toLocaleDateString();
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <header className="mb-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <header className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Null Expected Job Radar</h1>
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
             <div className="flex flex-wrap gap-6">
               <div>
                 <div className="text-sm text-gray-500">Last Updated</div>
@@ -83,10 +152,16 @@ const JobRadarApp: React.FC = () => {
                   {snapshot.jobs.length}
                 </div>
               </div>
+              <div>
+                <div className="text-sm text-gray-500">Filtered</div>
+                <div className="text-lg font-semibold text-gray-900">
+                  {filteredAndSortedJobs.length}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative mb-4">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
@@ -96,50 +171,225 @@ const JobRadarApp: React.FC = () => {
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
+
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
+          >
+            <SlidersHorizontal className="w-4 h-4" />
+            {showFilters ? 'Hide Filters' : 'Show Filters'}
+          </button>
+
+          {showFilters && (
+            <div className="mt-4 bg-white rounded-lg shadow-sm border border-gray-200 p-4 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Remote Scope
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {REMOTE_SCOPE_OPTIONS.map((scope) => (
+                    <button
+                      key={scope}
+                      onClick={() => toggleScope(scope)}
+                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        selectedScopes.has(scope)
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {scope.replace('_', ' ')}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeCountryOnly}
+                    onChange={(e) => setIncludeCountryOnly(e.target.checked)}
+                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm text-gray-700">Include COUNTRY_ONLY</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeUnknown}
+                    onChange={(e) => setIncludeUnknown(e.target.checked)}
+                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm text-gray-700">Include UNKNOWN scope</span>
+                </label>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-medium text-gray-700">
+                    Minimum Score
+                  </label>
+                  <span className="text-sm font-semibold text-blue-600">{minScore}</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value={minScore}
+                  onChange={(e) => setMinScore(Number(e.target.value))}
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                />
+                <div className="flex justify-between text-xs text-gray-500 mt-1">
+                  <span>0</span>
+                  <span>50</span>
+                  <span>100</span>
+                </div>
+              </div>
+            </div>
+          )}
         </header>
 
         {snapshot.jobs.length === 0 ? (
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
             <p className="text-gray-600">No jobs in snapshot. Run ingestion to populate.</p>
           </div>
-        ) : filteredJobs.length === 0 ? (
+        ) : filteredAndSortedJobs.length === 0 ? (
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-            <p className="text-gray-600">No jobs match your search.</p>
+            <p className="text-gray-600">No jobs match your filters.</p>
           </div>
         ) : (
           <div className="space-y-3">
-            {filteredJobs.map((job, index) => (
+            {filteredAndSortedJobs.map((job) => (
               <div
-                key={index}
+                key={job.id}
                 className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-4 mb-3">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-semibold ${getScopeBadgeColor(job.remoteScope)}`}>
+                        {job.remoteScope.replace('_', ' ')}
+                      </span>
+                      <span className="px-2 py-0.5 rounded text-xs font-semibold bg-gray-100 text-gray-800">
+                        Score: {job.score}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {formatDate(job.collectedAt)}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       {job.title}
                     </h3>
-                    <p className="text-gray-600">{job.company}</p>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                      {job.company && <span>{job.company}</span>}
+                      {job.locationRaw && (
+                        <>
+                          <span className="text-gray-400">•</span>
+                          <span>{job.locationRaw}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
-                  <a
-                    href={job.canonicalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-shrink-0 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-                  >
-                    Apply
-                  </a>
+                  <div className="flex gap-2">
+                    {job.descriptionText && (
+                      <button
+                        onClick={() => setSelectedJob(job)}
+                        className="flex-shrink-0 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                      >
+                        <Info className="w-4 h-4" />
+                      </button>
+                    )}
+                    <a
+                      href={job.canonicalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    >
+                      Apply
+                    </a>
+                  </div>
                 </div>
+
+                {job.reasons.length > 0 && (
+                  <div className="mt-2 pt-2 border-t border-gray-100">
+                    <div className="text-xs text-gray-500 mb-1">Reasons:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {job.reasons.slice(0, 3).map((reason, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700"
+                        >
+                          {reason}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         )}
-
-        {filteredJobs.length > 0 && (
-          <div className="mt-6 text-center text-sm text-gray-500">
-            Showing {filteredJobs.length} of {snapshot.jobs.length} jobs
-          </div>
-        )}
       </div>
+
+      {selectedJob && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[80vh] flex flex-col">
+            <div className="flex items-start justify-between p-6 border-b border-gray-200">
+              <div className="flex-1 min-w-0 pr-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  {selectedJob.title}
+                </h2>
+                <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                  {selectedJob.company && <span className="font-medium">{selectedJob.company}</span>}
+                  {selectedJob.locationRaw && (
+                    <>
+                      <span className="text-gray-400">•</span>
+                      <span>{selectedJob.locationRaw}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedJob(null)}
+                className="flex-shrink-0 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="prose prose-sm max-w-none">
+                {selectedJob.descriptionText ? (
+                  <div className="whitespace-pre-wrap text-gray-700">
+                    {selectedJob.descriptionText}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 italic">No description available</p>
+                )}
+              </div>
+            </div>
+
+            <div className="p-6 border-t border-gray-200 flex gap-3">
+              <button
+                onClick={() => setSelectedJob(null)}
+                className="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              >
+                Close
+              </button>
+              <a
+                href={selectedJob.canonicalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center font-medium"
+              >
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
