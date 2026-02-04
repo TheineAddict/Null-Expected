@@ -282,7 +282,7 @@ const JobRadarApp: React.FC = () => {
                         {formatDate(job.collectedAt)}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
                       {job.title}
                     </h3>
                     <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
@@ -290,7 +290,7 @@ const JobRadarApp: React.FC = () => {
                       {job.locationRaw && (
                         <>
                           <span className="text-gray-400">•</span>
-                          <span>{job.locationRaw}</span>
+                          <span className="text-gray-500">{job.locationRaw}</span>
                         </>
                       )}
                     </div>
