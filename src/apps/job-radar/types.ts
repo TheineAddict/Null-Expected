@@ -2,6 +2,11 @@ export type WorkplaceType = 'REMOTE' | 'HYBRID' | 'ONSITE' | 'UNKNOWN';
 export type RemoteScope = 'WORLDWIDE' | 'EUROPE' | 'EU_EEA' | 'EMEA' | 'ROMANIA' | 'COUNTRY_ONLY' | 'MULTI_COUNTRY' | 'UNKNOWN';
 export type JobSource = 'WWR' | 'REMOTIVE' | 'HIMALAYAS' | 'RSS' | 'GREENHOUSE' | 'LEVER';
 
+export interface Attribution {
+  name: string;
+  url: string;
+}
+
 export interface Job {
   id: string;
   sourceId: string;
@@ -20,6 +25,7 @@ export interface Job {
   score: number;
   reasons: string[];
   source: JobSource;
+  attribution?: Attribution;
 }
 
 export interface JobSnapshot {

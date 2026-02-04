@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, X, SlidersHorizontal, Info, AlertCircle, CheckCircle, Clock } from 'lucide-react';
-import type { JobSnapshot, Job, RemoteScope, MetaSnapshot } from './types';
+import { Search, X, SlidersHorizontal, Info, AlertCircle, CheckCircle, Clock, ExternalLink } from 'lucide-react';
+import type { JobSnapshot, Job, RemoteScope, MetaSnapshot, Attribution } from './types';
 
 const REMOTE_SCOPE_OPTIONS: RemoteScope[] = ['WORLDWIDE', 'EU_EEA', 'EUROPE', 'ROMANIA'];
 
@@ -92,6 +92,16 @@ const JobRadarApp: React.FC = () => {
 
     return filtered;
   }, [snapshot, searchQuery, selectedScopes, includeCountryOnly, includeUnknown, minScore]);
+
+  const uniqueAttributions = useMemo(() => {
+    const attributions = new Map<string, Attribution>();
+    filteredAndSortedJobs.forEach(job => {
+      if (job.attribution) {
+        attributions.set(job.attribution.name, job.attribution);
+      }
+    });
+    return Array.from(attributions.values());
+  }, [filteredAndSortedJobs]);
 
   if (loading) {
     return (
@@ -521,6 +531,30 @@ const JobRadarApp: React.FC = () => {
                 )}
               </div>
             ))}
+          </div>
+        )}
+
+        {uniqueAttributions.length > 0 && (
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <div className="text-sm text-gray-600 mb-2">
+                Job data provided by:
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {uniqueAttributions.map((attribution, idx) => (
+                  <a
+                    key={idx}
+                    href={attribution.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium border border-gray-200"
+                  >
+                    {attribution.name}
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>

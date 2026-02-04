@@ -101,7 +101,7 @@
       "id": "jobicy_api",
       "type": "JOBICY_API",
       "name": "Jobicy (API)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobicy.com/api/v2/remote-jobs",
         "params": {}
@@ -111,7 +111,7 @@
       "id": "remoteok_api",
       "type": "REMOTEOK_API",
       "name": "Remote OK (API)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://remoteok.io/api",
         "requiresAttribution": true,
@@ -123,7 +123,7 @@
       "id": "jobscollider_rss",
       "type": "RSS_GENERIC",
       "name": "JobsCollider (RSS)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobscollider.com/remote-jobs.rss",
         "requiresAttribution": true,
@@ -135,7 +135,7 @@
       "id": "realworkfromanywhere_rss",
       "type": "RSS_GENERIC",
       "name": "Real Work From Anywhere (RSS)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://www.realworkfromanywhere.com/rss.xml"
       }
@@ -145,7 +145,7 @@
       "id": "euremotejobs_europe",
       "type": "HTML_SCRAPE",
       "name": "EU Remote Jobs - Europe",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://euremotejobs.com/job-region/remote-jobs-europe/"
       }
@@ -154,7 +154,7 @@
       "id": "euremotejobs_worldwide",
       "type": "HTML_SCRAPE",
       "name": "EU Remote Jobs - Worldwide",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://euremotejobs.com/job-region/remote-jobs-worldwide/"
       }
@@ -163,7 +163,7 @@
       "id": "remocate",
       "type": "HTML_SCRAPE",
       "name": "Remocate",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://www.remocate.app/"
       }
@@ -172,7 +172,7 @@
       "id": "jobgether_anywhere",
       "type": "HTML_SCRAPE",
       "name": "Jobgether - Anywhere",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobgether.com/remote-jobs/anywhere"
       }
@@ -181,7 +181,7 @@
       "id": "jobgether_romania_tech",
       "type": "HTML_SCRAPE",
       "name": "Jobgether - Romania (Tech)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobgether.com/remote-jobs/romania/tech"
       }
@@ -190,7 +190,7 @@
       "id": "jobgether_tech_custom_url",
       "type": "HTML_SCRAPE",
       "name": "Jobgether - Tech (your saved URL)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobgether.com/remote-jobs/tech?locations=622a659af0bac38678ed1398&sort=date"
       }
@@ -200,7 +200,7 @@
       "id": "remoterocketship_sitemap_worldwide",
       "type": "SITEMAP_XML",
       "name": "Remote Rocketship - Job Openings (Worldwide sitemap)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://www.remoterocketship.com/sitemap_job_openings_worldwide.xml"
       }
@@ -209,7 +209,7 @@
       "id": "remoterocketship_sitemap_rest_of_world",
       "type": "SITEMAP_XML",
       "name": "Remote Rocketship - Job Openings (Rest of World sitemap)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://www.remoterocketship.com/sitemap_job_openings_rest_of_world.xml"
       }
@@ -219,7 +219,7 @@
       "id": "gh_automattic",
       "type": "GREENHOUSE_BOARD",
       "name": "Automattic (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/automatticcareers",
         "company": "Automattic"
@@ -229,7 +229,7 @@
       "id": "gh_gitlab",
       "type": "GREENHOUSE_BOARD",
       "name": "GitLab (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/gitlab",
         "company": "GitLab"
@@ -239,7 +239,7 @@
       "id": "gh_canonical",
       "type": "GREENHOUSE_BOARD",
       "name": "Canonical (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/canonical",
         "company": "Canonical"
@@ -249,7 +249,7 @@
       "id": "gh_remotecom",
       "type": "GREENHOUSE_BOARD",
       "name": "Remote (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/remotecom",
         "company": "Remote.com"
@@ -259,7 +259,7 @@
       "id": "gh_testlio",
       "type": "GREENHOUSE_BOARD",
       "name": "Testlio (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/testlio",
         "company": "Testlio"
@@ -269,7 +269,7 @@
       "id": "gh_grafana",
       "type": "GREENHOUSE_BOARD",
       "name": "Grafana Labs (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/grafanalabs",
         "company": "Grafana Labs"
@@ -279,7 +279,7 @@
       "id": "gh_fueled",
       "type": "GREENHOUSE_BOARD",
       "name": "Fueled (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/fueledcareers",
         "company": "Fueled"
@@ -289,7 +289,7 @@
       "id": "gh_appfire",
       "type": "GREENHOUSE_BOARD",
       "name": "Appfire (Greenhouse)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://job-boards.greenhouse.io/appfiretechnologiesllc",
         "company": "Appfire"
@@ -300,7 +300,7 @@
       "id": "ashby_deel",
       "type": "ASHBY_BOARD",
       "name": "Deel (Ashby)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobs.ashbyhq.com/deel",
         "company": "Deel"
@@ -310,7 +310,7 @@
       "id": "ashby_zapier",
       "type": "ASHBY_BOARD",
       "name": "Zapier (Ashby)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobs.ashbyhq.com/zapier",
         "company": "Zapier"
@@ -320,7 +320,7 @@
       "id": "ashby_duckduckgo",
       "type": "ASHBY_BOARD",
       "name": "DuckDuckGo (Ashby)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://jobs.ashbyhq.com/duck-duck-go",
         "company": "DuckDuckGo"
@@ -331,7 +331,7 @@
       "id": "company_buffer",
       "type": "HTML_SCRAPE",
       "name": "Buffer (Careers page)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://buffer.com/journey"
       }
@@ -340,7 +340,7 @@
       "id": "company_toptal",
       "type": "HTML_SCRAPE",
       "name": "Toptal (Careers page)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://www.toptal.com/careers"
       }
@@ -349,7 +349,7 @@
       "id": "company_10up",
       "type": "HTML_SCRAPE",
       "name": "10up (Careers page)",
-      "enabled": false,
+      "enabled": true,
       "config": {
         "url": "https://10up.com/careers/"
       }
