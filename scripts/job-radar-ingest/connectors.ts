@@ -413,7 +413,7 @@ async function fetchGreenhouseBoard(source: SourceConfig): Promise<RawJob[]> {
 
   const html = await response.text();
   const jobIds: string[] = [];
-  const jobIdRegex = /gh_jid=(\d+)/g;
+  const jobIdRegex = /\/jobs\/(\d+)/g;
   let match;
 
   while ((match = jobIdRegex.exec(html)) !== null) {
