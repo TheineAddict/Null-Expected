@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastRunAt": "2026-02-04T15:42:17.943Z",
+  "lastRunAt": "2026-02-04T15:59:53.706Z",
   "lastRunStats": {
     "new": 0,
     "updated": 319,
@@ -20,8 +20,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 25,
-      "durationMs": 239,
-      "fetchedAt": "2026-02-04T15:42:15.351Z"
+      "durationMs": 314,
+      "fetchedAt": "2026-02-04T15:59:42.050Z"
     },
     {
       "sourceId": "wwr_devops",
@@ -34,8 +34,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 25,
-      "durationMs": 178,
-      "fetchedAt": "2026-02-04T15:42:15.591Z"
+      "durationMs": 1307,
+      "fetchedAt": "2026-02-04T15:59:42.364Z"
     },
     {
       "sourceId": "wwr_management_finance",
@@ -48,8 +48,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 38,
-      "durationMs": 193,
-      "fetchedAt": "2026-02-04T15:42:15.769Z"
+      "durationMs": 1350,
+      "fetchedAt": "2026-02-04T15:59:43.671Z"
     },
     {
       "sourceId": "wwr_product",
@@ -62,8 +62,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 23,
-      "durationMs": 157,
-      "fetchedAt": "2026-02-04T15:42:15.962Z"
+      "durationMs": 1034,
+      "fetchedAt": "2026-02-04T15:59:45.021Z"
     },
     {
       "sourceId": "wwr_customer_support",
@@ -76,8 +76,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 35,
-      "durationMs": 202,
-      "fetchedAt": "2026-02-04T15:42:16.119Z"
+      "durationMs": 1860,
+      "fetchedAt": "2026-02-04T15:59:46.055Z"
     },
     {
       "sourceId": "wwr_all_other",
@@ -90,8 +90,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 53,
-      "durationMs": 218,
-      "fetchedAt": "2026-02-04T15:42:16.321Z"
+      "durationMs": 1474,
+      "fetchedAt": "2026-02-04T15:59:47.915Z"
     },
     {
       "sourceId": "remotive",
@@ -104,8 +104,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 25,
-      "durationMs": 45,
-      "fetchedAt": "2026-02-04T15:42:16.539Z"
+      "durationMs": 1265,
+      "fetchedAt": "2026-02-04T15:59:49.389Z"
     },
     {
       "sourceId": "himalayas",
@@ -118,8 +118,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 100,
-      "durationMs": 1150,
-      "fetchedAt": "2026-02-04T15:42:16.584Z"
+      "durationMs": 2873,
+      "fetchedAt": "2026-02-04T15:59:50.654Z"
     },
     {
       "sourceId": "remotive_rss",
@@ -133,7 +133,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.527Z"
     },
     {
       "sourceId": "himalayas_rss",
@@ -147,7 +147,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.527Z"
     },
     {
       "sourceId": "jobicy_api",
@@ -161,7 +161,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.527Z"
     },
     {
       "sourceId": "remoteok_api",
@@ -175,7 +175,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.527Z"
     },
     {
       "sourceId": "jobscollider_rss",
@@ -189,7 +189,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "realworkfromanywhere_rss",
@@ -203,7 +203,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "euremotejobs_europe",
@@ -217,7 +217,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "euremotejobs_worldwide",
@@ -231,7 +231,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "remocate",
@@ -245,7 +245,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "jobgether_anywhere",
@@ -259,7 +259,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "jobgether_romania_tech",
@@ -273,7 +273,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "jobgether_tech_custom_url",
@@ -287,7 +287,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "remoterocketship_sitemap_worldwide",
@@ -301,7 +301,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "remoterocketship_sitemap_rest_of_world",
@@ -315,7 +315,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_automattic",
@@ -329,7 +329,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_gitlab",
@@ -343,7 +343,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_canonical",
@@ -357,7 +357,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_remotecom",
@@ -371,7 +371,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_testlio",
@@ -385,7 +385,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_grafana",
@@ -399,7 +399,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_fueled",
@@ -413,7 +413,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "gh_appfire",
@@ -427,7 +427,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "ashby_deel",
@@ -441,7 +441,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "ashby_zapier",
@@ -455,7 +455,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "ashby_duckduckgo",
@@ -469,7 +469,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "company_buffer",
@@ -483,7 +483,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "company_toptal",
@@ -497,7 +497,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     },
     {
       "sourceId": "company_10up",
@@ -511,7 +511,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-04T15:42:17.734Z"
+      "fetchedAt": "2026-02-04T15:59:53.528Z"
     }
   ]
 }

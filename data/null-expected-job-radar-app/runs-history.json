@@ -1,3 +1,14 @@
 {
-  "runs": []
+  "runs": [
+    {
+      "id": "run-1770220782042-aas2hlufw",
+      "startedAt": "2026-02-04T15:59:42.043Z",
+      "completedAt": "2026-02-04T15:59:53.714Z",
+      "status": "completed",
+      "totalJobs": 319,
+      "sourcesOk": 8,
+      "sourcesFailed": 0,
+      "durationMs": 11671
+    }
+  ]
 }
