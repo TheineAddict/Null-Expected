@@ -11,6 +11,7 @@ import AuthorBlog from './pages/AuthorBlog';
 import Manifesto from './pages/Manifesto';
 import Consulting from './pages/Consulting';
 import NotFound from './pages/NotFound';
+import JobRadarApp from './pages/JobRadarApp';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -23,33 +24,45 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isJobRadarApp = location.pathname === '/null-expected-job-radar-app';
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
+      {!isJobRadarApp && (
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-900 focus:text-white focus:rounded-lg focus:shadow-lg"
         >
           Skip to main content
         </a>
-        <Header />
-        <div id="main-content" className="flex-1">
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/mission" element={<Mission />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/blog/author/:authorSlug" element={<AuthorBlog />} />
-            <Route path="/manifesto" element={<Manifesto />} />
-            <Route path="/consulting" element={<Consulting />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-        <Footer />
+      )}
+      {!isJobRadarApp && <Header />}
+      <div id="main-content" className="flex-1">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/author/:authorSlug" element={<AuthorBlog />} />
+          <Route path="/manifesto" element={<Manifesto />} />
+          <Route path="/consulting" element={<Consulting />} />
+          <Route path="/null-expected-job-radar-app" element={<JobRadarApp />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
+      {!isJobRadarApp && <Footer />}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
     </Router>
   );
 }

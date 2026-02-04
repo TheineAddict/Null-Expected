@@ -228,6 +228,7 @@ function collectDistPages(root) {
         const rel = path.relative(root, full).replace(/\\/g, "/");
         if (rel === "index.html") continue; // home already added
         if (rel.startsWith("blog/") && rel !== "blog/index.html") continue; // blog posts added separately
+        if (rel === "null-expected-job-radar-app.html") continue; // exclude hidden app
         const clean = "/" + rel.replace(/index\.html$/, "").replace(/\.html$/, "");
         urls.push(clean);
       }

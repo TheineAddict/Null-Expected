@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /null-expected-job-radar-app
 
 Sitemap: https://www.nullexpected.com/sitemap.xml
