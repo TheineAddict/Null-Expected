@@ -1,5 +1,6 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import type {
   SourcesConfig,
   RawJob,
@@ -14,6 +15,10 @@ import { classifyJob } from './classify';
 import { scoreJob } from './score';
 import { canRunToday, startRun, completeRun, failRun } from './runs-tracker';
 import { delayWithJitter, getDelayForSourceType } from './rate-limiter';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const projectRoot = join(__dirname, '..', '..');
 
 async function main() {
   console.log('=== Job Radar Ingestion Started ===\n');
@@ -31,9 +36,12 @@ async function main() {
   const runId = startRun();
   console.log();
 
-  const sourcesPath = join(process.cwd(), 'data/null-expected-job-radar-app/sources.json');
-  const jobsOutputPath = join(process.cwd(), 'public/null-expected-job-radar-app/data/jobs.json');
-  const metaOutputPath = join(process.cwd(), 'public/null-expected-job-radar-app/data/meta.json');
+  const sourcesPath = join(projectRoot, 'data/null-expected-job-radar-app/sources.json');
+  const jobsOutputPath = join(projectRoot, 'public/null-expected-job-radar-app/data/jobs.json');
+  const metaOutputPath = join(projectRoot, 'public/null-expected-job-radar-app/data/meta.json');
+
+  const outputDir = dirname(jobsOutputPath);
+  mkdirSync(outputDir, { recursive: true });
 
   const sourcesConfig: SourcesConfig = JSON.parse(readFileSync(sourcesPath, 'utf-8'));
   const enabledSources = sourcesConfig.sources.filter(s => s.enabled);
