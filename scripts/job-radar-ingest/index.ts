@@ -41,7 +41,15 @@ async function main() {
   const metaOutputPath = join(projectRoot, 'public/null-expected-job-radar-app/data/meta.json');
 
   const outputDir = dirname(jobsOutputPath);
-  mkdirSync(outputDir, { recursive: true });
+
+  try {
+    mkdirSync(outputDir, { recursive: true });
+    console.log(`✓ Output directory ready: ${outputDir}\n`);
+  } catch (error) {
+    console.error(`Failed to create output directory: ${error}`);
+    failRun(runId, `Failed to create output directory: ${error}`);
+    process.exit(1);
+  }
 
   const sourcesConfig: SourcesConfig = JSON.parse(readFileSync(sourcesPath, 'utf-8'));
   const enabledSources = sourcesConfig.sources.filter(s => s.enabled);
@@ -233,11 +241,22 @@ async function main() {
     sourceResults,
   };
 
-  writeFileSync(jobsOutputPath, JSON.stringify(jobsSnapshot, null, 2));
-  writeFileSync(metaOutputPath, JSON.stringify(metaSnapshot, null, 2));
+  try {
+    writeFileSync(jobsOutputPath, JSON.stringify(jobsSnapshot, null, 2), 'utf-8');
+    console.log(`\n✓ Written ${normalizedJobs.length} job(s) to ${jobsOutputPath}`);
+  } catch (error) {
+    console.error(`\n✗ Failed to write jobs file: ${error}`);
+    failRun(runId, `Failed to write jobs file: ${error}`);
+    process.exit(1);
+  }
 
-  console.log(`\n✓ Written ${normalizedJobs.length} job(s) to ${jobsOutputPath}`);
-  console.log(`✓ Written metadata to ${metaOutputPath}`);
+  try {
+    writeFileSync(metaOutputPath, JSON.stringify(metaSnapshot, null, 2), 'utf-8');
+    console.log(`✓ Written metadata to ${metaOutputPath}`);
+  } catch (error) {
+    console.error(`✗ Failed to write metadata file: ${error}`);
+    console.warn('Continuing despite metadata write failure...');
+  }
 
   completeRun(runId, {
     totalJobs: normalizedJobs.length,

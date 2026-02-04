@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join, dirname } from 'path';
 
 export interface RunRecord {
   id: string;
@@ -17,7 +17,7 @@ export interface RunHistory {
 }
 
 const RUNS_FILE_PATH = join(process.cwd(), 'data', 'null-expected-job-radar-app', 'runs-history.json');
-const MAX_RUNS_PER_DAY = 2;
+const MAX_RUNS_PER_DAY = 5;
 const HISTORY_RETENTION_DAYS = 30;
 
 export function loadRunHistory(): RunHistory {
@@ -36,6 +36,12 @@ export function loadRunHistory(): RunHistory {
 
 export function saveRunHistory(history: RunHistory): void {
   cleanupOldRuns(history);
+
+  const dir = dirname(RUNS_FILE_PATH);
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true });
+  }
+
   writeFileSync(RUNS_FILE_PATH, JSON.stringify(history, null, 2), 'utf-8');
 }
 

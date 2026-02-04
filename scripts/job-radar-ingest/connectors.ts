@@ -474,7 +474,8 @@ function parseGreenhouseJobPage(html: string, url: string, jobId: string, source
 }
 
 async function fetchAshbyBoard(source: SourceConfig): Promise<RawJob[]> {
-  const apiUrl = source.config.apiUrl || source.config.url.replace('/jobs', '/api/jobs');
+  const baseUrl = source.config.url;
+  const apiUrl = source.config.apiUrl || `${baseUrl}/api/job_board_jobs`;
   const response = await fetch(apiUrl);
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -564,6 +565,12 @@ async function fetchRemoteOK(source: SourceConfig): Promise<RawJob[]> {
       const job = data[i];
       if (!job || typeof job !== 'object') continue;
 
+      const postedAt = job.date ? (
+        typeof job.date === 'number' && !isNaN(job.date) && job.date > 0
+          ? new Date(job.date * 1000).toISOString()
+          : null
+      ) : null;
+
       jobs.push({
         sourceId: `remoteok-${job.id || Date.now()}`,
         source: 'REMOTEOK',
@@ -572,7 +579,7 @@ async function fetchRemoteOK(source: SourceConfig): Promise<RawJob[]> {
         locationRaw: job.location || null,
         descriptionHtml: job.description || null,
         canonicalUrl: job.url || `https://remoteok.com/remote-jobs/${job.id}`,
-        postedAt: job.date ? new Date(job.date * 1000).toISOString() : null,
+        postedAt,
       });
     }
   }
@@ -582,8 +589,289 @@ async function fetchRemoteOK(source: SourceConfig): Promise<RawJob[]> {
 }
 
 async function fetchHTMLScrape(source: SourceConfig): Promise<RawJob[]> {
-  console.log(`[${source.id}] HTML scraping not yet implemented, returning empty result`);
+  const url = source.config.url;
+
+  if (url.includes('euremotejobs.com')) {
+    return await scrapeEURemoteJobs(url, source.id);
+  } else if (url.includes('remocate.app')) {
+    return await scrapeRemocate(url, source.id);
+  } else if (url.includes('jobgether.com')) {
+    return await scrapeJobgether(url, source.id);
+  } else if (url.includes('buffer.com')) {
+    return await scrapeBuffer(url, source.id);
+  } else if (url.includes('toptal.com')) {
+    return await scrapeToptal(url, source.id);
+  } else if (url.includes('10up.com')) {
+    return await scrape10up(url, source.id);
+  }
+
+  console.log(`[${source.id}] No scraper implemented for ${url}`);
   return [];
+}
+
+async function scrapeEURemoteJobs(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobLinkRegex = /<a[^>]+href="(https:\/\/euremotejobs\.com\/job\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const matches = [...html.matchAll(jobLinkRegex)];
+
+  for (const match of matches.slice(0, 50)) {
+    const jobUrl = match[1];
+    const linkContent = match[2];
+
+    const titleMatch = linkContent.match(/<h3[^>]*>(.*?)<\/h3>/i) || linkContent.match(/>(.*?)</);
+    const title = titleMatch ? stripHTML(titleMatch[1]).trim() : null;
+
+    if (!title || title.length < 3) continue;
+
+    const companyMatch = linkContent.match(/<span[^>]*class="[^"]*company[^"]*"[^>]*>(.*?)<\/span>/i);
+    const company = companyMatch ? stripHTML(companyMatch[1]).trim() : null;
+
+    jobs.push({
+      sourceId: `${sourceId}-${jobUrl.split('/').pop()}`,
+      source: 'EUREMOTEJOBS',
+      title,
+      company,
+      locationRaw: null,
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from EU Remote Jobs`);
+  return jobs;
+}
+
+async function scrapeRemocate(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobCardRegex = /<div[^>]*class="[^"]*job[^"]*"[^>]*>([\s\S]*?)<\/div>/gi;
+  const matches = [...html.matchAll(jobCardRegex)];
+
+  for (const match of matches.slice(0, 50)) {
+    const cardHtml = match[1];
+
+    const linkMatch = cardHtml.match(/<a[^>]+href="([^"]+)"/i);
+    const titleMatch = cardHtml.match(/<h[2-4][^>]*>(.*?)<\/h[2-4]>/i) || cardHtml.match(/title="([^"]+)"/i);
+
+    if (!linkMatch || !titleMatch) continue;
+
+    const jobUrl = linkMatch[1].startsWith('http') ? linkMatch[1] : `https://www.remocate.app${linkMatch[1]}`;
+    const title = stripHTML(titleMatch[1]).trim();
+
+    const companyMatch = cardHtml.match(/<span[^>]*class="[^"]*company[^"]*"[^>]*>(.*?)<\/span>/i);
+    const company = companyMatch ? stripHTML(companyMatch[1]).trim() : null;
+
+    jobs.push({
+      sourceId: `${sourceId}-${jobUrl.split('/').pop()}`,
+      source: 'REMOCATE',
+      title,
+      company,
+      locationRaw: null,
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from Remocate`);
+  return jobs;
+}
+
+async function scrapeJobgether(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobLinkRegex = /<a[^>]+href="(\/offer\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const matches = [...html.matchAll(jobLinkRegex)];
+
+  for (const match of matches.slice(0, 50)) {
+    const jobPath = match[1];
+    const jobUrl = `https://jobgether.com${jobPath}`;
+    const linkContent = match[2];
+
+    const titleMatch = linkContent.match(/<h[2-4][^>]*>(.*?)<\/h[2-4]>/i) || linkContent.match(/>(.*?)</);
+    const title = titleMatch ? stripHTML(titleMatch[1]).trim() : null;
+
+    if (!title || title.length < 3) continue;
+
+    const companyMatch = linkContent.match(/<div[^>]*class="[^"]*company[^"]*"[^>]*>(.*?)<\/div>/i) ||
+                         linkContent.match(/<span[^>]*class="[^"]*company[^"]*"[^>]*>(.*?)<\/span>/i);
+    const company = companyMatch ? stripHTML(companyMatch[1]).trim() : null;
+
+    jobs.push({
+      sourceId: `${sourceId}-${jobPath.split('/').pop()}`,
+      source: 'JOBGETHER',
+      title,
+      company,
+      locationRaw: null,
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from Jobgether`);
+  return jobs;
+}
+
+async function scrapeBuffer(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobLinkRegex = /<a[^>]+href="(https:\/\/[^"]*(?:lever\.co|greenhouse\.io|buffer\.com)[^"]*)"[^>]*>([\s\S]{0,500}?)<\/a>/gi;
+  const matches = [...html.matchAll(jobLinkRegex)];
+
+  for (const match of matches.slice(0, 30)) {
+    const jobUrl = match[1];
+    const linkContent = match[2];
+
+    const titleMatch = linkContent.match(/>(.*?)</);
+    const title = titleMatch ? stripHTML(titleMatch[1]).trim() : null;
+
+    if (!title || title.length < 3 || title.toLowerCase().includes('apply') || title.toLowerCase().includes('join')) continue;
+
+    jobs.push({
+      sourceId: `${sourceId}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      source: 'BUFFER',
+      title,
+      company: 'Buffer',
+      locationRaw: 'Remote',
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from Buffer`);
+  return jobs;
+}
+
+async function scrapeToptal(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobLinkRegex = /<a[^>]+href="(https:\/\/www\.toptal\.com\/careers\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const matches = [...html.matchAll(jobLinkRegex)];
+
+  for (const match of matches.slice(0, 30)) {
+    const jobUrl = match[1];
+    const linkContent = match[2];
+
+    const titleMatch = linkContent.match(/<h[2-4][^>]*>(.*?)<\/h[2-4]>/i) || linkContent.match(/>(.*?)</);
+    const title = titleMatch ? stripHTML(titleMatch[1]).trim() : null;
+
+    if (!title || title.length < 3) continue;
+
+    jobs.push({
+      sourceId: `${sourceId}-${jobUrl.split('/').pop()}`,
+      source: 'TOPTAL',
+      title,
+      company: 'Toptal',
+      locationRaw: 'Remote',
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from Toptal`);
+  return jobs;
+}
+
+async function scrape10up(url: string, sourceId: string): Promise<RawJob[]> {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+
+  const html = await response.text();
+  const jobs: RawJob[] = [];
+
+  const jobLinkRegex = /<a[^>]+href="(https:\/\/10up\.com\/careers\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const matches = [...html.matchAll(jobLinkRegex)];
+
+  for (const match of matches.slice(0, 30)) {
+    const jobUrl = match[1];
+    const linkContent = match[2];
+
+    const titleMatch = linkContent.match(/<h[2-4][^>]*>(.*?)<\/h[2-4]>/i) || linkContent.match(/>(.*?)</);
+    const title = titleMatch ? stripHTML(titleMatch[1]).trim() : null;
+
+    if (!title || title.length < 3) continue;
+
+    jobs.push({
+      sourceId: `${sourceId}-${jobUrl.split('/').pop()}`,
+      source: '10UP',
+      title,
+      company: '10up',
+      locationRaw: 'Remote',
+      descriptionHtml: null,
+      canonicalUrl: jobUrl,
+      postedAt: null,
+    });
+  }
+
+  console.log(`[${sourceId}] Scraped ${jobs.length} jobs from 10up`);
+  return jobs;
 }
 
 function stripHTML(html: string): string {
