@@ -6,6 +6,7 @@ import type {
   NormalizedJob,
   JobSnapshot,
   MetaSnapshot,
+  SourceResult,
 } from './types';
 import { fetchFromSource } from './connectors';
 import { cleanHtmlToText, computeHashDedup, generateStableUUID } from './normalize';
@@ -41,15 +42,37 @@ async function main() {
   const rawJobs: RawJob[] = [];
   let sourcesOk = 0;
   let sourcesFailed = 0;
+  const sourceResults: SourceResult[] = [];
 
   for (const source of enabledSources) {
-    try {
-      const jobs = await fetchFromSource(source);
-      rawJobs.push(...jobs);
+    const startTime = Date.now();
+    const fetchedAt = new Date().toISOString();
+
+    const result = await fetchFromSource(source);
+    const durationMs = Date.now() - startTime;
+
+    rawJobs.push(...result.jobs);
+
+    sourceResults.push({
+      sourceId: source.id,
+      name: source.name,
+      type: source.type,
+      url: source.config.url,
+      ok: result.ok,
+      httpStatus: result.httpStatus,
+      errorType: result.errorType,
+      message: result.message,
+      itemCount: result.jobs.length,
+      durationMs,
+      fetchedAt,
+    });
+
+    if (result.ok) {
       sourcesOk++;
-    } catch (error) {
-      console.error(`[${source.id}] Failed:`, error);
+      console.log(`[${source.id}] ✓ Fetched ${result.jobs.length} job(s) in ${durationMs}ms`);
+    } else {
       sourcesFailed++;
+      console.error(`[${source.id}] ✗ Failed: ${result.errorType} - ${result.message}`);
     }
   }
 
@@ -128,6 +151,7 @@ async function main() {
       sourcesOk,
       sourcesFailed,
     },
+    sourceResults,
   };
 
   writeFileSync(jobsOutputPath, JSON.stringify(jobsSnapshot, null, 2));

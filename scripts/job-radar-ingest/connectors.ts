@@ -1,23 +1,121 @@
-import type { RawJob, SourceConfig } from './types';
+import type { RawJob, SourceConfig, ErrorType } from './types';
 
-export async function fetchFromSource(source: SourceConfig): Promise<RawJob[]> {
+export interface FetchResult {
+  jobs: RawJob[];
+  ok: boolean;
+  httpStatus: number | null;
+  errorType: ErrorType | null;
+  message: string | null;
+}
+
+export async function fetchFromSource(source: SourceConfig): Promise<FetchResult> {
   console.log(`[${source.id}] Fetching from ${source.name}...`);
 
   try {
+    let jobs: RawJob[];
     switch (source.type) {
       case 'WWR_RSS':
-        return await fetchWWR(source);
+        jobs = await fetchWWR(source);
+        break;
       case 'REMOTIVE_API':
-        return await fetchRemotive(source);
+        jobs = await fetchRemotive(source);
+        break;
       case 'HIMALAYAS_API':
-        return await fetchHimalayas(source);
+        jobs = await fetchHimalayas(source);
+        break;
       default:
         console.warn(`[${source.id}] Unknown source type: ${source.type}`);
-        return [];
+        return {
+          jobs: [],
+          ok: true,
+          httpStatus: null,
+          errorType: null,
+          message: null,
+        };
     }
+
+    return {
+      jobs,
+      ok: true,
+      httpStatus: 200,
+      errorType: null,
+      message: null,
+    };
   } catch (error) {
     console.error(`[${source.id}] Error fetching:`, error);
-    throw error;
+
+    const errorMsg = error instanceof Error ? error.message : String(error);
+
+    if (errorMsg.includes('429')) {
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: 429,
+        errorType: 'RATE_LIMITED',
+        message: errorMsg,
+      };
+    }
+
+    if (errorMsg.includes('403') || errorMsg.includes('401')) {
+      const status = errorMsg.includes('403') ? 403 : 401;
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: status,
+        errorType: 'BLOCKED',
+        message: errorMsg,
+      };
+    }
+
+    if (errorMsg.includes('HTTP')) {
+      const statusMatch = errorMsg.match(/HTTP (\d+)/);
+      const status = statusMatch ? parseInt(statusMatch[1]) : null;
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: status,
+        errorType: 'HTTP_ERROR',
+        message: errorMsg,
+      };
+    }
+
+    if (errorMsg.toLowerCase().includes('timeout') || errorMsg.toLowerCase().includes('aborted')) {
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: null,
+        errorType: 'TIMEOUT',
+        message: errorMsg,
+      };
+    }
+
+    if (errorMsg.toLowerCase().includes('parse') || errorMsg.toLowerCase().includes('json') || errorMsg.toLowerCase().includes('xml')) {
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: null,
+        errorType: 'PARSE_ERROR',
+        message: errorMsg,
+      };
+    }
+
+    if (errorMsg.toLowerCase().includes('network') || errorMsg.toLowerCase().includes('fetch')) {
+      return {
+        jobs: [],
+        ok: false,
+        httpStatus: null,
+        errorType: 'NETWORK_ERROR',
+        message: errorMsg,
+      };
+    }
+
+    return {
+      jobs: [],
+      ok: false,
+      httpStatus: null,
+      errorType: 'UNKNOWN_ERROR',
+      message: errorMsg,
+    };
   }
 }
 

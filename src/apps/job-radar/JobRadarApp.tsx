@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, X, SlidersHorizontal, Info } from 'lucide-react';
-import type { JobSnapshot, Job, RemoteScope } from './types';
+import { Search, X, SlidersHorizontal, Info, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import type { JobSnapshot, Job, RemoteScope, MetaSnapshot } from './types';
 
 const REMOTE_SCOPE_OPTIONS: RemoteScope[] = ['WORLDWIDE', 'EU_EEA', 'EUROPE', 'ROMANIA'];
 
 const JobRadarApp: React.FC = () => {
   const [snapshot, setSnapshot] = useState<JobSnapshot | null>(null);
+  const [meta, setMeta] = useState<MetaSnapshot | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,16 +16,28 @@ const JobRadarApp: React.FC = () => {
   const [minScore, setMinScore] = useState(40);
   const [showFilters, setShowFilters] = useState(true);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [showSourceHealth, setShowSourceHealth] = useState(false);
+  const [showOnlyFailedSources, setShowOnlyFailedSources] = useState(false);
 
   useEffect(() => {
-    const fetchJobs = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/null-expected-job-radar-app/data/jobs.json');
-        if (!response.ok) {
+        const [jobsResponse, metaResponse] = await Promise.all([
+          fetch('/null-expected-job-radar-app/data/jobs.json'),
+          fetch('/null-expected-job-radar-app/data/meta.json'),
+        ]);
+
+        if (!jobsResponse.ok) {
           throw new Error('Snapshot not found');
         }
-        const data = await response.json();
-        setSnapshot(data);
+
+        const jobsData = await jobsResponse.json();
+        setSnapshot(jobsData);
+
+        if (metaResponse.ok) {
+          const metaData = await metaResponse.json();
+          setMeta(metaData);
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load snapshot');
       } finally {
@@ -32,7 +45,7 @@ const JobRadarApp: React.FC = () => {
       }
     };
 
-    fetchJobs();
+    fetchData();
   }, []);
 
   const toggleScope = (scope: RemoteScope) => {
@@ -160,6 +173,122 @@ const JobRadarApp: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {meta?.sourceResults && meta.sourceResults.length > 0 && (
+            <div className="mb-4">
+              <button
+                onClick={() => setShowSourceHealth(!showSourceHealth)}
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700 mb-2"
+              >
+                <Clock className="w-4 h-4" />
+                {showSourceHealth ? 'Hide Source Health' : 'Show Source Health'}
+                {meta.sourceResults.filter(s => !s.ok).length > 0 && (
+                  <span className="px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-800">
+                    {meta.sourceResults.filter(s => !s.ok).length} failed
+                  </span>
+                )}
+              </button>
+
+              {showSourceHealth && (
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-lg font-semibold text-gray-900">Source Health</h2>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={showOnlyFailedSources}
+                        onChange={(e) => setShowOnlyFailedSources(e.target.checked)}
+                        className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm text-gray-700">Show only failed sources</span>
+                    </label>
+                  </div>
+
+                  <div className="space-y-2">
+                    {meta.sourceResults
+                      .filter(source => !showOnlyFailedSources || !source.ok)
+                      .map((source) => (
+                        <div
+                          key={source.sourceId}
+                          className={`p-3 rounded-lg border ${
+                            source.ok
+                              ? 'bg-green-50 border-green-200'
+                              : 'bg-red-50 border-red-200'
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                {source.ok ? (
+                                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                                ) : (
+                                  <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                                )}
+                                <h3 className="font-medium text-gray-900">{source.name}</h3>
+                                <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                                  source.ok
+                                    ? 'bg-green-100 text-green-800'
+                                    : 'bg-red-100 text-red-800'
+                                }`}>
+                                  {source.ok ? 'OK' : 'Failed'}
+                                </span>
+                              </div>
+
+                              <div className="text-sm text-gray-600 mb-1">
+                                <span className="font-medium">Type:</span> {source.type}
+                                {' • '}
+                                <span className="font-medium">Jobs:</span> {source.itemCount}
+                                {' • '}
+                                <span className="font-medium">Duration:</span> {source.durationMs}ms
+                                {source.httpStatus !== null && (
+                                  <>
+                                    {' • '}
+                                    <span className="font-medium">HTTP:</span> {source.httpStatus}
+                                  </>
+                                )}
+                              </div>
+
+                              <div className="text-xs text-gray-500 truncate" title={source.url}>
+                                {source.url}
+                              </div>
+
+                              {!source.ok && source.errorType && (
+                                <div className="mt-2 p-2 bg-white rounded border border-red-200">
+                                  <div className="text-xs font-semibold text-red-800 mb-1">
+                                    {source.errorType.replace(/_/g, ' ')}
+                                  </div>
+                                  <div className="text-xs text-gray-700">
+                                    {source.message}
+                                  </div>
+                                </div>
+                              )}
+
+                              <div className="text-xs text-gray-500 mt-1">
+                                Fetched {new Date(source.fetchedAt).toLocaleString()}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                    {showOnlyFailedSources && meta.sourceResults.filter(s => !s.ok).length === 0 && (
+                      <div className="text-center py-4 text-gray-600">
+                        All sources are healthy!
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {!meta?.sourceResults && (
+            <div className="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+              <p className="text-sm text-yellow-800">
+                No source health data available. Run ingestion to see source status.
+              </p>
+            </div>
+          )}
 
           <div className="relative mb-4">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />

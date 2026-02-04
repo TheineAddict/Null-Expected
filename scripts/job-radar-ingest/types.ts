@@ -55,6 +55,30 @@ export interface JobSnapshot {
   jobs: NormalizedJob[];
 }
 
+export type ErrorType =
+  | 'HTTP_ERROR'
+  | 'TIMEOUT'
+  | 'NETWORK_ERROR'
+  | 'PARSE_ERROR'
+  | 'INVALID_DATA'
+  | 'RATE_LIMITED'
+  | 'BLOCKED'
+  | 'UNKNOWN_ERROR';
+
+export interface SourceResult {
+  sourceId: string;
+  name: string;
+  type: string;
+  url: string;
+  ok: boolean;
+  httpStatus: number | null;
+  errorType: ErrorType | null;
+  message: string | null;
+  itemCount: number;
+  durationMs: number;
+  fetchedAt: string;
+}
+
 export interface MetaSnapshot {
   schemaVersion: number;
   lastRunAt: string;
@@ -65,4 +89,5 @@ export interface MetaSnapshot {
     sourcesOk: number;
     sourcesFailed: number;
   };
+  sourceResults: SourceResult[];
 }
