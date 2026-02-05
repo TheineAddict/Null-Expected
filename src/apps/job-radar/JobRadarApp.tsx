@@ -201,74 +201,58 @@ const JobRadarApp: React.FC = () => {
 
               {showSourceHealth && (
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h2 className="text-lg font-semibold text-gray-900 mb-2">Source Health</h2>
-                      <div className="flex flex-wrap gap-2 text-xs">
-                        <span className="px-2 py-1 rounded bg-blue-100 text-blue-800 font-medium">
-                          Enabled: {meta.sourceResults.filter(s => s.enabled).length}
-                        </span>
-                        <span className="px-2 py-1 rounded bg-green-100 text-green-800 font-medium">
-                          OK: {meta.sourceResults.filter(s => s.ok).length}
-                        </span>
-                        <span className="px-2 py-1 rounded bg-red-100 text-red-800 font-medium">
-                          Failed: {meta.sourceResults.filter(s => !s.ok && s.enabled).length}
-                        </span>
-                        <span className="px-2 py-1 rounded bg-orange-100 text-orange-800 font-medium">
-                          Unsupported: {meta.sourceResults.filter(s => s.errorType === 'UNSUPPORTED_SOURCE').length}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-4">
+                    <h2 className="text-lg font-semibold text-gray-900 mb-3">Source Health</h2>
+                    <div className="flex flex-wrap gap-2 text-sm">
                       <button
                         onClick={() => setSourceFilter('all')}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                           sourceFilter === 'all'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-gray-700 text-white shadow-md'
+                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                         }`}
                       >
-                        All
+                        All: {meta.sourceResults.length}
                       </button>
                       <button
                         onClick={() => setSourceFilter('enabled')}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                           sourceFilter === 'enabled'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-blue-700 text-white shadow-md'
+                            : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
                         }`}
                       >
-                        Enabled
+                        Enabled: {meta.sourceResults.filter(s => s.enabled).length}
                       </button>
                       <button
                         onClick={() => setSourceFilter('ok')}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                           sourceFilter === 'ok'
-                            ? 'bg-green-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-green-700 text-white shadow-md'
+                            : 'bg-green-100 text-green-800 hover:bg-green-200'
                         }`}
                       >
-                        OK
+                        OK: {meta.sourceResults.filter(s => s.ok).length}
                       </button>
                       <button
                         onClick={() => setSourceFilter('failed')}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                           sourceFilter === 'failed'
-                            ? 'bg-red-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-red-700 text-white shadow-md'
+                            : 'bg-red-100 text-red-800 hover:bg-red-200'
                         }`}
                       >
-                        Failed
+                        Failed: {meta.sourceResults.filter(s => !s.ok && s.enabled).length}
                       </button>
                       <button
                         onClick={() => setSourceFilter('unsupported')}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                           sourceFilter === 'unsupported'
-                            ? 'bg-orange-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            ? 'bg-orange-700 text-white shadow-md'
+                            : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
                         }`}
                       >
-                        Unsupported
+                        Unsupported: {meta.sourceResults.filter(s => s.errorType === 'UNSUPPORTED_SOURCE').length}
                       </button>
                     </div>
                   </div>
