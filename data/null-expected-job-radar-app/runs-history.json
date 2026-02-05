@@ -59,6 +59,16 @@
       "sourcesOk": 23,
       "sourcesFailed": 11,
       "durationMs": 127381
+    },
+    {
+      "id": "run-1770293347763-kbwl1avt1",
+      "startedAt": "2026-02-05T12:09:07.763Z",
+      "completedAt": "2026-02-05T12:21:03.293Z",
+      "status": "completed",
+      "totalJobs": 1126,
+      "sourcesOk": 23,
+      "sourcesFailed": 11,
+      "durationMs": 715530
     }
   ]
 }
