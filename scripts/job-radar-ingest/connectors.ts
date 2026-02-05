@@ -425,14 +425,13 @@ async function fetchGreenhouseBoard(source: SourceConfig): Promise<RawJob[]> {
   console.log(`[${source.id}] Found ${jobIds.length} job IDs on board`);
 
   const jobs: RawJob[] = [];
-  const boardDomain = new URL(boardUrl).origin;
 
   for (let i = 0; i < jobIds.length; i++) {
     const jobId = jobIds[i];
     try {
       if (i > 0) await delay(2000);
 
-      const jobUrl = `${boardDomain}/jobs/${jobId}`;
+      const jobUrl = `${boardUrl}/jobs/${jobId}`;
       const jobResponse = await fetch(jobUrl, { signal: AbortSignal.timeout(30000) });
       if (!jobResponse.ok) continue;
 
