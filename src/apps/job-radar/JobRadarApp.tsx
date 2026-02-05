@@ -17,7 +17,7 @@ const JobRadarApp: React.FC = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showSourceHealth, setShowSourceHealth] = useState(false);
-  const [sourceFilter, setSourceFilter] = useState<'all' | 'enabled' | 'failed'>('enabled');
+  const [sourceFilter, setSourceFilter] = useState<'all' | 'enabled' | 'ok' | 'failed' | 'unsupported'>('enabled');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -219,7 +219,7 @@ const JobRadarApp: React.FC = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                       <button
                         onClick={() => setSourceFilter('all')}
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
@@ -241,14 +241,34 @@ const JobRadarApp: React.FC = () => {
                         Enabled
                       </button>
                       <button
+                        onClick={() => setSourceFilter('ok')}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                          sourceFilter === 'ok'
+                            ? 'bg-green-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        OK
+                      </button>
+                      <button
                         onClick={() => setSourceFilter('failed')}
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                           sourceFilter === 'failed'
-                            ? 'bg-blue-600 text-white'
+                            ? 'bg-red-600 text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                       >
                         Failed
+                      </button>
+                      <button
+                        onClick={() => setSourceFilter('unsupported')}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                          sourceFilter === 'unsupported'
+                            ? 'bg-orange-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        Unsupported
                       </button>
                     </div>
                   </div>
@@ -256,8 +276,11 @@ const JobRadarApp: React.FC = () => {
                   <div className="space-y-2">
                     {meta.sourceResults
                       .filter(source => {
+                        if (sourceFilter === 'all') return true;
                         if (sourceFilter === 'enabled') return source.enabled;
+                        if (sourceFilter === 'ok') return source.ok;
                         if (sourceFilter === 'failed') return !source.ok && source.enabled;
+                        if (sourceFilter === 'unsupported') return source.errorType === 'UNSUPPORTED_SOURCE';
                         return true;
                       })
                       .map((source) => (
@@ -336,14 +359,19 @@ const JobRadarApp: React.FC = () => {
                       ))}
 
                     {meta.sourceResults.filter(source => {
+                      if (sourceFilter === 'all') return true;
                       if (sourceFilter === 'enabled') return source.enabled;
+                      if (sourceFilter === 'ok') return source.ok;
                       if (sourceFilter === 'failed') return !source.ok && source.enabled;
+                      if (sourceFilter === 'unsupported') return source.errorType === 'UNSUPPORTED_SOURCE';
                       return true;
                     }).length === 0 && (
                       <div className="text-center py-4 text-gray-600">
-                        {sourceFilter === 'failed'
-                          ? 'All enabled sources are healthy!'
-                          : 'No sources match the current filter.'}
+                        {sourceFilter === 'failed' && 'All enabled sources are healthy!'}
+                        {sourceFilter === 'ok' && 'No sources are currently OK.'}
+                        {sourceFilter === 'enabled' && 'No enabled sources found.'}
+                        {sourceFilter === 'unsupported' && 'No unsupported sources found.'}
+                        {sourceFilter === 'all' && 'No sources found.'}
                       </div>
                     )}
                   </div>
