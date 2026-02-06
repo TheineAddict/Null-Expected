@@ -73,12 +73,12 @@
     {
       "id": "run-1770385879367-n472iuzob",
       "startedAt": "2026-02-06T13:51:19.367Z",
-      "completedAt": null,
-      "status": "running",
-      "totalJobs": 0,
-      "sourcesOk": 0,
-      "sourcesFailed": 0,
-      "durationMs": 0
+      "completedAt": "2026-02-06T14:04:14.342Z",
+      "status": "completed",
+      "totalJobs": 1114,
+      "sourcesOk": 23,
+      "sourcesFailed": 11,
+      "durationMs": 774975
     }
   ]
 }
