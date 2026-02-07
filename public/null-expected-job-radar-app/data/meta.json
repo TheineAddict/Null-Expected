@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "lastRunAt": "2026-02-06T14:04:14.308Z",
+  "lastRunAt": "2026-02-07T16:48:43.933Z",
   "lastRunStats": {
-    "new": 175,
-    "updated": 939,
-    "total": 1114,
-    "sourcesOk": 23,
-    "sourcesFailed": 11
+    "new": 125,
+    "updated": 973,
+    "total": 1098,
+    "sourcesOk": 22,
+    "sourcesFailed": 12
   },
   "sourceResults": [
     {
@@ -20,8 +20,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 25,
-      "durationMs": 338,
-      "fetchedAt": "2026-02-06T13:51:19.408Z"
+      "durationMs": 337,
+      "fetchedAt": "2026-02-07T16:36:43.686Z"
     },
     {
       "sourceId": "wwr_devops",
@@ -33,9 +33,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 30,
-      "durationMs": 1370,
-      "fetchedAt": "2026-02-06T13:51:19.746Z"
+      "itemCount": 33,
+      "durationMs": 1376,
+      "fetchedAt": "2026-02-07T16:36:44.023Z"
     },
     {
       "sourceId": "wwr_management_finance",
@@ -48,8 +48,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 38,
-      "durationMs": 1121,
-      "fetchedAt": "2026-02-06T13:51:21.116Z"
+      "durationMs": 1538,
+      "fetchedAt": "2026-02-07T16:36:45.399Z"
     },
     {
       "sourceId": "wwr_product",
@@ -62,8 +62,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 26,
-      "durationMs": 1161,
-      "fetchedAt": "2026-02-06T13:51:22.237Z"
+      "durationMs": 1427,
+      "fetchedAt": "2026-02-07T16:36:46.937Z"
     },
     {
       "sourceId": "wwr_customer_support",
@@ -76,8 +76,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 36,
-      "durationMs": 1206,
-      "fetchedAt": "2026-02-06T13:51:23.398Z"
+      "durationMs": 1640,
+      "fetchedAt": "2026-02-07T16:36:48.364Z"
     },
     {
       "sourceId": "wwr_all_other",
@@ -89,9 +89,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 52,
-      "durationMs": 1444,
-      "fetchedAt": "2026-02-06T13:51:24.604Z"
+      "itemCount": 60,
+      "durationMs": 1436,
+      "fetchedAt": "2026-02-07T16:36:50.004Z"
     },
     {
       "sourceId": "remotive",
@@ -103,9 +103,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 26,
-      "durationMs": 968,
-      "fetchedAt": "2026-02-06T13:51:26.048Z"
+      "itemCount": 24,
+      "durationMs": 997,
+      "fetchedAt": "2026-02-07T16:36:51.440Z"
     },
     {
       "sourceId": "himalayas",
@@ -118,8 +118,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 100,
-      "durationMs": 2571,
-      "fetchedAt": "2026-02-06T13:51:27.016Z"
+      "durationMs": 3121,
+      "fetchedAt": "2026-02-07T16:36:52.437Z"
     },
     {
       "sourceId": "jobicy_api",
@@ -132,8 +132,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 100,
-      "durationMs": 1323,
-      "fetchedAt": "2026-02-06T13:51:29.587Z"
+      "durationMs": 1298,
+      "fetchedAt": "2026-02-07T16:36:55.558Z"
     },
     {
       "sourceId": "remoteok_api",
@@ -145,9 +145,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 95,
-      "durationMs": 6110,
-      "fetchedAt": "2026-02-06T13:51:30.910Z"
+      "itemCount": 94,
+      "durationMs": 4756,
+      "fetchedAt": "2026-02-07T16:36:56.856Z"
     },
     {
       "sourceId": "jobscollider_rss",
@@ -155,13 +155,13 @@
       "type": "RSS_GENERIC",
       "url": "https://jobscollider.com/remote-jobs.rss",
       "enabled": true,
-      "ok": true,
-      "httpStatus": 200,
-      "errorType": null,
-      "message": null,
+      "ok": false,
+      "httpStatus": 403,
+      "errorType": "BLOCKED",
+      "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 1879,
-      "fetchedAt": "2026-02-06T13:51:37.020Z"
+      "durationMs": 1234,
+      "fetchedAt": "2026-02-07T16:37:01.612Z"
     },
     {
       "sourceId": "realworkfromanywhere_rss",
@@ -173,9 +173,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 323,
-      "durationMs": 2463,
-      "fetchedAt": "2026-02-06T13:51:38.899Z"
+      "itemCount": 303,
+      "durationMs": 2739,
+      "fetchedAt": "2026-02-07T16:37:02.846Z"
     },
     {
       "sourceId": "euremotejobs_europe",
@@ -188,8 +188,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 3289,
-      "fetchedAt": "2026-02-06T13:51:41.362Z"
+      "durationMs": 3385,
+      "fetchedAt": "2026-02-07T16:37:05.585Z"
     },
     {
       "sourceId": "euremotejobs_worldwide",
@@ -202,8 +202,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 3407,
-      "fetchedAt": "2026-02-06T13:51:44.651Z"
+      "durationMs": 2575,
+      "fetchedAt": "2026-02-07T16:37:08.970Z"
     },
     {
       "sourceId": "remocate",
@@ -216,8 +216,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 0,
-      "durationMs": 3983,
-      "fetchedAt": "2026-02-06T13:51:48.058Z"
+      "durationMs": 2958,
+      "fetchedAt": "2026-02-07T16:37:11.545Z"
     },
     {
       "sourceId": "jobgether_anywhere",
@@ -230,8 +230,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 2665,
-      "fetchedAt": "2026-02-06T13:51:52.041Z"
+      "durationMs": 3117,
+      "fetchedAt": "2026-02-07T16:37:14.503Z"
     },
     {
       "sourceId": "jobgether_romania_tech",
@@ -244,8 +244,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 3080,
-      "fetchedAt": "2026-02-06T13:51:54.706Z"
+      "durationMs": 3361,
+      "fetchedAt": "2026-02-07T16:37:17.620Z"
     },
     {
       "sourceId": "jobgether_tech_custom_url",
@@ -258,8 +258,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 3112,
-      "fetchedAt": "2026-02-06T13:51:57.786Z"
+      "durationMs": 2551,
+      "fetchedAt": "2026-02-07T16:37:20.981Z"
     },
     {
       "sourceId": "remoterocketship_sitemap_worldwide",
@@ -272,8 +272,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 2432,
-      "fetchedAt": "2026-02-06T13:52:00.898Z"
+      "durationMs": 2163,
+      "fetchedAt": "2026-02-07T16:37:23.532Z"
     },
     {
       "sourceId": "remoterocketship_sitemap_rest_of_world",
@@ -286,8 +286,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 1853,
-      "fetchedAt": "2026-02-06T13:52:03.330Z"
+      "durationMs": 2128,
+      "fetchedAt": "2026-02-07T16:37:25.695Z"
     },
     {
       "sourceId": "gh_automattic",
@@ -299,9 +299,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 23,
-      "durationMs": 83119,
-      "fetchedAt": "2026-02-06T13:52:05.183Z"
+      "itemCount": 24,
+      "durationMs": 63148,
+      "fetchedAt": "2026-02-07T16:37:27.823Z"
     },
     {
       "sourceId": "gh_gitlab",
@@ -314,8 +314,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 50,
-      "durationMs": 117599,
-      "fetchedAt": "2026-02-06T13:53:28.302Z"
+      "durationMs": 118481,
+      "fetchedAt": "2026-02-07T16:38:30.971Z"
     },
     {
       "sourceId": "gh_canonical",
@@ -328,8 +328,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 52,
-      "durationMs": 141706,
-      "fetchedAt": "2026-02-06T13:55:25.901Z"
+      "durationMs": 124520,
+      "fetchedAt": "2026-02-07T16:40:29.452Z"
     },
     {
       "sourceId": "gh_remotecom",
@@ -342,8 +342,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 50,
-      "durationMs": 129038,
-      "fetchedAt": "2026-02-06T13:57:47.607Z"
+      "durationMs": 124002,
+      "fetchedAt": "2026-02-07T16:42:33.972Z"
     },
     {
       "sourceId": "gh_testlio",
@@ -356,8 +356,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 16,
-      "durationMs": 47855,
-      "fetchedAt": "2026-02-06T13:59:56.645Z"
+      "durationMs": 37170,
+      "fetchedAt": "2026-02-07T16:44:37.974Z"
     },
     {
       "sourceId": "gh_grafana",
@@ -370,8 +370,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 50,
-      "durationMs": 119916,
-      "fetchedAt": "2026-02-06T14:00:44.500Z"
+      "durationMs": 117043,
+      "fetchedAt": "2026-02-07T16:45:15.144Z"
     },
     {
       "sourceId": "gh_fueled",
@@ -384,8 +384,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 17,
-      "durationMs": 40435,
-      "fetchedAt": "2026-02-06T14:02:44.416Z"
+      "durationMs": 40037,
+      "fetchedAt": "2026-02-07T16:47:12.187Z"
     },
     {
       "sourceId": "gh_appfire",
@@ -397,9 +397,9 @@
       "httpStatus": 200,
       "errorType": null,
       "message": null,
-      "itemCount": 13,
-      "durationMs": 34676,
-      "fetchedAt": "2026-02-06T14:03:24.851Z"
+      "itemCount": 14,
+      "durationMs": 37371,
+      "fetchedAt": "2026-02-07T16:47:52.224Z"
     },
     {
       "sourceId": "ashby_deel",
@@ -412,8 +412,8 @@
       "errorType": "HTTP_ERROR",
       "message": "HTTP 404: Not Found",
       "itemCount": 0,
-      "durationMs": 1334,
-      "fetchedAt": "2026-02-06T14:03:59.527Z"
+      "durationMs": 1206,
+      "fetchedAt": "2026-02-07T16:48:29.595Z"
     },
     {
       "sourceId": "ashby_zapier",
@@ -426,8 +426,8 @@
       "errorType": "HTTP_ERROR",
       "message": "HTTP 404: Not Found",
       "itemCount": 0,
-      "durationMs": 1178,
-      "fetchedAt": "2026-02-06T14:04:00.861Z"
+      "durationMs": 1107,
+      "fetchedAt": "2026-02-07T16:48:30.801Z"
     },
     {
       "sourceId": "ashby_duckduckgo",
@@ -440,8 +440,8 @@
       "errorType": "HTTP_ERROR",
       "message": "HTTP 404: Not Found",
       "itemCount": 0,
-      "durationMs": 1300,
-      "fetchedAt": "2026-02-06T14:04:02.039Z"
+      "durationMs": 1252,
+      "fetchedAt": "2026-02-07T16:48:31.908Z"
     },
     {
       "sourceId": "company_buffer",
@@ -454,8 +454,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 2,
-      "durationMs": 3652,
-      "fetchedAt": "2026-02-06T14:04:03.339Z"
+      "durationMs": 3977,
+      "fetchedAt": "2026-02-07T16:48:33.160Z"
     },
     {
       "sourceId": "company_toptal",
@@ -468,8 +468,8 @@
       "errorType": "BLOCKED",
       "message": "HTTP 403: Forbidden",
       "itemCount": 0,
-      "durationMs": 3196,
-      "fetchedAt": "2026-02-06T14:04:06.991Z"
+      "durationMs": 3411,
+      "fetchedAt": "2026-02-07T16:48:37.137Z"
     },
     {
       "sourceId": "company_10up",
@@ -482,8 +482,8 @@
       "errorType": null,
       "message": null,
       "itemCount": 8,
-      "durationMs": 3716,
-      "fetchedAt": "2026-02-06T14:04:10.187Z"
+      "durationMs": 2988,
+      "fetchedAt": "2026-02-07T16:48:40.548Z"
     },
     {
       "sourceId": "remotive_rss",
@@ -497,7 +497,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-06T14:04:13.903Z"
+      "fetchedAt": "2026-02-07T16:48:43.536Z"
     },
     {
       "sourceId": "himalayas_rss",
@@ -511,7 +511,7 @@
       "message": "Source is disabled in configuration",
       "itemCount": 0,
       "durationMs": 0,
-      "fetchedAt": "2026-02-06T14:04:13.903Z"
+      "fetchedAt": "2026-02-07T16:48:43.536Z"
     }
   ]
 }

@@ -79,6 +79,16 @@
       "sourcesOk": 23,
       "sourcesFailed": 11,
       "durationMs": 774975
+    },
+    {
+      "id": "run-1770482203660-c8srunfa1",
+      "startedAt": "2026-02-07T16:36:43.660Z",
+      "completedAt": "2026-02-07T16:48:43.970Z",
+      "status": "completed",
+      "totalJobs": 1098,
+      "sourcesOk": 22,
+      "sourcesFailed": 12,
+      "durationMs": 720310
     }
   ]
 }
