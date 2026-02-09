@@ -89,6 +89,16 @@
       "sourcesOk": 22,
       "sourcesFailed": 12,
       "durationMs": 720310
+    },
+    {
+      "id": "run-1770648063424-013smav6n",
+      "startedAt": "2026-02-09T14:41:03.424Z",
+      "completedAt": null,
+      "status": "running",
+      "totalJobs": 0,
+      "sourcesOk": 0,
+      "sourcesFailed": 0,
+      "durationMs": 0
     }
   ]
 }
