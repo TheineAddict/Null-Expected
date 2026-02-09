@@ -20,9 +20,12 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/');
         await page.waitForLoadState('networkidle');
 
+        await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 1000)));
+
         await expect(page).toHaveScreenshot(`landing-${name}.png`, {
           fullPage: true,
           maxDiffPixels: 100,
+          timeout: 10000,
         });
       });
 
@@ -30,9 +33,13 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/blog');
         await page.waitForLoadState('networkidle');
 
+        await page.waitForSelector('article', { timeout: 10000 });
+        await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 1000)));
+
         await expect(page).toHaveScreenshot(`blog-listing-${name}.png`, {
           fullPage: true,
           maxDiffPixels: 100,
+          timeout: 10000,
         });
       });
     });
