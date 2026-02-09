@@ -99,6 +99,16 @@
       "sourcesOk": 0,
       "sourcesFailed": 0,
       "durationMs": 0
+    },
+    {
+      "id": "run-1770648669300-aeafotvy4",
+      "startedAt": "2026-02-09T14:51:09.300Z",
+      "completedAt": "2026-02-09T15:02:54.835Z",
+      "status": "completed",
+      "totalJobs": 1071,
+      "sourcesOk": 21,
+      "sourcesFailed": 13,
+      "durationMs": 705535
     }
   ]
 }
