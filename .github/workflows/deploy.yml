@@ -32,7 +32,7 @@ jobs:
           npm run preview &
           SERVER_PID=$!
           npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
-          npx playwright test tests/e2e || TEST_EXIT_CODE=$?
+          npx playwright test --project=e2e || TEST_EXIT_CODE=$?
           kill $SERVER_PID || true
           exit ${TEST_EXIT_CODE:-0}
 
@@ -68,7 +68,7 @@ jobs:
           npm run preview &
           SERVER_PID=$!
           npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
-          npx playwright test tests/visual || TEST_EXIT_CODE=$?
+          npx playwright test --project=visual || TEST_EXIT_CODE=$?
           kill $SERVER_PID || true
           exit ${TEST_EXIT_CODE:-0}
 
@@ -104,7 +104,7 @@ jobs:
           npm run preview &
           SERVER_PID=$!
           npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
-          npx playwright test tests/api || TEST_EXIT_CODE=$?
+          npx playwright test --project=api || TEST_EXIT_CODE=$?
           kill $SERVER_PID || true
           exit ${TEST_EXIT_CODE:-0}
 
