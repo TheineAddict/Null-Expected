@@ -20,7 +20,28 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/');
         await page.waitForLoadState('networkidle');
 
-        await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 1000)));
+        await page.waitForSelector('article', {
+          timeout: 15000,
+          state: 'visible'
+        });
+
+        await page.waitForFunction(() => {
+          const loadingText = document.body.textContent?.includes('Loading featured posts');
+          return !loadingText;
+        }, { timeout: 10000 });
+
+        await page.addStyleTag({
+          content: `
+            *, *::before, *::after {
+              animation-duration: 0s !important;
+              animation-delay: 0s !important;
+              transition-duration: 0s !important;
+              transition-delay: 0s !important;
+            }
+          `
+        });
+
+        await page.evaluate(() => document.fonts.ready);
 
         await expect(page).toHaveScreenshot(`landing-${name}.png`, {
           fullPage: true,
@@ -33,8 +54,28 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/blog');
         await page.waitForLoadState('networkidle');
 
-        await page.waitForSelector('article', { timeout: 10000 });
-        await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 1000)));
+        await page.waitForSelector('article', {
+          timeout: 15000,
+          state: 'visible'
+        });
+
+        await page.waitForFunction(() => {
+          const loadingText = document.body.textContent?.includes('Loading posts');
+          return !loadingText;
+        }, { timeout: 10000 });
+
+        await page.addStyleTag({
+          content: `
+            *, *::before, *::after {
+              animation-duration: 0s !important;
+              animation-delay: 0s !important;
+              transition-duration: 0s !important;
+              transition-delay: 0s !important;
+            }
+          `
+        });
+
+        await page.evaluate(() => document.fonts.ready);
 
         await expect(page).toHaveScreenshot(`blog-listing-${name}.png`, {
           fullPage: true,
