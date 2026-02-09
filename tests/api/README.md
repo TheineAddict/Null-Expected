@@ -4,27 +4,24 @@ This directory contains API-level tests using Playwright's request context.
 
 ## Test Files
 
-- `api.spec.ts` - Tests for API endpoints and data loading
+- `api.spec.ts` - Tests for static assets and resources
 
 ## Running API Tests
 
 ```bash
 # Run all API tests
-npm run test:e2e -- tests/api
-
-# Run API tests in headed mode
-npm run test:e2e:headed -- tests/api
-
-# Run API tests in debug mode
-npm run test:e2e:debug -- tests/api
+npx playwright test --project=api
 
 # Run API tests in UI mode
-npm run test:e2e:ui -- tests/api
+npx playwright test --project=api --ui
+
+# Run API tests in debug mode
+npx playwright test --project=api --debug
 ```
 
 ## What These Tests Cover
 
-- Job Radar data endpoint availability
-- Metadata endpoint functionality
-- Error handling for non-existent endpoints
-- Static asset serving
+- Static asset serving (favicon, robots.txt, apple-touch-icon, site.webmanifest)
+- Correct content-type headers for various file types
+- Resource availability and proper HTTP responses
+- Progressive web app manifest validation
