@@ -109,6 +109,16 @@
       "sourcesOk": 21,
       "sourcesFailed": 13,
       "durationMs": 705535
+    },
+    {
+      "id": "run-1770824088159-jr1muo0fk",
+      "startedAt": "2026-02-11T15:34:48.159Z",
+      "completedAt": "2026-02-11T15:47:23.716Z",
+      "status": "completed",
+      "totalJobs": 1082,
+      "sourcesOk": 21,
+      "sourcesFailed": 13,
+      "durationMs": 755557
     }
   ]
 }
