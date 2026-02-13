@@ -1,4 +1,4 @@
-name: Deploy NullExpected.com Website
+name: Deploy NullExpected.com Blog
 
 on:
   push:
