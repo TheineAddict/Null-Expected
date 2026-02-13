@@ -16,6 +16,7 @@
     "test:visual": "playwright test --project=visual",
     "test:visual:update": "playwright test --project=visual --update-snapshots",
     "test:visual:ui": "playwright test --project=visual --ui",
+    "test:explore": "tsx tests/agentic/exploratory-runner.ts",
     "build:ci": "npm ci && npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
