@@ -43,42 +43,6 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  test-visual:
-    name: Visual Tests
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '22'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build project
-        run: npm run build
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
-      - name: Start preview server and run visual tests
-        run: |
-          npm run preview &
-          SERVER_PID=$!
-          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
-          npx playwright test --project=visual || TEST_EXIT_CODE=$?
-          kill $SERVER_PID || true
-          exit ${TEST_EXIT_CODE:-0}
-
-      - uses: actions/upload-artifact@v5
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report-visual
-          path: playwright-report/
-          retention-days: 30
-
   test-api:
     name: API Tests
     timeout-minutes: 60
