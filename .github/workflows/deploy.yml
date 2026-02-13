@@ -1,4 +1,121 @@
-name: Deploy NullExpected.com
+name: Deploy NullExpected.com Website
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-e2e:
+    name: E2E Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Start preview server and run E2E tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npx playwright test --project=e2e || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
+
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-e2e
+          path: playwright-report/
+          retention-days: 30
+
+  test-api:
+    name: API Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Start preview server and run API tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npx playwright test --project=api || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
+
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-api
+          path: playwright-report/
+          retention-days: 30
+
+  deploy:
+    runs-on: ubuntu-latest
+    #needs: test
+
+    steps:
+      - name: Log deployment start
+        run: |
+          echo "🚀 Starting deployment process..."
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Event: ${{ github.event_name }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Log checkout complete
+        run: echo "✅ Code checkout completed"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Log Node.js setup
+        run: |
+          echo "✅ Node.js setup completed"
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+
+      - name: Install dependencies
+        run: |
+          echo "📦 Installing dependencies..."
+          set -x
+          npm install
+          echo "✅ Dependencies installed successfully"
+          npx tsx --version || truename: Deploy NullExpected.com
 
 on:
   push:
@@ -116,6 +233,41 @@ jobs:
           npm install
           echo "✅ Dependencies installed successfully"
           npx tsx --version || true
+
+      - name: Build project
+        env:
+          NODE_ENV: production
+        run: |
+          echo "🔨 Building project... "
+          set -x
+          npm run build
+          echo "✅ Build completed successfully"
+          echo "Build output:"
+          ls -la dist/ || echo "No dist directory found"
+
+      - name: Log pre-deployment status
+        run: |
+          echo "🔍 Pre-deployment checks..."
+          echo "Working directory: $(pwd)"
+          echo "Files in root:"
+          ls -la
+          echo "Build artifacts:"
+          ls -la dist/ || echo "No dist directory found"
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          vercel-args: '--prod --debug'
+
+      - name: Log deployment completion
+        run: |
+          echo "🎉 Deployment process completed!"
+          echo "Check Vercel dashboard for final status"
+
 
       - name: Build project
         env:
