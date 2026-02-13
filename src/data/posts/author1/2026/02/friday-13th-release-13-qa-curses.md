@@ -14,6 +14,9 @@ Most “release bad luck” is simply unpriced risk. Not “unknown unknowns” 
 
 So here’s a Friday the 13th post that’s deliberately playful, but not childish: 13 QA curses that recur in grown-up teams, in real organisations, with real users and real consequences. Each one comes with an antidote that doesn’t require a new tool, a new framework, or a new religion - just sharper operational habits.
 
+![A black cat beside a laptop.](null-expected-friday13.jpg)
+
+
 ### Curse 1: The release plan written in invisible ink
 
 This is the classic: “We’ll be careful.” “We’ll keep an eye on it.” “We’ll handle it if it happens.” If your plan cannot be paraphrased as concrete conditions and actions, it isn’t a plan - it’s a wish with a calendar invite.
