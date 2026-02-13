@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { findHeader, findFooter, findLink, findHeading } from '../utils/locators';
 
 const routes = [
   {
@@ -79,7 +80,7 @@ test.describe('Global Layout Elements', () => {
     for (const route of routes) {
       await page.goto(route.path);
 
-      const header = page.locator('header');
+      const header = await findHeader(page);
       await expect(header).toBeVisible();
 
       await expect(header).toContainText('Null:Expected');
@@ -90,7 +91,7 @@ test.describe('Global Layout Elements', () => {
     for (const route of routes) {
       await page.goto(route.path);
 
-      const footer = page.locator('footer');
+      const footer = await findFooter(page);
       await expect(footer).toBeVisible();
     }
   });
@@ -98,7 +99,7 @@ test.describe('Global Layout Elements', () => {
   test('Navigation links work correctly', async ({ page }) => {
     await page.goto('/');
 
-    const header = page.locator('header');
+    const header = await findHeader(page);
     await expect(header.getByRole('link', { name: 'About' })).toBeVisible();
     await expect(header.getByRole('link', { name: 'Blog' })).toBeVisible();
     await expect(header.getByRole('link', { name: 'Mission' })).toBeVisible();
@@ -153,11 +154,12 @@ test.describe('404 Not Found Page', () => {
   test('Shows 404 UI for invalid route', async ({ page }) => {
     await page.goto('/this-should-404');
 
-    await expect(page.locator('h1')).toContainText('404');
+    const heading = await findHeading(page, /404/);
+    await expect(heading).toBeVisible();
 
     await expect(page.locator('body')).toContainText('Page Not Found');
 
-    const homeLink = page.getByRole('link', { name: /go home/i });
+    const homeLink = await findLink(page, /go home/i);
     await expect(homeLink).toBeVisible();
   });
 
@@ -170,10 +172,13 @@ test.describe('404 Not Found Page', () => {
   test('404 page navigation works', async ({ page }) => {
     await page.goto('/invalid-route');
 
-    await page.getByRole('link', { name: /go home/i }).click();
+    const homeLink = await findLink(page, /go home/i);
+    await homeLink.click();
 
     await expect(page).toHaveURL('http://127.0.0.1:4173/');
-    await expect(page.locator('h1')).toContainText('Null:Expected');
+
+    const heading = await findHeading(page, 'Null:Expected');
+    await expect(heading).toBeVisible();
   });
 
   test('404 page has quick links', async ({ page }) => {
