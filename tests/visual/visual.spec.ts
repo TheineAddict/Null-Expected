@@ -26,7 +26,7 @@ test.describe('Visual Regression Tests', () => {
         });
 
         await page.waitForFunction(() => {
-          const loadingText = document.body.textContent?.includes('Loading featured posts');
+          const loadingText = document.body.textContent?.includes('Loading posts');
           return !loadingText;
         }, { timeout: 10000 });
 
