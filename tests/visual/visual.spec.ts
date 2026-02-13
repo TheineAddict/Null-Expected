@@ -23,7 +23,7 @@ test.describe('Visual Regression Tests', () => {
         // Wait for the featured posts section to finish loading
         // This handles both cases: when posts exist and when they don't
         await page.waitForFunction(() => {
-          const loadingText = document.body.textContent?.includes('Loading featured posts...');
+          const loadingText = document.body.textContent?.includes('Loading posts...');
           return !loadingText;
         }, { timeout: 15000 });
 
