@@ -1,317 +1,268 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { fileURLToPath } from 'url';
+name: Deploy NullExpected.com Blog
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
-interface SpecStep {
-  keyword: 'Given' | 'When' | 'Then' | 'And' | 'Step';
-  text: string;
-}
+jobs:
+  test-e2e:
+    name: E2E Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-interface Spec {
-  title: string;
-  preconditions: string[];
-  steps: SpecStep[];
-  expectedResults: string[];
-  filename: string;
-}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-class SpecParser {
-  parse(content: string, filename: string): Spec {
-    const lines = content.split('\n');
-    const spec: Spec = {
-      title: '',
-      preconditions: [],
-      steps: [],
-      expectedResults: [],
-      filename,
-    };
+      - name: Install dependencies
+        run: npm ci
 
-    let currentSection: 'none' | 'preconditions' | 'steps' | 'expected' = 'none';
+      - name: Build project
+        run: npm run build
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-      if (line.startsWith('# ')) {
-        spec.title = line.substring(2).trim();
-        continue;
-      }
+      - name: Start preview server and run E2E tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npx playwright test --project=e2e || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
 
-      if (line === '## Preconditions') {
-        currentSection = 'preconditions';
-        continue;
-      }
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-e2e
+          path: playwright-report/
+          retention-days: 30
 
-      if (line === '## Steps') {
-        currentSection = 'steps';
-        continue;
-      }
+  test-api:
+    name: API Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-      if (line === '## Expected Results') {
-        currentSection = 'expected';
-        continue;
-      }
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-      if (line.startsWith('##')) {
-        currentSection = 'none';
-        continue;
-      }
+      - name: Install dependencies
+        run: npm ci
 
-      if (line === '' || line.startsWith('---')) {
-        continue;
-      }
+      - name: Build project
+        run: npm run build
 
-      if (currentSection === 'preconditions') {
-        if (line.startsWith('- ')) {
-          spec.preconditions.push(line.substring(2).trim());
-        }
-      } else if (currentSection === 'steps') {
-        const stepMatch = line.match(/^\*\*(Given|When|Then|And)\*\*\s+(.+)$/);
-        if (stepMatch) {
-          spec.steps.push({
-            keyword: stepMatch[1] as any,
-            text: stepMatch[2].trim(),
-          });
-        } else if (line.match(/^\d+\.\s+/)) {
-          spec.steps.push({
-            keyword: 'Step',
-            text: line.replace(/^\d+\.\s+/, '').trim(),
-          });
-        }
-      } else if (currentSection === 'expected') {
-        if (line.startsWith('- ')) {
-          spec.expectedResults.push(line.substring(2).trim());
-        }
-      }
-    }
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-    return spec;
-  }
-}
+      - name: Start preview server and run API tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npx playwright test --project=api || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
 
-class TestGenerator {
-  private baseURL = "http://localhost:5173";
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-api
+          path: playwright-report/
+          retention-days: 30
 
-  generate(spec: Spec): string {
-    const testName = this.sanitizeTestName(spec.title);
-    const imports = this.generateImports();
-    const testSuite = this.generateTestSuite(spec);
+  test-visual:
+    name: Visual Regression Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-    return `${imports}\n\n${testSuite}`;
-  }
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-  private sanitizeTestName(title: string): string {
-    return title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  }
+      - name: Install dependencies
+        run: npm ci
 
-  private generateImports(): string {
-    return `import { test, expect } from '@playwright/test';
-import { findLink, findButton, findHeading } from '../../utils/locators';`;
-  }
+      - name: Build project
+        run: npm run build
 
-  private generateTestSuite(spec: Spec): string {
-    const testName = spec.title;
-    const testSteps = this.generateTestSteps(spec.steps);
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-    return `test.describe('${testName}', () => {
-  test('${testName}', async ({ page }) => {
-${testSteps}
-  });
-});`;
-  }
+      - name: Start preview server and run visual tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npx playwright test --project=visual || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
 
-  private generateTestSteps(steps: SpecStep[]): string {
-    const generatedSteps: string[] = [];
-    let lastKeyword: string = '';
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-visual
+          path: playwright-report/
+          retention-days: 30
 
-    for (let i = 0; i < steps.length; i++) {
-      const step = steps[i];
-      const keyword = step.keyword === 'And' ? lastKeyword : step.keyword;
-      const code = this.generateStepCode(keyword, step.text, i + 1);
+  test-agentic:
+    name: Agentic Exploratory Tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-      if (code) {
-        const comment = step.keyword === 'And'
-          ? `    // And ${step.text}`
-          : `    // ${step.keyword} ${step.text}`;
-        generatedSteps.push(comment);
-        generatedSteps.push(code);
-      }
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-      if (step.keyword !== 'And') {
-        lastKeyword = step.keyword;
-      }
-    }
+      - name: Install dependencies
+        run: npm ci
 
-    return generatedSteps.join('\n');
-  }
+      - name: Build project
+        run: npm run build
 
-  private generateStepCode(keyword: string, text: string, stepNumber: number): string {
-    const lowerText = text.toLowerCase();
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-    if (keyword === 'Given') {
-      if (lowerText.includes('home page') || lowerText.includes('homepage')) {
-        return `    await page.goto('/');`;
-      }
-      if (lowerText.includes('blog listing') || lowerText.includes('blog page')) {
-        return `    await page.goto('/blog');`;
-      }
-      return `    // TODO: Implement precondition - ${text}`;
-    }
+      - name: Start preview server and run exploratory tests
+        continue-on-error: true
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          BASE_URL=http://127.0.0.1:4173 npm run test:explore || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
 
-    if (keyword === 'When') {
-      if (lowerText.includes('click') && lowerText.includes('first') && lowerText.includes('post')) {
-        return `    const firstPost${stepNumber} = page.locator('main article a, main [class*="post"] a').first();
-    await firstPost${stepNumber}.click();
-    await page.waitForLoadState('networkidle');`;
-      }
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: exploratory-test-report
+          path: tests/agentic/reports/
+          retention-days: 30
 
-      if (lowerText.includes('click') && (lowerText.includes('reset') || lowerText.includes('clear'))) {
-        return `    const resetButton${stepNumber} = await findButton(page, /reset|clear|all/i);
-    await resetButton${stepNumber}.click();
-    await page.waitForTimeout(500);`;
-      }
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: exploratory-test-artifacts
+          path: tests/agentic/artifacts/
+          retention-days: 30
 
-      if (lowerText.includes('click') && (lowerText.includes('tag') || lowerText.includes('filter'))) {
-        return `    const tagButton${stepNumber} = page.locator('button[class*="tag"], a[class*="tag"]').first();
-    await tagButton${stepNumber}.click();
-    await page.waitForTimeout(500);`;
-      }
+  test-generated:
+    name: Generated Tests from Specs
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-      if (lowerText.includes('click') && lowerText.includes('blog')) {
-        return `    const blogLink${stepNumber} = await findLink(page, /blog/i);
-    await blogLink${stepNumber}.click();
-    await page.waitForURL(/\\/blog/);`;
-      }
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
 
-      if (lowerText.includes('click')) {
-        const match = text.match(/clicks?\s+(?:on\s+)?(?:the\s+)?["']?([^"']+)["']?/i);
-        if (match) {
-          const linkText = match[1].trim();
-          return `    const link${stepNumber} = await findLink(page, /${linkText}/i);
-    await link${stepNumber}.click();
-    await page.waitForLoadState('networkidle');`;
-        }
-      }
+      - name: Install dependencies
+        run: npm ci
 
-      return `    // TODO: Implement action - ${text}`;
-    }
+      - name: Build project
+        run: npm run build
 
-    if (keyword === 'Then') {
-      if (lowerText.includes('blog listing') && lowerText.includes('displayed')) {
-        return `    await expect(page).toHaveURL(/\\/blog/);
-    const blogHeading${stepNumber} = await findHeading(page, /blog|posts/i);
-    await expect(blogHeading${stepNumber}).toBeVisible();`;
-      }
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-      if (lowerText.includes('blog post') && lowerText.includes('displayed')) {
-        return `    await expect(page).toHaveURL(/\\/blog\\/.+/);`;
-      }
+      - name: Start preview server and run generated tests
+        run: |
+          npm run preview &
+          SERVER_PID=$!
+          npx wait-on http://127.0.0.1:4173 -t 120000 || (echo "Preview server failed to start" && kill $SERVER_PID || true && exit 1)
+          npm run test:gen:run || TEST_EXIT_CODE=$?
+          kill $SERVER_PID || true
+          exit ${TEST_EXIT_CODE:-0}
 
-      if (lowerText.includes('post') && lowerText.includes('title')) {
-        return `    const postTitle${stepNumber} = page.locator('h1');
-    await expect(postTitle${stepNumber}).toBeVisible();
-    await expect(postTitle${stepNumber}).not.toBeEmpty();`;
-      }
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-generated
+          path: playwright-report/
+          retention-days: 30
 
-      if (lowerText.includes('post') && lowerText.includes('content')) {
-        return `    const postContent${stepNumber} = page.locator('article, main');
-    await expect(postContent${stepNumber}).toBeVisible();`;
-      }
+  deploy:
+    runs-on: ubuntu-latest
+    #needs: test
 
-      if (lowerText.includes('listing') && lowerText.includes('update')) {
-        return `    await page.waitForTimeout(300);
-    const posts${stepNumber} = page.locator('article, [class*="post"]');
-    await expect(posts${stepNumber}.first()).toBeVisible();`;
-      }
+    steps:
+      - name: Log deployment start
+        run: |
+          echo "🚀 Starting deployment process..."
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Event: ${{ github.event_name }}"
 
-      if (lowerText.includes('no filter') || (lowerText.includes('filter') && lowerText.includes('not') && lowerText.includes('active'))) {
-        return `    const activeFilters${stepNumber} = page.locator('[class*="active"], [aria-pressed="true"]');
-    const count${stepNumber} = await activeFilters${stepNumber}.count();
-    expect(count${stepNumber}).toBe(0);`;
-      }
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-      if (lowerText.includes('all posts') || lowerText.includes('show all')) {
-        return `    const posts${stepNumber} = page.locator('article, [class*="post"]');
-    const postCount${stepNumber} = await posts${stepNumber}.count();
-    expect(postCount${stepNumber}).toBeGreaterThan(0);`;
-      }
+      - name: Log checkout complete
+        run: echo "✅ Code checkout completed"
 
-      if (lowerText.includes('filter') && (lowerText.includes('active') || lowerText.includes('indicated'))) {
-        return `    const activeFilter${stepNumber} = page.locator('[class*="active"], [aria-pressed="true"]');
-    await expect(activeFilter${stepNumber}).toBeVisible();`;
-      }
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
 
-      return `    // TODO: Implement assertion - ${text}`;
-    }
+      - name: Log Node.js setup
+        run: |
+          echo "✅ Node.js setup completed"
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
 
-    return `    // ${keyword}: ${text}`;
-  }
-}
+      - name: Install dependencies
+        run: |
+          echo "📦 Installing dependencies..."
+          set -x
+          npm install
+          echo "✅ Dependencies installed successfully"
+          npx tsx --version || true
 
-async function generateTests() {
-  const specsDir = path.join(__dirname, 'specs');
-  const generatedDir = path.join(__dirname, 'generated');
+      - name: Build project
+        env:
+          NODE_ENV: production
+        run: |
+          echo "🔨 Building project... "
+          set -x
+          npm run build
+          echo "✅ Build completed successfully"
+          echo "Build output:"
+          ls -la dist/ || echo "No dist directory found"
 
-  if (!fs.existsSync(specsDir)) {
-    console.error(`Specs directory not found: ${specsDir}`);
-    process.exit(1);
-  }
+      - name: Log pre-deployment status
+        run: |
+          echo "🔍 Pre-deployment checks..."
+          echo "Working directory: $(pwd)"
+          echo "Files in root:"
+          ls -la
+          echo "Build artifacts:"
+          ls -la dist/ || echo "No dist directory found"
 
-  if (!fs.existsSync(generatedDir)) {
-    fs.mkdirSync(generatedDir, { recursive: true });
-  }
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          vercel-args: '--prod --debug'
 
-  console.log('Generating tests from specifications...\n');
-
-  const specFiles = fs.readdirSync(specsDir).filter(f => f.endsWith('.md'));
-
-  if (specFiles.length === 0) {
-    console.log('No specification files found in', specsDir);
-    return;
-  }
-
-  const parser = new SpecParser();
-  const generator = new TestGenerator();
-
-  let generatedCount = 0;
-
-  for (const specFile of specFiles) {
-    const specPath = path.join(specsDir, specFile);
-    const content = fs.readFileSync(specPath, 'utf-8');
-
-    console.log(`Processing: ${specFile}`);
-
-    const spec = parser.parse(content, specFile);
-
-    if (!spec.title) {
-      console.warn(`  ⚠️  Skipping ${specFile}: No title found`);
-      continue;
-    }
-
-    console.log(`  Title: ${spec.title}`);
-    console.log(`  Steps: ${spec.steps.length}`);
-
-    const testCode = generator.generate(spec);
-
-    const outputFilename = specFile.replace('.md', '.spec.ts');
-    const outputPath = path.join(generatedDir, outputFilename);
-
-    fs.writeFileSync(outputPath, testCode, 'utf-8');
-    console.log(`  ✓ Generated: ${outputFilename}\n`);
-
-    generatedCount++;
-  }
-
-  console.log(`\nGenerated ${generatedCount} test file(s) in ${generatedDir}`);
-  console.log('\nRun with: npm run test:gen:run');
-}
-
-generateTests().catch(error => {
-  console.error('Test generation failed:', error);
-  process.exit(1);
-});
+      - name: Log deployment completion
+        run: |
+          echo "🎉 Deployment process completed!"
+          echo "Check Vercel dashboard for final status"
