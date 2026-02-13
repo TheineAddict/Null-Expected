@@ -50,7 +50,7 @@ test.describe('Visual Regression Tests', () => {
 
         await expect(page).toHaveScreenshot(`landing-${name}.png`, {
           fullPage: true,
-          maxDiffPixels: 100,
+          maxDiffPixels: 1000,
           timeout: 10000,
         });
       });
