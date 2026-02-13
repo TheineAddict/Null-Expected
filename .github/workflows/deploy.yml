@@ -42,8 +42,8 @@ jobs:
           name: playwright-report-e2e
           path: playwright-report/
           retention-days: 30
-
-   test-visual:
+          
+  test-visual:
     name: Visual Regression Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
