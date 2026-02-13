@@ -39,9 +39,27 @@ tests/visual/__screenshots__/
 ## How It Works
 
 1. Tests navigate to each page and wait for network idle
-2. Full page screenshots are captured
-3. Screenshots are compared against baseline images
-4. Tests fail if visual differences exceed threshold (100 pixels)
+2. Wait for specific loading states to complete:
+   - Landing page: Waits for "Loading featured posts..." to disappear
+   - Blog page: Waits for "Loading posts..." to disappear
+3. Verify content is present (either articles or empty state messages)
+4. Disable animations for consistent screenshots
+5. Full page screenshots are captured
+6. Screenshots are compared against baseline images
+7. Tests fail if visual differences exceed threshold (100 pixels)
+
+## Loading State Handling
+
+The tests are designed to handle multiple page states:
+
+- **Content loaded successfully**: Verifies articles are present
+- **Empty state**: Verifies empty state messages are shown
+- **Loading**: Explicitly waits for loading to complete before capturing
+
+This ensures reliable tests even when:
+- Data loading is slow
+- No blog posts exist
+- Featured posts are not available
 
 ## Handling Changes
 

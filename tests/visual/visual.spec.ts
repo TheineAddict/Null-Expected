@@ -20,15 +20,20 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/');
         await page.waitForLoadState('networkidle');
 
-        await page.waitForSelector('article', {
-          timeout: 15000,
-          state: 'visible'
-        });
-
+        // Wait for the featured posts section to finish loading
+        // This handles both cases: when posts exist and when they don't
         await page.waitForFunction(() => {
-          const loadingText = document.body.textContent?.includes('Loading posts');
+          const loadingText = document.body.textContent?.includes('Loading featured posts...');
           return !loadingText;
-        }, { timeout: 10000 });
+        }, { timeout: 15000 });
+
+        // Verify content is present (either articles or empty state message)
+        const hasArticles = await page.locator('article').count() > 0;
+        const hasEmptyState = await page.locator('text=No featured posts available yet').count() > 0;
+
+        if (!hasArticles && !hasEmptyState) {
+          throw new Error('Expected either featured post articles or empty state message, but found neither');
+        }
 
         await page.addStyleTag({
           content: `
@@ -54,15 +59,20 @@ test.describe('Visual Regression Tests', () => {
         await page.goto('/blog');
         await page.waitForLoadState('networkidle');
 
-        await page.waitForSelector('article', {
-          timeout: 15000,
-          state: 'visible'
-        });
-
+        // Wait for the blog posts section to finish loading
+        // This handles both cases: when posts exist and when they don't
         await page.waitForFunction(() => {
-          const loadingText = document.body.textContent?.includes('Loading posts');
+          const loadingText = document.body.textContent?.includes('Loading posts...');
           return !loadingText;
-        }, { timeout: 10000 });
+        }, { timeout: 15000 });
+
+        // Verify content is present (either articles or empty state message)
+        const hasArticles = await page.locator('article').count() > 0;
+        const hasEmptyState = await page.locator('text=No posts found').count() > 0;
+
+        if (!hasArticles && !hasEmptyState) {
+          throw new Error('Expected either blog post articles or empty state message, but found neither');
+        }
 
         await page.addStyleTag({
           content: `
