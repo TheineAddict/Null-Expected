@@ -7,18 +7,38 @@ export interface ScoringResult {
 
 const POSITIVE_TITLE_REGEX: Array<[RegExp, number, string]> = [
   [/\brelease (program )?manager\b/i, 28, 'Release manager role'],
+  [/\brelease (and|&) delivery lead\b|\brelease lead\b/i, 24, 'Release lead role'],
   [/\bdelivery manager\b/i, 24, 'Delivery manager role'],
   [/\btechnical program manager\b|\btpm\b/i, 18, 'Program/TPM role'],
   [/\brelease coordinator\b/i, 18, 'Release coordination'],
   [/\bqa lead\b|\btest lead\b|\bquality lead\b/i, 22, 'QA/Test leadership'],
   [/\bqa manager\b|\btest manager\b|\bquality manager\b/i, 22, 'QA/Test management'],
-  [/\bquality assurance\b|\bqa engineer\b|\bquality engineer\b|\btest engineer\b|\btest analyst\b/i, 16, 'QA/Testing role'],
+  [/\bqa specialist\b|\bqa analyst\b|\bquality analyst\b|\btest analyst\b/i, 14, 'QA analyst role'],
+  [/\bquality assurance\b|\bqa engineer\b|\bquality engineer\b|\btest engineer\b/i, 16, 'QA/Testing role'],
 ];
 
 const RELEASE_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
   [/\bgo\/no[- ]go\b|\brelease readiness\b|\brelease governance\b/i, 16, 'Release readiness/governance'],
   [/\bchange management\b|\bcab\b|\bitil\b/i, 10, 'Change/CAB/ITIL'],
   [/\bcutover\b|\brollback\b|\brelease plan\b|\brelease train\b/i, 10, 'Cutover/rollback/release planning'],
+];
+
+// Strong “you” signals that often appear in descriptions (kept small to avoid false positives)
+const ROLE_SKILL_POSITIVES: Array<[RegExp, number, string]> = [
+  [/\b(ci\/cd|pipeline(s)?)\b|\bquality gate(s)?\b/i, 6, 'CI/CD quality gates'],
+  [/\b(playwright|cypress|selenium)\b/i, 5, 'Modern QA automation tools'],
+  [/\b(api testing|rest\b|soap\b|postman|newman)\b/i, 5, 'API testing'],
+  [/\bsql\b|\bmysql\b|\bdata validation\b/i, 3, 'SQL/data validation'],
+  [/\b(service ?now)\b|\bchange request\b|\brelease calendar\b/i, 3, 'Change/release ops tooling'],
+  [/\bobservability\b|\bdatadog\b|\bkibana\b|\blog(s|ging)\b|\bmonitoring\b/i, 2, 'Prod signals/observability'],
+  [/\bincident\b|\bpost[- ]incident\b|\brca\b|\broot cause\b/i, 2, 'Incident/RCA exposure'],
+];
+
+// Roles that are “technical” but usually not what you want
+const IMPLEMENTATION_NEGATIVES: Array<[RegExp, number, string]> = [
+  [/\bcustomer success\b|\bimplementation\b|\bprofessional services\b/i, -18, 'Implementation/CS role'],
+  [/\bsolutions consultant\b|\bsolutions engineer\b|\bsales engineer\b/i, -18, 'Solutions/Sales engineering'],
+  [/\btechnical account manager\b|\btam\b/i, -18, 'TAM role'],
 ];
 
 const SUPPORT_NEGATIVES: Array<[RegExp, number, string]> = [
@@ -36,7 +56,16 @@ const AUTOMATION_ONLY_NEGATIVES: Array<[RegExp, number, string]> = [
 ];
 
 const SDET_SOFT: Array<[RegExp, number, string]> = [
-  [/\bsdet\b/i, -6, 'SDET-heavy'],
+  [/\bsdet\b|\bsoftware engineer in test\b|\b(s|software)\s*det\b/i, -6, 'SDET-heavy'],
+];
+
+// Fallback geo restrictions when remoteScope parsing is missing/weak
+const LOCATION_ELIGIBILITY_NEGATIVES: Array<[RegExp, number, string]> = [
+  [/\b(us[- ]only|us only|u\.s\.-only|united states only|remote.*\bus\b)\b/i, -30, 'US-only remote'],
+  [/\b(uk[- ]only|united kingdom only)\b/i, -22, 'UK-only remote'],
+  [/\b(canada[- ]only)\b/i, -22, 'Canada-only remote'],
+  [/\b(australia[- ]only)\b/i, -22, 'Australia-only remote'],
+  [/\bmust be (based|located|resident)\b/i, -12, 'Location-restricted'],
 ];
 
 // Title-only de-prioritization for pure software engineering roles.
@@ -115,36 +144,67 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
     score -= 40; reasons.push({ reason: 'Onsite work', delta: -40 });
   }
 
-  // 4) Role-fit rules (content-based)
-  score = applyRules(combined, POSITIVE_TITLE_REGEX, score, reasons);
+  // 4) Role-fit rules
+  // Title-based role matching to reduce false positives from descriptions.
+  score = applyRules(title, POSITIVE_TITLE_REGEX, score, reasons);
+
+  // Description-based fit signals (lighter weights).
   score = applyRules(combined, RELEASE_GOVERNANCE_REGEX, score, reasons);
+  score = applyRules(combined, ROLE_SKILL_POSITIVES, score, reasons);
 
   // 5) Noise reducers
   score = applyRules(combined, SUPPORT_NEGATIVES, score, reasons);
   score = applyRules(combined, SALES_NEGATIVES, score, reasons);
+  score = applyRules(combined, IMPLEMENTATION_NEGATIVES, score, reasons);
+
+  // 5.1) Fallback location restrictions from text (helps when remoteScope is UNKNOWN)
+  score = applyRules(combined, LOCATION_ELIGIBILITY_NEGATIVES, score, reasons);
 
   // 6) Automation-only vs mixed QA
   score = applyRules(combined, AUTOMATION_ONLY_NEGATIVES, score, reasons);
   score = applyRules(combined, SDET_SOFT, score, reasons);
 
-  // 7) Seniority: avoid junior/intern noise
-  if (/\b(intern|junior|entry[- ]level|graduate)\b/i.test(combined)) {
-    score -= 18; reasons.push({ reason: 'Junior/intern level', delta: -18 });
+  // 7) Seniority: reduce intern noise strongly; soften junior penalty
+  if (/\b(intern|graduate)\b/i.test(combined)) {
+    score -= 18; reasons.push({ reason: 'Intern/graduate level', delta: -18 });
+  } else if (/\b(junior|entry[- ]level)\b/i.test(combined)) {
+    score -= 10; reasons.push({ reason: 'Junior/entry level', delta: -10 });
   }
-  if (/\b(senior|lead|staff)\b/i.test(combined)) {
+  if (/\b(senior|lead|staff|principal)\b/i.test(combined)) {
     score += 6; reasons.push({ reason: 'Senior/Lead level', delta: 6 });
   }
 
-  // 8) EU timezone signal
-  if (/\b(cet|eet|gmt\+0|gmt\+1|gmt\+2|gmt\+3|european time zones?)\b/i.test(combined)) {
+  // 8) EU timezone signal (expanded)
+  if (/\b(cet|cest|eet|eest|bst|european time zones?)\b/i.test(combined) ||
+      /\b(utc|gmt)\s*[+-]\s*\d{1,2}\b/i.test(combined)) {
     score += 10; reasons.push({ reason: 'EU timezone friendly', delta: 10 });
+  }
+
+  // 9) If nothing indicates role fit, push it down (prevents random “remote” jobs ranking high)
+  const hasCoreFit =
+    POSITIVE_TITLE_REGEX.some(([re]) => re.test(title)) ||
+    RELEASE_GOVERNANCE_REGEX.some(([re]) => re.test(combined)) ||
+    ROLE_SKILL_POSITIVES.some(([re]) => re.test(combined));
+
+  if (!hasCoreFit) {
+    score -= 14; reasons.push({ reason: 'Low role-fit signals', delta: -14 });
+  }
+
+  // Optional hard caps to keep obvious mismatches from floating up
+  if (SUPPORT_NEGATIVES.some(([re]) => re.test(combined))) {
+    score = Math.min(score, 35);
+    reasons.push({ reason: 'Capped due to support signals', delta: -999 });
+  }
+  if (SALES_NEGATIVES.some(([re]) => re.test(combined))) {
+    score = Math.min(score, 40);
+    reasons.push({ reason: 'Capped due to sales signals', delta: -999 });
   }
 
   score = Math.max(0, Math.min(100, score));
 
   reasons.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
   const topReasons = reasons
-    .filter(r => r.delta !== -999) // hide the internal "cap" marker from UI
+    .filter(r => r.delta !== -999) // hide internal "cap" markers from UI
     .slice(0, 3)
     .map(r => r.reason);
 
