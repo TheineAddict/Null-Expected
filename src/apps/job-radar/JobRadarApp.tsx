@@ -18,6 +18,7 @@ const JobRadarApp: React.FC = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showSourceHealth, setShowSourceHealth] = useState(false);
   const [sourceFilter, setSourceFilter] = useState<'all' | 'enabled' | 'ok' | 'failed' | 'unsupported'>('enabled');
+  const [showLastRunOnly, setShowLastRunOnly] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,6 +81,12 @@ const JobRadarApp: React.FC = () => {
         if (!titleMatch && !companyMatch) return false;
       }
 
+      if (showLastRunOnly && meta?.lastRunAt) {
+        const jobDate = new Date(job.collectedAt).toISOString().split('T')[0];
+        const lastRunDate = new Date(meta.lastRunAt).toISOString().split('T')[0];
+        if (jobDate !== lastRunDate) return false;
+      }
+
       return true;
     });
 
@@ -91,7 +98,7 @@ const JobRadarApp: React.FC = () => {
     });
 
     return filtered;
-  }, [snapshot, searchQuery, selectedScopes, includeCountryOnly, includeUnknown, minScore]);
+  }, [snapshot, searchQuery, selectedScopes, includeCountryOnly, includeUnknown, minScore, showLastRunOnly, meta]);
 
   const uniqueAttributions = useMemo(() => {
     const attributions = new Map<string, Attribution>();
@@ -433,6 +440,19 @@ const JobRadarApp: React.FC = () => {
                     className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Include UNKNOWN scope</span>
+                </label>
+
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={showLastRunOnly}
+                    onChange={(e) => setShowLastRunOnly(e.target.checked)}
+                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    disabled={!meta?.lastRunAt}
+                  />
+                  <span className={`text-sm ${!meta?.lastRunAt ? 'text-gray-400' : 'text-gray-700'}`}>
+                    Last run only
+                  </span>
                 </label>
               </div>
 
