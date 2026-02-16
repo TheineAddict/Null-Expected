@@ -129,6 +129,16 @@
       "sourcesOk": 21,
       "sourcesFailed": 13,
       "durationMs": 662228
+    },
+    {
+      "id": "run-1771231244656-pzowo8p4t",
+      "startedAt": "2026-02-16T08:40:44.656Z",
+      "completedAt": "2026-02-16T08:52:16.134Z",
+      "status": "completed",
+      "totalJobs": 5022,
+      "sourcesOk": 32,
+      "sourcesFailed": 15,
+      "durationMs": 691478
     }
   ]
 }
