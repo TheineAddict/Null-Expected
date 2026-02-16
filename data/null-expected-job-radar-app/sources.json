@@ -353,6 +353,134 @@
       "config": {
         "url": "https://10up.com/careers/"
       }
+    },
+
+    {
+      "id": "empllo_all",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - All Remote Jobs (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_engineering",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - Engineering (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-engineering-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_devops",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - DevOps (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-devops-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_product",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - Product (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-product-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_business_management",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - Business & Management (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-business-management-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_operations",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - Operations (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-operations-jobs.rss"
+      }
+    },
+    {
+      "id": "empllo_customer_support",
+      "type": "RSS_GENERIC",
+      "name": "Empllo - Customer Support (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://empllo.com/feeds/remote-customer-support-jobs.rss"
+      }
+    },
+
+    {
+      "id": "hireweb3_rss",
+      "type": "RSS_GENERIC",
+      "name": "HireWeb3 (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://hireweb3.io/job/rss",
+        "requiresAttribution": true,
+        "attributionName": "HireWeb3",
+        "attributionUrl": "https://hireweb3.io/"
+      }
+    },
+
+    {
+      "id": "jobscollider_qa_rss",
+      "type": "RSS_GENERIC",
+      "name": "JobsCollider - QA Jobs (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://jobscollider.com/remote-qa-jobs.rss",
+        "requiresAttribution": true,
+        "attributionName": "JobsCollider",
+        "attributionUrl": "https://jobscollider.com/"
+      }
+    },
+
+    {
+      "id": "workanywhere_all",
+      "type": "RSS_GENERIC",
+      "name": "WorkAnywhere.pro - All Remote Jobs (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://www.workanywhere.pro/feed"
+      }
+    },
+
+    {
+      "id": "swissdevjobs_rss",
+      "type": "RSS_GENERIC",
+      "name": "SwissDevJobs (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://swissdevjobs.ch/rss"
+      }
+    },
+    {
+      "id": "germantechjobs_rss",
+      "type": "RSS_GENERIC",
+      "name": "GermanTechJobs (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://germantechjobs.de/rss"
+      }
+    },
+    {
+      "id": "devitjobs_uk_rss",
+      "type": "RSS_GENERIC",
+      "name": "DevITJobs UK (RSS)",
+      "enabled": true,
+      "config": {
+        "url": "https://devitjobs.uk/rss"
+      }
     }
   ]
 }
