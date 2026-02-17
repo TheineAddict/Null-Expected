@@ -21,17 +21,18 @@ const RELEASE_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
   [/\bgo\/no[- ]go\b|\brelease readiness\b|\brelease governance\b/i, 16, 'Release readiness/governance'],
   [/\bchange management\b|\bcab\b|\bitil\b/i, 10, 'Change/CAB/ITIL'],
   [/\bcutover\b|\brollback\b|\brelease plan\b|\brelease train\b/i, 10, 'Cutover/rollback/release planning'],
+  [/\btest strategy\b|\btest plan(n)?ing\b|\btest planning\b|\brisk[- ]based\b|\bexploratory testing\b|\bdefect triage\b|\bbug triage\b/i, 10, 'Test strategy/planning'],
 ];
 
 // Strong “you” signals that often appear in descriptions (kept small to avoid false positives)
 const ROLE_SKILL_POSITIVES: Array<[RegExp, number, string]> = [
-  [/\b(ci\/cd|pipeline(s)?)\b|\bquality gate(s)?\b/i, 6, 'CI/CD quality gates'],
-  [/\b(playwright|cypress|selenium)\b/i, 5, 'Modern QA automation tools'],
-  [/\b(api testing|rest\b|soap\b|postman|newman)\b/i, 5, 'API testing'],
+  [/\b(ci\/cd|pipeline(s)?)\b|\bquality gate(s)?\b/i, 3, 'CI/CD quality gates'],
+  [/\b(playwright|cypress|selenium)\b/i, 4, 'Modern QA automation tools'],
+  [/\b(api testing|rest\b|soap\b|postman|newman)\b/i, 4, 'API testing'],
   [/\bsql\b|\bmysql\b|\bdata validation\b/i, 3, 'SQL/data validation'],
   [/\b(service ?now)\b|\bchange request\b|\brelease calendar\b/i, 3, 'Change/release ops tooling'],
-  [/\bobservability\b|\bdatadog\b|\bkibana\b|\blog(s|ging)\b|\bmonitoring\b/i, 2, 'Prod signals/observability'],
-  [/\bincident\b|\bpost[- ]incident\b|\brca\b|\broot cause\b/i, 2, 'Incident/RCA exposure'],
+  [/\bobservability\b|\bdatadog\b|\bkibana\b|\blog(s|ging)\b|\bmonitoring\b/i, 1, 'Prod signals/observability'],
+  [/\bincident\b|\bpost[- ]incident\b|\brca\b|\broot cause\b/i, 1, 'Incident/RCA exposure'],
 ];
 
 // Roles that are “technical” but usually not what you want
@@ -72,12 +73,23 @@ const LOCATION_ELIGIBILITY_NEGATIVES: Array<[RegExp, number, string]> = [
 // Important: evaluate only on title to avoid punishing descriptions that mention "software engineers".
 const SOFTWARE_ENGINEER_TITLE_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\bsoftware engineer\b/i, -35, 'Software engineer role'],
+  [/\bsoftware developer\b/i, -35, 'Software developer role'],
+  [/\b(front[- ]?end|back[- ]?end|full[- ]?stack)\s*developer\b/i, -30, 'Developer IC role'],
+  [/\bweb developer\b|\breact developer\b|\bnode(\.js)? developer\b|\bjava developer\b|\bpython developer\b|\bphp developer\b|\b(\.net|dotnet) developer\b/i, -28, 'Developer IC role'],
+  [/\bmobile developer\b|\bios developer\b|\bandroid developer\b/i, -25, 'Mobile developer role'],
+  [/\bdeveloper\b|\bprogrammer\b/i, -24, 'Developer/programmer role'],
   [/\bbackend engineer\b|\bfront[- ]end engineer\b|\bfull[- ]stack engineer\b/i, -25, 'Engineering IC role'],
+  [/\bproduct engineer\b/i, -22, 'Engineering IC role'],
   [/\bplatform engineer\b|\binfrastructure engineer\b|\bsite reliability engineer\b|\bsre\b/i, -18, 'Platform/SRE role'],
+  [/\bdata engineer\b|\bml engineer\b|\bmachine learning engineer\b|\bai engineer\b/i, -18, 'Data/ML engineering role'],
 ];
 
 // Exceptions: do NOT penalize when the title is clearly QA/testing/quality even if it contains "engineer".
 const ENGINEER_TITLE_EXCEPTIONS: RegExp = /\b(qa|quality|test|testing)\b/i;
+
+// Anchor signals to decide whether generic “skills” positives should apply
+const ROLE_FIT_ANCHOR: RegExp =
+  /\b(qa|quality assurance|test(ing)?|release readiness|go\/no[- ]go|release governance|change management|cab|itil|cutover|rollback|release plan|release train|release coordinator|release management|test strategy|test planning|risk[- ]based|exploratory testing|defect triage)\b/i;
 
 function applyRules(
   text: string,
@@ -108,11 +120,14 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   if (!ENGINEER_TITLE_EXCEPTIONS.test(title)) {
     score = applyRules(title, SOFTWARE_ENGINEER_TITLE_NEGATIVES, score, reasons);
 
-    // If the title is explicitly "Software Engineer" variants, cap early so it can't float to the top
+    // If the title is explicitly a dev role, cap early so it can't float to the top
     // just because description mentions QA/release words.
     if (/\bsoftware engineer\b/i.test(title)) {
       score = Math.min(score, 25);
       reasons.push({ reason: 'Capped due to Software Engineer title', delta: -999 });
+    } else if (/\b(developer|programmer)\b/i.test(title)) {
+      score = Math.min(score, 28);
+      reasons.push({ reason: 'Capped due to Developer/Programmer title', delta: -999 });
     }
   }
 
@@ -147,10 +162,16 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   // 4) Role-fit rules
   // Title-based role matching to reduce false positives from descriptions.
   score = applyRules(title, POSITIVE_TITLE_REGEX, score, reasons);
+  const titleFit = POSITIVE_TITLE_REGEX.some(([re]) => re.test(title));
 
-  // Description-based fit signals (lighter weights).
+  // Description-based fit signals (stronger, still safe)
   score = applyRules(combined, RELEASE_GOVERNANCE_REGEX, score, reasons);
-  score = applyRules(combined, ROLE_SKILL_POSITIVES, score, reasons);
+
+  // Only apply generic skills positives if we have at least one QA/release anchor signal
+  // (prevents dev roles from ranking high just due to CI/CD/tool mentions).
+  if (titleFit || ROLE_FIT_ANCHOR.test(combined)) {
+    score = applyRules(combined, ROLE_SKILL_POSITIVES, score, reasons);
+  }
 
   // 5) Noise reducers
   score = applyRules(combined, SUPPORT_NEGATIVES, score, reasons);
@@ -184,10 +205,10 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   const hasCoreFit =
     POSITIVE_TITLE_REGEX.some(([re]) => re.test(title)) ||
     RELEASE_GOVERNANCE_REGEX.some(([re]) => re.test(combined)) ||
-    ROLE_SKILL_POSITIVES.some(([re]) => re.test(combined));
+    ROLE_FIT_ANCHOR.test(combined);
 
   if (!hasCoreFit) {
-    score -= 14; reasons.push({ reason: 'Low role-fit signals', delta: -14 });
+    score -= 22; reasons.push({ reason: 'Low role-fit signals', delta: -22 });
   }
 
   // Optional hard caps to keep obvious mismatches from floating up
