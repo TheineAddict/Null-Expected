@@ -149,6 +149,16 @@
       "sourcesOk": 33,
       "sourcesFailed": 14,
       "durationMs": 679556
+    },
+    {
+      "id": "run-1771483205288-ycz2vgsze",
+      "startedAt": "2026-02-19T06:40:05.288Z",
+      "completedAt": "2026-02-19T06:51:26.192Z",
+      "status": "completed",
+      "totalJobs": 6150,
+      "sourcesOk": 34,
+      "sourcesFailed": 13,
+      "durationMs": 680904
     }
   ]
 }
