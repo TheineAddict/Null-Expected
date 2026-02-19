@@ -52,8 +52,12 @@ const Manifesto = () => {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-900 to-purple-800 rounded-full mb-6">
-            <Zap className="h-10 w-10 text-white" />
+          <div className="flex justify-center mb-6">
+            <img
+              src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+              alt="Null Expected Cat Mascot"
+              className="w-24 h-24"
+            />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             The Null:Expected Manifesto
@@ -84,6 +88,13 @@ const Manifesto = () => {
 
       {/* Principles */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center mb-12">
+          <img
+            src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
+            alt="Cat investigating quality principles"
+            className="w-20 h-20 mx-auto"
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {principles.map((principle, index) => (
             <div

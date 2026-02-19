@@ -53,8 +53,12 @@ const Mission = () => {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-900 to-purple-800 rounded-full mb-6">
-            <Target className="h-10 w-10 text-white" />
+          <div className="flex justify-center mb-6">
+            <img
+              src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+              alt="Null Expected Cat Mascot"
+              className="w-24 h-24"
+            />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our Mission
@@ -137,6 +141,13 @@ const Mission = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
+                alt="Cat investigating quality"
+                className="w-20 h-20"
+              />
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
               Why Null Expected?
             </h2>

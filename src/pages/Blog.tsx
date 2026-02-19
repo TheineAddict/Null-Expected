@@ -157,6 +157,13 @@ const Blog = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {loading ? (
           <div className="text-center py-12">
+            <div className="flex justify-center mb-6">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
+                alt="Cat looking for posts"
+                className="w-24 h-24 animate-bounce"
+              />
+            </div>
             <p className="text-gray-500 text-lg">Loading posts...</p>
             <div className="text-sm text-gray-400 font-mono mt-2">
               [ scanning_markdown_files = true ]
@@ -239,6 +246,14 @@ const Blog = () => {
         {/* No posts message */}
         {!loading && posts.length === 0 && (
           <div className="text-center py-12">
+            <div className="flex justify-center mb-6">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
+                alt="Cat looking for posts"
+                className="w-32 h-32"
+                style={{ transform: 'rotate(-10deg)' }}
+              />
+            </div>
             <p className="text-gray-500 text-lg">
               {activeTag ? `No posts found with tag "${activeTag}" yet.` : 'No posts found in this category yet.'} Stay tuned!
             </p>

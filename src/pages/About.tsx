@@ -16,12 +16,19 @@ const About = () => {
       />
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+        <div className="flex justify-center mb-6">
+          <img
+            src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+            alt="Null Expected Cat Mascot"
+            className="w-24 h-24 md:w-32 md:h-32"
+          />
+        </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           About Us
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
-          We're QA professionals with different voices, shared curiosity, and far too many 
-          opinions about software quality. This is our thought hub - part roadmap, part portfolio, 
+          We're QA professionals with different voices, shared curiosity, and far too many
+          opinions about software quality. This is our thought hub - part roadmap, part portfolio,
           always in beta.
         </p>
       </section>
@@ -216,6 +223,13 @@ const About = () => {
       <section className="py-20 bg-gray-50 mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+                alt="Cat working on quality"
+                className="w-20 h-20"
+              />
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
               Our Approach
             </h2>

@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="brand-chip p-2 rounded-lg">
-                <LucideIcons.Code className="h-6 w-6 text-white" />
+                <img src="/Null-Expected-Cat-Icon-Pack/cat-round-logo.svg" alt="Null Expected Cat Logo" className="h-6 w-6" />
               </div>
               <span className="font-bold text-xl brand-gradient">Null:Expected</span>
             </div>

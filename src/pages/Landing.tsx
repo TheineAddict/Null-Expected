@@ -96,6 +96,13 @@ const Landing = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
+            <div className="flex justify-center mb-6">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+                alt="Null Expected QA Cat Mascot"
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 animate-pulse hover:animate-none transition-all duration-300 hover:scale-110"
+              />
+            </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
               <span className="brand-gradient">
                 Null:Expected
