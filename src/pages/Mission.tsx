@@ -55,8 +55,8 @@ const Mission = () => {
         <div className="mb-8">
           <div className="flex justify-center mb-6 h-24">
             <img
-              src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
-              alt="Null Expected Cat Mascot"
+              src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+              alt="Cat working on quality mission"
               className="w-24 h-24"
             />
           </div>
