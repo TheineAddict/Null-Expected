@@ -100,7 +100,7 @@ const Landing = () => {
               <img
                 src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
                 alt="Null Expected QA Cat Mascot"
-                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 animate-pulse hover:animate-none transition-all duration-300 hover:scale-110"
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 transition-all duration-300 hover:scale-110"
               />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
