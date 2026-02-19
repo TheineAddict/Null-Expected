@@ -53,7 +53,7 @@ const Mission = () => {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <div className="mb-8">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-6 h-24">
             <img
               src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
               alt="Null Expected Cat Mascot"
