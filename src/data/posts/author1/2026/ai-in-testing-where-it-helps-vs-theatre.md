@@ -104,6 +104,47 @@ You’ll see pitches that imply “AI can tell if the page looks right.” Somet
 
 A model can tell you “this looks like a login page.” It cannot reliably tell you whether the system applied the correct entitlement, tax rule, or policy constraint unless you’ve given it deterministic signals to verify. If you want to avoid “AI assertions” turning into theatre, keep them scoped, and pair them with at least one explicit, deterministic assertion in the same test - especially in any flow that matters.
 
+## A practical decision filter: does it produce artifacts you can trust?
+
+Ignore marketing language and ask three questions.
+
+First, can you reproduce the result? If the output changes run-to-run, it belongs in exploration and support, not in gating.
+
+Second, can you audit the result? If you can’t inspect what changed and why, it isn’t safe for release decisions.
+
+Third, can you own the workflow? If the tool forces a black box where tests are not code, history is not visible, and diffs are not reviewable, you’re trading short-term speed for long-term lock-in and brittleness.
+
+## A “grown-up” way to use AI in a Playwright stack (without turning CI into chaos)
+
+If you’re running React + TypeScript + Playwright, you can adopt AI in a way that is credible and operationally calm.
+
+Keep your main suite deterministic and human-authored. Then add optional lanes that produce artifacts, not authority: an exploratory runner that crawls key paths nightly and outputs a markdown report with screenshots; a spec-to-test generator that produces drafts clearly marked “needs review”; and a maintenance helper that proposes locator updates as diffs, never as silent runtime changes. If you experiment with “AI checks”, keep them non-blocking and limited to places where they add signal (for example, quick UI anomaly detection in low-risk areas).
+
+A repo structure that makes this explicit and teachable might look like this:
+
+∙ `/tests` - your real suite (source of truth)  
+∙ `/ai/agents` - planner/generator/healer experiments and examples  
+∙ `/ai/exploratory-bot` - scripts that produce reports and artifacts  
+∙ `/ai/testgen` - spec-to-test drafts plus a review checklist
+
+And your CI model stays disciplined:
+
+∙ PR: smoke suite + publish Playwright report artifacts  
+∙ Nightly: exploratory bot + publish markdown report, traces, screenshots  
+∙ Optional: generation lane that creates draft PRs or artifacts, never direct merges
+
+The point is simple: AI becomes additive. It improves feedback loops without asking the organisation to “trust the model”.
+
+## The uncomfortable truth: AI doesn’t remove accountability, it concentrates it
+
+A lot of “AI testing” hype is really an attempt to outsource judgment. But quality is a decision-making function. If you delegate it to an opaque system, you are still accountable for the consequences - you just have fewer levers to understand and correct what happened.
+
+Use AI to reduce the grind around good QA practice: faster triage, better coverage conversations, cleaner test design drafts, more maintainable suites via suggested diffs, and wider exploratory reconnaissance without pretending it’s regression.
+
+Be ruthless about the theatre. Anything non-deterministic does not gate releases. Anything un-auditable does not auto-change your suite. Anything that cannot be debugged like code does not scale.
+
+If your AI adoption doesn’t end in fewer escaped defects, faster diagnosis, or a more trustworthy release decision, it’s not an innovation. It’s decoration.
+
 ---
 
 *Disclaimer: The perspectives expressed herein are personal interpretations intended to foster professional dialogue; they do not represent any official stance of current or former employers.*
