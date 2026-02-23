@@ -10,7 +10,13 @@ const PREVIEW_PORT = process.env.PRERENDER_PORT || "4173";
 const BASE = process.env.PREVIEW_BASE || `http://127.0.0.1:${PREVIEW_PORT}`;
 
 // Helper TSX files to ignore as routes (case-insensitive)
-const IGNORE_BASENAMES = [/^authorblog\.tsx$/i, /^blogpost\.tsx$/i, /^jobradarapp\.tsx$/i];
+const IGNORE_BASENAMES = [
+  /^authorblog\.tsx$/i,
+  /^blogpost\.tsx$/i,
+  /^jobradarapp\.tsx$/i,
+  /^appprivacypolicy\.tsx$/i,
+  /^apptermsofservice\.tsx$/i
+];
 // Ignore any file starting with "_" (e.g., _layout.tsx, _utils.tsx)
 const IGNORE_PREFIX = "_";
 

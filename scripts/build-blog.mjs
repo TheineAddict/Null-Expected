@@ -229,6 +229,8 @@ function collectDistPages(root) {
         if (rel === "index.html") continue; // home already added
         if (rel.startsWith("blog/") && rel !== "blog/index.html") continue; // blog posts added separately
         if (rel === "null-expected-job-radar-app.html") continue; // exclude hidden app
+        if (rel === "app-privacy-policy.html") continue; // exclude legal page
+        if (rel === "app-terms-of-service.html") continue; // exclude legal page
         const clean = "/" + rel.replace(/index\.html$/, "").replace(/\.html$/, "");
         urls.push(clean);
       }

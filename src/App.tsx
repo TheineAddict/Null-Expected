@@ -12,6 +12,8 @@ import Manifesto from './pages/Manifesto';
 import Consulting from './pages/Consulting';
 import NotFound from './pages/NotFound';
 import JobRadarApp from './pages/JobRadarApp';
+import AppPrivacyPolicy from './pages/AppPrivacyPolicy';
+import AppTermsOfService from './pages/AppTermsOfService';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -27,10 +29,12 @@ function ScrollToTop() {
 function AppContent() {
   const location = useLocation();
   const isJobRadarApp = location.pathname === '/null-expected-job-radar-app';
+  const isLegalPage = location.pathname === '/app-privacy-policy' || location.pathname === '/app-terms-of-service';
+  const hideNavigation = isJobRadarApp || isLegalPage;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      {!isJobRadarApp && (
+      {!hideNavigation && (
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-900 focus:text-white focus:rounded-lg focus:shadow-lg"
@@ -38,7 +42,7 @@ function AppContent() {
           Skip to main content
         </a>
       )}
-      {!isJobRadarApp && <Header />}
+      {!hideNavigation && <Header />}
       <div id="main-content" className="flex-1">
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -50,10 +54,12 @@ function AppContent() {
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/consulting" element={<Consulting />} />
           <Route path="/null-expected-job-radar-app" element={<JobRadarApp />} />
+          <Route path="/app-privacy-policy" element={<AppPrivacyPolicy />} />
+          <Route path="/app-terms-of-service" element={<AppTermsOfService />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-      {!isJobRadarApp && <Footer />}
+      {!hideNavigation && <Footer />}
     </div>
   );
 }
