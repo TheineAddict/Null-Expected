@@ -159,6 +159,16 @@
       "sourcesOk": 34,
       "sourcesFailed": 13,
       "durationMs": 680904
+    },
+    {
+      "id": "run-1771930954128-i2to5bjdb",
+      "startedAt": "2026-02-24T11:02:34.128Z",
+      "completedAt": "2026-02-24T11:14:18.202Z",
+      "status": "completed",
+      "totalJobs": 6457,
+      "sourcesOk": 34,
+      "sourcesFailed": 13,
+      "durationMs": 704074
     }
   ]
 }
