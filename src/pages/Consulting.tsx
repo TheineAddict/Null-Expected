@@ -226,35 +226,35 @@ const Consulting = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
-              <Clock className="h-12 w-12 text-indigo-900 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Strategic Assessment</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="card-bg-themed rounded-xl p-8 shadow-lg text-center">
+              <Clock className="h-12 w-12 link-themed mx-auto mb-4" />
+              <h3 className="text-xl font-bold heading-themed mb-4">Strategic Assessment</h3>
+              <p className="text-primary-themed mb-4">
                 2-4 week engagement to assess current state and provide strategic recommendations.
               </p>
-              <div className="text-sm text-gray-500 font-mono">
+              <div className="text-sm text-secondary-themed font-mono">
                 [ duration: 2-4_weeks ]
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
-              <Users className="h-12 w-12 text-indigo-900 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Implementation Support</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="card-bg-themed rounded-xl p-8 shadow-lg text-center">
+              <Users className="h-12 w-12 link-themed mx-auto mb-4" />
+              <h3 className="text-xl font-bold heading-themed mb-4">Implementation Support</h3>
+              <p className="text-primary-themed mb-4">
                 3-6 month engagement to guide implementation of new processes and practices.
               </p>
-              <div className="text-sm text-gray-500 font-mono">
+              <div className="text-sm text-secondary-themed font-mono">
                 [ duration: 3-6_months ]
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
-              <Target className="h-12 w-12 text-indigo-900 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Ongoing Advisory</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="card-bg-themed rounded-xl p-8 shadow-lg text-center">
+              <Target className="h-12 w-12 link-themed mx-auto mb-4" />
+              <h3 className="text-xl font-bold heading-themed mb-4">Ongoing Advisory</h3>
+              <p className="text-primary-themed mb-4">
                 Regular check-ins and guidance as your team grows and processes evolve.
               </p>
-              <div className="text-sm text-gray-500 font-mono">
+              <div className="text-sm text-secondary-themed font-mono">
                 [ duration: ongoing ]
               </div>
             </div>
@@ -263,7 +263,7 @@ const Consulting = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
+      <section className="py-20 section-bg-gradient-themed">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Quality Practice?
@@ -285,7 +285,7 @@ const Consulting = () => {
               href="https://www.linkedin.com/in/adevitan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 card-bg-themed link-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
             >
               <Linkedin className="mr-2 h-5 w-5" />
               Connect on LinkedIn
@@ -301,16 +301,16 @@ const Consulting = () => {
       {/* Related Content */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold heading-themed mb-6">
             Learn More About Our Approach
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-primary-themed mb-8">
             Explore our thinking on quality, process, and team development
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/blog"
-              className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-gray-100 heading-themed font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
               Read Our Blog
@@ -318,7 +318,7 @@ const Consulting = () => {
             </Link>
             <Link
               to="/manifesto"
-              className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-gray-100 heading-themed font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
               Our Manifesto
