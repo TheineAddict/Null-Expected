@@ -5,16 +5,36 @@ export interface ScoringResult {
   reasons: string[];
 }
 
-const POSITIVE_TITLE_REGEX: Array<[RegExp, number, string]> = [
-  [/\brelease (program )?manager\b/i, 28, 'Release manager role'],
-  [/\brelease (and|&) delivery lead\b|\brelease lead\b/i, 24, 'Release lead role'],
-  [/\bdelivery manager\b/i, 24, 'Delivery manager role'],
-  [/\btechnical program manager\b|\btpm\b/i, 18, 'Program/TPM role'],
+// Strong target titles (should rank high on title alone)
+const STRONG_TITLE_REGEX: Array<[RegExp, number, string]> = [
+  // Release / Change / Governance
+  [/\brelease (readiness|governance) manager\b/i, 34, 'Release readiness/governance'],
+  [/\brelease (program )?manager\b/i, 32, 'Release manager role'],
+  [/\brelease (and|&) delivery lead\b|\brelease lead\b/i, 28, 'Release lead role'],
   [/\brelease coordinator\b/i, 18, 'Release coordination'],
-  [/\bqa lead\b|\btest lead\b|\bquality lead\b/i, 22, 'QA/Test leadership'],
-  [/\bqa manager\b|\btest manager\b|\bquality manager\b/i, 22, 'QA/Test management'],
-  [/\bqa specialist\b|\bqa analyst\b|\bquality analyst\b|\btest analyst\b/i, 14, 'QA analyst role'],
-  [/\bquality assurance\b|\bqa engineer\b|\bquality engineer\b|\btest engineer\b/i, 16, 'QA/Testing role'],
+
+  // Delivery / Execution
+  [/\btechnical delivery (manager|lead)\b/i, 30, 'Technical delivery role'],
+  [/\bdelivery manager\b/i, 28, 'Delivery manager role'],
+  [/\bdelivery (lead|assurance)\b/i, 22, 'Delivery lead/assurance'],
+
+  // Technical PM variants
+  [/\btechnical program manager\b|\btpm\b/i, 18, 'Technical program manager'],
+  [/\btechnical project manager\b/i, 16, 'Technical project manager'],
+
+  // QA leadership (still relevant, but second tier vs release/delivery)
+  [/\bqa lead\b|\btest lead\b|\bquality lead\b/i, 20, 'QA/Test leadership'],
+  [/\bqa manager\b|\btest manager\b|\bquality manager\b/i, 20, 'QA/Test management'],
+
+  // IC QA titles: reduced weight so they do not swamp your target roles
+  [/\bqa specialist\b|\bqa analyst\b|\bquality analyst\b|\btest analyst\b/i, 8, 'QA analyst role'],
+  [/\bquality assurance\b|\bqa engineer\b|\bquality engineer\b|\btest engineer\b/i, 8, 'QA/Testing role'],
+];
+
+// Soft titles: you want them included, but only really boosted when governance/quality signals exist
+const SOFT_PM_TITLE_REGEX: Array<[RegExp, number, string]> = [
+  [/\bprogram manager\b/i, 6, 'Program manager (title)'],
+  [/\bproject manager\b/i, 6, 'Project manager (title)'],
 ];
 
 const RELEASE_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
@@ -23,6 +43,20 @@ const RELEASE_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
   [/\bcutover\b|\brollback\b|\brelease plan\b|\brelease train\b/i, 10, 'Cutover/rollback/release planning'],
   [/\btest strategy\b|\btest plan(n)?ing\b|\btest planning\b|\brisk[- ]based\b|\bexploratory testing\b|\bdefect triage\b|\bbug triage\b/i, 10, 'Test strategy/planning'],
 ];
+
+const DELIVERY_GOVERNANCE_REGEX: Array<[RegExp, number, string]> = [
+  [/\b(raid|risk register|risk log|issue log)\b/i, 10, 'RAID management'],
+  [/\b(dependenc(y|ies)|dependency mapping|critical path)\b/i, 10, 'Dependencies/critical path'],
+  [/\b(milestone(s)?|delivery plan|plan of record|integrated plan)\b/i, 8, 'Delivery planning'],
+  [/\b(stakeholder(s)?|exec(utive)? update(s)?|steer(ing)? committee)\b/i, 6, 'Stakeholder/executive cadence'],
+  [/\b(decision log|risk acceptance|trade[- ]offs?)\b/i, 6, 'Decision support'],
+  [/\b(dashboard(s)?|single source of truth|power bi)\b/i, 6, 'Dashboards/SSOT'],
+  [/\b(hypercare|post[- ]release validation|release validation)\b/i, 6, 'Hypercare/post-release validation'],
+];
+
+// Anchor signals to decide whether generic “skills” positives should apply
+const ROLE_FIT_ANCHOR: RegExp =
+  /\b(qa|quality assurance|test(ing)?|release readiness|go\/no[- ]go|release governance|change management|cab|itil|cutover|rollback|release plan|release train|release coordinator|release management|test strategy|test planning|risk[- ]based|exploratory testing|defect triage|raid|risk register|dependency|milestone|delivery plan|dashboard|power bi|hypercare|decision log)\b/i;
 
 // Strong “you” signals that often appear in descriptions (kept small to avoid false positives)
 const ROLE_SKILL_POSITIVES: Array<[RegExp, number, string]> = [
@@ -35,12 +69,24 @@ const ROLE_SKILL_POSITIVES: Array<[RegExp, number, string]> = [
   [/\bincident\b|\bpost[- ]incident\b|\brca\b|\broot cause\b/i, 1, 'Incident/RCA exposure'],
 ];
 
-// Roles that are “technical” but usually not what you want
+const DOMAIN_FIT_POSITIVES: Array<[RegExp, number, string]> = [
+  [/\b(fintech|payments?|card(s)?|merchant|issuing|acquiring)\b/i, 4, 'Payments/fintech domain'],
+  [/\b(capital markets|trading|market data|broker|exchange)\b/i, 4, 'Markets domain'],
+  [/\b(bank(ing)?|financial services)\b/i, 3, 'Financial services'],
+  [/\b(pci|sox|soc2|iso 27001|gdpr|regulator(y|ion))\b/i, 2, 'Regulated environment'],
+];
+
+// “Implementation” is only a negative when it is clearly customer onboarding / PS
 const IMPLEMENTATION_NEGATIVES: Array<[RegExp, number, string]> = [
-  [/\bcustomer success\b|\bimplementation\b|\bprofessional services\b/i, -18, 'Implementation/CS role'],
+  [/\bcustomer success\b|\bprofessional services\b/i, -18, 'CS/Professional Services'],
+  [/\bimplementation (consultant|engineer|specialist)\b/i, -18, 'Implementation services role'],
+  [/\b(client|customer)\b.*\b(onboarding|implementation|rollout)\b|\bonboarding\b.*\b(client|customer)\b/i, -12, 'Client onboarding/implementation'],
   [/\bsolutions consultant\b|\bsolutions engineer\b|\bsales engineer\b/i, -18, 'Solutions/Sales engineering'],
   [/\btechnical account manager\b|\btam\b/i, -18, 'TAM role'],
 ];
+
+const IMPLEMENTATION_SERVICE_ANCHOR: RegExp =
+  /\b(customer|client|onboarding|professional services|services team|implementation services)\b/i;
 
 const SUPPORT_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\bhappiness engineer\b/i, -35, 'Customer support role'],
@@ -56,21 +102,34 @@ const AUTOMATION_ONLY_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\b100%\s*automation\b|\bautomation[- ]only\b|\bno manual\b|\bmanual testing not required\b/i, -22, 'Automation-only'],
 ];
 
+// Title-based automation-first de-prioritization
+const AUTOMATION_TITLE_NEGATIVES: Array<[RegExp, number, string]> = [
+  [/\b(qa|test) automation (engineer|developer)\b/i, -22, 'Automation-first QA title'],
+  [/\bautomation engineer\b/i, -18, 'Automation engineer title'],
+  [/\bsdet\b|\bsoftware engineer in test\b/i, -10, 'SDET-heavy title'],
+];
+
 const SDET_SOFT: Array<[RegExp, number, string]> = [
   [/\bsdet\b|\bsoftware engineer in test\b|\b(s|software)\s*det\b/i, -6, 'SDET-heavy'],
 ];
 
 // Fallback geo restrictions when remoteScope parsing is missing/weak
 const LOCATION_ELIGIBILITY_NEGATIVES: Array<[RegExp, number, string]> = [
-  [/\b(us[- ]only|us only|u\.s\.-only|united states only|remote.*\bus\b)\b/i, -30, 'US-only remote'],
+  [/\b(us[- ]only|u\.s\.-only|united states only|us residents? only)\b/i, -30, 'US-only remote'],
+  [/\b(must be (based|located|resident).{0,40}\b(united states|u\.s\.|usa)\b)\b/i, -30, 'US location-restricted'],
   [/\b(uk[- ]only|united kingdom only)\b/i, -22, 'UK-only remote'],
   [/\b(canada[- ]only)\b/i, -22, 'Canada-only remote'],
   [/\b(australia[- ]only)\b/i, -22, 'Australia-only remote'],
+  [/\b(no international applicants|not eligible to work outside)\b/i, -18, 'International restriction'],
   [/\bmust be (based|located|resident)\b/i, -12, 'Location-restricted'],
 ];
 
+const TIMEZONE_NEGATIVES: Array<[RegExp, number, string]> = [
+  [/\b(pst|pdt|mst|mdt|cst|cdt)\b/i, -6, 'US time zones mentioned'],
+  [/\b(us hours|required.*(est|pst)|work.*(est|pst)|overlap.*(pst|pdt))\b/i, -10, 'US-hours requirement'],
+];
+
 // Title-only de-prioritization for pure software engineering roles.
-// Important: evaluate only on title to avoid punishing descriptions that mention "software engineers".
 const SOFTWARE_ENGINEER_TITLE_NEGATIVES: Array<[RegExp, number, string]> = [
   [/\bsoftware engineer\b/i, -35, 'Software engineer role'],
   [/\bsoftware developer\b/i, -35, 'Software developer role'],
@@ -87,10 +146,6 @@ const SOFTWARE_ENGINEER_TITLE_NEGATIVES: Array<[RegExp, number, string]> = [
 // Exceptions: do NOT penalize when the title is clearly QA/testing/quality even if it contains "engineer".
 const ENGINEER_TITLE_EXCEPTIONS: RegExp = /\b(qa|quality|test|testing)\b/i;
 
-// Anchor signals to decide whether generic “skills” positives should apply
-const ROLE_FIT_ANCHOR: RegExp =
-  /\b(qa|quality assurance|test(ing)?|release readiness|go\/no[- ]go|release governance|change management|cab|itil|cutover|rollback|release plan|release train|release coordinator|release management|test strategy|test planning|risk[- ]based|exploratory testing|defect triage)\b/i;
-
 function applyRules(
   text: string,
   rules: Array<[RegExp, number, string]>,
@@ -104,6 +159,10 @@ function applyRules(
     }
   }
   return score;
+}
+
+function anyRuleMatches(text: string, rules: Array<[RegExp, number, string]>): boolean {
+  return rules.some(([re]) => re.test(text));
 }
 
 export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): ScoringResult {
@@ -120,8 +179,6 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   if (!ENGINEER_TITLE_EXCEPTIONS.test(title)) {
     score = applyRules(title, SOFTWARE_ENGINEER_TITLE_NEGATIVES, score, reasons);
 
-    // If the title is explicitly a dev role, cap early so it can't float to the top
-    // just because description mentions QA/release words.
     if (/\bsoftware engineer\b/i.test(title)) {
       score = Math.min(score, 25);
       reasons.push({ reason: 'Capped due to Software Engineer title', delta: -999 });
@@ -129,6 +186,13 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
       score = Math.min(score, 28);
       reasons.push({ reason: 'Capped due to Developer/Programmer title', delta: -999 });
     }
+  }
+
+  // 0.1) Title-based automation-first de-prioritization (and optional cap)
+  score = applyRules(title, AUTOMATION_TITLE_NEGATIVES, score, reasons);
+  if (anyRuleMatches(title, AUTOMATION_TITLE_NEGATIVES)) {
+    score = Math.min(score, 55);
+    reasons.push({ reason: 'Capped due to automation-first title', delta: -999 });
   }
 
   // 1) Remote scope weighting (eligibility-first)
@@ -152,24 +216,43 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
     score -= 18; reasons.push({ reason: 'Multi-country (no RO)', delta: -18 });
   }
 
-  // 3) Workplace penalties (you generally want remote-only)
+  // 3) Workplace penalties (allow hybrid to score well; avoid onsite)
   if (job.workplaceType === 'HYBRID') {
-    score -= 12; reasons.push({ reason: 'Hybrid work', delta: -12 });
+    score -= 3; reasons.push({ reason: 'Hybrid work', delta: -3 });
   } else if (job.workplaceType === 'ONSITE') {
     score -= 40; reasons.push({ reason: 'Onsite work', delta: -40 });
   }
 
   // 4) Role-fit rules
-  // Title-based role matching to reduce false positives from descriptions.
-  score = applyRules(title, POSITIVE_TITLE_REGEX, score, reasons);
-  const titleFit = POSITIVE_TITLE_REGEX.some(([re]) => re.test(title));
+  // Strong title-based role matching
+  score = applyRules(title, STRONG_TITLE_REGEX, score, reasons);
+  const strongTitleFit = anyRuleMatches(title, STRONG_TITLE_REGEX);
 
-  // Description-based fit signals (stronger, still safe)
+  // Soft PM/ProgM titles
+  score = applyRules(title, SOFT_PM_TITLE_REGEX, score, reasons);
+  const softPMTitleFit = anyRuleMatches(title, SOFT_PM_TITLE_REGEX);
+
+  // Description-based fit signals (release + delivery governance)
   score = applyRules(combined, RELEASE_GOVERNANCE_REGEX, score, reasons);
+  score = applyRules(combined, DELIVERY_GOVERNANCE_REGEX, score, reasons);
 
-  // Only apply generic skills positives if we have at least one QA/release anchor signal
-  // (prevents dev roles from ranking high just due to CI/CD/tool mentions).
-  if (titleFit || ROLE_FIT_ANCHOR.test(combined)) {
+  // Domain tie-breakers (light boost)
+  score = applyRules(combined, DOMAIN_FIT_POSITIVES, score, reasons);
+
+  // PM/ProgM: bigger boost when delivery/governance/quality signals exist
+  const hasGovOrQualitySignals =
+    ROLE_FIT_ANCHOR.test(combined) ||
+    anyRuleMatches(combined, RELEASE_GOVERNANCE_REGEX) ||
+    anyRuleMatches(combined, DELIVERY_GOVERNANCE_REGEX);
+
+  if (softPMTitleFit && hasGovOrQualitySignals) {
+    score += 10;
+    reasons.push({ reason: 'PM role with governance/quality signals', delta: 10 });
+  }
+
+  // Only apply generic skills positives if we have at least one QA/release/delivery anchor signal,
+  // or a strong target title, or PM title + governance/quality signals.
+  if (strongTitleFit || ROLE_FIT_ANCHOR.test(combined) || (softPMTitleFit && hasGovOrQualitySignals)) {
     score = applyRules(combined, ROLE_SKILL_POSITIVES, score, reasons);
   }
 
@@ -177,6 +260,12 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   score = applyRules(combined, SUPPORT_NEGATIVES, score, reasons);
   score = applyRules(combined, SALES_NEGATIVES, score, reasons);
   score = applyRules(combined, IMPLEMENTATION_NEGATIVES, score, reasons);
+
+  // Special handling: Implementation Manager is only a negative when it clearly looks like PS/onboarding
+  if (/\bimplementation manager\b/i.test(title) && IMPLEMENTATION_SERVICE_ANCHOR.test(combined)) {
+    score -= 14;
+    reasons.push({ reason: 'Implementation Manager (services/onboarding)', delta: -14 });
+  }
 
   // 5.1) Fallback location restrictions from text (helps when remoteScope is UNKNOWN)
   score = applyRules(combined, LOCATION_ELIGIBILITY_NEGATIVES, score, reasons);
@@ -196,36 +285,48 @@ export function scoreJob(job: Omit<NormalizedJob, 'score' | 'reasons'>): Scoring
   }
 
   // 8) EU timezone signal (expanded)
-  if (/\b(cet|cest|eet|eest|bst|european time zones?)\b/i.test(combined) ||
-      /\b(utc|gmt)\s*[+-]\s*\d{1,2}\b/i.test(combined)) {
+  if (
+    /\b(cet|cest|eet|eest|bst|european time zones?)\b/i.test(combined) ||
+    /\b(utc|gmt)\s*[+-]\s*\d{1,2}\b/i.test(combined)
+  ) {
     score += 10; reasons.push({ reason: 'EU timezone friendly', delta: 10 });
   }
 
-  // 9) If nothing indicates role fit, push it down (prevents random “remote” jobs ranking high)
+  // 8.1) Penalize US-hours bias (light)
+  score = applyRules(combined, TIMEZONE_NEGATIVES, score, reasons);
+
+  // 9) If nothing indicates role fit, push it down.
+  // Important: do NOT treat generic PM/ProgM title alone as core fit.
   const hasCoreFit =
-    POSITIVE_TITLE_REGEX.some(([re]) => re.test(title)) ||
-    RELEASE_GOVERNANCE_REGEX.some(([re]) => re.test(combined)) ||
-    ROLE_FIT_ANCHOR.test(combined);
+    strongTitleFit ||
+    anyRuleMatches(combined, RELEASE_GOVERNANCE_REGEX) ||
+    anyRuleMatches(combined, DELIVERY_GOVERNANCE_REGEX) ||
+    ROLE_FIT_ANCHOR.test(combined) ||
+    (softPMTitleFit && hasGovOrQualitySignals);
 
   if (!hasCoreFit) {
     score -= 22; reasons.push({ reason: 'Low role-fit signals', delta: -22 });
   }
 
-  // Optional hard caps to keep obvious mismatches from floating up
-  if (SUPPORT_NEGATIVES.some(([re]) => re.test(combined))) {
+  // Hard caps to keep obvious mismatches from floating up
+  if (anyRuleMatches(combined, SUPPORT_NEGATIVES)) {
     score = Math.min(score, 35);
     reasons.push({ reason: 'Capped due to support signals', delta: -999 });
   }
-  if (SALES_NEGATIVES.some(([re]) => re.test(combined))) {
+  if (anyRuleMatches(combined, SALES_NEGATIVES)) {
     score = Math.min(score, 40);
     reasons.push({ reason: 'Capped due to sales signals', delta: -999 });
+  }
+  if (job.workplaceType === 'ONSITE') {
+    score = Math.min(score, 35);
+    reasons.push({ reason: 'Capped due to onsite work', delta: -999 });
   }
 
   score = Math.max(0, Math.min(100, score));
 
   reasons.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
   const topReasons = reasons
-    .filter(r => r.delta !== -999) // hide internal "cap" markers from UI
+    .filter(r => r.delta !== -999)
     .slice(0, 3)
     .map(r => r.reason);
 
