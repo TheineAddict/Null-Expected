@@ -1,7 +1,74 @@
 # Character Sheet App
 
-A minimalist DnD 5e character sheet, mounted at `/character-sheet-app`.  
-All character data lives in TypeScript files and is **read-only in the UI**; only trackers (HP, Hope, Inspiration, uses, death saves) are stored in `localStorage`.
+A minimalist DnD 5e character sheet. All character data lives in TypeScript files and is **read-only in the UI**; only trackers (HP, Hope, Inspiration, limited uses, death saves) are stored in `localStorage`.
+
+---
+
+## Routes
+
+- **`/character-sheet-app`** – Redirects to the first character in the list (`/character-sheet-app/:characterId`).
+- **`/character-sheet-app/:characterId`** – Loads the character whose filename (without `.ts`) matches `characterId` and renders the sheet.
+
+Routing and the page wrapper live in `src/App.tsx` and `src/pages/CharacterSheetApp.tsx`; the app itself is in `src/apps/character-sheet/`.
+
+---
+
+## How characters are discovered
+
+Characters are discovered at **build time** via `import.meta.glob` in `data/charactersIndex.ts`:
+
+- **Location**: `src/apps/character-sheet/data/characters/*.ts`
+- **Rules**: Every `.ts` file under `data/characters/` is treated as a character **except** `index.ts` and `template_character_sheet.ts`.
+- **Character id**: Derived from the filename (e.g. `aelfwynn.ts` → id `aelfwynn`).
+- **Export**: The file must export a `CharacterSheet` object, either as a named export matching the id (e.g. `export const aelfwynn: CharacterSheet = { ... }`) or as the only/single export so the loader can use it.
+
+There is **no manual registry** for routing: add a new `.ts` file under `data/characters/` and it appears in the app. The file `data/index.ts` (with `CHARACTERS` and `DEFAULT_CHARACTER_ID`) is only used as a fallback when `CharacterSheetApp` is rendered without a `character` prop (e.g. in tests or custom embedding).
+
+---
+
+## LocalStorage persistence
+
+Tracker state is saved per character so each sheet keeps its own HP, Hope, etc.
+
+- **Key format**: `ne:character-sheet:${characterId}:state:v1` (see `storage/characterStorage.ts`, `buildStorageKey`).
+- **Stored**:
+  - `currentHp`, `effectiveMaxHp`, `tempHp`
+  - `hopeThirds`, `inspirationThirds`
+  - `limitedUses` (object: resource id → number of uses spent)
+  - `deathSaves` (`successes`, `failures`)
+- **Not stored**: Character data (name, abilities, attacks, etc.) — that stays in the TS files only.
+
+---
+
+## Where character files live and naming
+
+- **Directory**: `src/apps/character-sheet/data/characters/`
+- **Naming**: Use a single identifier, e.g. `my_character.ts` or `bob.ts`. The **filename (without `.ts`)** is the character id used in the URL and in localStorage.
+- **Template**: `template_character_sheet.ts` is a full template; it is **excluded** from the character list so it does not show as a playable character. Copy it and rename to add new characters.
+
+---
+
+## Portrait
+
+Set **`portraitUrl`** on the character object to show a portrait in the header (e.g. `portraitUrl: '/apps/character-sheet/your-name-portrait.jpg'`). Omit or set to `undefined` for no portrait. The image is shown in a round frame next to the name.
+
+---
+
+## Hope tiers (summary)
+
+- **Unlocking**: A tier is shown if it exists in the character’s `hopeAbilities` array. No level or unlock flag in state.
+- **Structure**: Each tier has **exactly 3 cards** (`[HopeCard, HopeCard, HopeCard]`) and **one** `activeCardId` (must match one of those cards’ `id`).
+- **UI**: The active card is shown prominently; the other two are shown as inactive. Which card is active is **not** changeable in the app; edit `activeCardId` in the character file.
+- **Content**: All text (`title`, `body`) and which card is active live in the character TS file. Use `\n` in `body` for line breaks.
+
+---
+
+## UI structure (sections and navigation)
+
+- **Top anchor**: The page has an element `id="top"` at the start (above the header card) for “return to top” behaviour.
+- **Sections** (in order): Header card (name, level, ancestry, stat chips, abilities) → Hit Points (standalone) → Jump chips → Main grid (Combat | Limited Uses) → Saves, Skills & Passives → Traits → Reactions → Hope → Healing Potions.
+- **Jump chips**: Row of links (↑ Top, HP, Combat, Limited Uses, Saves/Skills, Traits, Reactions, Hope) that smooth-scroll to the corresponding section by id.
+- **Floating “↑ Top” button**: Shown after scrolling down (e.g. > 400px); fixed bottom-right with safe-area padding; click scrolls to `#top`.
 
 ---
 
@@ -9,100 +76,54 @@ All character data lives in TypeScript files and is **read-only in the UI**; onl
 
 ```text
 src/apps/character-sheet/
-├── CharacterSheetApp.tsx           # Main app composition
+├── CharacterSheetApp.tsx
+├── textClasses.ts                 # Shared body text class
 ├── model/
-│   ├── character.types.ts          # Strict data model for characters
-│   └── derive.ts                   # Helpers: mods, saves, skills, passives, attacks
+│   ├── character.types.ts
+│   └── derive.ts
 ├── storage/
-│   └── characterStorage.ts         # LocalStorage-backed tracker state (per character id)
+│   └── characterStorage.ts
 ├── data/
-│   ├── index.ts                    # Character registry + DEFAULT_CHARACTER_ID
+│   ├── index.ts                  # Optional: CHARACTERS + DEFAULT_CHARACTER_ID (fallback)
+│   ├── charactersIndex.ts        # Glob-based discovery + getCharacter(characterId)
 │   └── characters/
-│       └── aelfwynn.ts             # Example character
+│       ├── template_character_sheet.ts   # Template (excluded from list)
+│       └── *.ts                  # One file per character
 └── components/
     ├── TopBar.tsx
     ├── HpPanel.tsx
     ├── CombatSection.tsx
-    ├── ResourcesSection.tsx
-    ├── HopeAbilitiesSection.tsx
-    ├── ActionsSection.tsx
+    ├── LimitedUsesSection.tsx
     ├── AbilitySavesSkillsSection.tsx
-    └── NotesSection.tsx
+    ├── TraitsSection.tsx
+    ├── ReactionsSection.tsx
+    ├── HopeSection.tsx
+    ├── HopeAbilitiesSection.tsx
+    ├── HealingPotionsSection.tsx
+    ├── QuickActionsSection.tsx   # Jump chips + BackToTopButton
+    └── ...
 ```
-
-The route and wrapper live outside this folder:
-
-- `src/App.tsx` – adds `/character-sheet-app` route and hides Header/Footer on this path.
-- `src/pages/CharacterSheetApp.tsx` – Helmet + `<CharacterSheetApp />`.
 
 ---
 
 ## How to add a new character
 
-1. **Create a new character file**
+1. **Copy the template**  
+   `src/apps/character-sheet/data/characters/template_character_sheet.ts`  
+   → paste as `src/apps/character-sheet/data/characters/<characterId>.ts` (e.g. `my_hero.ts`).
 
-Copy the Aelfwynn example:
+2. **Rename the export and set `id`**  
+   - Export name must match the filename (e.g. `export const my_hero: CharacterSheet = { ... }`).
+   - Set `id: '<characterId>'` inside the object (same as the filename without `.ts`).
 
-```text
-src/apps/character-sheet/data/characters/aelfwynn.ts
-```
+3. **Fill in placeholders**  
+   Name, level, classes, abilities, skills, attacks, limitedUses, hopeAbilities (if used), turnGuide, traits, reactions, defenses, languages, etc. See `model/character.types.ts` and the template for every supported section.
 
-Paste it as a new file, for example:
+4. **Discovery**  
+   The app discovers characters via the glob in `data/charactersIndex.ts`. No need to edit `data/index.ts` unless you rely on the fallback (CHARACTERS / DEFAULT_CHARACTER_ID) for non-routed usage.
 
-```text
-src/apps/character-sheet/data/characters/my-new-character.ts
-```
-
-2. **Update the basics in your new file**
-
-At minimum, edit:
-
-- `id` – short, unique string (no spaces), e.g. `"my-new-character"`.
-- `name` – character name as you want to see it in the UI.
-- `level` and `classes` – e.g. `level: 5`, `classes: "Barbarian 5"`.
-- `maxHp`, `armorClass`, `initiativeMod`, `speed`.
-- `abilities` – STR/DEX/CON/INT/WIS/CHA scores.
-- `savingThrowProficiencies` – which saves you are proficient in.
-- `skills` – which skills and which ability they use, and whether you are proficient / have expertise.
-- `attacks` – weapon/spell attacks, with damage lines and short “when to use” notes.
-- `limitedUses` – per-rest features you want to track (Rage uses, etc.).
-- `hopeAbilities` – if you use the Hope system (see below).
-- `turnGuide` (optional) – “On your turn” checklist.
-- `notes` (optional) – free-form notes block.
-
-3. **Register the character**
-
-Edit the registry:
-
-```text
-src/apps/character-sheet/data/index.ts
-```
-
-Example:
-
-```ts
-import { aelfwynn } from './characters/aelfwynn';
-import { myNewCharacter } from './characters/my-new-character';
-
-export const CHARACTERS: Record<string, CharacterSheet> = {
-  [aelfwynn.id]: aelfwynn,
-  [myNewCharacter.id]: myNewCharacter,
-};
-
-export const DEFAULT_CHARACTER_ID = myNewCharacter.id;
-```
-
-- `CHARACTERS` is a simple map of `id -> CharacterSheet`.
-- `DEFAULT_CHARACTER_ID` controls which character is shown when you open `/character-sheet-app`.
-
-4. **Run locally**
-
-```bash
-npm run dev
-# Visit: http://localhost:5173/character-sheet-app
-```
-
-You should see your new character’s data, with session state (HP, Hope, Inspiration, uses, death saves) persisting across reloads.
+5. **Run**  
+   `npm run dev` → open `http://localhost:5173/character-sheet-app` (redirects to first character) or `http://localhost:5173/character-sheet-app/<characterId>`.
 
 ---
 
@@ -115,193 +136,77 @@ export interface CharacterSheet {
   id: string;
   name: string;
   level: number;
-  classes: string;          // "Barbarian 5", "Rogue 3 / Wizard 2", etc.
+  classes: string;
+  portraitUrl?: string;
+  ancestry?: string;
+  background?: string;
+  alignment?: string;
 
   maxHp: number;
   armorClass: number;
-  initiativeMod: number;    // Already the final modifier (e.g. DEX mod + misc)
-  speed: string;            // "30 ft", "40 ft", etc.
-  proficiencyBonus?: number; // Optional; if omitted, derived from level
+  initiativeMod: number;
+  speed: string;
+  proficiencyBonus?: number;
 
-  abilities: AbilityScores; // STR/DEX/CON/INT/WIS/CHA scores
+  abilities: AbilityScores;
   savingThrowProficiencies: SavingThrowProficiencies;
-  skills: SkillDefinition[]; // Which skills you care about, ability + prof/expertise
+  skills: SkillDefinition[];
 
-  attacks: Attack[];        // Primary attacks to show in Combat section
-  limitedUses: LimitedUseResource[]; // Features with limited uses (Rage, etc.)
+  attacks: Attack[];
+  limitedUses: LimitedUseResource[];
 
-  hopeAbilities?: HopeTier[]; // Optional Hope system tiers (see below)
-
-  turnGuide?: TurnGuide;   // Small "On your turn" checklist
-  notes?: string;          // Free-form notes (supports newlines)
+  traits?: Trait[];
+  reactions?: Reaction[];
+  defenses?: Defenses;
+  languages?: string[];
+  hopeAbilities?: HopeTier[];
+  turnGuide?: TurnGuide;
+  notes?: string;
 }
 ```
 
-Derived values (modifiers, saves, skills, passives, attack bonuses) are computed in `model/derive.ts`, so you only enter **raw scores** and proficiency flags.
+Derived values (modifiers, saves, skills, passives, attack bonuses) are computed in `model/derive.ts`.
 
 ---
 
 ## Hope & Inspiration (thirds-based)
 
-### Storage rules
-
-The UI tracks these counters, per character id, in `localStorage`:
-
-- `hopeThirds` – uncapped integer of thirds.
-- `inspirationThirds` – uncapped integer of thirds.
-
-These are **not** in the character TS file; you only change them in the UI.
-
-### Spend rules
-
-In the UI (`ResourcesSection.tsx` + `characterStorage.ts`):
-
-- You can **increment/decrement** thirds freely.
-- The **“Spend 1”** button is **disabled** unless you have at least **3 thirds**.
-- Clicking “Spend 1” subtracts **exactly 3 thirds**, representing one full point.
-
-This logic is centralised in `useCharacterTracker`:
-
-```ts
-spendHope: () => {
-  setState((prev) => {
-    if (prev.hopeThirds < 3) return prev;
-    return { ...prev, hopeThirds: prev.hopeThirds - 3 };
-  });
-},
-```
-
-> You never persist “spent Hope cards” or unlocks; only the numeric Hope third count is stored.
+- Counters **hopeThirds** and **inspirationThirds** are stored in `localStorage` per character (see key format above).
+- “Spend 1” is enabled only when the counter is ≥ 3; clicking it subtracts 3. No “unlock” or card state is persisted.
 
 ---
 
 ## Hope Abilities (tiers & cards)
 
-Model:
-
-```ts
-export interface HopeCard {
-  id: string;
-  title: string;
-  body: string; // plain text, allow newlines
-}
-
-export interface HopeTier {
-  tier: number;                   // 1, 2, 3...
-  cards: [HopeCard, HopeCard, HopeCard];
-  activeCardId: string;           // must match one of the 3 cards’ ids
-}
-
-export interface CharacterSheet {
-  ...
-  hopeAbilities?: HopeTier[];
-}
-```
-
-### Unlocking tiers
-
-- A tier is **unlocked** if it exists in the `hopeAbilities` array.
-- There is **no level logic** and no “unlock” flag in state.
-- To unlock a new tier, you **add a new `HopeTier` entry** to the `hopeAbilities` array in the **character TS file**.
-
-### Active vs inactive cards
-
-- Each tier has **exactly 3** cards in the fixed-size `cards` tuple.
-- Exactly **one** is active, chosen by `activeCardId`.
-- The UI:
-  - Finds the active card (`card.id === activeCardId`) and shows it prominently.
-  - Shows the other two as “inactive” cards, visually secondary / collapsed.
-  - Does **not** provide any control to switch active cards.
-- To change which card is active, you **edit `activeCardId` in the character file**, not via the app.
-
-### Editing Hope card content
-
-All Hope content lives in the **character TS file** (e.g. `data/characters/<character>.ts`), in the `hopeAbilities` array (often defined as a `hopeTiers` constant and then assigned to `hopeAbilities`).
-
-- **Card text**: Each card has `id`, `title`, and `body`. Edit `title` and `body` in place. Use `\n` in `body` for line breaks (e.g. `'Line one.\nLine two.'`). Keep each card’s `id` unchanged so `activeCardId` still matches.
-- **Which card is active**: In that tier’s object, set `activeCardId` to the `id` of the card you want active (one of the three in `cards`).
-
-This applies to every character: edit the same structure in that character’s file.
-
-### Disabling a Hope tier
-
-There is no separate “enabled” or “disabled” flag. The app shows only tiers that exist in the character’s `hopeAbilities` array.
-
-- **To hide a tier**: Remove that tier object from the `hopeAbilities` (or `hopeTiers`) array in the character file. The tier will no longer appear on the sheet.
-- **To show it again**: Add the tier back to the array.
-
-The rendering logic lives in `HopeAbilitiesSection.tsx`.
+- **Model**: Each `HopeTier` has `tier` (number), `cards: [HopeCard, HopeCard, HopeCard]`, and `activeCardId` (one of those cards’ `id`).
+- **Unlocking**: Add a tier to `hopeAbilities` in the character file to show it; remove it to hide it.
+- **Active card**: Set `activeCardId` in the character file; the UI has no control to switch it.
 
 ---
 
 ## Limited-use resources
 
-Use `limitedUses` for anything you want to tick up/down:
-
-```ts
-export interface LimitedUseResource {
-  id: string;
-  name: string;
-  max: number;
-  reset: 'short-rest' | 'long-rest' | 'per-encounter' | 'custom';
-  notes?: string;
-}
-```
-
-- **Where to define**: in your character file under `limitedUses`.
-- **Where it’s tracked**: UI state in `localStorage` via `characterStorage.ts` (`limitedUses[id]`), not in the TS file.
-- **How to change max/reset**: edit the character file.
-
----
-
-## Beginner roll guidance
-
-The UI aims to be beginner-friendly:
-
-- **Attacks**:
-  - Each attack card shows:
-    - **To hit**: `d20 + X` (computed from ability + proficiency + any extra bonus).
-    - **Damage**: one or more dice lines (normal vs Rage, etc.).
-  - Each attack can have a short **“when to use”** sentence you write in the character file.
-- **Saves & skills**:
-  - Text reminders: “roll d20 + modifier”.
-  - Saves, skills, and passives are all derived from the ability scores and prof flags you enter.
-
-There is **no dice roller**; this app is for quick reference and tracking, not automation.
+- Defined in the character file under `limitedUses` (id, name, max, reset, optional notes).
+- **Used count** is stored in `localStorage` per character; max and reset are only in the TS file.
+- Reset can be `'short-rest' | 'long-rest' | 'per-encounter' | 'custom'`.
 
 ---
 
 ## What is (and isn’t) editable in the app
 
-**Stored in TypeScript & only edited in code:**
+**Only in code (character TS files):**  
+Name, level, classes, ancestry, background, alignment, abilities, saves, skills, attacks, limited-use definitions, Hope tiers/cards/activeCardId, turn guide, traits, reactions, defenses, languages, notes.
 
-- All character identity and rules:
-  - Name, level, classes, ancestry, background, alignment.
-  - Ability scores, saves, skills, attacks, damage dice, “when to use”, resources.
-  - Hope tiers, cards, and `activeCardId`.
-  - Turn guide and notes.
+**In the UI / localStorage:**  
+Current HP, temp HP, Hope thirds, Inspiration thirds, limited-use *counts* (used), death save successes/failures.
 
-**Stored in `localStorage` & editable in the UI:**
-
-- Current HP and Temp HP.
-- Hope thirds and Inspiration thirds.
-- Limited-use resource counts (used).
-- Death save successes/failures.
-
-> If a tracker looks “wrong” or stale, use the **“Reset session values”** button in the Resources section, or clear `localStorage` for this origin.
+Use the “Reset” control in the Hope section (or clear localStorage for this origin) to reset tracker state.
 
 ---
 
-## Quick checklist when adding/customising a character
+## Quick checklist when adding a character
 
-1. Duplicate `aelfwynn.ts` into `data/characters/` with a new filename.
-2. Change:
-   - `id`, `name`, `level`, `classes`, `maxHp`, `armorClass`, `initiativeMod`, `speed`.
-   - `abilities` and `savingThrowProficiencies`.
-   - `skills` and `attacks` (including dice strings and “when to use”).
-   - `limitedUses` (if relevant).
-   - `hopeAbilities` (optional) with 3 cards per tier and an `activeCardId`.
-   - `turnGuide` and `notes` if you want them.
-3. Register the character in `data/index.ts` and update `DEFAULT_CHARACTER_ID`.
-4. Run `npm run dev` and open `/character-sheet-app`.
-
+1. Copy `template_character_sheet.ts` → `data/characters/<characterId>.ts`.
+2. Rename the export to match `<characterId>` and set `id: '<characterId>'`.
+3. Fill in all sections you need (see template and types).
+4. Run the app; the new character is discoverable automatically. Visit `/character-sheet-app` or `/character-sheet-app/<characterId>`.

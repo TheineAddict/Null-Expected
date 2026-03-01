@@ -11,7 +11,7 @@ function pathToCharacterId(path: string): string {
 /** Ordered list of character ids (from filenames). New .ts files under characters/ are picked up at build time. */
 export const characterIds: string[] = Object.keys(modules)
   .map(pathToCharacterId)
-  .filter((id) => id !== 'index' && id.length > 0)
+  .filter((id) => id !== 'index' && id !== 'template_character_sheet' && id.length > 0)
   .sort((a, b) => a.localeCompare(b));
 
 /**
