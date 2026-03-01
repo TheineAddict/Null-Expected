@@ -11,11 +11,18 @@ interface HpPanelProps {
 
 export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) => {
   const current = state.currentHp;
-  const max = character.maxHp;
+  const effectiveMax = state.effectiveMaxHp;
+  const sheetMax = character.maxHp;
   const temp = state.tempHp;
+  const isMaxAboveSheet = effectiveMax > sheetMax;
 
   return (
-    <section id="hp" className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
+    <section
+      id="hp"
+      className={`rounded-xl shadow-sm border p-3 sm:p-4 flex flex-col gap-2 sm:gap-3 ${
+        isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white border-slate-100'
+      }`}
+    >
       <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
         <Heart className="h-3.5 w-3.5 text-rose-500" />
         Hit Points
@@ -42,7 +49,26 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               +
             </button>
           </div>
-          <span className="text-[0.65rem] text-slate-500">Max {max}</span>
+          <span className="text-[0.65rem] text-slate-500">Max</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <button
+              type="button"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              onClick={() => actions.adjustEffectiveMaxHp(-1)}
+            >
+              −
+            </button>
+            <div className="min-w-[2.75rem] sm:min-w-[3.25rem] h-10 sm:h-11 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-lg sm:text-xl font-semibold tabular-nums border border-slate-200">
+              {effectiveMax}
+            </div>
+            <button
+              type="button"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              onClick={() => actions.adjustEffectiveMaxHp(1)}
+            >
+              +
+            </button>
+          </div>
         </div>
         <div className="flex flex-col items-center gap-1.5">
           <span className="text-[0.65rem] uppercase tracking-wide text-slate-500 flex items-center gap-0.5">

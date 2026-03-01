@@ -5,6 +5,7 @@ export const STORAGE_KEY_VERSION = 'v1';
 
 export interface CharacterTrackerState {
   currentHp: number;
+  effectiveMaxHp: number;
   tempHp: number;
   hopeThirds: number;
   inspirationThirds: number;
@@ -18,6 +19,8 @@ export interface CharacterTrackerState {
 export interface CharacterTrackerActions {
   setCurrentHp: (value: number) => void;
   adjustCurrentHp: (delta: number) => void;
+  setEffectiveMaxHp: (value: number) => void;
+  adjustEffectiveMaxHp: (delta: number) => void;
   setTempHp: (value: number) => void;
   adjustTempHp: (delta: number) => void;
   addHopeThirds: (delta: number) => void;
@@ -41,6 +44,7 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
 
   return {
     currentHp: character.maxHp,
+    effectiveMaxHp: character.maxHp,
     tempHp: 0,
     hopeThirds: 0,
     inspirationThirds: 0,
@@ -50,6 +54,12 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
       failures: 0,
     },
   };
+}
+
+function clampCurrentHp(value: number, effectiveMaxHp: number): number {
+  const low = Math.min(0, effectiveMaxHp);
+  const high = Math.max(0, effectiveMaxHp);
+  return Math.max(low, Math.min(value, high));
 }
 
 function loadState(character: CharacterSheet): CharacterTrackerState {
@@ -65,12 +75,15 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
 
     const parsed = JSON.parse(raw) as Partial<CharacterTrackerState>;
     const base = createDefaultState(character);
-    const maxHp = character.maxHp;
+    const sheetMaxHp = character.maxHp;
+
+    const effectiveMaxHp =
+      typeof parsed.effectiveMaxHp === 'number' ? parsed.effectiveMaxHp : sheetMaxHp;
 
     const currentHp =
       typeof parsed.currentHp === 'number'
-        ? Math.max(0, Math.min(parsed.currentHp, maxHp))
-        : base.currentHp;
+        ? clampCurrentHp(parsed.currentHp, effectiveMaxHp)
+        : clampCurrentHp(base.currentHp, effectiveMaxHp);
     const tempHp =
       typeof parsed.tempHp === 'number' ? Math.max(0, parsed.tempHp) : base.tempHp;
     const hopeThirds =
@@ -103,6 +116,7 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
 
     return {
       currentHp,
+      effectiveMaxHp,
       tempHp,
       hopeThirds,
       inspirationThirds,
@@ -142,14 +156,31 @@ export function useCharacterTracker(
     setCurrentHp: (value) => {
       setState((prev) => ({
         ...prev,
-        currentHp: Math.max(0, Math.min(value, character.maxHp)),
+        currentHp: clampCurrentHp(value, prev.effectiveMaxHp),
       }));
     },
     adjustCurrentHp: (delta) => {
       setState((prev) => ({
         ...prev,
-        currentHp: Math.max(0, Math.min(prev.currentHp + delta, character.maxHp)),
+        currentHp: clampCurrentHp(prev.currentHp + delta, prev.effectiveMaxHp),
       }));
+    },
+    setEffectiveMaxHp: (value) => {
+      setState((prev) => ({
+        ...prev,
+        effectiveMaxHp: value,
+        currentHp: clampCurrentHp(prev.currentHp, value),
+      }));
+    },
+    adjustEffectiveMaxHp: (delta) => {
+      setState((prev) => {
+        const nextMax = prev.effectiveMaxHp + delta;
+        return {
+          ...prev,
+          effectiveMaxHp: nextMax,
+          currentHp: clampCurrentHp(prev.currentHp, nextMax),
+        };
+      });
     },
     setTempHp: (value) => {
       setState((prev) => ({
