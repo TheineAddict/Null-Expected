@@ -224,7 +224,7 @@ export const aelfwynn: CharacterSheet = {
       type: 'Passive',
       summary: 'Advantage on DEX saves against effects you can see.',
       details:
-        'You have advantage on Dexterity saving throws against effects you can see, such as traps and spells. You don't gain this benefit if you are blinded, deafened, or incapacitated.',
+        "You have advantage on Dexterity saving throws against effects you can see, such as traps and spells. You don't gain this benefit if you are blinded, deafened, or incapacitated.",
     },
     {
       id: 'unarmored-defense',
