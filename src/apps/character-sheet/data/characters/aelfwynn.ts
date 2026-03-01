@@ -109,15 +109,15 @@ export const aelfwynn: CharacterSheet = {
         {
           id: 'sword-normal',
           label: 'Normal',
-          dice: '2d6+5',
-          damageType: 'slashing',
+          dice: '2d6+5 + 1d6❄️',
+          damageType: 'slashing + cold',
           notes: 'This includes the +1 magic bonus to damage.',
         },
         {
           id: 'sword-rage',
           label: 'While Raging',
-          dice: '2d6+7',
-          damageType: 'slashing',
+          dice: '2d6+7 + 1d6❄️',
+          damageType: 'slashing + cold',
           notes: 'Add Rage damage (+2) to the slashing part.',
         },
         {
