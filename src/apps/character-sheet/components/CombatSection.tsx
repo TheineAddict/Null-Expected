@@ -42,7 +42,7 @@ export const CombatSection: React.FC<CombatSectionProps> = ({ character }) => {
   const primaryAttacks = character.attacks;
 
   return (
-    <section id="combat" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
+    <section id="combat" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 lg:flex-1 lg:min-h-0">
       <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
         <Swords className="h-4 w-4 text-indigo-600" />
         Combat

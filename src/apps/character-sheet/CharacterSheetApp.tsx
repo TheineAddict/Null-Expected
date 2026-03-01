@@ -39,11 +39,11 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
 
         <QuickActionsSection />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+          <div className="space-y-4 lg:flex lg:flex-col">
             <CombatSection character={character} state={state} actions={actions} />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 lg:flex lg:flex-col">
             <LimitedUsesSection character={character} state={state} actions={actions} />
           </div>
         </div>
