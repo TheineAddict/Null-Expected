@@ -19,13 +19,13 @@ export const ThirdsTracker: React.FC<{
   const canSpend = thirds >= 3;
 
   return (
-    <div className="flex flex-col gap-1.5 rounded-lg border border-slate-100 bg-slate-50 p-2.5 sm:p-3">
+    <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
           <span aria-hidden>{emoji}</span>
           {label}
         </span>
-        <span className="text-[0.65rem] text-slate-500 tabular-nums">{thirds}/3</span>
+        <span className="text-xs text-slate-500 tabular-nums font-semibold">{thirds}/3</span>
       </div>
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5">

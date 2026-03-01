@@ -11,9 +11,9 @@ export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inact
 
   if (variant === 'active') {
     return (
-      <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-2.5 sm:p-3">
-        <h4 className="text-[0.7rem] font-semibold text-indigo-900 uppercase tracking-wide">{card.title}</h4>
-        <div className="mt-0.5 space-y-0.5 text-[0.7rem] text-indigo-950">
+      <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3">
+        <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
+        <div className="mt-1 space-y-0.5 text-sm text-slate-600 leading-snug">
           {lines.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -23,9 +23,9 @@ export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inact
   }
 
   return (
-    <div className="rounded-lg border border-slate-100 bg-white p-2 opacity-90">
-      <h4 className="text-[0.65rem] font-semibold text-slate-700">{card.title}</h4>
-      <p className="mt-0.5 text-[0.65rem] text-slate-500 line-clamp-3">{card.body}</p>
+    <div className="rounded-lg border border-slate-200 bg-white p-2.5 opacity-90">
+      <h4 className="text-xs font-semibold text-slate-700">{card.title}</h4>
+      <p className="mt-0.5 text-xs text-slate-500 leading-snug line-clamp-3">{card.body}</p>
     </div>
   );
 };
@@ -35,7 +35,7 @@ export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ characte
   if (tiers.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-2 sm:gap-2.5">
+    <div className="flex flex-col space-y-4">
       {tiers
         .slice()
         .sort((a, b) => a.tier - b.tier)
@@ -44,12 +44,12 @@ export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ characte
           const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
 
           return (
-            <div key={tier.tier} className="rounded-lg border border-slate-100 bg-slate-50/60 p-2 sm:p-2.5 flex flex-col gap-1.5">
-              <h3 className="text-[0.65rem] font-semibold text-slate-600 uppercase tracking-wide">
+            <div key={tier.tier} className="rounded-lg border border-slate-200 bg-slate-50/60 p-3 sm:p-3.5 flex flex-col space-y-3">
+              <h3 className="text-xs font-semibold text-slate-600">
                 Tier {tier.tier}
               </h3>
               <HopeCardView card={active} variant="active" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {inactive.map((card) => (
                   <HopeCardView key={card.id} card={card} variant="inactive" />
                 ))}

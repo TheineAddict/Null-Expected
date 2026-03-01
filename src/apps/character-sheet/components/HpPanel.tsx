@@ -19,51 +19,52 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
   return (
     <section
       id="hp"
-      className={`rounded-xl shadow-sm border p-3 sm:p-4 flex flex-col gap-2 sm:gap-3 ${
-        isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white border-slate-100'
+      className={`rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 ${
+        isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white'
       }`}
     >
-      <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-        <Heart className="h-3.5 w-3.5 text-rose-500" />
+      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+        <Heart className="h-4 w-4 text-rose-500" />
         Hit Points
       </h2>
-      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center gap-1.5">
-          <span className="text-[0.65rem] uppercase tracking-wide text-slate-500">Current</span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <span className="text-xs text-slate-500">Current</span>
+          <div className="flex items-center gap-2 h-11">
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustCurrentHp(-1)}
             >
               −
             </button>
-            <div className="min-w-[2.75rem] sm:min-w-[3.25rem] h-10 sm:h-11 rounded-lg bg-slate-800 text-white flex items-center justify-center text-lg sm:text-xl font-semibold tabular-nums">
+            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-800 text-white flex items-center justify-center text-xl font-semibold tabular-nums">
               {current}
             </div>
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustCurrentHp(1)}
             >
               +
             </button>
           </div>
-          <span className="text-[0.65rem] text-slate-500">Max</span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <span className="text-xs text-slate-500">Max</span>
+          <div className="flex items-center gap-2 h-11">
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustEffectiveMaxHp(-1)}
             >
               −
             </button>
-            <div className="min-w-[2.75rem] sm:min-w-[3.25rem] h-10 sm:h-11 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-lg sm:text-xl font-semibold tabular-nums border border-slate-200">
+            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-xl font-semibold tabular-nums border border-slate-200">
               {effectiveMax}
             </div>
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 text-base font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustEffectiveMaxHp(1)}
             >
               +
@@ -71,23 +72,23 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
           </div>
         </div>
         <div className="flex flex-col items-center gap-1.5">
-          <span className="text-[0.65rem] uppercase tracking-wide text-slate-500 flex items-center gap-0.5">
+          <span className="text-xs text-slate-500 flex items-center gap-0.5">
             <ShieldPlus className="h-3 w-3" /> Temp
           </span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-2 h-11">
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustTempHp(-1)}
             >
               −
             </button>
-            <div className="min-w-[2.75rem] sm:min-w-[3.25rem] h-10 sm:h-11 rounded-lg bg-slate-50 text-slate-800 flex items-center justify-center text-lg sm:text-xl font-semibold tabular-nums border border-slate-200">
+            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-50 text-slate-800 flex items-center justify-center text-xl font-semibold tabular-nums border border-slate-200">
               {temp}
             </div>
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation"
+              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustTempHp(1)}
             >
               +
@@ -95,7 +96,7 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
           </div>
         </div>
         <div className="flex flex-col items-center gap-1">
-          <span className="text-[0.65rem] uppercase tracking-wide text-slate-500">Death</span>
+          <span className="text-xs text-slate-500">Death</span>
           <div className="flex gap-2">
             <div className="flex items-center gap-0.5">
               <span className="text-[0.6rem] text-emerald-600">✓</span>
@@ -130,8 +131,8 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               ))}
             </div>
           </div>
-          <p className="text-[0.65rem] text-slate-500 text-center">10 or higher is a success.</p>
-          <p className="text-[0.65rem] text-slate-500 text-center">
+          <p className="text-xs text-slate-500 text-center leading-snug">10 or higher is a success.</p>
+          <p className="text-xs text-slate-500 text-center leading-snug">
             Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
           </p>
         </div>

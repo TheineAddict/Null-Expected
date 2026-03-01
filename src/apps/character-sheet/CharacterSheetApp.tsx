@@ -31,8 +31,8 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
   }
 
   return (
-    <div className="bg-slate-50/80 min-h-screen">
-      <main className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 space-y-4">
+    <div className="bg-slate-50 min-h-screen">
+      <main className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-5 space-y-5">
         <TopBar character={character} />
 
         <QuickActionsSection />

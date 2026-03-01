@@ -7,20 +7,20 @@ interface ReactionsSectionProps {
 }
 
 const ReactionCard: React.FC<{ reaction: Reaction }> = ({ reaction }) => (
-  <div className="rounded-lg border border-slate-100 bg-slate-50/80 overflow-hidden">
+  <div className="rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden">
     <div className="px-2.5 py-2 sm:px-3 sm:py-2">
-      <h4 className="text-xs font-semibold text-slate-900">{reaction.name}</h4>
-      <p className="mt-0.5 text-[0.7rem] text-indigo-950">
+      <h4 className="text-sm font-semibold text-slate-900">{reaction.name}</h4>
+      <p className="mt-0.5 text-sm text-slate-600 leading-snug">
         <span className="font-medium text-slate-700">Trigger:</span> {reaction.trigger}
       </p>
       {reaction.roll && (
-        <p className="mt-0.5 text-[0.7rem] text-indigo-950">
+        <p className="mt-0.5 text-sm text-slate-600 leading-snug">
           <span className="font-medium text-slate-700">Roll:</span> {reaction.roll}
         </p>
       )}
-      <p className="mt-0.5 text-[0.7rem] text-indigo-950">{reaction.effect}</p>
+      <p className="mt-0.5 text-sm text-slate-600 leading-snug">{reaction.effect}</p>
       {reaction.notes && (
-        <p className="mt-0.5 text-[0.7rem] text-indigo-950">{reaction.notes}</p>
+        <p className="mt-0.5 text-sm text-slate-600 leading-snug">{reaction.notes}</p>
       )}
     </div>
   </div>
@@ -31,12 +31,13 @@ export const ReactionsSection: React.FC<ReactionsSectionProps> = ({ character })
   if (reactions.length === 0) return null;
 
   return (
-    <section id="reactions" className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
-      <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-        <Reply className="h-3.5 w-3.5 text-amber-500" />
+    <section id="reactions" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
+      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+        <Reply className="h-4 w-4 text-amber-500" />
         Reactions
       </h2>
-      <div className="grid gap-1.5 sm:grid-cols-2">
+      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className="grid gap-2 sm:grid-cols-2">
         {reactions.map((reaction) => (
           <ReactionCard key={reaction.id} reaction={reaction} />
         ))}

@@ -75,12 +75,13 @@ export const TraitsSection: React.FC<TraitsSectionProps> = ({ character }) => {
   if (traits.length === 0) return null;
 
   return (
-    <section id="traits" className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
-      <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-        <Sparkles className="h-3.5 w-3.5 text-violet-500" />
+    <section id="traits" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
+      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+        <Sparkles className="h-4 w-4 text-violet-500" />
         Traits
       </h2>
-      <div className="grid gap-1.5 sm:grid-cols-2">
+      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className="grid gap-2 sm:grid-cols-2">
         {traits.map((trait) => (
           <TraitCard key={trait.id} trait={trait} />
         ))}
