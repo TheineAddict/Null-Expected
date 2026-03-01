@@ -1,4 +1,5 @@
 import React from 'react';
+import { Shield, Zap, Gauge, BadgeCheck } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import { deriveAbilityModifiers, formatModifier, resolveProficiencyBonus } from '../model/derive';
 
@@ -11,47 +12,46 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
   const proficiencyBonus = resolveProficiencyBonus(character);
 
   return (
-    <section className="rounded-xl bg-white shadow-sm border border-gray-100 p-4 flex flex-col gap-3">
-      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+    <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          <h1 className="text-xl font-semibold text-gray-900">{character.name}</h1>
-          <p className="text-sm text-gray-600">
+          <h1 className="text-lg sm:text-xl font-semibold text-slate-900">{character.name}</h1>
+          <p className="text-sm text-slate-600">
             Level {character.level} · {character.classes}
+            {character.ancestry && ` · ${character.ancestry}`}
           </p>
-          {character.ancestry && (
-            <p className="text-xs text-gray-500">
-              {character.ancestry}
-              {character.background ? ` · ${character.background}` : ''}
-            </p>
-          )}
         </div>
-        <div className="flex flex-wrap gap-3 text-sm">
-          <div className="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-900 flex flex-col items-center min-w-[4.5rem]">
-            <span className="text-[0.7rem] uppercase tracking-wide text-indigo-700">AC</span>
-            <span className="text-lg font-semibold">{character.armorClass}</span>
+        <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="px-2.5 py-1.5 rounded-lg bg-indigo-50 text-indigo-900 flex items-center gap-1.5 min-w-[3.5rem]">
+            <Shield className="h-3.5 w-3.5 text-indigo-600" />
+            <span className="text-xs font-medium text-indigo-700">AC</span>
+            <span className="text-base font-semibold tabular-nums">{character.armorClass}</span>
           </div>
-          <div className="px-3 py-2 rounded-lg bg-slate-50 text-slate-900 flex flex-col items-center min-w-[4.5rem]">
-            <span className="text-[0.7rem] uppercase tracking-wide text-slate-600">Init</span>
-            <span className="text-lg font-semibold">{formatModifier(character.initiativeMod)}</span>
+          <div className="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 flex items-center gap-1.5 min-w-[3.5rem]">
+            <Zap className="h-3.5 w-3.5 text-slate-600" />
+            <span className="text-xs font-medium text-slate-600">Init</span>
+            <span className="text-base font-semibold tabular-nums">{formatModifier(character.initiativeMod)}</span>
           </div>
-          <div className="px-3 py-2 rounded-lg bg-slate-50 text-slate-900 flex flex-col items-center min-w-[4.5rem]">
-            <span className="text-[0.7rem] uppercase tracking-wide text-slate-600">Speed</span>
-            <span className="text-lg font-semibold">{character.speed}</span>
+          <div className="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 flex items-center gap-1.5 min-w-[3.5rem]">
+            <Gauge className="h-3.5 w-3.5 text-slate-600" />
+            <span className="text-xs font-medium text-slate-600">Speed</span>
+            <span className="text-base font-semibold tabular-nums">{character.speed}</span>
           </div>
-          <div className="px-3 py-2 rounded-lg bg-slate-50 text-slate-900 flex flex-col items-center min-w-[4.5rem]">
-            <span className="text-[0.7rem] uppercase tracking-wide text-slate-600">Prof</span>
-            <span className="text-lg font-semibold">{formatModifier(proficiencyBonus)}</span>
+          <div className="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 flex items-center gap-1.5 min-w-[3.5rem]">
+            <BadgeCheck className="h-3.5 w-3.5 text-slate-600" />
+            <span className="text-xs font-medium text-slate-600">Prof</span>
+            <span className="text-base font-semibold tabular-nums">{formatModifier(proficiencyBonus)}</span>
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 text-xs text-gray-600">
+      <div className="flex flex-wrap gap-1.5 text-xs">
         {(['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'] as const).map((ability) => (
           <div
             key={ability}
-            className="px-2 py-1 rounded-md bg-gray-50 border border-gray-100 flex items-center gap-1 min-w-[3.5rem] justify-between"
+            className="px-2 py-1 rounded-md bg-slate-50 border border-slate-100 flex items-center gap-1 min-w-[2.75rem] justify-between"
           >
-            <span className="font-semibold text-gray-700">{ability}</span>
-            <span className="tabular-nums text-gray-900">
+            <span className="font-semibold text-slate-700">{ability}</span>
+            <span className="tabular-nums text-slate-900">
               {character.abilities[ability]} ({formatModifier(abilityMods[ability])})
             </span>
           </div>

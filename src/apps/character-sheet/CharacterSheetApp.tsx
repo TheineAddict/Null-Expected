@@ -23,13 +23,19 @@ const CharacterSheetApp: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <main className="max-w-5xl mx-auto px-4 py-4 space-y-4">
+    <div className="bg-slate-50/80 min-h-screen">
+      <main className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
         <TopBar character={character} />
-        <HpPanel character={character} state={state} actions={actions} />
-        <CombatSection character={character} state={state} actions={actions} />
-        <ResourcesSection character={character} state={state} actions={actions} />
-        <HopeAbilitiesSection character={character} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-3 sm:space-y-4">
+            <HpPanel character={character} state={state} actions={actions} />
+            <CombatSection character={character} state={state} actions={actions} />
+          </div>
+          <div className="space-y-3 sm:space-y-4">
+            <ResourcesSection character={character} state={state} actions={actions} />
+            <HopeAbilitiesSection character={character} />
+          </div>
+        </div>
         <ActionsSection character={character} />
         <AbilitySavesSkillsSection character={character} />
         <NotesSection character={character} />

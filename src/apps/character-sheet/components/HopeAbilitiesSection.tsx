@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeartHandshake } from 'lucide-react';
 import type { CharacterSheet, HopeTier, HopeCard } from '../model/character.types';
 
 interface HopeAbilitiesSectionProps {
@@ -10,9 +11,9 @@ const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }>
 
   if (variant === 'active') {
     return (
-      <div className="rounded-lg border border-indigo-200 bg-indigo-50/70 p-3">
-        <h4 className="text-xs font-semibold text-indigo-900 uppercase tracking-wide">{card.title}</h4>
-        <div className="mt-1 space-y-1 text-xs text-indigo-950">
+      <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-2.5 sm:p-3">
+        <h4 className="text-[0.7rem] font-semibold text-indigo-900 uppercase tracking-wide">{card.title}</h4>
+        <div className="mt-0.5 space-y-0.5 text-[0.7rem] text-indigo-950">
           {lines.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -22,9 +23,9 @@ const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }>
   }
 
   return (
-    <div className="rounded-lg border border-gray-100 bg-white p-2 opacity-80">
-      <h4 className="text-[0.7rem] font-semibold text-gray-800">{card.title}</h4>
-      <p className="mt-0.5 text-[0.7rem] text-gray-500 line-clamp-3">{card.body}</p>
+    <div className="rounded-lg border border-slate-100 bg-white p-2 opacity-90">
+      <h4 className="text-[0.65rem] font-semibold text-slate-700">{card.title}</h4>
+      <p className="mt-0.5 text-[0.65rem] text-slate-500 line-clamp-3">{card.body}</p>
     </div>
   );
 };
@@ -37,15 +38,12 @@ export const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ char
   }
 
   return (
-    <section className="rounded-xl bg-white shadow-sm border border-gray-100 p-4 flex flex-col gap-3">
-      <div className="flex items-baseline justify-between gap-2">
-        <h2 className="text-sm font-semibold text-gray-800 tracking-wide uppercase">Hope Abilities</h2>
-        <p className="text-[0.7rem] text-gray-500 max-w-xs">
-          Each tier unlocks when it exists in the character sheet file under <code>hopeAbilities</code>. Exactly one
-          card per tier is active, chosen in code, not here.
-        </p>
-      </div>
-      <div className="flex flex-col gap-3">
+    <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
+      <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
+        <HeartHandshake className="h-3.5 w-3.5 text-indigo-500" />
+        Hope abilities
+      </h2>
+      <div className="flex flex-col gap-2 sm:gap-2.5">
         {tiers
           .slice()
           .sort((a, b) => a.tier - b.tier)
@@ -54,17 +52,12 @@ export const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ char
             const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
 
             return (
-              <div key={tier.tier} className="rounded-lg border border-gray-100 bg-slate-50/60 p-3 flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-xs font-semibold text-gray-800 uppercase tracking-wide">
-                    Hope Tier {tier.tier}
-                  </h3>
-                  <span className="text-[0.7rem] text-gray-500">
-                    Active card set in <code>hopeAbilities</code> (no in‑app switching).
-                  </span>
-                </div>
+              <div key={tier.tier} className="rounded-lg border border-slate-100 bg-slate-50/60 p-2 sm:p-2.5 flex flex-col gap-1.5">
+                <h3 className="text-[0.65rem] font-semibold text-slate-600 uppercase tracking-wide">
+                  Tier {tier.tier}
+                </h3>
                 <HopeCardView card={active} variant="active" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                   {inactive.map((card) => (
                     <HopeCardView key={card.id} card={card} variant="inactive" />
                   ))}
