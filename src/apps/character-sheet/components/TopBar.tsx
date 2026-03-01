@@ -28,21 +28,25 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
             Level {character.level} · {character.classes}
             {character.ancestry && ` · ${character.ancestry}`}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-            <div className="rounded-lg bg-indigo-50 border border-indigo-100 px-2 py-2 flex flex-col">
-              <span className="text-xs text-slate-500">AC</span>
+          <div className="flex flex-wrap gap-2 pt-1">
+            <div className="px-2 py-1 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
+              <span aria-hidden>🛡️</span>
+              <span className="text-slate-500">AC</span>
               <span className="tabular-nums font-semibold text-slate-900">{character.armorClass}</span>
             </div>
-            <div className="rounded-lg bg-slate-50 border border-slate-100 px-2 py-2 flex flex-col">
-              <span className="text-xs text-slate-500">Init</span>
+            <div className="px-2 py-1 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
+              <span aria-hidden>⚡</span>
+              <span className="text-slate-500">Init</span>
               <span className="tabular-nums font-semibold text-slate-900">{formatModifier(character.initiativeMod)}</span>
             </div>
-            <div className="rounded-lg bg-slate-50 border border-slate-100 px-2 py-2 flex flex-col">
-              <span className="text-xs text-slate-500">Speed</span>
+            <div className="px-2 py-1 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
+              <span aria-hidden>👟</span>
+              <span className="text-slate-500">Speed</span>
               <span className="tabular-nums font-semibold text-slate-900">{character.speed}</span>
             </div>
-            <div className="rounded-lg bg-slate-50 border border-slate-100 px-2 py-2 flex flex-col">
-              <span className="text-xs text-slate-500">Prof</span>
+            <div className="px-2 py-1 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
+              <span aria-hidden>⭐</span>
+              <span className="text-slate-500">Prof</span>
               <span className="tabular-nums font-semibold text-slate-900">{formatModifier(proficiencyBonus)}</span>
             </div>
           </div>

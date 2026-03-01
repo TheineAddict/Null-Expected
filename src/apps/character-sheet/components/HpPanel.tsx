@@ -2,6 +2,7 @@ import React from 'react';
 import { Heart, ShieldPlus } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
+import { bodyTextClass } from '../textClasses';
 
 interface HpPanelProps {
   character: CharacterSheet;
@@ -30,7 +31,28 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center gap-1.5">
-          <span className="text-xs text-slate-500">Current</span>
+          <div className="flex items-center justify-center gap-1.5 flex-wrap">
+            <span className="text-xs text-slate-500">HP</span>
+            <span className="text-[0.65rem] text-slate-400">max {effectiveMax}</span>
+            <span className="flex items-center gap-0.5">
+              <button
+                type="button"
+                className="w-5 h-5 rounded bg-slate-100 text-slate-500 text-[0.65rem] flex items-center justify-center active:bg-slate-200 touch-manipulation"
+                onClick={() => actions.adjustEffectiveMaxHp(-1)}
+                aria-label="Decrease max HP"
+              >
+                −
+              </button>
+              <button
+                type="button"
+                className="w-5 h-5 rounded bg-slate-100 text-slate-500 text-[0.65rem] flex items-center justify-center active:bg-slate-200 touch-manipulation"
+                onClick={() => actions.adjustEffectiveMaxHp(1)}
+                aria-label="Increase max HP"
+              >
+                +
+              </button>
+            </span>
+          </div>
           <div className="flex items-center gap-2 h-11">
             <button
               type="button"
@@ -46,26 +68,6 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               type="button"
               className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
               onClick={() => actions.adjustCurrentHp(1)}
-            >
-              +
-            </button>
-          </div>
-          <span className="text-xs text-slate-500">Max</span>
-          <div className="flex items-center gap-2 h-11">
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustEffectiveMaxHp(-1)}
-            >
-              −
-            </button>
-            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-xl font-semibold tabular-nums border border-slate-200">
-              {effectiveMax}
-            </div>
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustEffectiveMaxHp(1)}
             >
               +
             </button>
@@ -131,8 +133,8 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               ))}
             </div>
           </div>
-          <p className="text-xs text-slate-500 text-center leading-snug">10 or higher is a success.</p>
-          <p className="text-xs text-slate-500 text-center leading-snug">
+          <p className={`${bodyTextClass} text-center`}>10 or higher is a success.</p>
+          <p className={`${bodyTextClass} text-center`}>
             Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
           </p>
         </div>

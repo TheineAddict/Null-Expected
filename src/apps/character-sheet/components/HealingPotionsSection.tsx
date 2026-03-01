@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlaskConical } from 'lucide-react';
+import { bodyTextClass } from '../textClasses';
 
 const POTIONS: { name: string; dice: string; icon: string }[] = [
   { name: 'Potion of Healing', dice: '2d4 + 2 HP', icon: '🧪' },
@@ -18,7 +19,7 @@ export const HealingPotionsSection: React.FC = () => (
       Healing Potions (2024)
     </h2>
     <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-    <p className="text-xs text-slate-500 leading-snug">
+    <p className={bodyTextClass}>
       Use as a Bonus Action: drink a potion yourself or administer it to another creature within 5 ft.
     </p>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">

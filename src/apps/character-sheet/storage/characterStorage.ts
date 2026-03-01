@@ -56,12 +56,6 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
   };
 }
 
-function clampCurrentHp(value: number, effectiveMaxHp: number): number {
-  const low = Math.min(0, effectiveMaxHp);
-  const high = Math.max(0, effectiveMaxHp);
-  return Math.max(low, Math.min(value, high));
-}
-
 function loadState(character: CharacterSheet): CharacterTrackerState {
   if (typeof window === 'undefined') {
     return createDefaultState(character);
@@ -81,9 +75,7 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       typeof parsed.effectiveMaxHp === 'number' ? parsed.effectiveMaxHp : sheetMaxHp;
 
     const currentHp =
-      typeof parsed.currentHp === 'number'
-        ? clampCurrentHp(parsed.currentHp, effectiveMaxHp)
-        : clampCurrentHp(base.currentHp, effectiveMaxHp);
+      typeof parsed.currentHp === 'number' ? parsed.currentHp : base.currentHp;
     const tempHp =
       typeof parsed.tempHp === 'number' ? Math.max(0, parsed.tempHp) : base.tempHp;
     const hopeThirds =
@@ -156,31 +148,26 @@ export function useCharacterTracker(
     setCurrentHp: (value) => {
       setState((prev) => ({
         ...prev,
-        currentHp: clampCurrentHp(value, prev.effectiveMaxHp),
+        currentHp: value,
       }));
     },
     adjustCurrentHp: (delta) => {
       setState((prev) => ({
         ...prev,
-        currentHp: clampCurrentHp(prev.currentHp + delta, prev.effectiveMaxHp),
+        currentHp: prev.currentHp + delta,
       }));
     },
     setEffectiveMaxHp: (value) => {
       setState((prev) => ({
         ...prev,
         effectiveMaxHp: value,
-        currentHp: clampCurrentHp(prev.currentHp, value),
       }));
     },
     adjustEffectiveMaxHp: (delta) => {
-      setState((prev) => {
-        const nextMax = prev.effectiveMaxHp + delta;
-        return {
-          ...prev,
-          effectiveMaxHp: nextMax,
-          currentHp: clampCurrentHp(prev.currentHp, nextMax),
-        };
-      });
+      setState((prev) => ({
+        ...prev,
+        effectiveMaxHp: prev.effectiveMaxHp + delta,
+      }));
     },
     setTempHp: (value) => {
       setState((prev) => ({

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeartHandshake } from 'lucide-react';
 import type { CharacterSheet, HopeTier, HopeCard } from '../model/character.types';
+import { bodyTextClass } from '../textClasses';
 
 interface HopeAbilitiesSectionProps {
   character: CharacterSheet;
@@ -13,7 +14,7 @@ export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inact
     return (
       <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3">
         <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
-        <div className="mt-1 space-y-0.5 text-sm text-slate-600 leading-snug">
+        <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
           {lines.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -25,7 +26,7 @@ export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inact
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-2.5 opacity-90">
       <h4 className="text-xs font-semibold text-slate-700">{card.title}</h4>
-      <p className="mt-0.5 text-xs text-slate-500 leading-snug line-clamp-3">{card.body}</p>
+      <p className={`mt-0.5 ${bodyTextClass} line-clamp-3`}>{card.body}</p>
     </div>
   );
 };

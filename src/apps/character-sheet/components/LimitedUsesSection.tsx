@@ -1,6 +1,7 @@
 import React from 'react';
 import type { CharacterSheet, LimitedUseResource } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
+import { bodyTextClass } from '../textClasses';
 
 interface LimitedUsesSectionProps {
   character: CharacterSheet;
@@ -49,7 +50,7 @@ const LimitedUseRow: React.FC<{
           </span>
         </div>
         {paragraphs.length > 0 && (
-          <div className="mt-2 text-sm text-slate-600 leading-snug space-y-0.5">
+          <div className={`mt-2 ${bodyTextClass} space-y-0.5`}>
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}

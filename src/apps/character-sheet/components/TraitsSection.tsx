@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import type { CharacterSheet, Trait } from '../model/character.types';
+import { bodyTextClass } from '../textClasses';
 
 interface TraitsSectionProps {
   character: CharacterSheet;
@@ -41,7 +42,7 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
               {trait.type}
             </span>
           </div>
-          <p className="text-[0.7rem] text-slate-700 mt-0.5">{trait.summary}</p>
+          <p className={`${bodyTextClass} mt-0.5`}>{trait.summary}</p>
         </div>
         {hasMore && (
           <span
@@ -55,10 +56,10 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
       {expanded && hasMore && (
         <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80 space-y-2">
           {trait.details && (
-            <p className="text-[0.7rem] text-slate-700">{trait.details}</p>
+            <p className={bodyTextClass}>{trait.details}</p>
           )}
           {trait.reminders && trait.reminders.length > 0 && (
-            <ul className="list-disc list-inside text-[0.7rem] text-slate-600 space-y-0.5">
+            <ul className={`list-disc list-inside ${bodyTextClass} space-y-0.5`}>
               {trait.reminders.map((r, i) => (
                 <li key={i}>{r}</li>
               ))}

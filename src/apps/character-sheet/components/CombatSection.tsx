@@ -3,6 +3,7 @@ import { Swords, Dices } from 'lucide-react';
 import type { CharacterSheet, Attack } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { computeAttackBonus, formatModifier, resolveProficiencyBonus } from '../model/derive';
+import { bodyTextClass } from '../textClasses';
 
 interface CombatSectionProps {
   character: CharacterSheet;
@@ -31,7 +32,7 @@ const AttackCard: React.FC<{ attack: Attack; toHitBonus: number }> = ({ attack, 
       ))}
     </div>
     {attack.whenToUse && (
-      <p className="text-sm text-slate-600 leading-snug pt-0.5">{attack.whenToUse}</p>
+      <p className={`${bodyTextClass} pt-0.5`}>{attack.whenToUse}</p>
     )}
   </div>
 );
@@ -47,7 +48,7 @@ export const CombatSection: React.FC<CombatSectionProps> = ({ character }) => {
         Combat
       </h2>
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      <p className="text-xs text-slate-500 leading-snug flex items-center gap-1">
+      <p className={`${bodyTextClass} flex items-center gap-1`}>
         <Dices className="h-3.5 w-3.5" />
         d20 + to-hit. Advantage = 2d20, take higher.
       </p>
@@ -56,7 +57,7 @@ export const CombatSection: React.FC<CombatSectionProps> = ({ character }) => {
           <h3 className="text-sm font-semibold text-indigo-900">
             {character.turnGuide.title}
           </h3>
-          <ol className="space-y-1 list-decimal list-inside text-sm text-slate-600 leading-snug">
+          <ol className={`space-y-1 list-decimal list-inside ${bodyTextClass}`}>
             {character.turnGuide.steps.map((step) => (
               <li key={step}>{step}</li>
             ))}

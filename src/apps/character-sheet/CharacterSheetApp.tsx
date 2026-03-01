@@ -44,9 +44,10 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
           </div>
           <div className="space-y-4">
             <LimitedUsesSection character={character} state={state} actions={actions} />
-            <AbilitySavesSkillsSection character={character} />
           </div>
         </div>
+
+        <AbilitySavesSkillsSection character={character} />
 
         <TraitsSection character={character} />
         <ReactionsSection character={character} />

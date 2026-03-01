@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Save, Activity, Eye } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import { deriveSaves, deriveSkills, formatModifier, resolveProficiencyBonus, computePassive } from '../model/derive';
+import { bodyTextClass } from '../textClasses';
 
 interface AbilitySavesSkillsSectionProps {
   character: CharacterSheet;
@@ -21,7 +22,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
 
   return (
     <section id="saves-skills" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
-      <p className="text-xs text-slate-500 leading-snug">For checks, roll d20 + modifier.</p>
+      <p className={bodyTextClass}>For checks, roll d20 + modifier.</p>
       <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
         <Activity className="h-4 w-4 text-indigo-500" />
         Saves, skills & passives
@@ -30,9 +31,10 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
 
       <div className="flex flex-col space-y-4">
         <div>
-          <h3 className="text-xs font-semibold text-slate-600 flex items-center gap-1 mb-2">
+          <h3 className="text-xs font-semibold text-slate-600 flex items-center gap-1 mb-1">
             <Save className="h-3.5 w-3.5" /> Saves
           </h3>
+          <p className={`${bodyTextClass} mb-2`}>Saves: resist harmful effects like spells, traps, poison, and other threats.</p>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {saves.map((save) => (
               <div
@@ -52,7 +54,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
         </div>
 
         <div>
-          <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center justify-between gap-2 mb-1">
             <h3 className="text-xs font-semibold text-slate-600">Skills</h3>
             <button
               type="button"
@@ -62,6 +64,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
               {showAllSkills ? 'Show prof only' : 'Show all'}
             </button>
           </div>
+          <p className={`${bodyTextClass} mb-2`}>Skills: ability checks for what you do - sneak, notice, persuade, recall, etc.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
             {skillsToShow.map((skill) => (
               <div
@@ -88,9 +91,10 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold text-slate-600 flex items-center gap-1 mb-2">
+          <h3 className="text-xs font-semibold text-slate-600 flex items-center gap-1 mb-1">
             <Eye className="h-3.5 w-3.5" /> Passives
           </h3>
+          <p className={`${bodyTextClass} mb-2`}>Passives: always-on senses - usually 10 + your skill bonus.</p>
           <div className="grid grid-cols-3 gap-2">
             <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center">
               <span className="text-xs text-slate-500">PP</span>
