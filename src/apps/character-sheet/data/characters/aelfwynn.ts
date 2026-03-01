@@ -48,7 +48,7 @@ const hopeTiers: HopeTier[] = [
 export const aelfwynn: CharacterSheet = {
   id: 'aelfwynn',
   name: 'Aelfwynn WinterShade',
-  portraitUrl: '/apps/character-sheet/aelfwynn-portrait.png',
+  portraitUrl: '/apps/character-sheet/aelfwynn-portrait.jpg',
   level: 8,
   classes: 'Barbarian 6 (Path of the World Tree) / Fighter 2',
   ancestry: "Goliath (Giant Ancestry: Frost's Chill)",

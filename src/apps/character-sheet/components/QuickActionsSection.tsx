@@ -7,7 +7,6 @@ const LINKS: { label: string; id: string }[] = [
   { label: 'Saves/Skills', id: 'saves-skills' },
   { label: 'Traits', id: 'traits' },
   { label: 'Reactions', id: 'reactions' },
-  { label: 'Notes', id: 'notes' },
   { label: 'Hope', id: 'hope' },
 ];
 

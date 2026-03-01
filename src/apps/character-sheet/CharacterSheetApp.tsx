@@ -9,8 +9,8 @@ import { LimitedUsesSection } from './components/LimitedUsesSection';
 import { AbilitySavesSkillsSection } from './components/AbilitySavesSkillsSection';
 import { TraitsSection } from './components/TraitsSection';
 import { ReactionsSection } from './components/ReactionsSection';
-import { NotesSection } from './components/NotesSection';
 import { HopeSection } from './components/HopeSection';
+import { HealingPotionsSection } from './components/HealingPotionsSection';
 import { QuickActionsSection } from './components/QuickActionsSection';
 
 interface CharacterSheetAppProps {
@@ -50,8 +50,8 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
 
         <TraitsSection character={character} />
         <ReactionsSection character={character} />
-        <NotesSection character={character} />
         <HopeSection character={character} state={state} actions={actions} />
+        <HealingPotionsSection />
       </main>
     </div>
   );
