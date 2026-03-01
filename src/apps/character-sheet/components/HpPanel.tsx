@@ -104,6 +104,10 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               ))}
             </div>
           </div>
+          <p className="text-[0.65rem] text-slate-500 text-center">10 or higher is a success.</p>
+          <p className="text-[0.65rem] text-slate-500 text-center">
+            Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
+          </p>
         </div>
       </div>
     </section>

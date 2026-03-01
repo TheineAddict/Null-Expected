@@ -130,7 +130,7 @@ export const aelfwynn: CharacterSheet = {
         },
       ],
       whenToUse:
-        'Default melee. You attack twice with Extra Attack. If you need advantage, use Reckless Attack (enemies get advantage vs you until your next turn).',
+        'Default melee. You attack twice with Extra Attack. If you need advantage, use Reckless Attack (enemies get advantage vs you until your next turn). Weapon Mastery (Graze): if you miss, deal 4 slashing damage.',
     },
     {
       id: 'javelin-thrown',
@@ -146,7 +146,8 @@ export const aelfwynn: CharacterSheet = {
           notes: 'Range 30 ft / 120 ft. Weapon Mastery: Slow (on hit, target speed -10 ft until your next turn).',
         },
       ],
-      whenToUse: 'Throw distance: 30 ft normal, 120 ft long (disadvantage).',
+      whenToUse:
+        'Throw distance: 30 ft normal, 120 ft long (disadvantage). Weapon Mastery (Slow): on a hit, target speed -10 ft until the start of your next turn.',
     },
     {
       id: 'unarmed-strike',
@@ -269,7 +270,7 @@ export const aelfwynn: CharacterSheet = {
       type: 'Passive',
       summary: 'You count as one size larger for carrying, pushing, dragging, and lifting.',
       details:
-        'You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.',
+        'You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift. You also have advantage on checks to end the Grappled condition on yourself.',
     },
   ],
 

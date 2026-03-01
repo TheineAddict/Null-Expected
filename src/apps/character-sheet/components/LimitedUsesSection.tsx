@@ -9,14 +9,22 @@ interface LimitedUsesSectionProps {
 }
 
 const LIMITED_USE_DESCRIPTIONS: Record<string, string | string[]> = {
-  'frosts-chill':
+  'frosts-chill': [
     "On a hit: add 1d6 cold damage, and the target's speed is reduced by 10 ft until the start of your next turn. Decide after you hit and deal damage; spend 1 use.",
-  'large-form':
+    "Uses per long rest equal your proficiency bonus (currently 3).",
+  ],
+  'large-form': [
     "Bonus action. For 10 minutes you become Large (if space allows). You have advantage on Strength checks, and your speed increases by 10 ft while this is active.",
-  rage: "Bonus action, lasts 1 minute. While raging: advantage on Strength checks and Strength saves, +2 damage on Strength-based melee weapon attacks, and resistance to bludgeoning/piercing/slashing damage. Rage can end early if you stop fighting (no attacks taken and no damage taken since your last turn).",
+    "Ends early if you choose (no action).",
+  ],
+  rage: [
+    "Bonus action, lasts 1 minute. While raging: advantage on Strength checks and Strength saves, +2 damage on Strength-based melee weapon attacks, and resistance to bludgeoning/piercing/slashing damage. Rage can end early if you stop fighting (no attacks taken and no damage taken since your last turn).",
+    "When you enter Rage: gain temp HP equal to your Barbarian level (Vitality Surge).",
+  ],
   'second-wind': [
     "Bonus action: regain 1d10 + Fighter level hit points (your sheet uses +2).",
     "Tactical Mind (uses Second Wind): when you fail an ability check, you can roll 1d10 and add it to the check. If you still fail, the use isn't spent (campaign rule).",
+    "Recharge: regain 1 use on a short rest; regain all uses on a long rest.",
   ],
   'action-surge':
     "On your turn, take 1 additional action (for example: another Attack action). This is separate from your bonus action and reaction.",
