@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import type { CharacterSheet } from './model/character.types';
 import { CHARACTERS, DEFAULT_CHARACTER_ID } from './data';
 import { useCharacterTracker } from './storage/characterStorage';
 import { TopBar } from './components/TopBar';
@@ -12,8 +13,13 @@ import { NotesSection } from './components/NotesSection';
 import { HopeSection } from './components/HopeSection';
 import { QuickActionsSection } from './components/QuickActionsSection';
 
-const CharacterSheetApp: React.FC = () => {
-  const character = CHARACTERS[DEFAULT_CHARACTER_ID];
+interface CharacterSheetAppProps {
+  character?: CharacterSheet;
+}
+
+const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: characterProp }: CharacterSheetAppProps) => {
+  const fallback = CHARACTERS[DEFAULT_CHARACTER_ID];
+  const character = characterProp ?? fallback;
   const { state, actions } = useCharacterTracker(character);
 
   if (!character) {

@@ -13,6 +13,7 @@ import Consulting from './pages/Consulting';
 import NotFound from './pages/NotFound';
 import JobRadarApp from './pages/JobRadarApp';
 import CharacterSheetApp from './pages/CharacterSheetApp';
+import { CharacterSheetPage } from './pages/CharacterSheetApp';
 import AppPrivacyPolicy from './pages/AppPrivacyPolicy';
 import AppTermsOfService from './pages/AppTermsOfService';
 
@@ -30,7 +31,7 @@ function ScrollToTop() {
 function AppContent() {
   const location = useLocation();
   const isAppSection =
-    location.pathname === '/null-expected-job-radar-app' || location.pathname === '/character-sheet-app';
+    location.pathname === '/null-expected-job-radar-app' || location.pathname.startsWith('/character-sheet-app');
   const isLegalPage = location.pathname === '/app-privacy-policy' || location.pathname === '/app-terms-of-service';
   const hideNavigation = isAppSection || isLegalPage;
 
@@ -57,6 +58,7 @@ function AppContent() {
           <Route path="/consulting" element={<Consulting />} />
           <Route path="/null-expected-job-radar-app" element={<JobRadarApp />} />
           <Route path="/character-sheet-app" element={<CharacterSheetApp />} />
+          <Route path="/character-sheet-app/:characterId" element={<CharacterSheetPage />} />
           <Route path="/app-privacy-policy" element={<AppPrivacyPolicy />} />
           <Route path="/app-terms-of-service" element={<AppTermsOfService />} />
           <Route path="*" element={<NotFound />} />
