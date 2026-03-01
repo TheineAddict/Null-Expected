@@ -39,7 +39,7 @@ const LimitedUseRow: React.FC<{
           {remaining}/{resource.max} · {resource.reset.replace('-', ' ')}
         </span>
         {paragraphs.length > 0 && (
-          <div className="mt-1 text-sm leading-snug text-slate-500 space-y-0.5">
+          <div className="mt-1 text-[0.65rem] leading-snug text-slate-500 space-y-0.5">
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
