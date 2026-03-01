@@ -6,7 +6,7 @@ interface HopeAbilitiesSectionProps {
   character: CharacterSheet;
 }
 
-const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
+export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
   const lines = card.body.split('\n');
 
   if (variant === 'active') {
@@ -30,12 +30,40 @@ const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }>
   );
 };
 
+export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {
+  const tiers = character.hopeAbilities ?? [];
+  if (tiers.length === 0) return null;
+
+  return (
+    <div className="flex flex-col gap-2 sm:gap-2.5">
+      {tiers
+        .slice()
+        .sort((a, b) => a.tier - b.tier)
+        .map((tier) => {
+          const active = tier.cards.find((c) => c.id === tier.activeCardId) ?? tier.cards[0];
+          const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
+
+          return (
+            <div key={tier.tier} className="rounded-lg border border-slate-100 bg-slate-50/60 p-2 sm:p-2.5 flex flex-col gap-1.5">
+              <h3 className="text-[0.65rem] font-semibold text-slate-600 uppercase tracking-wide">
+                Tier {tier.tier}
+              </h3>
+              <HopeCardView card={active} variant="active" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                {inactive.map((card) => (
+                  <HopeCardView key={card.id} card={card} variant="inactive" />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+    </div>
+  );
+};
+
 export const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {
   const tiers = character.hopeAbilities ?? [];
-
-  if (tiers.length === 0) {
-    return null;
-  }
+  if (tiers.length === 0) return null;
 
   return (
     <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
@@ -43,29 +71,7 @@ export const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ char
         <HeartHandshake className="h-3.5 w-3.5 text-indigo-500" />
         Hope abilities
       </h2>
-      <div className="flex flex-col gap-2 sm:gap-2.5">
-        {tiers
-          .slice()
-          .sort((a, b) => a.tier - b.tier)
-          .map((tier) => {
-            const active = tier.cards.find((c) => c.id === tier.activeCardId) ?? tier.cards[0];
-            const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
-
-            return (
-              <div key={tier.tier} className="rounded-lg border border-slate-100 bg-slate-50/60 p-2 sm:p-2.5 flex flex-col gap-1.5">
-                <h3 className="text-[0.65rem] font-semibold text-slate-600 uppercase tracking-wide">
-                  Tier {tier.tier}
-                </h3>
-                <HopeCardView card={active} variant="active" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                  {inactive.map((card) => (
-                    <HopeCardView key={card.id} card={card} variant="inactive" />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-      </div>
+      <HopeAbilityTiers character={character} />
     </section>
   );
 };

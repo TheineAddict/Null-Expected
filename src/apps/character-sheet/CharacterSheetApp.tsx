@@ -4,13 +4,13 @@ import { useCharacterTracker } from './storage/characterStorage';
 import { TopBar } from './components/TopBar';
 import { HpPanel } from './components/HpPanel';
 import { CombatSection } from './components/CombatSection';
+import { LimitedUsesSection } from './components/LimitedUsesSection';
+import { AbilitySavesSkillsSection } from './components/AbilitySavesSkillsSection';
 import { TraitsSection } from './components/TraitsSection';
 import { ReactionsSection } from './components/ReactionsSection';
-import { ResourcesSection } from './components/ResourcesSection';
-import { HopeAbilitiesSection } from './components/HopeAbilitiesSection';
-import { ActionsSection } from './components/ActionsSection';
-import { AbilitySavesSkillsSection } from './components/AbilitySavesSkillsSection';
 import { NotesSection } from './components/NotesSection';
+import { HopeSection } from './components/HopeSection';
+import { QuickActionsSection } from './components/QuickActionsSection';
 
 const CharacterSheetApp: React.FC = () => {
   const character = CHARACTERS[DEFAULT_CHARACTER_ID];
@@ -26,27 +26,29 @@ const CharacterSheetApp: React.FC = () => {
 
   return (
     <div className="bg-slate-50/80 min-h-screen">
-      <main className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 space-y-3 sm:space-y-4">
+      <main className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 space-y-4">
         <TopBar character={character} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-          <div className="space-y-3 sm:space-y-4">
+
+        <QuickActionsSection />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="space-y-4">
             <HpPanel character={character} state={state} actions={actions} />
             <CombatSection character={character} state={state} actions={actions} />
           </div>
-          <div className="space-y-3 sm:space-y-4">
-            <ResourcesSection character={character} state={state} actions={actions} />
-            <HopeAbilitiesSection character={character} />
+          <div className="space-y-4">
+            <LimitedUsesSection character={character} state={state} actions={actions} />
+            <AbilitySavesSkillsSection character={character} />
           </div>
         </div>
+
         <TraitsSection character={character} />
         <ReactionsSection character={character} />
-        <ActionsSection character={character} />
-        <AbilitySavesSkillsSection character={character} />
         <NotesSection character={character} />
+        <HopeSection character={character} state={state} actions={actions} />
       </main>
     </div>
   );
 };
 
 export default CharacterSheetApp;
-

@@ -66,7 +66,7 @@ export const ReactionsSection: React.FC<ReactionsSectionProps> = ({ character })
   if (reactions.length === 0) return null;
 
   return (
-    <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
+    <section id="reactions" className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
       <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
         <Reply className="h-3.5 w-3.5 text-amber-500" />
         Reactions

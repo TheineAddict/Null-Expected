@@ -75,7 +75,7 @@ export const TraitsSection: React.FC<TraitsSectionProps> = ({ character }) => {
   if (traits.length === 0) return null;
 
   return (
-    <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
+    <section id="traits" className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
       <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
         <Sparkles className="h-3.5 w-3.5 text-violet-500" />
         Traits

@@ -9,7 +9,7 @@ interface ResourcesSectionProps {
   actions: CharacterTrackerActions;
 }
 
-const ThirdsTracker: React.FC<{
+export const ThirdsTracker: React.FC<{
   label: string;
   emoji: string;
   thirds: number;
