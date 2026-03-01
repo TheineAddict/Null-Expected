@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const SCROLL_THRESHOLD = 400;
+
+const scrollToTop = () => {
+  document.getElementById('top')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 
 const LINKS: { label: string; id: string }[] = [
+  { label: '↑ Top', id: 'top' },
   { label: 'HP', id: 'hp' },
   { label: 'Combat', id: 'combat' },
   { label: 'Limited Uses', id: 'limited-uses' },
@@ -28,5 +35,33 @@ export const QuickActionsSection: React.FC = () => {
         </button>
       ))}
     </div>
+  );
+};
+
+export const BackToTopButton: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > SCROLL_THRESHOLD);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      type="button"
+      onClick={scrollToTop}
+      aria-label="Return to top"
+      className="fixed w-10 h-10 rounded-full bg-slate-200/90 hover:bg-slate-300/90 text-slate-600 hover:text-slate-800 shadow-sm border border-slate-200/80 flex items-center justify-center text-lg touch-manipulation transition-colors"
+      style={{
+        bottom: 'max(1rem, env(safe-area-inset-bottom, 0px))',
+        right: 'max(1rem, env(safe-area-inset-right, 0px))',
+      }}
+    >
+      ↑
+    </button>
   );
 };

@@ -11,7 +11,7 @@ import { TraitsSection } from './components/TraitsSection';
 import { ReactionsSection } from './components/ReactionsSection';
 import { HopeSection } from './components/HopeSection';
 import { HealingPotionsSection } from './components/HealingPotionsSection';
-import { QuickActionsSection } from './components/QuickActionsSection';
+import { QuickActionsSection, BackToTopButton } from './components/QuickActionsSection';
 
 interface CharacterSheetAppProps {
   character?: CharacterSheet;
@@ -32,7 +32,8 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
 
   return (
     <div className="bg-slate-50 min-h-screen">
-      <main className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-5 space-y-5">
+      <main className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-5 space-y-5 relative">
+        <div id="top" className="scroll-mt-4 h-0 overflow-hidden" aria-hidden="true" />
         <TopBar character={character} />
 
         <HpPanel character={character} state={state} actions={actions} />
@@ -55,6 +56,7 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
         <HopeSection character={character} state={state} actions={actions} />
         <HealingPotionsSection />
       </main>
+      <BackToTopButton />
     </div>
   );
 };
