@@ -8,17 +8,17 @@ const hopeTiers: HopeTier[] = [
       {
         id: 't1-quick-thinking',
         title: 'Quick Thinking',
-        body: 'When combat starts, quickly scan the field.\nPick one ally who looks the most exposed and keep them in mind when choosing your actions.',
+        body: 'At combat start: scan the field.\nPick the most exposed ally and keep them in mind when choosing your actions.',
       },
       {
         id: 't1-steady-breath',
         title: 'Steady Breath',
-        body: 'Before you roll an important check, pause for a breath.\nRemind yourself that a bad roll is not the end of the story.',
+        body: 'Before an important roll: pause for one breath.\nA bad roll is not the end of the story.',
       },
       {
         id: 't1-mark-the-threat',
         title: 'Mark the Threat',
-        body: 'Choose the creature that feels most dangerous.\nKeep track of its position, hit points, and conditions so your group can react quickly.',
+        body: 'Pick the most dangerous enemy.\nTrack its position, HP estimate, and conditions so the group can react.',
       },
     ],
   },
@@ -29,17 +29,17 @@ const hopeTiers: HopeTier[] = [
       {
         id: 't2-shared-glance',
         title: 'Shared Glance',
-        body: 'When an ally hesitates, offer a quick reminder of what your characters have survived together.\nUse this to nudge the table toward bold, hopeful choices.',
+        body: 'When an ally hesitates: give a quick reminder of what your characters have survived.\nNudge the table toward bold choices.',
       },
       {
         id: 't2-anchor-memory',
         title: 'Anchor Memory',
-        body: 'Pick one hopeful memory your character holds onto.\nBring it into play with a short sentence when things look grim.',
+        body: 'Pick one hopeful memory.\nBring it into play with one short sentence when things look grim.',
       },
       {
         id: 't2-light-in-the-dark',
         title: 'Light in the Dark',
-        body: 'Notice one small, concrete sign that things might still turn in your favour—an enemy slipping, a loose stone, a crack of light.\nCall it out at the table.',
+        body: 'Call out one small sign things might still turn - a slip, a loose stone, a crack of light.\nMake it concrete.',
       },
     ],
   },
@@ -49,9 +49,6 @@ export const aelfwynn: CharacterSheet = {
   id: 'aelfwynn',
   name: 'Aelfwynn',
 
-  // From the sheet: Goliath (Frost’s Chill) + Path of the World Tree + Soldier features.
-  // Your sheet text has some class/level inconsistencies (it includes Action Surge + Fighter-style features),
-  // so this reflects what’s actually listed in the abilities section.
   level: 7,
   classes: 'Barbarian 5 (Path of the World Tree) / Warrior 2',
   ancestry: "Goliath (Frost's Chill)",
@@ -93,7 +90,7 @@ export const aelfwynn: CharacterSheet = {
     { id: 'investigation', name: 'Investigation', ability: 'INT', proficient: false },
     { id: 'medicine', name: 'Medicine', ability: 'WIS', proficient: false },
     { id: 'nature', name: 'Nature', ability: 'INT', proficient: false },
-    { id: 'perception', name: 'Perception', ability: 'WIS', proficient: true }, // passive Perception 14 on sheet
+    { id: 'perception', name: 'Perception', ability: 'WIS', proficient: true },
     { id: 'performance', name: 'Performance', ability: 'CHA', proficient: false },
     { id: 'persuasion', name: 'Persuasion', ability: 'CHA', proficient: false },
     { id: 'religion', name: 'Religion', ability: 'INT', proficient: false },
@@ -112,21 +109,20 @@ export const aelfwynn: CharacterSheet = {
         {
           id: 'greatsword-normal',
           label: 'Normal',
-          dice: '2d6+5 + 1d6',
-          damageType: 'slashing + cold',
-          notes:
-            'Roll: 2d6+5 slashing, plus 1d6 cold. To hit: +8 (includes +1 magical weapon). Weapon Mastery: Graze (miss = +4 slashing).',
+          dice: '2d6+5',
+          damageType: 'slashing',
+          notes: '+1d6 cold. Weapon Mastery: Graze (on miss: +4 slashing).',
         },
         {
           id: 'greatsword-rage',
           label: 'While Raging',
-          dice: '2d6+7 + 1d6',
-          damageType: 'slashing + cold',
-          notes: 'Use while raging (adds +2 to the slashing part on your sheet).',
+          dice: '2d6+7',
+          damageType: 'slashing',
+          notes: '+1d6 cold.',
         },
       ],
       whenToUse:
-        'Default melee. If you need more accuracy, use Reckless Attack (advantage on STR melee attacks, but enemies get advantage vs you until your next turn). On a hit, you can use Soldier: Savage Attacker (1/turn) to roll weapon damage dice twice and choose.',
+        'Default melee. If you need advantage, use Reckless Attack (but enemies get advantage vs you until your next turn).',
     },
     {
       id: 'javelin-thrown',
@@ -139,11 +135,10 @@ export const aelfwynn: CharacterSheet = {
           label: 'Normal',
           dice: '1d6+4',
           damageType: 'piercing',
-          notes: 'To hit: +7. Range: 9 m / 36 m (uses STR).',
+          notes: 'Range: 9 m / 36 m.',
         },
       ],
-      whenToUse:
-        'Use when you cannot reach safely this turn. Works with STR (same stat as your melee).',
+      whenToUse: 'Use when you cannot reach safely this turn.',
     },
     {
       id: 'unarmed-strike',
@@ -156,18 +151,15 @@ export const aelfwynn: CharacterSheet = {
           label: 'Normal',
           dice: '1+4',
           damageType: 'bludgeoning',
-          notes: 'To hit: +7.',
         },
         {
           id: 'unarmed-rage',
           label: 'While Raging',
           dice: '1+6',
           damageType: 'bludgeoning',
-          notes: 'Use while raging.',
         },
       ],
-      whenToUse:
-        'Backup option if you are disarmed or cannot use your weapon.',
+      whenToUse: 'Backup if disarmed.',
     },
   ],
 
@@ -177,31 +169,28 @@ export const aelfwynn: CharacterSheet = {
       name: "Frost's Chill",
       max: 3,
       reset: 'long-rest',
-      notes:
-        'Trigger: when you hit a creature and deal damage. Effect: +1d6 cold damage and reduce target speed by 3 m (10 ft) until the start of your next turn.',
+      notes: 'On a hit: +1d6 cold and target speed -3 m (10 ft) until your next turn.',
     },
     {
       id: 'second-wind',
       name: 'Second Wind',
       max: 2,
       reset: 'long-rest',
-      notes:
-        'Heal 1d10+2 HP. Tactical Mind: when you fail an ability check, you can use Second Wind to roll 1d10 and add it; not spent if the check still fails.',
+      notes: 'Heal 1d10+2 HP. Tactical Mind: when you fail an ability check, add 1d10 (not spent if you still fail).',
     },
     {
       id: 'action-surge',
       name: 'Action Surge',
       max: 1,
       reset: 'short-rest',
-      notes: 'Take 1 extra Action on your turn (1/rest on your sheet).',
+      notes: 'On your turn: take 1 extra Action.',
     },
     {
       id: 'rage',
       name: 'Rage',
       max: 3,
       reset: 'long-rest',
-      notes:
-        'Bonus action. Duration 1 minute. STR advantage, +2 melee (STR) damage, resistance to bludgeoning/piercing/slashing, gain 5 temp HP at the start.',
+      notes: 'Bonus action, 1 min. Advantage on STR, +2 melee STR damage, resistance to B/P/S, gain 5 temp HP at the start.',
     },
   ],
 
@@ -210,13 +199,14 @@ export const aelfwynn: CharacterSheet = {
   turnGuide: {
     title: 'On Your Turn',
     steps: [
-      'Check your HP, Rage, and any conditions.',
-      'Decide where you should stand to protect allies or pressure enemies.',
-      'Choose an attack (Greataxe in melee, Handaxe at range).',
-      'Remember Reckless Attack and Rage when they will matter most.',
+      'If raging: remember Life-Giving Force at start of turn (temp HP to an ally within 3 m).',
+      'Move (13.5 m).',
+      'Bonus action: Rage / Second Wind / Large Form (if needed).',
+      'Action: Attack (usually Greatsword). You attack twice with Extra Attack.',
+      'Reaction check: Opportunity Attack or Branches of the Tree (while raging).',
     ],
   },
 
-  notes: 'Adjust these numbers and descriptions in this file to match the latest version of Aelfwynn.',
+  notes:
+    'Data reminders (from the original sheet): Greatsword is a +1 magical weapon (to hit and damage) and has Weapon Mastery: Graze. Passives/reactions to add as reference cards: Reckless Attack, Extra Attack, Opportunity Attack, Branches of the Tree, Danger Sense, Life-Giving Force, Unarmored Defense, Great Weapon Fighting, Powerful Build, Savage Attacker, Fire immunity.',
 };
-

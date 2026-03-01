@@ -103,6 +103,11 @@ All SEO recommendations have been successfully implemented for nullexpected.com.
 
 ### Existing (Verified)
 - `public/robots.txt` - Properly configured
+- `public/site.webmanifest` - PWA manifest referencing root icons
+- `public/sw.js` - Minimal pass-through service worker
+- `public/icons/` - Folder for non-root icons (documented by README)
+- `public/images/` - Folder for general-purpose images (documented by README)
+- `public/apps/` - Folder for future app-specific assets (documented by README)
 - `scripts/build-blog.mjs` - Generates sitemap.xml
 - `scripts/prerender-pages.ts` - Pre-renders static pages
 - All page components use SEO component correctly
