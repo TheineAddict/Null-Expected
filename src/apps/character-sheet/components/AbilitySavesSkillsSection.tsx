@@ -61,11 +61,11 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
               {showAllSkills ? 'Show prof only' : 'Show all'}
             </button>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
             {skillsToShow.map((skill) => (
               <div
                 key={skill.id}
-                className={`rounded-md border px-2 py-1 flex items-center gap-1.5 min-w-0 ${
+                className={`h-14 w-full rounded-md border px-2 flex flex-col justify-center min-w-0 ${
                   skill.expertise
                     ? 'bg-indigo-100 border-indigo-300'
                     : skill.proficient
@@ -73,9 +73,13 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
                       : 'bg-white border-slate-100'
                 }`}
               >
-                <span className="text-[0.7rem] font-medium text-slate-700 truncate max-w-[4.5rem]">{skill.name}</span>
-                <span className="text-[0.7rem] font-semibold tabular-nums text-slate-900 shrink-0">
-                  {formatModifier(skill.modifier)}
+                <span className="text-sm font-medium text-slate-700 truncate leading-tight" title={skill.name}>
+                  {skill.name}
+                </span>
+                <span className="mt-0.5 flex justify-end">
+                  <span className="tabular-nums text-sm font-semibold text-slate-900 rounded bg-slate-100/80 px-1.5 py-0.5">
+                    {formatModifier(skill.modifier)}
+                  </span>
                 </span>
               </div>
             ))}
