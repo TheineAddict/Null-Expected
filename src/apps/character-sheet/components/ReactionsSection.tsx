@@ -18,9 +18,9 @@ const ReactionCard: React.FC<{ reaction: Reaction }> = ({ reaction }) => (
           <span className="font-medium text-slate-700">Roll:</span> {reaction.roll}
         </p>
       )}
-      <p className="text-[0.7rem] text-slate-700 mt-0.5">{reaction.effect}</p>
+      <p className="text-[0.7rem] text-slate-500 mt-0.5">{reaction.effect}</p>
       {reaction.notes && (
-        <p className="text-[0.65rem] text-slate-600 mt-0.5">{reaction.notes}</p>
+        <p className="text-[0.7rem] text-slate-500 mt-0.5">{reaction.notes}</p>
       )}
     </div>
   </div>

@@ -214,6 +214,22 @@ export interface CharacterSheet {
   - Does **not** provide any control to switch active cards.
 - To change which card is active, you **edit `activeCardId` in the character file**, not via the app.
 
+### Editing Hope card content
+
+All Hope content lives in the **character TS file** (e.g. `data/characters/<character>.ts`), in the `hopeAbilities` array (often defined as a `hopeTiers` constant and then assigned to `hopeAbilities`).
+
+- **Card text**: Each card has `id`, `title`, and `body`. Edit `title` and `body` in place. Use `\n` in `body` for line breaks (e.g. `'Line one.\nLine two.'`). Keep each card’s `id` unchanged so `activeCardId` still matches.
+- **Which card is active**: In that tier’s object, set `activeCardId` to the `id` of the card you want active (one of the three in `cards`).
+
+This applies to every character: edit the same structure in that character’s file.
+
+### Disabling a Hope tier
+
+There is no separate “enabled” or “disabled” flag. The app shows only tiers that exist in the character’s `hopeAbilities` array.
+
+- **To hide a tier**: Remove that tier object from the `hopeAbilities` (or `hopeTiers`) array in the character file. The tier will no longer appear on the sheet.
+- **To show it again**: Add the tier back to the array.
+
 The rendering logic lives in `HopeAbilitiesSection.tsx`.
 
 ---
