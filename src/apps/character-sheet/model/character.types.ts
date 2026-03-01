@@ -71,6 +71,24 @@ export interface TurnGuide {
   steps: string[];
 }
 
+export interface Trait {
+  id: string;
+  name: string;
+  type: 'Passive' | 'Toggle';
+  summary: string;
+  details?: string;
+  reminders?: string[];
+}
+
+export interface Reaction {
+  id: string;
+  name: string;
+  trigger: string;
+  roll?: string;
+  effect: string;
+  notes?: string;
+}
+
 export interface CharacterSheet {
   id: string;
   name: string;
@@ -92,6 +110,9 @@ export interface CharacterSheet {
 
   attacks: Attack[];
   limitedUses: LimitedUseResource[];
+
+  traits?: Trait[];
+  reactions?: Reaction[];
 
   hopeAbilities?: HopeTier[];
 

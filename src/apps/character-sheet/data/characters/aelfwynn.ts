@@ -204,6 +204,94 @@ export const aelfwynn: CharacterSheet = {
 
   hopeAbilities: hopeTiers,
 
+  traits: [
+    {
+      id: 'reckless-attack',
+      name: 'Reckless Attack',
+      type: 'Toggle',
+      summary:
+        'On your first melee attack on your turn: get advantage, but enemies get advantage vs you until your next turn.',
+      details:
+        'When you make your first attack on your turn, you can decide to attack recklessly. You gain advantage on melee weapon attack rolls using STR during this turn. Attack rolls against you have advantage until the start of your next turn.',
+      reminders: [
+        'Use when you really want to hit (or to fish for a crit).',
+        "Don't use if you expect to take a lot of hits.",
+      ],
+    },
+    {
+      id: 'danger-sense',
+      name: 'Danger Sense',
+      type: 'Passive',
+      summary: 'Advantage on DEX saves against effects you can see.',
+      details:
+        'You have advantage on Dexterity saving throws against effects you can see, such as traps and spells. You don't gain this benefit if you are blinded, deafened, or incapacitated.',
+    },
+    {
+      id: 'unarmored-defense',
+      name: 'Unarmored Defense',
+      type: 'Passive',
+      summary: 'AC = 10 + DEX mod + CON mod (yours: 14).',
+      details:
+        'While you are not wearing armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.',
+    },
+    {
+      id: 'fast-movement',
+      name: 'Fast Movement',
+      type: 'Passive',
+      summary: 'Your walking speed is increased while not wearing heavy armor.',
+      details:
+        "Your speed increases (already included in your Speed value). This benefit applies while you aren't wearing heavy armor.",
+    },
+    {
+      id: 'great-weapon-fighting',
+      name: 'Great Weapon Fighting',
+      type: 'Passive',
+      summary: 'When you roll 1 or 2 on damage dice for a two-handed melee attack, reroll the die.',
+      details:
+        'When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon you are wielding with two hands, you can reroll the die. You must use the new roll.',
+      reminders: [
+        "Only for the weapon's damage dice (not for extra dice from other sources unless your table rules otherwise).",
+      ],
+    },
+    {
+      id: 'savage-attacker',
+      name: 'Savage Attacker',
+      type: 'Passive',
+      summary: 'Once per turn on a hit: roll weapon damage dice twice and choose.',
+      details:
+        "Once per turn when you hit with a weapon attack, you can roll the weapon's damage dice twice and use either total.",
+      reminders: ['Use it when the damage roll looks low.'],
+    },
+    {
+      id: 'powerful-build',
+      name: 'Powerful Build',
+      type: 'Passive',
+      summary: 'You count as one size larger for carrying, pushing, dragging, and lifting.',
+      details:
+        'You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.',
+    },
+  ],
+
+  reactions: [
+    {
+      id: 'opportunity-attack',
+      name: 'Opportunity Attack',
+      trigger: 'A creature you can see moves out of your reach.',
+      roll: 'Attack roll: d20 + 8 (Greatsword). Damage on hit: 2d6+5 slashing + 1d6 cold.',
+      effect: 'Use your reaction to make one melee attack against that creature.',
+      notes: 'If you are raging, your slashing damage is +2 (so 2d6+7 slashing + 1d6 cold).',
+    },
+    {
+      id: 'branches-of-the-tree',
+      name: 'Branches of the Tree',
+      trigger: 'While raging, a creature you can see starts its turn within 9 m (30 ft) of you.',
+      roll: 'Target makes a DC 15 STR save.',
+      effect:
+        'On a failure: teleport the target to an unoccupied space you can see within 1.5 m (5 ft) of you (or nearest unoccupied space you can see). After it teleports, you can reduce its speed to 0 until the end of its turn.',
+      notes: 'Use this to pull enemies off allies or stop runners.',
+    },
+  ],
+
   turnGuide: {
     title: 'On Your Turn',
     steps: [
@@ -211,7 +299,7 @@ export const aelfwynn: CharacterSheet = {
       'Move (13.5 m).',
       'Bonus action: Rage / Large Form / Second Wind (if needed).',
       'Action: Attack twice (Extra Attack). Usually Greatsword; Javelin if you cannot reach.',
-      'Reaction check: Opportunity Attack, or Branches of the Tree (while raging).',
+      'Reactions: Opportunity Attack when they leave reach. While raging: Branches of the Tree when they start within 9 m.',
     ],
   },
 

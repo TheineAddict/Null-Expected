@@ -4,6 +4,8 @@ import { useCharacterTracker } from './storage/characterStorage';
 import { TopBar } from './components/TopBar';
 import { HpPanel } from './components/HpPanel';
 import { CombatSection } from './components/CombatSection';
+import { TraitsSection } from './components/TraitsSection';
+import { ReactionsSection } from './components/ReactionsSection';
 import { ResourcesSection } from './components/ResourcesSection';
 import { HopeAbilitiesSection } from './components/HopeAbilitiesSection';
 import { ActionsSection } from './components/ActionsSection';
@@ -36,6 +38,8 @@ const CharacterSheetApp: React.FC = () => {
             <HopeAbilitiesSection character={character} />
           </div>
         </div>
+        <TraitsSection character={character} />
+        <ReactionsSection character={character} />
         <ActionsSection character={character} />
         <AbilitySavesSkillsSection character={character} />
         <NotesSection character={character} />
