@@ -10,17 +10,17 @@ const ReactionCard: React.FC<{ reaction: Reaction }> = ({ reaction }) => (
   <div className="rounded-lg border border-slate-100 bg-slate-50/80 overflow-hidden">
     <div className="px-2.5 py-2 sm:px-3 sm:py-2">
       <h4 className="text-xs font-semibold text-slate-900">{reaction.name}</h4>
-      <p className="text-[0.65rem] text-slate-600 mt-0.5">
+      <p className="mt-0.5 text-[0.7rem] text-indigo-950">
         <span className="font-medium text-slate-700">Trigger:</span> {reaction.trigger}
       </p>
       {reaction.roll && (
-        <p className="text-[0.65rem] text-slate-600 mt-0.5">
+        <p className="mt-0.5 text-[0.7rem] text-indigo-950">
           <span className="font-medium text-slate-700">Roll:</span> {reaction.roll}
         </p>
       )}
-      <p className="text-[0.7rem] text-slate-500 mt-0.5">{reaction.effect}</p>
+      <p className="mt-0.5 text-[0.7rem] text-indigo-950">{reaction.effect}</p>
       {reaction.notes && (
-        <p className="text-[0.7rem] text-slate-500 mt-0.5">{reaction.notes}</p>
+        <p className="mt-0.5 text-[0.7rem] text-indigo-950">{reaction.notes}</p>
       )}
     </div>
   </div>

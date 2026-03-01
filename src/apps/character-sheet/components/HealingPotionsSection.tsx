@@ -31,9 +31,6 @@ export const HealingPotionsSection: React.FC = () => (
             <span className="text-xs font-bold text-slate-900">{name}</span>
           </div>
           <span className="tabular-nums font-semibold text-slate-900 text-sm">{dice}</span>
-          <p className="text-[0.65rem] text-slate-500 leading-snug">
-            Roll and add. Regain that many HP.
-          </p>
         </div>
       ))}
     </div>
