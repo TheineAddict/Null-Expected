@@ -146,7 +146,7 @@ export const aelfwynn: CharacterSheet = {
           notes: 'Range 30 ft / 120 ft. Weapon Mastery: Slow (on hit, target speed -10 ft until your next turn).',
         },
       ],
-      whenToUse: 'Use when you cannot reach safely this turn.',
+      whenToUse: 'Throw distance: 30 ft normal, 120 ft long (disadvantage).',
     },
     {
       id: 'unarmed-strike',
