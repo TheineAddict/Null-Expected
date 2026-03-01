@@ -14,12 +14,23 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
   return (
     <section className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <div>
-          <h1 className="text-lg sm:text-xl font-semibold text-slate-900">{character.name}</h1>
-          <p className="text-sm text-slate-600">
-            Level {character.level} · {character.classes}
-            {character.ancestry && ` · ${character.ancestry}`}
-          </p>
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-full border border-slate-200 bg-slate-100 shadow-sm overflow-hidden">
+            {character.portraitUrl ? (
+              <img
+                src={character.portraitUrl}
+                alt={`${character.name} portrait`}
+                className="h-full w-full rounded-full object-cover shrink-0"
+              />
+            ) : null}
+          </div>
+          <div>
+            <h1 className="text-lg sm:text-xl font-semibold text-slate-900">{character.name}</h1>
+            <p className="text-sm text-slate-600">
+              Level {character.level} · {character.classes}
+              {character.ancestry && ` · ${character.ancestry}`}
+            </p>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2 sm:gap-3">
           <div className="px-2.5 py-1.5 rounded-lg bg-indigo-50 text-indigo-900 flex items-center gap-1.5 min-w-[3.5rem]">

@@ -104,6 +104,7 @@ export interface CharacterSheet {
   name: string;
   level: number;
   classes: string;
+  portraitUrl?: string;
   ancestry?: string;
   background?: string;
   alignment?: string;
