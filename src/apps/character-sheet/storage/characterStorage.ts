@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { CharacterSheet } from '../model/character.types';
 
-const STORAGE_KEY_PREFIX = 'character-sheet-app:';
+export const STORAGE_KEY_VERSION = 'v1';
 
 export interface CharacterTrackerState {
   currentHp: number;
@@ -30,7 +30,7 @@ export interface CharacterTrackerActions {
 }
 
 function buildStorageKey(characterId: string): string {
-  return `${STORAGE_KEY_PREFIX}${characterId}`;
+  return `ne:character-sheet:${characterId}:state:${STORAGE_KEY_VERSION}`;
 }
 
 function createDefaultState(character: CharacterSheet): CharacterTrackerState {
@@ -65,25 +65,49 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
 
     const parsed = JSON.parse(raw) as Partial<CharacterTrackerState>;
     const base = createDefaultState(character);
+    const maxHp = character.maxHp;
+
+    const currentHp =
+      typeof parsed.currentHp === 'number'
+        ? Math.max(0, Math.min(parsed.currentHp, maxHp))
+        : base.currentHp;
+    const tempHp =
+      typeof parsed.tempHp === 'number' ? Math.max(0, parsed.tempHp) : base.tempHp;
+    const hopeThirds =
+      typeof parsed.hopeThirds === 'number' ? Math.max(0, parsed.hopeThirds) : base.hopeThirds;
+    const inspirationThirds =
+      typeof parsed.inspirationThirds === 'number'
+        ? Math.max(0, parsed.inspirationThirds)
+        : base.inspirationThirds;
+
+    const limitedUses = { ...base.limitedUses };
+    if (parsed.limitedUses && typeof parsed.limitedUses === 'object') {
+      for (const res of character.limitedUses) {
+        const v = parsed.limitedUses[res.id];
+        if (typeof v === 'number') {
+          limitedUses[res.id] = Math.max(0, Math.min(v, res.max));
+        }
+      }
+    }
+
+    const deathSaves = {
+      successes:
+        typeof parsed.deathSaves?.successes === 'number'
+          ? Math.max(0, Math.min(parsed.deathSaves.successes, 3))
+          : base.deathSaves.successes,
+      failures:
+        typeof parsed.deathSaves?.failures === 'number'
+          ? Math.max(0, Math.min(parsed.deathSaves.failures, 3))
+          : base.deathSaves.failures,
+    };
 
     return {
-      currentHp: typeof parsed.currentHp === 'number' ? parsed.currentHp : base.currentHp,
-      tempHp: typeof parsed.tempHp === 'number' ? parsed.tempHp : base.tempHp,
-      hopeThirds: typeof parsed.hopeThirds === 'number' ? parsed.hopeThirds : base.hopeThirds,
-      inspirationThirds:
-        typeof parsed.inspirationThirds === 'number' ? parsed.inspirationThirds : base.inspirationThirds,
-      limitedUses: {
-        ...base.limitedUses,
-        ...(parsed.limitedUses ?? {}),
-      },
-      deathSaves: {
-        successes:
-          typeof parsed.deathSaves?.successes === 'number'
-            ? parsed.deathSaves.successes
-            : base.deathSaves.successes,
-        failures:
-          typeof parsed.deathSaves?.failures === 'number' ? parsed.deathSaves.failures : base.deathSaves.failures,
-      },
+      currentHp,
+      tempHp,
+      hopeThirds,
+      inspirationThirds,
+      limitedUses,
+      deathSaves,
     };
   } catch {
     return createDefaultState(character);
