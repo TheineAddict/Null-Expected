@@ -31,27 +31,9 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center gap-1.5">
-          <div className="flex items-center justify-center gap-1.5 flex-wrap">
+          <div className="flex items-center justify-center gap-1.5">
             <span className="text-xs text-slate-500">HP</span>
-            <span className="text-[0.65rem] text-slate-400">max {effectiveMax}</span>
-            <span className="flex items-center gap-0.5">
-              <button
-                type="button"
-                className="w-5 h-5 rounded bg-slate-100 text-slate-500 text-[0.65rem] flex items-center justify-center active:bg-slate-200 touch-manipulation"
-                onClick={() => actions.adjustEffectiveMaxHp(-1)}
-                aria-label="Decrease max HP"
-              >
-                −
-              </button>
-              <button
-                type="button"
-                className="w-5 h-5 rounded bg-slate-100 text-slate-500 text-[0.65rem] flex items-center justify-center active:bg-slate-200 touch-manipulation"
-                onClick={() => actions.adjustEffectiveMaxHp(1)}
-                aria-label="Increase max HP"
-              >
-                +
-              </button>
-            </span>
+            <span className="text-[0.65rem] text-slate-400">max {sheetMax}</span>
           </div>
           <div className="flex items-center gap-2 h-11">
             <button

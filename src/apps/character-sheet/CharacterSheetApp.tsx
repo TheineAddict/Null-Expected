@@ -35,11 +35,12 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
       <main className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-5 space-y-5">
         <TopBar character={character} />
 
+        <HpPanel character={character} state={state} actions={actions} />
+
         <QuickActionsSection />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="space-y-4">
-            <HpPanel character={character} state={state} actions={actions} />
             <CombatSection character={character} state={state} actions={actions} />
           </div>
           <div className="space-y-4">
