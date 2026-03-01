@@ -12,6 +12,7 @@ import Manifesto from './pages/Manifesto';
 import Consulting from './pages/Consulting';
 import NotFound from './pages/NotFound';
 import JobRadarApp from './pages/JobRadarApp';
+import CharacterSheetApp from './pages/CharacterSheetApp';
 import AppPrivacyPolicy from './pages/AppPrivacyPolicy';
 import AppTermsOfService from './pages/AppTermsOfService';
 
@@ -28,9 +29,10 @@ function ScrollToTop() {
 
 function AppContent() {
   const location = useLocation();
-  const isJobRadarApp = location.pathname === '/null-expected-job-radar-app';
+  const isAppSection =
+    location.pathname === '/null-expected-job-radar-app' || location.pathname === '/character-sheet-app';
   const isLegalPage = location.pathname === '/app-privacy-policy' || location.pathname === '/app-terms-of-service';
-  const hideNavigation = isJobRadarApp || isLegalPage;
+  const hideNavigation = isAppSection || isLegalPage;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -54,6 +56,7 @@ function AppContent() {
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/consulting" element={<Consulting />} />
           <Route path="/null-expected-job-radar-app" element={<JobRadarApp />} />
+          <Route path="/character-sheet-app" element={<CharacterSheetApp />} />
           <Route path="/app-privacy-policy" element={<AppPrivacyPolicy />} />
           <Route path="/app-terms-of-service" element={<AppTermsOfService />} />
           <Route path="*" element={<NotFound />} />
