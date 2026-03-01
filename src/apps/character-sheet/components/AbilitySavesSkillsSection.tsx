@@ -96,20 +96,29 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
           </h3>
           <p className={`${bodyTextClass} mb-2`}>Passives: always-on senses - usually 10 + your skill bonus.</p>
           <div className="grid grid-cols-3 gap-2">
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center">
-              <span className="text-xs text-slate-500">PP</span>
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+              <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Perception">
+                <span aria-hidden className="shrink-0">👁️</span>
+                <span className="truncate">Passive Perception</span>
+              </span>
               <span className="tabular-nums font-semibold text-slate-900 text-sm">
                 {perception ? computePassive(perception.modifier) : 10}
               </span>
             </div>
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center">
-              <span className="text-xs text-slate-500">PI</span>
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+              <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Investigation">
+                <span aria-hidden className="shrink-0">🔎</span>
+                <span className="truncate">Passive Investigation</span>
+              </span>
               <span className="tabular-nums font-semibold text-slate-900 text-sm">
                 {investigation ? computePassive(investigation.modifier) : 10}
               </span>
             </div>
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center">
-              <span className="text-xs text-slate-500">Ins</span>
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+              <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Insight">
+                <span aria-hidden className="shrink-0">🧠</span>
+                <span className="truncate">Passive Insight</span>
+              </span>
               <span className="tabular-nums font-semibold text-slate-900 text-sm">
                 {insight ? computePassive(insight.modifier) : 10}
               </span>
