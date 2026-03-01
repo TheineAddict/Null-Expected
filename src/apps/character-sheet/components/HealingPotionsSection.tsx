@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlaskConcoction } from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
 
 const POTIONS: { name: string; dice: string }[] = [
   { name: 'Potion of Healing', dice: '2d4 + 2 HP' },
@@ -14,7 +14,7 @@ export const HealingPotionsSection: React.FC = () => (
     className="rounded-xl bg-white shadow-sm border border-slate-100 p-3 sm:p-4 flex flex-col gap-2"
   >
     <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-      <FlaskConcoction className="h-3.5 w-3.5 text-emerald-500" />
+      <FlaskConical className="h-3.5 w-3.5 text-emerald-500" />
       Healing Potions (2024)
     </h2>
     <p className="text-[0.65rem] text-slate-500">
