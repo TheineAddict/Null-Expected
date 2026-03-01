@@ -44,6 +44,47 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
           </div>
         </div>
       </div>
+      {character.defenses &&
+        (character.defenses.resistances?.length ?? 0) + (character.defenses.immunities?.length ?? 0) > 0 && (
+          <div className="flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] text-slate-600 border-t border-slate-100 pt-2">
+            {character.defenses.resistances?.length
+              ? (() => {
+                  const byCond = new Map<string, string[]>();
+                  for (const r of character.defenses!.resistances!) {
+                    const key = r.condition ?? '';
+                    if (!byCond.has(key)) byCond.set(key, []);
+                    byCond.get(key)!.push(r.damageType);
+                  }
+                  return Array.from(byCond.entries()).map(([cond, types]) => (
+                    <span key={`res-${cond || 'always'}`}>
+                      <span className="font-medium text-slate-700">
+                        Resistances{cond ? ` (${cond})` : ''}:
+                      </span>{' '}
+                      {types.join(', ')}
+                    </span>
+                  ));
+                })()
+              : null}
+            {character.defenses.immunities?.length
+              ? (() => {
+                  const byCond = new Map<string, string[]>();
+                  for (const i of character.defenses!.immunities!) {
+                    const key = i.condition ?? '';
+                    if (!byCond.has(key)) byCond.set(key, []);
+                    byCond.get(key)!.push(i.damageType);
+                  }
+                  return Array.from(byCond.entries()).map(([cond, types]) => (
+                    <span key={`imm-${cond || 'always'}`}>
+                      <span className="font-medium text-slate-700">
+                        Immunities{cond ? ` (${cond})` : ''}:
+                      </span>{' '}
+                      {types.join(', ')}
+                    </span>
+                  ));
+                })()
+              : null}
+          </div>
+        )}
       <div className="flex flex-wrap gap-1.5 text-xs">
         {(['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'] as const).map((ability) => (
           <div

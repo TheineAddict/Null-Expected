@@ -89,6 +89,16 @@ export interface Reaction {
   notes?: string;
 }
 
+export interface DefenseEntry {
+  damageType: string;
+  condition?: string;
+}
+
+export interface Defenses {
+  resistances?: DefenseEntry[];
+  immunities?: DefenseEntry[];
+}
+
 export interface CharacterSheet {
   id: string;
   name: string;
@@ -113,6 +123,8 @@ export interface CharacterSheet {
 
   traits?: Trait[];
   reactions?: Reaction[];
+
+  defenses?: Defenses;
 
   hopeAbilities?: HopeTier[];
 

@@ -58,7 +58,7 @@ export const aelfwynn: CharacterSheet = {
   maxHp: 83,
   armorClass: 14,
   initiativeMod: 1,
-  speed: '13.5 m (16.5 m in Large Form)',
+  speed: '45 ft (55 ft in Large Form)',
 
   abilities: {
     STR: 18,
@@ -102,16 +102,17 @@ export const aelfwynn: CharacterSheet = {
   attacks: [
     {
       id: 'stygian-boreal-shard',
-      name: 'Stygian Boreal Shard (Greatsword)',
+      name: 'Stygian Boreal Shard +1 (Greatsword)',
       ability: 'STR',
       usesProficiency: true,
+      additionalAttackBonus: 1,
       damage: [
         {
-          id: 'sword-normal',
-          label: 'Normal',
+          id: 'sword-base',
+          label: 'Base',
           dice: '2d6+5 + 1d6❄️',
           damageType: 'slashing + cold',
-          notes: 'This includes the +1 magic bonus to damage.',
+          notes: 'Magical, attuned. +1 to hit and damage included.',
         },
         {
           id: 'sword-rage',
@@ -125,7 +126,7 @@ export const aelfwynn: CharacterSheet = {
           label: "Frost's Chill (spend 1 use)",
           dice: '1d6',
           damageType: 'cold',
-          notes: 'On a hit: add +1d6 cold and reduce target speed by 3 m (10 ft) until your next turn.',
+          notes: 'On a hit: add +1d6 cold and reduce target speed by 10 ft until your next turn.',
         },
       ],
       whenToUse:
@@ -142,7 +143,7 @@ export const aelfwynn: CharacterSheet = {
           label: 'Normal',
           dice: '1d6+4',
           damageType: 'piercing',
-          notes: 'Range 9 m / 36 m. Weapon Mastery: Slow (on hit, target speed -3 m until your next turn).',
+          notes: 'Range 30 ft / 120 ft. Weapon Mastery: Slow (on hit, target speed -10 ft until your next turn).',
         },
       ],
       whenToUse: 'Use when you cannot reach safely this turn.',
@@ -167,7 +168,7 @@ export const aelfwynn: CharacterSheet = {
       max: 3,
       reset: 'long-rest',
       notes:
-        'When you hit with an attack and deal damage: you can add 1d6 cold and reduce target speed by 3 m (10 ft) until your next turn.',
+        'When you hit with an attack and deal damage: you can add 1d6 cold and reduce target speed by 10 ft until your next turn.',
     },
     {
       id: 'large-form',
@@ -175,7 +176,7 @@ export const aelfwynn: CharacterSheet = {
       max: 1,
       reset: 'long-rest',
       notes:
-        'Bonus action. Become Large for 10 minutes. Advantage on STR checks. Speed +3 m (10 ft).',
+        'Bonus action. Become Large for 10 minutes. Advantage on STR checks. Speed +10 ft.',
     },
     {
       id: 'rage',
@@ -183,7 +184,7 @@ export const aelfwynn: CharacterSheet = {
       max: 4,
       reset: 'long-rest',
       notes:
-        'Bonus action, 1 minute (no heavy armor). Regain 1 use on a short rest. When you activate Rage: gain 6 temp HP. While raging: at start of each of your turns, you can give a creature within 3 m (10 ft) +2d6 temp HP (vanish when Rage ends).',
+        'Bonus action, 1 minute (no heavy armor). Regain 1 use on a short rest. When you activate Rage: gain 6 temp HP. While raging: at start of each of your turns, you can give a creature within 10 ft +2d6 temp HP (vanish when Rage ends).',
     },
     {
       id: 'second-wind',
@@ -277,32 +278,43 @@ export const aelfwynn: CharacterSheet = {
       id: 'opportunity-attack',
       name: 'Opportunity Attack',
       trigger: 'A creature you can see moves out of your reach.',
-      roll: 'Attack roll: d20 + 8 (Greatsword). Damage on hit: 2d6+5 slashing + 1d6 cold.',
+      roll: 'Attack roll: d20 + 8 (Stygian Boreal Shard +1). Damage on hit: 2d6+5 slashing + 1d6 cold.',
       effect: 'Use your reaction to make one melee attack against that creature.',
       notes: 'If you are raging, your slashing damage is +2 (so 2d6+7 slashing + 1d6 cold).',
     },
     {
       id: 'branches-of-the-tree',
       name: 'Branches of the Tree',
-      trigger: 'While raging, a creature you can see starts its turn within 9 m (30 ft) of you.',
+      trigger: 'While raging, a creature you can see starts its turn within 30 ft of you.',
       roll: 'Target makes a DC 15 STR save.',
       effect:
-        'On a failure: teleport the target to an unoccupied space you can see within 1.5 m (5 ft) of you (or nearest unoccupied space you can see). After it teleports, you can reduce its speed to 0 until the end of its turn.',
+        'On a failure: teleport the target to an unoccupied space you can see within 5 ft of you (or nearest unoccupied space you can see). After it teleports, you can reduce its speed to 0 until the end of its turn.',
       notes: 'Use this to pull enemies off allies or stop runners.',
     },
   ],
 
+  defenses: {
+    resistances: [
+      { damageType: 'bludgeoning', condition: 'while raging' },
+      { damageType: 'piercing', condition: 'while raging' },
+      { damageType: 'slashing', condition: 'while raging' },
+    ],
+    immunities: [
+      { damageType: 'fire', condition: 'while attuned to and wielding Stygian Boreal Shard' },
+    ],
+  },
+
   turnGuide: {
     title: 'On Your Turn',
     steps: [
-      'If raging: start of turn, give an ally within 3 m +2d6 temp HP (World Tree).',
-      'Move (13.5 m).',
+      'If raging: start of turn, give an ally within 10 ft +2d6 temp HP (World Tree).',
+      'Move (45 ft).',
       'Bonus action: Rage / Large Form / Second Wind (if needed).',
-      'Action: Attack twice (Extra Attack). Usually Greatsword; Javelin if you cannot reach.',
-      'Reactions: Opportunity Attack when they leave reach. While raging: Branches of the Tree when they start within 9 m.',
+      'Action: Attack twice (Extra Attack). Usually Stygian Boreal Shard +1; Javelin if you cannot reach.',
+      'Reactions: Opportunity Attack when they leave reach. While raging: Branches of the Tree when they start within 30 ft.',
     ],
   },
 
   notes:
-    'To-hit reminders from the sheet: Greatsword attack bonus is +8 (includes +1 magic weapon). Unarmed strike is +7. Passive: Danger Sense gives advantage on DEX saves unless incapacitated. Reaction: Branches of the Tree (DC 15 STR save, 9 m range, teleport within 1.5 m, then you can set speed to 0 until end of its turn). Great Weapon Fighting: treat 1 or 2 on weapon damage dice as 3. Greatsword Weapon Mastery: Graze (on miss, deal 4 slashing).',
+    'To-hit reminders from the sheet: Stygian Boreal Shard +1 (magical, attuned): d20+8. Unarmed strike is +7. Passive: Danger Sense gives advantage on DEX saves unless incapacitated. Reaction: Branches of the Tree (DC 15 STR save, 30 ft range, teleport within 5 ft, then you can set speed to 0 until end of its turn). Great Weapon Fighting: treat 1 or 2 on weapon damage dice as 3. Stygian Boreal Shard Weapon Mastery: Graze (on miss, deal 4 slashing).',
 };
