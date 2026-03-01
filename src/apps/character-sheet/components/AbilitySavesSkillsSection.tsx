@@ -67,9 +67,9 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
                 key={skill.id}
                 className={`rounded-md border px-2 py-1 flex items-center gap-1.5 min-w-0 ${
                   skill.expertise
-                    ? 'bg-indigo-50 border-indigo-200'
+                    ? 'bg-indigo-100 border-indigo-300'
                     : skill.proficient
-                      ? 'bg-slate-50 border-slate-200'
+                      ? 'bg-indigo-50 border-indigo-200'
                       : 'bg-white border-slate-100'
                 }`}
               >
