@@ -303,6 +303,7 @@ export const aelfwynn: CharacterSheet = {
       { damageType: 'fire', condition: 'while attuned to and wielding Stygian Boreal Shard' },
     ],
   },
+  languages: ['Common', 'Giant'],
 
   turnGuide: {
     title: 'On Your Turn',

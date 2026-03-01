@@ -126,6 +126,7 @@ export interface CharacterSheet {
   reactions?: Reaction[];
 
   defenses?: Defenses;
+  languages?: string[];
 
   hopeAbilities?: HopeTier[];
 
