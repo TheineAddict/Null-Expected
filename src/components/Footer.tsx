@@ -59,7 +59,7 @@ const Footer = () => {
               <Link to="/consulting" className="text-gray-300 hover:text-white block transition-colors">
                 Consulting
               </Link>
-              <span className="text-gray-300 block">Guest Posts – Opening Soon</span>
+              <span className="text-gray-300 block">Guest Posts - Opening Soon</span>
               <Link to="/manifesto" className="text-gray-300 hover:text-white block transition-colors">
                 Read the Manifesto
               </Link>

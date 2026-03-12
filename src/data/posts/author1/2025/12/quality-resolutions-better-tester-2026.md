@@ -89,7 +89,7 @@ Pick **one testing session per week** and make it an **explicit experiment**:
         
     ⏵ _“What if I simulate a lazy integration partner?”_
         
-⏵ Set a **timebox** (30–45 minutes).
+⏵ Set a **timebox** (30-45 minutes).
     
 ⏵ Capture **three findings**:
     

@@ -44,7 +44,7 @@ A robust performance statement uses this structure:
 
 Quality outcomes are not abstract virtues; they are operational and financial levers. The most defensible way to write your review is to organise achievements into categories that senior stakeholders already recognise.
 
-Select 2–3 categories that genuinely reflect your year. Depth reads as credibility; breadth reads as vagueness.
+Select 2-3 categories that genuinely reflect your year. Depth reads as credibility; breadth reads as vagueness.
 
 ### 1. Operational resilience and incident reduction
 This is quality in its most executive-relevant form: fewer and less severe disruptions.
@@ -67,7 +67,7 @@ This is quality in its most executive-relevant form: fewer and less severe disru
 
 • “Reduced the frequency of change-induced incidents by tightening release readiness thresholds on high-risk surfaces.”
 
-• “Improved stability by prioritising test depth on revenue• and availability-critical workflows.”
+• "Improved stability by prioritising test depth on revenue and availability-critical workflows."
 
 ### 2. Release safety and predictability (governed throughput)
 High-performing organisations do not merely deploy often; they deploy often **without destabilising production**.
@@ -227,7 +227,7 @@ Also: **artefacts are evidence**. Senior reviews should reference the tangible o
 
 ## A review-ready template that reads as senior
 
-Use this for each major achievement (3–5 is typically sufficient):
+Use this for each major achievement (3-5 is typically sufficient):
 
 **Outcome (business value)**  
 **Mechanism (what you changed and owned)**  

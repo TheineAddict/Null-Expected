@@ -20,7 +20,7 @@ const IGNORE_BASENAMES = [
 // Ignore any file starting with "_" (e.g., _layout.tsx, _utils.tsx)
 const IGNORE_PREFIX = "_";
 
-// Treat only .tsx files as pages (no params like [id].tsx — we skip those)
+// Treat only .tsx files as pages (no params like [id].tsx - we skip those)
 const isTsx = (name: string) => /\.tsx$/i.test(name);
 const isDynamic = (name: string) => /\[[^\]]+\]\.tsx$/i.test(name);
 

@@ -336,7 +336,7 @@ Key guardrails include:
 
 ### 7.1 Rollback-first thinking
 
-Before approving the change, validate whether it can be fully reversed within an acceptable time (for example, 15–30 minutes) without data corruption or prolonged downtime.
+Before approving the change, validate whether it can be fully reversed within an acceptable time (for example, 15-30 minutes) without data corruption or prolonged downtime.
 
 If rollback is unclear or highly complex, the change is automatically high risk and should face a correspondingly higher bar for proceeding.
 

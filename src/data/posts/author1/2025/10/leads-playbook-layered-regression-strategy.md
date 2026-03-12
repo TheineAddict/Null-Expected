@@ -20,10 +20,10 @@ Use it as a framework to turn philosophy into process - whether you are defining
 
 Map your regression coverage into explicit tiers, each with clear ownership and purpose.
 
-**L0 – Unit & Contract:** Verify core logic and API contracts; run on every commit.  
-**L1 – Baseline Regression:** Validate integration stability with deterministic data; gate merges and pull requests.  
-**L2 – Realistic Regression:** Test system and data drift using anonymised production snapshots; run nightly or before release.  
-**L3 – Chaos Regression:** Challenge resilience with fault injection and timing variability; run on release candidates.
+**L0 - Unit & Contract:** Verify core logic and API contracts; run on every commit.
+**L1 - Baseline Regression:** Validate integration stability with deterministic data; gate merges and pull requests.
+**L2 - Realistic Regression:** Test system and data drift using anonymised production snapshots; run nightly or before release.
+**L3 - Chaos Regression:** Challenge resilience with fault injection and timing variability; run on release candidates.
 
 **Leadership tip:** document which signals each layer provides and who owns it. Treat “green” results as confidence reports, not just pass counts.
 
@@ -33,7 +33,7 @@ Map your regression coverage into explicit tiers, each with clear ownership and 
 
 Design test data to reflect production diversity *without* introducing uncontrolled randomness.
 
-Identify 3–5 main variability dimensions that affect behaviour, such as input size, configuration, timing, or dependency states.  
+Identify 3-5 main variability dimensions that affect behaviour, such as input size, configuration, timing, or dependency states.  
 Maintain realistic proportions based on observed production use or business risk.  
 Refresh data snapshots on a schedule (for example, weekly), validate referential integrity, and version them.
 
@@ -101,7 +101,7 @@ Think of regression as a garden: prune regularly, refresh the soil, and let it e
 
 ## Deliverable Summary
 
-A documented **Layered Regression Map (L0–L3)**  
+A documented **Layered Regression Map (L0-L3)**  
 A defined **Data Variability Charter** describing proportions and refresh cycles  
 A **Regression Dashboard** with KPIs  
 A **Maintenance Workflow** for flake triage and ownership  

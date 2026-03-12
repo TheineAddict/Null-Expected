@@ -53,10 +53,10 @@ A mature strategy isn't about choosing between control or chaos. It's about laye
 
 | Layer | Purpose | Environment & Data | CI/CD placement |
 |-------|----------|--------------------|-----------------|
-| **L0 – Unit / Contract** | Code-level drift | mocks, stubs | every commit |
-| **L1 – Baseline Regression** | Integration drift | deterministic data, stable env | PR gate |
-| **L2 – Realistic Regression** | System / data drift | anonymised production snapshot, representative variability | nightly / pre-release |
-| **L3 – Chaos Regression** | Resilience drift | fault injection, partial outages, timing jitter | RC / weekly |
+| **L0 - Unit / Contract** | Code-level drift | mocks, stubs | every commit |
+| **L1 - Baseline Regression** | Integration drift | deterministic data, stable env | PR gate |
+| **L2 - Realistic Regression** | System / data drift | anonymised production snapshot, representative variability | nightly / pre-release |
+| **L3 - Chaos Regression** | Resilience drift | fault injection, partial outages, timing jitter | RC / weekly |
 
 Confidence becomes a portfolio, not a checkbox.
 
@@ -160,7 +160,7 @@ Regression testing isn't a single gate; it's a *confidence system.*
 
 | Signal | What it tells you |
 |---------|-------------------|
-| **L0–L1 pass** | Code is functionally stable |
+| **L0-L1 pass** | Code is functionally stable |
 | **L2 pass** | Product behaves correctly under realistic conditions |
 | **L3 pass** | System remains resilient under stress and unpredictability |
 

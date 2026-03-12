@@ -88,7 +88,7 @@ Choose what is materially relevant; do not exceed what the group can cognitively
 
 ## The 45-minute retro (default runbook)
 
-### 0–5 min - Establish intent and boundaries
+### 0-5 min - Establish intent and boundaries
 
 Use crisp language. This is not a “how does everyone feel” session.
 
@@ -97,7 +97,7 @@ Use crisp language. This is not a “how does everyone feel” session.
 • “We will leave with a small set of owned interventions and an updated Decision Ledger.”
     
 
-### 5–12 min - Review the evidence pack (no editorialising)
+### 5-12 min - Review the evidence pack (no editorialising)
 
 Allow only two questions at this stage:
 
@@ -108,7 +108,7 @@ Allow only two questions at this stage:
 
 Everything else is deferred.
 
-### 12–25 min - Silent capture: events, decisions, and failure modes
+### 12-25 min - Silent capture: events, decisions, and failure modes
 
 Everyone writes, quietly, into a shared doc/board under these headings:
 
@@ -123,7 +123,7 @@ Everyone writes, quietly, into a shared doc/board under these headings:
 
 Silence is not awkward here; it is how you avoid dominance bias.
 
-### 25–35 min - Cluster and classify themes (make the system visible)
+### 25-35 min - Cluster and classify themes (make the system visible)
 
 Facilitator groups duplicates live. Then classify each cluster into one primary category:
 
@@ -138,7 +138,7 @@ Facilitator groups duplicates live. Then classify each cluster into one primary 
 • **Platform constraint** (environment/test data/dependency volatility; systemic rather than local)
     
 
-### 35–43 min - Convert themes into interventions (3–5 max)
+### 35-43 min - Convert themes into interventions (3-5 max)
 
 Each selected theme must yield an intervention in the following form:
 
@@ -146,7 +146,7 @@ Each selected theme must yield an intervention in the following form:
 
 If you cannot name a signal, you are not yet dealing with a controllable variable-you are dealing with a narrative.
 
-### 43–45 min - Commitments
+### 43-45 min - Commitments
 
 • Read the interventions verbatim.
     
