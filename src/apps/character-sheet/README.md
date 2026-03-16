@@ -33,7 +33,8 @@ Tracker state is saved per character so each sheet keeps its own HP, Hope, etc.
 - **Key format**: `ne:character-sheet:${characterId}:state:v1` (see `storage/characterStorage.ts`, `buildStorageKey`).
 - **Stored**:
   - `currentHp`, `effectiveMaxHp`, `tempHp`
-  - `hopeThirds`, `inspirationThirds`
+  - `hopeThirds` (Hope in thirds; spend 1 Hope when this reaches at least 3 and subtract 3)
+  - `inspirationThirds` (Inspiration as whole points; gain/spend in units of 1)
   - `limitedUses` (object: resource id → number of uses spent)
   - `deathSaves` (`successes`, `failures`)
 - **Not stored**: Character data (name, abilities, attacks, etc.) — that stays in the TS files only.
@@ -169,10 +170,15 @@ Derived values (modifiers, saves, skills, passives, attack bonuses) are computed
 
 ---
 
-## Hope & Inspiration (thirds-based)
+## Hope & Inspiration
 
-- Counters **hopeThirds** and **inspirationThirds** are stored in `localStorage` per character (see key format above).
-- “Spend 1” is enabled only when the counter is ≥ 3; clicking it subtracts 3. No “unlock” or card state is persisted.
+- **Hope**:
+  - Stored as **thirds** in `hopeThirds`.
+  - “Spend 1” is enabled only when `hopeThirds ≥ 3`; spending subtracts 3 thirds.
+- **Inspiration**:
+  - Stored as a **whole point count** in `inspirationThirds`.
+  - “Spend 1” is enabled only when `inspirationThirds ≥ 1`; spending subtracts 1 point.
+No Hope card unlocks or Inspiration flags are persisted; only the numeric counters are stored.
 
 ---
 

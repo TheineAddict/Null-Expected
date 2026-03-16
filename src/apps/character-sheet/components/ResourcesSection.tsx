@@ -62,6 +62,59 @@ export const ThirdsTracker: React.FC<{
   );
 };
 
+export const InspirationTracker: React.FC<{
+  label: string;
+  emoji: string;
+  count: number;
+  onChange: (delta: number) => void;
+  onSpend: () => void;
+}> = ({ label, emoji, count, onChange, onSpend }) => {
+  const canSpend = count >= 1;
+
+  return (
+    <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
+          <span aria-hidden>{emoji}</span>
+          {label}
+        </span>
+        <span className="text-xs text-slate-500 tabular-nums font-semibold">{count}</span>
+      </div>
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center active:bg-slate-300 touch-manipulation"
+            onClick={() => onChange(-1)}
+          >
+            −
+          </button>
+          <div className="min-w-[2.5rem] h-9 rounded-lg bg-slate-800 text-white flex items-center justify-center text-base font-semibold tabular-nums">
+            {count}
+          </div>
+          <button
+            type="button"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center active:bg-slate-300 touch-manipulation"
+            onClick={() => onChange(1)}
+          >
+            +
+          </button>
+        </div>
+        <button
+          type="button"
+          disabled={!canSpend}
+          onClick={onSpend}
+          className={`px-2.5 py-1.5 rounded-lg text-[0.7rem] font-semibold uppercase tracking-wide touch-manipulation ${
+            canSpend ? 'btn-themed shadow-sm' : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+          }`}
+        >
+          Spend 1
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const LimitedUseRow: React.FC<{
   resource: LimitedUseResource;
   used: number;
@@ -128,11 +181,11 @@ export const ResourcesSection: React.FC<ResourcesSectionProps> = ({ character, s
           onChangeThirds={actions.addHopeThirds}
           onSpend={actions.spendHope}
         />
-        <ThirdsTracker
+        <InspirationTracker
           label="Inspiration"
           emoji="💡"
-          thirds={state.inspirationThirds}
-          onChangeThirds={actions.addInspirationThirds}
+          count={state.inspirationThirds}
+          onChange={actions.addInspirationThirds}
           onSpend={actions.spendInspiration}
         />
       </div>

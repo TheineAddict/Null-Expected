@@ -204,10 +204,10 @@ export function useCharacterTracker(
     },
     spendInspiration: () => {
       setState((prev) => {
-        if (prev.inspirationThirds < 3) return prev;
+        if (prev.inspirationThirds < 1) return prev;
         return {
           ...prev,
-          inspirationThirds: prev.inspirationThirds - 3,
+          inspirationThirds: prev.inspirationThirds - 1,
         };
       });
     },

@@ -2,7 +2,7 @@ import React from 'react';
 import { HeartHandshake, RotateCcw } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
-import { ThirdsTracker } from './ResourcesSection';
+import { ThirdsTracker, InspirationTracker } from './ResourcesSection';
 import { HopeAbilityTiers } from './HopeAbilitiesSection';
 
 interface HopeSectionProps {
@@ -38,11 +38,11 @@ export const HopeSection: React.FC<HopeSectionProps> = ({ character, state, acti
           onChangeThirds={actions.addHopeThirds}
           onSpend={actions.spendHope}
         />
-        <ThirdsTracker
+        <InspirationTracker
           label="Inspiration"
           emoji="💡"
-          thirds={state.inspirationThirds}
-          onChangeThirds={actions.addInspirationThirds}
+          count={state.inspirationThirds}
+          onChange={actions.addInspirationThirds}
           onSpend={actions.spendInspiration}
         />
       </div>
