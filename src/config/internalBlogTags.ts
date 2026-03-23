@@ -10,6 +10,7 @@
 export const INTERNAL_BLOG_TAG_SLUGS: string[] = [
   // Example placeholder (no current posts use it, so it won't affect visuals yet).
   'theme-example',
+  'risk-readiness-reality-series'
 ];
 
 export const INTERNAL_BLOG_TAG_SLUGS_SET: ReadonlySet<string> = new Set(

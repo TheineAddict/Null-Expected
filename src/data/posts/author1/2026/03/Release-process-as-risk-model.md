@@ -1,7 +1,7 @@
 ---
 title: "Release Management Is a Risk Function - Measure the System, Not the Meeting"
 excerpt: "Release governance is not confidence theatre. Your release process is a risk model, and senior leaders should measure it that way."
-tags: ["featured","quality-mindset","industry-trends"]
+tags: ["featured","quality-mindset","industry-trends","risk-readiness-reality-series"]
 author: "author1"
 date: "2026-03-23"
 readTime: "7 min read"
