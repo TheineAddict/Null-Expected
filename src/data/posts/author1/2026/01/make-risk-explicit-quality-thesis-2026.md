@@ -1,7 +1,7 @@
 ---
 title: "Make Risk Explicit: A Calm, Practical Quality Thesis for 2026"
 excerpt: "A positive QA and release management mindset shift: make risk explicit to ship with fewer surprises, better decisions, and calmer delivery."
-tags: ["quality-mindset", "qa-processes", "featured", "industry-trends"]
+tags: ["quality-mindset", "featured", "industry-trends"]
 author: "author1"
 date: "2026-01-12"
 readTime: "8 min read"
