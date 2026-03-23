@@ -1,6 +1,15 @@
 import { BlogPost } from '../types/blog';
 import { getAuthorByName, getAuthorById, AUTHORS } from '../config/authors';
+import { INTERNAL_BLOG_TAG_SLUGS_SET } from '../config/internalBlogTags';
 import { marked } from 'marked';
+
+export function isInternalBlogTag(tag: string): boolean {
+  return INTERNAL_BLOG_TAG_SLUGS_SET.has(tag);
+}
+
+export function getVisibleBlogTags(tags: string[]): string[] {
+  return (tags || []).filter((tag) => !isInternalBlogTag(tag));
+}
 
 // Simple, robust frontmatter parser
 export function parseFrontmatter(content: string) {

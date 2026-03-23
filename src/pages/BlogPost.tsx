@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Share2, Linkedin, Facebook, Twitter, Mail, Link as LinkIcon, Check } from 'lucide-react';
-import { loadBlogPosts, getPostBySlug } from '../utils/blogUtils';
+import { loadBlogPosts, getPostBySlug, getVisibleBlogTags } from '../utils/blogUtils';
 import { BlogPost as BlogPostType } from '../types/blog';
 import { getAuthorByName } from '../config/authors';
 import mermaid from 'mermaid';
@@ -245,7 +245,7 @@ const BlogPost = () => {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {post.tags.map((tag) => (
+          {getVisibleBlogTags(post.tags).map((tag) => (
             <Link
               key={tag}
               to={`/blog?tag=${encodeURIComponent(tag)}`}

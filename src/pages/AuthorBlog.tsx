@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, ArrowRight, User, ChevronDown, ChevronUp } from 'lucide-react';
-import { loadBlogPosts, getPostsByAuthorSlug } from '../utils/blogUtils';
+import { loadBlogPosts, getPostsByAuthorSlug, getVisibleBlogTags } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
 import { SEO } from '../components/SEO';
@@ -162,7 +162,7 @@ const AuthorBlog = () => {
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.slice(0, 3).map((tag) => (
+                    {getVisibleBlogTags(post.tags).slice(0, 3).map((tag) => (
                       <Link
                         key={tag}
                         to={`/blog?tag=${encodeURIComponent(tag)}`}
@@ -172,9 +172,9 @@ const AuthorBlog = () => {
                         #{tag}
                       </Link>
                     ))}
-                    {post.tags.length > 3 && (
+                    {getVisibleBlogTags(post.tags).length > 3 && (
                       <span className="px-2 py-1 text-gray-400 text-xs">
-                        +{post.tags.length - 3} more
+                        +{getVisibleBlogTags(post.tags).length - 3} more
                       </span>
                     )}
                   </div>

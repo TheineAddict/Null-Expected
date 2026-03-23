@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
-import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
+import { loadBlogPosts, getFeaturedPosts, getVisibleBlogTags } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 
@@ -252,7 +252,7 @@ const Landing = () => {
                   <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.slice(0, 2).map((tag) => (
+                    {getVisibleBlogTags(post.tags).slice(0, 2).map((tag) => (
                       <Link
                         key={tag}
                         to={`/blog?tag=${encodeURIComponent(tag)}`}
@@ -262,9 +262,9 @@ const Landing = () => {
                         #{tag}
                       </Link>
                     ))}
-                    {post.tags.length > 2 && (
+                    {getVisibleBlogTags(post.tags).length > 2 && (
                       <span className="px-2 py-1 text-gray-400 text-xs">
-                        +{post.tags.length - 2}
+                        +{getVisibleBlogTags(post.tags).length - 2}
                       </span>
                     )}
                   </div>
