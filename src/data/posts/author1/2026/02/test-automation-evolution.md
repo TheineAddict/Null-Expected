@@ -1,7 +1,7 @@
 ---
 title: "How Test Automation Has Changed: From Heavy Frameworks to Flexible Tools"
 excerpt: "Five years ago, Selenium was king. Today, web automation is a toolchain: E2E runners, component workflows, visual AI, cloud grids, and low-code platforms - plus a different tester mindset."
-tags: ["qa-processes", "industry-trends", "featured"]
+tags: ["qa-processes", "industry-trends", "case-studies"]
 author: "author1"
 date: "2026-02-02"
 readTime: "15 min read"

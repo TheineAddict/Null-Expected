@@ -1,7 +1,7 @@
 ---
 title: "AI in Testing: Where It Actually Helps vs Where It’s Mostly Theatre"
 excerpt: "A senior QA view on practical AI wins in test strategy, triage, and maintenance - and the hype patterns that waste time and erode trust."
-tags: ["industry-trends","tools-tech","unpopular-opinion"]
+tags: ["industry-trends","tools-tech","case-studies"]
 author: "author1"
 date: "2026-02-23"
 readTime: "8 min read"
