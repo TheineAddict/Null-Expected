@@ -86,12 +86,8 @@ const Blog = () => {
     }
   }, [activeCategory, activeTag, allPosts]);
 
-  const featuredPosts = posts.filter(post => post.tags.includes('featured'));
-  const regularPosts = posts.filter(post => !post.tags.includes('featured'));
-
-  const sortedPosts = [...featuredPosts, ...regularPosts];
-  const visiblePosts = sortedPosts.slice(0, visibleCount);
-  const hasMore = visibleCount < sortedPosts.length;
+  const visiblePosts = posts.slice(0, visibleCount);
+  const hasMore = visibleCount < posts.length;
 
   const handleShowMore = () => {
     setVisibleCount(prev => prev + 6);
