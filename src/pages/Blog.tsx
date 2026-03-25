@@ -192,8 +192,9 @@ const Blog = () => {
             <article
               key={post.id}
               className={`rounded-lg border overflow-hidden group transition-all duration-300 shadow-sm hover:shadow-md ${
-                isFeatured ? 'border-slate-700 bg-slate-950 shadow-md hover:shadow-lg' : 'border-gray-200 bg-white'
+                isFeatured ? 'border-slate-700 shadow-md hover:shadow-lg' : 'border-gray-200 bg-white'
               }`}
+              style={isFeatured ? { background: 'var(--brand-gradient)' } : undefined}
             >
               <div className="p-6">
                 {/* Header Row */}
