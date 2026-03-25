@@ -1,7 +1,7 @@
 ---
 title: "From QA to Release Management: What 2025 Taught Me About Quality"
 excerpt: "A personal year-in-review on moving from QA into release management: shared ownership, risk decisions, governance, visibility, emotional load-and why I started Null Expected."
-tags: ["career-advice","qa-processes","featured"]
+tags: ["career-advice","qa-processes"]
 author: "author1"
 date: "2025-12-29"
 readTime: "10 min read"

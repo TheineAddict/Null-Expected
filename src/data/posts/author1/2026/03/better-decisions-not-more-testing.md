@@ -1,7 +1,7 @@
 ---
 title: "The Real Job Is Better Decisions, Not More Testing"
 excerpt: "A senior QA reflection on why the real work is not more testing, but better decisions under pressure and imperfect evidence."
-tags: ["quality-mindset","featured","unpopular-opinion"]
+tags: ["quality-mindset","unpopular-opinion"]
 author: "author1"
 date: "2026-03-12"
 readTime: "7 min read"
