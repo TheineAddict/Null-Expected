@@ -1,7 +1,7 @@
 ---
 title: "Stop Worshipping “Shift-Left”: Most Teams Actually Need Better Shift-Right"
 excerpt: "Shift-left isn’t a cure-all. The biggest quality gains come from production signals, release guardrails, rollback discipline, and learning loops."
-tags: ["unpopular-opinion","quality-mindset","featured"]
+tags: ["unpopular-opinion","quality-mindset"]
 author: "author1"
 date: "2026-01-07"
 readTime: "8 min read"
