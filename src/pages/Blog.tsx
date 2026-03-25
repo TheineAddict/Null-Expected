@@ -195,10 +195,8 @@ const Blog = () => {
             return (
             <article
               key={post.id}
-              className={`rounded-lg border border-slate-800 bg-slate-950 overflow-hidden group transition-all duration-300 shadow-sm hover:shadow-md ${
-                isFeatured
-                  ? 'border-slate-700 shadow-md hover:shadow-lg'
-                  : ''
+              className={`rounded-lg border overflow-hidden group transition-all duration-300 shadow-sm hover:shadow-md ${
+                isFeatured ? 'border-slate-700 bg-slate-950 shadow-md hover:shadow-lg' : 'border-gray-200 bg-white'
               }`}
             >
               <div className="p-6">
@@ -207,13 +205,21 @@ const Blog = () => {
                   <div className="flex-1">
                     <Link
                       to={`/blog?category=${encodeURIComponent(post.category)}`}
-                      className="inline-block px-3 py-1.5 bg-slate-900 text-slate-200 border border-slate-800 text-sm font-medium rounded-md hover:bg-slate-800 transition-colors"
+                      className={`inline-block px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                        isFeatured
+                          ? 'bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       {post.category}
                     </Link>
                   </div>
-                  <div className="flex items-center text-slate-400 text-sm whitespace-nowrap">
+                  <div
+                    className={`flex items-center text-sm whitespace-nowrap ${
+                      isFeatured ? 'text-slate-400' : 'text-gray-500'
+                    }`}
+                  >
                     <Clock className="h-4 w-4 mr-1" />
                     {post.readTime}
                   </div>
@@ -221,13 +227,19 @@ const Blog = () => {
 
                 {/* Title */}
                 <Link to={`/blog/${post.slug}`}>
-                  <h2 className="font-bold mb-4 leading-tight text-lg text-slate-50 hover:text-slate-200 transition-colors cursor-pointer">
+                  <h2
+                    className={`font-bold mb-4 leading-tight text-lg transition-colors cursor-pointer ${
+                      isFeatured
+                        ? 'text-slate-50 hover:text-slate-200'
+                        : 'text-gray-900 hover:text-gray-600'
+                    }`}
+                  >
                     {post.title}
                   </h2>
                 </Link>
 
                 {/* Excerpt */}
-                <p className="text-slate-300 mb-6 line-clamp-3">
+                <p className={`mb-6 line-clamp-3 ${isFeatured ? 'text-slate-300' : 'text-gray-600'}`}>
                   {post.excerpt}
                 </p>
 
@@ -237,22 +249,34 @@ const Blog = () => {
                     <Link
                       key={tag}
                       to={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className="px-2.5 py-1 bg-slate-900 text-slate-200 text-xs rounded border border-slate-800 hover:bg-slate-800 transition-colors"
+                      className={`px-2.5 py-1 text-xs rounded transition-colors ${
+                        isFeatured
+                          ? 'bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       #{tag}
                     </Link>
                   ))}
                   {getVisibleBlogTags(post.tags).length > 3 && (
-                    <span className="px-2.5 py-1 text-slate-400 text-xs">
+                    <span
+                      className={`px-2.5 py-1 text-xs ${
+                        isFeatured ? 'text-slate-400' : 'text-gray-400'
+                      }`}
+                    >
                       +{getVisibleBlogTags(post.tags).length - 3} more
                     </span>
                   )}
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-6 border-t border-slate-800">
-                  <span className="text-sm text-slate-400">
+                <div
+                  className={`flex items-center justify-between pt-6 border-t ${
+                    isFeatured ? 'border-slate-800' : 'border-gray-200'
+                  }`}
+                >
+                  <span className={`text-sm ${isFeatured ? 'text-slate-400' : 'text-gray-500'}`}>
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -262,7 +286,11 @@ const Blog = () => {
 
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-slate-300 hover:text-slate-100 font-semibold transition-colors"
+                    className={`inline-flex items-center font-semibold transition-colors ${
+                      isFeatured
+                        ? 'text-slate-300 hover:text-slate-100'
+                        : 'text-gray-700 hover:text-gray-900'
+                    }`}
                   >
                     Read More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
