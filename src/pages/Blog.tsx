@@ -157,7 +157,7 @@ const Blog = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category
-                  ? 'bg-indigo-900 text-white shadow-lg'
+                  ? 'bg-[var(--bg-indigo-900-default,#312e81)] text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -326,7 +326,7 @@ const Blog = () => {
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-8 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-8 py-3 bg-[var(--bg-indigo-900-default,#312e81)] text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
               >
                 Show More
                 <ChevronDown className="ml-2 h-5 w-5" />

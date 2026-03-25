@@ -22,6 +22,7 @@ body {
   --btn-text: #ffffff;
   --icon-bg: #312e81;
   --brand-gradient: linear-gradient(90deg, #1e1b4b, #6b21a8);
+  --bg-indigo-900-default: #6b21a8;
 }
 
 :root[data-theme="winter"] {
