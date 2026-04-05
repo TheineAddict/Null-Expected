@@ -84,20 +84,30 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
 
 export const InventorySection: React.FC<InventorySectionProps> = ({ character }) => {
   const items = character.inventory ?? [];
-  if (items.length === 0) return null;
 
   return (
-    <section id="inventory" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
+    <section
+      id="inventory"
+      className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 scroll-mt-4"
+    >
       <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
         <Backpack className="h-4 w-4 text-emerald-600" />
         Inventory
       </h2>
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      <div className="grid gap-2 sm:grid-cols-2">
-        {items.map((item) => (
-          <InventoryItemCard key={item.id} item={item} />
-        ))}
-      </div>
+      {items.length === 0 ? (
+        <p className={bodyTextClass}>
+          No custom items yet. Add objects to the <code className="text-xs bg-slate-100 px-1 rounded">inventory</code>{' '}
+          array in this character&apos;s file under{' '}
+          <code className="text-xs bg-slate-100 px-1 rounded">src/apps/character-sheet/data/characters/</code>.
+        </p>
+      ) : (
+        <div className="grid gap-2 sm:grid-cols-2">
+          {items.map((item) => (
+            <InventoryItemCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
