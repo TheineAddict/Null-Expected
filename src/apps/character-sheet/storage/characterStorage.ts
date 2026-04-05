@@ -10,6 +10,8 @@ export interface CharacterTrackerState {
   hopeThirds: number;
   inspirationThirds: number;
   limitedUses: Record<string, number>;
+  /** Counts for inventory items whose sheet `quantity` is a number (not `'n/a'`). */
+  inventoryQuantities: Record<string, number>;
   deathSaves: {
     successes: number;
     failures: number;
@@ -28,6 +30,7 @@ export interface CharacterTrackerActions {
   addInspirationThirds: (delta: number) => void;
   spendInspiration: () => void;
   adjustLimitedUse: (id: string, delta: number, max: number) => void;
+  adjustInventoryQuantity: (id: string, delta: number) => void;
   setDeathSaves: (successes: number, failures: number) => void;
   resetTrackers: () => void;
 }
@@ -42,6 +45,13 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
     limitedUses[res.id] = 0;
   });
 
+  const inventoryQuantities: Record<string, number> = {};
+  for (const item of character.inventory ?? []) {
+    if (typeof item.quantity === 'number') {
+      inventoryQuantities[item.id] = Math.max(0, Math.floor(item.quantity));
+    }
+  }
+
   return {
     currentHp: character.maxHp,
     effectiveMaxHp: character.maxHp,
@@ -49,6 +59,7 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
     hopeThirds: 0,
     inspirationThirds: 0,
     limitedUses,
+    inventoryQuantities,
     deathSaves: {
       successes: 0,
       failures: 0,
@@ -95,6 +106,18 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       }
     }
 
+    const inventoryQuantities = { ...base.inventoryQuantities };
+    if (parsed.inventoryQuantities && typeof parsed.inventoryQuantities === 'object') {
+      for (const item of character.inventory ?? []) {
+        if (typeof item.quantity === 'number') {
+          const v = parsed.inventoryQuantities[item.id];
+          if (typeof v === 'number') {
+            inventoryQuantities[item.id] = Math.max(0, Math.floor(v));
+          }
+        }
+      }
+    }
+
     const deathSaves = {
       successes:
         typeof parsed.deathSaves?.successes === 'number'
@@ -113,6 +136,7 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       hopeThirds,
       inspirationThirds,
       limitedUses,
+      inventoryQuantities,
       deathSaves,
     };
   } catch {
@@ -219,6 +243,24 @@ export function useCharacterTracker(
           ...prev,
           limitedUses: {
             ...prev.limitedUses,
+            [id]: next,
+          },
+        };
+      });
+    },
+    adjustInventoryQuantity: (id, delta) => {
+      setState((prev) => {
+        const invItem = character.inventory?.find((i) => i.id === id);
+        if (!invItem || invItem.quantity === 'n/a' || typeof invItem.quantity !== 'number') {
+          return prev;
+        }
+        const sheetDefault = Math.max(0, Math.floor(invItem.quantity));
+        const current = prev.inventoryQuantities[id] ?? sheetDefault;
+        const next = Math.max(0, current + delta);
+        return {
+          ...prev,
+          inventoryQuantities: {
+            ...prev.inventoryQuantities,
             [id]: next,
           },
         };

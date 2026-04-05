@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Backpack } from 'lucide-react';
 import type { CharacterSheet, InventoryItem } from '../model/character.types';
+import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass } from '../textClasses';
 
 interface InventorySectionProps {
   character: CharacterSheet;
+  state: CharacterTrackerState;
+  actions: CharacterTrackerActions;
 }
 
 function splitDescription(description: string): string[] {
@@ -14,7 +17,15 @@ function splitDescription(description: string): string[] {
     .filter(Boolean);
 }
 
-const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
+function isTrackedQuantity(item: InventoryItem): item is InventoryItem & { quantity: number } {
+  return item.quantity !== 'n/a' && typeof item.quantity === 'number';
+}
+
+const InventoryItemCard: React.FC<{
+  item: InventoryItem;
+  quantityCount: number;
+  onAdjustQuantity: (delta: number) => void;
+}> = ({ item, quantityCount, onAdjustQuantity }) => {
   const [expanded, setExpanded] = useState(false);
   const paragraphs = item.description?.trim() ? splitDescription(item.description.trim()) : [];
   const hasDescription = paragraphs.length > 0;
@@ -22,6 +33,7 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
     paragraphs.length > 1 || (paragraphs.length === 1 && Boolean(item.notes?.trim()));
   const notesInHeader = Boolean(item.notes?.trim()) && (!hasDescription || !hasMore);
   const showHeaderBody = Boolean(item.subtitle) || hasDescription || notesInHeader;
+  const tracked = isTrackedQuantity(item);
 
   const toggle = () => setExpanded((e) => !e);
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -29,6 +41,10 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
       e.preventDefault();
       toggle();
     }
+  };
+
+  const stopCardToggle = (e: React.SyntheticEvent) => {
+    e.stopPropagation();
   };
 
   const previewParagraph = paragraphs[0];
@@ -46,12 +62,7 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
     >
       <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <h4 className="text-sm font-semibold text-slate-900">{item.name}</h4>
-            {typeof item.quantity === 'number' && (
-              <span className="text-xs font-medium tabular-nums text-slate-600 shrink-0">×{item.quantity}</span>
-            )}
-          </div>
+          <h4 className="text-sm font-semibold text-slate-900">{item.name}</h4>
           {showHeaderBody && (
             <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
               {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
@@ -65,14 +76,44 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
             </div>
           )}
         </div>
-        {hasMore && (
-          <span
-            className={`shrink-0 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
-            aria-hidden
-          >
-            ▼
-          </span>
-        )}
+        <div className="flex items-start gap-1.5 shrink-0">
+          {tracked && (
+            <div
+              className="flex items-center gap-1 h-7"
+              onClick={stopCardToggle}
+              onKeyDown={stopCardToggle}
+            >
+              <button
+                type="button"
+                className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 disabled:opacity-40 touch-manipulation"
+                onClick={() => onAdjustQuantity(-1)}
+                disabled={quantityCount <= 0}
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+              <div className="min-w-[1.75rem] h-7 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-semibold tabular-nums">
+                {quantityCount}
+              </div>
+              <button
+                type="button"
+                className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation"
+                onClick={() => onAdjustQuantity(1)}
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+          )}
+          {hasMore && (
+            <span
+              className={`shrink-0 text-slate-400 transition-transform leading-7 ${expanded ? 'rotate-180' : ''}`}
+              aria-hidden
+            >
+              ▼
+            </span>
+          )}
+        </div>
       </div>
       {expanded && hasMore && (
         <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80">
@@ -98,7 +139,7 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
   );
 };
 
-export const InventorySection: React.FC<InventorySectionProps> = ({ character }) => {
+export const InventorySection: React.FC<InventorySectionProps> = ({ character, state, actions }) => {
   const items = character.inventory ?? [];
 
   return (
@@ -119,9 +160,21 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ character })
         </p>
       ) : (
         <div className="grid gap-2 sm:grid-cols-2">
-          {items.map((item) => (
-            <InventoryItemCard key={item.id} item={item} />
-          ))}
+          {items.map((item) => {
+            const tracked = isTrackedQuantity(item);
+            const sheetDefault = tracked ? Math.max(0, Math.floor(item.quantity)) : 0;
+            const quantityCount = tracked
+              ? (state.inventoryQuantities[item.id] ?? sheetDefault)
+              : 0;
+            return (
+              <InventoryItemCard
+                key={item.id}
+                item={item}
+                quantityCount={quantityCount}
+                onAdjustQuantity={(delta) => actions.adjustInventoryQuantity(item.id, delta)}
+              />
+            );
+          })}
         </div>
       )}
     </section>

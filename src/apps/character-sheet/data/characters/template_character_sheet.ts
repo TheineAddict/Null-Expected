@@ -120,9 +120,9 @@ export const template_character_sheet: CharacterSheet = {
     },
   ],
 
-  // Inventory: custom items only. Fields: id, name, quantity?, subtitle?, description? (use \n\n between paragraphs), notes?
+  // Inventory: custom items only. quantity: number (stackable, +/- on sheet, persisted) or 'n/a' (unique gear; no counter).
   // Minimal: { id: 'rations', name: 'Rations', quantity: 5, notes: 'Days of food.' }
-  // Rich: { id: 'broom', name: 'Broom of Flying', subtitle: 'Legacy · Wondrous item, uncommon', description: 'First rules paragraph.\n\nSecond paragraph.', notes: 'Set: Speed (Flying), …' }
+  // No stack: { id: 'broom', name: 'Broom of Flying', quantity: 'n/a', subtitle: '…', description: '…', notes: '…' }
   inventory: [],
 
   defenses: {

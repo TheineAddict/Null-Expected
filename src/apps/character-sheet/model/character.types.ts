@@ -89,10 +89,13 @@ export interface Reaction {
   notes?: string;
 }
 
+/** Use a positive integer for stackables; `'n/a'` hides quantity and counters on the sheet. */
+export type InventoryQuantity = number | 'n/a';
+
 export interface InventoryItem {
   id: string;
   name: string;
-  quantity?: number;
+  quantity: InventoryQuantity;
   subtitle?: string;
   description?: string;
   notes?: string;

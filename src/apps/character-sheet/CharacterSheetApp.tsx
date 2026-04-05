@@ -50,7 +50,7 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
           </div>
         </div>
 
-        <InventorySection character={character} />
+        <InventorySection character={character} state={state} actions={actions} />
 
         <AbilitySavesSkillsSection character={character} />
 
