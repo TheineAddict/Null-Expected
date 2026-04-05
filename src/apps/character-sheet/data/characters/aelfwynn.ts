@@ -298,10 +298,26 @@ export const aelfwynn: CharacterSheet = {
     {
       id: 'broom-of-flying',
       name: 'Broom of Flying',
-      subtitle: 'Legacy · Wondrous item, uncommon',
+      subtitle: 'Wondrous item, uncommon (requires attunement)',
       description:
-        'This wooden broom, which weighs 3 pounds, functions like a mundane broom until you stand astride it and speak its command word. It then hovers beneath you and can be ridden in the air. It has a flying speed of 50 feet. It can carry up to 400 pounds, but its flying speed becomes 30 feet while carrying over 200 pounds. The broom stops hovering when you land.\n\nYou can send the broom to travel alone to a destination within 1 mile of you if you speak the command word, name the location, and are familiar with that place. The broom comes back to you when you speak another command word, provided that the broom is still within 1 mile of you.',
-      notes: 'Set: Speed (Flying), Movement, Utility, Exploration',
+        'Fly 50 ft. Carries up to 400 lb; over 200 lb, Fly 30 ft.\n\nMagic action to make it hover and ride it. Stops hovering when you land or stop riding it. Magic action to send/call it within 1 mile.',
+      notes: 'Flight, movement, utility',
+    },
+    {
+      id: 'potion-of-healing-greater',
+      name: 'Potion of Healing (Greater)',
+      subtitle: 'Potion, uncommon',
+      description:
+        'Regain 4d4 + 4 HP.\n\nBonus Action to drink or administer.',
+      notes: 'Healing, consumable',
+    },
+    {
+      id: 'potion-of-comprehension',
+      name: 'Potion of Comprehension',
+      subtitle: 'Potion',
+      description:
+        'Gain Comprehend Languages for 1 hour.\n\nUnderstand spoken and written language; written text requires touching it and takes about 1 minute per page.',
+      notes: 'Language, utility, consumable',
     },
   ],
 
