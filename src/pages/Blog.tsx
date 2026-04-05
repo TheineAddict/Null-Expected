@@ -15,15 +15,7 @@ const Blog = () => {
   const [visibleCount, setVisibleCount] = useState(6);
   const location = useLocation();
 
-  const categoryButtons = [
-    'All',
-    'QA Processes',
-    'Career Advice',
-    'Industry Trends',
-    'Case Studies',
-    'Unpopular Opinion'
-  ];
-  const categoryParamLabels = [
+  const categories = [
     'All',
     'QA Processes',
     'Quality Mindset',
@@ -39,8 +31,8 @@ const Blog = () => {
     const urlParams = new URLSearchParams(location.search);
     const categoryParam = urlParams.get('category');
     const tagParam = urlParams.get('tag');
-    
-    if (categoryParam && categoryParamLabels.includes(categoryParam)) {
+
+    if (categoryParam && categories.includes(categoryParam)) {
       setActiveCategory(categoryParam);
       setActiveTag(null); // Clear tag filter when category is set
     } else if (tagParam) {
@@ -149,15 +141,15 @@ const Blog = () => {
           <Filter className="h-5 w-5 text-gray-400 mr-2" />
           <span className="text-sm text-gray-500 font-medium">Filter by category</span>
         </div>
-        
+
         <div className="flex flex-wrap justify-center gap-2">
-          {categoryButtons.map((category) => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category
-                  ? 'bg-[var(--bg-indigo-900-default,#312e81)] text-white shadow-lg'
+                  ? 'bg-indigo-900 text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -185,95 +177,58 @@ const Blog = () => {
             </div>
           </div>
         ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visiblePosts.map((post) => {
-            const isFeatured = post.tags.includes('featured');
-            return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {visiblePosts.map((post) => (
             <article
               key={post.id}
-              className={`rounded-lg border overflow-hidden group transition-all duration-300 shadow-sm hover:shadow-md ${
-                isFeatured ? 'border-slate-700 shadow-md hover:shadow-lg' : 'border-gray-200 bg-white'
-              }`}
-              style={isFeatured ? { background: 'var(--brand-gradient)' } : undefined}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="p-6">
-                {/* Header Row */}
-                <div className="flex items-start justify-between mb-6 gap-4">
-                  <div className="flex-1">
-                    <Link
-                      to={`/blog?category=${encodeURIComponent(post.category)}`}
-                      className={`inline-block px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                        isFeatured
-                          ? 'bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                      onClick={() => window.scrollTo(0, 0)}
-                    >
-                      {post.category}
-                    </Link>
-                  </div>
-                  <div
-                    className={`flex items-center text-sm whitespace-nowrap ${
-                      isFeatured ? 'text-slate-400' : 'text-gray-500'
-                    }`}
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <Link
+                    to={`/blog?category=${encodeURIComponent(post.category)}`}
+                    className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full hover:bg-indigo-200 transition-colors"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
+                    {post.category}
+                  </Link>
+                  <div className="flex items-center text-gray-500 text-sm">
                     <Clock className="h-4 w-4 mr-1" />
                     {post.readTime}
                   </div>
                 </div>
 
-                {/* Title */}
                 <Link to={`/blog/${post.slug}`}>
-                  <h2
-                    className={`font-bold mb-4 leading-tight text-lg transition-colors cursor-pointer ${
-                      isFeatured
-                        ? 'text-slate-50 hover:text-slate-200'
-                        : 'text-gray-900 hover:text-gray-600'
-                    }`}
-                  >
+                  <h2 className="text-xl font-bold text-indigo-900 mb-3 leading-tight hover:text-gray-900 transition-colors cursor-pointer">
                     {post.title}
                   </h2>
                 </Link>
 
-                {/* Excerpt */}
-                <p className={`mb-6 line-clamp-3 ${isFeatured ? 'text-slate-300' : 'text-gray-600'}`}>
+                <p className="text-gray-600 mb-6 line-clamp-3">
                   {post.excerpt}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1 mb-4">
                   {getVisibleBlogTags(post.tags).slice(0, 3).map((tag) => (
                     <Link
                       key={tag}
                       to={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className={`px-2.5 py-1 text-xs rounded transition-colors ${
-                        isFeatured
-                          ? 'bg-slate-900 text-slate-200 border border-slate-800 hover:bg-slate-800'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
+                      className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       #{tag}
                     </Link>
                   ))}
                   {getVisibleBlogTags(post.tags).length > 3 && (
-                    <span
-                      className={`px-2.5 py-1 text-xs ${
-                        isFeatured ? 'text-slate-400' : 'text-gray-400'
-                      }`}
-                    >
+                    <span className="px-2 py-1 text-gray-400 text-xs">
                       +{getVisibleBlogTags(post.tags).length - 3} more
                     </span>
                   )}
                 </div>
 
-                {/* Footer */}
-                <div
-                  className={`flex items-center justify-between pt-6 border-t ${
-                    isFeatured ? 'border-slate-800' : 'border-gray-200'
-                  }`}
-                >
-                  <span className={`text-sm ${isFeatured ? 'text-slate-400' : 'text-gray-500'}`}>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -283,20 +238,15 @@ const Blog = () => {
 
                   <Link
                     to={`/blog/${post.slug}`}
-                    className={`inline-flex items-center font-semibold transition-colors ${
-                      isFeatured
-                        ? 'text-slate-300 hover:text-slate-100'
-                        : 'text-gray-700 hover:text-gray-900'
-                    }`}
+                    className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                   >
                     Read More
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
             </article>
-            );
-          })}
+          ))}
         </div>
         )}
 
@@ -326,7 +276,7 @@ const Blog = () => {
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-8 py-3 bg-[var(--bg-indigo-900-default,#312e81)] text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-8 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
               >
                 Show More
                 <ChevronDown className="ml-2 h-5 w-5" />
