@@ -68,31 +68,17 @@ const InventoryItemCard: React.FC<{
       role={hasMore ? 'button' : undefined}
       tabIndex={hasMore ? 0 : undefined}
     >
-      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex items-start justify-between gap-2">
-        <div className="min-w-0 flex-1">
+      <div className="px-2.5 py-2 sm:px-3 sm:py-2">
+        <div className="min-w-0">
           <div className="flex items-center gap-1.5 min-w-0">
             <span className="shrink-0 text-base leading-none select-none" aria-hidden>
               {displayIcon}
             </span>
             <h4 className="text-sm font-semibold text-slate-900 truncate">{item.name}</h4>
           </div>
-          {showHeaderBody && (
-            <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
-              {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
-              {hasDescription && (
-                <p className={bodyTextClass}>
-                  {previewParagraph}
-                  {hasMore && !expanded && restParagraphs.length > 0 && ' …'}
-                </p>
-              )}
-              {notesInHeader && <p className={bodyTextClass}>{item.notes}</p>}
-            </div>
-          )}
-        </div>
-        <div className="flex items-start gap-1.5 shrink-0">
           {tracked && (
             <div
-              className="flex items-center gap-1 h-7"
+              className="flex items-center gap-1 h-7 mt-1.5"
               onClick={stopCardToggle}
               onKeyDown={stopCardToggle}
             >
@@ -118,13 +104,17 @@ const InventoryItemCard: React.FC<{
               </button>
             </div>
           )}
-          {hasMore && (
-            <span
-              className={`shrink-0 text-slate-400 transition-transform leading-7 ${expanded ? 'rotate-180' : ''}`}
-              aria-hidden
-            >
-              ▼
-            </span>
+          {showHeaderBody && (
+            <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
+              {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
+              {hasDescription && (
+                <p className={bodyTextClass}>
+                  {previewParagraph}
+                  {hasMore && !expanded && restParagraphs.length > 0 && ' …'}
+                </p>
+              )}
+              {notesInHeader && <p className={bodyTextClass}>{item.notes}</p>}
+            </div>
           )}
         </div>
       </div>
