@@ -20,6 +20,8 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
   const hasDescription = paragraphs.length > 0;
   const hasMore =
     paragraphs.length > 1 || (paragraphs.length === 1 && Boolean(item.notes?.trim()));
+  const notesInHeader = Boolean(item.notes?.trim()) && (!hasDescription || !hasMore);
+  const showHeaderBody = Boolean(item.subtitle) || hasDescription || notesInHeader;
 
   const toggle = () => setExpanded((e) => !e);
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -34,7 +36,7 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
 
   return (
     <div
-      className={`rounded-lg border border-slate-100 bg-slate-50/80 overflow-hidden ${
+      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden ${
         hasMore ? 'cursor-pointer touch-manipulation' : ''
       }`}
       onClick={hasMore ? toggle : undefined}
@@ -45,19 +47,23 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
       <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5 flex-wrap">
-            <h4 className="text-xs font-semibold text-slate-900">{item.name}</h4>
+            <h4 className="text-sm font-semibold text-slate-900">{item.name}</h4>
             {typeof item.quantity === 'number' && (
-              <span className="text-[0.65rem] font-medium tabular-nums text-slate-600 shrink-0">×{item.quantity}</span>
+              <span className="text-xs font-medium tabular-nums text-slate-600 shrink-0">×{item.quantity}</span>
             )}
           </div>
-          {item.subtitle && <p className={`${bodyTextClass} mt-0.5`}>{item.subtitle}</p>}
-          {hasDescription && (
-            <p className={`${bodyTextClass} mt-0.5`}>
-              {previewParagraph}
-              {hasMore && !expanded && restParagraphs.length > 0 && ' …'}
-            </p>
+          {showHeaderBody && (
+            <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
+              {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
+              {hasDescription && (
+                <p className={bodyTextClass}>
+                  {previewParagraph}
+                  {hasMore && !expanded && restParagraphs.length > 0 && ' …'}
+                </p>
+              )}
+              {notesInHeader && <p className={bodyTextClass}>{item.notes}</p>}
+            </div>
           )}
-          {!hasDescription && item.notes && <p className={`${bodyTextClass} mt-0.5`}>{item.notes}</p>}
         </div>
         {hasMore && (
           <span
@@ -69,13 +75,23 @@ const InventoryItemCard: React.FC<{ item: InventoryItem }> = ({ item }) => {
         )}
       </div>
       {expanded && hasMore && (
-        <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80 space-y-2">
-          {restParagraphs.map((p, i) => (
-            <p key={i} className={bodyTextClass}>
-              {p}
+        <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80">
+          {restParagraphs.length > 0 && (
+            <div className="space-y-2">
+              {restParagraphs.map((p, i) => (
+                <p key={i} className={bodyTextClass}>
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
+          {item.notes?.trim() && (
+            <p
+              className={`${bodyTextClass} ${restParagraphs.length > 0 ? 'mt-2 pt-2 border-t border-slate-100' : ''}`}
+            >
+              {item.notes}
             </p>
-          ))}
-          {item.notes && <p className={bodyTextClass}>{item.notes}</p>}
+          )}
         </div>
       )}
     </div>
