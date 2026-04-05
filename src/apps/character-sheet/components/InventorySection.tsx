@@ -17,6 +17,13 @@ function splitDescription(description: string): string[] {
     .filter(Boolean);
 }
 
+const DEFAULT_INVENTORY_ICON = '📦';
+
+function resolveInventoryIcon(item: InventoryItem): string {
+  const raw = item.icon?.trim();
+  return raw && raw.length > 0 ? raw : DEFAULT_INVENTORY_ICON;
+}
+
 function isTrackedQuantity(item: InventoryItem): item is InventoryItem & { quantity: number } {
   return item.quantity !== 'n/a' && typeof item.quantity === 'number';
 }
@@ -49,6 +56,7 @@ const InventoryItemCard: React.FC<{
 
   const previewParagraph = paragraphs[0];
   const restParagraphs = paragraphs.slice(1);
+  const displayIcon = resolveInventoryIcon(item);
 
   return (
     <div
@@ -62,7 +70,12 @@ const InventoryItemCard: React.FC<{
     >
       <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
-          <h4 className="text-sm font-semibold text-slate-900">{item.name}</h4>
+          <div className="flex items-center gap-1.5 min-w-0">
+            <span className="shrink-0 text-base leading-none select-none" aria-hidden>
+              {displayIcon}
+            </span>
+            <h4 className="text-sm font-semibold text-slate-900 truncate">{item.name}</h4>
+          </div>
           {showHeaderBody && (
             <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
               {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}

@@ -298,6 +298,7 @@ export const aelfwynn: CharacterSheet = {
     {
       id: 'broom-of-flying',
       name: 'Broom of Flying',
+      icon: '🧹',
       quantity: 'n/a',
       subtitle: 'Wondrous item, uncommon (requires attunement)',
       description:
@@ -307,6 +308,7 @@ export const aelfwynn: CharacterSheet = {
     {
       id: 'potion-of-healing-greater',
       name: 'Potion of Healing (Greater)',
+      icon: '❤️‍🩹',
       quantity: 1,
       subtitle: 'Potion, uncommon',
       description:
@@ -316,6 +318,7 @@ export const aelfwynn: CharacterSheet = {
     {
       id: 'potion-of-comprehension',
       name: 'Potion of Comprehension',
+      icon: '🧪',
       quantity: 1,
       subtitle: 'Potion',
       description:

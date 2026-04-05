@@ -96,6 +96,8 @@ export interface InventoryItem {
   id: string;
   name: string;
   quantity: InventoryQuantity;
+  /** Optional emoji shown beside the name; omit to use the default 📦 in the UI. */
+  icon?: string;
   subtitle?: string;
   description?: string;
   notes?: string;

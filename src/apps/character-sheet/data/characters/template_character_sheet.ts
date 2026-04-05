@@ -120,9 +120,9 @@ export const template_character_sheet: CharacterSheet = {
     },
   ],
 
-  // Inventory: custom items only. quantity: number (stackable, +/- on sheet, persisted) or 'n/a' (unique gear; no counter).
-  // Minimal: { id: 'rations', name: 'Rations', quantity: 5, notes: 'Days of food.' }
-  // No stack: { id: 'broom', name: 'Broom of Flying', quantity: 'n/a', subtitle: '…', description: '…', notes: '…' }
+  // Inventory: custom items only. quantity: number | 'n/a'; optional icon (emoji); omit icon for default 📦 in UI.
+  // Minimal: { id: 'rations', name: 'Rations', quantity: 5, icon: '🥖', notes: '…' }
+  // No stack: { id: 'broom', name: 'Broom of Flying', quantity: 'n/a', icon: '🧹', … }
   inventory: [],
 
   defenses: {
