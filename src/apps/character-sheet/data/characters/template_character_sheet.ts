@@ -120,6 +120,11 @@ export const template_character_sheet: CharacterSheet = {
     },
   ],
 
+  // Inventory: custom items only. Fields: id, name, quantity?, subtitle?, description? (use \n\n between paragraphs), notes?
+  // Minimal: { id: 'rations', name: 'Rations', quantity: 5, notes: 'Days of food.' }
+  // Rich: { id: 'broom', name: 'Broom of Flying', subtitle: 'Legacy · Wondrous item, uncommon', description: 'First rules paragraph.\n\nSecond paragraph.', notes: 'Set: Speed (Flying), …' }
+  inventory: [],
+
   defenses: {
     resistances: [{ damageType: 'fire' }, { damageType: 'cold', condition: 'when Y' }],
     immunities: [{ damageType: 'poison' }],

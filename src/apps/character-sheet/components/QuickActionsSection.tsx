@@ -11,6 +11,7 @@ const LINKS: { label: string; id: string }[] = [
   { label: 'HP', id: 'hp' },
   { label: 'Combat', id: 'combat' },
   { label: 'Limited Uses', id: 'limited-uses' },
+  { label: 'Inventory', id: 'inventory' },
   { label: 'Saves/Skills', id: 'saves-skills' },
   { label: 'Traits', id: 'traits' },
   { label: 'Reactions', id: 'reactions' },

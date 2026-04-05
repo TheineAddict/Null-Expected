@@ -89,6 +89,15 @@ export interface Reaction {
   notes?: string;
 }
 
+export interface InventoryItem {
+  id: string;
+  name: string;
+  quantity?: number;
+  subtitle?: string;
+  description?: string;
+  notes?: string;
+}
+
 export interface DefenseEntry {
   damageType: string;
   condition?: string;
@@ -124,6 +133,7 @@ export interface CharacterSheet {
 
   traits?: Trait[];
   reactions?: Reaction[];
+  inventory?: InventoryItem[];
 
   defenses?: Defenses;
   languages?: string[];

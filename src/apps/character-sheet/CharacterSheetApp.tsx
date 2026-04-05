@@ -7,6 +7,7 @@ import { HpPanel } from './components/HpPanel';
 import { CombatSection } from './components/CombatSection';
 import { LimitedUsesSection } from './components/LimitedUsesSection';
 import { AbilitySavesSkillsSection } from './components/AbilitySavesSkillsSection';
+import { InventorySection } from './components/InventorySection';
 import { TraitsSection } from './components/TraitsSection';
 import { ReactionsSection } from './components/ReactionsSection';
 import { HopeSection } from './components/HopeSection';
@@ -48,6 +49,8 @@ const CharacterSheetApp: React.FC<CharacterSheetAppProps> = ({ character: charac
             <LimitedUsesSection character={character} state={state} actions={actions} />
           </div>
         </div>
+
+        <InventorySection character={character} />
 
         <AbilitySavesSkillsSection character={character} />
 
