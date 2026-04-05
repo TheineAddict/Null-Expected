@@ -77,8 +77,11 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
                       : 'bg-white'
                 }`}
               >
-                <span className="text-sm font-medium text-slate-700 truncate leading-tight" title={skill.name}>
-                  {skill.name}
+                <span
+                  className="text-sm font-medium text-slate-700 truncate leading-tight"
+                  title={`${skill.name} (${skill.ability})`}
+                >
+                  {skill.name} ({skill.ability})
                 </span>
                 <span className="mt-0.5 flex justify-end">
                   <span className="tabular-nums font-semibold text-slate-900 text-sm">
