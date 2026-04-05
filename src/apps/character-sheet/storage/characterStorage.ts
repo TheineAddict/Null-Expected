@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { CharacterSheet } from '../model/character.types';
+import type { CharacterSheet, CoinDenom, CoinPurse } from '../model/character.types';
 
 export const STORAGE_KEY_VERSION = 'v1';
 
@@ -12,6 +12,7 @@ export interface CharacterTrackerState {
   limitedUses: Record<string, number>;
   /** Counts for inventory items whose sheet `quantity` is a number (not `'n/a'`). */
   inventoryQuantities: Record<string, number>;
+  coinPurse: CoinPurse;
   deathSaves: {
     successes: number;
     failures: number;
@@ -31,12 +32,30 @@ export interface CharacterTrackerActions {
   spendInspiration: () => void;
   adjustLimitedUse: (id: string, delta: number, max: number) => void;
   adjustInventoryQuantity: (id: string, delta: number) => void;
+  adjustCoinPurse: (denom: CoinDenom, delta: number) => void;
   setDeathSaves: (successes: number, failures: number) => void;
   resetTrackers: () => void;
 }
 
 function buildStorageKey(characterId: string): string {
   return `ne:character-sheet:${characterId}:state:${STORAGE_KEY_VERSION}`;
+}
+
+const ZERO_COIN_PURSE: CoinPurse = { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 };
+
+function normalizeCoinPurse(raw: unknown): CoinPurse {
+  if (!raw || typeof raw !== 'object') {
+    return { ...ZERO_COIN_PURSE };
+  }
+  const o = raw as Record<string, unknown>;
+  const clamp = (v: unknown) => Math.max(0, Math.floor(typeof v === 'number' && Number.isFinite(v) ? v : 0));
+  return {
+    pp: clamp(o.pp),
+    gp: clamp(o.gp),
+    ep: clamp(o.ep),
+    sp: clamp(o.sp),
+    cp: clamp(o.cp),
+  };
 }
 
 function createDefaultState(character: CharacterSheet): CharacterTrackerState {
@@ -60,6 +79,7 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
     inspirationThirds: 0,
     limitedUses,
     inventoryQuantities,
+    coinPurse: { ...ZERO_COIN_PURSE },
     deathSaves: {
       successes: 0,
       failures: 0,
@@ -118,6 +138,8 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       }
     }
 
+    const coinPurse = normalizeCoinPurse(parsed.coinPurse);
+
     const deathSaves = {
       successes:
         typeof parsed.deathSaves?.successes === 'number'
@@ -137,6 +159,7 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       inspirationThirds,
       limitedUses,
       inventoryQuantities,
+      coinPurse,
       deathSaves,
     };
   } catch {
@@ -262,6 +285,19 @@ export function useCharacterTracker(
           inventoryQuantities: {
             ...prev.inventoryQuantities,
             [id]: next,
+          },
+        };
+      });
+    },
+    adjustCoinPurse: (denom, delta) => {
+      setState((prev) => {
+        const current = prev.coinPurse[denom];
+        const next = Math.max(0, current + delta);
+        return {
+          ...prev,
+          coinPurse: {
+            ...prev.coinPurse,
+            [denom]: next,
           },
         };
       });

@@ -103,6 +103,16 @@ export interface InventoryItem {
   notes?: string;
 }
 
+export type CoinDenom = 'pp' | 'gp' | 'ep' | 'sp' | 'cp';
+
+export interface CoinPurse {
+  pp: number;
+  gp: number;
+  ep: number;
+  sp: number;
+  cp: number;
+}
+
 export interface DefenseEntry {
   damageType: string;
   condition?: string;

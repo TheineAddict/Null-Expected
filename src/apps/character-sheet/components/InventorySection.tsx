@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Backpack } from 'lucide-react';
-import type { CharacterSheet, InventoryItem } from '../model/character.types';
+import type { CharacterSheet, CoinDenom, CoinPurse, InventoryItem } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass } from '../textClasses';
 
@@ -27,6 +27,93 @@ function resolveInventoryIcon(item: InventoryItem): string {
 function isTrackedQuantity(item: InventoryItem): item is InventoryItem & { quantity: number } {
   return item.quantity !== 'n/a' && typeof item.quantity === 'number';
 }
+
+const COIN_DENOMS: { denom: CoinDenom; label: string; ariaLabel: string }[] = [
+  { denom: 'pp', label: 'PP', ariaLabel: 'Platinum pieces (PP)' },
+  { denom: 'gp', label: 'GP', ariaLabel: 'Gold pieces (GP)' },
+  { denom: 'ep', label: 'EP', ariaLabel: 'Electrum pieces (EP)' },
+  { denom: 'sp', label: 'SP', ariaLabel: 'Silver pieces (SP)' },
+  { denom: 'cp', label: 'CP', ariaLabel: 'Copper pieces (CP)' },
+];
+
+/** Shared min height so Money lines up with typical item cards in the grid. */
+const INVENTORY_CARD_MIN_H = 'min-h-[11rem]';
+
+const MoneyCard: React.FC<{
+  coinPurse: CoinPurse;
+  onAdjustCoin: (denom: CoinDenom, delta: number) => void;
+}> = ({ coinPurse, onAdjustCoin }) => {
+  const stop = (e: React.SyntheticEvent) => e.stopPropagation();
+
+  return (
+    <div
+      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
+    >
+      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex flex-col flex-1 min-h-0">
+        <div className="flex items-center gap-1.5 min-w-0 shrink-0">
+          <span className="shrink-0 text-base leading-none select-none" aria-hidden>
+            💰
+          </span>
+          <h4 className="text-sm font-semibold text-slate-900 truncate">Money</h4>
+        </div>
+        <div className="mt-2 border-t border-slate-100 pt-2 flex-1 flex flex-col min-h-0">
+          <div
+            className="flex flex-wrap gap-x-3 gap-y-2 sm:flex-nowrap sm:justify-between"
+            onClick={stop}
+            onKeyDown={stop}
+          >
+            {COIN_DENOMS.map(({ denom, label, ariaLabel }) => {
+              const value = coinPurse[denom];
+              return (
+                <div
+                  key={denom}
+                  className="flex flex-col items-center gap-0.5 min-w-[3.25rem] flex-1 sm:flex-1 sm:min-w-0"
+                  role="group"
+                  aria-label={ariaLabel}
+                >
+                  <span
+                    className="text-[0.65rem] font-semibold text-slate-600 tabular-nums leading-none cursor-default"
+                    title={ariaLabel}
+                  >
+                    {label}
+                  </span>
+                  <div className="flex items-center gap-0.5">
+                    <button
+                      type="button"
+                      className="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 disabled:opacity-40 touch-manipulation"
+                      onClick={() => onAdjustCoin(denom, -1)}
+                      disabled={value <= 0}
+                      aria-label={`Decrease ${ariaLabel}`}
+                    >
+                      −
+                    </button>
+                    <div className="min-w-[1.5rem] h-6 px-0.5 rounded bg-slate-800 text-white flex items-center justify-center text-[0.65rem] font-semibold tabular-nums">
+                      {value}
+                    </div>
+                    <button
+                      type="button"
+                      className="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 touch-manipulation"
+                      onClick={() => onAdjustCoin(denom, 1)}
+                      aria-label={`Increase ${ariaLabel}`}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-auto pt-2 border-t border-slate-100 text-[0.65rem] text-slate-500 leading-snug space-y-0.5">
+            <p>10 CP = 1 SP</p>
+            <p>5 SP = 1 EP</p>
+            <p>2 EP = 1 GP</p>
+            <p>10 GP = 1 PP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const InventoryItemCard: React.FC<{
   item: InventoryItem;
@@ -60,7 +147,7 @@ const InventoryItemCard: React.FC<{
 
   return (
     <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden ${
+      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H} ${
         hasMore ? 'cursor-pointer touch-manipulation' : ''
       }`}
       onClick={hasMore ? toggle : undefined}
@@ -68,8 +155,8 @@ const InventoryItemCard: React.FC<{
       role={hasMore ? 'button' : undefined}
       tabIndex={hasMore ? 0 : undefined}
     >
-      <div className="px-2.5 py-2 sm:px-3 sm:py-2">
-        <div className="min-w-0">
+      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex flex-col flex-1 min-h-0">
+        <div className="min-w-0 flex-1 flex flex-col">
           <div className="flex items-center gap-1.5 min-w-0">
             <span className="shrink-0 text-base leading-none select-none" aria-hidden>
               {displayIcon}
@@ -155,31 +242,34 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ character, s
         Inventory
       </h2>
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      {items.length === 0 ? (
+      {items.length === 0 && (
         <p className={bodyTextClass}>
           No custom items yet. Add objects to the <code className="text-xs bg-slate-100 px-1 rounded">inventory</code>{' '}
           array in this character&apos;s file under{' '}
           <code className="text-xs bg-slate-100 px-1 rounded">src/apps/character-sheet/data/characters/</code>.
         </p>
-      ) : (
-        <div className="grid gap-2 sm:grid-cols-2">
-          {items.map((item) => {
-            const tracked = isTrackedQuantity(item);
-            const sheetDefault = tracked ? Math.max(0, Math.floor(item.quantity)) : 0;
-            const quantityCount = tracked
-              ? (state.inventoryQuantities[item.id] ?? sheetDefault)
-              : 0;
-            return (
-              <InventoryItemCard
-                key={item.id}
-                item={item}
-                quantityCount={quantityCount}
-                onAdjustQuantity={(delta) => actions.adjustInventoryQuantity(item.id, delta)}
-              />
-            );
-          })}
-        </div>
       )}
+      <div className="grid gap-2 sm:grid-cols-2 items-stretch">
+        {items.map((item) => {
+          const tracked = isTrackedQuantity(item);
+          const sheetDefault = tracked ? Math.max(0, Math.floor(item.quantity)) : 0;
+          const quantityCount = tracked
+            ? (state.inventoryQuantities[item.id] ?? sheetDefault)
+            : 0;
+          return (
+            <InventoryItemCard
+              key={item.id}
+              item={item}
+              quantityCount={quantityCount}
+              onAdjustQuantity={(delta) => actions.adjustInventoryQuantity(item.id, delta)}
+            />
+          );
+        })}
+        <MoneyCard
+          coinPurse={state.coinPurse}
+          onAdjustCoin={(denom, delta) => actions.adjustCoinPurse(denom, delta)}
+        />
+      </div>
     </section>
   );
 };
