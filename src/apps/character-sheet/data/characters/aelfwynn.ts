@@ -3,43 +3,22 @@ import type { CharacterSheet, HopeTier } from '../../model/character.types';
 const hopeTiers: HopeTier[] = [
   {
     tier: 1,
-    activeCardId: 't1-quick-thinking',
+    activeCardId: 'root-splitter-strike',
     cards: [
       {
-        id: 't1-quick-thinking',
-        title: 'Quick Thinking',
-        body: 'At combat start: scan the field.\nPick the most exposed ally and keep them in mind.',
+        id: 'root-splitter-strike',
+        title: 'Root-Splitter Strike',
+        body: 'Cost: 1 Hope\nYou strike like an ancient trunk cracking stone.\n\nStandard:\nWhen you hit a creature while raging:\n+1d8 force damage.\nTarget makes a STR save or is pushed 10 ft.\nIf rolled with Hope → gain temp HP equal to proficiency bonus.\n\nOvercharge (🔥 +1 Stress):\nDamage becomes +2d8 force.\nCreature is pushed 15 ft and knocked Prone on failed save.\nIf collides with surface, takes additional damage equal to Rage bonus.\n\n"The mountain does not ask. It moves."',
       },
       {
-        id: 't1-steady-breath',
-        title: 'Steady Breath',
-        body: 'Before an important roll: take one breath.\nReset your focus, then roll.',
+        id: 'worldroot-stance',
+        title: 'Worldroot Stance',
+        body: 'Cost: 1 Hope\nYou plant your feet. The earth remembers you.\n\nStandard:\nUntil the start of your next turn:\nYou cannot be moved against your will.\nAdvantage on STR checks and saves.\n\nOvercharge (🔥 +2 Stress):\nFor 1 round:\nAllies within 10 ft reduce incoming damage by proficiency bonus.\nIf ally is knocked Prone, use reaction to pull them back to their feet.\n\n"Stand behind me."',
       },
       {
-        id: 't1-mark-the-threat',
-        title: 'Mark the Threat',
-        body: 'Pick the most dangerous enemy.\nTrack its position and conditions.',
-      },
-    ],
-  },
-  {
-    tier: 2,
-    activeCardId: 't2-shared-glance',
-    cards: [
-      {
-        id: 't2-shared-glance',
-        title: 'Shared Glance',
-        body: 'When an ally hesitates: give a quick reminder of what you survived.\nNudge toward bold choices.',
-      },
-      {
-        id: 't2-anchor-memory',
-        title: 'Anchor Memory',
-        body: 'Name one hopeful memory.\nUse one sentence when things look grim.',
-      },
-      {
-        id: 't2-light-in-the-dark',
-        title: 'Light in the Dark',
-        body: 'Call out one small sign things might turn - a slip, a crack of light.\nMake it concrete.',
+        id: 'stone-plain-diplomacy',
+        title: 'Stone-Plain Diplomacy',
+        body: 'Cost: 1 Hope\nYou make your point physically — without attacking.\n\nStandard:\nYou may smash an object, crack ground, or hurl something heavy.\nAdvantage on Intimidation.\nIf rolled with Hope → creatures of lower CR hesitate (cannot approach closer next turn unless they succeed WIS save).\n\nOvercharge (🔥 +1 Stress):\nHostile creatures make WIS save or become Frightened until end of their next turn.\nIn negotiation: opposing side becomes Wary instead of Hostile (if applicable).\n\n"We can speak softly. Or I can show you."',
       },
     ],
   },
