@@ -104,10 +104,7 @@ const MoneyCard: React.FC<{
             })}
           </div>
           <div className="mt-auto pt-2 border-t border-slate-100 text-[0.65rem] text-slate-500 leading-snug space-y-0.5">
-            <p>10 CP = 1 SP</p>
-            <p>5 SP = 1 EP</p>
-            <p>2 EP = 1 GP</p>
-            <p>10 GP = 1 PP</p>
+            <p>10 Copper = 1 Silver; 5 Silver = 1 Electrum; 2 Electrum = 1 Gold; 10 Gold = 1 Platinum</p>
           </div>
         </div>
       </div>
