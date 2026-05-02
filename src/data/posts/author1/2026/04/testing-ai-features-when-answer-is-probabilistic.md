@@ -301,6 +301,30 @@ That is not fear.
 
 That is proportionate control.
 
+## Tools help, but only after the test question is clear
+
+There are useful tools in this space, but they do not remove the need for judgement.
+
+A tool can help run evaluations, compare outputs, inspect traces, monitor drift, or red-team an LLM workflow. It cannot decide what kind of wrong answer your product can tolerate. It cannot tell you which customer segment carries the real risk. It cannot turn a vague product expectation into a release criterion.
+
+That is still the work.
+
+The better way to talk about AI testing tools is to connect them to the type of evidence the team needs.
+
+For traditional ML and data-heavy systems, tools such as [Evidently](https://docs.evidentlyai.com/), [Deepchecks](https://docs.deepchecks.com/stable/getting-started/welcome.html), [WhyLabs](https://docs.whylabs.ai/docs/), and [Fiddler](https://www.fiddler.ai/ml-model-monitoring) can support checks around data quality, data drift, model monitoring, distribution changes, performance degradation, and production behaviour.
+
+For LLM and RAG applications, tools such as [Ragas](https://docs.ragas.io/), [TruLens](https://www.trulens.org/), [Arize Phoenix](https://arize.com/docs/phoenix), and [LangSmith](https://docs.langchain.com/langsmith/home) can help evaluate retrieval quality, groundedness, answer relevance, traces, tool calls, latency, and workflow-level behaviour.
+
+For prompt and model evaluation, tools such as [promptfoo](https://www.promptfoo.dev/docs/intro/), [DeepEval](https://deepeval.com/), and [OpenAI Evals](https://github.com/openai/evals) are useful examples of moving away from casual prompt checking and toward repeatable evals.
+
+For LLM security and adversarial testing, tools and references such as [Giskard](https://docs.giskard.ai/), [promptfoo red teaming](https://www.promptfoo.dev/docs/guides/), [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/), and Microsoft’s [PyRIT](https://github.com/Azure/PyRIT) can help teams explore prompt injection, unsafe output, sensitive information disclosure, excessive agency, and other failure modes that do not show up in a normal happy-path demo.
+
+None of these tools should become the strategy.
+
+They are instrumentation around the strategy.
+
+If the team has not defined acceptable variation, failure tolerance, high-risk slices, fallback behaviour, and release thresholds, tool output will only make the uncertainty look more professional.
+
 ## What QA should insist on
 
 QA does not need to own the model. QA does need to challenge the evidence around the product behaviour.
