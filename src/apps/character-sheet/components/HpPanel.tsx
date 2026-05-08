@@ -3,6 +3,7 @@ import { Heart, ShieldPlus } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass } from '../textClasses';
+import { HitDiceSection } from './HitDiceSection';
 
 interface HpPanelProps {
   character: CharacterSheet;
@@ -29,7 +30,7 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
         Hit Points
       </h2>
       <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-4 gap-4">
         <div className="flex flex-col items-center gap-1.5">
           <div className="flex items-center justify-center gap-1.5">
             <span className="text-xs text-slate-500">HP</span>
@@ -120,6 +121,7 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
             Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
           </p>
         </div>
+        <HitDiceSection state={state} actions={actions} />
       </div>
     </section>
   );

@@ -17,6 +17,8 @@ export interface CharacterTrackerState {
     successes: number;
     failures: number;
   };
+  /** Bit flags for spent hit dice: bit 0-7 represents the 8 hit dice (6d12 + 2d10) */
+  hitDiceSpent: number;
 }
 
 export interface CharacterTrackerActions {
@@ -34,6 +36,7 @@ export interface CharacterTrackerActions {
   adjustInventoryQuantity: (id: string, delta: number) => void;
   adjustCoinPurse: (denom: CoinDenom, delta: number) => void;
   setDeathSaves: (successes: number, failures: number) => void;
+  toggleHitDie: (index: number) => void;
   resetTrackers: () => void;
 }
 
@@ -84,6 +87,7 @@ function createDefaultState(character: CharacterSheet): CharacterTrackerState {
       successes: 0,
       failures: 0,
     },
+    hitDiceSpent: 0,
   };
 }
 
@@ -151,6 +155,9 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
           : base.deathSaves.failures,
     };
 
+    const hitDiceSpent =
+      typeof parsed.hitDiceSpent === 'number' ? Math.max(0, parsed.hitDiceSpent) : base.hitDiceSpent;
+
     return {
       currentHp,
       effectiveMaxHp,
@@ -161,6 +168,7 @@ function loadState(character: CharacterSheet): CharacterTrackerState {
       inventoryQuantities,
       coinPurse,
       deathSaves,
+      hitDiceSpent,
     };
   } catch {
     return createDefaultState(character);
@@ -309,6 +317,12 @@ export function useCharacterTracker(
           successes: Math.max(0, Math.min(successes, 3)),
           failures: Math.max(0, Math.min(failures, 3)),
         },
+      }));
+    },
+    toggleHitDie: (index) => {
+      setState((prev) => ({
+        ...prev,
+        hitDiceSpent: prev.hitDiceSpent ^ (1 << index),
       }));
     },
     resetTrackers: () => {
