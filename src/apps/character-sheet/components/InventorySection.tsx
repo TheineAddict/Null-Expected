@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Backpack } from 'lucide-react';
 import type { CharacterSheet, CoinDenom, CoinPurse, InventoryItem } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
@@ -117,43 +117,16 @@ const InventoryItemCard: React.FC<{
   quantityCount: number;
   onAdjustQuantity: (delta: number) => void;
 }> = ({ item, quantityCount, onAdjustQuantity }) => {
-  const [expanded, setExpanded] = useState(false);
   const paragraphs = item.description?.trim() ? splitDescription(item.description.trim()) : [];
-  const hasDescription = paragraphs.length > 0;
-  const hasMore =
-    paragraphs.length > 1 || (paragraphs.length === 1 && Boolean(item.notes?.trim()));
-  const notesInHeader = Boolean(item.notes?.trim()) && (!hasDescription || !hasMore);
-  const showHeaderBody = Boolean(item.subtitle) || hasDescription || notesInHeader;
   const tracked = isTrackedQuantity(item);
-
-  const toggle = () => setExpanded((e) => !e);
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggle();
-    }
-  };
-
-  const stopCardToggle = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
-  };
-
-  const previewParagraph = paragraphs[0];
-  const restParagraphs = paragraphs.slice(1);
   const displayIcon = resolveInventoryIcon(item);
 
   return (
     <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H} ${
-        hasMore ? 'cursor-pointer touch-manipulation' : ''
-      }`}
-      onClick={hasMore ? toggle : undefined}
-      onKeyDown={hasMore ? onKeyDown : undefined}
-      role={hasMore ? 'button' : undefined}
-      tabIndex={hasMore ? 0 : undefined}
+      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
     >
       <div className="p-3 flex flex-col flex-1 min-h-0">
-        <div className="min-w-0 flex-1 flex flex-col justify-between">
+        <div className="min-w-0 flex-1 flex flex-col">
           <div className="flex items-center gap-1.5 min-w-0">
             <span className="shrink-0 text-base leading-none select-none" aria-hidden>
               {displayIcon}
@@ -161,11 +134,7 @@ const InventoryItemCard: React.FC<{
             <h4 className="text-sm font-semibold text-slate-900 truncate">{item.name}</h4>
           </div>
           {tracked && (
-            <div
-              className="flex items-center gap-1 h-7 mt-1.5"
-              onClick={stopCardToggle}
-              onKeyDown={stopCardToggle}
-            >
+            <div className="flex items-center gap-1 h-7 mt-1.5">
               <button
                 type="button"
                 className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 disabled:opacity-40 touch-manipulation"
@@ -188,40 +157,17 @@ const InventoryItemCard: React.FC<{
               </button>
             </div>
           )}
-          {showHeaderBody && (
-            <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
-              {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
-              {hasDescription && (
-                <p className={bodyTextClass}>
-                  {previewParagraph}
-                  {hasMore && !expanded && restParagraphs.length > 0 && ' …'}
-                </p>
-              )}
-              {notesInHeader && <p className={bodyTextClass}>{item.notes}</p>}
-            </div>
-          )}
+          <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">
+            {item.subtitle && <p className={bodyTextClass}>{item.subtitle}</p>}
+            {paragraphs.map((p, i) => (
+              <p key={i} className={bodyTextClass}>{p}</p>
+            ))}
+            {item.notes?.trim() && (
+              <p className={bodyTextClass}>{item.notes}</p>
+            )}
+          </div>
         </div>
       </div>
-      {expanded && hasMore && (
-        <div className="border-t border-slate-100 p-3 bg-white/80">
-          {restParagraphs.length > 0 && (
-            <div className="space-y-2">
-              {restParagraphs.map((p, i) => (
-                <p key={i} className={bodyTextClass}>
-                  {p}
-                </p>
-              ))}
-            </div>
-          )}
-          {item.notes?.trim() && (
-            <p
-              className={`${bodyTextClass} ${restParagraphs.length > 0 ? 'mt-2 pt-2 border-t border-slate-100' : ''}`}
-            >
-              {item.notes}
-            </p>
-          )}
-        </div>
-      )}
     </div>
   );
 };
