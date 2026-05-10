@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HeartHandshake } from 'lucide-react';
 import type { CharacterSheet, HopeTier, HopeCard } from '../model/character.types';
 import { bodyTextClass } from '../textClasses';
@@ -7,28 +7,59 @@ interface HopeAbilitiesSectionProps {
   character: CharacterSheet;
 }
 
-export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
+const ActiveHopeCard: React.FC<{ card: HopeCard }> = ({ card }) => {
   const lines = card.body.split('\n');
-
-  if (variant === 'active') {
-    return (
-      <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3">
-        <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
-        <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
-          {lines.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-3 opacity-90">
-      <h4 className="text-xs font-semibold text-slate-700">{card.title}</h4>
-      <p className={`mt-0.5 ${bodyTextClass} line-clamp-3`}>{card.body}</p>
+    <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3">
+      <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
+      <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
+        {lines.map((line, i) => (
+          <p key={i}>{line}</p>
+        ))}
+      </div>
     </div>
   );
+};
+
+const InactiveHopeCard: React.FC<{ card: HopeCard }> = ({ card }) => {
+  const [expanded, setExpanded] = useState(false);
+  const lines = card.body.split('\n');
+
+  return (
+    <div
+      className="rounded-lg border border-slate-200 bg-white p-3 opacity-90 cursor-pointer touch-manipulation overflow-hidden"
+      onClick={() => setExpanded((e) => !e)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpanded((v) => !v); }
+      }}
+      role="button"
+      tabIndex={0}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <h4 className="text-xs font-semibold text-slate-700">{card.title}</h4>
+        <span
+          className={`shrink-0 text-slate-400 transition-transform self-center text-xs ${expanded ? 'rotate-180' : ''}`}
+          aria-hidden
+        >
+          ▼
+        </span>
+      </div>
+      {expanded ? (
+        <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
+          {lines.map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </div>
+      ) : (
+        <p className={`mt-0.5 ${bodyTextClass} line-clamp-3`}>{card.body}</p>
+      )}
+    </div>
+  );
+};
+
+export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
+  if (variant === 'active') return <ActiveHopeCard card={card} />;
+  return <InactiveHopeCard card={card} />;
 };
 
 export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {

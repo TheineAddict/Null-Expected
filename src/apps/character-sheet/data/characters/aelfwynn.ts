@@ -22,6 +22,27 @@ const hopeTiers: HopeTier[] = [
       },
     ],
   },
+  {
+    tier: 2,
+    activeCardId: 'branchbreaker-charge',
+    cards: [
+      {
+        id: 'branchbreaker-charge',
+        title: '⚔️ Branchbreaker Charge',
+        body: 'Cost: 1 Hope\nWhen you move at least 10 ft straight toward a creature and hit it:\nAdd +1d8 damage.\nThe target must succeed on a Strength save or be knocked Prone.\nIf rolled with Hope → you may continue moving 10 ft past the target.\n\nOvercharge (🔥 Gain 2 Stress):\nThe World Tree drives you forward.\nDamage becomes +2d8.\nYou may push the target 10 ft before knocking it Prone.\nIf it collides with another creature or object → both take your Rage bonus as damage.\n\n"Move. Or be moved."',
+      },
+      {
+        id: 'rootbound-grip',
+        title: '🛡️ Rootbound Grip',
+        body: 'Cost: 2 Hope\nChoose an ally within 10 ft:\nThey gain Advantage on Strength saves and checks.\nThey cannot be knocked Prone or forcibly moved until your next turn.\nIf rolled with Hope → you may also pull them 5 ft toward you (no reaction needed).\n\nOvercharge (🔥 Gain 2 Stress):\nRoots surge beneath the ground.\nFor 1 round:\nAllies within 10 ft gain +2 AC vs opportunity attacks.\nThe first time each ally would be moved → they may ignore it completely.\n\n"Stay close. The ground listens to me."',
+      },
+      {
+        id: 'weight-of-the-mountain',
+        title: '💬 Weight of the Mountain',
+        body: 'Cost: 1 Hope\nYou make your presence undeniable — through posture, silence, or force.\nGain Advantage on Intimidation.\nIf the target is already uncertain, they hesitate (no aggressive action for 1 beat / round unless provoked).\nIf rolled with Hope → you may also force eye contact / attention, preventing them from ignoring you in the scene.\n\nOvercharge (🔥 Gain 2 Stress):\nYou become something ancient.\nCreatures of lower CR must make a Wisdom save or become Frightened until end of their next turn.\nIn negotiation: hostility may drop one step if intimidation makes sense.\n\n"I am not raising my voice. I am lowering yours."',
+      },
+    ],
+  },
 ];
 
 export const aelfwynn: CharacterSheet = {
