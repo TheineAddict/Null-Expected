@@ -305,26 +305,6 @@ export const aelfwynn: CharacterSheet = {
         'Fly 50 ft. Carries up to 400 lb; over 200 lb, Fly 30 ft.\n\nMagic action to make it hover and ride it. Stops hovering when you land or stop riding it. Magic action to send/call it within 1 mile.',
       notes: 'Flight, movement, utility',
     },
-    {
-      id: 'potion-of-healing-greater',
-      name: 'Potion of Healing (Greater)',
-      icon: '❤️‍🩹',
-      quantity: 1,
-      subtitle: 'Potion, uncommon',
-      description:
-        'Regain 4d4 + 4 HP.\n\nBonus Action to drink or administer.',
-      notes: 'Healing, consumable',
-    },
-    {
-      id: 'potion-of-comprehension',
-      name: 'Potion of Comprehension',
-      icon: '🧪',
-      quantity: 1,
-      subtitle: 'Potion',
-      description:
-        'Gain Comprehend Languages for 1 hour.\n\nUnderstand spoken and written language; written text requires touching it and takes about 1 minute per page.',
-      notes: 'Language, utility, consumable',
-    },
   ],
 
   defenses: {
