@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Save, Activity, Eye } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import { deriveSaves, deriveSkills, formatModifier, resolveProficiencyBonus, computePassive } from '../model/derive';
-import { bodyTextClass } from '../textClasses';
+import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
 
 interface AbilitySavesSkillsSectionProps {
   character: CharacterSheet;
@@ -21,13 +21,13 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
   const insight = skills.find((s) => s.id === 'insight');
 
   return (
-    <section id="saves-skills" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
-      <p className={bodyTextClass}>For checks, roll d20 + modifier.</p>
-      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+    <section id="saves-skills" className={sectionClass}>
+      <h2 className={sectionTitleClass}>
         <Activity className="h-4 w-4 text-indigo-500" />
         Saves, skills & passives
       </h2>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className={sectionDividerClass} aria-hidden />
+      <p className={bodyTextClass}>For checks, roll d20 + modifier.</p>
 
       <div className="flex flex-col space-y-4">
         <div>
@@ -39,7 +39,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
             {saves.map((save) => (
               <div
                 key={save.ability}
-                className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0"
+                className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2.5 flex flex-col justify-center min-w-0"
               >
                 <span className="text-xs font-medium text-slate-700 truncate">
                   {save.ability}
@@ -69,7 +69,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
             {skillsToShow.map((skill) => (
               <div
                 key={skill.id}
-                className={`h-14 w-full rounded-lg border border-slate-200 px-2 flex flex-col justify-center min-w-0 ${
+                className={`h-14 w-full rounded-lg border border-slate-200 px-2.5 flex flex-col justify-center min-w-0 ${
                   skill.expertise
                     ? 'bg-indigo-100 border-indigo-300'
                     : skill.proficient
@@ -99,7 +99,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
           </h3>
           <p className={`${bodyTextClass} mb-2`}>Passives: always-on senses - usually 10 + your skill bonus.</p>
           <div className="grid grid-cols-3 gap-2">
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2.5 flex flex-col justify-center min-w-0">
               <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Perception">
                 <span aria-hidden className="shrink-0">👁️</span>
                 <span className="truncate">Passive Perception</span>
@@ -108,7 +108,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
                 {perception ? computePassive(perception.modifier) : 10}
               </span>
             </div>
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2.5 flex flex-col justify-center min-w-0">
               <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Investigation">
                 <span aria-hidden className="shrink-0">🔎</span>
                 <span className="truncate">Passive Investigation</span>
@@ -117,7 +117,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
                 {investigation ? computePassive(investigation.modifier) : 10}
               </span>
             </div>
-            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2 flex flex-col justify-center min-w-0">
+            <div className="h-12 rounded-lg border border-slate-200 bg-slate-50 px-2.5 flex flex-col justify-center min-w-0">
               <span className="text-xs text-slate-500 truncate flex items-center gap-1 min-w-0" title="Passive Insight">
                 <span aria-hidden className="shrink-0">🧠</span>
                 <span className="truncate">Passive Insight</span>

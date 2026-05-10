@@ -4,6 +4,7 @@ import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { ThirdsTracker, InspirationTracker } from './ResourcesSection';
 import { HopeAbilityTiers } from './HopeAbilitiesSection';
+import { sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
 
 interface HopeSectionProps {
   character: CharacterSheet;
@@ -13,9 +14,9 @@ interface HopeSectionProps {
 
 export const HopeSection: React.FC<HopeSectionProps> = ({ character, state, actions }) => {
   return (
-    <section id="hope" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
+    <section id="hope" className={sectionClass}>
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+        <h2 className={sectionTitleClass}>
           <HeartHandshake className="h-4 w-4 text-indigo-500" />
           Hope
         </h2>
@@ -28,9 +29,9 @@ export const HopeSection: React.FC<HopeSectionProps> = ({ character, state, acti
           Reset
         </button>
       </div>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className={sectionDividerClass} aria-hidden />
 
-      <div className="grid gap-2 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         <ThirdsTracker
           label="Hope"
           emoji="✨"

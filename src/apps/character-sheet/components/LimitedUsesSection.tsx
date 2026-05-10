@@ -1,7 +1,7 @@
 import React from 'react';
 import type { CharacterSheet, LimitedUseResource } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
-import { bodyTextClass } from '../textClasses';
+import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass, innerCardClass } from '../textClasses';
 
 interface LimitedUsesSectionProps {
   character: CharacterSheet;
@@ -41,7 +41,7 @@ const LimitedUseRow: React.FC<{
   const paragraphs = Array.isArray(desc) ? desc : desc ? [desc] : [];
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50/50 p-3 flex items-start justify-between gap-3">
+    <div className={`${innerCardClass} flex items-start justify-between gap-3`}>
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <span className="text-sm font-semibold text-slate-900 truncate">{resource.name}</span>
@@ -86,9 +86,9 @@ export const LimitedUsesSection: React.FC<LimitedUsesSectionProps> = ({ characte
   if (!character.limitedUses?.length) return null;
 
   return (
-    <section id="limited-uses" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 lg:flex-1 lg:min-h-0">
-      <h2 className="text-base font-semibold leading-tight text-slate-900">Limited Uses</h2>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+    <section id="limited-uses" className={`${sectionClass} lg:flex-1 lg:min-h-0`}>
+      <h2 className={sectionTitleClass}>Limited Uses</h2>
+      <div className={sectionDividerClass} aria-hidden />
       <div className="flex flex-col gap-3">
         {character.limitedUses.map((res) => (
           <LimitedUseRow

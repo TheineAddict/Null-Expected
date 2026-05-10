@@ -24,13 +24,13 @@ export const QuickActionsSection: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 py-2 border-b border-slate-100 pb-3">
       {LINKS.map(({ label, id }) => (
         <button
           key={id}
           type="button"
           onClick={() => scrollTo(id)}
-          className="text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full px-2.5 py-1 touch-manipulation"
+          className="h-7 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full px-2.5 flex items-center touch-manipulation"
         >
           {label}
         </button>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import type { CharacterSheet, Trait } from '../model/character.types';
-import { bodyTextClass } from '../textClasses';
+import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
 
 interface TraitsSectionProps {
   character: CharacterSheet;
@@ -13,7 +13,7 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
 
   return (
     <div
-      className={`rounded-lg border border-slate-100 bg-slate-50/80 overflow-hidden ${
+      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden ${
         hasMore ? 'cursor-pointer touch-manipulation' : ''
       }`}
       onClick={hasMore ? () => setExpanded((e) => !e) : undefined}
@@ -30,7 +30,7 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
       role={hasMore ? 'button' : undefined}
       tabIndex={hasMore ? 0 : undefined}
     >
-      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex items-start justify-between gap-2">
+      <div className="p-3 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5 flex-wrap">
             <h4 className="text-xs font-semibold text-slate-900">{trait.name}</h4>
@@ -46,7 +46,7 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
         </div>
         {hasMore && (
           <span
-            className={`shrink-0 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
+            className={`shrink-0 text-slate-400 transition-transform self-center ${expanded ? 'rotate-180' : ''}`}
             aria-hidden
           >
             ▼
@@ -54,7 +54,7 @@ const TraitCard: React.FC<{ trait: Trait }> = ({ trait }) => {
         )}
       </div>
       {expanded && hasMore && (
-        <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80 space-y-2">
+        <div className="border-t border-slate-100 p-3 bg-white/80 space-y-2">
           {trait.details && (
             <p className={bodyTextClass}>{trait.details}</p>
           )}
@@ -76,13 +76,13 @@ export const TraitsSection: React.FC<TraitsSectionProps> = ({ character }) => {
   if (traits.length === 0) return null;
 
   return (
-    <section id="traits" className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3">
-      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+    <section id="traits" className={sectionClass}>
+      <h2 className={sectionTitleClass}>
         <Sparkles className="h-4 w-4 text-violet-500" />
         Traits
       </h2>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      <div className="grid gap-2 sm:grid-cols-2">
+      <div className={sectionDividerClass} aria-hidden />
+      <div className="grid gap-3 sm:grid-cols-2">
         {traits.map((trait) => (
           <TraitCard key={trait.id} trait={trait} />
         ))}

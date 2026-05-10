@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Backpack } from 'lucide-react';
 import type { CharacterSheet, CoinDenom, CoinPurse, InventoryItem } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
-import { bodyTextClass } from '../textClasses';
+import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
 
 interface InventorySectionProps {
   character: CharacterSheet;
@@ -47,9 +47,9 @@ const MoneyCard: React.FC<{
 
   return (
     <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
+      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
     >
-      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex flex-col flex-1 min-h-0">
+      <div className="p-3 flex flex-col flex-1 min-h-0">
         <div className="flex items-center gap-1.5 min-w-0 shrink-0">
           <span className="shrink-0 text-base leading-none select-none" aria-hidden>
             💰
@@ -80,19 +80,19 @@ const MoneyCard: React.FC<{
                   <div className="flex items-center gap-0.5">
                     <button
                       type="button"
-                      className="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 disabled:opacity-40 touch-manipulation"
+                      className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 disabled:opacity-40 touch-manipulation"
                       onClick={() => onAdjustCoin(denom, -1)}
                       disabled={value <= 0}
                       aria-label={`Decrease ${ariaLabel}`}
                     >
                       −
                     </button>
-                    <div className="min-w-[1.5rem] h-6 px-0.5 rounded bg-slate-800 text-white flex items-center justify-center text-[0.65rem] font-semibold tabular-nums">
+                    <div className="min-w-[1.75rem] h-7 px-0.5 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-semibold tabular-nums">
                       {value}
                     </div>
                     <button
                       type="button"
-                      className="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 touch-manipulation"
+                      className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 touch-manipulation"
                       onClick={() => onAdjustCoin(denom, 1)}
                       aria-label={`Increase ${ariaLabel}`}
                     >
@@ -144,7 +144,7 @@ const InventoryItemCard: React.FC<{
 
   return (
     <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/80 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H} ${
+      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H} ${
         hasMore ? 'cursor-pointer touch-manipulation' : ''
       }`}
       onClick={hasMore ? toggle : undefined}
@@ -152,8 +152,8 @@ const InventoryItemCard: React.FC<{
       role={hasMore ? 'button' : undefined}
       tabIndex={hasMore ? 0 : undefined}
     >
-      <div className="px-2.5 py-2 sm:px-3 sm:py-2 flex flex-col flex-1 min-h-0">
-        <div className="min-w-0 flex-1 flex flex-col">
+      <div className="p-3 flex flex-col flex-1 min-h-0">
+        <div className="min-w-0 flex-1 flex flex-col justify-between">
           <div className="flex items-center gap-1.5 min-w-0">
             <span className="shrink-0 text-base leading-none select-none" aria-hidden>
               {displayIcon}
@@ -203,7 +203,7 @@ const InventoryItemCard: React.FC<{
         </div>
       </div>
       {expanded && hasMore && (
-        <div className="border-t border-slate-100 px-2.5 py-2 sm:px-3 sm:py-2 bg-white/80">
+        <div className="border-t border-slate-100 p-3 bg-white/80">
           {restParagraphs.length > 0 && (
             <div className="space-y-2">
               {restParagraphs.map((p, i) => (
@@ -232,13 +232,13 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ character, s
   return (
     <section
       id="inventory"
-      className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 scroll-mt-4"
+      className={`${sectionClass} scroll-mt-4`}
     >
-      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+      <h2 className={sectionTitleClass}>
         <Backpack className="h-4 w-4 text-emerald-600" />
         Inventory
       </h2>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
+      <div className={sectionDividerClass} aria-hidden />
       {items.length === 0 && (
         <p className={bodyTextClass}>
           No custom items yet. Add objects to the <code className="text-xs bg-slate-100 px-1 rounded">inventory</code>{' '}
@@ -246,7 +246,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ character, s
           <code className="text-xs bg-slate-100 px-1 rounded">src/apps/character-sheet/data/characters/</code>.
         </p>
       )}
-      <div className="grid gap-2 sm:grid-cols-2 items-stretch">
+      <div className="grid gap-3 sm:grid-cols-2 items-stretch">
         {items.map((item) => {
           const tracked = isTrackedQuantity(item);
           const sheetDefault = tracked ? Math.max(0, Math.floor(item.quantity)) : 0;

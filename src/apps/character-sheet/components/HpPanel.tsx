@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, ShieldPlus } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
-import { bodyTextClass } from '../textClasses';
+import { bodyTextClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
 import { HitDiceSection } from './HitDiceSection';
 
 interface HpPanelProps {
@@ -25,14 +25,14 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
         isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white'
       }`}
     >
-      <h2 className="text-base font-semibold leading-tight text-slate-900 flex items-center gap-1.5">
+      <h2 className={sectionTitleClass}>
         <Heart className="h-4 w-4 text-rose-500" />
         Hit Points
       </h2>
-      <div className="border-b border-slate-100 mt-2 mb-3" aria-hidden />
-      <div className="grid grid-cols-4 gap-4">
+      <div className={sectionDividerClass} aria-hidden />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 items-start">
         <div className="flex flex-col items-center gap-1.5">
-          <div className="flex items-center justify-center gap-1.5">
+          <div className="min-h-[1.25rem] flex items-center justify-center gap-1.5">
             <span className="text-xs text-slate-500">HP</span>
             <span className="text-[0.65rem] text-slate-400">max {sheetMax}</span>
           </div>
@@ -57,7 +57,7 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
           </div>
         </div>
         <div className="flex flex-col items-center gap-1.5">
-          <span className="text-xs text-slate-500 flex items-center gap-0.5">
+          <span className="min-h-[1.25rem] text-xs text-slate-500 flex items-center gap-0.5">
             <ShieldPlus className="h-3 w-3" /> Temp
           </span>
           <div className="flex items-center gap-2 h-11">
@@ -80,8 +80,8 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
             </button>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-xs text-slate-500">Death</span>
+        <div className="flex flex-col items-center gap-1.5">
+          <span className="min-h-[1.25rem] text-xs text-slate-500 flex items-center">Death</span>
           <div className="flex gap-2">
             <div className="flex items-center gap-0.5">
               <span className="text-[0.6rem] text-emerald-600">✓</span>
@@ -116,10 +116,12 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
               ))}
             </div>
           </div>
-          <p className={`${bodyTextClass} text-center`}>10 or higher is a success.</p>
-          <p className={`${bodyTextClass} text-center`}>
-            Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
-          </p>
+          <div className="mt-1.5 space-y-0.5">
+            <p className={`${bodyTextClass} text-center`}>10 or higher is a success.</p>
+            <p className={`${bodyTextClass} text-center`}>
+              Nat 20: you regain 1 HP. Nat 1: counts as 2 failures.
+            </p>
+          </div>
         </div>
         <HitDiceSection state={state} actions={actions} />
       </div>
