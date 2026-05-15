@@ -34,7 +34,7 @@ Most enterprise AI products are not just “a model”. They are systems. A GenA
 
 That means the Test Manager still needs the usual QA muscles: test strategy, traceability, risk assessment, defect triage, release readiness, stakeholder reporting, UAT coordination, and governance. The difference is that the evidence now has to cover both deterministic software behaviour and probabilistic AI behaviour.
 
-OpenAI’s evaluation guidance is explicit about this: generative AI is variable, the same input may produce different outputs, and traditional software testing methods are not sufficient on their own for AI architectures. It also states that evals should be combined with human judgment, not treated as self-contained truth. :contentReference[oaicite:1]{index=1}
+OpenAI’s evaluation guidance is explicit about this: generative AI is variable, the same input may produce different outputs, and traditional software testing methods are not sufficient on their own for AI architectures. It also states that evals should be combined with human judgment, not treated as self-contained truth.
 
 That is the seam where the AI Test Manager role becomes valuable.
 
@@ -46,9 +46,9 @@ The job descriptions are getting clearer. They ask for AI/ML testing, GenAI vali
 
 That combination is not accidental. It reflects the fact that AI delivery risk does not sit neatly inside one team.
 
-NIST’s AI Risk Management Framework positions AI risk management as something organisations need across the design, development, deployment, and use of AI systems, with the goal of promoting trustworthy and responsible AI. Its Generative AI profile builds on that for GenAI-specific risks and lifecycle considerations. :contentReference[oaicite:2]{index=2}
+NIST’s AI Risk Management Framework positions AI risk management as something organisations need across the design, development, deployment, and use of AI systems, with the goal of promoting trustworthy and responsible AI. Its Generative AI profile builds on that for GenAI-specific risks and lifecycle considerations.
 
-The EU AI Act also makes the direction of travel hard to ignore. It defines a risk-based approach, includes strict obligations for high-risk AI systems, and lists items such as risk assessment, dataset quality, logging, documentation, clear information to deployers, human oversight, robustness, cybersecurity, and accuracy. :contentReference[oaicite:3]{index=3}
+The EU AI Act also makes the direction of travel hard to ignore. It defines a risk-based approach, includes strict obligations for high-risk AI systems, and lists items such as risk assessment, dataset quality, logging, documentation, clear information to deployers, human oversight, robustness, cybersecurity, and accuracy.
 
 For QA people, this should sound familiar.
 
@@ -127,7 +127,7 @@ It has not.
 
 The AI feature still needs to load. Buttons still need to work. API contracts still need to behave. Permissions still need to be enforced. The user still needs the right result in the right place. Regression still matters. Accessibility still matters. Compatibility still matters. Performance still matters.
 
-Selenium remains a broad browser automation project built around automating web browsers and supporting interchangeable execution across major browsers. Playwright is now explicitly positioned not only for testing, but also for scripting and AI agent workflows, including structured accessibility snapshots through its MCP server. :contentReference[oaicite:4]{index=4}
+Selenium remains a broad browser automation project built around automating web browsers and supporting interchangeable execution across major browsers. Playwright is now explicitly positioned not only for testing, but also for scripting and AI agent workflows, including structured accessibility snapshots through its MCP server.
 
 That is interesting because the boundary between test automation and agent automation is becoming less clean. The same product surfaces that QA teams used to automate for regression may now also be used by AI agents to navigate workflows.
 
@@ -145,11 +145,11 @@ LLM evals are one of the most important new practices for AI-enabled delivery.
 
 They let teams compare prompts, models, retrieval strategies, tool-use logic, and workflow changes against known scenarios. They can help detect regressions when a prompt changes, when a model is upgraded, when documents are re-indexed, or when an agent is given access to a new tool.
 
-Tools like promptfoo are designed for evaluating and red-teaming LLM applications, with support for prompts, models, RAG pipelines, metrics, CI/CD usage, and side-by-side comparisons. :contentReference[oaicite:5]{index=5}
+Tools like promptfoo are designed for evaluating and red-teaming LLM applications, with support for prompts, models, RAG pipelines, metrics, CI/CD usage, and side-by-side comparisons.
 
-LangSmith supports offline evaluation before shipping and online evaluation against production interactions, with evaluators that can include human review, code rules, LLM-as-judge, and pairwise comparison. :contentReference[oaicite:6]{index=6}
+LangSmith supports offline evaluation before shipping and online evaluation against production interactions, with evaluators that can include human review, code rules, LLM-as-judge, and pairwise comparison.
 
-Arize Phoenix focuses on AI observability and evaluation, including traces, datasets, experiments, prompt iteration, and scoring outputs to identify failures and regressions. :contentReference[oaicite:7]{index=7}
+Arize Phoenix focuses on AI observability and evaluation, including traces, datasets, experiments, prompt iteration, and scoring outputs to identify failures and regressions.
 
 These tools are genuinely useful. They also need careful handling.
 
@@ -179,7 +179,7 @@ Agentic systems raise the risk level because they do more than generate a respon
 
 They choose. They route. They call tools. They retrieve data. They may update records, create tickets, send messages, trigger workflows, or make recommendations that users treat as decisions.
 
-OpenAI’s evaluation guidance separates simpler interactions from workflows, single-agent architectures, and multi-agent architectures, and identifies new evaluation points such as tool selection and whether the agent calls a tool with the correct arguments. :contentReference[oaicite:8]{index=8}
+OpenAI’s evaluation guidance separates simpler interactions from workflows, single-agent architectures, and multi-agent architectures, and identifies new evaluation points such as tool selection and whether the agent calls a tool with the correct arguments.
 
 That maps directly to QA concerns.
 
@@ -217,7 +217,7 @@ That is good. It is also dangerously easy to make meaningless.
 
 A team can run a bias tool and still not understand whether the test population reflects the affected users. A team can generate an explainability chart and still not know whether the business can act on it. A team can apply a guardrail and still leak sensitive information through a retrieval path. A team can write “human in the loop” and still leave the human with no usable evidence, no decision rights, and no time to intervene.
 
-ISTQB’s AI Testing certification explicitly covers testing AI-based systems, including machine learning and generative AI systems, and calls out characteristics such as probabilistic behaviour, non-determinism, and reliance on data. Its Generative AI testing certification covers use of LLMs across the test process and includes risks such as hallucinations, bias, security, and privacy. :contentReference[oaicite:9]{index=9}
+ISTQB’s AI Testing certification explicitly covers testing AI-based systems, including machine learning and generative AI systems, and calls out characteristics such as probabilistic behaviour, non-determinism, and reliance on data. Its Generative AI testing certification covers use of LLMs across the test process and includes risks such as hallucinations, bias, security, and privacy.
 
 That framing is useful because it keeps AI testing connected to both engineering reality and professional testing practice.
 
@@ -237,7 +237,7 @@ It is also behaviour.
 
 Prompt injection, jailbreaks, insecure output handling, sensitive information disclosure, overreliance, vector database leakage, tool misuse, and excessive agency are product risks. They may show up through normal user interaction, not just through classic penetration testing routes.
 
-OWASP’s Top 10 for LLM Applications is useful because it translates LLM-specific risks into a security language teams can work with. It includes categories such as prompt injection, sensitive information disclosure, supply chain issues, improper output handling, excessive agency, and vector and embedding weaknesses. :contentReference[oaicite:10]{index=10}
+OWASP’s Top 10 for LLM Applications is useful because it translates LLM-specific risks into a security language teams can work with. It includes categories such as prompt injection, sensitive information disclosure, supply chain issues, improper output handling, excessive agency, and vector and embedding weaknesses.
 
 This is another area where QA and security need to work closely rather than sequentially.
 
