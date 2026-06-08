@@ -1,5 +1,5 @@
 ---
-title: "Versatility Is Not a Lack of Direction"
+title: "The QA Career Path Nobody Draws on the Org Chart"
 excerpt: "Not every QA career fits the automation-or-management ladder. Sometimes the value is in cross-functional quality judgement."
 tags: ["career-advice", "quality-mindset", "featured", "unpopular-opinion"]
 author: "author1"
@@ -7,8 +7,6 @@ date: "2026-06-08"
 readTime: "9 min read"
 slug: "qa-career-path-nobody-draws-on-the-org-chart"
 ---
-
-# The QA Career Path Nobody Draws on the Org Chart
 
 ## A career transition that exposed a bigger question
 
