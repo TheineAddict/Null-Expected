@@ -35,7 +35,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
             <Save className="h-3.5 w-3.5" /> Saves
           </h3>
           <p className={`${bodyTextClass} mb-2`}>Saves: resist harmful effects like spells, traps, poison, and other threats.</p>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
             {saves.map((save) => (
               <div
                 key={save.ability}
@@ -65,7 +65,7 @@ export const AbilitySavesSkillsSection: React.FC<AbilitySavesSkillsSectionProps>
             </button>
           </div>
           <p className={`${bodyTextClass} mb-2`}>Skills: ability checks for what you do - sneak, notice, persuade, recall, etc.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
             {skillsToShow.map((skill) => (
               <div
                 key={skill.id}

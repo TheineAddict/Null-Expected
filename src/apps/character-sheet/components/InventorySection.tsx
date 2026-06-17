@@ -3,6 +3,7 @@ import { Backpack } from 'lucide-react';
 import type { CharacterSheet, CoinDenom, CoinPurse, InventoryItem } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
+import { Counter } from './ui/Counter';
 
 interface InventorySectionProps {
   character: CharacterSheet;
@@ -36,9 +37,6 @@ const COIN_DENOMS: { denom: CoinDenom; label: string; ariaLabel: string }[] = [
   { denom: 'cp', label: 'CP', ariaLabel: 'Copper pieces (CP)' },
 ];
 
-/** Shared min height so Money lines up with typical item cards in the grid. */
-const INVENTORY_CARD_MIN_H = 'min-h-[11rem]';
-
 const MoneyCard: React.FC<{
   coinPurse: CoinPurse;
   onAdjustCoin: (denom: CoinDenom, delta: number) => void;
@@ -46,9 +44,7 @@ const MoneyCard: React.FC<{
   const stop = (e: React.SyntheticEvent) => e.stopPropagation();
 
   return (
-    <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
-    >
+    <div className="rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col">
       <div className="p-3 flex flex-col flex-1 min-h-0">
         <div className="flex items-center gap-1.5 min-w-0 shrink-0">
           <span className="shrink-0 text-base leading-none select-none" aria-hidden>
@@ -77,28 +73,15 @@ const MoneyCard: React.FC<{
                   >
                     {label}
                   </span>
-                  <div className="flex items-center gap-0.5">
-                    <button
-                      type="button"
-                      className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 disabled:opacity-40 touch-manipulation"
-                      onClick={() => onAdjustCoin(denom, -1)}
-                      disabled={value <= 0}
-                      aria-label={`Decrease ${ariaLabel}`}
-                    >
-                      −
-                    </button>
-                    <div className="min-w-[1.75rem] h-7 px-0.5 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-semibold tabular-nums">
-                      {value}
-                    </div>
-                    <button
-                      type="button"
-                      className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm leading-none active:bg-slate-200 touch-manipulation"
-                      onClick={() => onAdjustCoin(denom, 1)}
-                      aria-label={`Increase ${ariaLabel}`}
-                    >
-                      +
-                    </button>
-                  </div>
+                  <Counter
+                    value={value}
+                    onDecrement={() => onAdjustCoin(denom, -1)}
+                    onIncrement={() => onAdjustCoin(denom, 1)}
+                    decrementDisabled={value <= 0}
+                    decrementLabel={`Decrease ${ariaLabel}`}
+                    incrementLabel={`Increase ${ariaLabel}`}
+                    size="sm"
+                  />
                 </div>
               );
             })}
@@ -122,9 +105,7 @@ const InventoryItemCard: React.FC<{
   const displayIcon = resolveInventoryIcon(item);
 
   return (
-    <div
-      className={`rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col ${INVENTORY_CARD_MIN_H}`}
-    >
+    <div className="rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full flex flex-col">
       <div className="p-3 flex flex-col flex-1 min-h-0">
         <div className="min-w-0 flex-1 flex flex-col">
           <div className="flex items-center gap-1.5 min-w-0">
@@ -134,27 +115,16 @@ const InventoryItemCard: React.FC<{
             <h4 className="text-sm font-semibold text-slate-900 truncate">{item.name}</h4>
           </div>
           {tracked && (
-            <div className="flex items-center gap-1 h-7 mt-1.5">
-              <button
-                type="button"
-                className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 disabled:opacity-40 touch-manipulation"
-                onClick={() => onAdjustQuantity(-1)}
-                disabled={quantityCount <= 0}
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-              <div className="min-w-[1.75rem] h-7 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-semibold tabular-nums">
-                {quantityCount}
-              </div>
-              <button
-                type="button"
-                className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation"
-                onClick={() => onAdjustQuantity(1)}
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
+            <div className="mt-1.5">
+              <Counter
+                value={quantityCount}
+                onDecrement={() => onAdjustQuantity(-1)}
+                onIncrement={() => onAdjustQuantity(1)}
+                decrementDisabled={quantityCount <= 0}
+                decrementLabel={`Decrease quantity of ${item.name}`}
+                incrementLabel={`Increase quantity of ${item.name}`}
+                size="sm"
+              />
             </div>
           )}
           <div className="mt-2 border-t border-slate-100 pt-2 space-y-2">

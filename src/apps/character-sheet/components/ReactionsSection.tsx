@@ -1,29 +1,27 @@
 import React from 'react';
 import { Reply } from 'lucide-react';
 import type { CharacterSheet, Reaction } from '../model/character.types';
-import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
+import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass, innerCardClass } from '../textClasses';
 
 interface ReactionsSectionProps {
   character: CharacterSheet;
 }
 
 const ReactionCard: React.FC<{ reaction: Reaction }> = ({ reaction }) => (
-  <div className="rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden h-full">
-    <div className="p-3">
-      <h4 className="text-sm font-semibold text-slate-900">{reaction.name}</h4>
+  <div className={innerCardClass}>
+    <h4 className="text-sm font-semibold text-slate-900">{reaction.name}</h4>
+    <p className={`mt-0.5 ${bodyTextClass}`}>
+      <span className="font-medium text-slate-700">Trigger:</span> {reaction.trigger}
+    </p>
+    {reaction.roll && (
       <p className={`mt-0.5 ${bodyTextClass}`}>
-        <span className="font-medium text-slate-700">Trigger:</span> {reaction.trigger}
+        <span className="font-medium text-slate-700">Roll:</span> {reaction.roll}
       </p>
-      {reaction.roll && (
-        <p className={`mt-0.5 ${bodyTextClass}`}>
-          <span className="font-medium text-slate-700">Roll:</span> {reaction.roll}
-        </p>
-      )}
-      <p className={`mt-0.5 ${bodyTextClass}`}>{reaction.effect}</p>
-      {reaction.notes && (
-        <p className={`mt-0.5 ${bodyTextClass}`}>{reaction.notes}</p>
-      )}
-    </div>
+    )}
+    <p className={`mt-0.5 ${bodyTextClass}`}>{reaction.effect}</p>
+    {reaction.notes && (
+      <p className={`mt-0.5 ${bodyTextClass}`}>{reaction.notes}</p>
+    )}
   </div>
 );
 

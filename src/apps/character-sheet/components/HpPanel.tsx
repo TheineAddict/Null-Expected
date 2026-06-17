@@ -1,8 +1,9 @@
 import React from 'react';
-import { Heart, ShieldPlus } from 'lucide-react';
+import { Heart, ShieldPlus, Check, X } from 'lucide-react';
 import type { CharacterSheet } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass, sectionTitleClass, sectionDividerClass } from '../textClasses';
+import { Counter } from './ui/Counter';
 import { HitDiceSection } from './HitDiceSection';
 
 interface HpPanelProps {
@@ -21,8 +22,8 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
   return (
     <section
       id="hp"
-      className={`rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col space-y-3 ${
-        isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white'
+      className={`rounded-xl shadow-sm border p-4 sm:p-5 flex flex-col space-y-3 scroll-mt-4 ${
+        isMaxAboveSheet ? 'bg-red-50/80 border-red-200' : 'bg-white border-slate-200'
       }`}
     >
       <h2 className={sectionTitleClass}>
@@ -36,55 +37,34 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
             <span className="text-xs text-slate-500">HP</span>
             <span className="text-[0.65rem] text-slate-400">max {sheetMax}</span>
           </div>
-          <div className="flex items-center gap-2 h-11">
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustCurrentHp(-1)}
-            >
-              −
-            </button>
-            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-800 text-white flex items-center justify-center text-xl font-semibold tabular-nums">
-              {current}
-            </div>
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 font-semibold flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustCurrentHp(1)}
-            >
-              +
-            </button>
-          </div>
+          <Counter
+            value={current}
+            onDecrement={() => actions.adjustCurrentHp(-1)}
+            onIncrement={() => actions.adjustCurrentHp(1)}
+            decrementLabel="Decrease HP"
+            incrementLabel="Increase HP"
+            size="lg"
+          />
         </div>
         <div className="flex flex-col items-center gap-1.5">
           <span className="min-h-[1.25rem] text-xs text-slate-500 flex items-center gap-0.5">
             <ShieldPlus className="h-3 w-3" /> Temp
           </span>
-          <div className="flex items-center gap-2 h-11">
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustTempHp(-1)}
-            >
-              −
-            </button>
-            <div className="min-w-[3rem] h-11 rounded-lg bg-slate-50 text-slate-800 flex items-center justify-center text-xl font-semibold tabular-nums border border-slate-200">
-              {temp}
-            </div>
-            <button
-              type="button"
-              className="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 touch-manipulation shrink-0"
-              onClick={() => actions.adjustTempHp(1)}
-            >
-              +
-            </button>
-          </div>
+          <Counter
+            value={temp}
+            onDecrement={() => actions.adjustTempHp(-1)}
+            onIncrement={() => actions.adjustTempHp(1)}
+            decrementLabel="Decrease temp HP"
+            incrementLabel="Increase temp HP"
+            size="lg"
+            variant="light"
+          />
         </div>
         <div className="flex flex-col items-center gap-1.5">
           <span className="min-h-[1.25rem] text-xs text-slate-500 flex items-center">Death</span>
           <div className="flex gap-2">
             <div className="flex items-center gap-0.5">
-              <span className="text-[0.6rem] text-emerald-600">✓</span>
+              <Check className="h-3 w-3 text-emerald-600" aria-hidden />
               {[0, 1, 2].map((idx) => (
                 <button
                   key={idx}
@@ -93,14 +73,16 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
                     const next = idx + 1 === state.deathSaves.successes ? idx : idx + 1;
                     actions.setDeathSaves(next, state.deathSaves.failures);
                   }}
-                  className={`w-5 h-5 rounded-full border-2 touch-manipulation ${
+                  aria-label={`Death save success ${idx + 1}`}
+                  aria-pressed={state.deathSaves.successes > idx}
+                  className={`w-5 h-5 rounded-full border-2 touch-manipulation focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 ${
                     state.deathSaves.successes > idx ? 'bg-emerald-500 border-emerald-600' : 'border-emerald-300 bg-white'
                   }`}
                 />
               ))}
             </div>
             <div className="flex items-center gap-0.5">
-              <span className="text-[0.6rem] text-rose-600">✗</span>
+              <X className="h-3 w-3 text-rose-600" aria-hidden />
               {[0, 1, 2].map((idx) => (
                 <button
                   key={idx}
@@ -109,7 +91,9 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
                     const next = idx + 1 === state.deathSaves.failures ? idx : idx + 1;
                     actions.setDeathSaves(state.deathSaves.successes, next);
                   }}
-                  className={`w-5 h-5 rounded-full border-2 touch-manipulation ${
+                  aria-label={`Death save failure ${idx + 1}`}
+                  aria-pressed={state.deathSaves.failures > idx}
+                  className={`w-5 h-5 rounded-full border-2 touch-manipulation focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-1 ${
                     state.deathSaves.failures > idx ? 'bg-rose-500 border-rose-600' : 'border-rose-300 bg-white'
                   }`}
                 />
@@ -128,4 +112,3 @@ export const HpPanel: React.FC<HpPanelProps> = ({ character, state, actions }) =
     </section>
   );
 };
-

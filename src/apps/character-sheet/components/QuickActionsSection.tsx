@@ -30,7 +30,7 @@ export const QuickActionsSection: React.FC = () => {
           key={id}
           type="button"
           onClick={() => scrollTo(id)}
-          className="h-7 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full px-2.5 flex items-center touch-manipulation"
+          className="h-8 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full px-3 flex items-center touch-manipulation"
         >
           {label}
         </button>

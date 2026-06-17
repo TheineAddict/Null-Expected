@@ -22,7 +22,7 @@ export const HealingPotionsSection: React.FC = () => (
     <p className={bodyTextClass}>
       Use as a Bonus Action: drink a potion yourself or administer it to another creature within 5 ft.
     </p>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {POTIONS.map(({ name, dice, icon }) => (
         <div
           key={name}

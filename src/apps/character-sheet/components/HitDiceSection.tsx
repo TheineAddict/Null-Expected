@@ -28,12 +28,13 @@ export const HitDiceSection: React.FC<HitDiceSectionProps> = ({ state, actions }
                 key={`d12-${i}`}
                 type="button"
                 onClick={() => actions.toggleHitDie(i)}
-                className={`w-5 h-5 rounded border transition-colors touch-manipulation ${
+                aria-label={`d12 #${i + 1}${isSpent(i) ? ' (spent)' : ''}`}
+                aria-pressed={isSpent(i)}
+                className={`w-6 h-6 rounded border transition-colors touch-manipulation focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                   isSpent(i)
                     ? 'bg-slate-300 border-slate-400'
                     : 'bg-white border-slate-300 hover:bg-slate-50'
                 }`}
-                title={`d12 #${i + 1}`}
               />
             ))}
           </div>
@@ -46,12 +47,13 @@ export const HitDiceSection: React.FC<HitDiceSectionProps> = ({ state, actions }
                 key={`d10-${i}`}
                 type="button"
                 onClick={() => actions.toggleHitDie(d12Count + i)}
-                className={`w-5 h-5 rounded border transition-colors touch-manipulation ${
+                aria-label={`d10 #${i + 1}${isSpent(d12Count + i) ? ' (spent)' : ''}`}
+                aria-pressed={isSpent(d12Count + i)}
+                className={`w-6 h-6 rounded border transition-colors touch-manipulation focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                   isSpent(d12Count + i)
                     ? 'bg-slate-300 border-slate-400'
                     : 'bg-white border-slate-300 hover:bg-slate-50'
                 }`}
-                title={`d10 #${i + 1}`}
               />
             ))}
           </div>

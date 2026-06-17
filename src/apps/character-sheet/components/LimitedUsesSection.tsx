@@ -2,6 +2,7 @@ import React from 'react';
 import type { CharacterSheet, LimitedUseResource } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass, innerCardClass } from '../textClasses';
+import { Counter } from './ui/Counter';
 
 interface LimitedUsesSectionProps {
   character: CharacterSheet;
@@ -57,27 +58,16 @@ const LimitedUseRow: React.FC<{
           </div>
         )}
       </div>
-      <div className="flex items-center gap-1 shrink-0 h-7">
-        <button
-          type="button"
-          className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 disabled:opacity-40 touch-manipulation"
-          onClick={() => onChange(-1)}
-          disabled={used <= 0}
-        >
-          −
-        </button>
-        <div className="min-w-[1.75rem] h-7 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-semibold tabular-nums">
-          {used}
-        </div>
-        <button
-          type="button"
-          className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:bg-slate-200 disabled:opacity-40 touch-manipulation"
-          onClick={() => onChange(1)}
-          disabled={used >= resource.max}
-        >
-          +
-        </button>
-      </div>
+      <Counter
+        value={used}
+        onDecrement={() => onChange(-1)}
+        onIncrement={() => onChange(1)}
+        decrementDisabled={used <= 0}
+        incrementDisabled={used >= resource.max}
+        decrementLabel={`Decrease uses of ${resource.name}`}
+        incrementLabel={`Increase uses of ${resource.name}`}
+        size="sm"
+      />
     </div>
   );
 };
@@ -86,7 +76,7 @@ export const LimitedUsesSection: React.FC<LimitedUsesSectionProps> = ({ characte
   if (!character.limitedUses?.length) return null;
 
   return (
-    <section id="limited-uses" className={`${sectionClass} lg:flex-1 lg:min-h-0`}>
+    <section id="limited-uses" className={`${sectionClass} scroll-mt-4 lg:flex-1 lg:min-h-0`}>
       <h2 className={sectionTitleClass}>Limited Uses</h2>
       <div className={sectionDividerClass} aria-hidden />
       <div className="flex flex-col gap-3">

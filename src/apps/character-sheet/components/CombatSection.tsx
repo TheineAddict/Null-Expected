@@ -15,7 +15,7 @@ const AttackCard: React.FC<{ attack: Attack; toHitBonus: number }> = ({ attack, 
   <div className={`${innerCardClass} flex flex-col space-y-2`}>
     <div className="flex items-center justify-between gap-2">
       <h3 className="text-sm font-semibold text-slate-900">{attack.name}</h3>
-      <span className="text-xs font-medium text-indigo-800 bg-indigo-100 rounded-full px-2 py-0.5 tabular-nums font-semibold">
+      <span className="text-xs font-medium text-indigo-800 bg-indigo-100 rounded px-2 py-0.5 tabular-nums font-semibold">
         d20 {formatModifier(toHitBonus)}
       </span>
     </div>
@@ -53,8 +53,8 @@ export const CombatSection: React.FC<CombatSectionProps> = ({ character }) => {
         d20 + to-hit. Advantage = 2d20, take higher.
       </p>
       {character.turnGuide && character.turnGuide.steps.length > 0 && (
-        <div className="rounded-lg border border-indigo-100 bg-indigo-50/70 p-3 space-y-1">
-          <h3 className="text-sm font-semibold text-indigo-900">
+        <div className="rounded-lg border border-slate-200 bg-slate-50/50 p-3 space-y-1">
+          <h3 className="text-sm font-semibold text-slate-900">
             {character.turnGuide.title}
           </h3>
           <ol className={`space-y-1 list-decimal list-inside ${bodyTextClass}`}>
