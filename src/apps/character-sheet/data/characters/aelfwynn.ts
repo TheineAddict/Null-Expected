@@ -43,6 +43,27 @@ const hopeTiers: HopeTier[] = [
       },
     ],
   },
+  {
+    tier: 3,
+    activeCardId: 'worldroot-slam',
+    cards: [
+      {
+        id: 'worldroot-slam',
+        title: '⚔️ Worldroot Slam',
+        body: 'Cost: 2 Hope\n\nStandard:\nWhen you hit a creature while raging:\nDeal an additional 1d10 force damage.\nTarget must make a Strength save.\nOn failure: its speed becomes 0 until the start of your next turn.\nIf rolled with Hope → Trigger Worldroot Momentum.\n\nOvercharge (🔥 Gain 2 Stress):\nMassive roots erupt beneath the target.\nDamage becomes 2d10 force.\nTarget is Restrained until end of its next turn.\nIf the target is Large or larger: it instead becomes Prone.\n\n"The roots reach where my axe cannot."',
+      },
+      {
+        id: 'shelter-beneath-the-boughs',
+        title: '🛡️ Shelter Beneath the Boughs',
+        body: 'Cost: 2 Hope\n\nStandard:\nChoose up to two allies within 15 ft.\nUntil your next turn:\nThey gain +1 AC.\nThey cannot be forcibly moved.\nIf you assist two allies → Trigger Worldroot Momentum.\n\nOvercharge (🔥 Gain 2 Stress):\nThe World Tree shields its children.\nFor 1 round:\nAllies within 15 ft gain resistance to non-magical weapon damage.\nDifficult terrain does not affect them.\n\n"Stay close. The storm breaks around the trunk."',
+      },
+      {
+        id: 'ancient-presence',
+        title: '💬 Ancient Presence',
+        body: 'Cost: 2 Hope\n\nStandard:\nWhen making an Intimidation, Survival, or Animal Handling check:\nGain Advantage.\nIf rolled with Hope → Trigger Worldroot Momentum.\nBeasts instinctively recognize you as a powerful force.\nOrdinary folk find it difficult to dismiss or ignore you.\n\nOvercharge (🔥 Gain 2 Stress):\nFor a brief moment, the World Tree looks through your eyes.\nChoose a creature that can see you.\nIt must make a Wisdom save.\nOn failure: it becomes Frightened until the end of your next turn.\nOn success: it cannot willingly move closer to you.\n\n"Some things are too old to fear being judged."',
+      },
+    ],
+  },
 ];
 
 export const aelfwynn: CharacterSheet = {
