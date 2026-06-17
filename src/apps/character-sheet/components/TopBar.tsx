@@ -2,6 +2,7 @@ import React from 'react';
 import type { CharacterSheet } from '../model/character.types';
 import { deriveAbilityModifiers, formatModifier, resolveProficiencyBonus } from '../model/derive';
 import { sectionClass } from '../textClasses';
+import { StatChip } from './ui/StatChip';
 
 interface TopBarProps {
   character: CharacterSheet;
@@ -30,26 +31,10 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
             {character.ancestry && ` · ${character.ancestry}`}
           </p>
           <div className="flex flex-wrap gap-2 pt-1">
-            <div className="h-8 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
-              <span aria-hidden>🛡️</span>
-              <span className="text-slate-500">AC</span>
-              <span className="tabular-nums font-semibold text-slate-900">{character.armorClass}</span>
-            </div>
-            <div className="h-8 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
-              <span aria-hidden>⚡</span>
-              <span className="text-slate-500">Init</span>
-              <span className="tabular-nums font-semibold text-slate-900">{formatModifier(character.initiativeMod)}</span>
-            </div>
-            <div className="h-8 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
-              <span aria-hidden>👟</span>
-              <span className="text-slate-500">Speed</span>
-              <span className="tabular-nums font-semibold text-slate-900">{character.speed}</span>
-            </div>
-            <div className="h-8 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white text-xs flex items-center gap-1.5">
-              <span aria-hidden>⭐</span>
-              <span className="text-slate-500">Prof</span>
-              <span className="tabular-nums font-semibold text-slate-900">{formatModifier(proficiencyBonus)}</span>
-            </div>
+            <StatChip icon="🛡️" label="AC" value={character.armorClass} />
+            <StatChip icon="⚡" label="Init" value={formatModifier(character.initiativeMod)} />
+            <StatChip icon="👟" label="Speed" value={character.speed} />
+            <StatChip icon="⭐" label="Prof" value={formatModifier(proficiencyBonus)} />
           </div>
         </div>
       </div>
@@ -119,4 +104,3 @@ export const TopBar: React.FC<TopBarProps> = ({ character }) => {
     </section>
   );
 };
-

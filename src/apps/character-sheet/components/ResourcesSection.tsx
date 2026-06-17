@@ -10,47 +10,68 @@ interface ResourcesSectionProps {
   actions: CharacterTrackerActions;
 }
 
+const SpendButton: React.FC<{ canSpend: boolean; onSpend: () => void }> = ({ canSpend, onSpend }) => (
+  <button
+    type="button"
+    disabled={!canSpend}
+    onClick={onSpend}
+    className={`px-2.5 py-1.5 rounded-lg text-[0.7rem] font-semibold uppercase tracking-wide touch-manipulation focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
+      canSpend ? 'btn-themed shadow-sm' : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+    }`}
+  >
+    Spend 1
+  </button>
+);
+
+export const TrackerCard: React.FC<{
+  label: string;
+  emoji: string;
+  value: number;
+  subLabel: string;
+  spendThreshold: number;
+  onChange: (delta: number) => void;
+  onSpend: () => void;
+}> = ({ label, emoji, value, subLabel, spendThreshold, onChange, onSpend }) => (
+  <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50/50 p-3">
+    <div className="flex items-center justify-between gap-2">
+      <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
+        <span aria-hidden>{emoji}</span>
+        {label}
+      </span>
+      <span className="text-xs text-slate-500 tabular-nums font-semibold">{subLabel}</span>
+    </div>
+    <div className="flex items-center justify-between gap-2">
+      <Counter
+        value={value}
+        onDecrement={() => onChange(-1)}
+        onIncrement={() => onChange(1)}
+        decrementLabel={`Decrease ${label}`}
+        incrementLabel={`Increase ${label}`}
+        size="md"
+      />
+      <SpendButton canSpend={value >= spendThreshold} onSpend={onSpend} />
+    </div>
+  </div>
+);
+
+/** Kept for backward-compat: HopeSection imports these by name. */
 export const ThirdsTracker: React.FC<{
   label: string;
   emoji: string;
   thirds: number;
   onChangeThirds: (delta: number) => void;
   onSpend: () => void;
-}> = ({ label, emoji, thirds, onChangeThirds, onSpend }) => {
-  const canSpend = thirds >= 3;
-
-  return (
-    <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50/50 p-3">
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
-          <span aria-hidden>{emoji}</span>
-          {label}
-        </span>
-        <span className="text-xs text-slate-500 tabular-nums font-semibold">{thirds}/3</span>
-      </div>
-      <div className="flex items-center justify-between gap-2">
-        <Counter
-          value={thirds}
-          onDecrement={() => onChangeThirds(-1)}
-          onIncrement={() => onChangeThirds(1)}
-          decrementLabel={`Decrease ${label}`}
-          incrementLabel={`Increase ${label}`}
-          size="md"
-        />
-        <button
-          type="button"
-          disabled={!canSpend}
-          onClick={onSpend}
-          className={`px-2.5 py-1.5 rounded-lg text-[0.7rem] font-semibold uppercase tracking-wide touch-manipulation focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
-            canSpend ? 'btn-themed shadow-sm' : 'bg-slate-100 text-slate-400 cursor-not-allowed'
-          }`}
-        >
-          Spend 1
-        </button>
-      </div>
-    </div>
-  );
-};
+}> = ({ label, emoji, thirds, onChangeThirds, onSpend }) => (
+  <TrackerCard
+    label={label}
+    emoji={emoji}
+    value={thirds}
+    subLabel={`${thirds}/3`}
+    spendThreshold={3}
+    onChange={onChangeThirds}
+    onSpend={onSpend}
+  />
+);
 
 export const InspirationTracker: React.FC<{
   label: string;
@@ -58,41 +79,17 @@ export const InspirationTracker: React.FC<{
   count: number;
   onChange: (delta: number) => void;
   onSpend: () => void;
-}> = ({ label, emoji, count, onChange, onSpend }) => {
-  const canSpend = count >= 1;
-
-  return (
-    <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50/50 p-3">
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
-          <span aria-hidden>{emoji}</span>
-          {label}
-        </span>
-        <span className="text-xs text-slate-500 tabular-nums font-semibold">{count}</span>
-      </div>
-      <div className="flex items-center justify-between gap-2">
-        <Counter
-          value={count}
-          onDecrement={() => onChange(-1)}
-          onIncrement={() => onChange(1)}
-          decrementLabel={`Decrease ${label}`}
-          incrementLabel={`Increase ${label}`}
-          size="md"
-        />
-        <button
-          type="button"
-          disabled={!canSpend}
-          onClick={onSpend}
-          className={`px-2.5 py-1.5 rounded-lg text-[0.7rem] font-semibold uppercase tracking-wide touch-manipulation focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
-            canSpend ? 'btn-themed shadow-sm' : 'bg-slate-100 text-slate-400 cursor-not-allowed'
-          }`}
-        >
-          Spend 1
-        </button>
-      </div>
-    </div>
-  );
-};
+}> = ({ label, emoji, count, onChange, onSpend }) => (
+  <TrackerCard
+    label={label}
+    emoji={emoji}
+    value={count}
+    subLabel={String(count)}
+    spendThreshold={1}
+    onChange={onChange}
+    onSpend={onSpend}
+  />
+);
 
 const LimitedUseRow: React.FC<{
   resource: LimitedUseResource;
