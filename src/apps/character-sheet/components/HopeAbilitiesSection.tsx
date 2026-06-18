@@ -8,15 +8,37 @@ interface HopeAbilitiesSectionProps {
 }
 
 const ActiveHopeCard: React.FC<{ card: HopeCard }> = ({ card }) => {
+  const [expanded, setExpanded] = useState(false);
   const lines = card.body.split('\n');
+
   return (
-    <div className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3">
-      <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
-      <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
-        {lines.map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
+    <div
+      className="rounded-lg border border-indigo-200 bg-indigo-50/80 p-3 cursor-pointer touch-manipulation"
+      onClick={() => setExpanded((e) => !e)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setExpanded((v) => !v);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-expanded={expanded}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <h4 className="text-sm font-semibold text-indigo-900">{card.title}</h4>
+        <ChevronDown
+          className={`shrink-0 h-3.5 w-3.5 text-indigo-400 transition-transform self-center ${expanded ? 'rotate-180' : ''}`}
+          aria-hidden
+        />
       </div>
+      {expanded && (
+        <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
+          {lines.map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
