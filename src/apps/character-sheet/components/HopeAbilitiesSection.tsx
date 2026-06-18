@@ -88,31 +88,50 @@ export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inact
   return <InactiveHopeCard card={card} />;
 };
 
+const TierContainer: React.FC<{ tier: HopeTier; defaultExpanded: boolean }> = ({ tier, defaultExpanded }) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  const active = tier.cards.find((c) => c.id === tier.activeCardId) ?? tier.cards[0];
+  const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
+
+  return (
+    <div className={`${innerCardClass} flex flex-col space-y-3`}>
+      <button
+        className="flex items-center justify-between gap-2 w-full text-left"
+        onClick={() => setExpanded((e) => !e)}
+        aria-expanded={expanded}
+      >
+        <h3 className={subSectionHeaderClass}>Tier {tier.tier}</h3>
+        <ChevronDown
+          className={`shrink-0 h-3.5 w-3.5 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
+          aria-hidden
+        />
+      </button>
+      {expanded && (
+        <>
+          <HopeCardView card={active} variant="active" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {inactive.map((card) => (
+              <HopeCardView key={card.id} card={card} variant="inactive" />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
 export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {
   const tiers = character.hopeAbilities ?? [];
   if (tiers.length === 0) return null;
 
+  const sorted = tiers.slice().sort((a: HopeTier, b: HopeTier) => a.tier - b.tier);
+  const maxTier = sorted[sorted.length - 1]?.tier ?? 0;
+
   return (
     <div className="flex flex-col space-y-4">
-      {tiers
-        .slice()
-        .sort((a: HopeTier, b: HopeTier) => a.tier - b.tier)
-        .map((tier: HopeTier) => {
-          const active = tier.cards.find((c) => c.id === tier.activeCardId) ?? tier.cards[0];
-          const inactive = tier.cards.filter((c) => c.id !== tier.activeCardId);
-
-          return (
-            <div key={tier.tier} className={`${innerCardClass} flex flex-col space-y-3`}>
-              <h3 className={subSectionHeaderClass}>Tier {tier.tier}</h3>
-              <HopeCardView card={active} variant="active" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {inactive.map((card) => (
-                  <HopeCardView key={card.id} card={card} variant="inactive" />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      {sorted.map((tier: HopeTier) => (
+        <TierContainer key={tier.tier} tier={tier} defaultExpanded={tier.tier === maxTier} />
+      ))}
     </div>
   );
 };
