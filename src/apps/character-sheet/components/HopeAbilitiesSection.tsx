@@ -32,12 +32,14 @@ const ActiveHopeCard: React.FC<{ card: HopeCard }> = ({ card }) => {
           aria-hidden
         />
       </div>
-      {expanded && (
+      {expanded ? (
         <div className={`mt-1 space-y-0.5 ${bodyTextClass}`}>
           {lines.map((line, i) => (
             <p key={i}>{line}</p>
           ))}
         </div>
+      ) : (
+        <p className={`mt-0.5 ${bodyTextClass} line-clamp-2`}>{card.body}</p>
       )}
     </div>
   );
