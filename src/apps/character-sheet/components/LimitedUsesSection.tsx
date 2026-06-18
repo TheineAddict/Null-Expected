@@ -1,4 +1,5 @@
 import React from 'react';
+import { Hourglass } from 'lucide-react';
 import type { CharacterSheet, LimitedUseResource } from '../model/character.types';
 import type { CharacterTrackerState, CharacterTrackerActions } from '../storage/characterStorage';
 import { bodyTextClass, sectionClass, sectionTitleClass, sectionDividerClass, innerCardClass } from '../textClasses';
@@ -77,7 +78,10 @@ export const LimitedUsesSection: React.FC<LimitedUsesSectionProps> = ({ characte
 
   return (
     <section id="limited-uses" className={`${sectionClass} scroll-mt-4 lg:flex-1 lg:min-h-0`}>
-      <h2 className={sectionTitleClass}>Limited Uses</h2>
+      <h2 className={sectionTitleClass}>
+        <Hourglass className="h-4 w-4 text-amber-500" />
+        Limited Uses
+      </h2>
       <div className={sectionDividerClass} aria-hidden />
       <div className="flex flex-col gap-3">
         {character.limitedUses.map((res) => (
