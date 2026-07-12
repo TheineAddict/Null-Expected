@@ -23,7 +23,8 @@ const Blog = () => {
     'Industry Trends',
     'Tools & Tech',
     'Case Studies',
-    'Unpopular Opinion'
+    'Unpopular Opinion',
+    'Expected Behaviour'
   ];
 
   // Check for category and tag parameters in URL

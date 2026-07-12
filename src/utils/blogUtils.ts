@@ -117,7 +117,9 @@ export function getDisplayCategory(tags: string[]): string {
     'industry-trends': 'Industry Trends',
     'tools-tech': 'Tools & Tech',
     'case-studies': 'Case Studies',
-    'unpopular-opinion': 'Unpopular Opinion'
+    'unpopular-opinion': 'Unpopular Opinion',
+    'expected-behaviour': 'Expected Behaviour'
+
   };
 
   for (const tag of tags) {
