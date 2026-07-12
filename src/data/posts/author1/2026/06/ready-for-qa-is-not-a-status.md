@@ -8,8 +8,6 @@ readTime: "4 min read"
 slug: "ready-for-qa-is-not-a-status"
 ---
 
-# Ready for QA Is Not a Status
-
 *Expected Behaviour is a lightweight weekly column about the small process failures that create disproportionate delivery problems.*
 
 A developer finishes the implementation, moves the ticket into **Ready for QA**, and starts the next item.
