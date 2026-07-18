@@ -301,7 +301,8 @@ export function getPostsByCategory(posts: BlogPost[], category: string): BlogPos
     'Industry Trends': 'industry-trends',
     'Tools & Tech': 'tools-tech',
     'Case Studies': 'case-studies',
-    'Unpopular Opinion': 'unpopular-opinion'
+    'Unpopular Opinion': 'unpopular-opinion',
+    'Expected Behaviour': 'expected-behaviour'
   };
   
   const tagToFind = categoryToTagMap[category];
