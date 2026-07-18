@@ -1,7 +1,7 @@
 ---
 title: "A Successful Release Can Still Be a Bad Decision"
 excerpt: "Production survived, but that does not prove the release decision was sound. Outcome bias can turn luck into false confidence."
-tags: ["expected-behaviour", "quality-mindset", "qa-processes", "unpopular-opinion"]
+tags: ["expected-behaviour", "unpopular-opinion"]
 author: "author1"
 date: "2026-07-18"
 readTime: "4 min read"
