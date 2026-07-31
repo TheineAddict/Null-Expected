@@ -67,11 +67,11 @@ For example:
 
 **Unclear**
 
-`Security approval pending`
+_Security approval pending_
 
 **Clarified**
 
-`Waiting for: Marta to confirm security approval by Thursday at 14:00. Follow up on Thursday morning if no response is received.`
+_Waiting for: Marta to confirm security approval by Thursday at 14:00. Follow up on Thursday morning if no response is received._
 
 The clarified version tells another release manager:
 
