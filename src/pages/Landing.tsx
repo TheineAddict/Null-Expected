@@ -68,11 +68,35 @@ const Landing = () => {
     }
   ];
 
+  const consultingAreas = [
+    {
+      title: 'Software Quality & Test Strategy',
+      description:
+        'How quality is defined, planned and evidenced so testing reflects real product risk instead of volume.',
+      icon: Target,
+      color: 'from-indigo-500 to-purple-600'
+    },
+    {
+      title: 'Release Governance & Readiness',
+      description:
+        'Release decisions based on clear, honest information so go/no-go calls are timely and defensible.',
+      icon: TrendingUp,
+      color: 'from-purple-500 to-pink-600'
+    },
+    {
+      title: 'Technical Delivery',
+      description:
+        'Coordination across teams so milestones, dependencies and risks stay visible and decisions arrive on time.',
+      icon: Users,
+      color: 'from-indigo-600 to-blue-600'
+    },
+  ];
+
   return (
     <main>
       <SEO
-        title="Null:Expected - A QA Thought Hub by Andreea Vitan"
-        description="Testing and release management for grown-up software. Practical, evidence-first QA insights and strategies from an experienced QA and Release Manager."
+        title="Null:Expected - Software Quality, Release Governance & Technical Delivery"
+        description="Practitioner-led consulting and independent writing on software quality, release management and technical delivery. Evidence-first, slightly sceptical of process theatre."
         path="/"
       />
       {/* Hero Section */}
@@ -109,10 +133,10 @@ const Landing = () => {
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 font-light">
-              A QA thought hub. What did you expect?
+              Software quality, release governance and technical delivery.
             </p>
             <p className="text-base sm:text-lg text-gray-700 mb-4">
-            Testing and release management for grown-up software. Practical, evidence-first, slightly rebellious.
+              Practitioner-led consulting, paired with independent writing about testing, delivery, release management and quality. Evidence-first, slightly sceptical of process theatre.
             </p>
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
               By <Link to="/about" className="text-indigo-900 hover:text-gray-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
@@ -126,89 +150,20 @@ const Landing = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/about"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              About
-            </Link>
-            <Link
               to="/blog"
               className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Explore the Hub
+              Explore the writing
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              Explore Quality Insights
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Dive into curated content across different aspects of quality assurance and professional growth
-            </p>
-          </div>
-
-          {/* Mobile: Show only 3 categories initially with "View More" */}
-          <div className="md:hidden">
-            <div className="grid grid-cols-1 gap-4 mb-6">
-              {categories.slice(0, 3).map((category, index) => (
-                <Link
-                  to={`/blog?category=${encodeURIComponent(category.title)}`}
-                  key={category.title}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 block group"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
-                      <category.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
-                      <p className="text-gray-600 text-sm">{category.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="text-center">
-              <Link
-                to="/blog"
-                className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                View All Categories
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop: Show all categories in grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
-              <Link
-                to="/blog"
-                key={category.title}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-6`}>
-                  <category.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
-                <p className="text-gray-600 mb-6">{category.description}</p>
-                <div className="text-sm text-gray-500 font-mono">
-                  [ {index + 1} of 6 ]
-                </div>
-              </Link>
-            ))}
+            <Link
+              to="/consulting"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Consulting
+            </Link>
           </div>
         </div>
       </section>
@@ -218,10 +173,10 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              Featured Insights
+              Featured Writing
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Latest thoughts from the QA community
+              Practitioner field notes on testing, delivery and release management &mdash; not theory decks.
             </p>
           </div>
 
@@ -289,6 +244,106 @@ const Landing = () => {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Consultancy Areas */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+              Consulting Practice
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Independent, founder-led work across three related areas &mdash; most engagements draw on more than one.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {consultingAreas.map((area) => (
+              <Link
+                to="/consulting"
+                key={area.title}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${area.color} flex items-center justify-center mb-6`}>
+                  <area.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{area.title}</h3>
+                <p className="text-gray-600">{area.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+              Explore by Topic
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Field notes and essays across the breadth of quality, delivery and release work
+            </p>
+          </div>
+
+          {/* Mobile: Show only 3 categories initially with "View More" */}
+          <div className="md:hidden">
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {categories.slice(0, 3).map((category, index) => (
+                <Link
+                  to={`/blog?category=${encodeURIComponent(category.title)}`}
+                  key={category.title}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 block group"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
+                      <category.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
+                      <p className="text-gray-600 text-sm">{category.description}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link
+                to="/blog"
+                className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                View All Categories
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Desktop: Show all categories in grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {categories.map((category, index) => (
+              <Link
+                to="/blog"
+                key={category.title}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-6`}>
+                  <category.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
+                <p className="text-gray-600 mb-6">{category.description}</p>
+                <div className="text-sm text-gray-500 font-mono">
+                  [ {index + 1} of 6 ]
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
