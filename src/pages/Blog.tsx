@@ -93,8 +93,8 @@ const Blog = () => {
   return (
     <div className="py-20">
       <SEO
-        title="QA Blog - Quality Assurance Insights & Strategies | Null:Expected"
-        description="Expert insights on software quality, testing strategies, release management, and QA best practices. Practical advice from experienced QA practitioners."
+        title="Writing & Insights | Null Expected"
+        description="Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers."
         path="/blog"
       />
       {/* Header */}
@@ -107,10 +107,10 @@ const Blog = () => {
           />
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          The QA Blog
+          Writing &amp; Insights
         </h1>
         <p className="text-xl text-gray-600 mb-8">
-          Latest posts from the QA community
+          Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers.
         </p>
         {activeTag && (
           <div className="mb-4">
@@ -298,20 +298,6 @@ const Blog = () => {
         )}
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-800 mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Stay Updated
-          </h2>
-          <p className="text-xl text-indigo-200 mb-8">
-            Get notified when we publish new insights and deep-dives into QA practices.
-          </p>
-          <div className="text-sm text-indigo-300 font-mono">
-            [ newsletter_coming_soon = true ]
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
