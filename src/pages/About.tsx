@@ -99,9 +99,10 @@ const About = () => {
             consultancy.
           </p>
         </div>
-        <div className={`grid grid-cols-1 ${contributors.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-12 lg:gap-16`}>
+        <div className="space-y-12">
           {contributors.map((author) => (
-          <div key={author.id} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+          <div key={author.id} className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
             <div className="flex flex-col items-center text-center">
               {/* Author Image */}
               <div className="w-32 h-32 mb-6">
@@ -149,6 +150,7 @@ const About = () => {
                 )}
               </div>
             </div>
+          </div>
           </div>
           ))}
         </div>
