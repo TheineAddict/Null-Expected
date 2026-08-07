@@ -1,43 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight, penLine } from 'lucide-react';
+import { Search, Users, Lightbulb, TrendingUp, Target, Zap, BookOpen, Eye, ArrowRight, PenLine as penLine } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 const Mission = () => {
   const whatWeWrite = [
     {
-      title: 'QA methodologies',
-      description: 'that evolve with teams',
+      title: 'QA Processes & Test Strategy',
+      description: 'Test planning, risk-based testing, exploratory work, Agile delivery and the mechanics of a test process that has to survive real delivery pressure.',
       icon: Target,
       color: 'from-indigo-500 to-purple-600'
     },
     {
-      title: 'Philosophy and mindset pieces',
-      description: 'on the role of QA',
+      title: 'Quality Thinking',
+      description: 'Risk, evidence, ownership, confidence and the gap between a process saying everything is fine and knowing whether it actually is.',
       icon: Users,
       color: 'from-purple-500 to-pink-600'
     },
     {
-      title: 'Career reflections',
-      description: 'from the trenches and leadership',
+      title: 'Careers & QA Leadership',
+      description: 'QA careers, management, communication, mentoring and the judgement required when the role extends beyond test execution.',
       icon: TrendingUp,
       color: 'from-indigo-600 to-blue-600'
     },
     {
-      title: 'Trends and industry insights',
-      description: 'filtered through a quality lens',
+      title: 'Release & Technical Delivery',
+      description: 'Release readiness, governance, dependencies, go/no-go decisions and the coordination work that sits between teams.',
       icon: Eye,
       color: 'from-blue-500 to-indigo-600'
     },
     {
-      title: 'Occasional tool reviews',
-      description: 'always process-first',
+      title: 'Industry Change',
+      description: 'AI in testing, observability, QAOps and other shifts worth examining once the hype is separated from practical use.',
       icon: BookOpen,
       color: 'from-purple-600 to-indigo-600'
     },
     {
-      title: 'Unpopular opinions',
-      description: 'with context, not cynicism',
+      title: 'Tools & Practice',
+      description: 'Occasional reviews of QA and delivery tools, judged by what they improve in the process rather than by their feature lists.',
       icon: Zap,
       color: 'from-purple-600 to-indigo-600'
     }
@@ -46,8 +46,8 @@ const Mission = () => {
   return (
     <div className="py-20">
       <SEO
-        title="Our Mission - Null:Expected QA Thought Hub"
-        description="Null Expected is a QA thought hub where practitioners question the status quo, unpack the trade-offs of 'done,' and advocate for software that doesn't just pass, but deserves to."
+        title="Our Mission | Null Expected"
+        description="Why Null Expected publishes practitioner-led writing on software quality, testing, release governance and technical delivery."
         path="/mission"
       />
       {/* Hero Section */}
@@ -64,8 +64,7 @@ const Mission = () => {
             Our Mission
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Null Expected is a QA thought hub. It's where practitioners question the status quo, 
-            unpack the trade-offs of "done," and advocate for software that doesn't just pass, but deserves to.
+            Null Expected is a practitioner-led reference hub for software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind how software is tested, governed and released.
           </p>
         </div>
       </section>
@@ -79,26 +78,25 @@ const Mission = () => {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
-                We built this space because too much QA content either simplifies the role 
-                ("just write test cases") or drowns it in tools and jargon. We wanted somewhere that:
+                There is already more than enough QA content explaining how a tool works, repeating a methodology, or reducing a difficult delivery problem to a checklist. Null Expected exists for the parts that are harder to package: judgement, risk, evidence, organisational behaviour and the decisions teams make when delivery pressure becomes real.
               </p>
               <ul className="text-left max-w-2xl mx-auto space-y-3">
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
-                  <span>Highlights the thinking behind quality</span>
+                  <span>Examine the reasoning behind test, quality and release decisions</span>
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
-                  <span>Balances process with perspective</span>
+                  <span>Connect process and governance to the risks they are supposed to manage</span>
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-300 rounded-full mt-3 mr-4 flex-shrink-0"></span>
-                  <span>Reflects the real-world messiness of testing in modern teams</span>
+                  <span>Write about software delivery as it actually behaves across teams, dependencies and constraints</span>
                 </li>
               </ul>
               <div className="pt-8">
                 <blockquote className="text-2xl font-light italic">
-                  "Quality is a mindset, not a metric."
+                  Useful quality work improves the information available to the people making decisions.
                 </blockquote>
                 <div className="text-indigo-300 font-mono text-sm mt-4">
                   - Null Expected
@@ -116,8 +114,7 @@ const Mission = () => {
             What We Write About
           </h2>
           <div className="max-w-3xl mx-auto space-y-4 text-lg text-gray-600">
-            <p>This isn't a tutorials site - though you will find actionable advice.</p>
-            <p>This isn't just opinion - though you will find strong ones.</p>
+            <p>The subject is broader than test execution. Null Expected follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them.</p>
           </div>
         </div>
 
@@ -153,11 +150,10 @@ const Mission = () => {
             </h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Because QA is the only discipline that celebrates a null result - when things 
-                don't crash, don't regress, don't surprise us.
+                The name comes from a familiar testing idea: sometimes returning nothing is exactly the correct result. But even a null result only means something when the expectation behind it is understood.
               </p>
               <p>
-                But we also know that behind every "null" there's an expectation, a person, and a decision.
+                That is a useful reminder for the rest of software quality too. A passing test, a green dashboard or an approved release tells us very little unless we understand what was checked, what was not, which assumptions were made and which risks someone has accepted.
               </p>
             </div>
           </div>
@@ -171,22 +167,18 @@ const Mission = () => {
             <div className="relative mb-8">
               <Zap className="h-12 w-12 text-indigo-900 mx-auto mb-8 opacity-20" />
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                A Note on the Voices Behind the Site
+                Who Writes Here
               </h2>
             </div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                While the blog is shaped by QA professionals with different experiences, 
-                this is not a personal blog. Our bios live elsewhere. What matters here 
-                is the thinking, not the résumé.
+                Null Expected was founded by Andreea Vitan and is primarily shaped by her experience across hands-on software testing, QA management, release management and technical delivery.
               </p>
               <p>
-                That said - we're practitioners. This site is our way of giving back, 
-                challenging forward, and documenting what it means to build for quality, 
-                not just test it.
+                Guest contributors may bring other practitioner perspectives, but this is not intended to become a general QA content platform. Articles are published because there is a useful argument, experience or question worth examining.
               </p>
               <p className="font-semibold text-gray-900">
-                We write from experience - and we edit each other ruthlessly.
+                The writing is practitioner-led, source-aware where evidence matters, and independent of the consultancy work.
               </p>
               <p className="mt-8">
                 <Link
