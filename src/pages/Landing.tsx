@@ -176,7 +176,7 @@ const Landing = () => {
               Featured Writing
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Practitioner field notes on testing, delivery and release management &mdash; not theory decks.
+              Practitioner field notes on testing, delivery and release management - not theory decks.
             </p>
           </div>
 
@@ -256,7 +256,7 @@ const Landing = () => {
               Consulting Practice
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Independent, founder-led work across three related areas &mdash; most engagements draw on more than one.
+              Independent, founder-led work across three related areas - most engagements draw on more than one.
             </p>
           </div>
 

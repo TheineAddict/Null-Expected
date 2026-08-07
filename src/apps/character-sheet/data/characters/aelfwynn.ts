@@ -18,7 +18,7 @@ const hopeTiers: HopeTier[] = [
       {
         id: 'stone-plain-diplomacy',
         title: 'Stone-Plain Diplomacy',
-        body: 'Cost: 1 Hope\nYou make your point physically — without attacking.\n\nStandard:\nYou may smash an object, crack ground, or hurl something heavy.\nAdvantage on Intimidation.\nIf rolled with Hope → creatures of lower CR hesitate (cannot approach closer next turn unless they succeed WIS save).\n\nOvercharge (🔥 +1 Stress):\nHostile creatures make WIS save or become Frightened until end of their next turn.\nIn negotiation: opposing side becomes Wary instead of Hostile (if applicable).\n\n"We can speak softly. Or I can show you."',
+        body: 'Cost: 1 Hope\nYou make your point physically - without attacking.\n\nStandard:\nYou may smash an object, crack ground, or hurl something heavy.\nAdvantage on Intimidation.\nIf rolled with Hope → creatures of lower CR hesitate (cannot approach closer next turn unless they succeed WIS save).\n\nOvercharge (🔥 +1 Stress):\nHostile creatures make WIS save or become Frightened until end of their next turn.\nIn negotiation: opposing side becomes Wary instead of Hostile (if applicable).\n\n"We can speak softly. Or I can show you."',
       },
     ],
   },
@@ -39,7 +39,7 @@ const hopeTiers: HopeTier[] = [
       {
         id: 'weight-of-the-mountain',
         title: '💬 Weight of the Mountain',
-        body: 'Cost: 1 Hope\nYou make your presence undeniable — through posture, silence, or force.\nGain Advantage on Intimidation.\nIf the target is already uncertain, they hesitate (no aggressive action for 1 beat / round unless provoked).\nIf rolled with Hope → you may also force eye contact / attention, preventing them from ignoring you in the scene.\n\nOvercharge (🔥 Gain 2 Stress):\nYou become something ancient.\nCreatures of lower CR must make a Wisdom save or become Frightened until end of their next turn.\nIn negotiation: hostility may drop one step if intimidation makes sense.\n\n"I am not raising my voice. I am lowering yours."',
+        body: 'Cost: 1 Hope\nYou make your presence undeniable - through posture, silence, or force.\nGain Advantage on Intimidation.\nIf the target is already uncertain, they hesitate (no aggressive action for 1 beat / round unless provoked).\nIf rolled with Hope → you may also force eye contact / attention, preventing them from ignoring you in the scene.\n\nOvercharge (🔥 Gain 2 Stress):\nYou become something ancient.\nCreatures of lower CR must make a Wisdom save or become Frightened until end of their next turn.\nIn negotiation: hostility may drop one step if intimidation makes sense.\n\n"I am not raising my voice. I am lowering yours."',
       },
     ],
   },

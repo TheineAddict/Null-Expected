@@ -37,7 +37,7 @@ Tracker state is saved per character so each sheet keeps its own HP, Hope, etc.
   - `inspirationThirds` (Inspiration as whole points; gain/spend in units of 1)
   - `limitedUses` (object: resource id → number of uses spent)
   - `deathSaves` (`successes`, `failures`)
-- **Not stored**: Character data (name, abilities, attacks, etc.) — that stays in the TS files only.
+- **Not stored**: Character data (name, abilities, attacks, etc.) - that stays in the TS files only.
 
 ---
 
