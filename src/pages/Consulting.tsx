@@ -11,6 +11,11 @@ import {
   ArrowRight,
   ClipboardList,
   AlertTriangle,
+  Eye,
+  FileBarChart,
+  CalendarClock,
+  Network,
+  Gavel,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
@@ -62,26 +67,31 @@ const Consulting = () => {
       title: 'No one owns the integrated readiness picture',
       description:
         'Several teams contribute to a release, but nobody holds the combined view of quality, dependencies and risk for the whole thing.',
+      icon: Eye,
     },
     {
       title: 'QA reporting does not explain product risk',
       description:
         'Reporting is extensive and detailed, yet it still does not tell you where the real product risk is or what to do about it.',
+      icon: FileBarChart,
     },
     {
       title: 'Dependencies and risks surface too late',
       description:
         'Delivery dependencies and risks become visible only when they are already blocking a release or a milestone.',
+      icon: CalendarClock,
     },
     {
       title: 'The current process no longer scales',
       description:
         'An existing QA or release process worked at a smaller scale, but no longer fits the number of teams, services or releases.',
+      icon: Network,
     },
     {
       title: 'Governance exists, but decisions still arrive late',
       description:
         'Governance forums and checkpoints are in place, yet decisions still arrive late or are made with incomplete information.',
+      icon: Gavel,
     },
   ];
 
@@ -220,7 +230,7 @@ const Consulting = () => {
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 flex items-start gap-5"
               >
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-900 to-purple-800 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="h-6 w-6 text-white" />
+                  <situation.icon className="h-6 w-6 text-white" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{situation.title}</h3>
