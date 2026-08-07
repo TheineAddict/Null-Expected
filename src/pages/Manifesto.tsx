@@ -6,37 +6,37 @@ const Manifesto = () => {
   const principles = [
     {
       title: 'Intention over output',
-      description: 'Because a passing test without purpose is just noise.',
+      description: 'Activity is not evidence. Tests, metrics and reports are useful only when they answer a real question about risk.',
       icon: Target,
       color: 'from-indigo-500 to-purple-600'
     },
     {
       title: 'Understanding over coverage',
-      description: '100% test coverage doesn\'t mean 100% confidence.',
+      description: 'Coverage tells us what was exercised. It does not tell us whether we understood the important failure modes.',
       icon: Eye,
       color: 'from-purple-500 to-pink-600'
     },
     {
       title: 'Collaboration over gatekeeping',
-      description: 'QA should enable, not block.',
+      description: 'QA should improve the decisions a team can make, not become the department that grants permission to release.',
       icon: Users,
       color: 'from-indigo-600 to-blue-600'
     },
     {
       title: 'Curiosity over certainty',
-      description: 'We ask "why" even when the spec says "done."',
+      description: 'Specifications, dashboards and green pipelines are evidence to examine, not reasons to stop asking questions.',
       icon: Search,
       color: 'from-blue-500 to-indigo-600'
     },
     {
       title: 'Patterns over tools',
-      description: 'Tools change. Thinking doesn\'t.',
+      description: 'Tools change quickly. Risk, feedback, dependencies and failure patterns are the things worth learning to recognise.',
       icon: Settings,
       color: 'from-purple-600 to-indigo-600'
     },
     {
       title: 'Silence, when expected',
-      description: 'A "null" result isn\'t nothing - it\'s trust, verified.',
+      description: 'A null result has meaning only when we know what we expected, what we checked and why the absence of a signal matters.',
       icon: Zap,
       color: 'from-indigo-900 to-purple-800'
     }
@@ -45,8 +45,8 @@ const Manifesto = () => {
   return (
     <div className="py-20">
       <SEO
-        title="QA Manifesto - Null:Expected Quality Principles"
-        description="Our principles for quality assurance: intention over output, understanding over coverage, collaboration over gatekeeping. The Null:Expected manifesto."
+        title="The Null Expected Manifesto | Quality, Testing & Delivery"
+        description="The principles behind Null Expected: purposeful testing, evidence over appearances, useful governance, professional curiosity and better delivery decisions."
         path="/manifesto"
       />
       {/* Hero Section */}
@@ -63,7 +63,7 @@ const Manifesto = () => {
             The Null:Expected Manifesto
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed italic">
-            Because quality isn't accidental - and silence still speaks.
+            Quality work should make risk clearer, decisions better, and delivery more honest.
           </p>
         </div>
       </section>
@@ -72,16 +72,16 @@ const Manifesto = () => {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center space-y-6 text-lg text-gray-700 leading-relaxed">
           <p className="font-semibold text-xl text-gray-900">
-            We are QA professionals, thinkers, and skeptics.
+            We are practitioners, thinkers and professional skeptics.
           </p>
           <p>
-            We don't just check that software works - we question what "working" really means.
+            We test software, question assumptions and ask what the evidence actually supports.
           </p>
           <p>
-            We believe that testing is not a phase, a script, or a checkbox.
+            Testing matters. So do risk, dependencies, release decisions and what happens after deployment.
           </p>
           <p className="text-xl font-semibold text-indigo-900 italic">
-            It's a way of seeing.
+            Quality is part of the decision, not the ceremony around it.
           </p>
         </div>
       </section>
@@ -116,7 +116,7 @@ const Manifesto = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-white space-y-6">
             <p className="text-xl leading-relaxed">
-              This is what drives Null:Expected. A QA thought hub, always in beta.
+              These principles shape how Null:Expected approaches testing, quality, release governance and technical delivery.
             </p>
             <div className="text-3xl font-bold">
               What did you expect?
