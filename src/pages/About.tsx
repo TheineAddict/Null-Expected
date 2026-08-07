@@ -6,12 +6,14 @@ import { SEO } from '../components/SEO';
 
 const About = () => {
   const authors = getAllAuthors();
+  const founder = authors.find((a) => a.id === 'author1');
+  const contributors = authors.filter((a) => a.id !== 'author1');
 
   return (
     <div className="py-20">
       <SEO
-        title="About Us - Null:Expected QA Professionals"
-        description="Meet the QA professionals behind Null:Expected. Experienced practitioners sharing insights on testing, quality assurance, and release management from the trenches."
+        title="About Null Expected - Independent QA Consultancy & Publication"
+        description="Null Expected is an independent consultancy and practitioner-led publication founded by Andreea Vitan, focused on software quality, release governance, and technical delivery."
         path="/about"
       />
       {/* Hero Section */}
@@ -24,19 +26,81 @@ const About = () => {
           />
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          About Us
+          About Null Expected
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
-          We're QA professionals with different voices, shared curiosity, and far too many
-          opinions about software quality. This is our thought hub - part roadmap, part portfolio,
-          always in beta.
+          An independent consultancy and practitioner-led publication founded by Andreea Vitan.
+          Consulting focuses on software quality, release governance, and technical delivery; the
+          writing stays independent practitioner work and reference material - a public body of
+          professional practice and thinking.
         </p>
       </section>
 
-      {/* Team Members */}
+      {/* Founder Profile */}
+      {founder && (
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`grid grid-cols-1 ${authors.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-12 lg:gap-16`}>
-          {authors.map((author, index) => (
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+            <div className="flex flex-col items-center text-center">
+              {/* Author Image */}
+              <div className="w-32 h-32 mb-6">
+                <img
+                  src={founder.imageUrl}
+                  alt={`${founder.name} - ${founder.title}`}
+                  className="w-full h-full object-cover rounded-full shadow-lg grayscale"
+                />
+              </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">{founder.name}</h2>
+              <p className="text-indigo-900 font-semibold mb-1">{founder.roleTitle}</p>
+              <p className="text-gray-600 text-sm mb-6">{founder.title}</p>
+
+              <p className="text-gray-600 leading-relaxed mb-6">
+                {founder.bio}
+              </p>
+
+              <div className="text-sm text-gray-500 mb-6 font-mono">
+                {founder.tag}
+              </div>
+
+              <div className="flex space-x-4">
+                {founder.linkedinUrl && (
+                  <a
+                    href={founder.linkedinUrl}
+                    className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                    <span>LinkedIn</span>
+                  </a>
+                )}
+                <Link
+                  to={`/blog/author/${founder.slug}`}
+                  className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  <span>View Posts</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      )}
+
+      {/* Editorial Contributors */}
+      {contributors.length > 0 && (
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            Editorial Contributors
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Guest contributors write for the publication independently. They are not members of the
+            consultancy.
+          </p>
+        </div>
+        <div className={`grid grid-cols-1 ${contributors.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-12 lg:gap-16`}>
+          {contributors.map((author) => (
           <div key={author.id} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
             <div className="flex flex-col items-center text-center">
               {/* Author Image */}
@@ -47,19 +111,19 @@ const About = () => {
                   className="w-full h-full object-cover rounded-full shadow-lg grayscale"
                 />
               </div>
-              
+
               <h2 className="text-2xl font-bold text-gray-900 mb-2">{author.name}</h2>
               <p className="text-indigo-900 font-semibold mb-1">{author.roleTitle}</p>
               <p className="text-gray-600 text-sm mb-6">{author.title}</p>
-              
+
               <p className="text-gray-600 leading-relaxed mb-6">
                 {author.bio}
               </p>
-              
+
               <div className="text-sm text-gray-500 mb-6 font-mono">
                 {author.tag}
               </div>
-              
+
               <div className="flex space-x-4">
                 {author.linkedinUrl && (
                   <a
@@ -89,6 +153,7 @@ const About = () => {
           ))}
         </div>
       </section>
+      )}
 
       {/* Books Section */}
       <section className="py-20 bg-gray-50 mt-20">
@@ -193,25 +258,19 @@ const About = () => {
         </div>
       </section>
 
+      {/* Name Explanation + Manifesto link */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Name Explanation Section */}
         <div className="mt-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="text-center">
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Our individual bios live here, but the <Link to="/manifesto" className="text-indigo-900 hover:text-gray-900 font-semibold transition-colors" onClick={() => window.scrollTo(0, 0)}>Manifesto</Link> speaks for what drives us.
+                The <Link to="/manifesto" className="text-indigo-900 hover:text-gray-900 font-semibold transition-colors" onClick={() => window.scrollTo(0, 0)}>Manifesto</Link> sets out what drives this work.
               </p>
-              
+
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  <strong className="text-gray-900">Null:Expected</strong> is a play on a software testing term - where "null" means nothing is returned, and that's the expected result.
-                </p>
-                <p>
-                  But in QA, even that "nothing" is deliberate. It reflects a decision, a rule, or a user expectation.
-                </p>
-                <p>
-                  The name reminds us that behind every outcome - even silence - there's intent, and quality depends on understanding that.
+                  <strong className="text-gray-900">Null:Expected</strong> comes from a software testing term where "null" means nothing is returned - and that is the expected result. Even that "nothing" is deliberate: it reflects a decision, a rule, or a user expectation. The name is a reminder that behind every outcome there is intent, and quality depends on understanding it.
                 </p>
               </div>
             </div>
@@ -219,7 +278,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Philosophy Section */}
+      {/* Approach Section */}
       <section className="py-20 bg-gray-50 mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -235,15 +294,14 @@ const About = () => {
             </h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                We believe that the best QA insights come from real-world experience, 
-                honest reflection, and the willingness to challenge conventional wisdom. 
-                Our posts aren't just theoretical-they're battle-tested strategies and 
-                hard-earned lessons from the trenches.
+                Sound quality work comes from direct experience, honest reflection, and a
+                willingness to challenge conventional wisdom. The writing here is grounded in
+                actual delivery decisions, not theory decks.
               </p>
               <p>
-                Whether we're exploring the psychology of bug hunting, dissecting the 
-                latest testing frameworks, or debating the future of quality assurance, 
-                we bring both expertise and curiosity to every conversation.
+                Whether the topic is risk-based testing, release readiness, or cross-team delivery
+                governance, the goal is the same: clear, practical guidance that holds up under real
+                release pressure.
               </p>
               <div className="inline-flex items-center space-x-4 mt-8 text-gray-500 font-mono text-sm">
                 <span className="px-3 py-1 bg-white rounded-full shadow-sm">[ plan ]</span>
@@ -262,12 +320,12 @@ const About = () => {
             Let's Connect
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Have questions, ideas, or want to collaborate? We'd love to hear from you.
+            Questions about consulting, editorial contributions, or speaking? Reach out.
           </p>
           <div className="space-y-4">
             <p className="text-gray-600">
-              Find us on LinkedIn or drop us a line about potential guest posts, 
-              speaking opportunities, or just to chat about all things QA.
+              Connect on LinkedIn, or get in touch about consulting engagements, guest posts, or
+              speaking opportunities.
             </p>
             <div className="text-sm text-gray-500 font-mono">
               [ status: open_to_collaboration ]
