@@ -102,7 +102,7 @@ for (const info of mdFiles) {
   const titleText = data.title ? String(data.title) : slug;
   const pageTitle = `${titleText} | ${BRAND}`;
   const metaDesc = data.description || "A QA thought hub. What did you expect?";
-  const ogImage = data.image || `${SITE}/og-null-expected.jpg`;
+  const ogImage = data.image || `${SITE}/og/default.png`;
 
   const datePublished =
     data.date ||
