@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Brand */}
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
@@ -15,8 +15,11 @@ const Footer = () => {
               </div>
               <span className="font-bold text-xl brand-gradient">Null:Expected</span>
             </div>
-            <p className="text-gray-300">
+            <p className="text-gray-300 mb-2">
               A QA thought hub. What did you expect?
+            </p>
+            <p className="text-sm text-gray-400">
+              Writing on software quality, release governance, and technical delivery.
             </p>
           </div>
 
@@ -36,32 +39,21 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Behind the Blog */}
+          {/* Null Expected */}
           <div>
-            <h3 className="font-semibold mb-4">Behind the Blog</h3>
+            <h3 className="font-semibold mb-4">Null Expected</h3>
             <div className="space-y-2">
-              <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors">
-                Our Mission
-              </Link>
               <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
-                About Us
+                About
               </Link>
-              <Link to="/about" className="text-gray-300 hover:text-white block transition-colors">
-                Contact
-              </Link>
-            </div>
-          </div>
-
-          {/* Coming Soon */}
-          <div>
-            <h3 className="font-semibold mb-4">Coming Soon</h3>
-            <div className="space-y-2">
               <Link to="/consulting" className="text-gray-300 hover:text-white block transition-colors">
                 Consulting
               </Link>
-              <span className="text-gray-300 block">Guest Posts - Opening Soon</span>
+              <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors">
+                Mission
+              </Link>
               <Link to="/manifesto" className="text-gray-300 hover:text-white block transition-colors">
-                Read the Manifesto
+                Manifesto
               </Link>
             </div>
           </div>
