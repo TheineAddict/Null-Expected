@@ -19,12 +19,12 @@ export const AUTHORS: Record<string, Author> = {
     name: 'Andreea Vitan',
     slug: 'andreeavitan',
     initials: 'AV',
-    title: 'QA & Release Manager',
-    roleTitle: 'Founder and Editor-in-Chief',
-    bio: 'Andreea Vitan writes from the seam where delivery meets assurance. With a background spanning hands-on software testing, QA management, and release management, she focuses on risk-based testing, release readiness signals, and the practical governance that keeps teams shipping without ritual and panic.',
+    title: 'Test & QA Manager | Release Manager | Technical Delivery',
+    roleTitle: 'Founder, Consultant and Editor',
+    bio: 'Andreea Vitan has 12+ years of experience across hands-on software testing, QA leadership, release management and technical delivery for web, desktop, mobile and API products. She writes about risk-based test strategy, release readiness, cross-team dependencies, governance and the quality of information used in delivery decisions.',
     tag: '[ quality_mindset = true ]',
     imageUrl: '/null-expected-adevitan.jpg',
-    linkedinUrl: 'https://www.linkedin.com/in/adevitan',
+    linkedinUrl: 'https://www.linkedin.com/in/adevitan/',
     email: 'ade@nullexpected.com'
   },
   author2: {
