@@ -148,11 +148,14 @@ const Consulting = () => {
               className="w-24 sm:w-28 md:w-32 h-auto object-contain"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Software quality, release governance and technical delivery consulting</h1>
+          <p className="text-sm font-mono uppercase tracking-wider text-gray-500 mb-4">
+            Independent consulting in software quality, release governance and technical delivery
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Clearer decisions when quality, release and delivery get complicated
+          </h1>
           <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            Independent consulting by Andreea Vitan across software quality, release governance and
-            technical delivery. The work is grounded in 12+ years of hands-on testing, QA leadership,
-            release management and cross-team delivery in enterprise and regulated environments.
+            I work with engineering and delivery teams when test coverage is unclear, dependencies are slipping, release readiness is disputed or governance is producing more ceremony than useful information. I bring 12+ years across hands-on testing, QA leadership, release management and cross-team delivery in enterprise and regulated environments.
           </p>
           <div className="text-sm text-gray-500 font-mono">[ quality = clear_risk + timely_decisions ]</div>
         </div>
