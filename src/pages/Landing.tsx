@@ -163,23 +163,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Editorial intro */}
-      <section className="border-t border-gray-100">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-5 md:mb-6 leading-snug">
-            Where the perspective comes from
-          </h2>
-          <div className="space-y-5 text-base sm:text-lg text-gray-600 leading-[1.75]">
-            <p>
-              Null Expected comes from more than a decade spent dealing with the awkward parts of software delivery: test coverage that looks clearer on paper than it is, dependencies that surface late, release decisions made with incomplete evidence, and processes that continue long after they stop helping.
-            </p>
-            <p>
-              The experience behind the site runs from hands-on testing through QA leadership, release management and cross-team delivery across web, desktop, mobile and API products. Much of that work has been in enterprise and regulated environments, where unclear ownership and weak information have practical consequences.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Posts */}
       <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
