@@ -213,7 +213,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in touch</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:ade@nullexpected.com"
+              href="mailto:ade.vitan@gmail.com"
               className="inline-flex items-center justify-center px-6 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors"
             >
               <Mail className="mr-2 h-5 w-5" />
