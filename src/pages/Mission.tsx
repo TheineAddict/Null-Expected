@@ -61,7 +61,7 @@ const Mission = () => {
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Our Mission
+            Why Null Expected exists
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             Null Expected is a practitioner-led reference hub for software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind how software is tested, governed and released.
@@ -74,7 +74,7 @@ const Mission = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Why We Exist
+              The gap it is meant to fill
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
@@ -94,14 +94,9 @@ const Mission = () => {
                   <span>Write about software delivery as it actually behaves across teams, dependencies and constraints</span>
                 </li>
               </ul>
-              <div className="pt-8">
-                <blockquote className="text-2xl font-light italic">
-                  Useful quality work improves the information available to the people making decisions.
-                </blockquote>
-                <div className="text-indigo-300 font-mono text-sm mt-4">
-                  - Null Expected
-                </div>
-              </div>
+              <p className="pt-8 text-lg">
+                The practical test is whether the work improves the information available to the people making decisions.
+              </p>
             </div>
           </div>
         </div>
@@ -111,10 +106,10 @@ const Mission = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What We Write About
+            What the writing covers
           </h2>
           <div className="max-w-3xl mx-auto space-y-4 text-lg text-gray-600">
-            <p>The subject is broader than test execution. Null Expected follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them.</p>
+            <p>The subject is broader than test execution. The writing follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them.</p>
           </div>
         </div>
 
@@ -175,10 +170,10 @@ const Mission = () => {
                 Null Expected was founded by Andreea Vitan and is primarily shaped by her experience across hands-on software testing, QA management, release management and technical delivery.
               </p>
               <p>
-                Guest contributors may bring other practitioner perspectives, but this is not intended to become a general QA content platform. Articles are published because there is a useful argument, experience or question worth examining.
+                Guest contributors may occasionally bring other practitioner perspectives, but the site is not intended to become a general QA content platform. Articles are published because there is a useful argument, experience or question worth examining.
               </p>
               <p className="font-semibold text-gray-900">
-                The writing is practitioner-led, source-aware where evidence matters, and independent of the consultancy work.
+                Null Expected is practitioner-led, source-aware where evidence matters, and independent of the consultancy work.
               </p>
               <p className="mt-8">
                 <Link
@@ -186,7 +181,7 @@ const Mission = () => {
                   className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  Read our full manifesto
+                  Read the full manifesto
                   <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </p>
