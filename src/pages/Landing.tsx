@@ -100,7 +100,7 @@ const Landing = () => {
         path="/"
       />
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
         {/* Circuit Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
