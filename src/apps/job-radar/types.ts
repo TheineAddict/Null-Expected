@@ -1,6 +1,6 @@
-export type WorkplaceType = 'REMOTE' | 'HYBRID' | 'ONSITE' | 'UNKNOWN';
+type WorkplaceType = 'REMOTE' | 'HYBRID' | 'ONSITE' | 'UNKNOWN';
 export type RemoteScope = 'WORLDWIDE' | 'EUROPE' | 'EU_EEA' | 'EMEA' | 'ROMANIA' | 'COUNTRY_ONLY' | 'MULTI_COUNTRY' | 'UNKNOWN';
-export type JobSource = 'WWR' | 'REMOTIVE' | 'HIMALAYAS' | 'RSS' | 'GREENHOUSE' | 'LEVER';
+type JobSource = 'WWR' | 'REMOTIVE' | 'HIMALAYAS' | 'RSS' | 'GREENHOUSE' | 'LEVER';
 
 export interface Attribution {
   name: string;
@@ -34,7 +34,7 @@ export interface JobSnapshot {
   jobs: Job[];
 }
 
-export type ErrorType =
+type ErrorType =
   | 'HTTP_ERROR'
   | 'TIMEOUT'
   | 'NETWORK_ERROR'
@@ -46,7 +46,7 @@ export type ErrorType =
   | 'DISABLED'
   | 'UNKNOWN_ERROR';
 
-export interface SourceResult {
+interface SourceResult {
   sourceId: string;
   name: string;
   type: string;

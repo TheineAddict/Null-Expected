@@ -4,4 +4,4 @@ export type ThemeName = 'default' | 'winter' | 'pride' | 'classic-christmas';
 export const DEFAULT_THEME: ThemeName = 'default';
 
 // Available themes for reference
-export const AVAILABLE_THEMES: ThemeName[] = ['default', 'winter', 'pride', 'classic-christmas'];
+const AVAILABLE_THEMES: ThemeName[] = ['default', 'winter', 'pride', 'classic-christmas'];

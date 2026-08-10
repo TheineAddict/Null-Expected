@@ -7,7 +7,7 @@
 // But they must be hidden from tag-chip UI (cards + post header).
 //
 // Add new internal theme slugs here as you introduce them.
-export const INTERNAL_BLOG_TAG_SLUGS: string[] = [
+const INTERNAL_BLOG_TAG_SLUGS: string[] = [
   // Example placeholder (no current posts use it, so it won't affect visuals yet).
   'theme-example',
   'risk-readiness-reality-series'

@@ -3,7 +3,7 @@ import { getAuthorByName, getAuthorById, AUTHORS } from '../config/authors';
 import { INTERNAL_BLOG_TAG_SLUGS_SET } from '../config/internalBlogTags';
 import { marked } from 'marked';
 
-export function isInternalBlogTag(tag: string): boolean {
+function isInternalBlogTag(tag: string): boolean {
   return INTERNAL_BLOG_TAG_SLUGS_SET.has(tag);
 }
 
@@ -12,7 +12,7 @@ export function getVisibleBlogTags(tags: string[]): string[] {
 }
 
 // Simple, robust frontmatter parser
-export function parseFrontmatter(content: string) {
+function parseFrontmatter(content: string) {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
   
@@ -80,7 +80,7 @@ export function parseFrontmatter(content: string) {
 }
 
 // Convert markdown to HTML
-export function markdownToHtml(markdown: string): string {
+function markdownToHtml(markdown: string): string {
   const renderer = new marked.Renderer();
 
   const originalImageRenderer = renderer.image.bind(renderer);
@@ -109,7 +109,7 @@ export function markdownToHtml(markdown: string): string {
 }
 
 // Get display category from tags
-export function getDisplayCategory(tags: string[]): string {
+function getDisplayCategory(tags: string[]): string {
   const tagToCategoryMap: Record<string, string> = {
     'qa-processes': 'QA Processes',
     'quality-mindset': 'Quality Mindset',
@@ -132,7 +132,7 @@ export function getDisplayCategory(tags: string[]): string {
 }
 
 // Generate ID from filename
-export function generateId(filename: string): number {
+function generateId(filename: string): number {
   let hash = 0;
   for (let i = 0; i < filename.length; i++) {
     const char = filename.charCodeAt(i);
@@ -143,7 +143,7 @@ export function generateId(filename: string): number {
 }
 
 // Check if filename should be skipped
-export function shouldSkipFile(filename: string): boolean {
+function shouldSkipFile(filename: string): boolean {
   const skipPatterns = [
     '_template',
     'template',
@@ -166,7 +166,7 @@ export function shouldSkipFile(filename: string): boolean {
 }
 
 // Check if slug should be skipped
-export function shouldSkipSlug(slug: string): boolean {
+function shouldSkipSlug(slug: string): boolean {
   const skipPatterns = [
     'template',
     'example', 
@@ -317,7 +317,7 @@ export function getPostBySlug(posts: BlogPost[], slug: string): BlogPost | undef
 }
 
 // Get latest posts
-export function getLatestPosts(posts: BlogPost[], count: number = 3): BlogPost[] {
+function getLatestPosts(posts: BlogPost[], count: number = 3): BlogPost[] {
   return posts.slice(0, count);
 }
 
@@ -333,7 +333,7 @@ export function getFeaturedPosts(posts: BlogPost[], count: number = 3): BlogPost
 }
 
 // Get posts by author
-export function getPostsByAuthor(posts: BlogPost[], authorName: string): BlogPost[] {
+function getPostsByAuthor(posts: BlogPost[], authorName: string): BlogPost[] {
   return posts.filter(post => post.author === authorName);
 }
 
@@ -345,4 +345,4 @@ export function getPostsByAuthorSlug(posts: BlogPost[], authorSlug: string): Blo
 }
 
 // Legacy exports for backward compatibility
-export const getBlogPosts = loadBlogPosts;
+const getBlogPosts = loadBlogPosts;

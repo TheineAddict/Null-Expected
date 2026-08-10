@@ -69,7 +69,7 @@ export const getAuthorBySlug = (slug: string): Author | undefined => {
 };
 
 // For backward compatibility with existing blog posts
-export const getAuthorInfo = (authorName: string): Author => {
+const getAuthorInfo = (authorName: string): Author => {
   const author = getAuthorByName(authorName);
   if (author) {
     return author;

@@ -6,7 +6,7 @@ import { characterIds, getCharacter } from '../apps/character-sheet/data/charact
 import type { CharacterSheet } from '../apps/character-sheet/model/character.types';
 
 /** Index: redirect to first character or show minimal picker. */
-export const CharacterSheetIndexPage: React.FC = () => {
+const CharacterSheetIndexPage: React.FC = () => {
   if (characterIds.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

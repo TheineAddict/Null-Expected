@@ -7,7 +7,7 @@ import type {
   Attack,
 } from './character.types';
 
-export function getAbilityModifier(score: number): number {
+function getAbilityModifier(score: number): number {
   return Math.floor((score - 10) / 2);
 }
 
@@ -15,7 +15,7 @@ export function formatModifier(mod: number): string {
   return mod >= 0 ? `+${mod}` : `${mod}`;
 }
 
-export function getProficiencyBonus(level: number): number {
+function getProficiencyBonus(level: number): number {
   if (level >= 17) return 6;
   if (level >= 13) return 5;
   if (level >= 9) return 4;
