@@ -101,9 +101,9 @@ const Blog = () => {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <div className="flex justify-center mb-6 h-24">
           <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
-            alt="Cat looking for quality insights"
-            className="w-24 h-24"
+            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+            alt="Null Expected cat writing practitioner notes"
+            className="w-24 sm:w-28 md:w-32 h-auto object-contain"
           />
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

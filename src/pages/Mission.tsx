@@ -135,9 +135,9 @@ const Mission = () => {
           <div className="text-center">
             <div className="flex justify-center mb-6">
               <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
-                alt="Cat investigating quality"
-                className="w-20 h-20"
+                src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+                alt="Null Expected cat thinking about quality evidence"
+                className="w-20 sm:w-24 md:w-28 h-auto object-contain"
               />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">

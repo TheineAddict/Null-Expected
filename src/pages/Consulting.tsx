@@ -1,22 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  CircleCheck as CheckCircle,
-  Users,
-  Target,
-  TrendingUp,
-  Clock,
-  Mail,
-  Linkedin,
-  ArrowRight,
-  ClipboardList,
-  AlertTriangle,
-  Eye,
-  FileBarChart,
-  CalendarClock,
-  Network,
-  Gavel,
-} from 'lucide-react';
+import { CircleCheck as CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight, ClipboardList, TriangleAlert as AlertTriangle, Eye, ChartBar as FileBarChart, CalendarClock, Network, Gavel } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 const Consulting = () => {
@@ -159,9 +143,9 @@ const Consulting = () => {
         <div className="mb-8">
           <div className="flex justify-center mb-6 h-24">
             <img
-              src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
-              alt="Null Expected cat mascot approving quality consulting"
-              className="w-24 h-24"
+              src="/Null-Expected-Cat-Icon-Pack/cat-approved.svg"
+              alt="Null Expected cat reviewing a delivery strategy"
+              className="w-24 sm:w-28 md:w-32 h-auto object-contain"
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Software quality, release governance and technical delivery consulting</h1>
