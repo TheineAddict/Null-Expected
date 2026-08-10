@@ -136,7 +136,7 @@ const Landing = () => {
               Software quality, release governance and technical delivery.
             </p>
             <p className="text-base sm:text-lg text-gray-700 mb-4 max-w-2xl mx-auto">
-              Independent consulting by Andreea Vitan, grounded in 12+ years across hands-on testing, QA leadership, release management and cross-team delivery. The writing remains independent practitioner work: specific, evidence-aware and sceptical of process theatre.
+              Practitioner-led consulting, paired with independent writing about testing, delivery, release management and quality. Evidence-first, slightly sceptical of process theatre.
             </p>
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
               By <Link to="/about" className="text-indigo-900 hover:text-gray-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
