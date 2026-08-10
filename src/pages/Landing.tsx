@@ -32,37 +32,37 @@ const Landing = () => {
   const categories = [
     {
       title: 'QA Processes',
-      description: 'Methodologies, frameworks, and systematic approaches to quality',
+      description: 'Test strategy, planning, exploratory testing, risk-based coverage and the mechanics of delivery.',
       icon: Target,
       color: 'from-indigo-500 to-purple-600'
     },
     {
       title: 'Quality Mindset',
-      description: 'Philosophy and thinking patterns that drive quality excellence',
+      description: 'Evidence, ownership and the difference between a green process and a sound decision.',
       icon: Users,
       color: 'from-purple-500 to-pink-600'
     },
     {
       title: 'Career Advice',
-      description: 'Growth strategies and insights for QA professionals',
+      description: 'QA careers, leadership, communication and judgement beyond test execution.',
       icon: TrendingUp,
       color: 'from-indigo-600 to-blue-600'
     },
     {
       title: 'Industry Trends',
-      description: 'Latest developments and emerging patterns in QA',
+      description: 'AI in testing, observability and industry shifts examined through practical use.',
       icon: Settings,
       color: 'from-blue-500 to-indigo-600'
     },
     {
       title: 'Tools & Tech',
-      description: 'Reviews, tutorials, and insights on QA tools and technologies',
+      description: 'Occasional tool coverage focused on process, evidence and outcomes.',
       icon: BookOpen,
       color: 'from-purple-600 to-indigo-600'
     },
     {
       title: 'Case Studies',
-      description: 'Practical examples, lessons learned, and QA stories from the field',
+      description: 'Delivery situations, failure modes and lessons that survive contact with real teams.',
       icon: Settings,
       color: 'from-indigo-800 to-purple-900'
     }
@@ -324,7 +324,7 @@ const Landing = () => {
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <Link
-                to="/blog"
+                to={`/blog?category=${encodeURIComponent(category.title)}`}
                 key={category.title}
                 className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
                 onClick={() => window.scrollTo(0, 0)}
@@ -347,17 +347,17 @@ const Landing = () => {
       <section className="py-12 md:py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
-            Follow the breadcrumbs
+            Read the latest writing
           </h2>
           <p className="text-lg sm:text-xl text-indigo-200 mb-6 md:mb-8">
-            Explore articles, rants, and real-world QA strategy in practice.
+            Essays and field notes on software quality, release governance and delivery decisions.
           </p>
           <Link
             to="/blog"
             className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
             onClick={() => window.scrollTo(0, 0)}
           >
-            Browse All Posts
+            Browse all articles
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>
