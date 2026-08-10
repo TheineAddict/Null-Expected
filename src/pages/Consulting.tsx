@@ -164,11 +164,11 @@ const Consulting = () => {
               className="w-24 h-24"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Consulting</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Software quality, release governance and technical delivery consulting</h1>
           <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            Null Expected is an independent, founder-led consultancy founded by Andreea Vitan. The
-            work draws on hands-on practitioner experience across testing, QA leadership, release
-            management, governance and cross-team delivery, not on generic change programmes.
+            Independent consulting by Andreea Vitan across software quality, release governance and
+            technical delivery. The work is grounded in 12+ years of hands-on testing, QA leadership,
+            release management and cross-team delivery in enterprise and regulated environments.
           </p>
           <div className="text-sm text-gray-500 font-mono">[ quality = clear_risk + timely_decisions ]</div>
         </div>
@@ -177,7 +177,7 @@ const Consulting = () => {
       {/* Services Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What We Work On</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Three related areas of practice. Most engagements draw on more than one, because quality,
             release and delivery decisions rarely sit in isolation.
@@ -269,7 +269,7 @@ const Consulting = () => {
         </div>
       </section>
 
-      {/* Why Work With Us */}
+      {/* Why work with Andreea */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -280,7 +280,7 @@ const Consulting = () => {
                 className="w-24 h-24"
               />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Why Work With Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Why work with Andreea</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -301,8 +301,8 @@ const Consulting = () => {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Independent and Direct</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Null Expected is founder-led and intentionally small. That means direct access to the
-                person doing the work, and advice that is not filtered through a sales pipeline.
+                Null Expected is founder-led and intentionally small. That means direct access to
+                Andreea, and advice that is not filtered through a sales pipeline.
               </p>
 
               <h3 className="text-xl font-bold text-gray-900 mb-4">Better Decisions, Not More Process</h3>
@@ -387,7 +387,7 @@ const Consulting = () => {
       {/* Related Content */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">More on How We Think</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">More on how the work thinks</h2>
           <p className="text-gray-600 mb-8">
             The blog covers quality, release management and delivery in practice, not in theory.
           </p>
@@ -397,7 +397,7 @@ const Consulting = () => {
               className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Read Our Blog
+              Read the writing
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
             <Link
@@ -405,7 +405,7 @@ const Consulting = () => {
               className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Our Manifesto
+              The Manifesto
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
