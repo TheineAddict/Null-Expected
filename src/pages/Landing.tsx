@@ -157,7 +157,7 @@ const Landing = () => {
               className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Read the writing
+              Explore the writing
             </Link>
           </div>
         </div>
