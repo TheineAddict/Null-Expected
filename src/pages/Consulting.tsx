@@ -26,10 +26,10 @@ const Consulting = () => {
       description:
         'Working on how quality is defined, planned and evidenced across your teams so that testing reflects real product risk instead of volume.',
       features: [
-        'Test strategy and risk-based testing',
-        'QA operating models and team design',
-        'Test planning and quality signals',
-        'Readiness criteria and QA process reviews',
+        'Current-state QA and test-process review',
+        'Risk-based test strategy and planning model',
+        'Readiness criteria and quality-signal definition',
+        'Prioritised recommendations with ownership and next steps',
       ],
       icon: Target,
       color: 'from-indigo-500 to-purple-600',
@@ -39,10 +39,10 @@ const Consulting = () => {
       description:
         'Making release decisions based on clear, honest information so that go/no-go calls are timely and defensible.',
       features: [
-        'Release readiness and go/no-go support',
-        'Dependency visibility and defect triage',
-        'Change governance and risk triage',
-        'Release planning and rollback readiness',
+        'Release-readiness model and go/no-go evidence set',
+        'Dependency, defect and risk visibility',
+        'Change and rollback-readiness review',
+        'Decision and escalation paths',
       ],
       icon: TrendingUp,
       color: 'from-purple-500 to-pink-600',
@@ -52,10 +52,10 @@ const Consulting = () => {
       description:
         'Coordinating delivery across teams so that milestones, dependencies and risks stay visible and decisions arrive on time.',
       features: [
-        'Cross-team delivery coordination',
-        'Milestones and RAID management',
-        'Delivery governance and dependency tracking',
-        'Stakeholder decision support and release coordination',
+        'Cross-team milestone and dependency view',
+        'RAID and decision tracking',
+        'Delivery and readiness reporting',
+        'Coordination support through critical releases',
       ],
       icon: Users,
       color: 'from-indigo-600 to-blue-600',
@@ -197,6 +197,7 @@ const Consulting = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-gray-400 mb-3">Typical outputs</p>
               <ul className="space-y-2">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-center text-gray-700">
