@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { CharacterSheet, CoinDenom, CoinPurse } from '../model/character.types';
 
-const STORAGE_KEY_VERSION = 'v1';
+export const STORAGE_KEY_VERSION = 'v1';
 
 export interface CharacterTrackerState {
   currentHp: number;

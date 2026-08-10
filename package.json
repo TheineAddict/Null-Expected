@@ -25,6 +25,7 @@
     "job-radar:ingest": "tsx scripts/job-radar-ingest/index.ts"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "lucide-react": "^0.542.0",
     "marked": "^16.2.1",
     "mermaid": "^11.12.2",

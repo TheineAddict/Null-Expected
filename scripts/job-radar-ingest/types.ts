@@ -2,12 +2,18 @@ export type WorkplaceType = 'REMOTE' | 'HYBRID' | 'ONSITE' | 'UNKNOWN';
 export type RemoteScope = 'WORLDWIDE' | 'EUROPE' | 'EU_EEA' | 'EMEA' | 'ROMANIA' | 'COUNTRY_ONLY' | 'MULTI_COUNTRY' | 'UNKNOWN';
 export type JobSource = 'WWR' | 'REMOTIVE' | 'HIMALAYAS' | 'RSS' | 'GREENHOUSE' | 'LEVER';
 
-export interface Attribution {
-  name: string;
-  url: string;
+export interface RawJob {
+  sourceId: string;
+  source: JobSource;
+  title: string;
+  company: string | null;
+  locationRaw: string | null;
+  descriptionHtml: string | null;
+  canonicalUrl: string;
+  postedAt: string | null;
 }
 
-export interface Job {
+export interface NormalizedJob {
   id: string;
   sourceId: string;
   canonicalUrl: string;
@@ -25,13 +31,28 @@ export interface Job {
   score: number;
   reasons: string[];
   source: JobSource;
-  attribution?: Attribution;
+}
+
+export interface SourceConfig {
+  id: string;
+  type: string;
+  name: string;
+  enabled: boolean;
+  config: {
+    url: string;
+    params?: Record<string, any>;
+  };
+}
+
+export interface SourcesConfig {
+  schemaVersion: number;
+  sources: SourceConfig[];
 }
 
 export interface JobSnapshot {
   schemaVersion: number;
   updatedAt: string;
-  jobs: Job[];
+  jobs: NormalizedJob[];
 }
 
 export type ErrorType =
@@ -71,5 +92,5 @@ export interface MetaSnapshot {
     sourcesOk: number;
     sourcesFailed: number;
   };
-  sourceResults?: SourceResult[];
+  sourceResults: SourceResult[];
 }

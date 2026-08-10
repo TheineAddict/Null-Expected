@@ -23,7 +23,7 @@ const SpendButton: React.FC<{ canSpend: boolean; onSpend: () => void }> = ({ can
   </button>
 );
 
-const TrackerCard: React.FC<{
+export const TrackerCard: React.FC<{
   label: string;
   emoji: string;
   value: number;
@@ -120,7 +120,7 @@ const LimitedUseRow: React.FC<{
   );
 };
 
-const ResourcesSection: React.FC<ResourcesSectionProps> = ({ character, state, actions }) => {
+export const ResourcesSection: React.FC<ResourcesSectionProps> = ({ character, state, actions }) => {
   return (
     <section className="rounded-xl bg-white shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col gap-3">
       <div className="flex items-center justify-between gap-2">

@@ -38,7 +38,7 @@ export interface HopeTier {
   activeCardId: string;
 }
 
-interface DamageLine {
+export interface DamageLine {
   id: string;
   label?: string;
   dice: string;
@@ -56,7 +56,7 @@ export interface Attack {
   whenToUse?: string;
 }
 
-type LimitedUseReset = 'short-rest' | 'long-rest' | 'per-encounter' | 'custom';
+export type LimitedUseReset = 'short-rest' | 'long-rest' | 'per-encounter' | 'custom';
 
 export interface LimitedUseResource {
   id: string;
@@ -66,7 +66,7 @@ export interface LimitedUseResource {
   notes?: string;
 }
 
-interface TurnGuide {
+export interface TurnGuide {
   title: string;
   steps: string[];
 }
@@ -90,7 +90,7 @@ export interface Reaction {
 }
 
 /** Use a positive integer for stackables; `'n/a'` hides quantity and counters on the sheet. */
-type InventoryQuantity = number | 'n/a';
+export type InventoryQuantity = number | 'n/a';
 
 export interface InventoryItem {
   id: string;
@@ -113,12 +113,12 @@ export interface CoinPurse {
   cp: number;
 }
 
-interface DefenseEntry {
+export interface DefenseEntry {
   damageType: string;
   condition?: string;
 }
 
-interface Defenses {
+export interface Defenses {
   resistances?: DefenseEntry[];
   immunities?: DefenseEntry[];
 }

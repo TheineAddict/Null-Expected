@@ -83,7 +83,7 @@ const InactiveHopeCard: React.FC<{ card: HopeCard }> = ({ card }) => {
   );
 };
 
-const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
+export const HopeCardView: React.FC<{ card: HopeCard; variant: 'active' | 'inactive' }> = ({ card, variant }) => {
   if (variant === 'active') return <ActiveHopeCard card={card} />;
   return <InactiveHopeCard card={card} />;
 };
@@ -136,7 +136,7 @@ export const HopeAbilityTiers: React.FC<HopeAbilitiesSectionProps> = ({ characte
   );
 };
 
-const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {
+export const HopeAbilitiesSection: React.FC<HopeAbilitiesSectionProps> = ({ character }) => {
   const tiers = character.hopeAbilities ?? [];
   if (tiers.length === 0) return null;
 
