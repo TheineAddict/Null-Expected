@@ -100,7 +100,7 @@ const Landing = () => {
         path="/"
       />
       {/* Hero Section */}
-      <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
+      <section className="relative flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
         {/* Circuit Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -135,34 +135,29 @@ const Landing = () => {
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 font-light">
               Software quality, release governance and technical delivery.
             </p>
-            <p className="text-base sm:text-lg text-gray-700 mb-4">
-              Practitioner-led consulting, paired with independent writing about testing, delivery, release management and quality. Evidence-first, slightly sceptical of process theatre.
+            <p className="text-base sm:text-lg text-gray-700 mb-4 max-w-2xl mx-auto">
+              Independent consulting by Andreea Vitan, grounded in 12+ years across hands-on testing, QA leadership, release management and cross-team delivery. The writing remains independent practitioner work: specific, evidence-aware and sceptical of process theatre.
             </p>
             <p className="text-sm text-gray-500 mb-6 md:mb-8">
               By <Link to="/about" className="text-indigo-900 hover:text-gray-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Andreea Vitan</Link>
             </p>
-            <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-8 md:mb-12">
-              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ curiosity ]</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ quality ]</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full font-mono">[ growth ]</span>
-            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/blog"
+              to="/consulting"
               className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Explore the writing
+              Explore consulting
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
-              to="/consulting"
+              to="/blog"
               className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
               onClick={() => window.scrollTo(0, 0)}
             >
-              Consulting
+              Read the writing
             </Link>
           </div>
         </div>
