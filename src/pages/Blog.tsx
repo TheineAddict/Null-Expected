@@ -128,7 +128,7 @@ const Blog = () => {
         <section className="border-t border-gray-200">
           <div className="site-shell pt-6 pb-10">
             <span className="block text-sm font-medium text-gray-500 mb-4">Filter by topic</span>
-            <div className="flex md:flex-wrap gap-2 overflow-x-auto md:overflow-visible md:justify-start -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0">
+            <div className="flex md:flex-wrap gap-1.5 md:gap-1.5 overflow-x-auto md:overflow-visible md:justify-start -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0">
               {categories.map((category) => (
                 <button
                   key={category}

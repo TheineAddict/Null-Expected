@@ -35,7 +35,7 @@ const Header = () => {
                 key={item.name}
                 to={item.href}
                 className={`px-3 py-2 text-[15px] md:text-base font-medium transition-colors ${
-                  location.pathname === item.href
+                  location.pathname === item.href || (item.href === '/blog' && location.pathname.startsWith('/blog/'))
                     ? 'site-nav-active'
                     : 'site-nav-link'
                 }`}
@@ -65,7 +65,7 @@ const Header = () => {
                 to={item.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={`block px-3 py-2 text-base font-medium transition-colors ${
-                  location.pathname === item.href
+                  location.pathname === item.href || (item.href === '/blog' && location.pathname.startsWith('/blog/'))
                     ? 'site-nav-active-mobile'
                     : 'site-nav-link'
                 }`}

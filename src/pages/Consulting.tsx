@@ -205,7 +205,7 @@ const Consulting = () => {
       {/* Situations Section */}
       <section className="site-section bg-gray-50">
         <div className="site-shell">
-          <div className="site-content-width mx-auto">
+          <div className="site-content-width">
           <div className="mb-16">
             <SectionHeading
               title="When outside help is useful"
@@ -264,7 +264,7 @@ const Consulting = () => {
       {/* What you can expect */}
       <section className="site-section bg-gray-50">
         <div className="site-shell">
-          <div className="site-content-width mx-auto">
+          <div className="site-content-width">
             <SectionHeading
               title="What you can expect"
               description="You work directly with Andreea. Recommendations are shaped to the systems, constraints and delivery pressure already present, and the resulting process stays with the team."
