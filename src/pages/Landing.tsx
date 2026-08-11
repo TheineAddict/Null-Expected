@@ -110,7 +110,8 @@ const Landing = () => {
           }} />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 site-shell text-center">
+          <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <div className="flex justify-center mb-6">
               <img
@@ -151,6 +152,7 @@ const Landing = () => {
             >
               Read the blog
             </Link>
+          </div>
           </div>
         </div>
       </section>
@@ -259,7 +261,8 @@ const Landing = () => {
 
       {/* CTA Section */}
       <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="site-shell">
+          <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
             Read the latest writing
           </h2>
@@ -274,6 +277,7 @@ const Landing = () => {
             Browse all articles
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
+          </div>
         </div>
       </section>
     </main>

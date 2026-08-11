@@ -49,7 +49,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-indigo-900"
+              className="p-2.5 rounded-md text-gray-700 hover:text-indigo-900"
             >
               {isMenuOpen ? <LucideIcons.X className="h-6 w-6" /> : <LucideIcons.Menu className="h-6 w-6" />}
             </button>
