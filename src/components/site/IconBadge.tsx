@@ -15,7 +15,7 @@ const IconBadge = ({
   accessibleLabel,
 }: IconBadgeProps) => {
   const variantClass = `site-icon-badge-${variant}`;
-  const sizeClass = `site-icon-badge-${size}`;
+  const sizeClass = variant === 'inline' ? '' : `site-icon-badge-${size}`;
 
   return (
     <span

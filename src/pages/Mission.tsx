@@ -1,40 +1,41 @@
 import { Link } from 'react-router-dom';
-import { Target, Users, TrendingUp, Eye, BookOpen, Zap, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import PageHeading from '../components/site/PageHeading';
 import SectionHeading from '../components/site/SectionHeading';
+import IconBadge from '../components/site/IconBadge';
+import { siteIcons } from '../config/siteIcons';
 
 const Mission = () => {
   const whatWeWrite = [
     {
       title: 'QA Processes & Test Strategy',
       description: 'Test planning, risk-based testing, exploratory work, Agile delivery and the mechanics of a test process that has to survive real delivery pressure.',
-      icon: Target,
+      icon: siteIcons.qaProcesses,
     },
     {
       title: 'Quality Thinking',
       description: 'Risk, evidence, ownership, confidence and the gap between a process saying everything is fine and knowing whether it actually is.',
-      icon: Users,
+      icon: siteIcons.qualityMindset,
     },
     {
       title: 'Careers & QA Leadership',
       description: 'QA careers, management, communication, mentoring and the judgement required when the role extends beyond test execution.',
-      icon: TrendingUp,
+      icon: siteIcons.careerAdvice,
     },
     {
       title: 'Release & Technical Delivery',
       description: 'Release readiness, governance, dependencies, go/no-go decisions and the coordination work that sits between teams.',
-      icon: Eye,
+      icon: siteIcons.releaseGovernance,
     },
     {
       title: 'Industry Change',
       description: 'AI in testing, observability, QAOps and other shifts worth examining once the hype is separated from practical use.',
-      icon: BookOpen,
+      icon: siteIcons.industryTrends,
     },
     {
       title: 'Tools & Practice',
       description: 'Occasional reviews of QA and delivery tools, judged by what they improve in the process rather than by their feature lists.',
-      icon: Zap,
+      icon: siteIcons.toolsAndTechnology,
     },
   ];
 
@@ -102,10 +103,8 @@ const Mission = () => {
               key={item.title}
               className="bg-white border border-gray-200 rounded-xl p-6"
             >
-              <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-4">
-                <item.icon className="h-5 w-5 text-indigo-700" />
-              </div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <IconBadge icon={item.icon} variant="soft" />
+              <h3 className="text-base font-semibold text-gray-900 mb-2 mt-4">{item.title}</h3>
               <p className="text-gray-600 text-base leading-relaxed" style={{ lineHeight: '1.6' }}>
                 {item.description}
               </p>
@@ -157,7 +156,7 @@ const Mission = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             Read the Manifesto
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <siteIcons.directionalLink className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </section>

@@ -1,24 +1,29 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { CircleCheck as CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight, ClipboardList, TriangleAlert as AlertTriangle, Eye, ChartBar as FileBarChart, CalendarClock, Network, Gavel } from 'lucide-react';
+import {
+  CalendarClock,
+  ChartBar,
+  Gavel,
+  Search,
+} from 'lucide-react';
 import { SEO } from '../components/SEO';
 import PageHeading from '../components/site/PageHeading';
 import SectionHeading from '../components/site/SectionHeading';
+import IconBadge from '../components/site/IconBadge';
+import { siteIcons } from '../config/siteIcons';
 
 const Consulting = () => {
   const services = [
     {
       title: 'Software Quality & Test Strategy',
       description:
-        'Working on how quality is defined, planned and evidenced across your teams so that testing reflects real product risk instead of volume.',
+        'How quality is defined, planned and evidenced so testing reflects real product risk instead of volume.',
       features: [
         'Current-state QA and test-process review',
         'Risk-based test strategy and planning model',
         'Readiness criteria and quality-signal definition',
         'Prioritised recommendations with ownership and next steps',
       ],
-      icon: Target,
-      color: 'from-indigo-500 to-purple-600',
+      icon: siteIcons.qaProcesses,
     },
     {
       title: 'Release Governance & Readiness',
@@ -30,8 +35,7 @@ const Consulting = () => {
         'Change and rollback-readiness review',
         'Decision and escalation paths',
       ],
-      icon: TrendingUp,
-      color: 'from-purple-500 to-pink-600',
+      icon: siteIcons.releaseGovernance,
     },
     {
       title: 'Technical Delivery',
@@ -43,8 +47,7 @@ const Consulting = () => {
         'Delivery and readiness reporting',
         'Coordination support through critical releases',
       ],
-      icon: Users,
-      color: 'from-indigo-600 to-blue-600',
+      icon: siteIcons.technicalDelivery,
     },
   ];
 
@@ -53,13 +56,13 @@ const Consulting = () => {
       title: 'No one owns the integrated readiness picture',
       description:
         'Several teams contribute to a release, but nobody holds the combined view of quality, dependencies and risk for the whole thing.',
-      icon: Eye,
+      icon: siteIcons.qualityMindset,
     },
     {
       title: 'QA reporting does not explain product risk',
       description:
         'Reporting is extensive and detailed, yet it still does not tell you where the real product risk is or what to do about it.',
-      icon: FileBarChart,
+      icon: ChartBar,
     },
     {
       title: 'Dependencies and risks surface too late',
@@ -71,7 +74,7 @@ const Consulting = () => {
       title: 'The current process no longer scales',
       description:
         'An existing QA or release process worked at a smaller scale, but no longer fits the number of teams, services or releases.',
-      icon: Network,
+      icon: siteIcons.technicalDelivery,
     },
     {
       title: 'Governance exists, but decisions still arrive late',
@@ -110,21 +113,21 @@ const Consulting = () => {
 
   const engagementOptions = [
     {
-      icon: ClipboardList,
+      icon: siteIcons.focusedReview,
       title: 'Focused review',
       label: 'Typical length: 1-4 weeks',
       description:
         'A short, targeted look at a specific quality, release or delivery problem, with practical recommendations you can act on.',
     },
     {
-      icon: Clock,
+      icon: siteIcons.timeOrEngagement,
       title: 'Embedded engagement',
       label: 'Length: agreed to scope',
       description:
         'Working alongside your teams for a defined period to put changes in place and build the capability to maintain them.',
     },
     {
-      icon: Users,
+      icon: siteIcons.careerAdvice,
       title: 'Advisory support',
       label: 'Cadence: ongoing',
       description:
@@ -158,7 +161,7 @@ const Consulting = () => {
             href="mailto:ade.vitan@gmail.com"
             className="site-button-primary"
           >
-            <Mail className="mr-2 h-5 w-5" />
+            <siteIcons.email className="mr-2 h-5 w-5" />
             Email Andreea
           </a>
           <a
@@ -188,16 +191,14 @@ const Consulting = () => {
                   idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
-                <div className="w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center mb-6">
-                  <service.icon className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <IconBadge icon={service.icon} variant="strong" size="large" />
+                <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">{service.title}</h3>
                 <p className="text-base text-gray-600 mb-6 leading-relaxed">{service.description}</p>
                 <p className="text-xs font-mono uppercase tracking-wider text-gray-400 mb-3">Typical outputs</p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center text-gray-700">
-                      <CheckCircle className="h-4 w-4 text-indigo-600 mr-3 flex-shrink-0" />
+                      <siteIcons.listConfirmation className="h-4 w-4 mr-3 flex-shrink-0" style={{ color: '#7c3aed' }} />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -229,9 +230,7 @@ const Consulting = () => {
                     isLast ? 'md:col-span-2' : ''
                   }`}
                 >
-                  <div className="w-11 h-11 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0">
-                    <situation.icon className="h-5 w-5 text-white" />
-                  </div>
+                  <IconBadge icon={situation.icon} variant="soft" />
                   <div>
                     <h3 className="text-base font-bold text-gray-900 mb-1">{situation.title}</h3>
                     <p className="text-sm text-gray-600 leading-relaxed">{situation.description}</p>
@@ -299,10 +298,8 @@ const Consulting = () => {
                   idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
                 }`}
               >
-                <div className="w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center mb-6">
-                  <option.icon className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{option.title}</h3>
+                <IconBadge icon={option.icon} variant="strong" size="large" />
+                <h3 className="text-xl font-bold text-gray-900 mb-4 mt-6">{option.title}</h3>
                 <p className="text-base text-gray-600 mb-4 leading-relaxed">{option.description}</p>
                 <div className="text-sm text-gray-500">{option.label}</div>
               </div>
@@ -326,7 +323,7 @@ const Consulting = () => {
               href="mailto:ade.vitan@gmail.com"
               className="site-button-inverse"
             >
-              <Mail className="mr-2 h-5 w-5" />
+              <siteIcons.email className="mr-2 h-5 w-5" />
               Email Andreea
             </a>
 
@@ -336,7 +333,7 @@ const Consulting = () => {
               rel="noopener noreferrer"
               className="site-button-secondary"
             >
-              <Linkedin className="mr-2 h-5 w-5" />
+              <siteIcons.linkedin className="mr-2 h-5 w-5" />
               View LinkedIn
             </a>
           </div>
@@ -357,19 +354,25 @@ const Consulting = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/blog"
-              className="inline-flex items-center text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"
+              className="inline-flex items-center font-semibold transition-colors"
+              style={{ color: '#6b21a8' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#581c87')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#6b21a8')}
               onClick={() => window.scrollTo(0, 0)}
             >
               Read the writing
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <siteIcons.directionalLink className="ml-2 h-4 w-4" />
             </Link>
             <Link
               to="/manifesto"
-              className="inline-flex items-center text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"
+              className="inline-flex items-center font-semibold transition-colors"
+              style={{ color: '#6b21a8' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#581c87')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#6b21a8')}
               onClick={() => window.scrollTo(0, 0)}
             >
               The Manifesto
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <siteIcons.directionalLink className="ml-2 h-4 w-4" />
             </Link>
           </div>
           </div>

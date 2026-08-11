@@ -1,24 +1,26 @@
 import React from 'react';
-import { Zap, Target, Users, Search, Settings, Eye } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import PageHeading from '../components/site/PageHeading';
+import IconBadge from '../components/site/IconBadge';
+import { siteIcons } from '../config/siteIcons';
 
 const Manifesto = () => {
   const principles = [
     {
       title: 'Intention over output',
       description: 'Activity is not evidence. Tests, metrics and reports are useful only when they answer a real question about risk.',
-      icon: Target,
+      icon: siteIcons.qaProcesses,
     },
     {
       title: 'Understanding over coverage',
       description: 'Coverage tells us what was exercised. It does not tell us whether we understood the important failure modes.',
-      icon: Eye,
+      icon: siteIcons.qualityMindset,
     },
     {
       title: 'Collaboration over gatekeeping',
       description: 'QA should improve the decisions a team can make, not become the department that grants permission to release.',
-      icon: Users,
+      icon: siteIcons.careerAdvice,
     },
     {
       title: 'Curiosity over certainty',
@@ -28,12 +30,12 @@ const Manifesto = () => {
     {
       title: 'Patterns over tools',
       description: 'Tools change quickly. Risk, feedback, dependencies and failure patterns are the things worth learning to recognise.',
-      icon: Settings,
+      icon: siteIcons.toolsAndTechnology,
     },
     {
       title: 'Silence, when expected',
       description: 'A null result has meaning only when we know what we expected, what we checked and why the absence of a signal matters.',
-      icon: Zap,
+      icon: siteIcons.qualityMindset,
     }
   ];
 
@@ -78,15 +80,13 @@ const Manifesto = () => {
       {/* Principles */}
       <section className="site-section site-shell">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {principles.map((principle, index) => (
+          {principles.map((principle) => (
             <div
               key={principle.title}
               className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col"
             >
-              <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-4">
-                <principle.icon className="h-5 w-5 text-indigo-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{principle.title}</h3>
+              <IconBadge icon={principle.icon} variant="soft" />
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">{principle.title}</h3>
               <p className="text-gray-600 leading-relaxed">{principle.description}</p>
             </div>
           ))}

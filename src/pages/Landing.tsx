@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
 import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
 import SectionHeading from '../components/site/SectionHeading';
+import IconBadge from '../components/site/IconBadge';
+import { siteIcons } from '../config/siteIcons';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
@@ -35,32 +36,32 @@ const Landing = () => {
     {
       title: 'QA Processes',
       description: 'Test strategy, planning, exploratory testing, risk-based coverage and the mechanics of delivery.',
-      icon: Target
+      icon: siteIcons.qaProcesses
     },
     {
       title: 'Quality Mindset',
       description: 'Evidence, ownership and the difference between a green process and a sound decision.',
-      icon: Users
+      icon: siteIcons.qualityMindset
     },
     {
       title: 'Career Advice',
       description: 'QA careers, leadership, communication and judgement beyond test execution.',
-      icon: TrendingUp
+      icon: siteIcons.careerAdvice
     },
     {
       title: 'Industry Trends',
       description: 'AI in testing, observability and industry shifts examined through practical use.',
-      icon: Settings
+      icon: siteIcons.industryTrends
     },
     {
       title: 'Tools & Tech',
       description: 'Occasional tool coverage focused on process, evidence and outcomes.',
-      icon: BookOpen
+      icon: siteIcons.toolsAndTechnology
     },
     {
       title: 'Case Studies',
       description: 'Delivery situations, failure modes and lessons that survive contact with real teams.',
-      icon: Settings
+      icon: siteIcons.caseStudies
     }
   ];
 
@@ -69,19 +70,19 @@ const Landing = () => {
       title: 'Software Quality & Test Strategy',
       description:
         'How quality is defined, planned and evidenced so testing reflects real product risk instead of volume.',
-      icon: Target
+      icon: siteIcons.qaProcesses
     },
     {
       title: 'Release Governance & Readiness',
       description:
         'Release decisions based on clear, honest information so go/no-go calls are timely and defensible.',
-      icon: TrendingUp
+      icon: siteIcons.releaseGovernance
     },
     {
       title: 'Technical Delivery',
       description:
         'Coordination across teams so milestones, dependencies and risks stay visible and decisions arrive on time.',
-      icon: Users
+      icon: siteIcons.technicalDelivery
     },
   ];
 
@@ -144,7 +145,7 @@ const Landing = () => {
               onClick={() => window.scrollTo(0, 0)}
             >
               Explore consulting
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <siteIcons.directionalLink className="ml-2 h-5 w-5" />
             </Link>
             <Link
               to="/blog"
@@ -210,10 +211,8 @@ const Landing = () => {
                 className="block group p-8 md:px-8 md:first:pl-0 md:last:pr-0 border-b md:border-b-0 border-gray-200 last:border-b-0"
                 onClick={() => window.scrollTo(0, 0)}
               >
-                <div className="site-icon-tile mb-5">
-                  <area.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{area.title}</h3>
+                <IconBadge icon={area.icon} variant="soft" size="large" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors mt-5">{area.title}</h3>
                 <p className="text-gray-600">{area.description}</p>
               </Link>
             ))}
@@ -240,9 +239,7 @@ const Landing = () => {
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <div className="flex items-center space-x-4">
-                  <div className="site-icon-tile !w-11 !h-11">
-                    <category.icon className="h-5 w-5" />
-                  </div>
+                  <IconBadge icon={category.icon} variant="soft" />
                   <div className="flex-1">
                     <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
                     <p className="text-gray-600 text-sm">{category.description}</p>
@@ -271,7 +268,7 @@ const Landing = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             Browse all articles
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <siteIcons.directionalLink className="ml-2 h-5 w-5" />
           </Link>
           </div>
           </div>

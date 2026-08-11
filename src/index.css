@@ -421,8 +421,8 @@ html {
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background-color: #eef2ff;
-  color: #3730a3;
+  background-color: #faf5ff;
+  color: #6b21a8;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -646,15 +646,15 @@ html {
 }
 
 .site-icon-badge-soft {
-  background-color: var(--brand-lavender);
-  border: 1px solid var(--brand-lavender-border);
-  color: var(--brand-purple);
+  background-color: #faf5ff;
+  border: 1px solid #e9d5ff;
+  color: #6b21a8;
 }
 
 .site-icon-badge-inline {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  color: var(--brand-purple);
+  background-color: transparent;
+  border: none;
+  color: #6b21a8;
 }
 
 .site-icon-badge-medium {
@@ -662,19 +662,34 @@ html {
   height: 44px;
 }
 
-.site-icon-badge-medium .site-icon-badge-glyph {
-  width: 20px;
-  height: 20px;
-}
-
 .site-icon-badge-large {
   width: 56px;
   height: 56px;
 }
 
-.site-icon-badge-large .site-icon-badge-glyph {
-  width: 26px;
-  height: 26px;
+.site-icon-badge-strong .site-icon-badge-glyph {
+  width: 24px;
+  height: 24px;
+}
+
+.site-icon-badge-strong.site-icon-badge-large .site-icon-badge-glyph {
+  width: 28px;
+  height: 28px;
+}
+
+.site-icon-badge-soft .site-icon-badge-glyph {
+  width: 20px;
+  height: 20px;
+}
+
+.site-icon-badge-soft.site-icon-badge-large .site-icon-badge-glyph {
+  width: 24px;
+  height: 24px;
+}
+
+.site-icon-badge-inline .site-icon-badge-glyph {
+  width: 20px;
+  height: 20px;
 }
 
 /* Skeleton loading */
