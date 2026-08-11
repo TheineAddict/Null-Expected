@@ -183,70 +183,76 @@ const Consulting = () => {
       </section>
 
       {/* Services Section */}
-      <section id="areas-of-work" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Three related areas of practice. Most engagements draw on more than one, because quality,
-            release and delivery decisions rarely sit in isolation.
-          </p>
-        </div>
+      <section id="areas-of-work" className="py-20">
+        <div className="site-shell">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Three related areas of practice. Most engagements draw on more than one, because quality,
+              release and delivery decisions rarely sit in isolation.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-            >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {services.map((service, idx) => (
               <div
-                className={`w-16 h-16 rounded-lg bg-gradient-to-r ${service.color} flex items-center justify-center mb-6`}
+                key={service.title}
+                className={`site-card bg-white rounded-xl p-8 border border-gray-200 shadow-sm ${
+                  idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
               >
-                <service.icon className="h-8 w-8 text-white" />
+                <div className="w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center mb-6">
+                  <service.icon className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-base text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                <p className="text-xs font-mono uppercase tracking-wider text-gray-400 mb-3">Typical outputs</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center text-gray-700">
+                      <CheckCircle className="h-4 w-4 text-indigo-600 mr-3 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-              <p className="text-xs font-mono uppercase tracking-wider text-gray-400 mb-3">Typical outputs</p>
-              <ul className="space-y-2">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-gray-700">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Situations Section */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-shell max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              When It Might Be Time to Get Help
+              When outside help is useful
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These are the situations clients tend to arrive with. If one of them sounds familiar, it
-              is usually a good place to start a conversation.
+              The work usually starts with a specific delivery problem. These are common examples.
             </p>
           </div>
 
-          <div className="space-y-6">
-            {situations.map((situation) => (
-              <div
-                key={situation.title}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 flex items-start gap-5"
-              >
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-900 to-purple-800 flex items-center justify-center flex-shrink-0">
-                  <situation.icon className="h-6 w-6 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0 border-t border-gray-200">
+            {situations.map((situation) => {
+              const isLast = situation.title === situations[situations.length - 1].title;
+              return (
+                <div
+                  key={situation.title}
+                  className={`flex items-start gap-4 py-5 border-b border-gray-200 ${
+                    isLast ? 'md:col-span-2' : ''
+                  }`}
+                >
+                  <div className="w-11 h-11 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0">
+                    <situation.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-gray-900 mb-1">{situation.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{situation.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{situation.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{situation.description}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
