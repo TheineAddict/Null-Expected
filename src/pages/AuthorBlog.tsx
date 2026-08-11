@@ -6,6 +6,7 @@ import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
+import SectionHeading from '../components/site/SectionHeading';
 
 const AuthorBlog = () => {
   const { authorSlug } = useParams();
@@ -80,7 +81,7 @@ const AuthorBlog = () => {
   }
 
   return (
-    <div className="py-16">
+    <div>
       <SEO
         title={`${author.name} - Articles on ${author.title} | Null:Expected`}
         description={`Read articles by ${author.name} on QA management, test management, and quality practices. ${author.bio}`}
@@ -99,7 +100,7 @@ const AuthorBlog = () => {
       </div>
 
       {/* Author Header — compact two-column */}
-      <section className="site-shell mb-14">
+      <section className="site-section site-shell">
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-center">
           <div className="flex justify-center md:justify-start">
             <img
@@ -109,7 +110,7 @@ const AuthorBlog = () => {
             />
           </div>
           <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="site-page-title mb-2">
               {author.name}
             </h1>
             <p className="text-lg text-indigo-900 font-semibold mb-3">
@@ -123,11 +124,9 @@ const AuthorBlog = () => {
       </section>
 
       {/* Author's Posts */}
-      <section className="site-shell">
+      <section className="site-section site-shell">
         <div className="mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Posts by {author.name}
-          </h2>
+          <SectionHeading title={`Posts by ${author.name}`} />
         </div>
 
         {posts.length > 0 ? (
@@ -169,7 +168,7 @@ const AuthorBlog = () => {
       </section>
 
       {/* Back to All Posts CTA */}
-      <section className="py-16">
+      <section className="site-section">
         <div className="site-shell text-center">
           <Link
             to="/blog"

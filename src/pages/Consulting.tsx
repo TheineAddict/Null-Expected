@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CircleCheck as CheckCircle, Users, Target, TrendingUp, Clock, Mail, Linkedin, ArrowRight, ClipboardList, TriangleAlert as AlertTriangle, Eye, ChartBar as FileBarChart, CalendarClock, Network, Gavel } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import PageHeading from '../components/site/PageHeading';
+import SectionHeading from '../components/site/SectionHeading';
 
 const Consulting = () => {
   const services = [
@@ -131,66 +133,51 @@ const Consulting = () => {
   ];
 
   return (
-    <div className="py-20">
+    <div>
       <SEO
         title="Consulting - Null:Expected"
         description="Independent, founder-led consultancy in software quality, release governance and technical delivery, founded by Andreea Vitan."
         path="/consulting"
       />
 
-      {/* Hero Section */}
-      <section className="py-20 md:py-24 border-b border-gray-100">
-        <div className="site-shell">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
-            {/* Left: text */}
-            <div className="lg:col-span-3 order-1">
-              <p className="text-sm font-semibold uppercase tracking-wider text-indigo-900 mb-4">
-                QA, release and delivery consulting
-              </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-                Make the risk visible before it becomes a release problem
-              </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl">
-                Practical support for teams dealing with unclear test coverage, disputed release readiness, cross-team dependencies or governance that creates activity without helping anyone decide. The work starts with the information available now: what is known, where the risk sits and what needs to happen next.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="mailto:ade.vitan@gmail.com"
-                  className="site-button-primary"
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Email Andreea
-                </a>
-                <a
-                  href="#areas-of-work"
-                  className="site-button-secondary"
-                >
-                  See areas of work
-                </a>
-              </div>
-            </div>
-
-            {/* Right: illustration */}
-            <div className="lg:col-span-2 order-2 flex justify-center lg:justify-end">
-              <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-                alt="Null Expected cat working on delivery strategy"
-                className="w-[280px] md:w-[420px] h-auto object-contain"
-              />
-            </div>
-          </div>
+      <PageHeading
+        eyebrow="QA, release and delivery consulting"
+        title="Make the risk visible before it becomes a release problem"
+        description="Practical support for teams dealing with unclear test coverage, disputed release readiness, cross-team dependencies or governance that creates activity without helping anyone decide. The work starts with the information available now: what is known, where the risk sits and what needs to happen next."
+        media={
+          <img
+            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+            alt="Null Expected cat working on delivery strategy"
+            className="w-[280px] md:w-[420px] h-auto object-contain"
+          />
+        }
+        className="border-b border-gray-100"
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="mailto:ade.vitan@gmail.com"
+            className="site-button-primary"
+          >
+            <Mail className="mr-2 h-5 w-5" />
+            Email Andreea
+          </a>
+          <a
+            href="#areas-of-work"
+            className="site-button-secondary"
+          >
+            See areas of work
+          </a>
         </div>
-      </section>
+      </PageHeading>
 
       {/* Services Section */}
-      <section id="areas-of-work" className="py-20">
+      <section id="areas-of-work" className="site-section">
         <div className="site-shell">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
-            <p className="text-xl text-gray-600 site-intro-width mx-auto">
-              Three related areas of practice. Most engagements draw on more than one, because quality,
-              release and delivery decisions rarely sit in isolation.
-            </p>
+          <div className="mb-16">
+            <SectionHeading
+              title="Areas of work"
+              description="Three related areas of practice. Most engagements draw on more than one, because quality, release and delivery decisions rarely sit in isolation."
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -222,16 +209,14 @@ const Consulting = () => {
       </section>
 
       {/* Situations Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="site-section bg-gray-50">
         <div className="site-shell">
           <div className="site-content-width mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              When outside help is useful
-            </h2>
-            <p className="text-xl text-gray-600 site-intro-width mx-auto">
-              The work usually starts with a specific delivery problem. These are common examples.
-            </p>
+          <div className="mb-16">
+            <SectionHeading
+              title="When outside help is useful"
+              description="The work usually starts with a specific delivery problem. These are common examples."
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-0 border-t border-gray-200">
@@ -260,16 +245,13 @@ const Consulting = () => {
       </section>
 
       {/* Approach Section */}
-      <section className="py-20">
+      <section className="site-section">
         <div className="site-shell">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How the work usually goes
-            </h2>
-            <p className="text-xl text-gray-600 site-intro-width mx-auto">
-              Practical and context-first. The goal is better decisions, not a binder of process
-              documentation.
-            </p>
+          <div className="mb-16">
+            <SectionHeading
+              title="How the work usually goes"
+              description="Practical and context-first. The goal is better decisions, not a binder of process documentation."
+            />
           </div>
 
           <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -288,25 +270,25 @@ const Consulting = () => {
       </section>
 
       {/* What you can expect */}
-      <section className="py-16 bg-gray-50">
+      <section className="site-section bg-gray-50">
         <div className="site-shell">
-          <div className="site-content-width mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What you can expect</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            You work directly with Andreea. Recommendations are shaped to the systems, constraints and delivery pressure already present, and the resulting process stays with the team.
-          </p>
+          <div className="site-content-width mx-auto">
+            <SectionHeading
+              title="What you can expect"
+              description="You work directly with Andreea. Recommendations are shaped to the systems, constraints and delivery pressure already present, and the resulting process stays with the team."
+            />
           </div>
         </div>
       </section>
 
       {/* Engagement Options */}
-      <section className="py-20">
+      <section className="site-section">
         <div className="site-shell">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ways to work together</h2>
-            <p className="text-xl text-gray-600">
-              Flexible arrangements, scoped to the actual problem rather than a fixed programme.
-            </p>
+          <div className="mb-16">
+            <SectionHeading
+              title="Ways to work together"
+              description="Flexible arrangements, scoped to the actual problem rather than a fixed programme."
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -330,17 +312,16 @@ const Consulting = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-indigo-900">
+      <section className="site-section bg-indigo-900">
         <div className="site-shell">
           <div className="site-content-width mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Discuss the problem you need to solve
-          </h2>
-          <p className="text-xl text-indigo-200 mb-8">
-            A short email is enough to start. Include the context, what is getting in the way and the kind of support you are considering.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <SectionHeading
+            title="Discuss the problem you need to solve"
+            description="A short email is enough to start. Include the context, what is getting in the way and the kind of support you are considering."
+            align="center"
+            tone="dark"
+          />
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="mailto:ade.vitan@gmail.com"
               className="site-button-primary"
@@ -364,14 +345,16 @@ const Consulting = () => {
       </section>
 
       {/* Related Content */}
-      <section className="py-20">
+      <section className="site-section">
         <div className="site-shell">
           <div className="site-content-width mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">More on how the work thinks</h2>
-          <p className="text-gray-600 mb-8">
-            The blog covers quality, release management and delivery in practice, not in theory.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <SectionHeading
+            title="More on how the work thinks"
+            description="The blog covers quality, release management and delivery in practice, not in theory."
+            align="center"
+            size="compact"
+          />
+          <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/blog"
               className="inline-flex items-center text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"

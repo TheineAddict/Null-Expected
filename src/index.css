@@ -313,6 +313,18 @@ html {
   width: 100%;
 }
 
+.site-hero {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+@media (min-width: 768px) {
+  .site-hero {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}
+
 .site-section {
   padding-top: 64px;
   padding-bottom: 64px;
@@ -320,8 +332,8 @@ html {
 
 @media (min-width: 768px) {
   .site-section {
-    padding-top: 88px;
-    padding-bottom: 88px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 

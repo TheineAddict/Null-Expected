@@ -5,6 +5,7 @@ import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
+import SectionHeading from '../components/site/SectionHeading';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
@@ -160,13 +161,11 @@ const Landing = () => {
       {/* Featured Posts */}
       <section className="site-section">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 site-intro-width">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              Featured Writing
-            </h2>
-            <p className="site-section-intro">
-              Practitioner field notes on testing, delivery and release management - not theory decks.
-            </p>
+          <div className="mb-10 md:mb-12">
+            <SectionHeading
+              title="Featured Writing"
+              description="Practitioner field notes on testing, delivery and release management - not theory decks."
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -196,13 +195,11 @@ const Landing = () => {
       {/* Consultancy Areas */}
       <section className="site-section bg-gray-50">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 site-intro-width">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              Consulting Practice
-            </h2>
-            <p className="site-section-intro">
-              Independent, founder-led work across three related areas - most engagements draw on more than one.
-            </p>
+          <div className="mb-10 md:mb-12">
+            <SectionHeading
+              title="Consulting Practice"
+              description="Independent, founder-led work across three related areas - most engagements draw on more than one."
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x md:divide-gray-200">
@@ -227,13 +224,11 @@ const Landing = () => {
       {/* Categories Section */}
       <section className="site-section">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 site-intro-width">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              Explore by Topic
-            </h2>
-            <p className="site-section-intro">
-              Field notes and essays across the breadth of quality, delivery and release work
-            </p>
+          <div className="mb-10 md:mb-12">
+            <SectionHeading
+              title="Explore by Topic"
+              description="Field notes and essays across the breadth of quality, delivery and release work"
+            />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
@@ -263,12 +258,13 @@ const Landing = () => {
       <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="site-shell">
           <div className="site-content-width mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
-            Read the latest writing
-          </h2>
-          <p className="text-lg sm:text-xl text-indigo-200 mb-6 md:mb-8">
-            Essays and field notes on software quality, release governance and delivery decisions.
-          </p>
+          <SectionHeading
+            title="Read the latest writing"
+            description="Essays and field notes on software quality, release governance and delivery decisions."
+            align="center"
+            tone="dark"
+          />
+          <div className="mt-8">
           <Link
             to="/blog"
             className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
@@ -277,6 +273,7 @@ const Landing = () => {
             Browse all articles
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
+          </div>
           </div>
         </div>
       </section>

@@ -306,13 +306,7 @@ const BlogPost = () => {
             </Link>
           </div>
 
-          <h1
-            className="font-bold text-gray-900 mb-6"
-            style={{ fontSize: '2.5rem', lineHeight: 1.1 }}
-          >
-            <span className="md:hidden">{post.title}</span>
-            <span className="hidden md:inline" style={{ fontSize: '3rem', lineHeight: 1.05 }}>{post.title}</span>
-          </h1>
+          <h1 className="site-page-title mb-6">{post.title}</h1>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-6">

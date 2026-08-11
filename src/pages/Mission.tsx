@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Target, Users, TrendingUp, Eye, BookOpen, Zap, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import PageHeading from '../components/site/PageHeading';
+import SectionHeading from '../components/site/SectionHeading';
 
 const Mission = () => {
   const whatWeWrite = [
@@ -37,31 +39,25 @@ const Mission = () => {
   ];
 
   return (
-    <div className="py-16">
+    <div>
       <SEO
         title="Our Mission | Null Expected"
         description="Why Null Expected publishes practitioner-led writing on software quality, testing, release governance and technical delivery."
         path="/mission"
       />
 
-      {/* Hero */}
-      <section className="site-shell py-18 md:py-20">
-        <div className="site-intro-width mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Why Null Expected exists
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Null Expected is a practitioner-led reference hub for software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind how software is tested, governed and released.
-          </p>
-        </div>
-      </section>
+      <PageHeading
+        title="Why Null Expected exists"
+        description="Null Expected is a practitioner-led reference hub for software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind how software is tested, governed and released."
+        align="center"
+      />
 
       {/* The gap it is meant to fill */}
-      <section className="bg-gradient-to-r from-indigo-900 to-purple-800 py-14 md:py-16 mb-16 md:mb-20">
+      <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="site-shell">
           <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-10 md:gap-14 text-white">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-5">
+              <h2 className="site-section-title-compact site-tone-dark mb-5">
                 The gap it is meant to fill
               </h2>
               <p className="text-lg leading-relaxed text-indigo-100">
@@ -92,14 +88,12 @@ const Mission = () => {
       </section>
 
       {/* What the writing covers */}
-      <section className="site-shell mb-16 md:mb-20">
+      <section className="site-section site-shell">
         <div className="mb-10 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What the writing covers
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed site-intro-width">
-            The subject is broader than test execution. The writing follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them.
-          </p>
+          <SectionHeading
+            title="What the writing covers"
+            description="The subject is broader than test execution. The writing follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them."
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -121,7 +115,7 @@ const Mission = () => {
       </section>
 
       {/* Why Null Expected? */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="site-section bg-gray-50">
         <div className="site-shell">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
             <div className="flex justify-center md:justify-start">
@@ -132,7 +126,7 @@ const Mission = () => {
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-left">
+              <h2 className="site-section-title mb-6">
                 Why Null Expected?
               </h2>
               <div className="space-y-5 text-lg text-gray-600 leading-relaxed text-left">
@@ -149,12 +143,12 @@ const Mission = () => {
       </section>
 
       {/* Who writes here */}
-      <section className="site-shell py-16 md:py-20">
+      <section className="site-section site-shell">
         <div className="site-intro-width">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="site-section-title mb-6">
             Who writes here
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
+          <p className="site-section-description mb-8">
             Null Expected is written and edited by Andreea Vitan. Guest contributors may appear when they bring a useful practitioner perspective, but this is not a general content platform. Articles are published when there is an argument, experience or question worth examining.
           </p>
           <Link

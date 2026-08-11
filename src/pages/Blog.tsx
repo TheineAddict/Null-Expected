@@ -6,6 +6,7 @@ import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogU
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
+import PageHeading from '../components/site/PageHeading';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -98,46 +99,36 @@ const Blog = () => {
         description="Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers."
         path="/blog"
       />
-      {/* Header */}
-      <section className="py-18 md:py-22" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
-        <div className="site-shell">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-                Articles &amp; field notes
-              </h1>
-              <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-                Practitioner-led writing on software quality, testing, release governance, technical delivery and QA careers.
-              </p>
-              {activeTag && (
-                <div className="mt-6">
-                  <span className="text-sm text-gray-500">Filtered by tag: </span>
-                  <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
-                    #{activeTag}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setActiveTag(null);
-                      setActiveCategory('All');
-                      window.history.pushState({}, '', '/blog');
-                    }}
-                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
-                  >
-                    Clear filter
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-                alt="Null Expected cat writing practitioner notes"
-                className="w-[260px] md:w-[360px] h-auto object-contain"
-              />
-            </div>
+      <PageHeading
+        title="Articles & field notes"
+        description="Practitioner-led writing on software quality, testing, release governance, technical delivery and QA careers."
+        media={
+          <img
+            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+            alt="Null Expected cat writing practitioner notes"
+            className="w-[260px] md:w-[360px] h-auto object-contain"
+          />
+        }
+      >
+        {activeTag && (
+          <div className="mt-6">
+            <span className="text-sm text-gray-500">Filtered by tag: </span>
+            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+              #{activeTag}
+            </span>
+            <button
+              onClick={() => {
+                setActiveTag(null);
+                setActiveCategory('All');
+                window.history.pushState({}, '', '/blog');
+              }}
+              className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+            >
+              Clear filter
+            </button>
           </div>
-        </div>
-      </section>
+        )}
+      </PageHeading>
 
       {/* Category Filter */}
       {!activeTag && (

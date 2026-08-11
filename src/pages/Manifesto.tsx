@@ -1,6 +1,7 @@
 import React from 'react';
 import { Zap, Target, Users, Search, Settings, Eye } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import PageHeading from '../components/site/PageHeading';
 
 const Manifesto = () => {
   const principles = [
@@ -37,33 +38,27 @@ const Manifesto = () => {
   ];
 
   return (
-    <div className="py-12 md:py-14">
+    <div>
       <SEO
         title="The Null Expected Manifesto | Quality, Testing & Delivery"
         description="The principles behind Null Expected: purposeful testing, evidence over appearances, useful governance, professional curiosity and better delivery decisions."
         path="/manifesto"
       />
-      {/* Hero Section */}
-      <section className="site-shell mb-14 md:mb-16">
-        <div className="site-reading-width mx-auto text-center">
-          <div className="flex justify-center mb-5">
-            <img
-              src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
-              alt="Null Expected Cat Mascot"
-              className="w-24 h-24"
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-            The Null:Expected Manifesto
-          </h1>
-          <p className="text-xl text-gray-700 leading-relaxed italic">
-            Quality work should make risk clearer, decisions better, and delivery more honest.
-          </p>
-        </div>
-      </section>
+      <PageHeading
+        title="The Null:Expected Manifesto"
+        description={<span className="italic">Quality work should make risk clearer, decisions better, and delivery more honest.</span>}
+        align="center"
+        topMedia={
+          <img
+            src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
+            alt="Null Expected Cat Mascot"
+            className="w-24 h-24"
+          />
+        }
+      />
 
       {/* Who We Are */}
-      <section className="site-shell mb-14 md:mb-16">
+      <section className="site-section site-shell">
         <div className="site-reading-width mx-auto text-center space-y-4 text-lg text-gray-700 leading-relaxed">
           <p className="font-semibold text-xl text-gray-900">
             We are practitioners, thinkers and professional skeptics.
@@ -81,7 +76,7 @@ const Manifesto = () => {
       </section>
 
       {/* Principles */}
-      <section className="site-shell mb-14 md:mb-16">
+      <section className="site-section site-shell">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {principles.map((principle, index) => (
             <div
@@ -99,7 +94,7 @@ const Manifesto = () => {
       </section>
 
       {/* Closing Statement */}
-      <section className="py-16 md:py-18 bg-gradient-to-r from-indigo-900 to-purple-800">
+      <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="site-shell">
           <div className="site-reading-width mx-auto text-center">
             <div className="text-white space-y-6">

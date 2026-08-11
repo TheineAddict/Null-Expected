@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Mail, ArrowRight } from 'lucide-react';
 import { getAuthorById } from '../config/authors';
 import { SEO } from '../components/SEO';
+import PageHeading from '../components/site/PageHeading';
+import SectionHeading from '../components/site/SectionHeading';
 
 const About = () => {
   const founder = getAuthorById('author1');
@@ -41,28 +43,21 @@ const About = () => {
   ];
 
   return (
-    <div className="py-16 md:py-20">
+    <div>
       <SEO
         title="About Null Expected - Independent QA Consultancy & Publication"
         description="Null Expected is an independent consultancy and practitioner-led publication founded by Andreea Vitan, focused on software quality, release governance, and technical delivery."
         path="/about"
       />
 
-      {/* Hero */}
-      <section className="site-shell mb-16 md:mb-20">
-        <div className="site-intro-width">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About Null:Expected
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Null Expected combines independent consulting with practitioner-led writing. The consulting work covers software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind that work.
-          </p>
-        </div>
-      </section>
+      <PageHeading
+        title="About Null:Expected"
+        description="Null Expected combines independent consulting with practitioner-led writing. The consulting work covers software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind that work."
+      />
 
       {/* Andreea Vitan */}
       {founder && (
-        <section className="site-shell mb-16 md:mb-20">
+        <section className="site-section site-shell">
           <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 md:gap-12 items-center">
             <div className="flex justify-center md:justify-start">
               <img
@@ -73,7 +68,7 @@ const About = () => {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{founder.name}</h2>
+              <h2 className="site-section-title mb-4">{founder.name}</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 I'm Andreea Vitan. I work across QA, release management and technical delivery, usually where the official status is clearer than the actual risk. Null Expected is where I write about that work and offer focused consulting to teams that need a better view of what is ready, what is blocked and what still needs a decision.
               </p>
@@ -105,9 +100,9 @@ const About = () => {
       )}
 
       {/* Experience in practice */}
-      <section className="site-shell mb-16 md:mb-20">
+      <section className="site-section site-shell">
         <div className="site-content-width">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+          <h2 className="site-section-title mb-10">
             Experience in practice
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
@@ -129,11 +124,9 @@ const About = () => {
       </section>
 
       {/* Books by Andreea */}
-      <section className="site-shell mb-16 md:mb-20">
+      <section className="site-section site-shell">
         <div className="mb-10 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Books by Andreea
-          </h2>
+          <SectionHeading title="Books by Andreea" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
@@ -164,12 +157,12 @@ const About = () => {
       </section>
 
       {/* Name explanation */}
-      <section className="site-shell mb-16 md:mb-20">
+      <section className="site-section site-shell">
         <div className="site-intro-width">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="site-section-title mb-4">
             Why the name?
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="site-section-description mb-6">
             Null:Expected comes from a testing result: nothing is returned, and that is the expected outcome. It is a small reminder that even an empty result should be intentional.
           </p>
           <Link
@@ -184,9 +177,9 @@ const About = () => {
       </section>
 
       {/* Contact */}
-      <section className="site-shell">
+      <section className="site-section site-shell">
         <div className="site-intro-width text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in touch</h2>
+          <SectionHeading title="Get in touch" align="center" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:ade.vitan@gmail.com"
