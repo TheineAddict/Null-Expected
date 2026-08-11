@@ -113,7 +113,7 @@ const Blog = () => {
         {activeTag && (
           <div className="mt-6">
             <span className="text-sm text-gray-500">Filtered by tag: </span>
-            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+            <span className="px-3 py-1 text-sm font-medium rounded-full" style={{ backgroundColor: 'var(--brand-lavender)', color: 'var(--brand-purple-deep)' }}>
               #{activeTag}
             </span>
             <button
@@ -142,8 +142,8 @@ const Blog = () => {
                   onClick={() => setActiveCategory(category)}
                   className={`flex-shrink-0 px-4 rounded-full text-sm font-medium transition-colors duration-200 ${
                     activeCategory === category
-                      ? 'bg-indigo-900 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'blog-filter-active'
+                      : 'blog-filter-inactive'
                   }`}
                   style={{ minHeight: '44px' }}
                 >

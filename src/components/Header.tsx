@@ -36,8 +36,8 @@ const Header = () => {
                 to={item.href}
                 className={`px-3 py-2 text-[15px] md:text-base font-medium transition-colors ${
                   location.pathname === item.href
-                    ? 'text-indigo-900 border-b-2 border-indigo-900'
-                    : 'text-gray-700 hover:text-indigo-900'
+                    ? 'site-nav-active'
+                    : 'site-nav-link'
                 }`}
               >
                 {item.name}
@@ -49,7 +49,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2.5 rounded-md text-gray-700 hover:text-indigo-900"
+              className="p-2.5 rounded-md text-gray-700 hover:text-[color:var(--brand-purple)]"
             >
               {isMenuOpen ? <LucideIcons.X className="h-6 w-6" /> : <LucideIcons.Menu className="h-6 w-6" />}
             </button>
@@ -66,8 +66,8 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={`block px-3 py-2 text-base font-medium transition-colors ${
                   location.pathname === item.href
-                    ? 'text-indigo-900 bg-indigo-50'
-                    : 'text-gray-700 hover:text-indigo-900'
+                    ? 'site-nav-active-mobile'
+                    : 'site-nav-link'
                 }`}
               >
                 {item.name}

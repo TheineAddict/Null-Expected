@@ -395,7 +395,7 @@ html {
 }
 
 .article-card:hover {
-  border-color: #c7d2fe;
+  border-color: #d8b4fe;
 }
 
 .article-card-title {
@@ -414,7 +414,46 @@ html {
 }
 
 .article-card:hover .article-card-title {
-  color: #312e81;
+  color: var(--brand-purple-deep);
+}
+
+.article-card-category {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-purple-deep);
+  background-color: var(--brand-lavender);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.article-card-category:hover {
+  color: var(--brand-purple-deep);
+  background-color: #f3e8ff;
+}
+
+.article-card-tag {
+  padding: 2px 8px;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  font-size: 12px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.article-card-tag:hover {
+  color: var(--brand-purple-deep);
+  background-color: var(--brand-lavender);
+  border-color: var(--brand-lavender-border);
+}
+
+.article-card-readlink {
+  color: var(--brand-ink);
+}
+
+.article-card-readlink:hover {
+  color: var(--brand-purple);
 }
 
 .site-icon-tile {
@@ -495,7 +534,7 @@ html {
 }
 
 .site-text-link {
-  color: #312e81;
+  color: var(--brand-ink);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
@@ -503,14 +542,52 @@ html {
 }
 
 .site-text-link:hover {
-  color: #3730a3;
+  color: var(--brand-purple);
   text-decoration-thickness: 2px;
 }
 
 .site-text-link:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.45);
   border-radius: 2px;
+}
+
+.site-nav-link {
+  color: #374151;
+  transition: color 0.15s ease;
+}
+
+.site-nav-link:hover {
+  color: var(--brand-purple);
+}
+
+.site-nav-active {
+  color: var(--brand-purple-deep);
+  border-bottom: 2px solid var(--brand-purple);
+}
+
+.site-nav-active-mobile {
+  color: var(--brand-purple-deep);
+  background-color: var(--brand-lavender);
+}
+
+.blog-filter-active {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.blog-filter-inactive {
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.blog-filter-inactive:hover {
+  background-color: var(--brand-lavender);
+  color: var(--brand-purple-deep);
+  border-color: var(--brand-lavender-border);
 }
 
 /* ---------------------------------------------------------------

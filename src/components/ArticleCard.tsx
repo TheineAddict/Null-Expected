@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight } from 'lucide-react';
 import { BlogPost } from '../types/blog';
 import { getVisibleBlogTags } from '../utils/blogUtils';
+import { siteIcons } from '../config/siteIcons';
 
 type ArticleCardProps = {
   post: BlogPost;
@@ -15,7 +16,7 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
       <div className="flex items-center justify-between mb-4">
         <Link
           to={`/blog?category=${encodeURIComponent(post.category || 'QA Processes')}`}
-          className="text-sm font-medium text-indigo-900 hover:text-indigo-700 transition-colors"
+          className="article-card-category"
           onClick={() => window.scrollTo(0, 0)}
         >
           {post.category}
@@ -42,7 +43,7 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
             <Link
               key={tag}
               to={`/blog?tag=${encodeURIComponent(tag)}`}
-              className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-md hover:bg-gray-200 transition-colors"
+              className="article-card-tag"
               onClick={() => window.scrollTo(0, 0)}
             >
               #{tag}
@@ -61,11 +62,11 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
         </span>
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center text-indigo-900 hover:text-indigo-700 font-semibold text-sm transition-colors"
+          className="inline-flex items-center font-semibold text-sm transition-colors article-card-readlink"
           onClick={() => window.scrollTo(0, 0)}
         >
           Read article
-          <ArrowRight className="ml-1 h-4 w-4" />
+          <siteIcons.directionalLink className="ml-1 h-4 w-4" />
         </Link>
       </div>
     </article>
