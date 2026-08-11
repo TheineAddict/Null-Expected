@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
+  ArrowDown,
   CalendarClock,
   ChartBar,
   Gavel,
@@ -144,11 +145,10 @@ const Consulting = () => {
       />
 
       <StandardPageHero
-        eyebrow="QA, release and delivery consulting"
-        title="Make the risk visible before it becomes a release problem"
-        description="Practical support for teams dealing with unclear test coverage, disputed release readiness, cross-team dependencies or governance that creates activity without helping anyone decide. The work starts with the information available now: what is known, where the risk sits and what needs to happen next."
+        title="Make delivery risk visible"
+        description="I work with teams when test coverage is unclear, release readiness is disputed or cross-team dependencies are poorly understood. We establish what is known, where the risk sits and what needs to happen next."
       >
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
           <a
             href="mailto:ade.vitan@gmail.com"
             className="site-button-primary"
@@ -158,9 +158,10 @@ const Consulting = () => {
           </a>
           <a
             href="#areas-of-work"
-            className="site-button-secondary"
+            className="inline-flex items-center font-semibold text-[var(--brand-purple-deep)] hover:text-[var(--brand-purple)] transition-colors"
           >
-            See areas of work
+            View consulting services
+            <ArrowDown className="ml-1 h-4 w-4" />
           </a>
         </div>
       </StandardPageHero>
