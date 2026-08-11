@@ -52,7 +52,7 @@ const Footer = () => {
               <Link to="/consulting" className="text-gray-300 hover:text-white block transition-colors text-base">
                 Consulting
               </Link>
-              <a href="mailto:ade.vitan@gmail.com" className="text-gray-300 hover:text-white block transition-colors text-base">
+              <a href="mailto:andreea.vitan@proton.me" className="text-gray-300 hover:text-white block transition-colors text-base">
                 Contact
               </a>
               <a href="https://www.linkedin.com/in/adevitan/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white block transition-colors text-base">

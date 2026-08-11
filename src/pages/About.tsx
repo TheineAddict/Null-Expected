@@ -182,7 +182,7 @@ const About = () => {
           <SectionHeading title="Get in touch" align="center" />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:ade.vitan@gmail.com"
+              href="mailto:andreea.vitan@proton.me"
               className="site-button-primary"
             >
               <Mail className="mr-2 h-5 w-5" />

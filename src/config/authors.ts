@@ -25,7 +25,7 @@ export const AUTHORS: Record<string, Author> = {
     tag: '[ quality_mindset = true ]',
     imageUrl: '/null-expected-adevitan.jpg',
     linkedinUrl: 'https://www.linkedin.com/in/adevitan/',
-    email: 'ade@nullexpected.com'
+    email: 'andreea.vitan@proton.me'
   },
   author2: {
     id: 'author2',
@@ -38,7 +38,7 @@ export const AUTHORS: Record<string, Author> = {
     tag: '[ guest_contributor = true ]',
     imageUrl: '/null_expected_quest_authors.jpg',
     linkedinUrl: undefined,
-    email: 'guest@nullexpected.com'
+    email: 'andreea.vitan@proton.me'
   }
 };
 

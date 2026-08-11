@@ -150,7 +150,7 @@ const Consulting = () => {
       >
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
           <a
-            href="mailto:ade.vitan@gmail.com"
+            href="mailto:andreea.vitan@proton.me"
             className="site-button-primary"
           >
             <siteIcons.email className="mr-2 h-5 w-5" />
@@ -313,7 +313,7 @@ const Consulting = () => {
           />
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="mailto:ade.vitan@gmail.com"
+              href="mailto:andreea.vitan@proton.me"
               className="site-button-inverse"
             >
               <siteIcons.email className="mr-2 h-5 w-5" />
