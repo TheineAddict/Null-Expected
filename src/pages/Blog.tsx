@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Clock, ArrowRight, ListFilter as Filter, ChevronDown, ChevronUp } from 'lucide-react';
+import { Clock, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { loadBlogPosts, getPostsByCategory, getPostsByTag, getVisibleBlogTags } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
@@ -91,91 +91,99 @@ const Blog = () => {
   };
 
   return (
-    <div className="py-20">
+    <div>
       <SEO
         title="Writing & Insights | Null Expected"
         description="Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers."
         path="/blog"
       />
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-        <div className="flex justify-center mb-6 h-24">
-          <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-            alt="Null Expected cat writing practitioner notes"
-            className="w-24 sm:w-28 md:w-32 h-auto object-contain"
-          />
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Writing &amp; Insights
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers.
-        </p>
-        {activeTag && (
-          <div className="mb-4">
-            <span className="text-sm text-gray-500">Filtered by tag: </span>
-            <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
-              #{activeTag}
-            </span>
-            <button
-              onClick={() => {
-                setActiveTag(null);
-                setActiveCategory('All');
-                window.history.pushState({}, '', '/blog');
-              }}
-              className="ml-2 text-sm text-gray-500 hover:text-gray-700"
-            >
-              Clear filter
-            </button>
+      <section className="py-18 md:py-22" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
+        <div className="site-shell">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+                Articles &amp; field notes
+              </h1>
+              <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+                Practitioner-led writing on software quality, testing, release governance, technical delivery and QA careers.
+              </p>
+              {activeTag && (
+                <div className="mt-6">
+                  <span className="text-sm text-gray-500">Filtered by tag: </span>
+                  <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
+                    #{activeTag}
+                  </span>
+                  <button
+                    onClick={() => {
+                      setActiveTag(null);
+                      setActiveCategory('All');
+                      window.history.pushState({}, '', '/blog');
+                    }}
+                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                  >
+                    Clear filter
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
+                alt="Null Expected cat writing practitioner notes"
+                className="w-[260px] md:w-[360px] h-auto object-contain"
+              />
+            </div>
           </div>
-        )}
-        <div className="text-sm text-gray-500 font-mono">
-          [ total_posts: {allPosts.length} | filtered: {posts.length} ]
         </div>
       </section>
 
       {/* Category Filter */}
       {!activeTag && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex items-center justify-center mb-8">
-          <Filter className="h-5 w-5 text-gray-400 mr-2" />
-          <span className="text-sm text-gray-500 font-medium">Filter by category</span>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeCategory === category
-                  ? 'bg-indigo-900 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        <section className="border-t border-gray-200">
+          <div className="site-shell pt-6 pb-10">
+            <span className="block text-sm font-medium text-gray-500 mb-4">Filter by topic</span>
+            <div className="flex md:flex-wrap gap-2 overflow-x-auto md:overflow-visible md:justify-start -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`flex-shrink-0 px-4 rounded-full text-sm font-medium transition-colors duration-200 ${
+                    activeCategory === category
+                      ? 'bg-indigo-900 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  style={{ minHeight: '44px' }}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
         </section>
       )}
 
       {/* Blog Posts Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-shell">
         {loading ? (
-          <div className="text-center py-12">
-            <div className="flex justify-center mb-6">
-              <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-looking-for-bugs.svg"
-                alt="Cat looking for posts"
-                className="w-24 h-24 animate-bounce"
-              />
-            </div>
-            <p className="text-gray-500 text-lg">Loading posts...</p>
-            <div className="text-sm text-gray-400 font-mono mt-2">
-              [ scanning_markdown_files = true ]
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="bg-white rounded-xl border border-gray-200 shadow-sm p-8" aria-hidden="true">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="skeleton h-6 w-24 rounded-full" />
+                  <div className="skeleton h-4 w-12 rounded" />
+                </div>
+                <div className="skeleton h-6 w-full rounded mb-3" />
+                <div className="skeleton h-6 w-3/4 rounded mb-4" />
+                <div className="skeleton h-4 w-full rounded mb-2" />
+                <div className="skeleton h-4 w-full rounded mb-2" />
+                <div className="skeleton h-4 w-2/3 rounded mb-6" />
+                <div className="flex items-center justify-between">
+                  <div className="skeleton h-4 w-28 rounded" />
+                  <div className="skeleton h-4 w-20 rounded" />
+                </div>
+              </div>
+            ))}
           </div>
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
