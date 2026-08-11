@@ -36,6 +36,9 @@ const Footer = () => {
               <Link to="/blog?category=Career%20Advice" className="text-gray-300 hover:text-white block transition-colors text-base">
                 Career Advice
               </Link>
+              <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors text-base">
+                Mission
+              </Link>
             </div>
           </div>
 
@@ -49,11 +52,8 @@ const Footer = () => {
               <Link to="/consulting" className="text-gray-300 hover:text-white block transition-colors text-base">
                 Consulting
               </Link>
-              <Link to="/mission" className="text-gray-300 hover:text-white block transition-colors text-base">
-                Mission
-              </Link>
-              <a href="mailto:ade@nullexpected.com" className="text-gray-300 hover:text-white block transition-colors text-base">
-                Email Andreea
+              <a href="mailto:ade.vitan@gmail.com" className="text-gray-300 hover:text-white block transition-colors text-base">
+                Contact
               </a>
               <a href="https://www.linkedin.com/in/adevitan/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white block transition-colors text-base">
                 LinkedIn
