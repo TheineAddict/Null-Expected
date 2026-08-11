@@ -299,7 +299,7 @@ const Blog = () => {
                 <ChevronUp className="ml-2 h-5 w-5" />
               </button>
             )}
-            <div className="text-sm text-gray-400 font-mono mt-4">
+            <div className="text-sm text-gray-400 font-mono mt-4 mb-10">
               [ showing: {visiblePosts.length} / {posts.length} posts ]
             </div>
           </div>
