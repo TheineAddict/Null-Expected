@@ -155,7 +155,7 @@ const Consulting = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:ade@nullexpected.com"
+                  href="mailto:ade.vitan@gmail.com"
                   className="site-button-primary"
                 >
                   <Mail className="mr-2 h-5 w-5" />
