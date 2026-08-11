@@ -139,11 +139,11 @@ const About = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
           {books.map((book) => (
             <div key={book.title} className="flex flex-col">
-              <div className="mb-5 overflow-hidden rounded-lg shadow-md">
+              <div className="mb-5">
                 <img
                   src={book.cover}
                   alt={`${book.title}: ${book.subtitle}`}
-                  className="w-full aspect-[3/4] object-cover"
+                  className="w-full h-auto rounded-lg shadow-md"
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">{book.title}</h3>
