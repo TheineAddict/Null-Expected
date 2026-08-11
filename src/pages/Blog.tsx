@@ -6,7 +6,7 @@ import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogU
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
-import PageHeading from '../components/site/PageHeading';
+import StandardPageHero from '../components/site/StandardPageHero';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -99,16 +99,9 @@ const Blog = () => {
         description="Practitioner-led writing on software quality, testing, release governance, technical delivery, and QA careers."
         path="/blog"
       />
-      <PageHeading
+      <StandardPageHero
         title="Articles & field notes"
         description="Practitioner-led writing on software quality, testing, release governance, technical delivery and QA careers."
-        media={
-          <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-            alt="Null Expected cat writing practitioner notes"
-            className="w-[260px] md:w-[360px] h-auto object-contain"
-          />
-        }
       >
         {activeTag && (
           <div className="mt-6">
@@ -128,7 +121,7 @@ const Blog = () => {
             </button>
           </div>
         )}
-      </PageHeading>
+      </StandardPageHero>
 
       {/* Category Filter */}
       {!activeTag && (

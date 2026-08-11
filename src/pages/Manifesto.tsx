@@ -1,7 +1,7 @@
 import React from 'react';
 import { Search } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import PageHeading from '../components/site/PageHeading';
+import StandardPageHero from '../components/site/StandardPageHero';
 import IconBadge from '../components/site/IconBadge';
 import { siteIcons } from '../config/siteIcons';
 
@@ -46,17 +46,9 @@ const Manifesto = () => {
         description="The principles behind Null Expected: purposeful testing, evidence over appearances, useful governance, professional curiosity and better delivery decisions."
         path="/manifesto"
       />
-      <PageHeading
+      <StandardPageHero
         title="The Null:Expected Manifesto"
         description={<span className="italic">Quality work should make risk clearer, decisions better, and delivery more honest.</span>}
-        align="center"
-        topMedia={
-          <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
-            alt="Null Expected Cat Mascot"
-            className="w-24 h-24"
-          />
-        }
       />
 
       {/* Who We Are */}

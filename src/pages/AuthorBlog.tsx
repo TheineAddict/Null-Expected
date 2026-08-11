@@ -6,6 +6,7 @@ import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
 import { SEO } from '../components/SEO';
 import ArticleCard from '../components/ArticleCard';
+import StandardPageHero from '../components/site/StandardPageHero';
 import SectionHeading from '../components/site/SectionHeading';
 
 const AuthorBlog = () => {
@@ -87,6 +88,20 @@ const AuthorBlog = () => {
         description={`Read articles by ${author.name} on QA management, test management, and quality practices. ${author.bio}`}
         path={`/blog/author/${authorSlug}`}
       />
+      <StandardPageHero
+        title={author.name}
+        description={
+          <>
+            <p className="text-lg text-indigo-900 font-semibold mb-3">
+              {author.title}
+            </p>
+            <p className="leading-relaxed">
+              {author.bio}
+            </p>
+          </>
+        }
+      />
+
       {/* Back to Blog */}
       <div className="site-shell mb-8">
         <Link
@@ -98,30 +113,6 @@ const AuthorBlog = () => {
           Back to blog
         </Link>
       </div>
-
-      {/* Author Header — compact two-column */}
-      <section className="site-section site-shell">
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-center">
-          <div className="flex justify-center md:justify-start">
-            <img
-              src={author.imageUrl}
-              alt={`${author.name} - ${author.title}`}
-              className="w-36 h-36 md:w-40 md:h-40 object-cover rounded-full shadow-md"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <h1 className="site-page-title mb-2">
-              {author.name}
-            </h1>
-            <p className="text-lg text-indigo-900 font-semibold mb-3">
-              {author.title}
-            </p>
-            <p className="text-gray-600 leading-relaxed max-w-2xl md:mx-0 mx-auto">
-              {author.bio}
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Author's Posts */}
       <section className="site-section site-shell">

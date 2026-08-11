@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Mail, ArrowRight } from 'lucide-react';
 import { getAuthorById } from '../config/authors';
 import { SEO } from '../components/SEO';
-import PageHeading from '../components/site/PageHeading';
+import StandardPageHero from '../components/site/StandardPageHero';
 import SectionHeading from '../components/site/SectionHeading';
 
 const About = () => {
@@ -50,7 +50,7 @@ const About = () => {
         path="/about"
       />
 
-      <PageHeading
+      <StandardPageHero
         title="About Null:Expected"
         description="Null Expected combines independent consulting with practitioner-led writing. The consulting work covers software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind that work."
       />

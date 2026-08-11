@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import PageHeading from '../components/site/PageHeading';
+import StandardPageHero from '../components/site/StandardPageHero';
 import SectionHeading from '../components/site/SectionHeading';
 import IconBadge from '../components/site/IconBadge';
 import { siteIcons } from '../config/siteIcons';
@@ -47,10 +47,9 @@ const Mission = () => {
         path="/mission"
       />
 
-      <PageHeading
+      <StandardPageHero
         title="Why Null Expected exists"
         description="Null Expected is a practitioner-led reference hub for software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind how software is tested, governed and released."
-        align="center"
       />
 
       {/* The gap it is meant to fill */}

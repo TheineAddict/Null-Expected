@@ -6,7 +6,7 @@ import {
   Search,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
-import PageHeading from '../components/site/PageHeading';
+import StandardPageHero from '../components/site/StandardPageHero';
 import SectionHeading from '../components/site/SectionHeading';
 import IconBadge from '../components/site/IconBadge';
 import { siteIcons } from '../config/siteIcons';
@@ -143,18 +143,10 @@ const Consulting = () => {
         path="/consulting"
       />
 
-      <PageHeading
+      <StandardPageHero
         eyebrow="QA, release and delivery consulting"
         title="Make the risk visible before it becomes a release problem"
         description="Practical support for teams dealing with unclear test coverage, disputed release readiness, cross-team dependencies or governance that creates activity without helping anyone decide. The work starts with the information available now: what is known, where the risk sits and what needs to happen next."
-        media={
-          <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-            alt="Null Expected cat working on delivery strategy"
-            className="w-[280px] md:w-[420px] h-auto object-contain"
-          />
-        }
-        className="border-b border-gray-100"
       >
         <div className="flex flex-col sm:flex-row gap-4">
           <a
@@ -171,7 +163,7 @@ const Consulting = () => {
             See areas of work
           </a>
         </div>
-      </PageHeading>
+      </StandardPageHero>
 
       {/* Services Section */}
       <section id="areas-of-work" className="site-section">
