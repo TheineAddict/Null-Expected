@@ -139,30 +139,51 @@ const Consulting = () => {
       />
 
       {/* Hero Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-        <div className="mb-8">
-          <div className="flex justify-center mb-6 h-24">
-            <img
-              src="/Null-Expected-Cat-Icon-Pack/cat-approved.svg"
-              alt="Null Expected cat reviewing a delivery strategy"
-              className="w-24 sm:w-28 md:w-32 h-auto object-contain"
-            />
+      <section className="py-20 md:py-24 border-b border-gray-100">
+        <div className="site-shell">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
+            {/* Left: text */}
+            <div className="lg:col-span-3 order-1">
+              <p className="text-sm font-semibold uppercase tracking-wider text-indigo-900 mb-4">
+                QA, release and delivery consulting
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
+                Make the risk visible before it becomes a release problem
+              </h1>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl">
+                Practical support for teams dealing with unclear test coverage, disputed release readiness, cross-team dependencies or governance that creates activity without helping anyone decide. The work starts with the information available now: what is known, where the risk sits and what needs to happen next.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="mailto:ade@nullexpected.com"
+                  className="site-button-primary"
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Email Andreea
+                </a>
+                <a
+                  href="#areas-of-work"
+                  className="site-button-secondary"
+                >
+                  See areas of work
+                </a>
+              </div>
+            </div>
+
+            {/* Right: illustration */}
+            <div className="lg:col-span-2 order-2 flex justify-center lg:justify-end">
+              <img
+                src="/Null-Expected-Cat-Icon-Pack/cat-strategy.svg"
+                alt="Null Expected cat working on delivery strategy"
+                className="w-[280px] md:w-[420px] h-auto object-contain"
+              />
+            </div>
           </div>
-          <p className="text-sm font-mono uppercase tracking-wider text-gray-500 mb-4">
-            Independent consulting in software quality, release governance and technical delivery
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Clearer decisions when quality, release and delivery get complicated
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            I work with engineering and delivery teams when test coverage is unclear, dependencies are slipping, release readiness is disputed or governance is producing more ceremony than useful information. I bring 12+ years across hands-on testing, QA leadership, release management and cross-team delivery in enterprise and regulated environments.
-          </p>
-          <div className="text-sm text-gray-500 font-mono">[ quality = clear_risk + timely_decisions ]</div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <section id="areas-of-work" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
