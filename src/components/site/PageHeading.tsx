@@ -34,7 +34,7 @@ const PageHeading = ({
   const textContent = (
     <>
       {eyebrow && <p className="site-eyebrow mb-3">{eyebrow}</p>}
-      <h1 className="site-page-title mb-4">{title}</h1>
+      <h1 className="site-page-title mb-5">{title}</h1>
       {description && <p className="site-page-lead">{description}</p>}
       {children && <div className="mt-8">{children}</div>}
     </>
