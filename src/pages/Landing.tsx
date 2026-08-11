@@ -160,7 +160,7 @@ const Landing = () => {
       {/* Featured Posts */}
       <section className="site-section">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 max-w-3xl">
+          <div className="mb-10 md:mb-12 site-intro-width">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Featured Writing
             </h2>
@@ -196,7 +196,7 @@ const Landing = () => {
       {/* Consultancy Areas */}
       <section className="site-section bg-gray-50">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 max-w-3xl">
+          <div className="mb-10 md:mb-12 site-intro-width">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Consulting Practice
             </h2>
@@ -227,7 +227,7 @@ const Landing = () => {
       {/* Categories Section */}
       <section className="site-section">
         <div className="site-shell">
-          <div className="mb-10 md:mb-12 max-w-3xl">
+          <div className="mb-10 md:mb-12 site-intro-width">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Explore by Topic
             </h2>
@@ -262,7 +262,7 @@ const Landing = () => {
       {/* CTA Section */}
       <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="site-shell">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="site-content-width mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
             Read the latest writing
           </h2>

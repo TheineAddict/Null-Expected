@@ -21,7 +21,7 @@ const SectionHeading = ({
 
   return (
     <div className={isCenter ? 'text-center' : ''}>
-      <div className={isCenter ? 'max-w-2xl mx-auto' : 'max-w-2xl'}>
+      <div className={isCenter ? 'site-intro-width mx-auto' : 'site-intro-width'}>
         <h2
           className={`${isCompact ? 'site-section-title-compact' : 'site-section-title'} ${isDark ? 'site-tone-dark' : ''} mb-3`}
         >

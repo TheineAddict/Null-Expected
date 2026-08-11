@@ -50,7 +50,7 @@ const About = () => {
 
       {/* Hero */}
       <section className="site-shell mb-16 md:mb-20">
-        <div className="max-w-3xl">
+        <div className="site-intro-width">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             About Null:Expected
           </h1>
@@ -106,7 +106,7 @@ const About = () => {
 
       {/* Experience in practice */}
       <section className="site-shell mb-16 md:mb-20">
-        <div className="max-w-3xl">
+        <div className="site-content-width">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
             Experience in practice
           </h2>
@@ -165,7 +165,7 @@ const About = () => {
 
       {/* Name explanation */}
       <section className="site-shell mb-16 md:mb-20">
-        <div className="max-w-3xl">
+        <div className="site-intro-width">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Why the name?
           </h2>
@@ -185,7 +185,7 @@ const About = () => {
 
       {/* Contact */}
       <section className="site-shell">
-        <div className="max-w-3xl text-center">
+        <div className="site-intro-width text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in touch</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

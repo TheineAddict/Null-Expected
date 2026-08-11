@@ -187,7 +187,7 @@ const Consulting = () => {
         <div className="site-shell">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of work</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 site-intro-width mx-auto">
               Three related areas of practice. Most engagements draw on more than one, because quality,
               release and delivery decisions rarely sit in isolation.
             </p>
@@ -223,12 +223,13 @@ const Consulting = () => {
 
       {/* Situations Section */}
       <section className="py-20 bg-gray-50">
-        <div className="site-shell max-w-5xl">
+        <div className="site-shell">
+          <div className="site-content-width mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               When outside help is useful
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 site-intro-width mx-auto">
               The work usually starts with a specific delivery problem. These are common examples.
             </p>
           </div>
@@ -254,6 +255,7 @@ const Consulting = () => {
               );
             })}
           </div>
+          </div>
         </div>
       </section>
 
@@ -264,7 +266,7 @@ const Consulting = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               How the work usually goes
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 site-intro-width mx-auto">
               Practical and context-first. The goal is better decisions, not a binder of process
               documentation.
             </p>
@@ -287,11 +289,13 @@ const Consulting = () => {
 
       {/* What you can expect */}
       <section className="py-16 bg-gray-50">
-        <div className="site-shell max-w-4xl text-center">
+        <div className="site-shell">
+          <div className="site-content-width mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What you can expect</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
             You work directly with Andreea. Recommendations are shaped to the systems, constraints and delivery pressure already present, and the resulting process stays with the team.
           </p>
+          </div>
         </div>
       </section>
 
@@ -327,7 +331,8 @@ const Consulting = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-indigo-900">
-        <div className="site-shell max-w-4xl text-center">
+        <div className="site-shell">
+          <div className="site-content-width mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Discuss the problem you need to solve
           </h2>
@@ -354,12 +359,14 @@ const Consulting = () => {
               View LinkedIn
             </a>
           </div>
+          </div>
         </div>
       </section>
 
       {/* Related Content */}
       <section className="py-20">
-        <div className="site-shell max-w-4xl text-center">
+        <div className="site-shell">
+          <div className="site-content-width mx-auto text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">More on how the work thinks</h2>
           <p className="text-gray-600 mb-8">
             The blog covers quality, release management and delivery in practice, not in theory.
@@ -381,6 +388,7 @@ const Consulting = () => {
               The Manifesto
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
+          </div>
           </div>
         </div>
       </section>

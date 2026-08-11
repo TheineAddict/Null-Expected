@@ -27,7 +27,7 @@ const PageHeading = ({
       <header
         className={`site-shell pt-16 md:pt-20 pb-10 md:pb-14 ${isCenter ? 'text-center' : ''}`}
       >
-        <div className={isCenter ? 'max-w-3xl mx-auto' : 'max-w-3xl'}>
+        <div className={isCenter ? 'site-intro-width mx-auto' : 'site-intro-width'}>
           {eyebrow && (
             <p className="site-eyebrow mb-3">{eyebrow}</p>
           )}

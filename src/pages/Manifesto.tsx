@@ -45,7 +45,7 @@ const Manifesto = () => {
       />
       {/* Hero Section */}
       <section className="site-shell mb-14 md:mb-16">
-        <div className="max-w-[50rem] mx-auto text-center">
+        <div className="site-reading-width mx-auto text-center">
           <div className="flex justify-center mb-5">
             <img
               src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
@@ -64,7 +64,7 @@ const Manifesto = () => {
 
       {/* Who We Are */}
       <section className="site-shell mb-14 md:mb-16">
-        <div className="max-w-[50rem] mx-auto text-center space-y-4 text-lg text-gray-700 leading-relaxed">
+        <div className="site-reading-width mx-auto text-center space-y-4 text-lg text-gray-700 leading-relaxed">
           <p className="font-semibold text-xl text-gray-900">
             We are practitioners, thinkers and professional skeptics.
           </p>
@@ -101,7 +101,7 @@ const Manifesto = () => {
       {/* Closing Statement */}
       <section className="py-16 md:py-18 bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="site-shell">
-          <div className="max-w-[50rem] mx-auto text-center">
+          <div className="site-reading-width mx-auto text-center">
             <div className="text-white space-y-6">
               <p className="text-xl leading-relaxed">
                 These principles shape how Null:Expected approaches testing, quality, release governance and technical delivery.

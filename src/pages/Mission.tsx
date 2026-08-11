@@ -46,7 +46,7 @@ const Mission = () => {
 
       {/* Hero */}
       <section className="site-shell py-18 md:py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="site-intro-width mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Why Null Expected exists
           </h1>
@@ -97,7 +97,7 @@ const Mission = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What the writing covers
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+          <p className="text-lg text-gray-600 leading-relaxed site-intro-width">
             The subject is broader than test execution. The writing follows quality through planning, engineering, release governance, production signals, careers and the organisational decisions around them.
           </p>
         </div>
@@ -150,7 +150,7 @@ const Mission = () => {
 
       {/* Who writes here */}
       <section className="site-shell py-16 md:py-20">
-        <div className="max-w-3xl">
+        <div className="site-intro-width">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Who writes here
           </h2>

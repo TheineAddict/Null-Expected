@@ -303,6 +303,16 @@ html {
   width: 100%;
 }
 
+.site-intro-width {
+  max-width: 48rem;
+  width: 100%;
+}
+
+.site-content-width {
+  max-width: 64rem;
+  width: 100%;
+}
+
 .site-section {
   padding-top: 64px;
   padding-bottom: 64px;
