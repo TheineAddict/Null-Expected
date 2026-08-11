@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, ArrowRight, User, ChevronDown, ChevronUp } from 'lucide-react';
-import { loadBlogPosts, getPostsByAuthorSlug, getVisibleBlogTags } from '../utils/blogUtils';
+import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
+import { loadBlogPosts, getPostsByAuthorSlug } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { getAuthorBySlug } from '../config/authors';
 import { SEO } from '../components/SEO';
+import ArticleCard from '../components/ArticleCard';
 
 const AuthorBlog = () => {
   const { authorSlug } = useParams();
@@ -56,7 +57,7 @@ const AuthorBlog = () => {
 
   if (loading) {
     return (
-      <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="site-shell py-20 text-center">
         <p className="text-gray-600">Loading author posts...</p>
       </div>
     );
@@ -64,72 +65,67 @@ const AuthorBlog = () => {
 
   if (!author) {
     return (
-      <div className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="site-shell py-20 text-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          Author Not Found
+          Author not found
         </h1>
         <p className="text-gray-600 mb-8">
           The author you're looking for doesn't exist.
         </p>
         <Link to="/blog" className="text-indigo-900 hover:text-gray-900 font-semibold">
-          ← Back to Blog
+          Back to blog
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="py-20">
+    <div className="py-16">
       <SEO
         title={`${author.name} - Articles on ${author.title} | Null:Expected`}
         description={`Read articles by ${author.name} on QA management, test management, and quality practices. ${author.bio}`}
         path={`/blog/author/${authorSlug}`}
       />
       {/* Back to Blog */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+      <div className="site-shell mb-8">
         <Link
           to="/blog"
           className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
           onClick={() => window.scrollTo(0, 0)}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Blog
+          Back to blog
         </Link>
       </div>
 
-      {/* Author Header */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-        <div className="mb-8">
-          <div className="w-32 h-32 mx-auto mb-6">
-            <img 
-              src={author.imageUrl} 
+      {/* Author Header — compact two-column */}
+      <section className="site-shell mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-center">
+          <div className="flex justify-center md:justify-start">
+            <img
+              src={author.imageUrl}
               alt={`${author.name} - ${author.title}`}
-              className="w-full h-full object-cover rounded-full shadow-lg"
+              className="w-36 h-36 md:w-40 md:h-40 object-cover rounded-full shadow-md"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {author.name}
-          </h1>
-          <p className="text-xl text-indigo-900 font-semibold mb-6">
-            {author.title}
-          </p>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            {author.bio}
-          </p>
-          <div className="text-sm text-gray-500 font-mono mt-6">
-            {author.tag}
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              {author.name}
+            </h1>
+            <p className="text-lg text-indigo-900 font-semibold mb-3">
+              {author.title}
+            </p>
+            <p className="text-gray-600 leading-relaxed max-w-2xl md:mx-0 mx-auto">
+              {author.bio}
+            </p>
           </div>
-        </div>
-        
-        <div className="text-sm text-gray-500 font-mono">
-          [ posts_by_author: {posts.length} ]
         </div>
       </section>
 
       {/* Author's Posts */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8">
+      <section className="site-shell">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Posts by {author.name}
           </h2>
         </div>
@@ -137,67 +133,7 @@ const AuthorBlog = () => {
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {visiblePosts.map((post) => (
-              <article
-                key={post.id}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-              >
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
-                      {post.category}
-                    </span>
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {post.readTime}
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-indigo-900 transition-colors">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-gray-600 mb-6 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {getVisibleBlogTags(post.tags).slice(0, 3).map((tag) => (
-                      <Link
-                        key={tag}
-                        to={`/blog?tag=${encodeURIComponent(tag)}`}
-                        className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
-                        onClick={() => window.scrollTo(0, 0)}
-                      >
-                        #{tag}
-                      </Link>
-                    ))}
-                    {getVisibleBlogTags(post.tags).length > 3 && (
-                      <span className="px-2 py-1 text-gray-400 text-xs">
-                        +{getVisibleBlogTags(post.tags).length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </span>
-
-                    <Link
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
-                    >
-                      Read More
-                      <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
+              <ArticleCard key={post.id} post={post} />
             ))}
           </div>
         ) : (
@@ -205,49 +141,43 @@ const AuthorBlog = () => {
             <p className="text-gray-500 text-lg">
               No posts by this author yet. Stay tuned!
             </p>
-            <div className="text-sm text-gray-400 font-mono mt-2">
-              [ author_posts = 0 ]
-            </div>
           </div>
         )}
 
-        {/* Show More / Jump to Top */}
+        {/* Show more / Back to top */}
         {!loading && posts.length > 6 && (
           <div className="text-center mt-12">
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-8 py-3 bg-[var(--bg-indigo-900-default,#312e81)] text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
-                Show More
+                Show more
                 <ChevronDown className="ml-2 h-5 w-5" />
               </button>
             ) : (
               <button
                 onClick={handleJumpToTop}
-                className="inline-flex items-center px-8 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
-                Jump to Top
+                Back to top
                 <ChevronUp className="ml-2 h-5 w-5" />
               </button>
             )}
-            <div className="text-sm text-gray-400 font-mono mt-4">
-              [ showing: {visiblePosts.length} / {posts.length} posts ]
-            </div>
           </div>
         )}
       </section>
 
       {/* Back to All Posts CTA */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-16">
+        <div className="site-shell text-center">
           <Link
             to="/blog"
             className="inline-flex items-center px-6 py-3 btn-themed font-semibold rounded-lg transition-all duration-300"
             onClick={() => window.scrollTo(0, 0)}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            View All Posts
+            View all posts
           </Link>
         </div>
       </section>

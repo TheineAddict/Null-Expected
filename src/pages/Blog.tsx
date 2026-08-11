@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Clock, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { loadBlogPosts, getPostsByCategory, getPostsByTag, getVisibleBlogTags } from '../utils/blogUtils';
+import { loadBlogPosts, getPostsByCategory, getPostsByTag } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
+import ArticleCard from '../components/ArticleCard';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -188,73 +189,7 @@ const Blog = () => {
         ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visiblePosts.map((post) => (
-            <article
-              key={post.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-            >
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <Link
-                    to={`/blog?category=${encodeURIComponent(post.category)}`}
-                    className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full hover:bg-indigo-200 transition-colors"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    {post.category}
-                  </Link>
-                  <div className="flex items-center text-gray-500 text-sm">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {post.readTime}
-                  </div>
-                </div>
-
-                <Link to={`/blog/${post.slug}`}>
-                  <h2 className="text-xl font-bold text-indigo-900 mb-3 leading-tight hover:text-gray-900 transition-colors cursor-pointer">
-                    {post.title}
-                  </h2>
-                </Link>
-
-                <p className="text-gray-600 mb-6 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {getVisibleBlogTags(post.tags).slice(0, 3).map((tag) => (
-                    <Link
-                      key={tag}
-                      to={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
-                      onClick={() => window.scrollTo(0, 0)}
-                    >
-                      #{tag}
-                    </Link>
-                  ))}
-                  {getVisibleBlogTags(post.tags).length > 3 && (
-                    <span className="px-2 py-1 text-gray-400 text-xs">
-                      +{getVisibleBlogTags(post.tags).length - 3} more
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </span>
-
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
-                  >
-                    Read More
-                    <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </article>
+            <ArticleCard key={post.id} post={post} />
           ))}
         </div>
         )}
@@ -285,17 +220,17 @@ const Blog = () => {
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-8 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
-                Show More
+                Show more
                 <ChevronDown className="ml-2 h-5 w-5" />
               </button>
             ) : (
               <button
                 onClick={handleJumpToTop}
-                className="inline-flex items-center px-8 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
-                Jump to Top
+                Back to top
                 <ChevronUp className="ml-2 h-5 w-5" />
               </button>
             )}

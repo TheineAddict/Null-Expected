@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Users, TrendingUp, Settings, BookOpen } from 'lucide-react';
-import { loadBlogPosts, getFeaturedPosts, getVisibleBlogTags } from '../utils/blogUtils';
+import { loadBlogPosts, getFeaturedPosts } from '../utils/blogUtils';
 import { BlogPost } from '../types/blog';
 import { SEO } from '../components/SEO';
+import ArticleCard from '../components/ArticleCard';
 
 const Landing = () => {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
@@ -176,31 +177,7 @@ const Landing = () => {
               </div>
             ) : featuredPosts.length > 0 ? (
               featuredPosts.map((post) => (
-              <article
-                key={post.title}
-                className="site-card p-6 md:p-8 h-full flex flex-col"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-indigo-900">
-                    {post.category}
-                  </span>
-                  <span className="text-xs sm:text-sm text-gray-500">{post.readTime}</span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
-                <div className="mt-auto">
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors text-sm sm:text-base"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    Read article
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
-              </article>
+                <ArticleCard key={post.title} post={post} />
               ))
             ) : (
               <div className="col-span-full text-center py-8">

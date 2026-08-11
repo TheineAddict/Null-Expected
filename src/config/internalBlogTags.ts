@@ -8,6 +8,7 @@
 //
 // Add new internal theme slugs here as you introduce them.
 export const INTERNAL_BLOG_TAG_SLUGS: string[] = [
+  'featured',
   // Example placeholder (no current posts use it, so it won't affect visuals yet).
   'theme-example',
   'risk-readiness-reality-series'
