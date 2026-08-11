@@ -33,38 +33,32 @@ const Landing = () => {
     {
       title: 'QA Processes',
       description: 'Test strategy, planning, exploratory testing, risk-based coverage and the mechanics of delivery.',
-      icon: Target,
-      color: 'from-indigo-500 to-purple-600'
+      icon: Target
     },
     {
       title: 'Quality Mindset',
       description: 'Evidence, ownership and the difference between a green process and a sound decision.',
-      icon: Users,
-      color: 'from-purple-500 to-pink-600'
+      icon: Users
     },
     {
       title: 'Career Advice',
       description: 'QA careers, leadership, communication and judgement beyond test execution.',
-      icon: TrendingUp,
-      color: 'from-indigo-600 to-blue-600'
+      icon: TrendingUp
     },
     {
       title: 'Industry Trends',
       description: 'AI in testing, observability and industry shifts examined through practical use.',
-      icon: Settings,
-      color: 'from-blue-500 to-indigo-600'
+      icon: Settings
     },
     {
       title: 'Tools & Tech',
       description: 'Occasional tool coverage focused on process, evidence and outcomes.',
-      icon: BookOpen,
-      color: 'from-purple-600 to-indigo-600'
+      icon: BookOpen
     },
     {
       title: 'Case Studies',
       description: 'Delivery situations, failure modes and lessons that survive contact with real teams.',
-      icon: Settings,
-      color: 'from-indigo-800 to-purple-900'
+      icon: Settings
     }
   ];
 
@@ -73,22 +67,19 @@ const Landing = () => {
       title: 'Software Quality & Test Strategy',
       description:
         'How quality is defined, planned and evidenced so testing reflects real product risk instead of volume.',
-      icon: Target,
-      color: 'from-indigo-500 to-purple-600'
+      icon: Target
     },
     {
       title: 'Release Governance & Readiness',
       description:
         'Release decisions based on clear, honest information so go/no-go calls are timely and defensible.',
-      icon: TrendingUp,
-      color: 'from-purple-500 to-pink-600'
+      icon: TrendingUp
     },
     {
       title: 'Technical Delivery',
       description:
         'Coordination across teams so milestones, dependencies and risks stay visible and decisions arrive on time.',
-      icon: Users,
-      color: 'from-indigo-600 to-blue-600'
+      icon: Users
     },
   ];
 
@@ -164,13 +155,13 @@ const Landing = () => {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="site-section">
+        <div className="site-shell">
+          <div className="mb-10 md:mb-12 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Featured Writing
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600">
+            <p className="site-section-intro">
               Practitioner field notes on testing, delivery and release management - not theory decks.
             </p>
           </div>
@@ -184,50 +175,30 @@ const Landing = () => {
                 </div>
               </div>
             ) : featuredPosts.length > 0 ? (
-              featuredPosts.map((post, index) => (
+              featuredPosts.map((post) => (
               <article
                 key={post.title}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
+                className="site-card p-6 md:p-8 h-full flex flex-col"
               >
-                <div className="p-6 md:p-8 h-full flex flex-col">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full">
-                      {post.category}
-                    </span>
-                    <span className="text-xs sm:text-sm text-gray-500">{post.readTime}</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {getVisibleBlogTags(post.tags).slice(0, 2).map((tag) => (
-                      <Link
-                        key={tag}
-                        to={`/blog?tag=${encodeURIComponent(tag)}`}
-                        className="px-2 py-1 bg-gray-100 text-indigo-900 text-xs rounded hover:text-gray-900 transition-colors"
-                        onClick={() => window.scrollTo(0, 0)}
-                      >
-                        #{tag}
-                      </Link>
-                    ))}
-                    {getVisibleBlogTags(post.tags).length > 2 && (
-                      <span className="px-2 py-1 text-gray-400 text-xs">
-                        +{getVisibleBlogTags(post.tags).length - 2}
-                      </span>
-                    )}
-                  </div>
-                  <div className="mt-auto">
-                    <Link
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors text-sm sm:text-base"
-                      onClick={() => window.scrollTo(0, 0)}
-                    >
-                      Read Article
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm font-medium text-indigo-900">
+                    {post.category}
+                  </span>
+                  <span className="text-xs sm:text-sm text-gray-500">{post.readTime}</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 mb-6 flex-1 text-sm sm:text-base">{post.excerpt}</p>
+                <div className="mt-auto">
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors text-sm sm:text-base"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    Read article
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
                 </div>
               </article>
               ))
@@ -244,27 +215,27 @@ const Landing = () => {
       </section>
 
       {/* Consultancy Areas */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="site-section bg-gray-50">
+        <div className="site-shell">
+          <div className="mb-10 md:mb-12 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Consulting Practice
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+            <p className="site-section-intro">
               Independent, founder-led work across three related areas - most engagements draw on more than one.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x md:divide-gray-200">
             {consultingAreas.map((area) => (
               <Link
                 to="/consulting"
                 key={area.title}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                className="block group p-8 md:px-8 md:first:pl-0 md:last:pr-0 border-b md:border-b-0 border-gray-200 last:border-b-0"
                 onClick={() => window.scrollTo(0, 0)}
               >
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${area.color} flex items-center justify-center mb-6`}>
-                  <area.icon className="h-8 w-8 text-white" />
+                <div className="site-icon-tile mb-5">
+                  <area.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{area.title}</h3>
                 <p className="text-gray-600">{area.description}</p>
@@ -275,67 +246,33 @@ const Landing = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="site-section">
+        <div className="site-shell">
+          <div className="mb-10 md:mb-12 max-w-3xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Explore by Topic
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+            <p className="site-section-intro">
               Field notes and essays across the breadth of quality, delivery and release work
             </p>
           </div>
 
-          {/* Mobile: Show only 3 categories initially with "View More" */}
-          <div className="md:hidden">
-            <div className="grid grid-cols-1 gap-4 mb-6">
-              {categories.slice(0, 3).map((category, index) => (
-                <Link
-                  to={`/blog?category=${encodeURIComponent(category.title)}`}
-                  key={category.title}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 block group"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center flex-shrink-0`}>
-                      <category.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
-                      <p className="text-gray-600 text-sm">{category.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="text-center">
-              <Link
-                to="/blog"
-                className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                View All Categories
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Desktop: Show all categories in grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+            {categories.map((category) => (
               <Link
                 to={`/blog?category=${encodeURIComponent(category.title)}`}
                 key={category.title}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 block group"
+                className="bg-white p-6 block group transition-colors hover:bg-gray-50"
                 onClick={() => window.scrollTo(0, 0)}
               >
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-6`}>
-                  <category.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
-                <p className="text-gray-600 mb-6">{category.description}</p>
-                <div className="text-sm text-gray-500 font-mono">
-                  [ {index + 1} of 6 ]
+                <div className="flex items-center space-x-4">
+                  <div className="site-icon-tile !w-11 !h-11">
+                    <category.icon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-indigo-900 transition-colors">{category.title}</h3>
+                    <p className="text-gray-600 text-sm">{category.description}</p>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -344,7 +281,7 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
+      <section className="site-section bg-gradient-to-r from-indigo-900 to-purple-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
             Read the latest writing
