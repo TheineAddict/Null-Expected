@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Linkedin, Mail, ArrowRight, BookOpen, CheckCircle2 } from 'lucide-react';
+import { Linkedin, Mail, ArrowRight } from 'lucide-react';
 import { getAuthorById } from '../config/authors';
 import { SEO } from '../components/SEO';
 
@@ -41,7 +41,7 @@ const About = () => {
   ];
 
   return (
-    <div className="py-20">
+    <div className="py-16 md:py-20">
       <SEO
         title="About Null Expected - Independent QA Consultancy & Publication"
         description="Null Expected is an independent consultancy and practitioner-led publication founded by Andreea Vitan, focused on software quality, release governance, and technical delivery."
@@ -49,47 +49,34 @@ const About = () => {
       />
 
       {/* Hero */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-        <div className="flex justify-center mb-6 h-24">
-          <img
-            src="/Null-Expected-Cat-Icon-Pack/cat-mascot.svg"
-            alt="Null Expected Cat Mascot"
-            className="w-24 h-24"
-          />
+      <section className="site-shell mb-16 md:mb-20">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            About Null:Expected
+          </h1>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            Null Expected combines independent consulting with practitioner-led writing. The consulting work covers software quality, release governance and technical delivery. The writing examines the decisions, trade-offs and failure modes behind that work.
+          </p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          About Null:Expected
-        </h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
-          Null:Expected is both an independent consultancy and a practitioner-led publication. The
-          consulting work focuses on software quality, release governance and technical delivery. The
-          writing stays independent and documents the decisions, trade-offs and failure modes behind
-          that work.
-        </p>
       </section>
 
       {/* Andreea Vitan */}
       {founder && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center">
-              <div className="w-64 h-64 md:w-72 md:h-72">
-                <img
-                  src={founder.imageUrl}
-                  alt={`${founder.name} - ${founder.title}`}
-                  className="w-full h-full object-cover rounded-2xl shadow-lg grayscale"
-                />
-              </div>
+        <section className="site-shell mb-16 md:mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 md:gap-12 items-center">
+            <div className="flex justify-center md:justify-start">
+              <img
+                src={founder.imageUrl}
+                alt={`${founder.name} - ${founder.title}`}
+                className="w-72 md:w-80 h-auto object-cover rounded-2xl shadow-lg grayscale"
+              />
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">{founder.name}</h2>
-              <p className="text-indigo-900 font-semibold mb-1">{founder.roleTitle}</p>
-              <p className="text-gray-600 text-sm mb-6">{founder.title}</p>
-
-              <p className="text-gray-600 leading-relaxed mb-6">{founder.bio}</p>
-
-              <div className="text-sm text-gray-500 mb-6 font-mono">{founder.tag}</div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{founder.name}</h2>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                I'm Andreea Vitan. I work across QA, release management and technical delivery, usually where the official status is clearer than the actual risk. Null Expected is where I write about that work and offer focused consulting to teams that need a better view of what is ready, what is blocked and what still needs a decision.
+              </p>
 
               <div className="flex flex-wrap gap-6">
                 {founder.linkedinUrl && (
@@ -100,7 +87,7 @@ const About = () => {
                     className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
                   >
                     <Linkedin className="h-5 w-5" />
-                    <span>LinkedIn</span>
+                    <span>View LinkedIn</span>
                   </a>
                 )}
                 <Link
@@ -108,7 +95,7 @@ const About = () => {
                   className="flex items-center space-x-2 text-indigo-900 hover:text-gray-900 transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  <span>Read the articles</span>
+                  <span>Read my articles</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -118,20 +105,22 @@ const About = () => {
       )}
 
       {/* Experience in practice */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Experience in practice
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {experiencePoints.map((point) => (
+      <section className="site-shell mb-16 md:mb-20">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+            Experience in practice
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+            {experiencePoints.map((point, i) => (
               <div
                 key={point}
-                className="flex items-start space-x-4 bg-white rounded-xl shadow-sm p-6"
+                className={[
+                  'py-5',
+                  i < 2 ? 'md:border-b' : '',
+                  i % 2 === 0 ? 'md:border-r md:pr-12' : 'md:pl-12',
+                  'border-gray-200',
+                ].join(' ')}
               >
-                <CheckCircle2 className="h-6 w-6 text-indigo-900 flex-shrink-0 mt-0.5" />
                 <p className="text-gray-700 leading-relaxed">{point}</p>
               </div>
             ))}
@@ -140,76 +129,63 @@ const About = () => {
       </section>
 
       {/* Books by Andreea */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              <BookOpen className="h-10 w-10 text-indigo-900" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Books by Andreea
-            </h2>
-          </div>
+      <section className="site-shell mb-16 md:mb-20">
+        <div className="mb-10 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Books by Andreea
+          </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {books.map((book) => (
-              <div key={book.title} className="group">
-                <div className="mb-6 relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:shadow-xl group-hover:scale-105">
-                  <img
-                    src={book.cover}
-                    alt={`${book.title}: ${book.subtitle}`}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{book.title}</h3>
-                <p className="text-sm font-semibold text-indigo-900 mb-3">{book.subtitle}</p>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed">{book.description}</p>
-                <a
-                  href={book.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
-                >
-                  <span>Get on Amazon</span>
-                  <span className="text-lg">→</span>
-                </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+          {books.map((book) => (
+            <div key={book.title} className="flex flex-col">
+              <div className="mb-5 overflow-hidden rounded-lg shadow-md">
+                <img
+                  src={book.cover}
+                  alt={`${book.title}: ${book.subtitle}`}
+                  className="w-full aspect-[3/4] object-cover"
+                />
               </div>
-            ))}
-          </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{book.title}</h3>
+              <p className="text-sm font-semibold text-indigo-900 mb-3">{book.subtitle}</p>
+              <p className="text-gray-600 mb-5 text-sm leading-relaxed flex-1">{book.description}</p>
+              <a
+                href={book.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-indigo-900 hover:text-indigo-800 font-semibold transition-colors"
+              >
+                <span>View on Amazon</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Name explanation + Manifesto */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                <strong className="text-gray-900">Null:Expected</strong> comes from a software
-                testing term where "null" means nothing is returned — and that is the expected result.
-                Even that "nothing" is deliberate: it reflects a decision, a rule, or a user
-                expectation. The name is a reminder that behind every outcome there is intent, and
-                quality depends on understanding it.
-              </p>
-              <p>
-                The{' '}
-                <Link
-                  to="/manifesto"
-                  className="text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  Manifesto
-                </Link>{' '}
-                sets out what drives this work.
-              </p>
-            </div>
-          </div>
+      {/* Name explanation */}
+      <section className="site-shell mb-16 md:mb-20">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Why the name?
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            Null:Expected comes from a testing result: nothing is returned, and that is the expected outcome. It is a small reminder that even an empty result should be intentional.
+          </p>
+          <Link
+            to="/manifesto"
+            className="inline-flex items-center text-indigo-900 hover:text-gray-900 font-semibold transition-colors"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            Read the Manifesto
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
       </section>
 
       {/* Contact */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="site-shell">
+        <div className="max-w-3xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in touch</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
