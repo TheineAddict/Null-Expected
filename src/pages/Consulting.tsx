@@ -82,51 +82,51 @@ const Consulting = () => {
   const approach = [
     {
       step: '01',
-      title: 'Understand the Current State',
+      title: 'Understand the current state',
       description:
-        'Look at how quality, releases and delivery actually work today, including the gaps that do not show up in the official process.',
+        'Look at how quality, releases and delivery work in practice, including gaps outside the official process.',
     },
     {
       step: '02',
-      title: 'Find Where Decisions Break Down',
+      title: 'Find where decisions break down',
       description:
-        'Identify where readiness, risk and dependency information is lost or arrives too late for the people who need it.',
+        'Trace where readiness, risk or dependency information is lost or arrives too late.',
     },
     {
       step: '03',
-      title: 'Make Targeted, Practical Changes',
+      title: 'Make targeted changes',
       description:
-        'Propose changes that fit your context, tools and teams, and work alongside the people who will carry them forward.',
+        'Change the parts getting in the way, using the tools and teams already there.',
     },
     {
       step: '04',
-      title: 'Leave Capability Behind',
+      title: 'Leave capability behind',
       description:
-        'Transfer the reasoning, not just the process, so the team can keep improving without ongoing external help.',
+        'Document the reasoning and hand over a process the team can maintain without external help.',
     },
   ];
 
   const engagementOptions = [
     {
       icon: ClipboardList,
-      title: 'Focused Review',
+      title: 'Focused review',
+      label: 'Typical length: 1-4 weeks',
       description:
         'A short, targeted look at a specific quality, release or delivery problem, with practical recommendations you can act on.',
-      meta: '[ duration: 1-4_weeks ]',
     },
     {
       icon: Clock,
-      title: 'Embedded Engagement',
+      title: 'Embedded engagement',
+      label: 'Length: agreed to scope',
       description:
         'Working alongside your teams for a defined period to put changes in place and build the capability to maintain them.',
-      meta: '[ duration: flexible ]',
     },
     {
       icon: Users,
-      title: 'Advisory Support',
+      title: 'Advisory support',
+      label: 'Cadence: ongoing',
       description:
         'Periodic input on quality, release and delivery decisions as your teams and processes evolve.',
-      meta: '[ duration: ongoing ]',
     },
   ];
 
@@ -259,10 +259,10 @@ const Consulting = () => {
 
       {/* Approach Section */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-shell">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How the Work Usually Goes
+              How the work usually goes
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Practical and context-first. The goal is better decisions, not a binder of process
@@ -270,11 +270,12 @@ const Consulting = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gray-200" aria-hidden="true" />
             {approach.map((phase) => (
-              <div key={phase.step} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-indigo-900 to-purple-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-lg">{phase.step}</span>
+              <div key={phase.step} className="relative text-left">
+                <div className="w-16 h-16 bg-white border border-gray-200 rounded-full flex items-center justify-center mb-4 relative z-10">
+                  <span className="text-gray-900 font-bold text-lg">{phase.step}</span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">{phase.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{phase.description}</p>
@@ -284,78 +285,40 @@ const Consulting = () => {
         </div>
       </section>
 
-      {/* Why work with Andreea */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-approved.svg"
-                alt="Null Expected cat mascot approving quality"
-                className="w-24 h-24"
-              />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Why work with Andreea</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Practitioner, Not Theorist</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                The work is grounded in hands-on testing, QA leadership, release management and
-                delivery. Advice comes from having done the job, not from a methodology deck.
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Fits Your Context</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Every organisation has its own constraints, tools and culture. Recommendations are
-                shaped to what will actually work where you are, not to a template.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Independent and Direct</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Null Expected is founder-led and intentionally small. That means direct access to
-                Andreea, and advice that is not filtered through a sales pipeline.
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Better Decisions, Not More Process</h3>
-              <p className="text-gray-600 leading-relaxed">
-                The aim is clearer risk, better-timed decisions and capability that stays in your
-                team. Process is a means to that end, not the deliverable.
-              </p>
-            </div>
-          </div>
+      {/* What you can expect */}
+      <section className="py-16 bg-gray-50">
+        <div className="site-shell max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What you can expect</h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            You work directly with Andreea. Recommendations are shaped to the systems, constraints and delivery pressure already present, and the resulting process stays with the team.
+          </p>
         </div>
       </section>
 
       {/* Engagement Options */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-shell">
           <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
-                alt="Null Expected cat mascot working on quality"
-                className="w-20 h-20"
-              />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Engagement Options</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ways to work together</h2>
             <p className="text-xl text-gray-600">
               Flexible arrangements, scoped to the actual problem rather than a fixed programme.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {engagementOptions.map((option) => (
-              <div key={option.title} className="bg-white rounded-xl p-8 shadow-lg text-center">
-                <div className="w-14 h-14 rounded-lg bg-gradient-to-r from-indigo-900 to-purple-800 flex items-center justify-center mx-auto mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {engagementOptions.map((option, idx) => (
+              <div
+                key={option.title}
+                className={`site-card bg-white rounded-xl p-8 border border-gray-200 shadow-sm ${
+                  idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
+              >
+                <div className="w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center mb-6">
                   <option.icon className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{option.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{option.description}</p>
-                <div className="text-sm text-gray-500 font-mono">{option.meta}</div>
+                <p className="text-base text-gray-600 mb-4 leading-relaxed">{option.description}</p>
+                <div className="text-sm text-gray-500">{option.label}</div>
               </div>
             ))}
           </div>
@@ -363,53 +326,48 @@ const Consulting = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-indigo-900">
+        <div className="site-shell max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Let's Talk About Your Situation
+            Discuss the problem you need to solve
           </h2>
           <p className="text-xl text-indigo-200 mb-8">
-            If any of the above sounds familiar, get in touch. An initial conversation is the quickest
-            way to see whether this is the right fit.
+            A short email is enough to start. Include the context, what is getting in the way and the kind of support you are considering.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="mailto:ade.vitan@gmail.com"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+              className="site-button-primary"
             >
               <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
+              Email Andreea
             </a>
 
             <a
               href="https://www.linkedin.com/in/adevitan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+              className="site-button-secondary"
             >
               <Linkedin className="mr-2 h-5 w-5" />
-              Connect on LinkedIn
+              View LinkedIn
             </a>
-          </div>
-
-          <div className="mt-8 text-indigo-300 text-sm">
-            <p>The first conversation is always free, with no obligation.</p>
           </div>
         </div>
       </section>
 
       {/* Related Content */}
       <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="site-shell max-w-4xl text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">More on how the work thinks</h2>
           <p className="text-gray-600 mb-8">
             The blog covers quality, release management and delivery in practice, not in theory.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/blog"
-              className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
               Read the writing
@@ -417,7 +375,7 @@ const Consulting = () => {
             </Link>
             <Link
               to="/manifesto"
-              className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"
               onClick={() => window.scrollTo(0, 0)}
             >
               The Manifesto
