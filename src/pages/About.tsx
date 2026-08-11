@@ -183,7 +183,7 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:ade.vitan@gmail.com"
-              className="inline-flex items-center justify-center px-6 py-3 bg-indigo-900 text-white font-semibold rounded-lg hover:bg-indigo-800 transition-colors"
+              className="site-button-primary"
             >
               <Mail className="mr-2 h-5 w-5" />
               Email Andreea
@@ -192,7 +192,7 @@ const About = () => {
               href="https://www.linkedin.com/in/adevitan/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+              className="site-button-secondary"
             >
               <Linkedin className="mr-2 h-5 w-5" />
               Connect on LinkedIn

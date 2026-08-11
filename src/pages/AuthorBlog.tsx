@@ -149,7 +149,7 @@ const AuthorBlog = () => {
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                className="site-button-secondary"
               >
                 Show more
                 <ChevronDown className="ml-2 h-5 w-5" />
@@ -157,7 +157,7 @@ const AuthorBlog = () => {
             ) : (
               <button
                 onClick={handleJumpToTop}
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                className="site-button-secondary"
               >
                 Back to top
                 <ChevronUp className="ml-2 h-5 w-5" />
@@ -172,7 +172,7 @@ const AuthorBlog = () => {
         <div className="site-shell text-center">
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 py-3 btn-themed font-semibold rounded-lg transition-all duration-300"
+            className="site-button-primary"
             onClick={() => window.scrollTo(0, 0)}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />

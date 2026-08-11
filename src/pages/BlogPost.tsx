@@ -495,7 +495,7 @@ const BlogPost = () => {
           </h3>
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 py-3 btn-themed font-semibold rounded-lg transition-all duration-300"
+            className="site-button-primary"
             onClick={() => window.scrollTo(0, 0)}
           >
             View All Posts

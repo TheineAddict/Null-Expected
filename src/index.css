@@ -436,7 +436,8 @@ html {
 }
 
 .site-button-primary,
-.site-button-secondary {
+.site-button-secondary,
+.site-button-inverse {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -448,37 +449,49 @@ html {
   line-height: 1.2;
   border-radius: 10px;
   text-decoration: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .site-button-primary:focus-visible,
-.site-button-secondary:focus-visible {
+.site-button-secondary:focus-visible,
+.site-button-inverse:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.5);
 }
 
 .site-button-primary {
-  background-color: #312e81;
+  background: var(--brand-gradient);
   color: #ffffff;
-  border: 1px solid #312e81;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 rgba(107, 33, 168, 0.2);
 }
 
 .site-button-primary:hover {
-  background-color: #3730a3;
-  border-color: #3730a3;
+  background: var(--brand-gradient-hover);
 }
 
 .site-button-secondary {
   background-color: #ffffff;
-  color: #312e81;
-  border: 1px solid #c7d2fe;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: var(--brand-purple);
+  border: 1px solid var(--brand-purple);
+  box-shadow: none;
 }
 
 .site-button-secondary:hover {
-  background-color: #eef2ff;
-  border-color: #a5b4fc;
+  background-color: var(--brand-lavender);
+  border-color: var(--brand-purple);
+}
+
+.site-button-inverse {
+  background-color: #ffffff;
+  color: var(--brand-purple-deep);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: none;
+}
+
+.site-button-inverse:hover {
+  background-color: var(--brand-lavender);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .site-text-link {

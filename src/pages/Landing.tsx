@@ -140,7 +140,7 @@ const Landing = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/consulting"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+              className="site-button-primary"
               onClick={() => window.scrollTo(0, 0)}
             >
               Explore consulting
@@ -148,7 +148,7 @@ const Landing = () => {
             </Link>
             <Link
               to="/blog"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-indigo-800 hover:border-indigo-900 hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+              className="site-button-secondary"
               onClick={() => window.scrollTo(0, 0)}
             >
               Read the blog
@@ -267,7 +267,7 @@ const Landing = () => {
           <div className="mt-8">
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 btn-themed font-semibold rounded-lg transition-colors shadow-lg text-sm sm:text-base"
+            className="site-button-inverse"
             onClick={() => window.scrollTo(0, 0)}
           >
             Browse all articles

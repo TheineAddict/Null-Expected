@@ -324,7 +324,7 @@ const Consulting = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="mailto:ade.vitan@gmail.com"
-              className="site-button-primary"
+              className="site-button-inverse"
             >
               <Mail className="mr-2 h-5 w-5" />
               Email Andreea

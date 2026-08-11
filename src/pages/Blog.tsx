@@ -211,7 +211,7 @@ const Blog = () => {
             {hasMore ? (
               <button
                 onClick={handleShowMore}
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                className="site-button-secondary"
               >
                 Show more
                 <ChevronDown className="ml-2 h-5 w-5" />
@@ -219,7 +219,7 @@ const Blog = () => {
             ) : (
               <button
                 onClick={handleJumpToTop}
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                className="site-button-secondary"
               >
                 Back to top
                 <ChevronUp className="ml-2 h-5 w-5" />
