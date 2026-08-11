@@ -173,7 +173,7 @@ const Consulting = () => {
             {/* Right: illustration */}
             <div className="lg:col-span-2 order-2 flex justify-center lg:justify-end">
               <img
-                src="/Null-Expected-Cat-Icon-Pack/cat-strategy.svg"
+                src="/Null-Expected-Cat-Icon-Pack/cat-working.svg"
                 alt="Null Expected cat working on delivery strategy"
                 className="w-[280px] md:w-[420px] h-auto object-contain"
               />
