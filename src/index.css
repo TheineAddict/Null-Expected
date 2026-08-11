@@ -177,11 +177,64 @@ html {
   font-size: 0.875rem;
 }
 
-.article-prose table {
+.article-prose .table-scroll-wrapper {
   display: block;
   overflow-x: auto;
-  white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .article-prose table {
+    font-size: 16px;
+  }
+}
+
+.article-prose thead {
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.article-prose th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.article-prose td {
+  padding: 10px 14px;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: nowrap;
+}
+
+.article-prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-prose tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.table-overflow-hint::after {
+  content: 'Scroll to view full table →';
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  padding-top: 6px;
 }
 
 .article-prose img {
